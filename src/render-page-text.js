@@ -24,6 +24,18 @@ module.exports = (page, pageIndex, missingLinks=new Set(), latexStrings=[])=>{
   if (page.alias == 'supply_and_demand') textMarkdown = textMarkdown.replace(/(?<!\\)\$(\d+)\/bushel/g, (_,m)=>`\\$${m}/bushel`)
   if (page.alias == 'kripke_model') textMarkdown = textMarkdown.replace(/w ?\\in ?W/g, 'w \\in W')
 
+  if (page.type == 'comment' && page.anchorContext) {
+    let anchorContextHtml = page.anchorContext
+    if (page.anchorOffset && page.anchorText) {
+      anchorContextHtml = anchorContextHtml.substring(0, page.anchorOffset)
+                        + '<mark>'
+                        + anchorContextHtml.substring(page.anchorOffset, page.anchorOffset + page.anchorText.length)
+                        + '</mark>'
+                        + anchorContextHtml.substring(page.anchorOffset + page.anchorText.length)
+    }
+    textMarkdown = `<blockquote class="comment-context">${anchorContextHtml}</blockquote>` + textMarkdown
+  }
+
   // Escape MathJax for markdown
   let processMathjax = unmatchedText=>{
     let result = ''

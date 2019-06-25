@@ -89,6 +89,10 @@ let PageRef = class {
     this.tagIds = p.tagIds || []
     this.individualLikes = p.individualLikes || []
     this.relatedIds = p.relatedIds || []
+    this.commentIds = p.commentIds || []
+    this.anchorContext = p.anchorContext
+    this.anchorText = p.anchorText
+    this.anchorOffset = p.anchorOffset
 
     this.missingLinks = []
     this.latexStrings = []
@@ -186,12 +190,15 @@ Page = class extends PageRef {
     return breadcrumbs.sort()
   }
 
-  _renderPage(pageIndex) {
+  renderText(pageIndex) {
+    if (this.textHtml) return this.textHtml
     let missingLinks = new Set()
-    let r = template.page({...this, textHtml: renderPageText(this, pageIndex, missingLinks, this.latexStrings = []), breadcrumbs:this._makeBreadcrumbs(pageIndex), pageIndex:pageIndex})
+    this.textHtml = renderPageText(this, pageIndex, missingLinks, this.latexStrings = [])
     this.missingLinks = Array.from(missingLinks).sort()
-    return r
+    return this.textHtml
   }
+
+  _renderPage(pageIndex) { return template.page({...this, textHtml: this.renderText(pageIndex), breadcrumbs:this._makeBreadcrumbs(pageIndex), pageIndex:pageIndex}) }
 
   async saveRaw() { if (!this.cached) await this._writeJson('raw', `${this.pageId}.json`, this.rawPageJson) }
 

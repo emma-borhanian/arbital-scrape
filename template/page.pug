@@ -35,6 +35,15 @@ block body
   hr
   main!= textHtml
   hr
+  if commentIds.length > 0
+    section.comments
+      h2 Comments
+      each commentId in commentIds
+        - let comment = pageIndex[commentId] 
+        div.comment
+          if comment
+            p: +pageLink(comment.pageCreatorId)
+          p!= comment && comment.renderText ? comment.renderText(pageIndex) : `${commentId} (missing)`
   footer
     if tagIds.length > 0
       p.tagged
