@@ -1,0 +1,7 @@
+extends index-layout.pug
+
+append body
+  hr
+  main
+    h1= title
+    +pageListByType(allPages, /*hLevel=*/2, /*idPrefix=*/'')

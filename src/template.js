@@ -21,4 +21,5 @@ module.exports = {
   metadataLink: compile('template/metadata-link.pug'),
   explore: compile('template/explore.pug', rootLocals),
   indexByCategory: compile('template/index-by-category.pug', rootLocals),
+  indexByType: compile('template/index-by-type.pug', rootLocals),
 }

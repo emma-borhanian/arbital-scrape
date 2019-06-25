@@ -77,6 +77,7 @@ let PageRef = class {
       || (this.clickbait && this.clickbait.substring(config.textToNameMaxLength))
       || (this.text && this.text.substring(config.textToNameMaxLength))
       || this.aliasOrId
+    this.named = config.namelikePageIds.includes(this.name) || this.title || this.clickbait || this.text || this.alias
     this.arbitalUrl = `https://arbital.com/p/${this.aliasOrId}`
     this.childIds = p.childIds || []
     this.parentIds = p.parentIds || []
@@ -311,6 +312,9 @@ Page = class extends PageRef {
     }
   }
 
+  let namedTypes = lib.makePagesByType(allPages.filter(p=>p.named), pageIndex).map(e=>e[0])
+  let unnamedTypes = lib.makePagesByType(allPages.filter(p=>!p.named), pageIndex).map(e=>e[0])
+
   let writeFile = async (file,content)=>{
     console.log('writing', file)
     await fs.mkdirp(path.dirname(file))
@@ -321,9 +325,13 @@ Page = class extends PageRef {
     await fs.copyFile(source, destination)
   }
 
-  await writeFile(`${argv.directory}/index.html`, template.index({title: 'Arbital Scrape Index'}))
-  await writeFile(`${argv.directory}/debug.html`, template.debug({title: 'Debug', fetchFailures: fetchFailures, allPages:allPages, pageIndex:pageIndex}))
-  await writeFile(`${argv.directory}/debug-all-mathjax.html`, template.debugAllMathjax({title: 'Debug - All Mathjax', allPages:allPages, pageIndex:pageIndex}))
+  let indexLocals = {pageIndex:pageIndex, allPages:allPages, namedTypes:namedTypes, unnamedTypes:unnamedTypes}
+
+  await writeFile(`${argv.directory}/index.html`, template.index({title: 'Arbital Scrape Index', ...indexLocals}))
+  await writeFile(`${argv.directory}/debug.html`, template.debug({title: 'Debug', fetchFailures: fetchFailures, ...indexLocals}))
+  await writeFile(`${argv.directory}/debug-all-mathjax.html`, template.debugAllMathjax({title: 'Debug - All Mathjax', ...indexLocals}))
+  await writeFile(`${argv.directory}/by-type-named.html`, template.indexByType({title: 'By Type (Named)', ...indexLocals, allPages:allPages.filter(p=>p.named)}))
+  await writeFile(`${argv.directory}/by-type-unnamed.html`, template.indexByType({title: 'By Type (Unnamed)', ...indexLocals, allPages:allPages.filter(p=>!p.named)}))
 
   for (let file of ['page-style.css', 'index-style.css', 'common.css']) {
     await copyFile(`template/${file}`, `${argv.directory}/${file}`)
@@ -332,7 +340,7 @@ Page = class extends PageRef {
   let exploreRoots = allPages.filter(p=>p.status == PageStatus_page && p.childIds.length > 0 && p.parentIds.length == 0)
   let explorePagesByCategory = {}
   exploreRoots.forEach(p=>(explorePagesByCategory[p.aliasOrId] = explorePagesByCategory[p.aliasOrId] || []).push(...p.childIds))
-  await writeFile(`${argv.directory}/explore.html`, template.explore({title: 'Explore', pagesByCategory:explorePagesByCategory, pageIndex:pageIndex}))
+  await writeFile(`${argv.directory}/explore.html`, template.explore({title: 'Explore', pagesByCategory:explorePagesByCategory, ...indexLocals}))
 
   let makePagesByCategory = f=>{
     let pagesByCategory = {}
@@ -342,8 +350,6 @@ Page = class extends PageRef {
     }))
     return lib.sortBy(Object.entries(pagesByCategory), e=>pageIndex[e[0]] ? pageIndex[e[0]].name : e[0])
   }
-
-  let indexLocals = {pageIndex:pageIndex, allPages:allPages}
 
   await writeFile(`${argv.directory}/by-creator.html`, template.indexByCategory({title: 'By Creator', skipCreator: true, pagesByCategory:makePagesByCategory(p=>p.pageCreatorId==p.pageId?[]:[p.pageCreatorId]), ...indexLocals}))
   await writeFile(`${argv.directory}/by-editor.html`, template.indexByCategory({title: 'By Editor', pagesByCategory:makePagesByCategory(p=>p.editorIds), ...indexLocals}))

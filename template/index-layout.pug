@@ -20,3 +20,11 @@ append body
       +headerLink('by-creator.html', 'By Creator')
       +headerLink('by-editor.html', 'By Editor')
       +headerLink('by-likes.html', 'By Likes')
+      +headerLink('by-type-named.html', 'By Type (Named)')
+      ul
+        each type in namedTypes
+          li: a(href=`by-type-named.html#${type}`)= type
+      +headerLink('by-type-unnamed.html', 'By Type (Unnamed)')
+      ul
+        each type in unnamedTypes
+          li: a(href=`by-type-unnamed.html#${type}`)= type
