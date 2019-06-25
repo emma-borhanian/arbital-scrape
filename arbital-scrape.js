@@ -22,7 +22,11 @@ let argv = require('yargs')
          .option('recursive', {
            desc: 'download recursively',
            boolean: true,
-           default: false }))
+           default: false })
+         .option('timeout', {
+           desc: 'timeout (ms) per page',
+           number: true,
+           default: 7000 }))
   .help()
   .argv
 
@@ -53,7 +57,8 @@ let PageRef = class {
       method: 'POST',
       url: url,
       json: true,
-      body: body })
+      body: body,
+      timeout: argv.timeout })
   }
 
   async requestCachedPage(aliasToId) {
