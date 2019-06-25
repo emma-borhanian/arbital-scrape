@@ -30,9 +30,15 @@ let argv = require('yargs')
          .option('timeout', {
            desc: 'timeout (ms) per page',
            number: true,
-           default: 7000 }))
+           default: 7000 })
+         .option('cache-only', {
+           desc: 'make no http requests',
+           boolean: true,
+           default: false }))
   .help()
   .argv
+
+let CacheOnlyError = class extends Error {constructor(){super('--cache-only enabled');this.name = 'CacheOnlyError'}}
 
 const PageStatus_aliasOrId = 1
 const PageStatus_pageRef   = 2
@@ -60,6 +66,7 @@ let PageRef = class {
   }
 
   async _requestRawPage() {
+    if (argv['cache-only']) throw new CacheOnlyError()
     let url = `${argv.url}/json/primaryPage/`
     let body = { pageAlias: this.aliasOrId }
     this.log('fetching', 'POST', url, body)
@@ -167,7 +174,7 @@ Page = class extends PageRef {
 
     let page
     try { page = await pageRef.requestCachedPage(aliasToId) } catch (e) {
-      if (e instanceof StatusCodeError || e instanceof RequestError) {
+      if (e instanceof StatusCodeError || e instanceof RequestError || e instanceof CacheOnlyError) {
         pageRef.log(colors.red('failed'), e.message)
         fetchFailures[pageRef.aliasOrId] = e
         continue
