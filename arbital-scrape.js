@@ -1,4 +1,4 @@
-#!/usr/bin/env node
+#!/usr/bin/env node --max-old-space-size=8192
 let fs = require('fs-extra')
 let request = require('request-promise-native')
 let {StatusCodeError,RequestError} = require('request-promise-native/errors')
@@ -21,7 +21,7 @@ let argv = require('yargs')
     yargs.positional('directory', {
            desc: 'destination directory',
            string: true,
-           default: 'arbital.com' })
+           default: `${__dirname}/..` })
          .option('url', {
            desc: 'arbital url',
            default: 'https://arbital.com' })
@@ -33,7 +33,7 @@ let argv = require('yargs')
          .option('recursive', {
            desc: 'download recursively',
            boolean: true,
-           default: false })
+           default: true })
          .option('timeout', {
            desc: 'timeout (ms) per page',
            number: true,
@@ -41,9 +41,11 @@ let argv = require('yargs')
          .option('cache-only', {
            desc: 'make no http requests',
            boolean: true,
-           default: false }))
+           default: true }))
   .help()
   .argv
+
+if (!argv['cache-only']) throw "Please don't hit arbital's servers without good reason. They're slow enough as it is."
 
 let CacheOnlyError = class extends Error {constructor(){super('--cache-only enabled');this.name = 'CacheOnlyError'}}
 
@@ -174,7 +176,7 @@ Page = class extends PageRef {
 
   async _writeFile(subdir, name, json) {
     let file = await this._filename(subdir, name)
-    this.log('writing', file)
+    this.log('writing', path.relative('.', file))
     await fs.mkdirp(path.dirname(file))
     await fs.writeFile(file, json)
     return file
@@ -182,7 +184,7 @@ Page = class extends PageRef {
 
   async _writeJson(subdir, name, json) {
     let file = await this._filename(subdir, name)
-    this.log('writing', file)
+    this.log('writing', path.relative('.', file))
     await fs.mkdirp(path.dirname(file))
     await fs.writeJson(file, json, {spaces: 2})
     return file
@@ -342,12 +344,12 @@ Page = class extends PageRef {
   let unnamedTypes = lib.makePagesByType(allPages.filter(p=>!p.named), pageIndex).map(e=>e[0])
 
   let writeFile = async (file,content)=>{
-    console.log('writing', file)
+    console.log('writing', path.relative('.', file))
     await fs.mkdirp(path.dirname(file))
     await fs.writeFile(file, content)
   }
   let copyFile = async (source,destination,content)=>{
-    console.log('copying', source, 'to', destination)
+    console.log('copying', path.relative('.', source), 'to', path.relative('.', destination))
     await fs.copyFile(source, destination)
   }
 
@@ -401,7 +403,7 @@ Page = class extends PageRef {
     let mathjaxZipFile = await fetchUrlAsCachedFile(
       `tmp/mathjax-${sanitizeFilename(config.mathjaxVersion)}.zip`,
       `https://github.com/mathjax/MathJax/archive/${config.mathjaxVersion}.zip`)
-    console.log('extracting', mathjaxZipFile, 'to', argv.directory)
+    console.log('extracting', mathjaxZipFile, 'to', path.relative('.', argv.directory))
     new Zip(mathjaxZipFile).extractAllTo(argv.directory, /*overwrite=*/false)
   }
 
