@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "author": "Emma Borhanian <emma.borhanian@gmail.com>",
   "description": "Scrapes arbital.com into browsable plain HTML for personal use",
-  "license": "Unlicense",
+  "license": "(MIT OR Unlicense)",
   "scripts": {
     "test": "./node_modules/.bin/eslint **/*.js && rm -rf tmp/arbital.com && ./arbital-scrape.js --recursive=false tmp/arbital.com && ./arbital-scrape.js --cache-only --recursive=false tmp/arbital.com"
   },
