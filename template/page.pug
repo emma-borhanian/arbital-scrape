@@ -3,6 +3,9 @@ extends layout.pug
 append head
   link(rel='stylesheet', type='text/css', href='../page-style.css')
   include include/mathjax.pug
+  script(type='text/javascript', src='../arbital-demo-bundle.js')
+  script(type='text/javascript').
+    window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
 
 block body
   header

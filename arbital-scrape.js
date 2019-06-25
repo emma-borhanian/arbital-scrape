@@ -286,6 +286,7 @@ Page = class extends PageRef {
 
   if (!argv['cache-only']) {
     await fetchUrlAsCachedFile(`${argv.directory}/unused/arbital-bundle.js`, `${argv.url}/static/js/bundle.js`)
+    await fetchUrlAsCachedFile(`${argv.directory}/arbital-demo-bundle.js`, `${argv.url}/static/js/lib/demo-bundle.js`)
   }
 
   if (Object.keys(fetchFailures).length > 0) {

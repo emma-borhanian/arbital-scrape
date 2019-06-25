@@ -12,6 +12,12 @@ module.exports = (unmatchedText, pageIndex, missingLinks)=>{
     if (!match) break
     let [fullMatch] = match
     let {index,groups:{linkUrl,space,linkText}} = match
+    let visualizationMatch = linkUrl.match(/^visualization\(([^)]*)\):$/)
+    if (visualizationMatch) {
+      result += unmatchedText.substring(0, index) + `<div class="react-demo" data-demo-name="${visualizationMatch[1]}"></div>`
+      unmatchedText = unmatchedText.substring(index + fullMatch.length)
+      continue
+    }
     if (/^summary\([^)]*\):/.test(linkUrl) || ['toc:', 'summary:', 'fixme:', 'todo:', 'comment:'].includes(linkUrl)) {
       result += unmatchedText.substring(0, index) + unmatchedText.substring(index, index + 1)
       unmatchedText = unmatchedText.substring(index + 1)
