@@ -11,6 +11,9 @@
     "arbital-scrape": "./arbital-scrape.js"
   },
   "private": true,
+  "dependencies": {
+    "yargs": "^13.2.4"
+  },
   "devDependencies": {
     "eslint": "^5.16.0"
   }
