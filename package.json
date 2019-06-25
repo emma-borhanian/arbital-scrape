@@ -5,13 +5,18 @@
   "description": "Scrapes arbital.com into browsable plain HTML for personal use",
   "license": "Unlicense",
   "scripts": {
-    "test": "./node_modules/.bin/eslint **/*.js && ./arbital-scrape.js"
+    "test": "./node_modules/.bin/eslint **/*.js && rm -rf tmp/arbital.com && ./arbital-scrape.js tmp/arbital.com"
   },
   "bin": {
     "arbital-scrape": "./arbital-scrape.js"
   },
   "private": true,
   "dependencies": {
+    "@types/request-promise-native": "^1.0.16",
+    "fs-extra": "^8.0.1",
+    "request": "^2.88.0",
+    "request-promise-native": "^1.0.7",
+    "sanitize-filename": "^1.6.1",
     "yargs": "^13.2.4"
   },
   "devDependencies": {
