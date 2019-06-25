@@ -11,6 +11,7 @@ block body
   header
     h1.title= title
     div.page-info
+      p.metadata-link: a(href=`../metadata/${aliasOrId}.json.html`)= `${aliasOrId}.json`
       p.arbital-url: a(href=arbitalUrl)= arbitalUrl
     if clickbait
       p.clickbait= clickbait

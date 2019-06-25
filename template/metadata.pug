@@ -1,0 +1,15 @@
+extends layout.pug
+
+block body
+  pre(style='white-space:pre-wrap')
+    = '{\n'
+    = "  localUrl: '"
+    a(href=`../page/${aliasOrId}.html`)= `../page/${aliasOrId}.html`
+    = "',\n"
+    = "  arbitalUrl: '"
+    a(href=arbitalUrl)= arbitalUrl
+    = "',\n"
+    = "  rawJsonUrl: '"
+    a(href=`../raw/${pageId}.json`)= `../raw/${pageId}.json`
+    = "',"
+    != util.inspect(pageJsonHtml, {depth:null, maxArrayLength:null, compact:false, breakLength:Infinity}).substring(1)

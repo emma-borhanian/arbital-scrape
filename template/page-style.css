@@ -8,5 +8,5 @@ body > hr {
 
 main img { display: block; margin: auto }
 
-.page-info, .clickbait { margin: 16px 0 }
+.page-info, .clickbait, .breadcrumb { margin: 16px 0 }
 .page-info p { margin: 0 }

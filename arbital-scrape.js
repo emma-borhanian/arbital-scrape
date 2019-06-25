@@ -7,6 +7,7 @@ let colors = require('colors')
 let util = require('util')
 let path = require('path')
 let Zip = require('adm-zip')
+let escapeHtml = require('escape-html')
 
 let config = require('./config.js')
 let lib = require('./src/lib.js')
@@ -146,7 +147,30 @@ Page = class extends PageRef {
 
   async saveRaw() { if (!this.cached) await this._writeJson('raw', `${this.pageId}.json`, this.rawPageJson) }
 
-  async saveHtml(pageIndex) { await this._writeFile('page', `${this.aliasOrId}.html`, this._renderPage(pageIndex)) }
+  _renderMetadataHtml(pageIndex) {
+    let jsonWalkReplace =(o,f,k='')=>{
+      if (o instanceof Array) {
+        return o.map(x=>jsonWalkReplace(x,f,k))
+      } else if (o instanceof Object) {
+        let r={}
+        for (let ok of Object.keys(o)) r[escapeHtml(ok)] = jsonWalkReplace(o[ok],f,ok)
+        return r
+      } else {
+        return f(o,k)
+      }
+    }
+    let pageJsonHtml = jsonWalkReplace(this.pageJson, (scalar, key)=> {
+      let page
+      if (!isArbitalPageIdField(key) || !(page = pageIndex[scalar])) return escapeHtml(scalar)
+      return template.metadataLink(page)
+    })
+    return template.metadata({...this, pageJsonHtml:pageJsonHtml, util:util})
+  }
+
+  async saveHtml(pageIndex) {
+    await this._writeFile('page', `${this.aliasOrId}.html`, this._renderPage(pageIndex))
+    await this._writeFile('metadata', `${this.aliasOrId}.json.html`, this._renderMetadataHtml(pageIndex))
+  }
 
   findPageRefs() {
     let walkJson = (json, func, key='')=>{
