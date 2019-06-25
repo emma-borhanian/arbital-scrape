@@ -1,0 +1,12 @@
+body > main,
+body > header,
+body > hr {
+  width: 1000px;
+  margin: 0 auto;
+  word-break: break-word;
+}
+
+main img { display: block; margin: auto }
+
+.page-info, .clickbait { margin: 16px 0 }
+.page-info p { margin: 0 }

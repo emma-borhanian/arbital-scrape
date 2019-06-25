@@ -7,7 +7,10 @@ let colors = require('colors')
 let util = require('util')
 let path = require('path')
 
+let config = require('./config.js')
 let lib = require('./src/lib.js')
+let template = require('./src/template.js')
+let renderPageText = require('./src/render-page-text.js')
 
 let argv = require('yargs')
   .command('$0 [directory]', 'scrape arbital.com restartable', yargs=>
@@ -63,6 +66,13 @@ let PageRef = class {
     this.aliasOrId = this.alias || this.pageId || p.aliasOrId
     this.keys = Array.from(new Set([this.aliasOrId, this.pageId, this.alias]))
     this.title = p.title
+    this.text = p.text
+    this.clickbait = p.clickbait
+    this.name = this.title
+      || (this.clickbait && this.clickbait.substring(config.textToNameMaxLength))
+      || (this.text && this.text.substring(config.textToNameMaxLength))
+      || this.aliasOrId
+    this.arbitalUrl = `https://arbital.com/p/${this.aliasOrId}`
   }
 
   async _requestRawPage() {
@@ -107,6 +117,14 @@ Page = class extends PageRef {
 
   async _filename(subdir, name) { return `${argv.directory}/${subdir}/${sanitizeFilename(name)}` }
 
+  async _writeFile(subdir, name, json) {
+    let file = await this._filename(subdir, name)
+    this.log('writing', file)
+    await fs.mkdirp(path.dirname(file))
+    await fs.writeFile(file, json)
+    return file
+  }
+
   async _writeJson(subdir, name, json) {
     let file = await this._filename(subdir, name)
     this.log('writing', file)
@@ -115,7 +133,11 @@ Page = class extends PageRef {
     return file
   }
 
-  async save() { if (!this.cached) await this._writeJson('raw', `${this.pageId}.json`, this.rawPageJson) }
+  _renderPage() { return template.page({...this, textHtml: renderPageText(this)}) }
+
+  async saveRaw() { if (!this.cached) await this._writeJson('raw', `${this.pageId}.json`, this.rawPageJson) }
+
+  async saveHtml() { await this._writeFile('page', `${this.aliasOrId}.html`, this._renderPage()) }
 
   findPageRefs() {
     let walkJson = (json, func, key='')=>{
@@ -159,10 +181,10 @@ Page = class extends PageRef {
   }
 
   let addToIndex =p=>{
-    p = pageIndex[p.aliasOrId] = pageIndex[p.aliasOrId] ? pageIndex[p.aliasOrId].pickBest(p) : p
+    p = pageIndex[p.aliasOrId.toLowerCase()] = pageIndex[p.aliasOrId] = pageIndex[p.aliasOrId] ? pageIndex[p.aliasOrId].pickBest(p) : p
     if (p.alias && p.pageId) aliasToId[p.alias] = p.pageId
-    if (p.pageId) pageIndex[p.pageId] = p
-    if (p.alias) pageIndex[p.alias] = p
+    if (p.pageId) { pageIndex[p.pageId] = p; pageIndex[p.pageId.toLowerCase()] = p }
+    if (p.alias) { pageIndex[p.alias] = p; pageIndex[p.alias.toLowerCase()] = p }
   }
   toDownload.forEach(addToIndex)
 
@@ -184,7 +206,7 @@ Page = class extends PageRef {
       } else throw e
     }
 
-    await page.save()
+    await page.saveRaw()
 
     addToIndex(page)
     let subPageRefs = page.findPageRefs()
@@ -200,6 +222,21 @@ Page = class extends PageRef {
   let scrapeMetadata = {aliasToId:aliasToId, fetchFailures:newFetchFailures}
   console.log('writing', scrapeMetadataFile)
   await fs.writeJson(scrapeMetadataFile, scrapeMetadata)
+
+  let savedHtml = new Set()
+  for (let page of Object.values(pageIndex)) {
+    if (page.status == PageStatus_page && !savedHtml.has(page.pageId)) {
+      savedHtml.add(page.pageId)
+      await page.saveHtml()
+    }
+  }
+
+  let copyFile = async (source,destination,content)=>{
+    console.log('copying', source, 'to', destination)
+    await fs.copyFile(source, destination)
+  }
+
+  await copyFile('template/page-style.css', `${argv.directory}/page-style.css`)
 
   if (Object.keys(fetchFailures).length > 0) {
     console.log('')

@@ -1,0 +1,14 @@
+extends layout.pug
+
+append head
+  link(rel='stylesheet', type='text/css', href='../page-style.css')
+
+block body
+  header
+    h1.title= title
+    div.page-info
+      p.arbital-url: a(href=arbitalUrl)= arbitalUrl
+    if clickbait
+      p.clickbait= clickbait
+  hr
+  main!= textHtml
