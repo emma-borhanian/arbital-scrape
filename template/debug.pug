@@ -23,3 +23,16 @@ block body
             tr
               td: +pageLink(aliasOrId)
               td= error.message
+    section
+      h2 Missing Links
+      table
+        thead
+          tr
+            th page
+            th link
+        tbody
+          each page in allPages
+            each link in page.missingLinks
+              tr
+                td: +pageLink(page)
+                td= link

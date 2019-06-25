@@ -73,6 +73,8 @@ let PageRef = class {
       || (this.text && this.text.substring(config.textToNameMaxLength))
       || this.aliasOrId
     this.arbitalUrl = `https://arbital.com/p/${this.aliasOrId}`
+
+    this.missingLinks = []
   }
 
   async _requestRawPage() {
@@ -133,11 +135,16 @@ Page = class extends PageRef {
     return file
   }
 
-  _renderPage() { return template.page({...this, textHtml: renderPageText(this)}) }
+  _renderPage(pageIndex) {
+    let missingLinks = new Set()
+    let r = template.page({...this, textHtml: renderPageText(this, pageIndex, missingLinks)})
+    this.missingLinks = Array.from(missingLinks).sort()
+    return r
+  }
 
   async saveRaw() { if (!this.cached) await this._writeJson('raw', `${this.pageId}.json`, this.rawPageJson) }
 
-  async saveHtml() { await this._writeFile('page', `${this.aliasOrId}.html`, this._renderPage()) }
+  async saveHtml(pageIndex) { await this._writeFile('page', `${this.aliasOrId}.html`, this._renderPage(pageIndex)) }
 
   findPageRefs() {
     let walkJson = (json, func, key='')=>{
@@ -185,6 +192,7 @@ Page = class extends PageRef {
     if (p.alias && p.pageId) aliasToId[p.alias] = p.pageId
     if (p.pageId) { pageIndex[p.pageId] = p; pageIndex[p.pageId.toLowerCase()] = p }
     if (p.alias) { pageIndex[p.alias] = p; pageIndex[p.alias.toLowerCase()] = p }
+    if (p.title) { pageIndex[p.title] = p; pageIndex[p.title.toLowerCase()] }
   }
   toDownload.forEach(addToIndex)
 
@@ -223,11 +231,13 @@ Page = class extends PageRef {
   console.log('writing', scrapeMetadataFile)
   await fs.writeJson(scrapeMetadataFile, scrapeMetadata)
 
+  let allPages = lib.sortBy(Array.from(new Set(Object.values(pageIndex))), p=>p.name)
+
   let savedHtml = new Set()
-  for (let page of Object.values(pageIndex)) {
+  for (let page of allPages) {
     if (page.status == PageStatus_page && !savedHtml.has(page.pageId)) {
       savedHtml.add(page.pageId)
-      await page.saveHtml()
+      await page.saveHtml(pageIndex)
     }
   }
 
@@ -242,7 +252,7 @@ Page = class extends PageRef {
   }
 
   await writeFile(`${argv.directory}/index.html`, template.index({title: 'Arbital Scrape Index'}))
-  await writeFile(`${argv.directory}/debug.html`, template.debug({title: 'Debug', fetchFailures: fetchFailures, pageIndex: pageIndex}))
+  await writeFile(`${argv.directory}/debug.html`, template.debug({title: 'Debug', fetchFailures: fetchFailures, allPages:allPages, pageIndex:pageIndex}))
 
   for (let file of ['page-style.css', 'index-style.css', 'common.css']) {
     await copyFile(`template/${file}`, `${argv.directory}/${file}`)
