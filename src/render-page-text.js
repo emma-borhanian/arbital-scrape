@@ -1,4 +1,5 @@
 let showdown = require('showdown')
+let escapeHtml = require('escape-html')
 
 let renderPageLinks = require('./render-page-links.js')
 
@@ -61,7 +62,21 @@ module.exports = (page, pageIndex, missingLinks=new Set(), latexStrings=[])=>{
     }
     return result + renderPageLinks(appendText + unmatchedText, pageIndex, missingLinks)
   }
-  textMarkdown = processMathjax(textMarkdown)
+
+  let processComments = unmatchedText=>{
+    let result = ''
+    while (unmatchedText) {
+      let match = unmatchedText.match(/%%%?comment:(.|\n)*?%%%?/)
+      if (!match) break
+      let [fullMatch] = match
+      let {index} = match
+      result += processMathjax(unmatchedText.substring(0, index))
+      result += '<pre>' + escapeHtml(fullMatch) + '</pre>'
+      unmatchedText = unmatchedText.substring(index + fullMatch.length)
+    }
+    return result + processMathjax(unmatchedText)
+  }
+  textMarkdown = processComments(textMarkdown)
 
   return showdownConverter.makeHtml(textMarkdown)
 }
