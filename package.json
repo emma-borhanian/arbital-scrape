@@ -1,0 +1,14 @@
+{
+  "name": "arbital-scrape",
+  "version": "0.0.0",
+  "author": "Emma Borhanian <emma.borhanian@gmail.com>",
+  "description": "Scrapes arbital.com into browsable plain HTML for personal use",
+  "license": "Unlicense",
+  "scripts": {
+    "test": "./arbital-scrape.js"
+  },
+  "bin": {
+    "arbital-scrape": "./arbital-scrape.js"
+  },
+  "private": true
+}

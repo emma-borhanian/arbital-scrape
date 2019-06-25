@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "target": "es6",
+    "checkJs": true,
+    "lib": [
+      "es2017"
+    ]
+  },
+  "exclude": [
+      "node_modules"
+  ]
+}
