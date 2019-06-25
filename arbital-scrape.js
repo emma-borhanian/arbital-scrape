@@ -146,10 +146,11 @@ Page = class extends PageRef {
     lastScrapeMetadata = await fs.readJson(scrapeMetadataFile)
   }
   let aliasToId = lastScrapeMetadata.aliasToId || {}
+  let lastFetchFailures = lastScrapeMetadata.fetchFailures || {}
 
   let toDownload = Array.from(argv.page.map(p=>new PageRef(p)))
-  let fetchFailures = {}
   let pageIndex = {}
+  let fetchFailures = {}
 
   if (argv.recursive) {
     let rawDir = `${argv.directory}/raw`
@@ -175,6 +176,8 @@ Page = class extends PageRef {
     let page
     try { page = await pageRef.requestCachedPage(aliasToId) } catch (e) {
       if (e instanceof StatusCodeError || e instanceof RequestError || e instanceof CacheOnlyError) {
+        let lastError = lastFetchFailures[pageRef.aliasOrId]
+        if (e instanceof CacheOnlyError && lastError && lastError.name != 'CacheOnlyError') e = lastError
         pageRef.log(colors.red('failed'), e.message)
         fetchFailures[pageRef.aliasOrId] = e
         continue
@@ -189,7 +192,12 @@ Page = class extends PageRef {
     if (argv.recursive) toDownload.push(...subPageRefs)
   }
 
-  let scrapeMetadata = {aliasToId: aliasToId}
+  let newFetchFailures = {...lastFetchFailures, ...fetchFailures}
+  for (let aliasOrId of Object.keys(newFetchFailures)) {
+    if (pageIndex[aliasOrId] && pageIndex[aliasOrId].status == PageStatus_page)
+      delete newFetchFailures[aliasOrId]
+  }
+  let scrapeMetadata = {aliasToId:aliasToId, fetchFailures:newFetchFailures}
   console.log('writing', scrapeMetadataFile)
   await fs.writeJson(scrapeMetadataFile, scrapeMetadata)
 
