@@ -284,6 +284,10 @@ Page = class extends PageRef {
     new Zip(mathjaxZipFile).extractAllTo(argv.directory, /*overwrite=*/false)
   }
 
+  if (!argv['cache-only']) {
+    await fetchUrlAsCachedFile(`${argv.directory}/unused/arbital-bundle.js`, `${argv.url}/static/js/bundle.js`)
+  }
+
   if (Object.keys(fetchFailures).length > 0) {
     console.log('')
     console.log('Fetch failures:')
