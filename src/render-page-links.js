@@ -5,7 +5,7 @@ let escapeHtml = require('escape-html')
 // [arbital_front_page]
 // [arbital_front_page Front Page]
 // [http://google.com Google]
-module.exports = (unmatchedText, pageIndex, missingLinks)=>{
+module.exports = (unmatchedText, pageIndex, missingLinks, textOnly=false)=>{
   let result = ''
   while (unmatchedText) {
     let match = unmatchedText.match(/(?<![\\\]])\[[-@+]?(?<linkUrl>[^\]\s\n]+)(?:(?<space>(?:\s|\n)+)(?<linkText>[^\]]+))?\](?!\(|\[)/)
@@ -52,7 +52,8 @@ module.exports = (unmatchedText, pageIndex, missingLinks)=>{
       continue
     }
     result += unmatchedText.substring(0, index)
-    result +=  `<a href="${escapeHtml(linkUrl)}">${escapeHtml(linkText || linkUrl)}</a>`
+    if (textOnly) result += linkText || linkUrl
+    else result += `<a href="${escapeHtml(linkUrl)}">${escapeHtml(linkText || linkUrl)}</a>`
     unmatchedText = unmatchedText.substring(index + fullMatch.length)
   }
   return result + unmatchedText

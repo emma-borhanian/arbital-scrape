@@ -15,9 +15,12 @@ mixin breadcrumb(...links)
 mixin breadcrumbWithoutIndex(...links)
   +_breadcrumb(false, ...links)
 
+mixin _pageLink(page)
+  a.page-link(href=`${root}page/${page.aliasOrId}.html`): block
+
 mixin pageLink(pageOrAliasOrId)
   if typeof(pageOrAliasOrId) != 'string'
-    a.page-link(href=`${root}page/${pageOrAliasOrId.aliasOrId}.html`)= pageOrAliasOrId.name
+    +_pageLink(pageOrAliasOrId)= pageOrAliasOrId.name
   else if pageIndex[pageOrAliasOrId]
     +pageLink(pageIndex[pageOrAliasOrId])
   else
@@ -25,12 +28,31 @@ mixin pageLink(pageOrAliasOrId)
     | 
     | (missing)
 
+mixin pageLinkWithDetails(pageOrAliasOrId)
+  if typeof(pageOrAliasOrId) != 'string'
+    - let page = pageOrAliasOrId
+    - let summary = page.renderSummary(pageIndex)
+    if page.type == 'comment' && summary
+      +_pageLink(page): q=summary
+    else
+      +_pageLink(page)= page.name
+      if summary
+        | 
+        q= summary
+    if page.pageCreatorId && page.pageCreatorId != page.pageId
+      = ' - '
+      +pageLink(page.pageCreatorId)
+  else if pageIndex[pageOrAliasOrId]
+    +pageLinkWithDetails(pageIndex[pageOrAliasOrId])
+  else
+    +pageLink(pageOrAliasOrId)
+
 mixin pageTree(pages)
   - pages = Array.from(pages).map(p=>pageIndex[p]||p)
   - pages = lib.sortBy(pages, p=>typeof(p)=='string'?p:p.name)
   ul.page-tree
     each page in pages
       li
-        +pageLink(page)
+        +pageLinkWithDetails(page || aliasOrId)
         if typeof(page) != 'string' && page.childIds.length > 0
           +pageTree(page.childIds)

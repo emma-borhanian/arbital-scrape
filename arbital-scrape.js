@@ -14,6 +14,7 @@ let config = require('./config.js')
 let lib = require('./src/lib.js')
 let template = require('./src/template.js')
 let renderPageText = require('./src/render-page-text.js')
+let renderPageLinks = require('./src/render-page-links.js')
 
 let argv = require('yargs')
   .command('$0 [directory]', 'scrape arbital.com restartable', yargs=>
@@ -68,6 +69,7 @@ let PageRef = class {
     this.alias = p.alias
     this.aliasOrId = this.alias || this.pageId || p.aliasOrId
     this.keys = Array.from(new Set([this.aliasOrId, this.pageId, this.alias]))
+    this.type = p.type
     this.title = p.title
     this.text = p.text
     this.clickbait = p.clickbait
@@ -78,6 +80,7 @@ let PageRef = class {
     this.arbitalUrl = `https://arbital.com/p/${this.aliasOrId}`
     this.childIds = p.childIds || []
     this.parentIds = p.parentIds || []
+    this.pageCreatorId = p.pageCreatorId
 
     this.missingLinks = []
     this.latexStrings = []
@@ -106,6 +109,24 @@ let PageRef = class {
       return r
     }
     return new Page(id, await this._requestRawPage())
+  }
+
+  renderSummary(pageIndex) {
+    if (typeof(this.summary) != "undefined") return this.summary
+    let summary = this.clickbait || ''
+    if (!summary && this.text) {
+      let match = this.text.match(/\[summary(\([^\)]&\))?:/)
+      let text = match ? this.text.substring(match.index + match[0].length) : this.text
+      summary = renderPageLinks(text, pageIndex, /*missingLinks=*/new Set(), /*textOnly=*/true)
+      if (summary.length > config.textToSummaryMaxLength) {
+        summary = summary.substring(0,config.textToSummaryMaxLength) + '…'
+      }
+    }
+    summary = summary.trim()
+    if (/^Automatically generated (page|group)/.test(summary)) {
+      return ''
+    }
+    return this.summary = summary
   }
 
   log(command, ...args) { console.log(command, this.aliasOrId, util.inspect(this.title || ''), ...args) }
