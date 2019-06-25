@@ -29,3 +29,8 @@ pre { white-space: pre-wrap }
   padding-left: calc(var(--list-indent) + var(--second-line-indent));
   text-indent: calc(-1*var(--second-line-indent));
 }
+
+.page-comma-list {
+  display: inline-block;
+  padding-left: var(--list-indent);
+}

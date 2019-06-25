@@ -13,6 +13,19 @@ block body
     div.page-info
       p.metadata-link: a(href=`../metadata/${aliasOrId}.json.html`)= `${aliasOrId}.json`
       p.arbital-url: a(href=arbitalUrl)= arbitalUrl
+      if pageCreatorId
+        p.creator
+          | by
+          | 
+          +pageLink(pageCreatorId)
+          if pageCreatedAt
+            | 
+            = dateFormat(pageCreatedAt, 'mmm d yyyy')
+          if editCreatedAt && editCreatedAt > pageCreatedAt
+            | 
+            | updated
+            | 
+            = dateFormat(editCreatedAt, 'mmm d yyyy')
     if clickbait
       p.clickbait= clickbait
     nav.breadcrumbs
@@ -21,3 +34,25 @@ block body
         +breadcrumbWithoutIndex(...breadcrumb)
   hr
   main!= textHtml
+  hr
+  footer
+    if tagIds.length > 0
+      p.tagged
+        h2 Tagged
+        +pageCommaList(tagIds)
+    if creatorIds.length > 1
+      p.all-creators
+        h2 All Creators
+        +pageCommaList(creatorIds)
+    if individualLikes.length > 0
+      p.likes
+        h2 Likes
+        +pageCommaList(individualLikes)
+    if relatedIds.length > 0
+      p.related
+        h2 Related
+        +pageList(relatedIds)
+    if childIds.length > 0
+      p.children
+        h2 Children
+        +pageTree(childIds)

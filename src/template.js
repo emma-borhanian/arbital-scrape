@@ -1,4 +1,5 @@
 let pug = require('pug')
+let dateFormat = require('dateformat')
 
 let config = require('../config.js')
 let lib = require('./lib.js')
@@ -8,7 +9,7 @@ let compile =(file, defaultLocals={}) => {
   return locals=>f({...defaultLocals, ...locals})
 }
 
-let locals = {lib:lib, config:config}
+let locals = {lib:lib, config:config, dateFormat:dateFormat}
 let rootLocals = { ...locals, 'root': '' }
 let subdirLocals = { ...locals, 'root': '../' }
 

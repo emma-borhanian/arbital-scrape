@@ -79,6 +79,8 @@ let PageRef = class {
       || this.aliasOrId
     this.named = config.namelikePageIds.includes(this.name) || this.title || this.clickbait || this.text || this.alias
     this.arbitalUrl = `https://arbital.com/p/${this.aliasOrId}`
+    this.pageCreatedAt = p.pageCreatedAt && new Date(p.pageCreatedAt)
+    this.editCreatedAt = p.editCreatedAt && new Date(p.editCreatedAt)
     this.childIds = p.childIds || []
     this.parentIds = p.parentIds || []
     this.pageCreatorId = p.pageCreatorId
@@ -86,6 +88,7 @@ let PageRef = class {
     this.editorIds = this.creatorIds.filter(i=>i!=this.pageCreatorId)
     this.tagIds = p.tagIds || []
     this.individualLikes = p.individualLikes || []
+    this.relatedIds = p.relatedIds || []
 
     this.missingLinks = []
     this.latexStrings = []
