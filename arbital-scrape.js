@@ -21,7 +21,7 @@ let argv = require('yargs')
     yargs.positional('directory', {
            desc: 'destination directory',
            string: true,
-           default: `${__dirname}/..` })
+           default: `${__dirname}/out` })
          .option('url', {
            desc: 'arbital url',
            default: 'https://arbital.com' })
