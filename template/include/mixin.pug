@@ -7,3 +7,13 @@ mixin breadcrumb(...links)
           li: a(href=links[i])= links[i+1]
         else
           li= links[i]
+
+mixin pageLink(pageOrAliasOrId)
+  if typeof(pageOrAliasOrId) != 'string'
+    a.page-link(href=`${root}page/${pageOrAliasOrId.aliasOrId}.html`)= pageOrAliasOrId.name
+  else if pageIndex[pageOrAliasOrId]
+    +pageLink(pageIndex[pageOrAliasOrId])
+  else
+    = pageOrAliasOrId
+    | 
+    | (missing)

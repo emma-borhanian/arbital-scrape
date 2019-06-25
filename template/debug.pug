@@ -1,0 +1,25 @@
+extends layout.pug
+
+append head
+  style(type='text/css').
+    table { border-collapse: collapse }
+    td, th { border: 1px solid black; padding: 5px }
+
+block body
+  header
+    h1.title= title
+    +breadcrumb(title)
+  hr
+  main
+    section
+      h2 Fetch failures
+      table
+        thead
+          tr
+            th page
+            th error
+        tbody
+          each error, aliasOrId in fetchFailures
+            tr
+              td: +pageLink(aliasOrId)
+              td= error.message

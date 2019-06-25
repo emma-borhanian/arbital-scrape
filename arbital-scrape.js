@@ -242,6 +242,7 @@ Page = class extends PageRef {
   }
 
   await writeFile(`${argv.directory}/index.html`, template.index({title: 'Arbital Scrape Index'}))
+  await writeFile(`${argv.directory}/debug.html`, template.debug({title: 'Debug', fetchFailures: fetchFailures, pageIndex: pageIndex}))
 
   for (let file of ['page-style.css', 'index-style.css', 'common.css']) {
     await copyFile(`template/${file}`, `${argv.directory}/${file}`)
