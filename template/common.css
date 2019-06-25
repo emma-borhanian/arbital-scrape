@@ -1,11 +1,15 @@
+* {
+  --second-line-indent: 2em;
+}
+
 pre { white-space: pre-wrap }
 
 .breadcrumb ul {
   list-style: none;
   padding: 0;
   margin: 0;
-  margin-left: 2em;
-  text-indent: -2em;
+  margin-left: var(--second-line-indent);
+  text-indent: calc(-1*var(--second-line-indent));
 }
 .breadcrumb li:not(:first-of-type)::before {
   content: " → ";

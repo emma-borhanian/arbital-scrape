@@ -15,6 +15,9 @@ block body
       p.arbital-url: a(href=arbitalUrl)= arbitalUrl
     if clickbait
       p.clickbait= clickbait
-    +breadcrumb(title)
+    nav.breadcrumbs
+      +breadcrumb(title)
+      for breadcrumb in breadcrumbs
+        +breadcrumbWithoutIndex(...breadcrumb)
   hr
   main!= textHtml

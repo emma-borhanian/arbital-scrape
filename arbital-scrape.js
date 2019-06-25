@@ -8,6 +8,7 @@ let util = require('util')
 let path = require('path')
 let Zip = require('adm-zip')
 let escapeHtml = require('escape-html')
+let flatMap = require('array.prototype.flatmap')
 
 let config = require('./config.js')
 let lib = require('./src/lib.js')
@@ -140,9 +141,25 @@ Page = class extends PageRef {
     return file
   }
 
+  _makeBreadcrumbs(pageIndex) {
+    let breadcrumbs = []
+    let addBreadcrumbs = (stack,breadcrumbPage)=>{
+      if (!breadcrumbPage) return
+      stack = Array.from(stack)
+      if (breadcrumbPage.parentIds.length > 0) {
+        breadcrumbPage.parentIds.forEach(p=>addBreadcrumbs(stack.concat([pageIndex[p]]),pageIndex[p]))
+      } else if (stack.length > 0) {
+        stack.reverse()
+        breadcrumbs.push(flatMap(stack, p=>[`${p.aliasOrId}.html`, p.name]).concat('…'))
+      }
+    }
+    addBreadcrumbs([], this)
+    return breadcrumbs.sort()
+  }
+
   _renderPage(pageIndex) {
     let missingLinks = new Set()
-    let r = template.page({...this, textHtml: renderPageText(this, pageIndex, missingLinks, this.latexStrings = [])})
+    let r = template.page({...this, textHtml: renderPageText(this, pageIndex, missingLinks, this.latexStrings = []), breadcrumbs:this._makeBreadcrumbs(pageIndex), pageIndex:pageIndex})
     this.missingLinks = Array.from(missingLinks).sort()
     return r
   }

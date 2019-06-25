@@ -1,12 +1,19 @@
-mixin breadcrumb(...links)
+mixin _breadcrumb(includeIndex, ...links)
   nav.breadcrumb(aria-label='Breadcrumb')
     ul
-      li: a(href=`${root}index.html`) Index
+      if includeIndex
+        li: a(href=`${root}index.html`) Index
       - for (let i=0; i < links.length; i+=2)
         if i+1 < links.length
           li: a(href=links[i])= links[i+1]
         else
           li= links[i]
+
+mixin breadcrumb(...links)
+  +_breadcrumb(true, ...links)
+
+mixin breadcrumbWithoutIndex(...links)
+  +_breadcrumb(false, ...links)
 
 mixin pageLink(pageOrAliasOrId)
   if typeof(pageOrAliasOrId) != 'string'
