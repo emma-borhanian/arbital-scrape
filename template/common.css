@@ -1,0 +1,12 @@
+.breadcrumb ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  margin-left: 2em;
+  text-indent: -2em;
+}
+.breadcrumb li:not(:first-of-type)::before {
+  content: " → ";
+  margin: 0 0.2em;
+}
+.breadcrumb li { display: inline }

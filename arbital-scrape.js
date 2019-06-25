@@ -231,12 +231,21 @@ Page = class extends PageRef {
     }
   }
 
+  let writeFile = async (file,content)=>{
+    console.log('writing', file)
+    await fs.mkdirp(path.dirname(file))
+    await fs.writeFile(file, content)
+  }
   let copyFile = async (source,destination,content)=>{
     console.log('copying', source, 'to', destination)
     await fs.copyFile(source, destination)
   }
 
-  await copyFile('template/page-style.css', `${argv.directory}/page-style.css`)
+  await writeFile(`${argv.directory}/index.html`, template.index({title: 'Arbital Scrape Index'}))
+
+  for (let file of ['page-style.css', 'index-style.css', 'common.css']) {
+    await copyFile(`template/${file}`, `${argv.directory}/${file}`)
+  }
 
   if (Object.keys(fetchFailures).length > 0) {
     console.log('')

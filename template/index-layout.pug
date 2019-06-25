@@ -1,0 +1,17 @@
+extends layout.pug
+
+append head
+  link(rel='stylesheet', type='text/css', href='index-style.css')
+
+mixin headerLink(url, name)
+  h1
+    if title == name
+      = name
+    else
+      a(href=url)= name
+
+append body
+  header
+    nav
+      +headerLink('index.html', 'Arbital Scrape Index')
+      +headerLink('page/arbital_front_page.html', 'Arbital Front Page')

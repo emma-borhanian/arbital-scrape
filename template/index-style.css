@@ -1,0 +1,7 @@
+body > main,
+body > header,
+body > hr {
+  width: 1000px;
+  margin: 0 auto;
+  word-break: break-word;
+}
