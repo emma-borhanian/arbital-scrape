@@ -18,7 +18,11 @@ let argv = require('yargs')
            desc: 'pages to download or start at',
            array: true,
            string: true,
-           default: ['arbital_front_page'] }))
+           default: ['arbital_front_page'] })
+         .option('recursive', {
+           desc: 'download recursively',
+           boolean: true,
+           default: false }))
   .help()
   .argv
 
@@ -68,6 +72,7 @@ let PageRef = class {
 }
 
 let findPageInRawPageJson = (aliasOrId, rawPageJson)=> rawPageJson.pages[aliasOrId] || Object.values(rawPageJson.pages).find(p=>p.alias==aliasOrId)
+let isArbitalPageIdField = k=>k !='analyticsId' && (['individualLikes'].includes(k) || k.endsWith('Ids') || k.endsWith('Id'))
 
 Page = class extends PageRef {
   constructor(aliasOrId, rawPageJson) {
@@ -87,6 +92,24 @@ Page = class extends PageRef {
   }
 
   async save() { if (!this.cached) await this._writeJson('raw', `${this.pageId}.json`, this.rawPageJson) }
+
+  findPageRefs() {
+    let walkJson = (json, func, key='')=>{
+      if (json instanceof Array) {
+        json.forEach(v=>walkJson(v, func, key))
+      } else if (json instanceof Object) {
+        Object.keys(json).forEach(k=>walkJson(json[k], func, k))
+      } else {
+        func(key, json)
+      }
+    }
+
+    return this._pageRefs = this._pageRefs || (()=>{
+      let pageRefs = Object.values(this.rawPageJson.pages).map(p=>new PageRef(p))
+      walkJson(this.rawPageJson, (k,v)=> { if (isArbitalPageIdField(k) && v) pageRefs.push(new PageRef(v)) })
+      return pageRefs
+    })()
+  }
 }
 
 ;(async ()=>{
@@ -100,13 +123,18 @@ Page = class extends PageRef {
   }
   let aliasToId = lastScrapeMetadata.aliasToId || {}
 
-  let toDownload = Array.from(argv.page)
+  let toDownload = Array.from(argv.page.map(p=>new PageRef(p)))
+  let pageIndex = {}
   while (toDownload.length > 0) {
-    let pageRef = new PageRef(toDownload.pop())
+    let pageRef = toDownload.pop()
+    if (pageIndex[pageRef.aliasOrId]) continue
 
     let page = await pageRef.requestCachedPage(aliasToId)
     await page.save()
     if (page.alias) aliasToId[page.alias] = page.pageId
+    pageIndex[page.pageId] = page
+    if (page.alias) pageIndex[page.alias] = page
+    if (argv.recursive) toDownload.push(...page.findPageRefs())
   }
 
   let scrapeMetadata = {aliasToId: aliasToId}
