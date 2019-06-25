@@ -1,0 +1,15 @@
+extends index-layout.pug
+
+append body
+  hr
+  main
+    section
+      h1.title= title
+      ul
+        each _,aliasOrId in pagesByCategory
+          li: a(href='#' + aliasOrId)= pageIndex[aliasOrId].name
+    hr
+    each pages,categoryAliasOrId in pagesByCategory
+      section
+        h2(id=categoryAliasOrId): +pageLink(categoryAliasOrId)
+        +pageTree(pages)

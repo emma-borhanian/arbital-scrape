@@ -17,3 +17,13 @@ mixin pageLink(pageOrAliasOrId)
     = pageOrAliasOrId
     | 
     | (missing)
+
+mixin pageTree(pages)
+  - pages = Array.from(pages).map(p=>pageIndex[p]||p)
+  - pages = lib.sortBy(pages, p=>typeof(p)=='string'?p:p.name)
+  ul.page-tree
+    each page in pages
+      li
+        +pageLink(page)
+        if typeof(page) != 'string' && page.childIds.length > 0
+          +pageTree(page.childIds)

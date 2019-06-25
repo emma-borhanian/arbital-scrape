@@ -16,6 +16,7 @@ module.exports = (page, pageIndex, missingLinks=new Set(), latexStrings=[])=>{
   }
 
   textMarkdown = textMarkdown
+    .replace(/https?:\/\/arbital.com\/explore\/([^/\s.!?;:)\]]*)\/?/g, (_,m)=>`../explore.html#${getCanonicalPageKey(m)}`)
     .replace(/https?:\/\/arbital.com\/p\/([^/\s.!?;:)\]]*)\/?/g, (_,m)=>`${getCanonicalPageKey(m)}.html`)
 
   // These are bugs on arbital.com already

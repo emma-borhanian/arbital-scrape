@@ -6,3 +6,4 @@ body > hr {
   margin: 0 auto;
   word-break: break-word;
 }
+ul { list-style: none }

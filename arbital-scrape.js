@@ -75,6 +75,8 @@ let PageRef = class {
       || (this.text && this.text.substring(config.textToNameMaxLength))
       || this.aliasOrId
     this.arbitalUrl = `https://arbital.com/p/${this.aliasOrId}`
+    this.childIds = p.childIds || []
+    this.parentIds = p.parentIds || []
 
     this.missingLinks = []
     this.latexStrings = []
@@ -284,6 +286,11 @@ Page = class extends PageRef {
   for (let file of ['page-style.css', 'index-style.css', 'common.css']) {
     await copyFile(`template/${file}`, `${argv.directory}/${file}`)
   }
+
+  let exploreRoots = allPages.filter(p=>p.status == PageStatus_page && p.childIds.length > 0 && p.parentIds.length == 0)
+  let explorePagesByCategory = {}
+  exploreRoots.forEach(p=>(explorePagesByCategory[p.aliasOrId] = explorePagesByCategory[p.aliasOrId] || []).push(...p.childIds))
+  await writeFile(`${argv.directory}/explore.html`, template.explore({title: 'Explore', pagesByCategory:explorePagesByCategory, pageIndex:pageIndex}))
 
   let fetchUrl = async (url,options)=> {
     console.log('fetching', url)
