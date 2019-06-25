@@ -69,7 +69,7 @@ let PageRef = class {
     this.alias = p.alias
     this.aliasOrId = this.alias || this.pageId || p.aliasOrId
     this.keys = Array.from(new Set([this.aliasOrId, this.pageId, this.alias]))
-    this.type = p.type
+    this.type = p.type || config.defaultTypeString
     this.title = p.title
     this.text = p.text
     this.clickbait = p.clickbait
@@ -81,6 +81,10 @@ let PageRef = class {
     this.childIds = p.childIds || []
     this.parentIds = p.parentIds || []
     this.pageCreatorId = p.pageCreatorId
+    this.creatorIds = p.creatorIds || []
+    this.editorIds = this.creatorIds.filter(i=>i!=this.pageCreatorId)
+    this.tagIds = p.tagIds || []
+    this.individualLikes = p.individualLikes || []
 
     this.missingLinks = []
     this.latexStrings = []
@@ -329,6 +333,22 @@ Page = class extends PageRef {
   let explorePagesByCategory = {}
   exploreRoots.forEach(p=>(explorePagesByCategory[p.aliasOrId] = explorePagesByCategory[p.aliasOrId] || []).push(...p.childIds))
   await writeFile(`${argv.directory}/explore.html`, template.explore({title: 'Explore', pagesByCategory:explorePagesByCategory, pageIndex:pageIndex}))
+
+  let makePagesByCategory = f=>{
+    let pagesByCategory = {}
+    allPages.forEach(p=>f(p).filter(i=>i).forEach(indexKey=>{
+      indexKey = pageIndex[indexKey] ? pageIndex[indexKey].aliasOrId : indexKey
+      ;(pagesByCategory[indexKey] = pagesByCategory[indexKey] || []).push(p)
+    }))
+    return lib.sortBy(Object.entries(pagesByCategory), e=>pageIndex[e[0]] ? pageIndex[e[0]].name : e[0])
+  }
+
+  let indexLocals = {pageIndex:pageIndex, allPages:allPages}
+
+  await writeFile(`${argv.directory}/by-creator.html`, template.indexByCategory({title: 'By Creator', skipCreator: true, pagesByCategory:makePagesByCategory(p=>p.pageCreatorId==p.pageId?[]:[p.pageCreatorId]), ...indexLocals}))
+  await writeFile(`${argv.directory}/by-editor.html`, template.indexByCategory({title: 'By Editor', pagesByCategory:makePagesByCategory(p=>p.editorIds), ...indexLocals}))
+  await writeFile(`${argv.directory}/by-tag.html`, template.indexByCategory({title: 'By Tag', pagesByCategory:makePagesByCategory(p=>p.tagIds), ...indexLocals}))
+  await writeFile(`${argv.directory}/by-likes.html`, template.indexByCategory({title: 'By Likes', pagesByCategory:makePagesByCategory(p=>p.individualLikes), ...indexLocals}))
 
   let fetchUrl = async (url,options)=> {
     console.log('fetching', url)

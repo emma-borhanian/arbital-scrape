@@ -1,0 +1,19 @@
+extends index-layout.pug
+
+append body
+  hr
+  main
+    h1= title
+    ul
+      - for (let [aliasOrId, pages] of pagesByCategory)
+        li
+          a(href='#' + aliasOrId)= pageIndex[aliasOrId].name
+          - let pagesByType = lib.makePagesByType(pages, pageIndex)
+          if pagesByType.length > 1
+            ul
+              - for (let [type] of pagesByType)
+                li: a(href='#' + `${aliasOrId}-${type}`)= type
+    hr
+    - for (let [categoryAliasOrId, pages] of pagesByCategory)
+      h2(id=categoryAliasOrId): +pageLink(categoryAliasOrId)
+      +pageListByType(pages, /*hLevel=*/3, /*idPrefix=*/`${categoryAliasOrId}-`, skipCreator)

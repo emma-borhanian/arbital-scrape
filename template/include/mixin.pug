@@ -28,7 +28,7 @@ mixin pageLink(pageOrAliasOrId)
     | 
     | (missing)
 
-mixin pageLinkWithDetails(pageOrAliasOrId)
+mixin pageLinkWithDetails(pageOrAliasOrId, skipCreator=false)
   if typeof(pageOrAliasOrId) != 'string'
     - let page = pageOrAliasOrId
     - let summary = page.renderSummary(pageIndex)
@@ -39,7 +39,7 @@ mixin pageLinkWithDetails(pageOrAliasOrId)
       if summary
         | 
         q= summary
-    if page.pageCreatorId && page.pageCreatorId != page.pageId
+    if !skipCreator && page.pageCreatorId && page.pageCreatorId != page.pageId
       = ' - '
       +pageLink(page.pageCreatorId)
   else if pageIndex[pageOrAliasOrId]
@@ -56,3 +56,30 @@ mixin pageTree(pages)
         +pageLinkWithDetails(page || aliasOrId)
         if typeof(page) != 'string' && page.childIds.length > 0
           +pageTree(page.childIds)
+
+mixin pageList(pages, skipCreator=false)
+  - pages = Array.from(pages).map(p=>pageIndex[p]||p)
+  - pages = lib.sortBy(pages, p=>typeof(p)=='string'?p:p.name)
+  ul.page-list
+    each page in pages
+      li: +pageLinkWithDetails(page, skipCreator)
+
+mixin pageListByType(pages, hLevel, idPrefix, skipCreator=false)
+  - let pagesByType = lib.makePagesByType(pages, pageIndex)
+  if pagesByType.length <= 1
+    +pageList(pages, skipCreator)
+  else
+    - for (let [type, pages] of pagesByType)
+      #{`h${hLevel}`}(id=idPrefix+type)= type
+      +pageList(pages, skipCreator)
+
+mixin pageCommaList(pages)
+  - pages = Array.from(pages).map(p=>pageIndex[p]||p)
+  - pages = lib.sortBy(pages, p=>typeof(p)=='string'?p:p.name)
+  if pages.length > 0
+    span.page-comma-list
+      +pageLink(pages[0])
+      - for (let i=1; i<pages.length; i++)
+        | ,
+        | 
+        +pageLink(pages[i])

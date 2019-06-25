@@ -1,5 +1,6 @@
 * {
   --second-line-indent: 2em;
+  --list-indent: 40px;
 }
 
 pre { white-space: pre-wrap }
@@ -17,5 +18,14 @@ pre { white-space: pre-wrap }
 }
 .breadcrumb li { display: inline }
 
-.page-tree { list-style: none }
+.page-tree {
+  list-style: none;
+  padding-left: var(--list-indent);
+}
 .page-tree .page-tree { border-left: solid grey 1px }
+
+.page-list {
+  list-style: none;
+  padding-left: calc(var(--list-indent) + var(--second-line-indent));
+  text-indent: calc(-1*var(--second-line-indent));
+}
