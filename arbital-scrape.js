@@ -1,9 +1,13 @@
 #!/usr/bin/env node
 let fs = require('fs-extra')
 let request = require('request-promise-native')
+let {StatusCodeError,RequestError} = require('request-promise-native/errors')
 let sanitizeFilename = require('sanitize-filename')
+let colors = require('colors')
 let util = require('util')
 let path = require('path')
+
+let lib = require('./src/lib.js')
 
 let argv = require('yargs')
   .command('$0 [directory]', 'scrape arbital.com restartable', yargs=>
@@ -30,22 +34,28 @@ let argv = require('yargs')
   .help()
   .argv
 
+const PageStatus_aliasOrId = 1
+const PageStatus_pageRef   = 2
+const PageStatus_page      = 3
+
 let Page
 let PageRef = class {
-  constructor(aliasOrIdOrPartialPageJson) {
+  constructor(aliasOrIdOrPartialPageJson, status=PageStatus_pageRef) {
     this.cached = false
     if (typeof(aliasOrIdOrPartialPageJson) == "string") {
-      this._copyProperties({ aliasOrId: aliasOrIdOrPartialPageJson })
+      this._copyProperties(PageStatus_aliasOrId, { aliasOrId: aliasOrIdOrPartialPageJson })
     } else {
-      this._copyProperties(aliasOrIdOrPartialPageJson)
+      this._copyProperties(status, aliasOrIdOrPartialPageJson)
     }
   }
 
-  _copyProperties(p) {
+  _copyProperties(status, p) {
+    this.status = status
     this.partialPageJson = p
     this.pageId = p.pageId
     this.alias = p.alias
     this.aliasOrId = this.alias || this.pageId || p.aliasOrId
+    this.keys = Array.from(new Set([this.aliasOrId, this.pageId, this.alias]))
     this.title = p.title
   }
 
@@ -74,6 +84,8 @@ let PageRef = class {
   }
 
   log(command, ...args) { console.log(command, this.aliasOrId, util.inspect(this.title || ''), ...args) }
+
+  pickBest(...others) { return lib.maxBy([this].concat(others).filter(p=>p), p=>p.status) }
 }
 
 let findPageInRawPageJson = (aliasOrId, rawPageJson)=> rawPageJson.pages[aliasOrId] || Object.values(rawPageJson.pages).find(p=>p.alias==aliasOrId)
@@ -81,7 +93,7 @@ let isArbitalPageIdField = k=>k !='analyticsId' && (['individualLikes'].includes
 
 Page = class extends PageRef {
   constructor(aliasOrId, rawPageJson) {
-    super(findPageInRawPageJson(aliasOrId, rawPageJson))
+    super(findPageInRawPageJson(aliasOrId, rawPageJson), PageStatus_page)
     this.rawPageJson = rawPageJson
     this.pageJson = this.partialPageJson
   }
@@ -129,6 +141,7 @@ Page = class extends PageRef {
   let aliasToId = lastScrapeMetadata.aliasToId || {}
 
   let toDownload = Array.from(argv.page.map(p=>new PageRef(p)))
+  let fetchFailures = {}
   let pageIndex = {}
 
   if (argv.recursive) {
@@ -137,19 +150,48 @@ Page = class extends PageRef {
     cachedPageFiles.forEach(f=>{ if (f.endsWith('.json')) toDownload.push(new PageRef(f.replace(/\.json$/, ''))) })
   }
 
+  let addToIndex =p=>{
+    p = pageIndex[p.aliasOrId] = pageIndex[p.aliasOrId] ? pageIndex[p.aliasOrId].pickBest(p) : p
+    if (p.alias && p.pageId) aliasToId[p.alias] = p.pageId
+    if (p.pageId) pageIndex[p.pageId] = p
+    if (p.alias) pageIndex[p.alias] = p
+  }
+  toDownload.forEach(addToIndex)
+
   while (toDownload.length > 0) {
     let pageRef = toDownload.pop()
-    if (pageIndex[pageRef.aliasOrId]) continue
+    pageRef = pageRef.pickBest(...pageRef.keys.map(k=>pageIndex[k]))
 
-    let page = await pageRef.requestCachedPage(aliasToId)
+    if (pageRef.status == PageStatus_page) continue
+    if (pageRef.keys.some(k=>fetchFailures[k])) continue
+
+    let page
+    try { page = await pageRef.requestCachedPage(aliasToId) } catch (e) {
+      if (e instanceof StatusCodeError || e instanceof RequestError) {
+        pageRef.log(colors.red('failed'), e.message)
+        fetchFailures[pageRef.aliasOrId] = e
+        continue
+      } else throw e
+    }
+
     await page.save()
-    if (page.alias) aliasToId[page.alias] = page.pageId
-    pageIndex[page.pageId] = page
-    if (page.alias) pageIndex[page.alias] = page
-    if (argv.recursive) toDownload.push(...page.findPageRefs())
+
+    addToIndex(page)
+    let subPageRefs = page.findPageRefs()
+    subPageRefs.forEach(addToIndex)
+    if (argv.recursive) toDownload.push(...subPageRefs)
   }
 
   let scrapeMetadata = {aliasToId: aliasToId}
   console.log('writing', scrapeMetadataFile)
   await fs.writeJson(scrapeMetadataFile, scrapeMetadata)
+
+  if (Object.keys(fetchFailures).length > 0) {
+    console.log('')
+    console.log('Fetch failures:')
+    for (let aliasOrId of Object.keys(fetchFailures)) {
+      let error = fetchFailures[aliasOrId]
+      pageIndex[aliasOrId].log(colors.red('failed'), error.message)
+    }
+  }
 })()
