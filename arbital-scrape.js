@@ -125,6 +125,13 @@ Page = class extends PageRef {
 
   let toDownload = Array.from(argv.page.map(p=>new PageRef(p)))
   let pageIndex = {}
+
+  if (argv.recursive) {
+    let rawDir = `${argv.directory}/raw`
+    let cachedPageFiles = await util.promisify(fs.readdir)(rawDir)
+    cachedPageFiles.forEach(f=>{ if (f.endsWith('.json')) toDownload.push(new PageRef(f.replace(/\.json$/, ''))) })
+  }
+
   while (toDownload.length > 0) {
     let pageRef = toDownload.pop()
     if (pageIndex[pageRef.aliasOrId]) continue
