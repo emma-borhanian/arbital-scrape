@@ -96,6 +96,20 @@ let PageRef = class {
 
     this.missingLinks = []
     this.latexStrings = []
+
+    this.reverse = {
+      pageCreatorId: new Set(),
+      editorIds: new Set(),
+      relatedIds: new Set(),
+    }
+  }
+
+  propagateReverse(pageIndex) {
+    for (let k of Object.keys(this.reverse)) {
+      let v = this[k] instanceof Array ? this[k] : [this[k]]
+      let page = this
+      v.map(p=>pageIndex[p]).filter(p=>p).forEach(o=>o.reverse[k].add(page))
+    }
   }
 
   async _requestRawPage() {
@@ -313,6 +327,8 @@ Page = class extends PageRef {
   await fs.writeJson(scrapeMetadataFile, scrapeMetadata)
 
   let allPages = lib.sortBy(Array.from(new Set(Object.values(pageIndex))), p=>p.name)
+
+  allPages.forEach(p=>p.propagateReverse(pageIndex))
 
   let savedHtml = new Set()
   for (let page of allPages) {

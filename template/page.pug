@@ -61,7 +61,21 @@ block body
       p.related
         h2 Related
         +pageList(relatedIds)
+    if reverse.relatedIds.size > 0
+      p.reverse-related
+        h2 Reverse Related
+        +pageList(reverse.relatedIds)
     if childIds.length > 0
       p.children
         h2 Children
         +pageTree(childIds)
+    if reverse.pageCreatorId.size > 0 || reverse.editorIds.size > 0
+      hr
+    if reverse.pageCreatorId.size > 0
+      p.created
+        h2 Created
+        +pageListByType(reverse.pageCreatorId, /*hLevel=*/3, /*idPrefix=*/'created', /*skipCreator=*/true)
+    if reverse.editorIds.size > 0
+      p.edited
+        h2 Edited
+        +pageListByType(reverse.editorIds, /*hLevel=*/3, /*idPrefix=*/'edited')
