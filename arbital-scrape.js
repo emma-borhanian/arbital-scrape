@@ -6,6 +6,7 @@ let sanitizeFilename = require('sanitize-filename')
 let colors = require('colors')
 let util = require('util')
 let path = require('path')
+let Zip = require('adm-zip')
 
 let config = require('./config.js')
 let lib = require('./src/lib.js')
@@ -75,6 +76,7 @@ let PageRef = class {
     this.arbitalUrl = `https://arbital.com/p/${this.aliasOrId}`
 
     this.missingLinks = []
+    this.latexStrings = []
   }
 
   async _requestRawPage() {
@@ -137,7 +139,7 @@ Page = class extends PageRef {
 
   _renderPage(pageIndex) {
     let missingLinks = new Set()
-    let r = template.page({...this, textHtml: renderPageText(this, pageIndex, missingLinks)})
+    let r = template.page({...this, textHtml: renderPageText(this, pageIndex, missingLinks, this.latexStrings = [])})
     this.missingLinks = Array.from(missingLinks).sort()
     return r
   }
@@ -253,9 +255,33 @@ Page = class extends PageRef {
 
   await writeFile(`${argv.directory}/index.html`, template.index({title: 'Arbital Scrape Index'}))
   await writeFile(`${argv.directory}/debug.html`, template.debug({title: 'Debug', fetchFailures: fetchFailures, allPages:allPages, pageIndex:pageIndex}))
+  await writeFile(`${argv.directory}/debug-all-mathjax.html`, template.debugAllMathjax({title: 'Debug - All Mathjax', allPages:allPages, pageIndex:pageIndex}))
 
   for (let file of ['page-style.css', 'index-style.css', 'common.css']) {
     await copyFile(`template/${file}`, `${argv.directory}/${file}`)
+  }
+
+  let fetchUrl = async (url,options)=> {
+    console.log('fetching', url)
+    try { return await request({method: 'GET', url: url, ...options})
+    } catch (e) { console.log(colors.red('failed'), url, e.message) }
+  }
+  let fetchUrlAsCachedFile = async (file, url, options={})=> {
+    if (!options.encoding) options.encoding = null
+    if (!await fs.pathExists(file)) {
+      let content = await fetchUrl(url, options)
+      if (!content) throw `No content at ${url}`
+      await writeFile(file, content)
+    }
+    return file
+  }
+
+  if (!await fs.pathExists(`${argv.directory}/MathJax-${sanitizeFilename(config.mathjaxVersion)}`)) {
+    let mathjaxZipFile = await fetchUrlAsCachedFile(
+      `tmp/mathjax-${sanitizeFilename(config.mathjaxVersion)}.zip`,
+      `https://github.com/mathjax/MathJax/archive/${config.mathjaxVersion}.zip`)
+    console.log('extracting', mathjaxZipFile, 'to', argv.directory)
+    new Zip(mathjaxZipFile).extractAllTo(argv.directory, /*overwrite=*/false)
   }
 
   if (Object.keys(fetchFailures).length > 0) {
