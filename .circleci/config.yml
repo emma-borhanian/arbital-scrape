@@ -1,0 +1,60 @@
+version: 2
+    
+jobs:
+  build:
+    docker:
+      - image: node:12.5.0
+    steps:
+      - checkout
+      - run:
+          name: Install dependencies
+          command: npm install
+      - run:
+          name: Build
+          command: node arbital-scrape.js --cache-only --remote-mathjax
+      - persist_to_workspace:
+          root: out
+          paths: ./*
+  deploy-gh-pages:
+    docker:
+      - image: node:12.5.0
+    steps:
+      - checkout
+      - attach_workspace:
+          at: out
+      - run:
+          name: Install and configure dependencies
+          command: |
+            npm install -g --silent gh-pages@2.0.1
+            git config user.email "ci-build@emmaborhanian.com"
+            git config user.name "ci-build"
+      - add_ssh_keys:
+          fingerprints:
+            - "c6:6d:e2:a7:aa:24:97:c7:39:12:81:a7:de:e9:3a:ab"
+      - run:
+          name: Deploy build to gh-pages branch
+          command: gh-pages --dotfiles --message "[skip ci] Updates" --dist out
+  store-artifacts:
+    docker:
+      - image: node:12.5.0
+    steps:
+      - checkout
+      - attach_workspace:
+          at: out
+      - store_artifacts:
+          path: out
+    
+workflows:
+  version: 2
+  build:
+    jobs:
+      - build
+      - deploy-gh-pages:
+          requires:
+            - build
+          filters:
+            branches:
+              only: master
+      - store-artifacts:
+          requires:
+            - build
