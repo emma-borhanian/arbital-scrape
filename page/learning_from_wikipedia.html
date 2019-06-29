@@ -1,0 +1,45 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Arbital: learning from Wikipedia</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_SVG" async></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">Arbital: learning from Wikipedia</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/learning_from_wikipedia.json.html">learning_from_wikipedia.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/learning_from_wikipedia">https://arbital.com/p/learning_from_wikipedia</a></p><p class="creator">by
+ <a class="page-link" href="../page/AlexeiAndreev.html">Alexei Andreev</a> Jan 30 2016 
+updated
+ Jul 18 2016</p></div><p class="clickbait">How is Arbital different from Wikipedia?</p><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>Arbital: learning from Wikipedia</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="Arbital.html">Arbital</a></li><li><a href="more_about_arbital.html">More about Arbital</a></li><li>…</li></ul></nav></nav></header><hr><main><p>Wikipedia has done many things right, and we can learn from its history to create a better platform. Let's take a look at a some of the problems Wikipedia has today and how Arbital is going to resolve them.</p>
+<h3 id="learning">Learning</h3>
+<p>Wikipedia built its technology and set up its policies to recreate the experience of an encyclopedia, but online. An encyclopedia is great for getting basic information about a subject, but it's not well-suited to explaining complex concepts. Wikipedians have attempted to solve this problem by creating additional pages, e.g. <a href="https://en.wikipedia.org/wiki/Introduction_to_general_relativity">Introduction to general relativity</a>, but this approach does not scale well. Arbital's solution to this is a <a href="arbital_requisite.html">network of requisites</a>, which allow the platform to dynamically create <a href="Arbital_path.html">sequences of pages</a> tailored to each user, where each page itself also adjusts to user's preferences and knowledge.</p>
+<h3 id="granularity">Granularity</h3>
+<p>Wikipedia doesn't allow (and will actively delete) content that they think is not <a href="https://en.wikipedia.org/wiki/Wikipedia:Notability">notable</a>, which excludes many pages which would be useful to people looking for detailed information on a topic. This often leads to the creation of other wiki communities, which specialize in their particular area (e.g. <a href="http://wowwiki.wikia.com/wiki/Portal:Main">World of Warcraft wiki</a>, <a href="http://camerapedia.wikia.com/wiki/Camerapedia">Camerapedia</a>). On Arbital, we want to embrace specialized content and foster communities with focused interests. The most interesting things in research, entertainment, and most other areas are often at the edges, where a small minority (or ~5M people, in the case of WoW) care about that information deeply.</p>
+<p>In the case of science, this problem is even worse. Wikipedia also doesn't allow <a href="https://en.wikipedia.org/wiki/Wikipedia:No_original_research">original research</a>, but if you are a scientist, original research is the most interesting part. And all settled science was at some point uncertain. By not allowing that kind of content on its platform, Wikipedia is falling increasingly behind the rapidly accelerating scientific frontier.</p>
+<h3 id="truthvsneutrality">Truth vs neutrality</h3>
+<p>Wikipedia's official policy is <a href="https://en.wikipedia.org/wiki/Wikipedia:Verifiability,_not_truth">"Verifiability, not truth"</a>. On Arbital, we think <a href="epistemology.html">truth</a> is pretty great, and we should have more of it. We even have a <a href="bayes_reasoning.html">guiding principle</a> for how to find it. Verifying based on reliable sources works pretty well for figuring out the population of a country but does hot help with controversial, unsettled topics.</p>
+<h3 id="expertise">Expertise</h3>
+<p>Wikipedia has the notion of a <a href="https://en.wikipedia.org/wiki/Wikipedia:Verifiability#Reliable_sources">reliable source</a>, but no method for tracking expertise within the system. This often results in edit wars, which are resolved by a generally well intentioned and even-handed administrator, who nonetheless has limited domain expertise. Arbital is planning to solve this problem with an innovative karma and dominion system, which will allow proven domain experts to help settle disputes. In the meantime, for domains like math where expertise is relatively uncontroversial, we have <a href="arbital_reviewer.html">reviewers</a> checking over new pages and edits.</p>
+<h3 id="gettinganswers">Getting answers</h3>
+<p>When was the last time you tried to research something on Wikipedia that wasn't a settled fact? Perhaps you were wondering if you should supplement your diet with Vitamin D. Did you get a satisfying answer? Probably not. Wikipedia is good at providing the reader with a ton of information, but it's not good at answering questions, and it's even worse at quickly giving an accurate overview of a disputed topic. Compare this to your experience on <a href="http://stackoverflow.com/">StackOverflow</a>, where it's much easier to tell what the best answer is. Arbital has many features that make finding the right answer quick and easy: <a href="3r.html">vote bars</a>, <a href="arbital_like.html">likes</a>, <a href="Arbital_comment.html">comments</a>, and instant search. Arbital also helps you know how much confidence you should have about the information, and allows you to dive deeper into discussions if you want to understand the current state of the topic better.</p>
+<pre>%%comment:, and a beta version of [185 questions] and [187 answers]%%</pre>
+<h3 id="etc">Etc…</h3>
+<p>You can take a look at all the other things <a href="https://en.wikipedia.org/wiki/Wikipedia:What_Wikipedia_is_not">Wikipedia is not</a>. Many of these decisions make sense, but others restrict Wikipedia from becoming all it could be.</p></main><hr><footer><p class="tagged"><h2>Tagged</h2><span class="page-comma-list"><a class="page-link" href="../page/b_class_meta_tag.html">B-Class</a></span></p><p class="all-creators"><h2>All Creators</h2><span class="page-comma-list"><a class="page-link" href="../page/AlexeiAndreev.html">Alexei Andreev</a>,
+ <a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a>,
+ <a class="page-link" href="../page/EricRogstad.html">Eric Rogstad</a>,
+ <a class="page-link" href="../page/TsviBT.html">Tsvi BT</a></span></p><p class="likes"><h2>Likes</h2><span class="page-comma-list"><a class="page-link" href="../page/AlexeiAndreev.html">Alexei Andreev</a>,
+ <a class="page-link" href="../page/AlexeyLuhinin.html">Alexey Luhinin</a>,
+ <a class="page-link" href="../page/AndrewMcKnight.html">Andrew McKnight</a>,
+ <a class="page-link" href="../page/EddieSmolansky.html">Eddie Smolansky</a>,
+ <a class="page-link" href="../page/EmmanuelSmith.html">Emmanuel Smith</a>,
+ <a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a>,
+ <a class="page-link" href="../page/FritzDorn.html">Fritz Dorn</a>,
+ <a class="page-link" href="../page/NaderChehab.html">Nader Chehab</a>,
+ <a class="page-link" href="../page/SeanLynch.html">Sean Lynch</a>,
+ <a class="page-link" href="../page/TravisRivera.html">Travis Rivera</a></span></p><p class="reverse-related"><h2>Reverse Related</h2><ul class="page-list"><li><a class="page-link" href="../page/b_class_meta_tag.html">B-Class</a> <q>This page is mostly complete and without major problems, but has not had detailed feedback from the target audience and reviewers.</q> - <a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a></li></ul></p></footer></body></html>

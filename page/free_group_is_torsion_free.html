@@ -1,0 +1,45 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Free groups are torsion-free</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_SVG" async></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">Free groups are torsion-free</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/free_group_is_torsion_free.json.html">free_group_is_torsion_free.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/free_group_is_torsion_free">https://arbital.com/p/free_group_is_torsion_free</a></p><p class="creator">by
+ <a class="page-link" href="../page/PatrickStevens.html">Patrick Stevens</a> Jul 25 2016 
+updated
+ Jul 25 2016</p></div><p class="clickbait">An easy way to determine that many groups are not free: free groups contain no non-identity elements of finite order.</p><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>Free groups are torsion-free</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="math.html">Mathematics</a></li><li><a href="abstract_algebra.html">Abstract algebra</a></li><li><a href="algebraic_structure.html">Algebraic structure</a></li><li><a href="group_mathematics.html">Group</a></li><li><a href="free_group.html">Free group</a></li><li>…</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="math.html">Mathematics</a></li><li><a href="group_theory.html">Group theory</a></li><li><a href="group_mathematics.html">Group</a></li><li><a href="free_group.html">Free group</a></li><li>…</li></ul></nav></nav></header><hr><main><p>Given the <a href="free_group.html">Free group</a> $~$FX$~$ on a set $~$X$~$, it is the case that $~$FX$~$ has no [torsion_group_theory torsion] elements.
+That is, every element has infinite order except for the <a href="identity_element.html">Identity element</a>.</p>
+<h1 id="proof">Proof</h1>
+<p>Recall that we can view every element of the free group as being a <a href="freely_reduced_word.html">Freely reduced word</a> whose letters are elements of $~$X$~$.
+Also the group operation is "concatenation of words, followed by free reduction".
+It is certainly intuitively plausible that if we repeatedly concatenate a word with more copies of itself, and then perform free reduction, we will never reach the empty word; this is what we shall prove.
+The cancellations in the process of free reduction are everything here, because the only way the powers of a word can get shorter (and hence the only way the powers of a word can ever come to the empty word) is by those cancellations.
+So we are going to have to analyse the behaviour of words at their start and ends, because when we take powers of a word, the start and end are the places where cancellation may happen.</p>
+<p>We will say a word is <em>cyclically reduced</em> if it is not only freely reduced, but also it is "freely reduced if we rotate the word round one place".
+Formally, a freely reduced word $~$a_1 a_2 \dots a_n$~$ is cyclically reduced if and only if $~$a_1 \not = a_n^{-1}$~$.
+This captures the idea that "the word doesn't admit any cancellation when we take powers of it".</p>
+<p>%%hidden(Examples):
+[todo: some examples of words which are cyclically reduced and some which are not]
+%%</p>
+<p>Now, every freely reduced word may $~$w$~$ be written as $~$r w^\prime r^{-1}$~$ where $~$r$~$ is a freely reduced word and $~$w^\prime$~$ is a cyclically reduced word, and there is no cancellation between $~$r$~$, $~$r^{-1}$~$ and $~$w^\prime$~$.
+This is easily proved by <a href="mathematical_induction.html">Mathematical induction</a> on the length of $~$w$~$: it is immediate if $~$w$~$ is already cyclically reduced (letting $~$r = \varepsilon$~$ the empty word, and $~$w^\prime = w$~$), while if $~$w$~$ is not cyclically reduced then it is $~$a v a^{-1}$~$ for some letter $~$a \in X$~$ and some freely reduced word $~$v$~$.
+But then by the inductive hypothesis (since $~$v$~$ is shorter than $~$w$~$), $~$v$~$ may be written as $~$r v^\prime r^{-1}$~$ where $~$v^\prime$~$ is cyclically reduced; so $~$w = a r v^\prime r^{-1} a^{-1} = (ar) v^\prime (ar)^{-1}$~$ as required.</p>
+<p>Moreover, this decomposition is <em>unique</em>, since if $~$r w^\prime r^{-1} = s v^\prime s^{-1}$~$ then $~$s^{-1} r w^\prime r^{-1} s = v^\prime$~$; but $~$v^\prime$~$ is cyclically reduced so there are only two ways to prevent cancellation:</p>
+<ul>
+<li>$~$s$~$ is the identity, whereupon $~$v^\prime = r w^\prime r^{-1}$~$ is cyclically reduced, so (by freely-reducedness of $~$w = r w^\prime r^{-1}$~$) we have $~$r = e$~$ as well, and $~$v^\prime = w^\prime = w$~$.</li>
+<li>$~$s$~$ is not the identity but it entirely cancels with something in $~$r^{-1}$~$; hence $~$s$~$ is a sub-word of $~$r$~$. But by symmetry, $~$r$~$ is a sub-word of $~$s$~$, so they are the same (because without loss of generality $~$r$~$ is also not the identity); and therefore $~$v^\prime = w^\prime$~$.</li>
+</ul>
+<p>Finally, to complete the proof that the free group is torsion-free, simply take a putative word $~$w$~$ whose order $~$n$~$ is finite.
+Express it uniquely as $~$r w^\prime r^{-1}$~$ as above; then $~$(rw^\prime r^{-1})^n = r (w^\prime)^n r^{-1}$~$ which is expected to become the empty word after free reduction.
+But we already know there is no cancellation between $~$r$~$ and $~$w^\prime$~$ and $~$r^{-1}$~$, so there cannot be any cancellation between $~$r, (w^\prime)^n, r^{-1}$~$ either, and by the cyclically-reduced nature of $~$w^\prime$~$, our power $~$r (w^\prime)^n r^{-1}$~$ is actually freely reduced already.
+Hence our power of the word is emphatically not the empty word.</p></main><hr><footer><p class="all-creators"><h2>All Creators</h2><span class="page-comma-list"><a class="page-link" href="../page/DylanHendrickson.html">Dylan Hendrickson</a>,
+ <a class="page-link" href="../page/PatrickStevens.html">Patrick Stevens</a></span></p></footer></body></html>

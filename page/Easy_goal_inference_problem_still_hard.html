@@ -1,0 +1,56 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>The easy goal inference problem is still hard</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_SVG" async></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">The easy goal inference problem is still hard</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/Easy_goal_inference_problem_still_hard.json.html">Easy_goal_inference_problem_still_hard.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/Easy_goal_inference_problem_still_hard">https://arbital.com/p/Easy_goal_inference_problem_still_hard</a></p><p class="creator">by
+ <a class="page-link" href="../page/PaulChristiano.html">Paul Christiano</a> Feb 3 2016 
+updated
+ Mar 4 2016</p></div><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>The easy goal inference problem is still hard</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="paul_ai_control.html">Paul Christiano's AI control blog</a></li><li>…</li></ul></nav></nav></header><hr><main><h2 id="goalinferenceandinversereinforcementlearning">Goal inference and inverse reinforcement learning</h2>
+<p>One approach to the AI control problem goes like this:</p>
+<ul>
+<li>Observe what the user of the system says and does.</li>
+<li>Infer the user’s preferences.</li>
+<li>Try to make the world better according to the user’s preference, perhaps while working alongside the user and asking clarifying questions.</li>
+</ul>
+<p>This approach has the major advantage that we can begin empirical work today — we can actually build systems which observe user behavior, try to figure out what the user wants, and then help with that. There are many applications that people care about already, and we can set to work on making rich toy models.</p>
+<p>It seems great to develop these capabilities in parallel with other AI progress, and to address whatever difficulties actually arise, as they arise. That is, in each domain where AI can act effectively, we’d like to ensure that AI can also act effectively in the service of goals inferred from users (and that this inference is good enough to support foreseeable applications).</p>
+<p>This approach gives us a nice, concrete model of each difficulty we are trying to address. It also provides a relatively clear indicator of whether our ability to control AI lags behind our ability to build it. And by being technically interesting and economically meaningful now, it can help actually integrate AI control with AI practice.</p>
+<p>Overall I think that this is a particularly promising angle on the AI safety problem.</p>
+<h1 id="modelingimperfection">Modeling imperfection</h1>
+<p>That said, I think that this approach rests on an optimistic assumption: that it’s possible to model a human as an imperfect rational agent, and to extract the real values which the human is imperfectly optimizing. Without this assumption, it seems like some additional ideas are necessary.</p>
+<p>To isolate this challenge, we can consider a vast simplification of the goal inference problem:</p>
+<p><strong>The easy goal inference problem</strong> Given no algorithmic limitations and access to the complete human policy — a lookup table of what a human would do after making any sequence of observations — find any reasonable representation of any reasonable approximation to what that human wants.</p>
+<p>I think that this problem remains wide open, and that we’ve made very little headway on the general case. We can make the problem even easier, by considering a human in a simple toy universe making relatively simple decisions, but it still leaves us with a very tough problem.</p>
+<p>It’s not clear to me whether or exactly how progress in AI will make this problem easier. I can certainly see how enough progress in cognitive science might yield an answer, but it seems much more likely that it will instead tell us “Your question wasn’t well defined.” What do we do then?</p>
+<p>I am especially interested in this problem because I think that “business as usual” progress in AI will probably lead to the ability to predict human behavior relatively well, and to emulate the performance of experts. So I really care about the residual — what do we need to know to address AI control, beyond what we need to know to build AI?</p>
+<h3 id="narrowdomains">Narrow domains</h3>
+<p>We can solve the very easy goal inference problem in sufficiently narrow domains, where humans can behave approximately rationally and a simple error model is approximately right. So far this has been good enough.</p>
+<p>But in the long run, humans make many decisions whose consequences aren’t confined to a simple domain. This approach can can work for driving from point A to point B, but probably can’t work for designing a city, running a company, or setting good policies.</p>
+<p>There may be an approach which uses inverse reinforcement learning in simple domains as a building block in order to solve the whole AI control problem. Maybe it’s not even a terribly complicated approach. But it’s not a trivial problem, and I don’t think it can be dismissed easily without some new ideas.</p>
+<h3 id="modelingmistakesisfundamental">Modeling “mistakes” is fundamental</h3>
+<p>If we want to perform a task as well as an expert, inverse reinforcement learning is clearly a powerful approach.</p>
+<p>But in in the long-term, many important applications require AIs to make decisions which are&nbsp;<em>better</em>&nbsp;than those of available human experts. This is part of the promise of AI, and it is the scenario in which AI control becomes most challenging.</p>
+<p>In this context, we can’t use the usual paradigm — “more accurate models are better.” A perfectly accurate model will take us exactly to human mimicry and no farther.</p>
+<p>The possible extra oomph of inverse reinforcement learning comes from an explicit model of the human’s mistakes or bounded rationality. It’s what specifies what the AI should do differently in order to be “smarter,” what parts of the human’s policy it should throw out. So it implicitly specifies which of the human behaviors the AI should keep. The error model isn’t an afterthought — it’s the main affair.</p>
+<h3 id="modelingmistakesishard">Modeling “mistakes” is hard</h3>
+<p>Existing error models for inverse reinforcement learning tend to be very simple, ranging from Gaussian noise in observations of the expert’s behavior or sensor readings, to the assumption that the expert’s choices are randomized with a bias towards better actions.</p>
+<p>In fact humans are not rational agents with some noise on top. Our decisions are the product of a complicated mess of interacting process, optimized by evolution for the reproduction of our children’s children. It’s not clear there is any good answer to what a “perfect” human would do. If you were to find any principled answer to “what is the human brain optimizing?” the single most likely bet is probably something like “reproductive success.” But this isn’t the answer we are looking for.</p>
+<p>I don’t think that writing down a model of human imperfections, which describes how humans depart from the rational pursuit of fixed goals, is likely to be any easier than writing down a complete model of human behavior.</p>
+<p>We can’t use normal AI techniques to learn this kind of model, either — what is it that makes a model good or bad? The standard view — “more accurate models are better” — is fine as long as your goal is just to emulate human performance. But this view doesn’t provide guidance about how to separate the “good” part of human decisions from the “bad” part.</p>
+<h1 id="sowhat">So what?</h1>
+<p>It’s reasonable to take the attitude “Well, we’ll deal with that problem when it comes up.” But I think that there are a few things that we can do productively in advance.</p>
+<ul>
+<li>Inverse reinforcement learning / goal inference research motivated by applications to AI control should probably pay particular attention to the issue of modeling mistakes, and to the challenges that arise when trying to find a policy better than the one you are learning from.</li>
+<li>It’s worth doing more theoretical research to understand this kind of difficulty and how to address it. This research can help identify other practical approaches to AI control, which can then be explored empirically.</li>
+</ul></main><hr><footer><p class="children"><h2>Children</h2><ul class="page-tree"><li><a class="page-link" href="../page/1vc.html">Online guarantees and AI control</a> <q>I’m interested in claims of the form: “If we had an AI that could do X well, then we could build a…</q> - <a class="page-link" href="../page/PaulChristiano.html">Paul Christiano</a></li></ul></p></footer></body></html>

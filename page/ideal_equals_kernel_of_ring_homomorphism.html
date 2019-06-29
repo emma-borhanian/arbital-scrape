@@ -1,0 +1,28 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Ideals are the same thing as kernels of ring homomorphisms</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_SVG" async></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">Ideals are the same thing as kernels of ring homomorphisms</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/ideal_equals_kernel_of_ring_homomorphism.json.html">ideal_equals_kernel_of_ring_homomorphism.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/ideal_equals_kernel_of_ring_homomorphism">https://arbital.com/p/ideal_equals_kernel_of_ring_homomorphism</a></p><p class="creator">by
+ <a class="page-link" href="../page/PatrickStevens.html">Patrick Stevens</a> Aug 3 2016</p></div><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>Ideals are the same thing as kernels of ring homomorphisms</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="math.html">Mathematics</a></li><li><a href="abstract_algebra.html">Abstract algebra</a></li><li><a href="algebraic_structure.html">Algebraic structure</a></li><li><a href="algebraic_ring.html">Ring</a></li><li>…</li></ul></nav></nav></header><hr><main><p>[summary: In <a href="algebraic_ring.html">ring theory</a>, the notion of "[ideal_ring_theory ideal]" corresponds precisely with the notion of "<a href="kernel_of_ring_homomorphism.html">kernel</a> of [-ring_homomorphism]".]</p>
+<p>In <a href="algebraic_ring.html">ring theory</a>, the notion of "[ideal_ring_theory ideal]" corresponds precisely with the notion of "<a href="kernel_of_ring_homomorphism.html">kernel</a> of [-ring_homomorphism]".</p>
+<p>This result is analogous to the fact from <a href="group_mathematics.html">group theory</a> that <a href="normal_subgroup.html">normal subgroups</a> are the same thing as <a href="kernel_of_group_homomorphism.html">kernels of group homomorphisms</a> (<a href="subgroup_normal_iff_kernel_of_homomorphism.html">proof</a>).</p>
+<h1 id="proof">Proof</h1>
+<h2 id="kernelsareideals">Kernels are ideals</h2>
+<p>Let $~$f: R \to S$~$ be a ring homomorphism between rings $~$R$~$ and $~$S$~$.
+We claim that the kernel $~$K$~$ of $~$f$~$ is an ideal.</p>
+<p>Indeed, it is clearly a <a href="subgroup.html">Subgroup</a> of the ring $~$R$~$ when viewed as just an additive group %%note:That is, after removing the multiplicative structure from the ring.%% because $~$f$~$ is a <em>group</em> homomorphism between the underlying additive groups, and kernels of <em>group</em> homomorphisms are subgroups (indeed, <em>normal</em> subgroups). (<a href="subgroup_normal_iff_kernel_of_homomorphism.html">Proof.</a>)</p>
+<p>We just need to show, then, that $~$K$~$ is closed under multiplication by elements of the ring $~$R$~$.
+But this is easy: if $~$k \in K$~$ and $~$r \in R$~$, then $~$f(kr) = f(k)f(r) = 0 \times r = 0$~$, so $~$kr$~$ is in $~$K$~$ if $~$k$~$ is.</p>
+<h2 id="idealsarekernels">Ideals are kernels</h2>
+<p>[todo: refer to the quotient group, and therefore introduce the quotient ring]</p></main><hr><footer></footer></body></html>

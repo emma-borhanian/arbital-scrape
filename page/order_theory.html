@@ -1,0 +1,79 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Order theory</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_SVG" async></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">Order theory</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/order_theory.json.html">order_theory.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/order_theory">https://arbital.com/p/order_theory</a></p><p class="creator">by
+ <a class="page-link" href="../page/KevinClancy.html">Kevin Clancy</a> May 3 2016 
+updated
+ May 27 2016</p></div><p class="clickbait">The study of binary relations that are reflexive, transitive, and antisymmetic. </p><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>Order theory</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="math.html">Mathematics</a></li><li>…</li></ul></nav></nav></header><hr><main><p>[summary: The study of binary relations that are reflexive, transitive, and anti-symmetric.]</p>
+<h1 id="introduction">Introduction</h1>
+<p>Order pervades mathematics and the sciences. Often, a reader's intuitive notion of order is all that is necessary for understanding a particular invocation of the notion of order. However, a deeper examination of order reveals a rich taxonomy over the types of orderings that can arise and leads to powerful theorems with applications in mathematics, computer science, the natural sciences, and the social sciences.</p>
+<p>The following are examples of orders that one might encounter in life:</p>
+<ul>
+<li><p>In a work place, employees may have a <em>rank</em> that determines which other employees they have authority over. IT workers report to the IT manager, marketers report to the marketing manager, managers report to the CEO, etc.</p></li>
+<li><p>In a grocery store, someone planning to buy corn flake cereal may consider the ordering on the <em>prices</em> of various brands of shredded wheat to decide which to purchase.</p></li>
+<li><p>At lunchtime, someone with a craving for burritos may order the nearby burrito restaurants by their <em>distance</em> from her workplace. She may also order these burrito joints by <em>quality</em>, and consider both orderings in her decision.</p></li>
+</ul>
+<p>Now that we've seen some concrete examples of order, we can begin working toward a rigorous mathematical definition. In each of the above examples, we have some <em>underlying set</em> of objects that we are comparing: employees, corn flake brands, and burrito restaurants, respectively. We also have an <em>ordering</em>, which is a <a href="relation_mathematics.html">binary relation</a> determining whether or not one object is "less than" another. This suggests that order esentially a pair of a set and some binary relation defined on it. Is this all we need to capture the notion of order?</p>
+<p>Here are a few examples of binary relations which may or may not be orderings. Do they agree with your intuitive notion of ordering?</p>
+<ul>
+<li>1.) The relation which includes all pairs of people $~$(a,b)$~$ such that $~$a$~$ and $~$b$~$ are friends.</li>
+<li>2.) The relation of pairs of people $~$(a,b)$~$ such that $~$a$~$ is a genetic descendant of $~$b$~$.</li>
+<li>3.) The relation on days of the week which contains the exactly pairs $~$(a,b)$~$ such that a directly precedes b: $~$\{ (Monday, Tuesday), (Tuesday, Wednesday), … \}$~$</li>
+</ul>
+<p>It turns out that only item 2 agrees with the mathematical definition of ordering. Intuitively, item 1 is not an ordering because of its symmetry: a friendship between two people does not distinguish one friend as being "less than" the other (not a healthy friendship, at least). Friendship is actually an instance of another important class of binary relations called the [equivalence_relation_mathematics equivalence relations]. Item 3 is not an ordering because it lacks transitivity: Monday directly precedes Tuesday and Tuesday directly precedes Wednesday, but Monday does not directly precede Wednesday.</p>
+<h1 id="posets">Posets</h1>
+<p>We're now ready to provide a formal, mathematical definition, for a class of objects called <em>posets</em> (a contraction of partially ordered set), which captures the idea of ordering.</p>
+<p>--</p>
+<p><strong>Definition: Poset</strong></p>
+<p>A <em>poset</em> is a pair $~$\langle P, \leq \rangle$~$ of a set $~$P$~$ and a binary relation $~$\leq$~$ on $~$P$~$ such that for all $~$p,q,r \in P$~$, the following properties are satisfied: </p>
+<ul>
+<li>Reflexivity: $~$p \leq p$~$</li>
+<li>Transitivity: $~$p \leq q$~$ and  $~$q \leq r$~$ implies $~$p \leq r$~$</li>
+<li>Anti-Symmetry: $~$p \leq q$~$ and $~$q \leq p$~$ implies $~$p = q$~$</li>
+</ul>
+<p>$~$P$~$ is referred to as the poset's <em>underlying set</em> and $~$\leq$~$
+ is referred to as its <em>order relation</em>.</p>
+<p>--</p>
+<p>The above definition may strike some readers as more general than expected. Indeed, in both mathematics and conversational English, when someone states that a set of objects is ordered, they often mean that it is totally ordered. A total order is a poset for which any two elements of $~$a$~$ and $~$b$~$ of the underlying set are <em>comparable</em>; that is, $~$a \leq b$~$ or $~$b \leq a$~$. But our definition of a poset allows the possibility that two elements are <em>incomparable</em>. Recall our example of employees in a work place. In our <em>reports-to</em> relation, both an IT manager and a marketing manager report to the CEO; however, it would not make sense for an IT manager to report to a marketing manager or vice versa. The marketing and IT managers are thus incomparable. We write $~$a \parallel b$~$ to state that two poset elements $~$a$~$ and $~$b$~$ are incomparable.</p>
+<p>Another important distinction must be made. Partial orders as we have described them are not <em>strict</em> orders. From any poset $~$\langle P, \leq \rangle$~$, we can derive an strict order relation $~$&lt;$~$, which includes exactly those pairs of $~$\leq$~$ relating two elements of $~$P$~$ that are distinct. It should be noted that, while strict orders are transitive and vacuously anti-symmetric, they are <em>not</em> partial orders because they are not reflexive. In everyday situations, strict orders seem to be more useful, but in mathematics non-strict orderings are of more use, and so non-strictness is built into the definition of poset.</p></main><hr><section class="comments"><h2>Comments</h2><div class="comment"><p><a class="page-link" href="../page/AlexeiAndreev.html">Alexei Andreev</a></p><p><p><a href="KevinClancy.html">Kevin Clancy</a>, did you intend to make this a blog page (owned by you) as opposed to a wiki page (owned by community)?</p>
+<p>Also, it's parented to <a href="playpen_mathematics.html">Math playpen</a>, but should probably be parented to <a href="math.html">Mathematics</a> or a subtopic of math.</p></p></div></section><footer><p class="tagged"><h2>Tagged</h2><span class="page-comma-list"><a class="page-link" href="../page/work_in_progress_meta_tag.html">Work in progress</a></span></p><p class="all-creators"><h2>All Creators</h2><span class="page-comma-list"><a class="page-link" href="../page/AlexeiAndreev.html">Alexei Andreev</a>,
+ <a class="page-link" href="../page/KevinClancy.html">Kevin Clancy</a></span></p><p class="likes"><h2>Likes</h2><span class="page-comma-list"><a class="page-link" href="../page/AlexeiAndreev.html">Alexei Andreev</a></span></p><p class="reverse-related"><h2>Reverse Related</h2><ul class="page-list"><li><a class="page-link" href="../page/work_in_progress_meta_tag.html">Work in progress</a> <q>This page is being actively worked on by an editor. Check with them before making major changes.</q> - <a class="page-link" href="../page/EliezerYudkowsky.html">Eliezer Yudkowsky</a></li></ul></p><p class="children"><h2>Children</h2><ul class="page-tree"><li><a class="page-link" href="../page/math_order_complete_lattice.html">Complete lattice</a> <q>A poset that is closed under arbitrary joins and meets.</q> - <a class="page-link" href="../page/KevinClancy.html">Kevin Clancy</a></li><li><a class="page-link" href="../page/math_join.html">Join and meet</a> <q>Let $\langle P, \leq \rangle$ be a poset, and let $S \subseteq P$. The **join** of $S$ in $P$, deno…</q> - <a class="page-link" href="../page/KevinClancy.html">Kevin Clancy</a><ul class="page-tree"><li><a class="page-link" href="../page/join_examples.html">Join and meet: Examples</a> <q>A union of sets and the least common multiple of a set of natural numbers can both be viewed as join…</q> - <a class="page-link" href="../page/KevinClancy.html">Kevin Clancy</a></li><li><a class="page-link" href="../page/poset_join_exercises.html">Join and meet: Exercises</a> <q>Try these exercises to test your knowledge of joins and meets.
+
+
+Tangled up 
+--------------------
+
+!…</q> - <a class="page-link" href="../page/KevinClancy.html">Kevin Clancy</a></li></ul></li><li><a class="page-link" href="../page/order_lattice.html">Lattice (Order Theory)</a> <q>A poset that is closed under binary joins and meets.</q> - <a class="page-link" href="../page/KevinClancy.html">Kevin Clancy</a><ul class="page-tree"><li><a class="page-link" href="../page/poset_lattice_examples.html">Lattice: Examples</a> <q>Here are some additional examples of lattices. $\newcommand{\nsubg}{\mathcal N \mbox{-} Sub~G}$
+
+A f…</q> - <a class="page-link" href="../page/KevinClancy.html">Kevin Clancy</a></li><li><a class="page-link" href="../page/poset_lattice_exercise.html">Lattice: Exercises</a> <q>Try these exercises to test your knowledge of lattices.
+
+## Distributivity
+
+Does the lattice meet op…</q> - <a class="page-link" href="../page/KevinClancy.html">Kevin Clancy</a></li></ul></li><li><a class="page-link" href="../page/poset_monotone_function.html">Monotone function</a> <q>An order-preserving map between posets.</q> - <a class="page-link" href="../page/KevinClancy.html">Kevin Clancy</a><ul class="page-tree"><li><a class="page-link" href="../page/order_monotone_examples.html">Monotone function: examples</a> <q>Here are some examples of monotone functions.
+
+A cunning plan
+--------
+
+There's a two-player game ca…</q> - <a class="page-link" href="../page/KevinClancy.html">Kevin Clancy</a></li><li><a class="page-link" href="../page/order_monotone_exercises.html">Monotone function: exercises</a> <q>Try these exercises and become a *deity* of monotonicity.
+
+
+Monotone composition
+-----
+
+Let $P, Q$, …</q> - <a class="page-link" href="../page/KevinClancy.html">Kevin Clancy</a></li></ul></li><li><a class="page-link" href="../page/poset.html">Partially ordered set</a> <q>A set endowed with a relation that is reflexive, transitive, and antisymmetric.</q> - <a class="page-link" href="../page/KevinClancy.html">Kevin Clancy</a><ul class="page-tree"><li><a class="page-link" href="../page/poset_greatest_lower_bound.html">Greatest lower bound in a poset</a> <q>The greatest lower bound is an abstraction of the idea of the greatest common divisor to a general poset.</q> - <a class="page-link" href="../page/PatrickStevens.html">Patrick Stevens</a></li><li><a class="page-link" href="../page/poset_examples.html">Poset: Examples</a> <q>The standard $\leq$ relation on integers, the $\subseteq$ relation on sets, and the $|$ (divisibilit…</q> - <a class="page-link" href="../page/KevinClancy.html">Kevin Clancy</a></li><li><a class="page-link" href="../page/poset_exercises.html">Poset: Exercises</a> <q>Try these exercises to test your poset knowledge.
+
+# Corporate Ladder
+
+Imagine a company with five …</q> - <a class="page-link" href="../page/KevinClancy.html">Kevin Clancy</a></li></ul></li><li><a class="page-link" href="../page/totally_ordered_set.html">Totally ordered set</a> <q>A set where all the elements can be compared as greater than or less than.</q> - <a class="page-link" href="../page/JoeZeng.html">Joe Zeng</a><ul class="page-tree"><li><a class="page-link" href="../page/well_ordered_set.html">Well-ordered set</a> <q>An ordered set with an order that always has a &quot;next element&quot;.</q> - <a class="page-link" href="../page/DylanHendrickson.html">Dylan Hendrickson</a></li></ul></li></ul></p></footer></body></html>

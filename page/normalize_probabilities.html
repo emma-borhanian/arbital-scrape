@@ -1,0 +1,32 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Normalization (probability)</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_SVG" async></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">Normalization (probability)</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/normalize_probabilities.json.html">normalize_probabilities.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/normalize_probabilities">https://arbital.com/p/normalize_probabilities</a></p><p class="creator">by
+ <a class="page-link" href="../page/EliezerYudkowsky.html">Eliezer Yudkowsky</a> Jan 27 2016 
+updated
+ Oct 7 2016</p></div><p class="clickbait">That thingy we do to make sure our probabilities sum to 1, when they should sum to 1.</p><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>Normalization (probability)</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="math.html">Mathematics</a></li><li><a href="probability_theory.html">Probability theory</a></li><li>…</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="rationality.html">Rationality</a></li><li><a href="probability_theory.html">Probability theory</a></li><li>…</li></ul></nav></nav></header><hr><main><p>[summary:  "Normalization" obtains a set of <a href="probability.html">probabilities</a> summing to 1, in <a href="exclusive_exhaustive.html">cases where they ought to sum to 1</a>.  We do this by dividing each pre-normalized number by the sum of all pre-normalized numbers.</p>
+<p>Suppose the <a href="odds.html">odds</a> of Alexander Hamilton winning an election are 3 : 2.  We think the proportions are right (Alexander is 1.5 times as likely to win as not win) but we want <em>probabilities</em>.  To say that Hamilton has probability 3 of winning the election would be very strange indeed.  But if we divide each of the terms by the sum of all the terms, they'll end up summing to one:  $~$3:2 \cong \frac{3}{3+2} : \frac{2}{3+2} = 0.6 : 0.4.$~$  Thus, the probability that Hamilton wins is 60%.]</p>
+<p>"Normalization" is an arithmetical procedure carried out to obtain a set of <a href="probability.html">probabilities</a> summing to exactly 1, in cases where we believe that <a href="exclusive_exhaustive.html">exactly one of the corresponding possibilities is true</a>, and we already know the <a href="odds.html">relative probabilities</a>.</p>
+<p>For example, suppose that the <a href="odds.html">odds</a> of Alexander Hamilton winning a presidential election are 3 : 2.  But Alexander Hamilton must either win or not win, so the <em>probabilities</em> of him winning <em>or</em> not winning should sum to 1.  If we just add 3 and 2, however, we get 5, which is an unreasonably large probability.</p>
+<p>If we rewrite the odds as 0.6 : 0.4, we've preserved the same proportions, but made the terms sum to 1.  We therefore calculate that Hamilton has a 60% probability of winning the election.</p>
+<p>We normalized those odds by dividing each of the terms by the sum of terms, i.e., went from 3 : 2 to $~$\frac{3}{3+2} : \frac{2}{3+2} = 0.6 : 0.4.$~$</p>
+<p>In converting the odds $~$m : n$~$ to $~$\frac{m}{m+n} : \frac{n}{m+n},$~$ the factor $~$\frac{1}{m+n}$~$ by which we multiply all elements of the ratio is called a <a href="https://en.wikipedia.org/wiki/Normalizing_constant">normalizing constant</a>.</p>
+<p>More generally, if we have a relative-odds function $~$\mathbb{O}(H)$~$ where $~$H$~$ has many components, and we want to convert this to a probability function $~$\mathbb{P}(H)$~$ that sums to 1, we divide every element of $~$\mathbb{O}(H)$~$ by the sum of all elements in $~$\mathbb{O}(H).$~$  That is:</p>
+<p>$~$\mathbb{P}(H_i) = \frac{\mathbb{O}(H_i)}{\sum_i \mathbb{O}(H_i)}$~$</p>
+<p>Analogously, if $~$\mathbb{O}(x)$~$ is a continuous distribution on $~$X$~$, we would normalize it (create a proportional probability function $~$\mathbb{P}(x)$~$ whose integral is equal to 1) by dividing $~$\mathbb{O}(x)$~$ by its own integral:</p>
+<p>$~$\mathbb{P}(x) = \frac{\mathbb{O}(x)}{\int \mathbb{O}(x) \operatorname{d}x}$~$</p>
+<p>In general, whenever a probability function on a variable is <em>proportional</em> to some other function, we can obtain the probability function by <em>normalizing</em> that function:</p>
+<p>$~$\mathbb{P}(H) \propto \mathbb{O}(H) \implies \mathbb{P}(H) = \frac{\mathbb{O}(H)}{\sum \mathbb{O}(H)}$~$</p></main><hr><footer><p class="likes"><h2>Likes</h2><span class="page-comma-list"><a class="page-link" href="../page/StephanieKoo.html">Stephanie Koo</a>,
+ <a class="page-link" href="../page/SzymonWilczyski.html">Szymon Wilczyński</a></span></p></footer></body></html>

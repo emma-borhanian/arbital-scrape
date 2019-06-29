@@ -1,0 +1,29 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Mutually exclusive and exhaustive</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_SVG" async></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">Mutually exclusive and exhaustive</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/exclusive_exhaustive.json.html">exclusive_exhaustive.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/exclusive_exhaustive">https://arbital.com/p/exclusive_exhaustive</a></p><p class="creator">by
+ <a class="page-link" href="../page/EliezerYudkowsky.html">Eliezer Yudkowsky</a> Jan 26 2016 
+updated
+ Apr 26 2016</p></div><p class="clickbait">The condition needed for probabilities to sum to 1</p><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>Mutually exclusive and exhaustive</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="math.html">Mathematics</a></li><li><a href="probability_theory.html">Probability theory</a></li><li>…</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="rationality.html">Rationality</a></li><li><a href="probability_theory.html">Probability theory</a></li><li>…</li></ul></nav></nav></header><hr><main><p>A set of propositions is "mutually exclusive and exhaustive" when exactly one of the propositions must be true.  For example, of the two propositions "The sky is blue" and "It is not the case that the sky is blue", exactly one of those must be the case.  Therefore, the <a href="probability.html">probabilities</a> of those propositions must sum to exactly 1.</p>
+<p>If a set $~$X$~$ of propositions is "mutually exclusive", this states that for every two distinct propositions, the probability that both of them will be true simultaneously is zero:</p>
+<p>$~$\forall i: \forall j: i \neq j \implies \mathbb{P}(X_i \wedge X_j) = 0.$~$</p>
+<p>This implies that for every two distinct propositions, the probability of their union equals the sum of their probabilities:</p>
+<p>$~$\mathbb{P}(X_i \vee X_j) = \mathbb{P}(X_i) + \mathbb{P}(X_j) - \mathbb{P}(X_j \wedge X_j) = \mathbb{P}(X_i) + \mathbb{P}(X_j).$~$</p>
+<p>The "exhaustivity" condition states that the union of all propositions in $~$X,$~$ has probability $~$1$~$ (the probability of at least one $~$X_i$~$ happening is $~$1$~$):</p>
+<p>$~$\mathbb{P}(X_1 \vee X_2 \vee \dots \vee X_N) = 1.$~$</p>
+<p>Therefore mutual exclusivity and exhaustivity imply that the probabilities of the propositions sum to 1:</p>
+<p>$~$\displaystyle \sum_i \mathbb{P}(X_i) = 1.$~$</p></main><hr><footer><p class="tagged"><h2>Tagged</h2><span class="page-comma-list"><a class="page-link" href="../page/c_class_meta_tag.html">C-Class</a>,
+ <a class="page-link" href="../page/math2.html">Math 2</a></span></p><p class="all-creators"><h2>All Creators</h2><span class="page-comma-list"><a class="page-link" href="../page/EliezerYudkowsky.html">Eliezer Yudkowsky</a>,
+ <a class="page-link" href="../page/FedorBelolutskiy.html">Fedor Belolutskiy</a></span></p><p class="likes"><h2>Likes</h2><span class="page-comma-list"><a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a></span></p><p class="reverse-related"><h2>Reverse Related</h2><ul class="page-list"><li><a class="page-link" href="../page/c_class_meta_tag.html">C-Class</a> <q>This page has substantial content, but may not thoroughly cover the topic, may not meet style and prose standards, or may not explain the concept in a way the target audience will reliably understand.</q> - <a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a></li><li><a class="page-link" href="../page/math2.html">Math 2</a> <q>Do you work with math on a fairly routine basis?  Do you have little trouble grasping abstract structures and ideas?</q> - <a class="page-link" href="../page/EliezerYudkowsky.html">Eliezer Yudkowsky</a></li></ul></p></footer></body></html>

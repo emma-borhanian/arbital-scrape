@@ -1,0 +1,27 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Expected value</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_SVG" async></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">Expected value</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/expected_value.json.html">expected_value.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/expected_value">https://arbital.com/p/expected_value</a></p><p class="creator">by
+ <a class="page-link" href="../page/MichaelCohen.html">Michael Cohen</a> Jun 14 2016 
+updated
+ Oct 13 2016</p></div><p class="clickbait">Trying to assign value to an uncertain state? The weighted average of outcomes is probably the tool you need.</p><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>Expected value</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="math.html">Mathematics</a></li><li>…</li></ul></nav></nav></header><hr><main><p>The expected value of an action is the [-mean] numerical outcome of the possible results weighted by their <a href="probability.html">Probability</a>. It may actually be impossible to get the expected value, for example, if a coin toss decides between you getting \$0 and \$10, then we say you get "\$5 in expectation" even though there is no way for you to get \$5.</p>
+<p>The expectation of V (often shortened to "the expected V") is how much V you expect to get on average. For example, the expectation of a payoff, or an expected payoff, is how much money you will get on average; the expectation of the duration of a speech, or an expected duration, is how long the speech will last "on average."</p>
+<p>Suppose V has discrete possible values, say $~$V = x_{1},$~$ or $~$V = x_{2}, …, $~$ or $~$V = x_{k}$~$. Let $~$P(x_{i})$~$ refer to the probability that $~$V = x_{i}$~$. Then the expectation of V is given by:</p>
+<p>$$~$\sum_{i=1}^{k}x_{i}P(x_{i})$~$$</p>
+<p>Suppose V has continuous possible values, x. For instance, let $~$x \in \mathbb{R}$~$. Let $~$P(x)$~$ be the continuous probability distribution, or $~$\lim_{dx \to 0}$~$ of the probability that $~$x&lt;V&lt;(x+dx)$~$ divided by $~$dx$~$. Then the expectation of V is given by:</p>
+<p>$$~$\int_{-∞}^{∞}xP(x)dx$~$$</p>
+<h2 id="importance">Importance</h2>
+<p>A common principle of reasoning under uncertainty is that if you are trying to achieve a good G, you should choose the act that maximizes the expectation of G.</p></main><hr><footer><p class="tagged"><h2>Tagged</h2><span class="page-comma-list"><a class="page-link" href="../page/c_class_meta_tag.html">C-Class</a></span></p><p class="all-creators"><h2>All Creators</h2><span class="page-comma-list"><a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a>,
+ <a class="page-link" href="../page/MichaelCohen.html">Michael Cohen</a></span></p><p class="likes"><h2>Likes</h2><span class="page-comma-list"><a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a></span></p><p class="reverse-related"><h2>Reverse Related</h2><ul class="page-list"><li><a class="page-link" href="../page/c_class_meta_tag.html">C-Class</a> <q>This page has substantial content, but may not thoroughly cover the topic, may not meet style and prose standards, or may not explain the concept in a way the target audience will reliably understand.</q> - <a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a></li></ul></p></footer></body></html>

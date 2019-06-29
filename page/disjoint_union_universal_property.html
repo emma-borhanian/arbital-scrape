@@ -1,0 +1,138 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Universal property of the disjoint union</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_SVG" async></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">Universal property of the disjoint union</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/disjoint_union_universal_property.json.html">disjoint_union_universal_property.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/disjoint_union_universal_property">https://arbital.com/p/disjoint_union_universal_property</a></p><p class="creator">by
+ <a class="page-link" href="../page/PatrickStevens.html">Patrick Stevens</a> Sep 11 2016 
+updated
+ Oct 23 2016</p></div><p class="clickbait">Just as the empty set may be described by a universal property, so too may the disjoint union of sets.</p><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>Universal property of the disjoint union</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="math.html">Mathematics</a></li><li><a href="category_theory.html">Category theory</a></li><li><a href="universal_property.html">Universal property</a></li><li>…</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="math.html">Mathematics</a></li><li><a href="set_mathematics.html">Set</a></li><li><a href="set_disjoint_union.html">Disjoint union of sets</a></li><li>…</li></ul></nav></nav></header><hr><main><p>[summary: The <a href="set_disjoint_union.html">Disjoint union of sets</a> may be described by a <a href="universal_property.html">Universal property</a> which is very similar to that of the <a href="product_universal_property.html">universal property of the product</a>. Specifically, the disjoint union of sets $~$A$~$ and $~$B$~$ is a set denoted $~$A \sqcup B$~$ together with maps $~$i_A : A \to A \sqcup B$~$ and $~$i_B: B \to A \sqcup B$~$, such that for every set $~$X$~$ and every pair of maps $~$f_A: A \to X$~$ and $~$f_B: B \to X$~$, there is a unique map $~$\gamma: A \sqcup B \to X$~$ such that $~$\gamma \circ i_A = f_A$~$ and $~$\gamma \circ i_B = f_B$~$.]</p>
+<p>[summary(Technical): The <a href="set_disjoint_union.html">Disjoint union of sets</a> may be described as the [-coproduct] in the <a href="category_theory.html">category</a> of <a href="set_mathematics.html">sets</a>. Specifically, the disjoint union of sets $~$A$~$ and $~$B$~$ is a set denoted $~$A \sqcup B$~$ together with maps $~$i_A : A \to A \sqcup B$~$ and $~$i_B: B \to A \sqcup B$~$, such that for every set $~$X$~$ and every pair of maps $~$f_A: A \to X$~$ and $~$f_B: B \to X$~$, there is a unique map $~$\gamma: A \sqcup B \to X$~$ such that $~$\gamma \circ i_A = f_A$~$ and $~$\gamma \circ i_B = f_B$~$.]</p>
+<p>Where could we start if we were looking for a nice "easy" <a href="universal_property.html">Universal property</a> describing the <a href="set_union.html">union of sets</a>?</p>
+<p>The first thing to notice is that universal properties only identify objects up to <a href="isomorphism.html">Isomorphism</a>, but there's a sense in which the union is <em>not</em> <a href="well_defined.html">Well-defined</a> <a href="up_to_isomorphism.html">Up to isomorphism</a>: it is possible to find sets $~$A$~$ and $~$B$~$, and sets $~$A'$~$ and $~$B'$~$, with $~$A$~$ isomorphic to $~$A'$~$ and $~$B$~$ isomorphic to $~$B'$~$, but where $~$A \cup B$~$ is not isomorphic to $~$A' \cup B'$~$. %%note: In this case, when we're talking about <a href="set_mathematics.html">sets</a>, an isomorphism is just a <a href="bijective_function.html">bijection</a>.%%</p>
+<p>%%hidden(The union is not well-defined up to isomorphism in this sense):
+Consider $~$A = \{ 1 \}$~$ and $~$B = \{ 1 \}$~$.
+Then the union $~$A \cup B$~$ is equal to $~$\{1\}$~$.</p>
+<p>On the other hand, consider $~$X = \{1\}$~$ and $~$Y = \{2\}$~$.
+Then the union $~$X \cup Y = \{1,2\}$~$.</p>
+<p>So by replacing $~$A$~$ with the isomorphic $~$X$~$, and $~$B$~$ with the isomorphic $~$Y$~$, we have obtained $~$\{1,2\}$~$ which is <em>not</em> isomorphic to $~$\{1\} = A \cup B$~$.
+%%</p>
+<p>So it's not obvious whether the union could even in principle be defined by a universal property.%%note: Actually [union_universal_property it <em>is</em> possible].%%</p>
+<p>But we can make our job easier by taking the next best thing: the <em><a href="set_disjoint_union.html">disjoint union</a></em> $~$A \sqcup B$~$, which is well-defined up to isomorphism in the above sense: the definition of $~$A \sqcup B$~$ is constructed so that even if $~$A$~$ and $~$B$~$ overlap, the intersection still doesn't get treated any differently.</p>
+<p>Before reading this, you should make sure you grasp the <a href="set_disjoint_union.html">Disjoint union of sets</a> well enough to know the difference between the two sets $~$\{ 2, 3, 5 \} \cup \{ 2, 6, 7 \}$~$ and $~$\{ 2, 3, 5 \} \sqcup \{ 2, 6, 7 \}$~$.</p>
+<p>%%hidden(Brief recap of the definition):
+Given sets $~$A$~$ and $~$B$~$, we define their disjoint union to be $~$A \sqcup B = A' \cup B'$~$, where $~$A' = \{ (a, 1) : a \in A \}$~$ and $~$B' = \{ (b, 2) : b \in B \}$~$.
+That is, "tag each element of $~$A$~$ with the label $~$1$~$, and tag each element of $~$B$~$ with the label $~$2$~$; then take the union of the tagged sets".
+%%</p>
+<p>The important fact about the disjoint union here is that if $~$A \cong A'$~$ and $~$B \cong B'$~$, then $~$A \sqcup B \cong A' \sqcup B'$~$.
+This is the fact that makes the disjoint union a fairly accessible idea to bring under the umbrella of category theory, and it also means we are justified in using a convention that simplifies a lot of the notation: we will assume from now on that $~$A$~$ and $~$B$~$ are disjoint.
+(Since we only care about them up to isomorphism, this is fine to do: we can replace $~$A$~$ and $~$B$~$ with some disjoint pair of sets of the same size if necessary, to ensure that they <em>are</em> disjoint.)</p>
+<p>[toc:]</p>
+<h1 id="universalpropertyofdisjointunion">Universal property of disjoint union</h1>
+<p>How can we look at the disjoint union solely in terms of the maps to and from it?
+First of all, how can we look at the disjoint union <em>at all</em> in terms of those maps?</p>
+<p>There are certainly two maps $~$A \to A \sqcup B$~$ and $~$B \to A \sqcup B$~$: namely, the [inclusion_map inclusions] $~$i_A : a \mapsto a$~$ and $~$i_B : b \mapsto b$~$.
+But that's not enough to pin down the disjoint union precisely, because those maps exist not just to $~$A \sqcup B$~$ but also to any superset of $~$A \sqcup B$~$. %%note: If this is not obvious, stop and think for a couple of minutes about the case $~$A = \{ 1 \}$~$, $~$B = \{ 2 \}$~$, $~$A \sqcup B = \{1,2\}$~$, and the superset $~$\{1,2,3\}$~$ of $~$A \sqcup B$~$.%%
+So we need to find some way to limit ourselves to $~$A \sqcup B$~$.</p>
+<p>The key limiting fact about the disjoint union is that any map <em>from</em> the disjoint union can be expressed in terms of two other maps (one from $~$A$~$ and one from $~$B$~$), and vice versa.
+The following discussion shows us how.</p>
+<ul>
+<li>If we know $~$f: A \sqcup B \to X$~$, then we know the [restriction_map restriction maps] $~$f \big|_A : A \to X$~$ %%note: This is defined by $~$f \big|_A (a) = f(a)$~$; that is, it is the function we obtain by "restricting" $~$f$~$ so that its <a href="function_domain.html">domain</a> is $~$A$~$ rather than the larger $~$A \sqcup B$~$.%% and $~$f \big|_B : B \to X$~$.</li>
+<li>If we know two maps $~$\alpha: A \to X$~$ and $~$\beta: B \to X$~$, then we can <em>uniquely</em> construct a map $~$f: A \sqcup B \to X$~$ which is "$~$\alpha$~$ and $~$\beta$~$ glued together". Formally, the map is defined as $~$f(x) = \alpha(x)$~$ if $~$x \in A$~$, and $~$f(x) = \beta(x)$~$ if $~$x \in B$~$.</li>
+</ul>
+<p>The reason this pins down the disjoint union exactly (up to isomorphism) is because the disjoint union is the <em>only</em> set which leaves us with no choice about how we construct $~$f$~$ from $~$\alpha$~$ and $~$\beta$~$:</p>
+<ul>
+<li>We rule out <em>strict subsets</em> of $~$A \sqcup B$~$ because we use the fact that every element of $~$A$~$ is in $~$A \sqcup B$~$ and every element of $~$B$~$ is in $~$A \sqcup B$~$, to ensure that the restriction maps make sense.</li>
+<li>We rule out <em>strict supersets</em> of $~$A \sqcup B$~$ because we use the fact that any element in $~$A \sqcup B$~$ is either in $~$A$~$ or it is in $~$B$~$ %%note: If we replaced $~$A \sqcup B$~$ by any strict superset, this stops being true: by passing to a superset, we introduce an element which is neither in $~$A$~$ nor in $~$B$~$.%%, to ensure that $~$f$~$ is defined everywhere on its <a href="function_domain.html">domain</a>. Moreover, we use the fact that every element of $~$A \sqcup B$~$ is in <em>exactly one</em> of $~$A$~$ or $~$B$~$, because if $~$x$~$ is in both $~$A$~$ and $~$B$~$, then we can't generally decide whether we should define $~$f(x)$~$ by $~$\alpha(x)$~$ or $~$\beta(x)$~$.</li>
+</ul>
+<h2 id="theproperty">The property</h2>
+<p>One who is well-versed in category theory and universal properties would be able to take the above discussion and condense it into the following statement, which is the <strong>universal property of the disjoint union</strong>:</p>
+<blockquote>
+  <p>Given sets $~$A$~$ and $~$B$~$, we define the <em>disjoint union</em> to be the following collection of three objects: $$~$\text{A set labelled }\ A \sqcup B \\ i_A : A \to A \sqcup B \\ i_B : B \to A \sqcup B$~$$ with the requirement that for every set $~$X$~$ and every pair of maps $~$f_A: A \to X$~$ and $~$f_B: B \to X$~$, there is a <em>unique</em> map $~$f: A \sqcup B \to X$~$ such that $~$f \circ i_A = f_A$~$ and $~$f \circ i_B = f_B$~$.</p>
+</blockquote>
+<p>[comment: Imgur was down when I made this picture, so I'm hosting it instead.]
+<img src="https://www.patrickstevens.co.uk/images/Coproduct.png" alt="Disjoint union universal property" /></p>
+<h2 id="asiderelationtotheproduct">Aside: relation to the product</h2>
+<p>Recall the <a href="product_universal_property.html">Universal property of the product</a>:</p>
+<blockquote>
+  <p>Given objects $~$A$~$ and $~$B$~$, we define the <em>product</em> to be the following collection of three objects, if it exists: $$~$A \times B \\ \pi_A: A \times B \to A \\ \pi_B : A \times B \to B$~$$ with the requirement that for every object $~$X$~$ and every pair of maps $~$f_A: X \to A, f_B: X \to B$~$, there is a <em>unique</em> map $~$f: X \to A \times B$~$ such that $~$\pi_A \circ f = f_A$~$ and $~$\pi_B \circ f = f_B$~$.</p>
+</blockquote>
+<p>Notice that this is just the same as the universal property of the disjoint union, but we have reversed the <a href="function_domain.html">domain</a> and <a href="function_codomain.html">codomain</a> of every function, and we have correspondingly reversed any function compositions.
+This shows us that the product and the disjoint union are, in some sense, "two sides of the same coin".
+If you remember the <a href="empty_set_universal_property.html">Universal property of the empty set</a>, we saw that the empty set's universal property also had a "flip side", and this flipped property characterises the one-element sets.
+So in the same sense, the empty set and the one-point sets are "two sides of the same coin".
+This is an instance of the concept of [duality_category_theory duality], and it turns up all over the place.</p>
+<h1 id="examples">Examples</h1>
+<h2 id="12">{1} ⊔ {2}</h2>
+<p>Let's think about the very first example that came from the top of the page: the disjoint union of $~$A=\{1\}$~$ and $~$B=\{2\}$~$.
+(This is, of course, $~$\{1,2\}$~$, but we'll try and tie the <em>universal property</em> point of view in with the <em>elements</em> point of view.)</p>
+<p>The definition becomes:</p>
+<blockquote>
+  <p>The <em>disjoint union</em> of $~$\{1\}$~$ and $~$\{2\}$~$ is the following collection of three objects: $$~$\text{A set labelled } \{1\} \sqcup \{2\} \\ i_A : \{1\} \to \{1\} \sqcup \{2\} \\ i_B : \{2\} \to \{1\} \sqcup \{2\}$~$$ with the requirement that for every set $~$X$~$ and every pair of maps $~$f_A: \{1\} \to X$~$ and $~$f_B: \{2\} \to X$~$, there is a <em>unique</em> map $~$f: A \sqcup B \to X$~$ such that $~$f \circ i_A = f_A$~$ and $~$f \circ i_B = f_B$~$.</p>
+</blockquote>
+<p>This is still long and complicated, but remember from <a href="product_universal_property.html">when we discussed the product</a> that a map $~$f_A: \{1\} \to X$~$ is precisely picking out a single element of $~$X$~$: namely $~$f_A(1)$~$.
+To every element of $~$X$~$, there is exactly one such map; and for every map $~$\{1\} \to X$~$, there is exactly one element of $~$X$~$ it picks out.
+(Of course, the same reasoning goes through with $~$B$~$ as well: $~$f_B$~$ is just picking out an element of $~$X$~$, too.)</p>
+<p>Also, $~$i_A$~$ and $~$i_B$~$ are just picking out single elements of $~$A \sqcup B$~$, though we are currently pretending that we don't know what $~$A \sqcup B$~$ is yet.</p>
+<p>So we can rewrite this talk of <em>maps</em> in terms of <em>elements</em>, to make it easier for us to understand this definition in the specific case that $~$A$~$ and $~$B$~$ have just one element each:</p>
+<blockquote>
+  <p>The <em>disjoint union</em> of $~$\{1\}$~$ and $~$\{2\}$~$ is the following collection of three objects: $$~$\text{A set labelled }\ \{1\} \sqcup \{2\} \\ \text{An element } i_A \text{ of } \{1\} \sqcup \{2\} \\ \text{An element }i_B \text{ of } \{1\} \sqcup \{2\}$~$$ with the requirement that for every set $~$X$~$ and every pair of elements $~$x \in X$~$ and $~$y \in X$~$, there is a <em>unique</em> map $~$f: A \sqcup B \to X$~$ such that $~$f(i_A) = x$~$ and $~$f(i_B) = y$~$.</p>
+</blockquote>
+<p>From this, we can see that $~$i_A$~$ and $~$i_B$~$ can't be the same, because $~$f$~$ acts differently on them (if we take $~$X = \{x,y\}$~$ where $~$x \not = y$~$, for instance).
+But also if there were any $~$z$~$ in $~$\{1\} \sqcup \{2\}$~$ <em>other</em> than $~$i_A$~$ and $~$i_B$~$, then for any attempt at our unique $~$f: A \sqcup B \to X$~$, we would be able to make a <em>different</em> $~$f$~$ by just changing where $~$z$~$ is sent to.</p>
+<p>So $~$A \sqcup B$~$ is precisely the set $~$\{i_A, i_B\}$~$; and this has determined it up to isomorphism as "the set with two elements".</p>
+<h3 id="asideahrefcardinalityhtmlcardinalitya">Aside: <a href="cardinality.html">Cardinality</a></h3>
+<p>Notice that the disjoint union of "the set with one element" and "the set with one element" yields "the set with two elements".
+It's actually true for general finite sets that the disjoint union of "the set with $~$m$~$ elements" with "the set with $~$n$~$ elements" yields "the set with $~$m+n$~$ elements"; a few minutes' thought should be enough to convince you of this, but it is an excellent exercise for you to do this from the category-theoretic <em>universal properties</em> viewpoint as well as from the (much easier) <em>elements</em> viewpoint.
+We will touch on this connection between "disjoint union" and "addition" a bit more later.</p>
+<h2 id="theemptyset">The empty set</h2>
+<p>What is the disjoint union of the <a href="empty_set.html">Empty set</a> with itself?
+(Of course, it's just the empty set, but let's pretend we don't know that.)
+The advantage of this example is that we already know a lot about the <a href="empty_set_universal_property.html">Universal property of the empty set</a>, so it's a good testing ground to see if we can do this without thinking about <em>elements</em> at all.</p>
+<p>Recall that the empty set is defined as follows:</p>
+<blockquote>
+  <p>The empty set $~$\emptyset$~$ is the unique set such that for every set $~$X$~$, there is precisely one function $~$\emptyset \to X$~$.</p>
+</blockquote>
+<p>The disjoint union of $~$\emptyset$~$ with itself would be defined as follows (where I've stuck to using $~$A$~$ and $~$B$~$ in certain places, because otherwise the whole thing just fills up with the $~$\emptyset$~$ symbol):</p>
+<blockquote>
+  <p>The following collection of three objects: $$~$\text{A set labelled }\ A \sqcup B \\ i_A : \emptyset \to A \sqcup B \\ i_B : \emptyset \to A \sqcup B$~$$ with the requirement that for every set $~$X$~$ and every pair of maps $~$f_A: \emptyset \to X$~$ and $~$f_B: \emptyset \to X$~$, there is a <em>unique</em> map $~$f: A \sqcup B \to X$~$ such that $~$f \circ i_A = f_A$~$ and $~$f \circ i_B = f_B$~$.</p>
+</blockquote>
+<p>Now, since we know that for every set $~$X$~$ there is a <em>unique</em> map $~$!_X: \emptyset \to X$~$ %%note: In general, the exclamation mark $~$!$~$ is used for a uniquely-defined map.%%, we can replace our talk of $~$f_A$~$ and $~$f_B$~$ by just the same $~$!_X$~$:</p>
+<blockquote>
+  <p>The following collection of three objects: $$~$\text{A set labelled }\ A \sqcup B \\ i_A : \emptyset \to A \sqcup B \\ i_B : \emptyset \to A \sqcup B$~$$ with the requirement that for every set $~$X$~$, there is a <em>unique</em> map $~$f: A \sqcup B \to X$~$ such that $~$f \circ i_A = (!_{X})$~$ and $~$f \circ i_B = (!_{X})$~$.</p>
+</blockquote>
+<p>Moreover, we know that $~$i_A$~$ and $~$i_B$~$ are also uniquely defined, because there is only one map $~$\emptyset \to A \sqcup B$~$ (no matter what $~$A \sqcup B$~$ might end up being); so we can remove them from the definition because they're forced to exist anyway.
+They're both just $~$!_{A \sqcup B}$~$.</p>
+<blockquote>
+  <p>The set $$~$A \sqcup B$~$$ with the requirement that for every set $~$X$~$, there is a <em>unique</em> map $~$f: A \sqcup B \to X$~$ such that $~$f \circ (!_{A \sqcup B}) = (!_X)$~$.</p>
+</blockquote>
+<p>A diagram is in order.</p>
+<p><img src="http://i.imgur.com/B72uW9o.png" alt="Universal property of the disjoint union of the empty set with itself" /></p>
+<p>The universal property is precisely saying that for every set $~$X$~$, there is a unique map $~$f: A \sqcup B \to X$~$ such that $~$f \circ (!_{A \sqcup B})$~$ is the map $~$!_X : \emptyset \to X$~$.</p>
+<p>But since $~$!_X$~$ is the <em>only</em> map from $~$\emptyset \to X$~$, we have $~$f \circ (!_{A \sqcup B}) = (!_X)$~$ <em>whatever $~$f$~$ is</em>.
+Indeed, $~$f \circ (!_{A \sqcup B})$~$ is a map from $~$\emptyset \to X$~$, and $~$!_X$~$ is the only such map.
+So we can drop that condition from the requirements, because it automatically holds!</p>
+<p>Therefore the disjoint union is: </p>
+<blockquote>
+  <p>The set $$~$A \sqcup B$~$$ with the requirement that for every set $~$X$~$, there is a <em>unique</em> map $~$f: A \sqcup B \to X$~$.</p>
+</blockquote>
+<p>Do you recognise that definition?
+It's just the universal property of the empty set!</p>
+<p>So $~$A \sqcup B$~$ is the empty set in this example.</p>
+<h1 id="moregeneralconcept">More general concept</h1>
+<p>We saw earlier that the disjoint union is characterised by the "reverse" (or "[duality_category_theory dual]") of the universal property of the product.
+In a more general <a href="category_theory.html">category</a>, we say that something which satisfies this property is a <em>[-coproduct]</em>. %%note: Prepending "co" to something means "reverse the maps".%%</p>
+<p>In general, the coproduct of objects $~$A$~$ and $~$B$~$ is written not as $~$A \sqcup B$~$ (which is specific to the category of <a href="set_mathematics.html">sets</a>), but as $~$A + B$~$.
+Among other things, the coproduct unifies the ideas of addition of <a href="integer.html">integers</a>, [least_upper_bound least upper bounds] in <a href="poset.html">posets</a>, disjoint union of sets, <a href="least_common_multiple.html">Least common multiple</a> of <a href="natural_number.html">naturals</a>, <a href="vector_space_direct_sum.html">Direct sum of vector spaces</a>, and [-free_product] of <a href="group_mathematics.html">groups</a>; all of these are coproducts in their respective categories.</p></main><hr><footer><p class="tagged"><h2>Tagged</h2><span class="page-comma-list"><a class="page-link" href="../page/c_class_meta_tag.html">C-Class</a></span></p><p class="all-creators"><h2>All Creators</h2><span class="page-comma-list"><a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a>,
+ <a class="page-link" href="../page/PatrickStevens.html">Patrick Stevens</a></span></p><p class="likes"><h2>Likes</h2><span class="page-comma-list"><a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a>,
+ <a class="page-link" href="../page/JaimeSevillaMolina.html">Jaime Sevilla Molina</a></span></p><p class="reverse-related"><h2>Reverse Related</h2><ul class="page-list"><li><a class="page-link" href="../page/c_class_meta_tag.html">C-Class</a> <q>This page has substantial content, but may not thoroughly cover the topic, may not meet style and prose standards, or may not explain the concept in a way the target audience will reliably understand.</q> - <a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a></li></ul></p></footer></body></html>

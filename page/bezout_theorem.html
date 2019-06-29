@@ -1,0 +1,41 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Bézout's theorem</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_SVG" async></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">Bézout's theorem</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/bezout_theorem.json.html">bezout_theorem.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/bezout_theorem">https://arbital.com/p/bezout_theorem</a></p><p class="creator">by
+ <a class="page-link" href="../page/PatrickStevens.html">Patrick Stevens</a> Jul 28 2016 
+updated
+ Sep 22 2016</p></div><p class="clickbait">Bézout's theorem is an important link between highest common factors and the integer solutions of a certain equation.</p><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>Bézout's theorem</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="math.html">Mathematics</a></li><li><a href="greatest_common_divisor.html">Greatest common divisor</a></li><li>…</li></ul></nav></nav></header><hr><main><p>[summary: Bézout's theorem states that if $~$a$~$ and $~$b$~$ are integers, and $~$c$~$ is an integer, then the equation $~$ax+by = c$~$ has integer solutions in $~$x$~$ and $~$y$~$ if and only if the <a href="greatest_common_divisor.html">Greatest common divisor</a> of $~$a$~$ and $~$b$~$ divides $~$c$~$.]</p>
+<p>Bézout's theorem is an important basic theorem of number theory.
+It states that if $~$a$~$ and $~$b$~$ are integers, and $~$c$~$ is an integer, then the equation $~$ax+by = c$~$ has integer solutions in $~$x$~$ and $~$y$~$ if and only if the <a href="greatest_common_divisor.html">Greatest common divisor</a> of $~$a$~$ and $~$b$~$ divides $~$c$~$.</p>
+<h1 id="proof">Proof</h1>
+<p>We have two directions of the equivalence to prove.</p>
+<h2 id="ifddaxbycddhassolutions">If $~$ax+by=c$~$ has solutions</h2>
+<p>Suppose $~$ax+by=c$~$ has solutions in $~$x$~$ and $~$y$~$.
+Then the highest common factor of $~$a$~$ and $~$b$~$ divides $~$a$~$ and $~$b$~$, so it divides $~$ax$~$ and $~$by$~$; hence it divides their sum, and hence $~$c$~$.</p>
+<h2 id="ifthehighestcommonfactordividesddcdd">If the highest common factor divides $~$c$~$</h2>
+<p>Suppose $~$\mathrm{hcf}(a,b) \mid c$~$; equivalently, there is some $~$d$~$ such that $~$d \times \mathrm{hcf}(a,b) = c$~$.</p>
+<p>We have the following fact: that the highest common factor is a linear combination of $~$a, b$~$. ([hcf_is_linear_combination Proof]; this [extended_euclidean_algorithm can also be seen] by working through [euclidean_algorithm Euclid's algorithm].)</p>
+<p>Therefore there are $~$x$~$ and $~$y$~$ such that $~$ax + by = \mathrm{hcf}(a,b)$~$.</p>
+<p>Finally, $~$a (xd) + b (yd) = d \mathrm{hcf}(a, b) = c$~$, as required.</p>
+<h1 id="actuallyfindingthesolutions">Actually finding the solutions</h1>
+<p>Suppose $~$d \times \mathrm{hcf}(a,b) = c$~$, as above.</p>
+<p>The [-extended_euclidean_algorithm] can be used (efficiently!) to obtain a linear combination $~$ax+by$~$ of $~$a$~$ and $~$b$~$ which equals $~$\mathrm{hcf}(a,b)$~$.
+Once we have found such a linear combination, the solutions to the integer equation $~$ax+by=c$~$ follow quickly by just multiplying through by $~$d$~$.</p>
+<h1 id="importance">Importance</h1>
+<p>Bézout's theorem is important as a step towards the proof of <a href="irreducibles_are_prime_in_integers.html">Euclid&#39;s lemma</a>, which itself is the key behind the <a href="fundamental_theorem_of_arithmetic.html">Fundamental Theorem of Arithmetic</a>.
+It also holds in general <a href="principal_ideal_domain.html">principal ideal domains</a>.</p></main><hr><footer><p class="tagged"><h2>Tagged</h2><span class="page-comma-list"><a class="page-link" href="../page/c_class_meta_tag.html">C-Class</a>,
+ <a class="page-link" href="../page/math2.html">Math 2</a>,
+ <a class="page-link" href="../page/proof_meta_tag.html">Proof</a></span></p><p class="all-creators"><h2>All Creators</h2><span class="page-comma-list"><a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a>,
+ <a class="page-link" href="../page/PatrickStevens.html">Patrick Stevens</a></span></p><p class="likes"><h2>Likes</h2><span class="page-comma-list"><a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a></span></p><p class="reverse-related"><h2>Reverse Related</h2><ul class="page-list"><li><a class="page-link" href="../page/c_class_meta_tag.html">C-Class</a> <q>This page has substantial content, but may not thoroughly cover the topic, may not meet style and prose standards, or may not explain the concept in a way the target audience will reliably understand.</q> - <a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a></li><li><a class="page-link" href="../page/math2.html">Math 2</a> <q>Do you work with math on a fairly routine basis?  Do you have little trouble grasping abstract structures and ideas?</q> - <a class="page-link" href="../page/EliezerYudkowsky.html">Eliezer Yudkowsky</a></li><li><a class="page-link" href="../page/proof_meta_tag.html">Proof</a> <q>This page is just a proof, rather than a motivated explanation.</q> - <a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a></li></ul></p></footer></body></html>

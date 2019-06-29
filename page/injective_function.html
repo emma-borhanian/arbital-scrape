@@ -1,0 +1,28 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Injective function</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_SVG" async></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">Injective function</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/injective_function.json.html">injective_function.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/injective_function">https://arbital.com/p/injective_function</a></p><p class="creator">by
+ <a class="page-link" href="../page/PatrickStevens.html">Patrick Stevens</a> Jun 14 2016 
+updated
+ Jun 29 2016</p></div><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>Injective function</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="math.html">Mathematics</a></li><li><a href="function.html">Function</a></li><li>…</li></ul></nav></nav></header><hr><main><p>A <a href="function.html">Function</a> $~$f: X \to Y$~$ is <em>injective</em> if it has the property that whenever $~$f(x) = f(y)$~$, it is the case that $~$x=y$~$. Given an element in the <a href="function_range.html">image</a>, it came from applying $~$f$~$ to exactly one element of the <a href="function_domain.html">domain</a>.</p>
+<p>This concept is also commonly called being "one-to-one".
+That can be a little misleading to someone who does not already know the term, however, because many people's natural interpretation of "one-to-one" (without otherwise having learnt the term) is that every element of the domain is matched up in a one-to-one way with <em>every</em> element of the domain, rather than simply with <em>some</em> element of the domain.
+That is, a rather natural way of interpreting "one-to-one" is as "<a href="bijective_function.html">bijective</a>" rather than "injective".</p>
+<h1 id="examples">Examples</h1>
+<ul>
+<li>The function $~$\mathbb{N} \to \mathbb{N}$~$ (where $~$\mathbb{N}$~$ is the set of <a href="natural_number.html">natural numbers</a>) given by $~$n \mapsto n+5$~$ is injective: since $~$n+5 = m+5$~$ implies $~$n = m$~$. Note that this function is not <a href="surjective_function.html">surjective</a>: there is no natural number $~$k$~$ such that $~$k+5 = 2$~$, for instance, so $~$2$~$ is not in the range of the function.</li>
+<li>The function $~$f: \mathbb{N} \to \mathbb{N}$~$ given by $~$f(n) = 6$~$ for all $~$n$~$ is not injective: since $~$f(1) = f(2)$~$ but $~$1 \not = 2$~$, for instance.</li>
+</ul></main><hr><section class="comments"><h2>Comments</h2><div class="comment"><p><a class="page-link" href="../page/JoeZeng.html">Joe Zeng</a></p><p><p>Why is it misleading to call injective "one-to-one"?</p></p></div></section><footer><p class="tagged"><h2>Tagged</h2><span class="page-comma-list"><a class="page-link" href="../page/definition_meta_tag.html">Definition</a>,
+ <a class="page-link" href="../page/needs_clickbait_meta_tag.html">Needs clickbait</a></span></p><p class="likes"><h2>Likes</h2><span class="page-comma-list"><a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a></span></p><p class="reverse-related"><h2>Reverse Related</h2><ul class="page-list"><li><a class="page-link" href="../page/definition_meta_tag.html">Definition</a> <q>Meta tag used to mark pages that strictly define a particular term or phrase.</q> - <a class="page-link" href="../page/EliezerYudkowsky.html">Eliezer Yudkowsky</a></li><li><a class="page-link" href="../page/needs_clickbait_meta_tag.html">Needs clickbait</a> <q>This page does not have clickbait (a short teaser for the page displayed on various lists). Feel free to add it!</q> - <a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a></li></ul></p></footer></body></html>

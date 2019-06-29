@@ -1,0 +1,39 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Conjugacy classes of the alternating group on five elements</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_SVG" async></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">Conjugacy classes of the alternating group on five elements</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/alternating_group_five_conjugacy_classes.json.html">alternating_group_five_conjugacy_classes.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/alternating_group_five_conjugacy_classes">https://arbital.com/p/alternating_group_five_conjugacy_classes</a></p><p class="creator">by
+ <a class="page-link" href="../page/PatrickStevens.html">Patrick Stevens</a> Jun 18 2016 
+updated
+ Jun 18 2016</p></div><p class="clickbait">$A_5$ has easily-characterised conjugacy classes, based on a rather surprising theorem about when conjugacy classes in the symmetric group split.</p><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>Conjugacy classes of the alternating group on five elements</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="math.html">Mathematics</a></li><li><a href="abstract_algebra.html">Abstract algebra</a></li><li><a href="algebraic_structure.html">Algebraic structure</a></li><li><a href="group_mathematics.html">Group</a></li><li><a href="alternating_group.html">Alternating group</a></li><li>…</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="math.html">Mathematics</a></li><li><a href="group_theory.html">Group theory</a></li><li><a href="group_mathematics.html">Group</a></li><li><a href="alternating_group.html">Alternating group</a></li><li>…</li></ul></nav></nav></header><hr><main><p>This page lists the <a href="conjugacy_class.html">conjugacy classes</a> of the <a href="alternating_group.html">Alternating group</a> $~$A_5$~$ on five elements.
+See a <a href="conjugacy_classes_alternating_five_simpler.html">different lens</a> for a derivation of this result using less theory.</p>
+<p>$~$A_5$~$ has size $~$5!/2 = 60$~$, where the exclamation mark denotes the <a href="factorial.html">Factorial</a> function.
+We will assume access to [4bk the conjugacy class table of $~$S_5$~$] the <a href="symmetric_group.html">Symmetric group</a> on five elements; $~$A_5$~$ is a <a href="quotient_group.html">quotient</a> of $~$S_5$~$ by the <a href="sign_homomorphism_symmetric_group.html">sign homomorphism</a>.</p>
+<p>We have that a conjugacy class splits if and only if its <a href="cycle_notation_symmetric_group.html">cycle type</a> is all odd, all distinct. (<a href="splitting_conjugacy_classes_in_alternating_group.html">Proof.</a>)
+This makes the classification of conjugacy classes very easy.</p>
+<h1 id="thetable">The table</h1>
+<p>We must remove all the lines of [4bk $~$S_5$~$'s table] which correspond to odd permutations (that is, those which are the product of odd-many <a href="transposition_in_symmetric_group.html">transpositions</a>). Indeed, those lines are classes which are not even in $~$A_5$~$.</p>
+<p>We are left with cycle types $~$(5)$~$, $~$(3, 1, 1)$~$, $~$(2, 2, 1)$~$, $~$(1,1,1,1,1)$~$.
+Only the $~$(5)$~$ cycle type can split into two, by the splitting condition.
+It splits into the class containing $~$(12345)$~$ and the class which is $~$(12345)$~$ conjugated by odd permutations in $~$S_5$~$.
+A representative for that latter class is $~$(12)(12345)(12)^{-1} = (21345)$~$.</p>
+<p>$$~$\begin{array}{|c|c|c|c|}
+\hline
+\text{Representative}&amp; \text{Size of class} &amp; \text{Cycle type} &amp; \text{Order of element} \\ \hline
+(12345) &amp; 12 &amp; 5 &amp; 5 \\ \hline
+(21345) &amp; 12 &amp; 5 &amp; 5 \\ \hline
+(123) &amp; 20 &amp; 3,1,1 &amp; 3 \\ \hline
+(12)(34) &amp; 15 &amp; 2,2,1 &amp; 2 \\ \hline
+e &amp; 1 &amp; 1,1,1,1,1 &amp; 1 \\ \hline
+\end{array}$~$$</p></main><hr><footer><p class="children"><h2>Children</h2><ul class="page-tree"><li><a class="page-link" href="../page/conjugacy_classes_alternating_five_simpler.html">Conjugacy classes of the alternating group on five elements: Simpler proof</a> <q>A listing of the conjugacy classes of the alternating group on five letters, without using heavy theory.</q> - <a class="page-link" href="../page/PatrickStevens.html">Patrick Stevens</a></li></ul></p></footer></body></html>

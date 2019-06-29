@@ -1,0 +1,76 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Locale</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_SVG" async></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">Locale</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/locale.json.html">locale.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/locale">https://arbital.com/p/locale</a></p><p class="creator">by
+ <a class="page-link" href="../page/AdeleLopez.html">Adele Lopez</a> Nov 29 2017 
+updated
+ Nov 18 2018</p></div><p class="clickbait">Topology - but right</p><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>Locale</li></ul></nav></nav></header><hr><main><p>A <strong>locale</strong> is a structure which captures the relations between possible observations. This fact is an important insight into <em>why</em> topological spaces show up so often when thinking about artificial intelligence. In particular, this gives us to key to understanding why computable functions are continuous. </p>
+<p>They are very similar to topological spaces -- the open sets of any topology form a locale. However, they have better properties than topologies in many contexts. For example, they're easier to work with when constructive math is required.
+See Peter Johnstone's <a href="http://pointlesstopology.com/the-point-of-pointless-topology.pdf">The point of pointless topology</a> for an overview of these benefits.</p>
+<h1 id="whylocales">Why locales?</h1>
+<p>Locales model observations, and thus turn up in a very wide variety of contexts. In particular, they model <em>affirmable</em> observations - observations which, if true, can be affirmed by a witness. For example, "Some crows are black" is an affirmable observation, since we could affirm it by the existence of a black crow. On the other hand, "All crows are black" is <em>not</em> an affirmable observation. The locale is a system of affirmable observations which we call <strong>opens</strong>. %%note: The example "All crows are black" <em>is</em> however a <em>refutable</em> observation, since the existence of a white crow would refute it. Refutable observations are called <strong>closeds</strong>, and are also a part of the locale structure. We incorporate them by identifying them with their negations, which are affirmative!%%</p>
+<p>Observations can have more or less information. This gives them a <a href="poset.html">poset</a> structure. We say that the more specific open <em>refines</em> the more generic open. To say $~$A$~$ refines $~$B$~$, we write $~$A\le B$~$. A witness affirming $~$A$~$ will also affirm $~$B$~$.  </p>
+<p>Observations can be combined to make a higher information observation. We call this combination the <strong>meet</strong> of our observations, and write it as $~$\bigwedge A_i$~$ or $~$A \wedge B$~$. Think of this as $~$A$~$ <em>and</em> $~$B$~$. If incompatible observations are combined, we get the bottom element of the poset: $~$\bot$~$ -- representing false. We can only combine a finite number of observations -- that's because we are modeling observations that can be computably affirmed, we can't really observe something if it takes an infinite amount of time to observe it. </p>
+<p>Observations can cover an arbitrary set of observations as specific possibilities. We call this the <strong>join</strong> of our opens, and write it as $~$\bigvee A_i$~$ or $~$A \vee B$~$. Think of this as $~$A$~$ <em>or</em> $~$B$~$. Together with finite meets, this gives the locale a <a href="order_lattice.html">lattice</a> structure. The top element of the poset $~$\top$~$ represents true, and is the most generic observation. We <em>can</em> observe the join of an infinite number of opens because to affirm this join, we only need to have a witness from <em>one</em> of the opens in the join.</p>
+<p>Joins and meets must be compatible with each other. In particular, they must satisfy the distributive law: $~$A\wedge \bigvee A_i = \bigvee (A \wedge A_i)$~$. Again, this is modeling the natural logic of how combining information from observations works. </p>
+<p>%%hidden(So are locales the one right way to model observations?): There are some ontological commitments that locales make: that the order of observations doesn't matter,  and that observations don't affect the world. Quantales generalize locales to remove these commitments! Are quantales the one right way? Well, it's hard to notice what other commitments we might be implicitly making. Also, quantales are a lot harder to work with, which means we try to avoid using them if we don't need them. In general, there isn't a single right way to model something -- it depends a lot on what exactly you're trying to do with it.%%</p>
+<h2 id="points">Points</h2>
+<p>Observations represent the kinds of information we can have about where something is. A point is then an <em>exact place</em> where something can be. In a topological space, observations correspond to sets of points, but in a locale, we can be more flexible. We also don't have to worry about points that have no possible observations that can distinguish them. %%note: i.e. locales are automatically $~$T_0$~$ separated. %% </p>
+<p>If a locale has enough points so that we can define the opens as sets of points, we say the locale is <em>spatial</em>. Typically, the locales we are interested in will be spatial.</p>
+<p>%%todo:</p>
+<h2 id="categoryperspective">Category perspective</h2>
+<p>A poset can be considered as a category, the elements are the objects, and the order relation defines the morphisms: $~$A \le B$~$ implies there's a morphism $~$A \rightarrow B$~$. The meet is then the product, and the join is the coproduct! Initial object of course is $~$\bot$~$, and final object is $~$\top$~$. Morphisms can also be interpreted as logical implication!</p>
+<p>Locales themselves can be the object of a category. In fact, they are the objects of multiple important categories!
+%%</p>
+<h2 id="morphisms">Morphisms</h2>
+<p>What is a morphism of locales? Let's think about this in terms of observations. Say we have locales $~$A$~$ and $~$B$~$, and a computable process $~$f$~$ which takes points in $~$A$~$ to points in $~$B$~$. %%note: The locales don't need to be spatial for this to work, but it's easier to motivate the definition if we can reference points.%%</p>
+<p>For concreteness, say that $~$A$~$ is a locale representing the space in a glass slide, $~$B$~$ is a locale representing a computer monitor, and $~$f$~$ is a microscope which can look at the slide and project its view to the monitor. </p>
+<p>An observation which we make on the monitor gives us (via $~$f$~$ the microscope) an observation on the slide. More generally, we can map opens of $~$B$~$ to opens of $~$A$~$.</p>
+<p>Now consider what happens if combine a set $~$S$~$ of opens on $~$B$~$. We don't expect our computable process to effect how the observations combine. So in other words, we expect $~$f(\vee S) = \vee f(S)$~$, and if $~$S$~$ is finite, $~$f(\wedge S) = \wedge f(S)$~$. </p>
+<p>We call a morphism $~$f:A\rightarrow B$~$ satisfying these properties a <em>continuous map</em>. If our locales are spatial, this corresponds exactly to a continuous function between topological spaces!</p>
+<h1 id="examples">Examples</h1>
+<h2 id="thelocaleofrealnumbers">The locale of real numbers</h2>
+<p>Opens are generated by rational intervals. </p>
+<h2 id="moreexamples">More examples</h2>
+<ul>
+<li>The 3D space that we live in</li>
+<li>The open sets of any topology</li>
+<li>Logical propositions </li>
+</ul>
+<h1 id="importantconcepts">Important concepts</h1>
+<ul>
+<li>Sublocale</li>
+<li>Separation</li>
+<li>Regularity is the most natural separation axiom, not Hausdorff (which <em>can</em> be defined for locales)</li>
+<li>Compactness</li>
+<li>Fundamental groupoid</li>
+<li>Much intuitively clearer to define and use!</li>
+</ul>
+<h1 id="howdoweusethem">How do we use them?</h1>
+<h2 id="conceptualclarity">Conceptual clarity</h2>
+<p>I've found that replacing topological spaces with locales typically brings about conceptual clarity when working on something. This effect seems to be stronger the less obvious it is to make the replacement. Topological spaces bring lots of baggage with them, with all the sets and the axiom of choice. Once these have been dropped, it becomes easier to see what's actually going on, to move! Think of this as analogous to replacing Roman numerals with Arabic numerals - it's not really that you can do anything that you couldn't do before, it just becomes significantly easier to do things! </p>
+<h2 id="constructiveanalysis">Constructive analysis</h2>
+<p>The real line always felt like such a complicated thing to drag into the laws of physics; there must be something better! In order to do physics with that something, we'd better be able to do analysis. Luckily, locales are very promising in this regard!</p>
+<ul>
+<li>Heine-Borel</li>
+<li>Constructive Tychonoff!</li>
+</ul>
+<h1 id="references">References</h1>
+<ol>
+<li>Topology via Logic by Stephen Vickers</li>
+<li>Stone Spaces by Peter Johnstone</li>
+<li><a href="https://ncatlab.org/nlab/show/locale">Locale - nLab</a></li>
+</ol></main><hr><footer><p class="likes"><h2>Likes</h2><span class="page-comma-list"><a class="page-link" href="../page/8xl.html">8xl</a>,
+ <a class="page-link" href="../page/KevinClancy.html">Kevin Clancy</a></span></p></footer></body></html>

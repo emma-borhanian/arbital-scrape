@@ -1,0 +1,64 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Lattice: Exercises</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_SVG" async></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">Lattice: Exercises</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/poset_lattice_exercise.json.html">poset_lattice_exercise.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/poset_lattice_exercise">https://arbital.com/p/poset_lattice_exercise</a></p><p class="creator">by
+ <a class="page-link" href="../page/KevinClancy.html">Kevin Clancy</a> Jul 16 2016 
+updated
+ Apr 25 2017</p></div><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>Lattice: Exercises</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="math.html">Mathematics</a></li><li><a href="order_theory.html">Order theory</a></li><li><a href="order_lattice.html">Lattice (Order Theory)</a></li><li>…</li></ul></nav></nav></header><hr><main><p>Try these exercises to test your knowledge of lattices.</p>
+<h2 id="distributivity">Distributivity</h2>
+<p>Does the lattice meet operator distribute over joins? In other words, for all lattices $~$L$~$ and all $~$p, q, r \in L$~$, is it necessarily true that $~$p \wedge (q \vee r) = (p \wedge q) \vee (p \wedge r)$~$? Prove your answer.</p>
+<p>%%hidden(Solution):
+The following counterexample shows that lattice meets do not necessarily distribute over joins.</p>
+<p><img src="http://i.imgur.com/SKJirZx.png" alt="A non-distributive lattice called as M3" /></p>
+<pre>%%%comment:
+dot source:
+
+digraph G {
+  node [width = 0.1, height = 0.1]
+  edge [arrowhead = &quot;none&quot;]
+
+  rankdir = BT;
+  t -&gt; p
+  t -&gt; q
+  t -&gt; r
+  p -&gt; s
+  q -&gt; s
+  r -&gt; s
+}
+%%%</pre>
+<p>In the above lattice, $~$p \wedge (q \vee r) = p \neq t = (p \wedge q) \vee (p \wedge r)$~$.
+%%</p>
+<h2 id="commonelements">Common elements</h2>
+<p>Let $~$L$~$ be a lattice, and let $~$J$~$ and $~$K$~$ be two finite subsets of $~$L$~$ with a non-empty intersection. Prove that $~$\bigwedge J \leq \bigvee K$~$.</p>
+<p>%%hidden(Solution):
+If $~$J$~$ and $~$K$~$ have a non-empty intersection, then there exists some lattice element $~$p$~$ such that $~$p \in J$~$ and $~$p \in K$~$. Since $~$\bigwedge J$~$ is a lower bound of $~$J$~$, we have $~$\bigwedge J \leq p$~$. Since $~$\bigvee K$~$ is an upper bound of $~$K$~$, we have $~$p \leq \bigvee K$~$. By transitivity, we have $~$\bigwedge J \leq p \leq \bigvee K$~$.
+%%</p>
+<h2 id="anotherinequality">Another inequality</h2>
+<p>Let $~$L$~$ be a lattice, and let $~$J$~$ and $~$K$~$ be two finite subsets of $~$L$~$ such that for all $~$j \in J$~$ and $~$k \in K$~$, $~$j \leq k$~$. Prove that $~$\bigvee J \leq \bigwedge K$~$.</p>
+<p>%%hidden(Solution):
+Rephrasing the problem statement, we have that every element of $~$J$~$ is a lower bound of $~$K$~$ and that every element of $~$K$~$ is an upper bound of $~$J$~$. It the follows that for $~$j \in J$~$, $~$j \leq \bigwedge K$~$. Hence, $~$\bigwedge K$~$ is an upper bound of $~$J$~$, and therefore it is greater than or equal to the <em>least</em> upper bound of $~$J$~$: $~$\bigvee J \leq \bigwedge K$~$.
+%%</p>
+<h2 id="theminimaxtheorem">The minimax theorem</h2>
+<p>Let $~$L$~$ be a lattice and $~$A$~$ an $~$m \times n$~$ matrix of elements of $~$L$~$. Prove the following inequality: $$~$\bigvee_{i=1}^m \bigwedge_{j=1}^n A_{ij} \leq \bigwedge_{j=1}^n \bigvee_{i=1}^m A_{ij}$~$$.</p>
+<p>%%hidden(Solution):
+To get an intuitive feel for this theorem, it helps to first consider a small concrete instantiation. Consider the $~$3 \times 3$~$ matrix depicted below, with elements $~$a,b,c,d,e,f,g,h$~$, and $~$i$~$. The inequality instantiates to $~$(a \wedge b \wedge c) \vee (d \wedge e \wedge f) \vee (g \wedge h \wedge i) \leq (a \vee d \vee g) \wedge (b \vee e \vee h) \wedge (c \vee f \vee i)$~$. Why would this inequality hold?</p>
+<p>$$~$\left[ \begin{array}{ccc}
+a &amp; b &amp; c \\
+d &amp; e &amp; f \\
+g &amp; h &amp; i \\
+\end{array} \right]$~$$</p>
+<p>Notice that each parenthesized expression on the left hand side of the inequality shares an element with each parenthesized expression on the right hand side of the inequality.This is true because the parenthesized expressions on the left hand side correspond to rows and the parenthesized expressions on the right hand side correspond to columns; each row of a matrix shares an element with each of its columns. The theorem proven in the <em>Common elements</em> exercise above then tells us that each parenthesized expression on the left hand side is less than or equal to each parenthesized expression on the right hand side.</p>
+<p>Let $~$J = \{ a \wedge b \wedge c, d \wedge e \wedge f, g \wedge h \wedge i \}$~$ and $~$K = \{ a \vee d \vee g, b \vee e \vee h, c \vee f \vee i \}$~$. Then the hypothesis for the theorem proven in the <em>Another inequality</em> exercise holds, giving us $~$\bigvee J \leq \bigwedge K$~$, which is exactly what we wanted to prove. Extending this approach to the general case is straightforward.
+%%</p></main><hr><footer><p class="tagged"><h2>Tagged</h2><span class="page-comma-list"><a class="page-link" href="../page/exercise_meta_tag.html">Exercise </a></span></p><p class="likes"><h2>Likes</h2><span class="page-comma-list"><a class="page-link" href="../page/NateSoares.html">Nate Soares</a></span></p><p class="reverse-related"><h2>Reverse Related</h2><ul class="page-list"><li><a class="page-link" href="../page/exercise_meta_tag.html">Exercise </a> <q>Meta tag for pages with exercises to practice a concept.</q> - <a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a></li></ul></p></footer></body></html>

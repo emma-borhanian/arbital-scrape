@@ -1,0 +1,33 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Exponential notation for function spaces</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_SVG" async></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">Exponential notation for function spaces</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/5k7.json.html">5k7.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/5k7">https://arbital.com/p/5k7</a></p><p class="creator">by
+ <a class="page-link" href="../page/IzaakMeckler.html">Izaak Meckler</a> Jul 24 2016 
+updated
+ Jul 25 2016</p></div><p class="clickbait">Why $Y^X$ is good notation for the space of maps from $X$ to $Y$ </p><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>Exponential notation for function spaces</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="math.html">Mathematics</a></li><li>…</li></ul></nav></nav></header><hr><main><p>If $~$X$~$ and $~$Y$~$ are sets, the set of functions from $~$X$~$ to $~$Y$~$ (often written $~$X \to Y$~$) is sometimes also written $~$Y^X$~$. This latter notation, which we'll call <em>exponential notation</em>, is related to the notation for finite powers of sets (e.g., $~$Y^3$~$ for the set of triples of elements of $~$Y$~$) as well as the notation of exponentiation for numbers.</p>
+<p>Without further ado, here are some reasons this is good notation.</p>
+<ul>
+<li><p>A function $~$f : X \to Y$~$ can be thought of as an "$~$X$~$ wide" tuple of elements of $~$Y$~$. That is, a tuple of elements of $~$Y$~$ where the positions in the tuple are given by elements of $~$X$~$, generalizing the notation $~$Y^n$~$ which denotes the set of $~$n$~$ wide tuples of elements of $~$Y$~$. Note that if $~$|X| = n$~$, then $~$Y^X \cong Y^n$~$.</p></li>
+<li><p>This notion of exponentiation together with cartesian product as multiplication and disjoint union as addition satisfy the same relations as exponentiation, multiplication, and addition of natural numbers. Namely, </p></li>
+<li><p>$~$Z^{X \times Y} \cong (Z^X)^Y$~$ (this isomorphism is called currying)</p></li>
+<li><p>$~$Z^{X + Y} \cong Z^X \times Z^Y$~$</p></li>
+<li><p>$~$Z^1 \cong Z$~$ (where $~$1$~$ is a one element set, since there is one function into $~$Z$~$ for every element of $~$Z$~$)</p></li>
+<li><p>$~$Z^0 \cong 1$~$ (where $~$0$~$ is the empty set, since there is one function from the empty set to any set)</p></li>
+</ul>
+<p>More generally, $~$Y^X$~$ is good notation for the exponential object representing $~$\text{Hom}_{\mathcal{C}}(X, Y)$~$ in an arbitrary cartesian closed category $~$\mathcal{C}$~$ for the first set of reasons listed above.</p></main><hr><section class="comments"><h2>Comments</h2><div class="comment"><p><a class="page-link" href="../page/PatrickStevens.html">Patrick Stevens</a></p><p><blockquote class="comment-context">If $~$X$~$ and $~$Y$~$ are sets, the set of functions from $~$X$~$ to $~$Y$~$ \(often written $~$X \\to Y$~$\) is sometimes also written $~$Y^X$~$\. This latter notation, which I'll call exponential notation, is related to the notation for finite powers of sets \(e\.g\., $~$Y^2$~$ <mark>for the powers of triples of elements</mark> of $~$Y$~$\) as well as the notation of exponentiation for numbers\.</blockquote>
+<p>I don't think this is what you mean, is it?</p></p></div></section><footer><p class="all-creators"><h2>All Creators</h2><span class="page-comma-list"><a class="page-link" href="../page/EricRogstad.html">Eric Rogstad</a>,
+ <a class="page-link" href="../page/IzaakMeckler.html">Izaak Meckler</a></span></p><p class="likes"><h2>Likes</h2><span class="page-comma-list"><a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a>,
+ <a class="page-link" href="../page/IzaakMeckler.html">Izaak Meckler</a>,
+ <a class="page-link" href="../page/KevinClancy.html">Kevin Clancy</a></span></p></footer></body></html>

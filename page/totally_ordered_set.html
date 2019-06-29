@@ -1,0 +1,42 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Totally ordered set</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_SVG" async></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">Totally ordered set</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/totally_ordered_set.json.html">totally_ordered_set.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/totally_ordered_set">https://arbital.com/p/totally_ordered_set</a></p><p class="creator">by
+ <a class="page-link" href="../page/JoeZeng.html">Joe Zeng</a> Jul 5 2016 
+updated
+ Jul 21 2016</p></div><p class="clickbait">A set where all the elements can be compared as greater than or less than.</p><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>Totally ordered set</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="math.html">Mathematics</a></li><li><a href="order_theory.html">Order theory</a></li><li>…</li></ul></nav></nav></header><hr><main><p>[summary:
+A totally ordered set is a pair $~$(S, \le)$~$ of a set $~$S$~$ and a <em>total order</em> $~$\le$~$ on $~$S$~$, which is a <a href="relation_mathematics.html">binary relation</a> that satisfies the following properties:</p>
+<ol>
+<li>For all $~$a, b \in S$~$, if $~$a \le b$~$ and $~$b \le a$~$, then $~$a = b$~$. (the <a href="antisymmetric_relation.html">antisymmetric</a> property)</li>
+<li>For all $~$a, b, c \in S$~$, if $~$a \le b$~$ and $~$b \le c$~$, then $~$a \le c$~$. (the <a href="transitive_relation.html">transitive</a> property)</li>
+<li>For all $~$a, b \in S$~$, either $~$a \le b$~$ or $~$b \le a$~$, or both. (the [total_relation totality] property)]</li>
+</ol>
+<p>A <strong>totally ordered set</strong> is a pair $~$(S, \le)$~$ of a set $~$S$~$ and a <em>total order</em> $~$\le$~$ on $~$S$~$, which is a [-binary_relation] that satisfies the following properties:</p>
+<ol>
+<li>For all $~$a, b \in S$~$, if $~$a \le b$~$ and $~$b \le a$~$, then $~$a = b$~$. (the <a href="antisymmetric_relation.html">antisymmetric</a> property)</li>
+<li>For all $~$a, b, c \in S$~$, if $~$a \le b$~$ and $~$b \le c$~$, then $~$a \le c$~$. (the <a href="transitive_relation.html">transitive</a> property)</li>
+<li>For all $~$a, b \in S$~$, either $~$a \le b$~$ or $~$b \le a$~$, or both. (the [total_relation totality] property)</li>
+</ol>
+<p>A totally ordered set is a special type of <a href="poset.html">partially ordered set</a> that satisfies the total property — in general, posets only satisfy the <a href="reflexive_relation.html">reflexive</a> property, which is that $~$a \le a$~$ for all $~$a \in S$~$.</p>
+<h2 id="examplesoftotallyorderedsets">Examples of totally ordered sets</h2>
+<p>The <a href="real_number.html">real numbers</a> are a totally ordered set. So are any of the subsets of the real numbers, such as the <a href="rational_number.html">rational numbers</a> or the <a href="integer.html">integers</a>.</p>
+<h2 id="examplesofnottotallyorderedsets">Examples of not totally ordered sets</h2>
+<p>The <a href="complex_number.html">complex numbers</a> do not have a canonical total ordering, and especially not a total ordering that preserves all the properties of the ordering of the real numbers, although one can define a total ordering on them quite easily.</p></main><hr><section class="comments"><h2>Comments</h2><div class="comment"><p><a class="page-link" href="../page/KevinClancy.html">Kevin Clancy</a></p><p><blockquote class="comment-context">A totally ordered set $~$(S, \\le)$~$ is a set $~$S$~$ with a <mark>comparison operator $~$\\le$~$</mark> that is defined for all members of $~$S$~$\.</blockquote>
+<p>Correct me if I'm wrong, but isn't it idiosyncratic to define $~$\leq$~$ as a predicate rather than a relation? I know of at least three books that describe it as a relation: The Joy of Sets by Devlin, Principles of Mathematical Analysis by Rudin, and Introduction to Lattice and Order by Davey and Priestly.</p>
+<p>Also, isn't $~$\leq$~$ called an order rather than a comparison?</p>
+<p>I bring this up because I would like there to be consistency between this page and the <a href="poset.html">Partially ordered set</a> page. I think both pages should follow the conventions of mathematics.</p></p></div></section><footer><p class="tagged"><h2>Tagged</h2><span class="page-comma-list"><a class="page-link" href="../page/needs_summary_meta_tag.html">Needs summary</a>,
+ <a class="page-link" href="../page/start_meta_tag.html">Start</a></span></p><p class="all-creators"><h2>All Creators</h2><span class="page-comma-list"><a class="page-link" href="../page/EricRogstad.html">Eric Rogstad</a>,
+ <a class="page-link" href="../page/JoeZeng.html">Joe Zeng</a>,
+ <a class="page-link" href="../page/KevinClancy.html">Kevin Clancy</a></span></p><p class="reverse-related"><h2>Reverse Related</h2><ul class="page-list"><li><a class="page-link" href="../page/needs_summary_meta_tag.html">Needs summary</a> <q>This page does not have a summary which provides an informative overview of the page's primary topic.</q> - <a class="page-link" href="../page/AlexeiAndreev.html">Alexei Andreev</a></li><li><a class="page-link" href="../page/start_meta_tag.html">Start</a> <q>This page gives a basic overview of the topic, but may be missing important information or have stylistic issues. If you're able to, please help expand or improve it!</q> - <a class="page-link" href="../page/EliezerYudkowsky.html">Eliezer Yudkowsky</a></li></ul></p><p class="children"><h2>Children</h2><ul class="page-tree"><li><a class="page-link" href="../page/well_ordered_set.html">Well-ordered set</a> <q>An ordered set with an order that always has a &quot;next element&quot;.</q> - <a class="page-link" href="../page/DylanHendrickson.html">Dylan Hendrickson</a></li></ul></p></footer></body></html>

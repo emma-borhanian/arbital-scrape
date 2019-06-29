@@ -1,0 +1,78 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Human arguments and AI control</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_SVG" async></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">Human arguments and AI control</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/human_arguments_ai_control.json.html">human_arguments_ai_control.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/human_arguments_ai_control">https://arbital.com/p/human_arguments_ai_control</a></p><p class="creator">by
+ <a class="page-link" href="../page/PaulChristiano.html">Paul Christiano</a> Feb 3 2016 
+updated
+ Feb 25 2016</p></div><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>Human arguments and AI control</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="paul_ai_control.html">Paul Christiano's AI control blog</a></li><li>…</li></ul></nav></nav></header><hr><main><h3 id="explanationandaicontrol">Explanation and AI control</h3>
+<p>Consider the definition:</p>
+<blockquote>
+  <p>An action is good to the extent that I would judge it to be good, after hearing a detailed explanation assessing its advantages, disadvantages, and alternatives.</p>
+</blockquote>
+<p>Contrast with:</p>
+<blockquote>
+  <p>An action is good to the extent that I would judge it to be good, after an extensive and idealized process of reflection.</p>
+</blockquote>
+<p>The second definition seems like a conceptually useful ingredient for AI control. The first definition would be&nbsp;a lot more actionable&nbsp;though; if we could make it work, it seems more promising as an ingredient of concrete AI control proposals. In this context, the explanations would be crafted by AI systems trained to produce compelling explanations.</p>
+<p>For this to work, we would need to reliably distinguish good from bad actions based only on their explanations — explanations which were chosen to be maximally compelling, rather than based on notions of “honesty” or a desire to be helpful.</p>
+<p>To achieve this goal, these explanations would need to be quite rich in at least two senses:</p>
+<ul>
+<li>These explanations may depend on unfamiliar concepts and complex reasoning, which&nbsp;<em>themselves</em>&nbsp;require explanation.</li>
+<li>These explanations need to explore not only an option but its alternatives, not only the evidence for a conclusion but the evidence against. They may look more like “arguments” than an “explanations,” even though there is no explicit adversarial dynamic.</li>
+</ul>
+<p>To make things a bit easier, the explanations need not be produced strategically by a single actor. Instead, different parts of the explanation could be produced to satisfy different goals.</p>
+<p>It would be nice to know whether this kind of explanation is feasible even in principle. Will sophisticated AI systems be able to explain their reasoning in a way that meets this bar? Or is there an inherent gap between the conclusions that a system can reach and the conclusions that it can convincingly justify to someone else?</p>
+<h3 id="howtostudyaiexplanation">How to study AI explanation?</h3>
+<p>This problem is more challenging and interesting for AI systems that are more sophisticated than their users. It seems hard for these systems to give a full description of their reasoning to the user, in the same way that it can be difficult for a brilliant human expert to explain their reasoning to a layperson.</p>
+<p>This problem is more approachable and (again) more interesting for AI systems that are able to communicate with humans and have a theory of mind. Without these capabilities, it seems hard to give a full description of their reasoning to the user, in the same way that it can be difficult for a 4 year old to explain their reasoning to anyone.</p>
+<p>Between these two difficulties, explanation is hard to study in the context of existing systems. (Though we can study related problems about understandability and transparency, which themselves seem important and which I hope to discuss soon.)</p>
+<p>Fortunately, we have an excellent toy model of this problem: humans.</p>
+<h1 id="theproblem">The problem</h1>
+<p>Consider a group of experts in domain X, and a user with a minimal understanding of that domain. We would like to design a system that lets the user discover some fact about X or make a decision related to X. For example, the experts may be finance professionals “helping” a consumer decide what financial products to buy. Or the experts may be physicists “helping” an undergraduate make an accurate prediction about a novel high-energy physics experiment.</p>
+<p>We are interested in the case where:</p>
+<ol>
+<li>The experts don’t care about the user or about what is really true,</li>
+<li>The user doesn’t have much time to think about the problem,</li>
+<li>The domain is very complex, requiring detailed background knowledge, unfamiliar abstractions, and challenging reasoning, and</li>
+<li>The user wants to make decisions that are nearly as good as the decisions that the experts would make if they cared.</li>
+</ol>
+<p>The only lever at the user’s disposal is control over the experts’ incentives. We’ll assume that the user has more or less complete control over incentives, in the same way that the designers of AI systems have control over their training process.</p>
+<p>As a simple and classical example, the user could elicit a recommendation from one expert, ask a second expert to argue against that recommendation, and then reward whichever one of them is more persuasive.</p>
+<p>The question is: can we design systems that let the user reliably accomplish their task?</p>
+<h3 id="examiningtheanalogy">Examining the analogy</h3>
+<p>Our goal is to build systems that allow the user to extract the “right” answer from the experts, even in the presence of very large gaps in knowledge, time, and ability. Success would suggest that, at least if our AI systems are similar to the human experts, we could use this kind of explanation process to define the “right” action, without significant performance loss.</p>
+<p>That looks good as far as it goes, but there are some reasons to expect AI systems to be unlike the human experts.</p>
+<ul>
+<li>AI systems which are in some respects very sophisticated may lack many capabilities of human experts. Even once we know that humans can evaluate explanations sufficiently rigorously, there is a further problem of actually building AI systems which are able to explain themselves.</li>
+</ul>
+<p>Building systems that can actually explain themselves is a major and complementary research question, which seems worth studying in the context of existing AI algorithms. The usefulness of explanation for AI control rests on&nbsp;<strong>both</strong>&nbsp;the human’s ability to evaluate explanations and the AI’s ability to explain itself; we are only trying to study the former.</p>
+<ul>
+<li>In some respects the gap between human users and AI systems may be much larger than the gap between the user and the experts. And certainly the thought process of AI systems is likely to be much more unfamiliar. Even if our techniques can close the latter gap, they may not be able to close the former.</li>
+</ul>
+<p>The explanation problem for humans is not the very hardest version of the explanation problem. If we could solve this version, we’d have more work to do in order to generalize to ever more alien cognitive styles. That said, if we were able to bridge a large gap in abilities with minimal reduction in performance, it would suggest that we had developed scalable frameworks for explanation.</p>
+<p>With respect to capability gaps, note that experts with a lot of time are quite a bit more capable than laypeople with little time. At the point when AI systems have such a big lead over their human users, it seems likely that human contributions to AI control will no longer be relevant. So I’m inclined to think that “alien minds” is a bigger issue than “big capability gaps.”</p>
+<ul>
+<li>Human experts may “play nice,” following usual norms of civil discourse even when violating them would technically better suit the incentives described by the user. More subtly, human experts may simply not be very good at deception. (We may also be able to build AI systems that aren’t very good at deception, but this would require some extra work.)</li>
+</ul>
+<p>This is something to watch out for and to try avoid; see the discussion in the next section.</p>
+<h1 id="workingontheproblem">Working on the problem</h1>
+<h3 id="setup">Setup</h3>
+<p>In order to test approaches to this problem, all we need are a few experts in a domain, a judge who doesn’t understand that domain (or a sequence of such judges), and a challenging question for the judge to attempt to answer. These ingredients are readily available. We can evaluate performance by comparing the answers the judge comes up with to the answers the experts would have given, or in some cases by appeals to ground truth or to more authoritative authorities.</p>
+<p>It’s not clear what domains/experts/questions are most fruitful, and there are other degrees of freedom about how to set up the exercise; but the easiest way to sort these things out may be to try it (with a relatively short timescale, such as 2-8 hours) and see.</p>
+<p>One non-trivial issue is implementing the expert’s incentives. One could start with play money, treating the exercise as a game which the experts try in good faith to win. Of course, if the experts are paid rather than being volunteers, then there is a more straightforward way to determine their incentives. But realistically I think that the good faith efforts will be more important than incentives. We can get extra mileage by having the same experts play the game against varying users, increasing the probability that the experts identify any particular effective strategy, and by having retrospective collaborative efforts to improve the expert’s strategies.</p>
+<h3 id="approaches">Approaches</h3>
+<p>The bigger question may be: are there promising approaches to this problem that are worth exploring?</p>
+<p>Even though this seems like a question of natural interest, I don’t really know of a literature on it (though it would be great to find one). It seems like trying random things and seeing how they would work would be pretty informative.</p>
+<p>I’ve written about&nbsp;<a href="arguments_wagers.html">one possible mechanism</a>, which I am very interested to test. That proposal also has many possible improvements, and in general I expect the whole thing to change a lot after making contact with reality.</p></main><hr><footer></footer></body></html>

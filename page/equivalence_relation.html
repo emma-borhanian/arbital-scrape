@@ -1,0 +1,41 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Equivalence relation</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_SVG" async></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">Equivalence relation</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/equivalence_relation.json.html">equivalence_relation.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/equivalence_relation">https://arbital.com/p/equivalence_relation</a></p><p class="creator">by
+ <a class="page-link" href="../page/DylanHendrickson.html">Dylan Hendrickson</a> Jul 5 2016 
+updated
+ Jul 7 2016</p></div><p class="clickbait">A relation that allows you to partition a set into equivalence classes.</p><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>Equivalence relation</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="math.html">Mathematics</a></li><li><a href="relation_mathematics.html">Relation</a></li><li>…</li></ul></nav></nav></header><hr><main><p>[summary: An <strong>equivalence relation</strong> is a binary <a href="relation_mathematics.html">Relation</a> that is <a href="reflexive_relation.html">reflexive</a>, [symmetric_relation symmetric], and <a href="transitive_relation.html">transitive</a>. You can think of it as a way to say when two elements of a <a href="set_mathematics.html">Set</a> are "the same" or "equivalent," despite not being literally the same element. It can be used to [set_partition partition] a set into equivalence classes.]</p>
+<p>An <strong>equivalence relation</strong> is a binary <a href="relation_mathematics.html">Relation</a> $~$\sim$~$ on a <a href="set_mathematics.html">Set</a> $~$S$~$ that can be used to say whether [element_of_a_set elements] of $~$S$~$ are equivalent.</p>
+<p>An equivalence relation satisfies the following properties:</p>
+<ol>
+<li>For any $~$x \in S$~$, $~$x \sim x$~$ (the <a href="reflexive_relation.html">reflexive</a> property).</li>
+<li>For any $~$x,y \in S$~$, if $~$x \sim y$~$ then $~$y \sim x$~$ (the [symmetric_relation symmetric] property).</li>
+<li>For any $~$x,y,z \in S$~$, if $~$x \sim y$~$ and $~$y \sim z$~$ then $~$x \sim z$~$ (the <a href="transitive_relation.html">transitive</a> property).</li>
+</ol>
+<p>Intuitively, any element is equivalent to itself, equivalence isn't directional, and if two elements are equivalent to the same third element then they're equivalent.</p>
+<h2 id="equivalenceclasses">Equivalence classes</h2>
+<p>Whenever we have a set $~$S$~$ with an equivalence relation $~$\sim$~$, we can divide $~$S$~$ into <em>equivalence classes</em>, i.e. sets of mutually equivalent elements. The equivalence class of some $~$x \in S$~$ is the set of elements of $~$S$~$ equivalent to $~$x$~$, written $~$[x]=\{y \in S \mid x \sim y\}$~$, and we say that $~$x$~$ is a "representative" of $~$[x]$~$. We call the set of equivalence classes $~$S/\sim = \{[x] \mid x \in S\}$~$.</p>
+<p>From the definition of an equivalence relation, it's easy to show that $~$x \in [x]$~$ and $~$[x]=[y]$~$ if and only if $~$x \sim y$~$.</p>
+<p>If you have a set already [set_partition partitioned] into subsets ($~$S$~$ is the [-disjoint_union] of the elements of a collection $~$A$~$), you can go the other way and define a relation with two elements related whenever they're in the same subset ($~$x \sim y$~$ when there is some $~$U \in A$~$ with $~$x,y \in U$~$). Then this is an equivalence relation, and the partition of the set is the set of equivalence classes under this relation (that is, $~$[x] \in A$~$ and $~$A=S/\sim$~$).</p>
+<h2 id="definingfunctionsonequivalenceclasses">Defining functions on equivalence classes</h2>
+<p>Suppose you have a <a href="function.html">Function</a> $~$f: S \to U$~$ and want to define a corresponding function $~$f^*: S/\sim \to U$~$, where $~$U$~$ can be any set. You define $~$f^*([x])$~$ to be $~$f(x)$~$. This could be a problem; what if $~$x \sim y$~$ but $~$f(x) \neq f(y)$~$? Then $~$f^*([x])=f^*([y])$~$ wouldn't be <a href="well_defined.html">well-defined</a>. Whenever you define a function on equivalence classes in terms of representatives, you have to make sure the definition doesn't depend on which representative you happen to pick. In fact, one way you might arrive at an equivalence relation is to say that $~$x \sim y$~$ whenever $~$f(x)=f(y)$~$.</p>
+<p>If you have a function $~$f: S \to S$~$ and want to define $~$f^*: S/\sim \to S/\sim$~$ by $~$f^*([x])=[f(x)]$~$, you have to verify that whenever $~$x \sim y$~$, $~$[f(x)]=[f(y)]$~$, equivalently $~$f(x) \sim f(y)$~$. </p>
+<h1 id="examples">Examples</h1>
+<p>Consider the <a href="integer.html">integers</a> with the relation $~$x \sim y$~$ if $~$n|x-y$~$, for some $~$n \in \mathbb N$~$. This is the integers <a href="modular_arithmetic.html">mod</a> $~$n$~$. The [-addition] and [-multiplication] operations can be inherited from the integers, so it makes sense to talk about addition and multiplication mod $~$n$~$. </p>
+<p>The <a href="real_number.html">real numbers</a> can be defined as equivalence classes of <a href="real_number_as_cauchy_sequence.html">Cauchy sequences</a>.</p>
+<p><a href="isomorphism.html">Isomorphism</a> is an equivalence relation (unless the objects form a [-proper_class]).</p></main><hr><footer><p class="tagged"><h2>Tagged</h2><span class="page-comma-list"><a class="page-link" href="../page/start_meta_tag.html">Start</a></span></p><p class="all-creators"><h2>All Creators</h2><span class="page-comma-list"><a class="page-link" href="../page/DylanHendrickson.html">Dylan Hendrickson</a>,
+ <a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a>,
+ <a class="page-link" href="../page/JoeZeng.html">Joe Zeng</a></span></p><p class="likes"><h2>Likes</h2><span class="page-comma-list"><a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a>,
+ <a class="page-link" href="../page/StephanieZolayvar.html">Stephanie Zolayvar</a></span></p><p class="reverse-related"><h2>Reverse Related</h2><ul class="page-list"><li><a class="page-link" href="../page/start_meta_tag.html">Start</a> <q>This page gives a basic overview of the topic, but may be missing important information or have stylistic issues. If you're able to, please help expand or improve it!</q> - <a class="page-link" href="../page/EliezerYudkowsky.html">Eliezer Yudkowsky</a></li></ul></p></footer></body></html>

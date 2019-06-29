@@ -1,0 +1,28 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Prime element of a ring</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_SVG" async></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">Prime element of a ring</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/prime_element_ring_theory.json.html">prime_element_ring_theory.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/prime_element_ring_theory">https://arbital.com/p/prime_element_ring_theory</a></p><p class="creator">by
+ <a class="page-link" href="../page/PatrickStevens.html">Patrick Stevens</a> Jul 27 2016 
+updated
+ Aug 21 2016</p></div><p class="clickbait">Despite the name, &quot;prime&quot; in ring theory refers not to elements which are &quot;multiplicatively irreducible&quot; but to those such that if they divide a product then they divide some term of the product.</p><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>Prime element of a ring</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="math.html">Mathematics</a></li><li><a href="abstract_algebra.html">Abstract algebra</a></li><li><a href="algebraic_structure.html">Algebraic structure</a></li><li><a href="algebraic_ring.html">Ring</a></li><li>…</li></ul></nav></nav></header><hr><main><p>[summary:  A prime element of a <a href="algebraic_ring.html">ring</a> is one such that, if it divides a product, then it divides (at least) one of the terms of the product.]</p>
+<p>[summary(Technical): Let $~$(R, +, \times)$~$ be a <a href="algebraic_ring.html">ring</a> which is an <a href="integral_domain.html">integral domain</a>. We say $~$p \in R$~$ is <em>prime</em> if, whenever $~$p \mid ab$~$, it is the case that either $~$p \mid a$~$ or $~$p \mid b$~$ (or both).]</p>
+<p>An element of an <a href="integral_domain.html">Integral domain</a> is <em>prime</em> if it has the property that $~$p \mid ab$~$ implies $~$p \mid a$~$ or $~$p \mid b$~$.
+Equivalently, if its generated [ideal_ring_theory ideal] is [prime_ideal prime] in the sense that $~$ab \in \langle p \rangle$~$ implies either $~$a$~$ or $~$b$~$ is in $~$\langle p \rangle$~$.</p>
+<p>Be aware that "prime" in ring theory does not correspond exactly to "<a href="prime_number.html">prime</a>" in number theory (the correct abstraction of which is <a href="irreducible_element_ring_theory.html">irreducibility</a>). 
+It is the case that they are the same concept in the ring $~$\mathbb{Z}$~$ of <a href="integer.html">integers</a> (<a href="pid_implies_prime_equals_irreducible.html">proof</a>), but this is a nontrivial property that turns out to be equivalent to the <a href="fundamental_theorem_of_arithmetic.html">Fundamental Theorem of Arithmetic</a> ([alternative_condition_for_ufd proof]).</p>
+<h1 id="examples">Examples</h1>
+<h1 id="properties">Properties</h1>
+<h2 id="primesarealwaysahrefirreducible_element_ring_theoryhtmlirreducibleaaproofofthisfactappearsontheahrefirreducible_element_ring_theoryhtmlpageonirreducibilityaalongwithcounterexamplestotheconverse">- Primes are always <a href="irreducible_element_ring_theory.html">irreducible</a>; a proof of this fact appears on the <a href="irreducible_element_ring_theory.html">page on irreducibility</a>, along with counterexamples to the converse.</h2></main><hr><footer><p class="tagged"><h2>Tagged</h2><span class="page-comma-list"><a class="page-link" href="../page/stub_meta_tag.html">Stub</a></span></p><p class="all-creators"><h2>All Creators</h2><span class="page-comma-list"><a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a>,
+ <a class="page-link" href="../page/PatrickStevens.html">Patrick Stevens</a></span></p><p class="reverse-related"><h2>Reverse Related</h2><ul class="page-list"><li><a class="page-link" href="../page/stub_meta_tag.html">Stub</a> <q>This page only gives a very brief overview of the topic. If you're able to, please help expand or improve it!</q> - <a class="page-link" href="../page/EliezerYudkowsky.html">Eliezer Yudkowsky</a></li></ul></p></footer></body></html>

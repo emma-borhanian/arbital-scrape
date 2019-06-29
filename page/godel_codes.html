@@ -1,0 +1,26 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Gödel encoding and self-reference</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_SVG" async></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">Gödel encoding and self-reference</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/godel_codes.json.html">godel_codes.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/godel_codes">https://arbital.com/p/godel_codes</a></p><p class="creator">by
+ <a class="page-link" href="../page/PatrickLaVictoir.html">Patrick LaVictoire</a> Apr 3 2016 
+updated
+ May 6 2016</p></div><p class="clickbait">The formalism that mathematicians use to talk about arithmetic turns out to be able to talk about itself.</p><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>Gödel encoding and self-reference</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="math.html">Mathematics</a></li><li>…</li></ul></nav></nav></header><hr><main><p>A Gödel encoding is a way of using the formal machinery of proving theorems in arithmetic to discuss that very machinery. <a href="https://en.wikipedia.org/wiki/Kurt_G%C3%B6del">Kurt Gödel</a> rocked the world of mathematics in 1931 by showing that this was possible, and that it had surprising consequences for the sort of things that could ever be formally proven in a given system.</p>
+<p>The original formulation of this self-referential framework was really messy (involving prime factorizations of huge numbers), but we can think about it more easily now by thinking about computer programs. In order to get mathematical statements that refer to themselves, we can first show that we can talk interchangeably about mathematical proofs and computer programs, and then show how to write computer programs that refer to themselves.</p>
+<p>To be specific about the machinery of proving theorems, we'll use the formal system of <a href="peano_arithmetic.html">Peano Arithmetic</a>.</p>
+<p>What kind of self-reference do we want for our computer program? We would like to be able to write a program that takes its own source code and performs computations on it. But it doesn't count for the program to access its own location in memory; we'd like something we could write directly into an interpreter, with no other framework, and get the same result.</p>
+<p>This kind of program is known as a <a href="quine.html">quine</a>.</p>
+<p>Gödel encoding is equivalent to an encoding of a computer program as a binary string.</p>
+<p>If we think about any conjecture in mathematics that can be stated in terms of arithmetic, you can write a program that loops over all possible strings, checks whether any of them is a valid proof of the conjecture, and halts if and only if it finds one. In the other direction, we can imagine proving a theorem about whether a particular computer program ever halts.</p></main><hr><footer><p class="likes"><h2>Likes</h2><span class="page-comma-list"><a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a>,
+ <a class="page-link" href="../page/JaimeSevillaMolina.html">Jaime Sevilla Molina</a></span></p><p class="children"><h2>Children</h2><ul class="page-tree"><li><a class="page-link" href="../page/quine.html">Quine</a> <q>A computer program that prints (or does other computations to) its own source code, using indirect self-reference.</q> - <a class="page-link" href="../page/PatrickLaVictoir.html">Patrick LaVictoire</a></li></ul></p></footer></body></html>

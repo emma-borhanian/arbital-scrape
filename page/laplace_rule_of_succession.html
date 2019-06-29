@@ -1,0 +1,67 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Laplace's Rule of Succession</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_SVG" async></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">Laplace's Rule of Succession</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/laplace_rule_of_succession.json.html">laplace_rule_of_succession.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/laplace_rule_of_succession">https://arbital.com/p/laplace_rule_of_succession</a></p><p class="creator">by
+ <a class="page-link" href="../page/EliezerYudkowsky.html">Eliezer Yudkowsky</a> Feb 17 2016 
+updated
+ Oct 31 2016</p></div><p class="clickbait">Suppose you flip a coin with an unknown bias 30 times, and see 4 heads and 26 tails.  The Rule of Succession says the next flip has a 5/32 chance of showing heads.</p><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>Laplace's Rule of Succession</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="math.html">Mathematics</a></li><li><a href="probability_theory.html">Probability theory</a></li><li><a href="bayes_reasoning.html">Bayesian reasoning</a></li><li><a href="ignorance_prior.html">Ignorance prior</a></li><li><a href="inductive_prior.html">Inductive prior</a></li><li>…</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="rationality.html">Rationality</a></li><li><a href="probability_theory.html">Probability theory</a></li><li><a href="bayes_reasoning.html">Bayesian reasoning</a></li><li><a href="ignorance_prior.html">Ignorance prior</a></li><li><a href="inductive_prior.html">Inductive prior</a></li><li>…</li></ul></nav></nav></header><hr><main><p>[summary:  Suppose you roll an initial billiards ball on a billiards table, letting it bounce off the left and right sides until it comes to a halt.  You mark down where the billiard ball halted.  You then roll additional billiards, and <a href="bayes_update.html">observe</a> that M come to rest to the left of the original billiard, and N halt to the right of the original billiard.  If this is all someone knows, what probability should they assign that the next billiard comes to halt on the left, or the right?  Laplace's Rule of succession says that the <a href="odds.html">odds</a> are (M + 1) : (N + 1) for left vs. right.  If we flip a coin with an unknown bias and observe 2 heads and 7 tails, our probability of getting heads next time is (2 + 1)/(2 + 7 + 2) = 3/11.  On the very first flip, it's 1 : 1 or 1/2.]</p>
+<h1 id="theoremandproof">Theorem and proof</h1>
+<p>Suppose a sequence $~$X_1, \dots, X_n$~$ of binary values (0 or 1), e.g., a potentially non-fair coin which comes up heads or tails on each flip.</p>
+<p>Laplace's Rule of succession says that if:</p>
+<ul>
+<li>1.  We think each coinflip $~$X_i$~$ has an independent, unknown likelihood $~$f$~$ of coming up heads, and</li>
+<li>2.  We think that all values of $~$f$~$ between 0 and 1 have equal probability density <em>a priori</em>…</li>
+</ul>
+<p>Then, after observing $~$M$~$ heads and $~$N$~$ tails, the expected probability of heads on the next coinflip is:</p>
+<p>$~$\dfrac{M + 1}{M + N + 2}$~$</p>
+<p>Proof:</p>
+<p>For a hypothetical value of $~$f$~$, each coinflip observed has a <a href="relative_likelihood.html">likelihood</a> of $~$f$~$ if heads or $~$1 - f$~$ if tails.</p>
+<p>The <a href="prior_probability.html">prior</a> is uniform between 0 and 1, so a prior density of 1 everywhere.</p>
+<p>By <a href="bayes_rule_functional.html">Bayes&#39;s Rule</a>, after seeing M heads and N tails, the <a href="posterior_probability.html">posterior</a> probability density over $~$f$~$ is <em>proportional</em> to $~$1 \cdot f^M(1 - f)^N.$~$</p>
+<p>Then the <a href="normalize_probabilities.html">normalizing constant</a> is:  $~$\int_0^1 f^M(1 - f)^N \operatorname{d}\!f = \frac{M!N!}{(M + N + 1)!}.$~$</p>
+<p>So the posterior probability density function is $~$f^M(1 - f)^N \frac{(M + N + 1)!}{M!N!}.$~$</p>
+<p>Integrating this function, times $~$f,$~$ from 0 to 1, will yield the marginal probability of getting heads on the next flip.</p>
+<p>The answer is thus:</p>
+<p>$~$\dfrac{(M+1)!N!}{(M + N + 2)!} \cdot \dfrac{(M + N + 1)!}{M!N!} = \dfrac{M + 1}{M + N + 2}.$~$</p>
+<h1 id="simplerproofbycombinatorics">Simpler proof by combinatorics</h1>
+<p>Although Laplace's Rule of Succession was originally proved (by Thomas Bayes) by finding the posterior probability density and integrating, and the proof of Laplace's Rule illustrates the core idea of an <a href="inductive_prior.html">inductive prior</a> in Bayesianism, a simpler intuition for the proof also exists.</p>
+<p>Consider the problem originally posed by Thomas Bayes:  An initial billiard is rolled back and forth between the left and right edges of an ideal billiards table until friction brings it to a halt.  We then roll M + N additional billiard balls, and observe that M halt to the left of the initial billiard, and N halt to the right of it.  If this is all we know, what is the probability the next ball halts on the left, or right?</p>
+<p>Suppose that we rolled a total of 5 additional billiards, and 2 halted to the left of the original, and 3 halted to the right.  Then, using <strong>|</strong> to symbolize the initial billiard, the billiards would have come to rest in the order:</p>
+<ul>
+<li><strong>LL|RRR</strong></li>
+</ul>
+<p>Suppose we now roll a new billiard, symbolized by <strong>+</strong>, until it comes to a halt.  It's equally likely to appear at:</p>
+<ul>
+<li><strong>+LL|RRR</strong></li>
+<li><strong>L+L|RRR</strong></li>
+<li><strong>LL+|RRR</strong></li>
+<li><strong>LL|+RRR</strong></li>
+<li><strong>LL|R+RR</strong></li>
+<li><strong>LL|RR+R</strong></li>
+<li><strong>LL|RRR+</strong></li>
+</ul>
+<p>This means there are 3 ways the ball could be ordered on the left of the <strong>|</strong>, and 4 ways it could be ordered on the right.  Since all left-to-right orderings of 7 randomly rolled billiard balls are equally likely a priori, we assign 3/7 probability that the ball comes to a rest on the left of the original ball's position.</p>
+<p>See also the <a href="https://en.wikipedia.org/wiki/Rule_of_succession">Wikipedia page</a>.</p>
+<h1 id="useandabuse">Use and abuse</h1>
+<p>Laplace's Rule of Succession assumes that all prior values of the frequency $~$f$~$ are undistinguished <em>a priori</em> in our subjective knowledge.</p>
+<p>For example, Laplace used the rule to estimate a probability of the sun rising tomorrow, given that it had risen every day for the past 5000 years, and arrived at odds of around 1826251:1.  But today when we have physical knowledge of the Sun's operation, not every possible 'rate at which the Sun rises each day' is undistinguished.  Furthermore, even in Laplace's time, he should have perhaps thought it especially likely a priori that "the Sun always rises" and "the Sun never rises" were distinguished as unusually likely frequencies of the Sun rising, a priori. </p>
+<p>The Rule of Succession follows from assuming approximate ignorance about prior frequencies.  It does not, of itself, justify this assumption. Variations of the rule of succession are obtainable by taking different priors, corresponding to different views of what should count as uninformative. See discussion on the Wikipedia page on <a href="https://www.wikipedia.com/en/Prior_probability#/Uninformative_priors">non-informative priors</a>. For example if starting with the Jeffreys' prior, then after observing $~$M$~$ heads and $~$N$~$ tails, the expected probability of heads on the next coinflip is:</p>
+<p>$~$\dfrac{M + \dfrac{1}{2}}{M + N + 1}$~$</p>
+<h1 id="nomenclature">Nomenclature</h1>
+<p>Laplace's Rule of Succession was the famous problem proved by Thomas Bayes in "An Essay towards solving a Problem in the Doctrine of Chances", read to the Royal Society in 1763, after Bayes's death.  Pierre-Simon Laplace, the first systematizer of what we now know as Bayesian reasoning, was so impressed by this theorem that he named the central theorem of his new discipline after Thomas Bayes.  The original theorem proven by Bayes was popularized by Laplace in arguments about the problem of induction, and so became known as Laplace's Rule of Succession.</p></main><hr><section class="comments"><h2>Comments</h2><div class="comment"><p><a class="page-link" href="../page/JaimeSevillaMolina.html">Jaime Sevilla Molina</a></p><p><blockquote class="comment-context">For example, Laplace used the rule to estimate a probability of the sun rising tomorrow, given that it had risen every day for the past 5000 years, and arrived at odds of around 1826251:1\.  But today when we have physical knowledge of the Sun's operation, not every possible 'rate at which the Sun rises each day' is undistinguished\.  <mark>Furthermore, even in Laplace's time, he should have perhaps thought it especially likely a priori that "the Sun always rises" and "the Sun never rises" were distinguished as unusually likely frequencies of the Sun rising, a priori\.</mark></blockquote>
+<p>This is redacted in a very confusing way.</p></p></div><div class="comment"><p><a class="page-link" href="../page/EyalRoth.html">Eyal Roth</a></p><p><blockquote class="comment-context">The Rule of Succession follows from assuming approximate ignorance about prior frequencies\.  It does not, of itself, justify this assumption\. Variations of the rule of succession are obtainable by taking different priors, corresponding to different views of what should count as uninformative\. See discussion on the Wikipedia page on <mark>non\-informative priors</mark>\. For example if starting with the Jeffreys' prior, then after observing $~$M$~$ heads and $~$N$~$ tails, the expected probability of heads on the next coinflip is:</blockquote>
+<p>Broken link :(</p></p></div></section><footer><p class="tagged"><h2>Tagged</h2><span class="page-comma-list"><a class="page-link" href="../page/c_class_meta_tag.html">C-Class</a></span></p><p class="all-creators"><h2>All Creators</h2><span class="page-comma-list"><a class="page-link" href="../page/EliezerYudkowsky.html">Eliezer Yudkowsky</a>,
+ <a class="page-link" href="../page/Jakubopuszaski.html">Jakub Łopuszański</a>,
+ <a class="page-link" href="../page/OwenCottonBarrat.html">Owen Cotton-Barratt</a></span></p><p class="reverse-related"><h2>Reverse Related</h2><ul class="page-list"><li><a class="page-link" href="../page/c_class_meta_tag.html">C-Class</a> <q>This page has substantial content, but may not thoroughly cover the topic, may not meet style and prose standards, or may not explain the concept in a way the target audience will reliably understand.</q> - <a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a></li></ul></p></footer></body></html>

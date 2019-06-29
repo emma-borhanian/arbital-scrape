@@ -1,0 +1,86 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Mimicry and meeting halfway</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_SVG" async></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">Mimicry and meeting halfway</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/mimicry_meeting_halfway.json.html">mimicry_meeting_halfway.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/mimicry_meeting_halfway">https://arbital.com/p/mimicry_meeting_halfway</a></p><p class="creator">by
+ <a class="page-link" href="../page/PaulChristiano.html">Paul Christiano</a> Feb 3 2016 
+updated
+ Mar 4 2016</p></div><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>Mimicry and meeting halfway</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="paul_ai_control.html">Paul Christiano's AI control blog</a></li><li>…</li></ul></nav></nav></header><hr><main><p>I’ve talked recently about two different model-free decision procedures:</p>
+<ul>
+<li>At each step, pick the action which the user would regard as best. (See <a href="approval_directed_agents.html">Approval-Directed Agents</a>&nbsp;and&nbsp;<a href="in_defense_maximization.html">In Defense of Maximization</a>.)</li>
+<li>At each step, pick the action the user would have taken in your place. (See&nbsp;<a href="automated_assistants.html?title=automated-assistants-">Automated Assistants</a>, and&nbsp;<a href="against_mimicry.html">Against Mimicry</a>.)</li>
+</ul>
+<p>(Notes: 1. In contrast with goal-directed procedures, both of these proposals needs to be combined with bootstrapping in order to yield very sophisticated behavior. 2. See&nbsp;<a href="learn_policies_goals.html?title=learn-policies-or-goals">here</a>&nbsp;for a discussion of learning policies vs. goals.)</p>
+<p>The first approach seems especially appropriate when dealing with weak reasoners who are unlikely to be able to “fool” the user, while the second seems appropriate when dealing very powerful reasoners who can successfully imitate human behavior.</p>
+<p>It would be great if there were some way to get the best of both worlds. This is especially important given that practical AI systems are likely to be very powerful in some respects and subhuman in others — they may be able to manipulate the user while being unable to imitate them.</p>
+<h1 id="meetinghalfway">Meeting halfway</h1>
+<p>This post describes a simple procedure that partially realizes that goal. The basic idea is that a human operator can carry out a task in a way that is designed to be easy to imitate. This approach can simultaneously (1) robustly avoid doing anything that is unacceptable to the user, (2) search for a way to achieve a task within the abilities available to an AI system.</p>
+<p>Fix some task X, such as producing an explanatory document of a given level of quality and clarity. Note that we need not have any formal way of deciding whether the task has been accomplished. I’ll describe a procedure for learning to accomplish X in a human-like way.</p>
+<p>Our proposal is essentially an elaboration of the generative adversarial models framework recently proposed by&nbsp;<a href="http://papers.nips.cc/paper/5423-generative-adversarial-nets.pdf">Goodfellow, Bengio, and others</a>, or of the apprenticeship learning scheme proposed by&nbsp;<a href="http://ai.stanford.edu/~ang/papers/icml04-apprentice.pdf">Abbeel and Ng</a>&nbsp;(the relationship is fleshed out&nbsp;<a href="apprenticeship_learning_mimicry.html">here</a>). In our elaboration, the process-to-be-modeled collaborates with the modeler (while still retaining its important characteristics, namely achieving the task). Our addition is relevant when the generative task is intrinsically much more difficult than the discriminative task, such that accommodation is necessary to make the task feasible.</p>
+<p>We will assume we have a learning algorithm which is capable of distinguishing successful implementations of X from failures, and another algorithm which is capable of learning to achieve X.</p>
+<h3 id="theactors">The actors</h3>
+<p>We’ll consider three actors:</p>
+<ul>
+<li>Hugh, the human overseer. (Hugh plays the role of the data distribution in the adversarial generative models framework).</li>
+<li>Arthur, the AI system. (Arthur plays the role of the generative model G.)</li>
+<li>Eva, another AI system acting as an evaluator. (Eva plays the role of the discriminative model D.)</li>
+</ul>
+<p>We’ll be able to teach Arthur to achieve the task X if it can be achieved by the “intersection” of Arthur and Hugh — we’ll define this more precisely later, but note that it may be significantly weaker than&nbsp;<em>either</em>&nbsp;Arthur or Hugh.</p>
+<h3 id="thegame">The game</h3>
+<p>In each round of the game, Hugh and Arthur will attempt to perform the task.</p>
+<p><strong>Eva</strong>&nbsp;will look at their outputs and attempt to classify them as coming from Hugh or Arthur. We’ll assume that Eva is a powerful enough learner that she can learn to distinguish between a player who is successfully achieving the task and one who is not.</p>
+<p><strong>Hugh</strong>&nbsp;will always perform the task, and subject to that constraint he will try to fool Eva into thinking that he is Arthur.</p>
+<p><strong>Arthur</strong>&nbsp;does not “know” anything about the task, he is simply trying to fool Eva into thinking that he Hugh.</p>
+<p>We’ll assume the game reaches an equilibrium, where one of the players is stuck: either Eva can’t distinguish Arthur and Hugh, or Hugh can’t succeed at the task while looking like Arthur, or Arthur can’t look like Hugh.</p>
+<p>Critically, at no point is anyone ever optimizing for performance or other real-world consequences — they are only ever optimizing for the outputs of this simple prediction game. All of the optimization power is in Hugh’s decisions about how to achieve X.</p>
+<p>We can imagine playing this game many times, giving each participant plenty of time to adjust to the behavior of the others. If the AI systems are able to generalize across domains, then each time we play the game it may involve a different domain. (And if the systems aren’t able to generalize across domains, then it is inevitable that we will have to provide separate training data for each new domains.)</p>
+<h3 id="performance">Performance</h3>
+<p>I mentioned before that this system matched the performance of the “intersection” of Hugh and Arthur. Intuitively by “intersection” I mean the system whose capabilities are the intersection of Arthur’s capabilities and Hugh’s, i.e. which can do something if both Hugh and Arthur can do it. </p>
+<p>This definition is subtle, because it operates at every level simultaneously: for example, if Hugh can move only by walking, and Arthur can move only by crawling, then the intersection cannot move at all, even though both can move. More formally, we’ll say that the intersection of Hugh and Arthur can accomplish a task, relative to Eva, if each of them can accomplish that task in such a way that Eva can’t distinguish them.</p>
+<p>To see why this is relevant (and to make it more precise), suppose that Hugh would like to train Arthur to achieve X, but cannot. What can we infer from this failure?</p>
+<p>By hypothesis, Arthur is failing to achieve X. But by construction, Hugh always achieves X. And by assumption, Eva can distinguish success at X from failure at X. So Eva can distinguish between Arthur and Hugh.</p>
+<p>Eva’s distinguisher induces a partition on the set of ways to achieve X, into those classified as “Hugh” and those classified as “Arthur.” Arthur is not able to find any action in the space marked Hugh, and Hugh is not able to find any action in the space marked Arthur.</p>
+<p>This precisely describes what tasks can be Arthur can be trained to accomplished by this scheme.</p>
+<p>We say:&nbsp;<strong>the intersection of Hugh and Arthur (with respect to some learning algorithm Eva) can achieve X if Eva</strong> <em>cannot</em> <strong>learn a partition of ways of achieving X into two sets H and A such that:</strong></p>
+<ul>
+<li><strong>Hugh cannot learn to achieve X by a means in A.</strong></li>
+<li><strong>Arthur cannot learn to achieve X by a means in H.</strong></li>
+</ul>
+<p>Note that in particular, if one of Hugh and Arthur can’t achieve X, then the intersection of the two can’t achieve X.</p>
+<p>Conversely, if the intersection of Hugh and Arthur&nbsp;<em>can’t</em>&nbsp;learn to do a task, then it seems intuitive to say that Arthur cannot accomplish that task in a human-like way. So in one sense this scheme is the best we should hope for.</p>
+<p>As with approval-direction in general, we will then need to us a bootstrapping scheme to scale up to Arthur’s capabilities from the intersection of Hugh and Arthur. This bootstrapping process is conceptually similar to, but somewhat more subtle than, the process for approval-directed agents more broadly. (And I am correspondingly more uncertain about how often it would work.)</p>
+<h3 id="safety">Safety</h3>
+<p>At no point in this scheme is any process explicitly or implicitly optimizing for any external consequence. All of the optimization occurs in Hugh’s decision-making. This makes it seem much less likely that there will be any carefully engineered catastrophe.</p>
+<p>We can get some additional reassurance from Eva’s judgments. That is, it is very unlikely that Hugh would take any action with catastrophic consequences. If Eva is intelligent enough to recognize catastrophic consequences then she could use them as a signal that a decision was made by Arthur. As a result, Arthur’s only incentive is to avoid catastrophic consequences (and we can also reject any action that Eva thinks is probably produced by Arthur).</p>
+<h3 id="transparency">Transparency</h3>
+<p>In this proposal the evaluator Eva plays two rolls:</p>
+<ol>
+<li>It defines the mimicry task and provides feedback to Arthur. This is the same role played by the discriminative model in the adversarial generative models framework.</li>
+<li>It defines the “be easy to imitate task” and provides feedback to Hugh.</li>
+</ol>
+<p>Role [2] is necessary for the proposal to work. But in order for it to be effective, the models learned by Eva must be sufficiently comprehensible that Hugh can understand the constraints they impose on his behavior. This might be achieved either by providing fine-grained feedback so that Hugh can learn by trial and error, or by training a transparent model, or by training Eva to produce explanations of her judgments.</p>
+<p>In general, Hugh may need to make extensive use of AI assistants in order to successfully model an appropriate behavior. There is no bright line between better understanding Eva’s model and the other aspects of the bootstrapping process.</p>
+<h1 id="withcounterfactuals">With counterfactuals</h1>
+<p>We’ve described a procedure for training Arthur to perform a task. Actually performing this procedure is quite labor-intensive. As usual, the hope would be to train a model once, and then use it with only minimal human involvement.&nbsp;<a href="human_counterfactual_loop.html?title=human-in-counterfactual-loop">Counterfactual oversight</a>&nbsp;provides a clean understanding of what exactly the model is being trained to do. But thinking about the resulting system is a little bit counterintuitive, so it it’s worth thinking about what the final product looks like.</p>
+<p>In production, Arthur is given enough data to understand his current situation, including the desires of the users (which are reflected in the counterfactual behavior of the overseer). He then outputs an action&nbsp;<em>x</em>.</p>
+<p>Most of the time action&nbsp;<em>x</em>&nbsp;is simply taken, and we move on to the next decision. But sometimes (either randomly or when an&nbsp;<a href="handling_error_with_arguments.html">adversarial system believe that Arthur may have made an error</a>) a human overseer is contacted and involved with the decision.</p>
+<p>At this point the execution of the entire system pauses, with the action&nbsp;<em>x</em>&nbsp;not yet taken. The overseer Hugh is given time to understand the situation (but is not shown the action&nbsp;<em>x</em>).</p>
+<p>The evaluator Eva is woken up and also given enough data to understand the situation (but is not shown the action&nbsp;<em>x</em>). Hugh is given the opportunity to interact with Eva, to understand her model of the situation and how she will behave in the next step. He can also work with other AI assistants to help model an appropriate behavior.</p>
+<p>Hugh ultimately produces an action&nbsp;<em>x’</em> which both (1) reflects Hugh’s desires about what Arthur should do, and (2) is likely to fool Eva into thinking that <em>x’</em>&nbsp;was output by Arthur.</p>
+<p>Eva is then given&nbsp;<em>x’</em>&nbsp;and&nbsp;<em>x</em>, and her goal is to guess which is which. If Eva succeeds, then she receives a payoff of 1 and Arthur receives a payoff of -1. If Eva fails, then she receives a payoff of -1 and Arthur receives a payoff of 1.</p>
+<p>Arthur’s output&nbsp;<em>x</em>&nbsp;is chosen in order to maximize the expected payoff in this round, assuming that the round actually happened.</p>
+<h1 id="conclusion">Conclusion</h1>
+<p>This post suggests a simple scheme that may capture some of the benefits of directly imitating behaviors, without running into the same fundamental obstruction. There are many clear challenges for implementing anything long these lines; some can already be explored in the context of the <a href="http://papers.nips.cc/paper/5423-generative-adversarial-nets.pdf">generative adversarial models framework</a>&nbsp;(for example, empirical results highlight the necessity of maintaining rough parity between Eva and Arthur), while others are distinctive to the role of the human overseer.</p>
+<p>I expect there is room for many more sophisticated schemes that capture the best aspects of mimicry and maximization, but I think that this proposal should make us more optimistic about being able to find a working solution, and less concerned that there is a fundamental tradeoff between flexibility and safety.</p>
+<p>(<em>Funding for this research was provided by a grant from the Future of Life Institute.)</em></p></main><hr><footer></footer></body></html>

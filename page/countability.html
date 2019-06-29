@@ -1,0 +1,49 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Countability</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_SVG" async></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">Countability</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/countability.json.html">countability.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/countability">https://arbital.com/p/countability</a></p><p class="creator">by
+ <a class="page-link" href="../page/AlexeiAndreev.html">Alexei Andreev</a> Oct 20 2016</p></div><p class="clickbait">Some infinities are bigger than others.  Countable infinities are the smallest infinities.</p><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>Countability</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="math.html">Mathematics</a></li><li>…</li></ul></nav></nav></header><hr><main><p>The <a href="set_mathematics.html">set</a> of <em>counting numbers</em>, or of <em>positive integers</em>, is the set $~$\mathbb{Z}^+ = \{1, 2, 3, 4, \ldots\}$~$.</p>
+<p>A set $~$S$~$ is called <em>countable</em> or <em>enumerable</em> if there exists a <a href="surjective_function.html">surjection</a> from the counting numbers onto $~$S$~$.</p>
+<h3 id="exampletherationalnumbers">Example: The rational numbers</h3>
+<p>The set of <em>rational numbers</em>, $~$\mathbb Q$~$, is the set of integer fractions $~$\frac{p}{q}$~$ in reduced form; the greatest common divisor of $~$p$~$ and $~$q$~$ is one, with $~$q &gt; 0$~$.</p>
+<p><strong>Theorem</strong> The rational numbers are countable.</p>
+<p>The proof is, essentially, that $~$\mathbb Z^+ \times \mathbb Z^+$~$ is isomorphic to $~$\mathbb Z$~$; we count in a roughly spiral pattern centered at zero.</p>
+<p><strong>Proof</strong>  Define the <em>height</em> of $~$\frac{a}{b}$~$ to be $~$|a| + |b|$~$.  We may count the rational numbers in order of height, and ordering by $~$a$~$, and then $~$b$~$, when the heights are the same.  The beginning of this counting is $~$0 / 1$~$, $~$-1 / 1$~$, $~$1 / 1$~$, $~$-2 / 1$~$, $~$-1 / 2$~$, $~$1 / 2$~$, $~$2 / 1$~$, $~$\ldots$~$   Since there are at most $~$(2d+1)^2$~$ rational numbers of height less than or equal to $~$d$~$, a rational number with height $~$d$~$ is mapped on to by one of the counting numbers up to $~$(2d+1)^2$~$; every rational number is mapped onto by this counting.  Thus, the rational numbers are countable.  $~$\square$~$</p>
+<p><em>Note</em>: It is not hard to extend this proof to show that $~$(\mathbb Z^+)^n$~$ is countable for any finite $~$n$~$.</p>
+<p><strong>Theorem</strong> If there exists a surjection $~$f$~$ from a countable set $~$A$~$ to a set $~$B$~$, then $~$B$~$ is countable.
+<strong>Proof</strong> By definition of countable, there exists an enumeration $~$E$~$ of $~$A$~$. Now, $~$E\circ f$~$ is an enumeration of $~$B$~$, so $~$B$~$ is countable.</p>
+<h2 id="exercises">Exercises</h2>
+<blockquote>
+  <p>Show that the set $~$\Sigma^*$~$ of [ finite words] of an enumerable [ alphabet] is countable.</p>
+</blockquote>
+<p>%%hidden(Show solution):
+First, we note that since $~$\mathbb N^n$~$ is countable, the set of words of length $~$n$~$ for each $~$n\in \mathbb N$~$ is countable. </p>
+<p>Let $~$E_n: \mathbb N  \to \mathbb N^n$~$ stand for an enumeration of $~$\mathbb N ^n$~$, and $~$(J_1,J_2)(n)$~$ for an enumeration of $~$\mathbb N^2$~$.</p>
+<p>Consider the function $~$E: \mathbb N \to \Sigma^* , n\hookrightarrow E_{J_1(n)}(J_2(n))$~$ which maps every number to a word in $~$\Sigma^*$~$. Then a little thought shows that $~$E$~$ is an enumeration of $~$\Sigma^*$~$.</p>
+<p>$~$\square$~$
+%%</p>
+<blockquote>
+  <p>Show that the set $~$P_\omega(A)$~$ of finite subsets of an enumerable set $~$A$~$ is countable.</p>
+</blockquote>
+<p>%%hidden(Show solution):
+Let $~$E$~$ be an enumeration of $~$A$~$.</p>
+<p>Consider the function $~$E': \mathbb N^* \to P_\omega(A)$~$ which relates a word $~$n_0 n_1 n_2 … n_r$~$ made from natural numbers to the set $~$\{a\in A:\exists m\le k E(n_m)=a\}\subseteq A$~$. Clearly $~$E'$~$ is an enumeration of $~$P_\omega(A)$~$.
+%%</p>
+<blockquote>
+  <p>Show that the set of [ cofinite subsets] of an enumerable set is countable.</p>
+</blockquote>
+<p>%%hidden(Show solution):
+Simply consider the function which relates each cofinite set with its complementary.
+%%</p></main><hr><footer><p class="tagged"><h2>Tagged</h2><span class="page-comma-list"><a class="page-link" href="../page/concept_meta_tag.html">Concept</a></span></p><p class="likes"><h2>Likes</h2><span class="page-comma-list"><a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a></span></p><p class="reverse-related"><h2>Reverse Related</h2><ul class="page-list"><li><a class="page-link" href="../page/concept_meta_tag.html">Concept</a> <q>Add this meta tag to pages which are concepts.</q> - <a class="page-link" href="../page/AlexeiAndreev.html">Alexei Andreev</a></li></ul></p></footer></body></html>

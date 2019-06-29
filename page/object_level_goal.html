@@ -1,0 +1,40 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Object-level vs. indirect goals</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_SVG" async></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">Object-level vs. indirect goals</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/object_level_goal.json.html">object_level_goal.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/object_level_goal">https://arbital.com/p/object_level_goal</a></p><p class="creator">by
+ <a class="page-link" href="../page/EliezerYudkowsky.html">Eliezer Yudkowsky</a> May 26 2015 
+updated
+ Dec 23 2015</p></div><p class="clickbait">Difference between &quot;give Alice the apple&quot; and &quot;give Alice what she wants&quot;.</p><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>Object-level vs. indirect goals</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="ai_alignment.html">AI alignment</a></li><li>…</li></ul></nav></nav></header><hr><main><p>An 'object-level goal' is a goal that involves no indirection, doesn't require any further computation or observation to be fully specified, and is evaluated directly on events or things in the agent's model of the universe.  Contrast to meta-level or indirect goals.</p>
+<p>Some examples of object-level goals might be these:</p>
+<ul>
+<li>Eat apples.</li>
+<li>Win a chess game.</li>
+<li>Cause a pawn to advance to the eighth row, in order to win a chess game.</li>
+<li><a href="paperclip_maximizer.html">Create paperclips.</a></li>
+<li><a href="happiness_maximizer.html">Maximize the amount of human &#39;happiness&#39; for some fixed definition of happiness.</a></li>
+<li><a href="diamond_maximizer.html">The utility of a possible history of the universe is the amount of interval spent by carbon atoms covalently bound to four other carbon atoms.</a></li>
+</ul>
+<p>Here are some example cases of a goal or <a href="preference_framework.html">preference framework</a> with properties that make them <em>not</em> object level:</p>
+<ul>
+<li>"Observe Alice, model what she wants, then do that."</li>
+<li>This framework is <em>indirect</em> because it doesn't directly say what events or things in the universe are good or bad, but rather gives a recipe for deciding which events are good or bad (namely, model Alice).</li>
+<li>This framework is <em>not fully locally specified</em>, because we have to observe Alice, and maybe compute further based on our observations of her, before we find out the actual evaluator we run to weigh events as good or bad.</li>
+<li>"Induce a compact category covering the proximal causes of sensory data labeled as positive instances and not covering sensory data labeled as negative instances.  The utility of an outcome is the number of events classified as positive by the induced category."</li>
+<li>This framework is not fully specified because it is based on a supervised dataset, and the actual goals will vary with the dataset obtained.  We don't know what the agent wants when we're told about the induction algorithm; we also have to be told about the dataset, and we haven't been told about that yet.</li>
+<li>"Compute an average of what all superintelligences will want, relative to some prior distribution over the origins of superintelligences, and then do that."</li>
+<li>This framework might be computable locally without any more observations, but it still involves a level of indirection, and is not locally complete in the sense that it would take a whole lot more computation before the agent knew what it ought to think of eating an apple.</li>
+</ul>
+<p>The object-level vs. meta-level distinction should not be confused with the <a href="terminal_vs_instrumental.html">terminal vs. instrumental</a> distinction.</p></main><hr><footer><p class="tagged"><h2>Tagged</h2><span class="page-comma-list"><a class="page-link" href="../page/definition_meta_tag.html">Definition</a></span></p><p class="all-creators"><h2>All Creators</h2><span class="page-comma-list"><a class="page-link" href="../page/AlexeiAndreev.html">Alexei Andreev</a>,
+ <a class="page-link" href="../page/EliezerYudkowsky.html">Eliezer Yudkowsky</a></span></p><p class="likes"><h2>Likes</h2><span class="page-comma-list"><a class="page-link" href="../page/LawrenceChan3.html">Lawrence Chan</a></span></p><p class="reverse-related"><h2>Reverse Related</h2><ul class="page-list"><li><a class="page-link" href="../page/definition_meta_tag.html">Definition</a> <q>Meta tag used to mark pages that strictly define a particular term or phrase.</q> - <a class="page-link" href="../page/EliezerYudkowsky.html">Eliezer Yudkowsky</a></li></ul></p></footer></body></html>

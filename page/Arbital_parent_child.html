@@ -1,0 +1,47 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Arbital &quot;parent&quot; relationship</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_SVG" async></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">Arbital &quot;parent&quot; relationship</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/Arbital_parent_child.json.html">Arbital_parent_child.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/Arbital_parent_child">https://arbital.com/p/Arbital_parent_child</a></p><p class="creator">by
+ <a class="page-link" href="../page/AlexeiAndreev.html">Alexei Andreev</a> Apr 1 2015 
+updated
+ Sep 20 2017</p></div><p class="clickbait">Parent-child relationship between pages implies a strong, inseparable connection.</p><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>Arbital &quot;parent&quot; relationship</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="Arbital.html">Arbital</a></li><li><a href="arbital_contributing.html">Contributing to Arbital</a></li><li><a href="arbital_features.html">Arbital features</a></li><li>…</li></ul></nav></nav></header><hr><main><p>Most <a href="arbital_page.html">pages</a> in Arbital can be connected. We call these connections <em>relationships</em>. Parent-child relationship is one of the multiple relationship types and is the tightest way to connect pages on Arbital. This relationship is used to indicate that the child is a critical component of the parent, or that the parent is the sum of its children. For example, the [SI_units SI units] parent page will have [kilogram], [second], [meter], etc… as children pages.</p>
+<p>It's perfectly fine for a page not to have any parents or children. It can still be found by searching, and can be used as a <a href="Arbital_tag.html">tag</a>, <a href="arbital_requisite.html">requisite</a>, or link.</p>
+<h3 id="whentocreateaparentchildrelationship">When to create a parent-child relationship</h3>
+<p>When the child doesn't make sense outside of the context of the parent. For example:</p>
+<ul>
+<li>Chapter 2 of "Harry Potter and The Sorcerer's Stone" doesn't make a lot of sense by itself. So it's a child of "Harry Potter and The Sorcerer's Stone (book)" page, which is itself a child of "Harry Potter (book series)" page.</li>
+</ul>
+<p>When there is some well-known, established hierarchy. For example:</p>
+<ul>
+<li>"C. lupus (species)", or commonly known as gray wolf, is a child of the "Canis (genus)" page, which is a child of "Canidae (family)" page, etc… This taxonomy of biological organisms is pretty well established.</li>
+</ul>
+<p>When the parent is defined as the sum of some parts. For example:</p>
+<ul>
+<li>Arithmetic is addition, subtraction, multiplication and division by definition. So "Arithmetic" page will have those pages as children.</li>
+</ul>
+<p>More generally the parent-child relationship suggest a "is-a" or a "is-a-part-of" connetion. Sometimes it's also simply used for organizing pages in a hierarchy to make it easier to find them.</p>
+<h3 id="whennottocreateaparentchildrelationships">When not to create a parent-child relationships</h3>
+<p>Just because two concepts are often associated. For example:</p>
+<ul>
+<li>Chlorophyll, an important biomolecule used for photosynthesis, is usually associated with plants. But not all plants have chlorophyll, and chlorophyll can occur outside of plants, e.g. in algae.</li>
+</ul>
+<p>Just because two concepts are closely related. For example:</p>
+<ul>
+<li>Plants, chlorophyll, and photosynthesis are pretty closely related. But photosynthesis as a process can happen in things other than plants or using a mechanism that doesn't involve chlorophyll. And some plants don't even have chlorophyll.</li>
+</ul>
+<p>Sometimes it can be unclear if the pages should have a parent-child relationship. If you run into a case you can't clearly resolve, please post it here, so we can discuss it, learn from it, and refine these definitions.</p></main><hr><section class="comments"><h2>Comments</h2><div class="comment"><p><a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a></p><p><p>This gives a few clear examples, but does not help much with slightly less clear judgements (e.g. should <a href="NickBostrom.html">Nick Bostrom</a> be a child of <a href="people.html">People</a> or just tagged with it?). Classification systems are tricky and often subjective, probably worth taking a close look at Wikidata and other similar projects for inspiration when we want to work out detailed guidelines for this.</p></p></div></section><footer><p class="all-creators"><h2>All Creators</h2><span class="page-comma-list"><a class="page-link" href="../page/AlexeiAndreev.html">Alexei Andreev</a>,
+ <a class="page-link" href="../page/JacobvanEeden.html">Jacob van Eeden</a></span></p><p class="likes"><h2>Likes</h2><span class="page-comma-list"><a class="page-link" href="../page/AlexeiAndreev.html">Alexei Andreev</a>,
+ <a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a>,
+ <a class="page-link" href="../page/RonnyFernandez.html">Ronny Fernandez</a></span></p></footer></body></html>

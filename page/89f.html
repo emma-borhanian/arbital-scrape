@@ -1,0 +1,26 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>&quot;Interesting question.
+
+Here's how this problem ...&quot;</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_SVG" async></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">&quot;Interesting question.
+
+Here's how this problem ...&quot;</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/89f.json.html">89f.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/89f">https://arbital.com/p/89f</a></p><p class="creator">by
+ <a class="page-link" href="../page/RyanCarey2.html">Ryan Carey</a> Apr 24 2017</p></div><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>&quot;Interesting question.
+
+Here's how this problem ...&quot;</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="ai_alignment.html">AI alignment</a></li><li><a href="AGI_typology.html">Strategic AGI typology</a></li><li><a href="task_agi.html">Task-directed AGI</a></li><li><a href="low_impact.html">Low impact</a></li><li><a href="shutdown_utility_function.html">Shutdown utility function</a></li><li>…</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="ai_alignment.html">AI alignment</a></li><li><a href="task_agi.html">Task-directed AGI</a></li><li><a href="low_impact.html">Low impact</a></li><li><a href="shutdown_utility_function.html">Shutdown utility function</a></li><li>…</li></ul></nav></nav></header><hr><main><p>Interesting question.</p>
+<p>Here's how this problem is motivated in my head… The more obvious way to get an AI system to shut down is to have a shutdown action. Then utility-maximization occurs in an inner loop that is overridden by instructions to shutdown or change the value function. But then you need the utility-maximizer to be corrigible somehow, perhaps using a shutdown utility function, making this a purported subproblem of corrigibility.</p>
+<p>As for obvious proposed solutions, if you had defined a shutdown action [e.g. run this routine that switches the power off], then you could have the objective "The chance of this action being performed is greater than 99.999%" as your utility function. Though an incorrigible AI might be able to copy itself to get around this…</p>
+<p>One also wonders if this could be adapted into a reductio ad absurdum of the idea of making aligned AI by specifying a sovereign's utility function.</p></main><hr><footer></footer></body></html>

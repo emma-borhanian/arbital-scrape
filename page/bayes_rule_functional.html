@@ -1,0 +1,62 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Bayes' rule: Functional form</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_SVG" async></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">Bayes' rule: Functional form</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/bayes_rule_functional.json.html">bayes_rule_functional.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/bayes_rule_functional">https://arbital.com/p/bayes_rule_functional</a></p><p class="creator">by
+ <a class="page-link" href="../page/EliezerYudkowsky.html">Eliezer Yudkowsky</a> Feb 13 2016 
+updated
+ Oct 11 2016</p></div><p class="clickbait">Bayes' rule for to continuous variables.</p><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>Bayes' rule: Functional form</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="math.html">Mathematics</a></li><li><a href="probability_theory.html">Probability theory</a></li><li><a href="bayes_reasoning.html">Bayesian reasoning</a></li><li><a href="bayes_rule.html">Bayes' rule</a></li><li>…</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="rationality.html">Rationality</a></li><li><a href="probability_theory.html">Probability theory</a></li><li><a href="bayes_reasoning.html">Bayesian reasoning</a></li><li><a href="bayes_rule.html">Bayes' rule</a></li><li>…</li></ul></nav></nav></header><hr><main><p>[summary: <a href="bayes_rule.html">Bayes&#39; rule</a> generalizes to continuous <a href="function.html">functions</a>, and says, "The <a href="posterior_probability.html">posterior</a> probability <a href="https://en.wikipedia.org/wiki/Probability_density_function">density</a> is <em>proportional</em> to the <a href="relative_likelihood.html">likelihood</a> function times the <a href="prior_probability.html">prior</a> probability <a href="https://en.wikipedia.org/wiki/Probability_density_function">density</a>."</p>
+<p>$$~$\mathbb P(H_x\mid e) \propto \mathcal L_e(H_x) \cdot \mathbb P(H_x)$~$$]</p>
+<p><a href="bayes_rule.html">Bayes&#39; rule</a> generalizes to continuous <a href="function.html">functions</a>, and states, "The <a href="posterior_probability.html">posterior</a> probability <a href="https://en.wikipedia.org/wiki/Probability_density_function">density</a> is <em>proportional</em> to the <a href="relative_likelihood.html">likelihood</a> function times the <a href="prior_probability.html">prior</a> probability <a href="https://en.wikipedia.org/wiki/Probability_density_function">density</a>."</p>
+<p>$$~$\mathbb P(H_x\mid e) \propto \mathcal L_e(H_x) \cdot \mathbb P(H_x)$~$$</p>
+<h2 id="example">Example</h2>
+<p>Suppose we have a biased coin with an unknown bias $~$b$~$ between 0 and 1 of coming up heads on each individual coinflip.  Since the bias $~$b$~$ is a continuous variable, we express our beliefs about the coin's bias using a <a href="https://en.wikipedia.org/wiki/Probability_density_function">probability density function</a> $~$\mathbb P(b),$~$ where $~$\mathbb P(b)\cdot \mathrm{d}b$~$ is the probability that $~$b$~$ is in the interval $~$[b + \mathrm{d}b]$~$ for $~$\mathrm db$~$ small. (Specifically, the probability that $~$b$~$ is in the interval $~$[a, b]$~$ is $~$\int_a^b \mathbb P(b) \, \mathrm db.$~$)</p>
+<p>By hypothesis, we start out completely ignorant of the bias $~$b,$~$ meaning that all initial values for $~$b$~$ are equally likely.  Thus, $~$\mathbb P(b) = 1$~$ for all values of $~$b,$~$ which means that $~$\mathbb P(b)\, \mathrm db = \mathrm db$~$ (e.g., the chance of $~$b$~$ being found in the interval from 0.72 to 0.76 is 0.04).</p>
+<p><img src="https://i.imgur.com/jUHn9pq.png?0" alt="plot y = 1 + x * 0, x = 0 to 1" /></p>
+<p>We then flip the coin, and observe it to come up tails. This is our first piece of evidence. The likelihood $~$\mathcal L_{t_1}(b)$~$ of observation $~$t_1$~$ given bias $~$b$~$ is a continuous function of $~$b$~$, equal to 0.4 if $~$b = 0.6,$~$ 0.67 if $~$b = 0.33,$~$ and so on (because $~$b$~$ is the probability of heads and the observation was tails).</p>
+<p>Graphing the likelihood function $~$\mathcal L_{t_1}(b)$~$ as it takes in the fixed evidence $~$t_1$~$ and ranges over variable $~$b,$~$ we obtain the straightforward graph $~$\mathcal L_{t_1}(b) = 1 - b.$~$</p>
+<p><img src="https://i.imgur.com/piyKfWe.png?0" alt="plot y = 1 - x, x = 0 to 1" /></p>
+<p>If we multiply the likelihood function by the prior probability function as it ranges over $~$b$~$, we obtain a <em>relative probability</em> function on the posterior, $~$\mathbb O(b\mid t_1) = \mathcal L_{t_1}(b) \cdot \mathbb P(b) = 1 - b,$~$ which gives us the same graph again:</p>
+<p><img src="https://i.imgur.com/piyKfWe.png?0" alt="plot y = 1 - x, x = 0 to 1" /></p>
+<p>But this can't be our posterior <em>probability</em> function because it doesn't integrate to 1.  $~$\int_0^1 (1 - b) \, \mathrm db = \frac{1}{2}.$~$  (The area under a triangle is half the base times the height.)  <a href="normalize_probabilities.html">Normalizing</a> this relative probability function will give us the posterior probability function:</p>
+<p>$~$\mathbb P(b \mid t_1) = \dfrac{\mathbb O(b \mid t_1)}{\int_0^1 \mathbb O(b \mid t_1) \, \mathrm db} = 2 \cdot (1 - f)$~$</p>
+<p><img src="https://i.imgur.com/PtBSP6M.png?0" alt="plot y = 2(1 - x), x = 0 to 1" /></p>
+<p>The shapes are the same, and only the <em>y</em>-axis labels have changed to reflect the different heights of the pre-normalized and normalized function.[todo: Regraph these graphs with actual height changes]</p>
+<p>Suppose we now flip the coin another two times, and it comes up heads then tails. We'll denote this piece of evidence $~$h_2t_3.$~$  Although these two coin tosses pull our beliefs about $~$b$~$ in opposite directions, they don't cancel out &mdash; far from it! In fact, one value of $~$b$~$ ("the coin is always tails") is completely eliminated by this evidence, and many extreme values of $~$b$~$ ("almost always heads" and "almost always tails") are hit badly. That is, while the heads and the coins tails pull our beliefs in opposite directions, they don't pull with the same strength on all possible values of $~$b.$~$</p>
+<p>We multiply the old belief</p>
+<p><img src="https://i.imgur.com/PtBSP6M.png?0" alt="plot y = 2(1 - x), x = 0 to 1" /></p>
+<p>by the additional pieces of evidence</p>
+<p><img src="https://i.imgur.com/aOx1avR.png?0" alt="" /></p>
+<p>and</p>
+<p><img src="https://i.imgur.com/piyKfWe.png?0" alt="" /></p>
+<p>and obtain the posterior <em>relative</em> density</p>
+<p><img src="https://i.imgur.com/Gi7VqGo.png?0" alt="plot y = 2(1 - x)x(1 - x), x = 0 to 1" /></p>
+<p>which is proportional to the <a href="normalize_probabilities.html">normalized</a> posterior probability</p>
+<p><img src="https://i.imgur.com/tQueclr.png?0" alt="plot y = 12(1 - x)x(1 - x), x = 0 to 1" /></p>
+<p>Writing out the whole operation from scratch:</p>
+<p>$$~$\mathbb P(b \mid t_1h_2t_3) = \frac{\mathcal L_{t_1h_2t_3}(b) \cdot \mathbb P(b)}{\mathbb P(t_1h_2t_3)} = \frac{(1 - b) \cdot b \cdot (1 - b) \cdot 1}{\int_0^1 (1 - b) \cdot b \cdot (1 - b) \cdot 1 \, \mathrm{d}b} = {12\cdot b(1 - b)^2}$~$$</p>
+<p>Note that it's okay for a posterior probability density to be greater than 1, so long as the total probability <em>mass</em> isn't greater than 1.  If there's probability density 1.2 over an interval of 0.1, that's only a probability of 0.12 for the true value to be found in that interval.</p>
+<p>Thus, intuitively, Bayes' rule "just works" when calculating the posterior probability density from the prior probability density function and the (continuous) likelihood ratio function. A proof is beyond the scope of this guide; refer to [ Proof of Bayes' rule in the continuous case].</p></main><hr><section class="comments"><h2>Comments</h2><div class="comment"><p><a class="page-link" href="../page/NateSoares.html">Nate Soares</a></p><p><p>If you're going to start using probability density functions instead of just probability functions, I'd introduce their type and consider using a different symbol (e.g. lowercase p) for PDFs. I expect some people to get fairly confused when you use $~$\mathbb P$~$ but drop in a $~$\operatorname{d}\!f$~$ in out of nowhere -- "how did a tiny distance come into this!?" cries a reader-model.</p>
+<p>Also, I'm not sure it's standard to include the delta in the density -- I'm more familiar with notation saying that the uniform PDF is 1 everywhere, and the cumulative distribution is the integral times $~$\operatorname{d}\!f$~$.</p></p></div><div class="comment"><p><a class="page-link" href="../page/AlexeiAndreev.html">Alexei Andreev</a></p><p><blockquote class="comment-context">Or, writing out the whole operation from scratch:</blockquote>
+<p>The formula uses "x"s, but should it use "f"s instead?</p></p></div><div class="comment"><p><a class="page-link" href="../page/TimEgan.html">Tim Egan</a></p><p><p><a href="EliezerYudkowsky.html">Eliezer Yudkowsky</a> I think there should be a small change here? Variable f becomes x and back to f, and I believe it should just be f?</p>
+<p>Or, writing out the whole operation from scratch:</p>
+<p>$~$\mathbb P(f\mid e\!=\!\textbf {THT}) = \dfrac{\mathcal L(e\!=\!\textbf{THT}\mid f) \cdot \mathbb P(f)}{\mathbb P(e\!=\!\textbf {THT})} = **\dfrac{(1 - x) \cdot x \cdot (1 - x) \cdot 1}{\int_0^1 (1 - x) \cdot x \cdot (1 - x) \cdot 1 \** \operatorname{d}\!f} = 12 \cdot f(1 - f)^2$~$</p></p></div></section><footer><p class="tagged"><h2>Tagged</h2><span class="page-comma-list"><a class="page-link" href="../page/b_class_meta_tag.html">B-Class</a></span></p><p class="all-creators"><h2>All Creators</h2><span class="page-comma-list"><a class="page-link" href="../page/AlexeiAndreev.html">Alexei Andreev</a>,
+ <a class="page-link" href="../page/EliezerYudkowsky.html">Eliezer Yudkowsky</a>,
+ <a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a>,
+ <a class="page-link" href="../page/EricRogstad.html">Eric Rogstad</a>,
+ <a class="page-link" href="../page/NateSoares.html">Nate Soares</a></span></p><p class="likes"><h2>Likes</h2><span class="page-comma-list"><a class="page-link" href="../page/AdeleLopez.html">Adele Lopez</a>,
+ <a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a>,
+ <a class="page-link" href="../page/LiamDonovan.html">Liam Donovan</a>,
+ <a class="page-link" href="../page/NateSoares.html">Nate Soares</a>,
+ <a class="page-link" href="../page/SzymonWilczyski.html">Szymon Wilczyński</a></span></p><p class="reverse-related"><h2>Reverse Related</h2><ul class="page-list"><li><a class="page-link" href="../page/b_class_meta_tag.html">B-Class</a> <q>This page is mostly complete and without major problems, but has not had detailed feedback from the target audience and reviewers.</q> - <a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a></li></ul></p></footer></body></html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Parfit's Hitchhiker</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_SVG" async></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">Parfit's Hitchhiker</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/parfits_hitchhiker.json.html">parfits_hitchhiker.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/parfits_hitchhiker">https://arbital.com/p/parfits_hitchhiker</a></p><p class="creator">by
+ <a class="page-link" href="../page/EliezerYudkowsky.html">Eliezer Yudkowsky</a> Aug 5 2016 
+updated
+ Aug 5 2016</p></div><p class="clickbait">You are dying in the desert.  A truck-driver who is very good at reading faces finds you, and offers to drive you into the city if you promise to pay $1,000 on arrival.  You are a selfish rationalist.</p><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>Parfit's Hitchhiker</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="decision_theory.html">Decision theory</a></li><li><a href="logical_dt.html">Logical decision theories</a></li><li><a href="newcomblike.html">Newcomblike decision problems</a></li><li>…</li></ul></nav></nav></header><hr><main><p>You are stranded in the desert, running out of water, and soon to die.  Someone in a motor vehicle drives up to you.  The driver of the motor vehicle is a selfish ideally game-theoretical agent, and what's more, so are you.  Furthermore, the driver is Paul Ekman who has spent his whole life studying facial microexpressions and is extremely good at reading people's honesty by looking at their faces.</p>
+<p>The driver says, "Well, as an ideal selfish rational agent, I'll convey you into town if it's in my own interest to do so.  I don't want to bother dragging you to Small Claims Court if you don't pay up.  So I'll just ask you this question:  Can you honestly say that you'll give me \$1,000 from an ATM after we reach town?"</p>
+<p>On some decision theories, an ideal selfish rational agent will realize that once it reaches town, it will have no further incentive to pay the driver.  Thus, agents of this type answer "Yes," whereupon the driver says "You're lying" and drives off leaving them to die.</p>
+<p>Would you survive? %note: Okay, fine, you'd just keep your promise because of being honest.  But would you still survive even if you were an ideal selfish agent running whatever algorithm you consider to correspond to the ideal [principle_rational_choice principle of rational choice]?%</p>
+<h1 id="analysis">Analysis</h1>
+<p>Parfit's Hitchhiker is noteworthy in that, unlike the alien philosopher-troll <a href="omega_troll.html">Omega</a> running strange experiments, Parfit's driver acts for understandable reasons.</p>
+<p>The <a href="newcomblike.html">Newcomblike</a> aspect of the problem arises from the way that your algorithm's output, once inside the city, determines both:</p>
+<ul>
+<li>Whether you actually pay up in the city;</li>
+<li>Your helpless knowledge of whether you'll actually pay up in the city, which you can't stop from being visible in your facial microexpressions.</li>
+</ul>
+<p>We may assume that Parfit's driver also asks you questions like "Have you really thought through what you'll do?" and "Are you trying to think one thing now, knowing that you'll probably think something else in the city?" and watches your facial expression on those answers as well.</p>
+<p>Note that quantitative changes in your <em>probability</em> of survival may be worth pursuing, even if you don't think it's <em>certain</em> that Paul Ekman could read off your facial expressions correctly.  Indeed, just a driver who is <em>fairly good</em> at reading faces might motivate this as an important Newcomblike problem, if you value significant probability shifts in your survival at more than \$1,000.</p>
+<p>Parfit's Hitchhiker is structurally similar to the <a href="transparent_newcombs_problem.html">Transparent Newcomb&#39;s Problem</a>, if you value your life at \$1,000,000.</p>
+<h1 id="responses">Responses</h1>
+<h2 id="ahrefcausal_dthtmlcausaldecisiontheorya"><a href="causal_dt.html">Causal decision theory</a></h2>
+<p>Dies in the desert.  A CDT agent knows that its future self will reason, "Now that I'm in the city, nothing I do can physically cause me to be back in the desert again" and will therefore refuse to pay.  Therefore, the present agent is unable to answer honestly that it will pay in the future.</p>
+<h2 id="ahrefevidential_dthtmlevidentialdecisiontheorya"><a href="evidential_dt.html">Evidential decision theory</a></h2>
+<p>Dies in the desert.  An EDT agent knows that its future self will reason, "Since I can already see that I'm in the city, my paying \$1,000 wouldn't provide me with any further good news about my being in the city."</p>
+<h2 id="ahreflogical_dthtmllogicaldecisiontheorya"><a href="logical_dt.html">Logical decision theory</a></h2>
+<p>Survives.</p>
+<p>&bull;  A [timeless_dt timeless decision agent], even without the <a href="updateless_dt.html">updateless feature</a>, will reason, "If-counterfactually my algorithm for what to do in the city had the logical output 'refuse to pay', then in that counterfactual case I would have died in the desert".  The TDT agent will therefore evaluate the expected utility of refusing to pay as very low.</p>
+<p>&bull;  An <a href="updateless_dt.html">updateless decision agent</a> computes that the optimal policy maps the sense data "I can see that I'm already in the city" to the action "Pay the driver \$1,000" and this computation does not change after the agent sees that it is in the city.</p></main><hr><footer><p class="tagged"><h2>Tagged</h2><span class="page-comma-list"><a class="page-link" href="../page/c_class_meta_tag.html">C-Class</a></span></p><p class="likes"><h2>Likes</h2><span class="page-comma-list"><a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a>,
+ <a class="page-link" href="../page/JaimeSevillaMolina.html">Jaime Sevilla Molina</a></span></p><p class="reverse-related"><h2>Reverse Related</h2><ul class="page-list"><li><a class="page-link" href="../page/c_class_meta_tag.html">C-Class</a> <q>This page has substantial content, but may not thoroughly cover the topic, may not meet style and prose standards, or may not explain the concept in a way the target audience will reliably understand.</q> - <a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a></li></ul></p></footer></body></html>

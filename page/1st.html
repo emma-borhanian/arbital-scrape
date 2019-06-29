@@ -1,0 +1,28 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>&quot;These arguments seem weak t...&quot;</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_SVG" async></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">&quot;These arguments seem weak t...&quot;</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/1st.json.html">1st.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/1st">https://arbital.com/p/1st</a></p><p class="creator">by
+ <a class="page-link" href="../page/PaulChristiano.html">Paul Christiano</a> Jan 30 2016 
+updated
+ Jan 30 2016</p></div><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>&quot;These arguments seem weak t...&quot;</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="ai_alignment.html">AI alignment</a></li><li><a href="4s.html">Natural language understanding of &quot;right&quot; will yield normativity</a></li><li>…</li></ul></nav></nav></header><hr><main><p>These arguments seem weak to me.</p>
+<ul>
+<li>I think the basic issue is that you are not properly handling uncertainty about what will be practically needed to train an agent out of infrahuman errors in language understanding. Your arguments seem much more reasonable under a particular model (e.g. a system that is making predictions or plans and develops language understanding as a tool for making better predictions), but it seems hard to justify 90% confidence in that model.</li>
+<li>It's not at all clear that language understanding means identifying "natural" categories. Whether values have high information content doesn't seem like a huge consideration given what I consider plausible approaches to language learning---it's the kind of thing that makes the problem linearly harder / require linearly more data, rather than causing a qualitative change.</li>
+<li>It seems clear that "right" does not mean "a human would judge right given a persuasive argument." That's a way we might try to define right, but it's clearly an alternative to a natural language understanding of right (an alternative I consider more plausible), not an aspect of it.</li>
+<li>"Do the right thing" does not have to cash out as a function from outcomes --&gt; rightness followed by rightness-maximization. That's not even really an intuitive way to cash it out.</li>
+<li>The key issue may be how well natural language understanding degrades under uncertainty. Again, you seem to be imagining a distribution over vague maps from outcome --&gt; rightness which is then maximized in expectation, whereas I (and I think most people) are imagining an incomplete set of tentative views about rightness. The incomplete set of tentative views about rightness can include strong claims about things like violations of human autonomy (even though autonomy is similarly defined by an incomplete set of tentative views rather than a distribution over maps from outcome ---&gt; autonomy).</li>
+</ul>
+<p>I agree that many commenters and some researchers are too optimistic about this kind of thing working automatically or by default. But I think your post doesn't engage with the substantive optimistic view.</p>
+<p>It would be easier to respond if you gave a tighter argument for your conclusion, but it might also be worth someone actively making a tighter argument for the optimistic view, especially if you actually don't understand the strong optimistic view (rather than initially responding to a weak version of it for clarity).</p></main><hr><footer></footer></body></html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Life in logspace</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_SVG" async></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">Life in logspace</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/logspace.json.html">logspace.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/logspace">https://arbital.com/p/logspace</a></p><p class="creator">by
+ <a class="page-link" href="../page/NateSoares.html">Nate Soares</a> Jun 17 2016 
+updated
+ Jul 30 2016</p></div><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>Life in logspace</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="math.html">Mathematics</a></li><li><a href="logarithm.html">Logarithm</a></li><li>…</li></ul></nav></nav></header><hr><main><p><a href="log_lattice.html">The log lattice</a> hints at the reason that engineers, scientists, and AI researchers find logarithms so useful.</p>
+<p>At this point, you may have a pretty good intuition for what logarithms are doing, and you may be saying to yourself</p>
+<blockquote>
+  <p>Ok, I understand logarithms, and I see how they could be a pretty useful concept sometimes. Especially if, like, someone happens to have an out-of-control bacteria colony lying around. I can also see how they're useful for measuring representations of things (like the length of a number when you write it down, or the cost of communicating a message). If I squint, I can <em>sort of</em> see why it is that the brain encodes many percepts logarithmically (such that the tone that I perceive is the $~$\log_2$~$ of the frequency of vibration in the air), as it's not too surprising that evolution occasionally hit upon this natural tool for representing things. I guess logs are pretty neat.</p>
+</blockquote>
+<p>Then you start seeing logarithms in other strange places &mdash; say, you learn that <a href="https://en.wikipedia.org/wiki/AlphaGo">AlphaGo</a> primarily manipulated [log_probability logarithms of the probability] that the human would take a particular action instead of manipulating the probabilities directly. Then maybe you learn that scientists, engineers, and navigators of yore used to pay large sums of money for giant, pre-computed tables of logarithm outputs.</p>
+<p>At that point, you might say</p>
+<blockquote>
+  <p>Hey, wait, why do these logs keep showing up all over the place? Why are they <em>that</em> ubiquitous? What's going on here?</p>
+</blockquote>
+<p>The reason here is that <em>addition is easier than multiplication,</em> and this is true both for navigators of yore (who had to do lots of calculations to keep their ships on course), and for modern AI algorithms.</p>
+<p>Let's say you have a whole bunch of numbers, and you know you're going to have to perform lots and lots of operations on them that involve taking some numbers you already have and multiplying them together. There are two ways you could do this: One is that you could bite the bullet and multiply them all, which gets pretty tiresome (if you're doing it by hand) and/or pretty expensive (if you're training a gigantic neural network on millions of games of go). Alternatively, you could put all your numbers through a log function (a one-time cost), and then perform all your operations using addition (much cheaper!), and then transform them back using [-exponentiation] when you're done (another one-time cost).</p>
+<p>Empirically, the second method tends to be faster, cheaper, and more convenient (at the cost of some precision, given that most log outputs are <a href="transcendental_number.html">transcendental</a>).</p>
+<p>This is the last insight about logarithms contained in this tutorial, and it is a piece of practical advice: If you have to perform a large chain of multiplications, you can often do it cheaper by first transforming your problem into "log space", where multiplication acts like addition (and exponentiation acts like multiplication). Then you can perform a bunch of additions instead, and transform the answer back into normal space at the end.</p></main><hr><footer><p class="tagged"><h2>Tagged</h2><span class="page-comma-list"><a class="page-link" href="../page/b_class_meta_tag.html">B-Class</a></span></p><p class="all-creators"><h2>All Creators</h2><span class="page-comma-list"><a class="page-link" href="../page/EricRogstad.html">Eric Rogstad</a>,
+ <a class="page-link" href="../page/MalcolmMcCrimmon.html">Malcolm McCrimmon</a>,
+ <a class="page-link" href="../page/NateSoares.html">Nate Soares</a></span></p><p class="likes"><h2>Likes</h2><span class="page-comma-list"><a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a>,
+ <a class="page-link" href="../page/EricRogstad.html">Eric Rogstad</a>,
+ <a class="page-link" href="../page/NateSoares.html">Nate Soares</a>,
+ <a class="page-link" href="../page/SzymonSlawinski.html">Szymon Slawinski</a></span></p><p class="reverse-related"><h2>Reverse Related</h2><ul class="page-list"><li><a class="page-link" href="../page/b_class_meta_tag.html">B-Class</a> <q>This page is mostly complete and without major problems, but has not had detailed feedback from the target audience and reviewers.</q> - <a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a></li></ul></p></footer></body></html>

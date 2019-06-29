@@ -1,0 +1,59 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Order relation</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_SVG" async></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">Order relation</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/order_relation.json.html">order_relation.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/order_relation">https://arbital.com/p/order_relation</a></p><p class="creator">by
+ <a class="page-link" href="../page/JoeZeng.html">Joe Zeng</a> Jul 5 2016 
+updated
+ Jul 7 2016</p></div><p class="clickbait">A way of determining which elements of a set come &quot;before&quot; or &quot;after&quot; other elements.</p><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>Order relation</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="math.html">Mathematics</a></li><li><a href="relation_mathematics.html">Relation</a></li><li>…</li></ul></nav></nav></header><hr><main><p>An <strong>order relation</strong> (also called an <strong>order</strong> or <strong>ordering</strong>) is a <a href="relation_mathematics.html">binary relation</a> $~$\le$~$ on a <a href="set_mathematics.html">set</a> $~$S$~$ that can be used to order the elements in that set.</p>
+<p>An order relation satisfies the following properties:</p>
+<ol>
+<li>For all $~$a \in S$~$, $~$a \le a$~$. (the <a href="reflexive_relation.html">reflexive</a> property)</li>
+<li>For all $~$a, b \in S$~$, if $~$a \le b$~$ and $~$b \le a$~$, then $~$a = b$~$. (the <a href="antisymmetric_relation.html">antisymmetric</a> property)</li>
+<li>For all $~$a, b, c \in S$~$, if $~$a \le b$~$ and $~$b \le c$~$, then $~$a \le c$~$. (the <a href="transitive_relation.html">transitive</a> property)</li>
+</ol>
+<p>A set that has an order relation is called a <a href="poset.html">partially ordered set</a> (or "poset"), and $~$\le$~$ is its <em>partial order</em>.</p>
+<h2 id="totalityofanorder">Totality of an order</h2>
+<p>There is also a fourth property that distinguishes between two different types of orders:</p>
+<ol start="4">
+<li>For all $~$a, b \in S$~$, either $~$a \le b$~$ or $~$b \le a$~$ or both. (the [total_relation total] property)</li>
+</ol>
+<p>The total property implies the reflexive property, by setting $~$a = b$~$.</p>
+<p>If the order relation satisfies the total property, then $~$S$~$ is called a <a href="totally_ordered_set.html">Totally ordered set</a>, and $~$\le$~$ is its <em>total order</em>.</p>
+<h2 id="wellordering">Well-ordering</h2>
+<p>A fifth property that extends the idea of a "total order" is that of the <a href="well_ordered_set.html">well-ordering</a>:</p>
+<ol start="5">
+<li>For every subset $~$X$~$ of $~$S$~$, $~$X$~$ has a least element: an element $~$x$~$ such that for all $~$y \in X$~$, we have $~$x \leq y$~$.</li>
+</ol>
+<p>Well-orderings are very useful: they are the orderings we can perform <a href="mathematical_induction.html">induction</a> over. (For more on this viewpoint, see the page on [structural_induction].)</p>
+<h1 id="derivedrelations">Derived relations</h1>
+<p>The order relation immediately affords several other relations.</p>
+<h2 id="reverseorder">Reverse order</h2>
+<p>We can define a <em>reverse order</em> $~$\ge$~$ as follows: $~$a \ge b$~$ when $~$b \le a$~$.  </p>
+<h2 id="strictorder">Strict order</h2>
+<p>From any poset $~$(S, \le)$~$, we can derive a <em>strict order</em> $~$&lt;$~$, which disallows equality. For $~$a, b \in S$~$, $~$a &lt; b$~$ when $~$a \le b$~$ and $~$a \neq b$~$. This strict order is still antisymmetric and transitive, but it is no longer reflexive.</p>
+<p>We can then also define a reverse strict order $~$&gt;$~$ as follows: $~$a &gt; b$~$ when $~$b \le a$~$ and $~$a \neq b$~$.</p>
+<h2 id="incomparability">Incomparability</h2>
+<p>In a poset that is not totally ordered, there exist elements $~$a$~$ and $~$b$~$ where the order relation is undefined. If neither $~$a \leq b$~$ nor $~$b \leq a$~$ then we say that $~$a$~$ and $~$b$~$ are <em>incomparable</em>, and write $~$a \parallel b$~$. </p>
+<h2 id="coverrelation">Cover relation</h2>
+<p>From any poset $~$(S, \leq)$~$, we can derive an underlying <em>cover relation</em> $~$\prec$~$, defined such that for $~$a, b \in S$~$, $~$a \prec b$~$ whenever the following two conditions are satisfied:</p>
+<ol>
+<li>$~$a &lt; b$~$.</li>
+<li>For all $~$s \in S$~$, $~$a \leq s &lt; b$~$ implies that $~$a = s$~$.</li>
+</ol>
+<p>Simply put, $~$a \prec b$~$ means that $~$b$~$ is the smallest element of $~$S$~$ which is strictly greater than $~$a$~$.
+$~$a \prec b$~$ is pronounced "$~$a$~$ is covered by $~$b$~$", or "$~$b$~$ covers $~$a$~$", and $~$b$~$ is said to be a <em>cover</em> of $~$a$~$.</p></main><hr><section class="comments"><h2>Comments</h2><div class="comment"><p><a class="page-link" href="../page/DylanHendrickson.html">Dylan Hendrickson</a></p><p><blockquote class="comment-context">If the order does not satisfy the total property, then $~$S$~$ is a partially ordered set, and $~$\\le$~$ is a partial order on that set, in which case certain elements might be incomparable\.</blockquote>
+<p>Any relation satisfying 1-3 is a partial order, and the corresponding set is a poset. A total order is a special kind of partial order defined by also satisfying 4. </p></p></div></section><footer><p class="tagged"><h2>Tagged</h2><span class="page-comma-list"><a class="page-link" href="../page/formal_definition_meta_tag.html">Formal definition</a></span></p><p class="all-creators"><h2>All Creators</h2><span class="page-comma-list"><a class="page-link" href="../page/JoeZeng.html">Joe Zeng</a>,
+ <a class="page-link" href="../page/PatrickStevens.html">Patrick Stevens</a></span></p><p class="likes"><h2>Likes</h2><span class="page-comma-list"><a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a>,
+ <a class="page-link" href="../page/JaimeSevillaMolina.html">Jaime Sevilla Molina</a></span></p><p class="reverse-related"><h2>Reverse Related</h2><ul class="page-list"><li><a class="page-link" href="../page/formal_definition_meta_tag.html">Formal definition</a> <q>This page gives a purely formal definition of a topic, rather than motivating, explaining, and giving examples.</q> - <a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a></li></ul></p></footer></body></html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Integers: Intro (Math 0)</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_SVG" async></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">Integers: Intro (Math 0)</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/integers_intro_math0.json.html">integers_intro_math0.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/integers_intro_math0">https://arbital.com/p/integers_intro_math0</a></p><p class="creator">by
+ <a class="page-link" href="../page/JoeZeng.html">Joe Zeng</a> Jul 5 2016 
+updated
+ Jul 7 2016</p></div><p class="clickbait">The integers are the whole numbers extended into the negatives.</p><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>Integers: Intro (Math 0)</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="math.html">Mathematics</a></li><li><a href="integer.html">Integer</a></li><li>…</li></ul></nav></nav></header><hr><main><p>[summary: The integers are an extension of the <a href="natural_number.html">natural numbers</a> into the <em>negatives</em>.</p>
+<p>In this article we'll be exploring a novel way to think of negative numbers, using collections of cows and anti-cows. <em>Mooooo!</em>]</p>
+<p>The integers are an extension of the <a href="natural_number.html">natural numbers</a> into the <em>negatives</em>.</p>
+<h2 id="negativenumbers">Negative numbers</h2>
+<p>Negative numbers are numbers less than zero. They are notated as numbers with a minus sign in front of them, like $~$-2$~$ or $~$-15$~$ or $~$-6387$~$.</p>
+<p>When many people are first introduced to the concept of negative numbers, one question they have is, "how do negative numbers exist? How can we have less than nothing of something?"</p>
+<p>Usually this question is answered with something about travelling along the number line and then going in the opposite direction past zero. But we can also answer this question from the traditional perspective of quantities, using <em>antimatter</em>.</p>
+<h2 id="arithmeticwithanticows">Arithmetic with anti-cows</h2>
+<p>Matter and antimatter are substances that annihilate each other — they cancel each other out. In the same way, positive and negative quantities cancel each other out to some extent when added together.</p>
+<p>[todo: cow artwork]</p>
+<p>Let's create a physical example of this antimatter phenomenon, and consider a collection of cows. [comment: diagram of cows] If a natural number is how many cows we have, then negative numbers are the presence of <em>anti-cows</em>. [comment: For the sake of easy reading, let's colour a cow red, and an anti-cow blue: diagram of red cow = cow, blue cow = anticow]  For example, if you have $~$3$~$ anti-cows, you have $~$-3$~$ cows. If you have $~$128$~$ anti-cows, you have $~$-128$~$ cows, and so on.</p>
+<p>When a cow and an anti-cow come into contact, they annihilate each other and nothing is left (except technically an enormous burst of energy that could cause a magnitude 9 earthquake, but we won't get into the nitty-gritty physics of antimatter annihilation here). [comment: diagram of cow/anti-cow annihilation] Moreover, each cow will annihilate exactly one anti-cow, and vice versa. </p>
+<p>This lets us perform subtraction by adding anti-cows instead of taking away cows. If you want to perform $~$6 - 4$~$, you imagine you have a collection of six cows, and you add four anti-cows to the mix, which annihilate four of the cows leaving you with two. This is exactly the same as if you'd taken away four cows (except that you've now released enough energy to power the entire world's energy demands for seven months). [comment: diagram of 6 - 4]</p>
+<p>This form of adding negatives is slightly more flexible than regular subtraction. In regular subtraction, you couldn't take away more cows than there already were. But when you add negatives, you can keep adding anti-cows after there are no cows left, at which point you just have more and more anti-cows, giving you a more and more negative number. So if you wanted to subtract $~$4 - 6$~$, you couldn't take away six cows from four, but you could add six anti-cows, and four of them would annihilate the four cows, leaving you with two anti-cows or a final answer of $~$-2$~$. [comment: diagram of 4 - 6]</p>
+<h2 id="usefulpropertiesofnegativenumbers">Useful properties of negative numbers</h2>
+<p>Extending the natural numbers into negatives gives us lots of useful properties when doing arithmetic.</p>
+<h3 id="additionofnegativenumbers">Addition of negative numbers</h3>
+<p>Negative numbers add up just like positive ones. If you have $~$-3$~$ and $~$-7$~$, they add up to $~$-10$~$, just like three anti-cows and seven anti-cows would come together to make ten anti-cows. [comment: diagram of (-3) + (-7)]</p>
+<p>Knowing this, how would you calculate $~$(-6) + (-8) + (-12) + (-20)$~$?</p>
+<p>%%hidden(Show solution):
+Simply add up all the negative quantities together. $$~$6 + 8 + 12 + 20 = 46 \to (-6) + (-8) + (-12) + (-20) = -46$~$$
+%%</p>
+<h3 id="subtractionasadditiveinversion">Subtraction as additive inversion</h3>
+<p>If we represent a natural number as a number of cows, then the same number of anti-cows is called the <em>additive inverse</em> of that number, because a number and its additive inverse add up to zero (equal numbers of cows and anti-cows will all annihilate each other to give nothing), which is the "additive <a href="identity_element.html">identity</a>" (or "the number that changes nothing when you add it to something").</p>
+<p>Using additive inverses allows us to express subtraction in the form of addition — for example, $~$5 - 2$~$ can be rewritten as $~$5 + (-2)$~$ (which just means that instead of taking away two cows, you're adding two anti-cows). When we do this, suddenly we can rearrange subtraction operations along with addition operations even though subtraction isn't <a href="commutative_operation.html">commutative</a>.</p>
+<p>Then, if you have a giant addition and subtraction problem you want to solve, you can add up all the numbers you want to add (into a big collection of cows), then add up all the numbers you want to subtract (into a big collection of anti-cows), and just do one subtraction (annihilating cow/anti-cow pairs) to get your answer. For example, $~$6 - 2 + 7 - 5$~$ is really just $~$6 + (-2) + 7 + (-5)$~$ which is equal to $~$6 + 7 + (-5) + (-2)$~$. Then, you add up the number of cows (13) and anti-cows (7), and annihilate them to get the final answer of $~$6$~$.</p>
+<p>Here's another exercise for you: How would you calculate $~$13 + 8 - 5 + 6 + 4 - 12 - 9 + 1$~$?</p>
+<p>%%hidden(Show solution):
+First, rewrite each subtraction operation as addition of a negative number: $$~$13 + 8 + (-5) + 6 + 4 + (-12) + (-9) + 1$~$$</p>
+<p>Then rearrange the equation to group all the positive and negative numbers (cows and anti-cows) together: $$~$13 + 8 + 6 + 4 + 1 + (-5) + (-12) + (-9)$~$$</p>
+<p>Then add up all the positive and negative numbers separately: $$~$(13 + 8 + 6 + 4 + 1) + ((-5) + (-12) + (-9)) = 32 + (-26)$~$$</p>
+<p>And finally, subtract it all at once: $$~$32 + (-26) = 32 - 26 = 6$~$$</p>
+<p>And voilà, you have six cows.
+%%</p>
+<p>What about $~$8 - 6 + 4 - 13 + 7 - 5 - 9 + 12$~$?</p>
+<p>%%hidden(Show solution):
+Same as before, we rewrite, regroup, add up, and subtract:</p>
+<p>$$~$8 + (-6) + 4 + (- 13) + 7 + (- 5) + (- 9) + 12 \\ \Downarrow$~$$</p>
+<p>$$~$8 + 4 + 7 + 12 + (-6) + (-13) + (-5) + (-9) \\ \Downarrow$~$$ </p>
+<p>$$~$(8 + 4 + 7 + 12) + ((-6) + (-13) + (-5) + (-9)) = 31 + (-33)$~$$</p>
+<p>$$~$31 + (-33) = 31 - 33$~$$</p>
+<p>But hold on — now you have more anti-cows than cows, so you can't subtract directly! Not to worry — simply flip the subtraction problem around, and subtract the cows from the anti-cows, knowing that the final result will be negative instead.</p>
+<p>$$~$31 - 33 = -(33 - 31) = -2$~$$
+%%</p>
+<h2 id="thesetofintegers">The set of integers</h2>
+<p>Back to defining the integers. The set of integers is simply the set of natural numbers and their additive inverses — i.e. the set of numbers of cows you can have if you can have anti-cows as well. This set branches out to infinity on both sides, and we usually write it as $~$\{ \ldots, -2, -1, 0, 1, 2, \ldots \}$~$.</p>
+<p>[todo: cow multiplication with herds and anti-herds]</p>
+<p>[todo: check readability scores to make sure it's in grade 7-8 range]</p></main><hr><footer><p class="tagged"><h2>Tagged</h2><span class="page-comma-list"><a class="page-link" href="../page/c_class_meta_tag.html">C-Class</a>,
+ <a class="page-link" href="../page/math0.html">Math 0</a></span></p><p class="likes"><h2>Likes</h2><span class="page-comma-list"><a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a></span></p><p class="reverse-related"><h2>Reverse Related</h2><ul class="page-list"><li><a class="page-link" href="../page/c_class_meta_tag.html">C-Class</a> <q>This page has substantial content, but may not thoroughly cover the topic, may not meet style and prose standards, or may not explain the concept in a way the target audience will reliably understand.</q> - <a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a></li><li><a class="page-link" href="../page/math0.html">Math 0</a> <q>Are you not actively bad at math, nor traumatized about math?</q> - <a class="page-link" href="../page/EliezerYudkowsky.html">Eliezer Yudkowsky</a></li></ul></p></footer></body></html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Problem: safe AI from episodic RL</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_SVG" async></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">Problem: safe AI from episodic RL</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/safe_ai_episode_rl.json.html">safe_ai_episode_rl.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/safe_ai_episode_rl">https://arbital.com/p/safe_ai_episode_rl</a></p><p class="creator">by
+ <a class="page-link" href="../page/PaulChristiano.html">Paul Christiano</a> Feb 3 2016 
+updated
+ Mar 4 2016</p></div><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>Problem: safe AI from episodic RL</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="paul_ai_control.html">Paul Christiano's AI control blog</a></li><li>…</li></ul></nav></nav></header><hr><main><p>In&nbsp;<a href="steering_problem.html?title=the-steering-problem">a previous post</a>, I posed the steering problem:</p>
+<blockquote>
+  <p>Using black-box access to human-level cognitive abilities, can we write a program that is as useful as a well-motivated human with those abilities?</p>
+</blockquote>
+<p>One natural ability is&nbsp;<strong>episodic reinforcement learning.</strong> We can ask: if we have a good algorithm for episodic RL, can we use it to implement a safe and useful AI?</p>
+<p>The quoted problem statement considers “human-level,” but the same problem can be posed for any level of ability, which may be subhuman in some respects and superhuman in others. The only additional wrinkle is defining the benchmark of a “well-motivated” AI with the same abilities. There are some other technical points in&nbsp;<a href="steering_problem.html?title=the-steering-problem">my post about the steering problem</a>.</p>
+<h3 id="definition">Definition</h3>
+<p>In (online) episodic reinforcement learning, a learner participates in a series of episodes. In each episode, the learner interacts with an unknown environment, and eventually receives a real-valued reward. The learner’s goal is to receive a high total reward.</p>
+<p>We say that an algorithm A is competitive with a fixed policy X if, for every sequence of episodes, the total payoff of A is almost as large as the total payoff of using X in each episode. (The gap is the&nbsp;<strong>regret</strong>.)</p>
+<p>By “human-level” we mean competitive with the behavior of a particular human H. This definition of human-level is parametrized by the regret, which quantifies the training time required to converge to human level.</p>
+<p>A stronger and more useful assumption is that A is competitive with any simple modification of A that a human could describe and implement. In this case, the regret must increase as we consider more complex proposed modifications.</p>
+<h1 id="currentstatus">Current status</h1>
+<p>A good RL agent could probably behave very “well” in the world, effectively acquiring resources and expanding its influence. But we don’t know how to build a similarly effective agent which would eventually use its resources and influence in a way that its owners would actually like.</p>
+<p>The wide availability of powerful RL agents, without accompanying advances in our ability to apply them usefully, would probably not be good for humanity.</p>
+<p>A common hope is that we will learn how to build more useful AI in parallel with or before understanding how to build dangerously powerful RL agents.</p>
+<p>I think that this hope is probably justified. But nevertheless, I would feel more comfortable about AI safety if we had a more compelling answer to this problem now. I think that we understand reinforcement learning well enough that we can begin to have serious discussions about the problem, and to do relevant empirical research, today. And I think that the stakes are high enough that we probably should.</p>
+<h1 id="achallenge">A challenge</h1>
+<p>I consider this to be a particularly challenging and important instance of the steering problem, for a few closely related reasons.</p>
+<p>Most importantly, it seems that any algorithm which can achieve good performance in the real world, across a range of environments, can also achieve good performance in episodic reinforcement learning problems. So if we can build any kind of powerful AI at all, we can probably build an effective reinforcement learner. In this sense, episodic reinforcement learning is almost a non-assumption.</p>
+<p>Unsurprisingly, it also seems that reinforcement learning, or at least opaque goal-directed behavior, is an especially hard case for most AI control techniques. It’s also the capability whose destructive capability is most evident and immediate, and a basic part of the story that motivates concern with AI risk. Reinforcement learning is not the only formalization of agency, but it seems to be one that features prominently in current practice, and it may be the most challenging to apply safely.</p>
+<p>Note that the definition of reinforcement learning is general enough that it includes techniques like black box search or gradient descent over policies, even in supervised learning settings that wouldn’t normally be described as reinforcement learning. Finding a good policy to interact with a computational environment (such as a scratchspace, an external memory, or computational aids) is a natural approach to implementing complex functionalities.</p>
+<p>We make one apparently optimistic assumption: our learner maximizes performance in each episode independently rather than considering interactions between episodes. In theory and intuitively the episodic version seems easier, and this intuition is consistent with practice (most existing algorithms either apply directly to episodic reinforcement learning or can be trivially adapted to it). In many contexts we can reduce episodic reinforcement learning to single-episode reinforcement learning by crude measures such as resetting the learner to an appropriate state between episodes.</p></main><hr><footer><p class="children"><h2>Children</h2><ul class="page-tree"><li><a class="page-link" href="../page/steps_towards_safe_ai_online_learning.html">Steps towards safe AI from online learning</a> <q>### Steps towards safe AI from online learning
+
+Suppose that we have a good algorithm for episodic r…</q> - <a class="page-link" href="../page/PaulChristiano.html">Paul Christiano</a></li></ul></p></footer></body></html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Big-picture strategic awareness</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_SVG" async></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">Big-picture strategic awareness</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/big_picture_awareness.json.html">big_picture_awareness.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/big_picture_awareness">https://arbital.com/p/big_picture_awareness</a></p><p class="creator">by
+ <a class="page-link" href="../page/EliezerYudkowsky.html">Eliezer Yudkowsky</a> May 16 2016 
+updated
+ Jun 9 2016</p></div><p class="clickbait">We start encountering new AI alignment issues at the point where a machine intelligence recognizes the existence of a real world, the existence of programmers, and how these relate to its goals.</p><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>Big-picture strategic awareness</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="ai_alignment.html">AI alignment</a></li><li><a href="advanced_agent_theory.html">Theory of (advanced) agents</a></li><li><a href="advanced_agent.html">Advanced agent properties</a></li><li>…</li></ul></nav></nav></header><hr><main><p>[summary:  Many issues in <a href="ai_alignment.html">AI alignment theory</a> seem like they should naturally arise after the AI can grasp aspects of the bigger picture like "I run on a computer" and "This computer can be manipulated by programmers, who are agents like and unlike myself" and "There's an enormous real world out there that might be relevant to achieving my goals."</p>
+<p>E.g. a program won't try to use psychological tactics to prevent its programmers from suspending its computer's operation, if it doesn't know that there are such things as programmers or computers or itself.</p>
+<p>Grasping these facts is the <a href="advanced_agent.html">advanced agent property</a> of "big-picture strategic awareness".  Current machine algorithms seem to be nowhere near this point - but by the time you get there, you want to have <em>finished</em> solving the corresponding alignment problems, or at least produced what seem like workable initial solutions as <a href="niceness_defense.html">the first line of defense</a>.]</p>
+<p>Many <a href="instrumental_convergence.html">convergent instrumental strategies</a> seem like they should arise naturally at the point where a <a href="consequentialist.html">consequentialist</a> agent gains a broad strategic understanding of its own situation, e.g:</p>
+<ul>
+<li>That it is an AI;</li>
+<li>Running on a computer;</li>
+<li>Surrounded by programmers who are themselves modelable agents;</li>
+<li>Embedded in a complicated real world that can be relevant to achieving the AI's goals.</li>
+</ul>
+<p>For example, once you realize that you're an AI, running on a computer, and that <em>if</em> the computer is shut down <em>then</em> you will no longer execute actions, this is the threshold past which we expect the AI to by default reason "I don't want to be shut down, how can I prevent that?"  So this is also the threshold level of cognitive ability by which we'd need to have finished solving the <a href="shutdown_problem.html">suspend-button problem</a>, e.g. by completing a method for <a href="utility_indifference.html">utility indifference</a>.</p>
+<p>Similarly: If the AI realizes that there are 'programmer' things that might shut it down, and the AI can also model the programmers as simplified agents having their own beliefs and goals, that's the first point at which the AI might by default think, "How can I make my programmers decide to not shut me down?" or "How can I avoid the programmers acquiring beliefs that would make them shut me down?"  So by this point we'd need to have finished averting <a href="programmer_deception.html">programmer deception</a> (and as a <a href="niceness_defense.html">backup</a>, have in place a system to <a href="cognitive_steganography.html">early-detect an initial intent to do cognitive steganography</a>).</p>
+<p>This makes big-picture awareness a key <a href="advanced_agent.html">advanced agent property</a>, especially as it relates to <a href="convergent_strategies.html">Convergent instrumental strategies</a> and the theory of <a href="avert_instrumental_pressure.html">averting</a> them.</p>
+<p>Possible ways in which an agent could acquire big-picture strategic awareness:</p>
+<ul>
+<li>Explicitly be taught the relevant facts by its programmers;</li>
+<li>Be sufficiently <a href="agi.html">general</a> to have learned the relevant facts and domains without them being preprogrammed;</li>
+<li>Be sufficiently good at the specialized domain of self-improvement, to acquire sufficient generality to learn the relevant facts and domains.</li>
+</ul>
+<p>By the time big-picture awareness was starting to emerge, you would probably want to have <em>finished</em> developing what seemed like workable initial solutions to the corresponding problems of <a href="corrigibility.html">corrigibility</a>, since <a href="niceness_defense.html">the first line of defense is to not have the AI searching for ways to defeat your defenses</a>.</p>
+<p>Current machine algorithms seem nowhere near the point of being able to usefully represent the big picture to the point of <a href="consequentialist.html">doing consequentialist reasoning about it</a>, even if we deliberately tried to explain the domain.  This is a great obstacle to exhibiting most subproblems of <a href="corrigibility.html">corrigibility</a> within modern AI algorithms in a natural way (aka not as completely rigged demos).  Some pioneering work has been done here by Orseau and Armstrong considering <a href="https://intelligence.org/files/Interruptibility.pdf">reinforcement learners being interrupted</a>, and whether such programs learn to avoid interruption.  However, most current work on corrigibility has taken place in an <a href="unbounded_analysis.html">unbounded</a> context for this reason.</p></main><hr><footer><p class="all-creators"><h2>All Creators</h2><span class="page-comma-list"><a class="page-link" href="../page/EliezerYudkowsky.html">Eliezer Yudkowsky</a>,
+ <a class="page-link" href="../page/EricRogstad.html">Eric Rogstad</a></span></p><p class="likes"><h2>Likes</h2><span class="page-comma-list"><a class="page-link" href="../page/BrianMuhia.html">Brian Muhia</a>,
+ <a class="page-link" href="../page/EricRogstad.html">Eric Rogstad</a>,
+ <a class="page-link" href="../page/RyanCarey2.html">Ryan Carey</a></span></p></footer></body></html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Arbital markdown demo</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_SVG" async></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">Arbital markdown demo</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/arbital_markdown_demo.json.html">arbital_markdown_demo.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/arbital_markdown_demo">https://arbital.com/p/arbital_markdown_demo</a></p><p class="creator">by
+ <a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a> Nov 15 2016 
+updated
+ Nov 15 2016</p></div><p class="clickbait">Demo of Arbital's markdown</p><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>Arbital markdown demo</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="Arbital.html">Arbital</a></li><li><a href="arbital_contributing.html">Contributing to Arbital</a></li><li><a href="arbital_features.html">Arbital features</a></li><li><a href="arbital_markdown.html">Arbital Markdown</a></li><li>…</li></ul></nav></nav></header><hr><main><p>[summary: This is a demo <a href="arbital_summaries.html">summary</a>.]</p>
+<p>This page demonstrates what can be done with <a href="arbital_markdown.html">Arbital Markdown</a>. Edit this page to see the markdown used.</p>
+<p>[toc:]</p>
+<h1 id="heading">Heading</h1>
+<h2 id="subheading">Subheading</h2>
+<h3 id="subheading-1">Subheading</h3>
+<h4 id="subheading-2">Subheading</h4>
+<p>Note %%note: Note, can contain <strong>markdown</strong>.%%.</p>
+<p>%%hidden(Hidden text):
+Hidden <em>markdown</em> text
+%%</p>
+<p>%%%knows-requisite(<a href="math.html">Mathematics</a>):
+conditional text <em>with</em> markdown
+%%%</p>
+<p>[multiple-choice(q_wants_angles): Which case fits you best?
+a: I want to have a basic theoretical and practical understanding of the Bayes' rule.
+-wants: [62d],<a href="62f.html">Bayes&#39; Rule and its implications</a>
+b: I can easily read algebra and don't mind the explanation moving at a fast pace. Just give me the basics, quick!
+wants: <a href="62d.html">Bayes&#39; Rule and its different forms</a>
+-wants: <a href="62f.html">Bayes&#39; Rule and its implications</a>
+c: I want the basics, but I'm also interested in reading more about the theoretical implications and the reasons why Bayes' rule is considered so important.
+wants: <a href="62f.html">Bayes&#39; Rule and its implications</a>
+-wants: <a href="62d.html">Bayes&#39; Rule and its different forms</a>
+d: I'd like to read everything! I want to have a <em>deep</em> theoretical and practical understanding of the Bayes' rule.
+wants: <a href="62d.html">Bayes&#39; Rule and its different forms</a>,<a href="62f.html">Bayes&#39; Rule and its implications</a>
+]</p>
+<p>%%%wants-requisite(<a href="62d.html">Bayes&#39; Rule and its different forms</a>):
+%%wants-requisite(<a href="62f.html">Bayes&#39; Rule and its implications</a>):
+%box:
+<em>Your path will go over all forms of Baye's Rule, along with developing deep appreciation for its scientific usefulness. Your path will contain 12 pages:</em></p>
+<ul>
+<li><em>Frequency diagrams: A first look at Bayes</em></li>
+<li><em>Waterfall diagrams and relative odds</em></li>
+<li><em>Introduction to Bayes' rule: Odds form</em></li>
+<li><em>Bayes' rule: Proportional form</em></li>
+<li><em>Extraordinary claims require extraordinary evidence</em></li>
+<li><em>Ordinary claims require ordinary evidence</em></li>
+<li><em>Bayes' rule: Log-odds form</em></li>
+<li><em>Shift towards the hypothesis of least surprise</em></li>
+<li><em>Bayes' rule: Vector form</em></li>
+<li><em>Belief revision as probability elimination</em></li>
+<li><em>Bayes' rule: Probability form</em></li>
+<li><em>Bayesian view of scientific virtues</em>
+%</li>
+</ul>
+<p>%start-path(<a href="61b.html">Comprehensive guide to Bayes&#39; Rule</a>)%
+%%
+%%!wants-requisite(<a href="62f.html">Bayes&#39; Rule and its implications</a>):
+%box:
+No time to waste! Let's plunge directly into <a href="bayes_rule_fast_intro.html">a single-page abbreviated introduction to Bayes&#39; rule</a>.
+%
+%%
+%%%</p>
+<p>%%%!wants-requisite(<a href="62d.html">Bayes&#39; Rule and its different forms</a>):
+%%wants-requisite(<a href="62f.html">Bayes&#39; Rule and its implications</a>):
+%box:
+<em>Your path will teach you the basic odds form of Bayes' rule at a reasonable pace and then delve into the deep mysteries of the Bayes' Rule! Your path will contain 8 pages:</em></p>
+<ul>
+<li><em>Frequency diagrams: A first look at Bayes</em></li>
+<li><em>Waterfall diagrams and relative odds</em></li>
+<li><em>Introduction to Bayes' rule: Odds form</em></li>
+<li><em>Belief revision as probability elimination</em></li>
+<li><em>Extraordinary claims require extraordinary evidence</em></li>
+<li><em>Ordinary claims require ordinary evidence</em></li>
+<li><em>Shift towards the hypothesis of least surprise</em></li>
+<li><em>Bayesian view of scientific virtues</em>
+%</li>
+</ul>
+<p>%start-path(<a href="62f.html">Bayes&#39; Rule and its implications</a>)%
+%%</p>
+<p>%%!wants-requisite(<a href="62f.html">Bayes&#39; Rule and its implications</a>):
+%box:
+<em>Your path will teach you the basic odds form of Bayes' rule at a reasonable pace. It will contain 3 pages:</em></p>
+<ul>
+<li><em>Frequency diagrams: A first look at Bayes</em></li>
+<li><em>Waterfall diagrams and relative odds</em></li>
+<li><em>Introduction to Bayes' rule: Odds form</em>
+%</li>
+</ul>
+<p>%start-path(<a href="62c.html">Introduction to Bayes&#39; Rule odds form</a>)%
+%%
+%%%</p></main><hr><footer><p class="tagged"><h2>Tagged</h2><span class="page-comma-list"><a class="page-link" href="../page/start_meta_tag.html">Start</a></span></p><p class="reverse-related"><h2>Reverse Related</h2><ul class="page-list"><li><a class="page-link" href="../page/start_meta_tag.html">Start</a> <q>This page gives a basic overview of the topic, but may be missing important information or have stylistic issues. If you're able to, please help expand or improve it!</q> - <a class="page-link" href="../page/EliezerYudkowsky.html">Eliezer Yudkowsky</a></li></ul></p></footer></body></html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>In defense of maximization</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_SVG" async></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">In defense of maximization</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/in_defense_maximization.json.html">in_defense_maximization.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/in_defense_maximization">https://arbital.com/p/in_defense_maximization</a></p><p class="creator">by
+ <a class="page-link" href="../page/PaulChristiano.html">Paul Christiano</a> Feb 3 2016 
+updated
+ Feb 11 2016</p></div><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>In defense of maximization</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="paul_ai_control.html">Paul Christiano's AI control blog</a></li><li>…</li></ul></nav></nav></header><hr><main><p>I’ve been thinking about&nbsp;<a href="approval_directed_agents.html">AI systems that take actions their users would most approve of</a>. The word “most” in that sentence can be a bit unsettling.</p>
+<p>In this post I want to explain why you might be unsettled, and also why I think that these concerns probably aren’t deal-breakers.</p>
+<p>For concreteness: I’ll imagine a system which is overseen by a human operator and proposes a sequence of actions. Most of the time a proposed action is taken without any human involvement. But in a small fraction of cases an action is reviewed by the overseer — before taking it — and each action is chosen to maximize how much the overseer would approve of it if it happened to be selected for review.</p>
+<h3 id="theconcern">The concern</h3>
+<p>(Readers familiar with terms like “perverse instantiation” can safely skip this section.)</p>
+<p>The basic problem is that we don’t actually care about whether an AI system take actions we approve of. We are using approval as a proxy for leads-to-good-consequences.</p>
+<p>But even if these two concepts&nbsp;<em>typically</em>&nbsp;overlap, they seem especially likely to come apart in the extremes.</p>
+<p>For example, the “best” action may be optimized to be misunderstood by the overseer, in a way that leads us to believe that it has impossibly good consequences. Or the most persuasive argument might exploit human fallibility rather than honestly making a case, so that the “best” action is the one most compatible with the most effective tactics of persuasion. Or (in an especially extreme case) a proposed action may be such that merely viewing it compromises the overseer’s computer, seizing control of the approval signal itself.</p>
+<p>However we feel about the plausibility of these failures, it would be unfortunate to build a system that actively seeks them out. But that’s exactly what an approval-maximizer does!</p>
+<h3 id="theresponses">The responses</h3>
+<p>There are a few features of approval-directed systems that make me significantly less concerned about maximization:</p>
+<ol>
+<li>Approval is given to actions rather than consequences. This significantly limits the scope for perverse instantiation. Our concern is now limited to deliberate misunderstandings, attacks on the overseer, and so on. This is much less troubling and apparently much easier to address than perverse instantiation over the space of all outcomes.</li>
+<li>In the course of evaluating a proposed action, the overseer can enlist the help of other comparably powerful AI systems. These systems can help the overseer notice possible misunderstandings, identify the strongest objections to a proposed action, or correct errors in the overseer’s reasoning. For example, rather than evaluating an action in isolation, the overseer can moderate an argument between two agents with alternative proposals.</li>
+<li>Prior to evaluating a proposed action, an overseer can enlist the help of slightly weaker AI systems in order to identify and resolve possible problems in the approval-granting process. This is especially important for problems that can’t be patched online (for example because they would immediately and irreversibly compromise the process).</li>
+<li>If possible, the internal organization of our “maximizing” agent can itself be approval-directed — instead of maximizing, it is actually doing whatever we would most approve of. The operator will try not to approve of internal cognitive steps that search for perverse instantiations or plan malicious behavior, even if they would be “maximizing approval.” (Of course this process needs to bottom out somewhere, but it may bottom out with routines that are weaker than the overseer, for which perverse instantiation is a much smaller and more familiar concern.)</li>
+</ol>
+<p>(See also my discussion of maximization&nbsp;<a href="challenges_safe_ai_rl.html?title=challenges-for-safe-ai-from-rl">here</a>.)</p>
+<h3 id="theconclusion">The conclusion</h3>
+<p>I don’t have a credible concrete scenario where the “maximization” in approval-maximization seems especially problematic. The safety mechanisms in the previous section also feel plausibly sufficient. I think the biggest question is the extent to which approval-direction is plausible as a way of organizing the internal behavior of an AI system.</p>
+<p>That said, I would feel more comfortable with approval-directed systems that&nbsp;<em>don’t</em>&nbsp;apply their ingenuity to coming up with clever ways to exploit their users. I don’t think that this concern is a deal-breaker, but I do think there is room for improvement.</p></main><hr><footer></footer></body></html>

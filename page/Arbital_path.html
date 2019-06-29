@@ -1,0 +1,44 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Arbital path</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_SVG" async></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">Arbital path</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/Arbital_path.json.html">Arbital_path.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/Arbital_path">https://arbital.com/p/Arbital_path</a></p><p class="creator">by
+ <a class="page-link" href="../page/AlexeiAndreev.html">Alexei Andreev</a> Jan 27 2016 
+updated
+ May 11 2016</p></div><p class="clickbait">Arbital path is a linear sequence of pages tailored specifically to teach a given concept to a user.</p><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>Arbital path</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="Arbital.html">Arbital</a></li><li><a href="arbital_contributing.html">Contributing to Arbital</a></li><li><a href="arbital_features.html">Arbital features</a></li><li>…</li></ul></nav></nav></header><hr><main><p>When a user wants to learn a particular concept, Arbital can use the existing <a href="Arbital_requires.html">&quot;requires&quot;</a> and <a href="Arbital_teaches.html">&quot;teaches&quot;</a> relationships to generate a list of <a href="arbital_page.html">pages</a> for the user to read. This list will present pages in order, so that the reader can build on the <a href="arbital_requisite.html">knowledge</a> they already have, and by the end of it the reader will have all the necessary requirements to understand the concept they are trying to learn.</p>
+<h3 id="thealgorithm">The algorithm</h3>
+<p>It will be easier to create paths if you understand Arbital's underlying algorithm. Here are the key steps:</p>
+<ol>
+<li>Gather the list of the requisites the user wants to learn.</li>
+<li>Remove the ones the user already knows.</li>
+<li>For each requirement, find a page that teaches it and add it to the path. (There is a somewhat complex scoring function for picking the best teaching page.)</li>
+<li>For each of those pages, take their requirements and repeat from step #2.</li>
+<li>Once the entire tree is generated, Arbital linearizes it, so that every requisite is taught before pages that require it. (If there are dependency cycles, they are broken arbitrarily.) Note that as long as the requirement constraints are satisfied, the pages can otherwise appear in any order.</li>
+</ol>
+<p>On the /learn/ page the resulting pages are displayed in a sequence. If you want to see the underlying tree structure, use the  ⋮ menu to switch the view. It should make it more clear why the algorithm chose certain pages in certain order, and you can also explore the alternatives.</p>
+<p>For a demo, take a look at: <a href="bayes_rule_guide.html">Bayes&#39; rule: Guide</a>.</p>
+<h3 id="debugging">Debugging</h3>
+<p>Here are a few likely issues you might run into and tips on how to address them.</p>
+<p><strong>The order of the pages is not correct:</strong>  </p>
+<ul>
+<li>If it makes sense, add more requirements to the pages you want to come later in the path.</li>
+<li>Take a look at the <a href="arbital_learn_link.html">learn link guide</a> to see how you can manually specify the order.</li>
+</ul>
+<p><strong>The algorithm is picking another page instead of yours:</strong></p>
+<ul>
+<li>This is technically a feature. If both pages teach a requisite, then they should be interchangeable. If the other page is lacking a requirement, you can add it. All things being equal, the algorithm prefers to pick the page with fewer requirements.</li>
+<li>Take a look at the <a href="arbital_learn_link.html">learn link guide</a> to see how you can manually require your page to appear on the path.</li>
+</ul>
+<p>If all else fails, report your issue to us, and we'll help you!</p></main><hr><footer><p class="tagged"><h2>Tagged</h2><span class="page-comma-list"><a class="page-link" href="../page/out_of_date_meta_tag.html">Out of date</a></span></p><p class="likes"><h2>Likes</h2><span class="page-comma-list"><a class="page-link" href="../page/AlexRay.html">Alex Ray</a>,
+ <a class="page-link" href="../page/PiCris.html">Pi Cris</a></span></p><p class="reverse-related"><h2>Reverse Related</h2><ul class="page-list"><li><a class="page-link" href="../page/out_of_date_meta_tag.html">Out of date</a> <q>Meta tag used when the page has a lot of information that's obsolete</q> - <a class="page-link" href="../page/AlexeiAndreev.html">Alexei Andreev</a></li></ul></p></footer></body></html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Transparent Newcomb's Problem</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_SVG" async></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">Transparent Newcomb's Problem</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/transparent_newcombs_problem.json.html">transparent_newcombs_problem.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/transparent_newcombs_problem">https://arbital.com/p/transparent_newcombs_problem</a></p><p class="creator">by
+ <a class="page-link" href="../page/EliezerYudkowsky.html">Eliezer Yudkowsky</a> Aug 4 2016 
+updated
+ Sep 9 2016</p></div><p class="clickbait">Omega has left behind a transparent Box A containing $1000, and a transparent Box B containing $1,000,000 or nothing.  Box B is full iff Omega thinks you one-box on seeing a full Box B.</p><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>Transparent Newcomb's Problem</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="decision_theory.html">Decision theory</a></li><li><a href="logical_dt.html">Logical decision theories</a></li><li><a href="newcomblike.html">Newcomblike decision problems</a></li><li>…</li></ul></nav></nav></header><hr><main><p>[summary:  A version of <a href="newcombs_problem.html">Newcomb&#39;s Problem</a> in which Box B is transparent.  That is:</p>
+<p><a href="omega_troll.html">Omega</a> has presented you with two boxes, Box A which transparently contains \$1,000, and Box B which transparently contains \$0 or \$1,000,000.  You may take either both boxes, or only Box B.  Omega has already filled Box B iff Omega predicted that you would, upon seeing a full Box B, take only Box B.</p>
+<p>The Transparent Newcomb's Problem is noteworthy in that <a href="evidential_dt.html">evidential decision theory</a> and <a href="causal_dt.html">causal decision theory</a> agree that a [principle_rational_choice rational] agent should take both boxes; only <a href="logical_dt.html">logical decision agents</a> leave behind Box A and become rich.  This is an apparent counterexample to a [edt_cdt_dichotomy widespread view] that EDT and CDT divide <a href="newcomblike.html">Newcomblike problems</a> between them, with EDT agents accepting 'Why aincha rich?' arguments.]</p>
+<p>Like <a href="newcombs_problem.html">Newcomb&#39;s Problem</a>, but Box B is <em>also</em> transparent.  That is:</p>
+<p><a href="omega_troll.html">Omega</a> has presented you with the following dilemma:</p>
+<ul>
+<li>There are two boxes before you, Box A and Box B.</li>
+<li>You can either take both boxes ("two-box"), or take only Box B ("one-box").</li>
+<li>Box A is transparent and contains \$1,000.</li>
+<li>Box B is <em>also</em> transparent and contains either \$1,000,000 or \$0.</li>
+<li>Omega has already put \$1,000,000 into Box B <em>if and only if</em> Omega <strong>predicts that you will one-box when faced with a visibly full Box B.</strong></li>
+<li>Omega has been right in a couple of dozen games so far, but not a thousand games, and Omega <em>could</em> be wrong next time given our current knowledge.  We may alternatively suppose that Omega is right 99%, but not 99.9%, of the time. %note: That is, Omega's success rate reflects that everyone who's seen a full Box B has one-boxed.  Some people who've seen an empty Box B have been indignant about that.  But based on Omega's accuracy in the testable cases, they're probably wrong about what they would have done.%</li>
+</ul>
+<p>This <a href="newcomblike.html">Newcomblike dilemma</a> is structurally similar to <a href="parfits_hitchhiker.html">Parfit&#39;s Hitchhiker</a> (no decision theory disputes this structural similarity, so far as we know).</p>
+<p>Note that it is not, in general, possible to have a transparent Newcomb's Problem in which, for every possible agent, Omega fills Box B iff Omega predicts unconditionally that the agent ends up one-boxing.  Some agent could two-box on seeing a full Box B and one-box on seeing an empty Box B, making the general rule impossible for Omega to fulfill.</p>
+<p>Similarly, the problem setup stipulates that it seems not entirely impossible that Omega will get the prediction wrong next time.  Otherwise this would introduce a new and distracting problem of [action_conditional conditioning] on a visible impossibility when we see a full Box B and consider two-boxing.</p>
+<h1 id="analyses">Analyses</h1>
+<h2 id="ahrefcausal_dthtmlcausaldecisiontheorya"><a href="causal_dt.html">Causal decision theory</a></h2>
+<p>Two-boxes, because one-boxing cannot cause Box B to be full or empty, since Omega has already predicted and departed.</p>
+<h2 id="ahrefevidential_dthtmlevidentialdecisiontheorya"><a href="evidential_dt.html">Evidential decision theory</a></h2>
+<p>Two-boxes, because one-boxing cannot be further <em>good news</em> about Box B being full, because the agent has already seen that Box B is full.  The agent, upon imagining being told that it one-boxes here, imagines concluding "Omega made its first mistake!" rather than "My eyes are deceiving me and Box B is actually empty."  (Thus, EDT agents never see a full Box B to begin with.)</p>
+<h2 id="ahreflogical_dthtmllogicaldecisiontheorya"><a href="logical_dt.html">Logical decision theory</a></h2>
+<p>One-boxes, because:</p>
+<p>&bull; On [timeless_dt timeless decision theory] without the <a href="updateless_dt.html">updateless</a> feature:  Even after observing Box B being full, we conclude from our extended causal model that in the <em>counterfactual</em> case where our algorithm output "Take both boxes", Box B would have <em>counterfactually</em> been empty.  (Updateful TDT does not [counterfactual_mugging in general] output the behavior corresponding to the highest score on problems in this <a href="fair_problem_class.html">decision class</a>, but updateful TDT happens to get the highest score in this particular scenario.)</p>
+<p>&bull; On <a href="updateless_dt.html">updateless decision theories</a>:  The policy of mapping the sensory input "Box B is full" onto the action "Take only one box" leads to the highest expected utility (as evaluated relative to our non-updated prior).</p>
+<p>The Transparent Newcomb's Problem is significant because it counterargues a [edt_cdt_dichotomy widespread view] that EDT and CDT split the <a href="newcomblike.html">Newcomblike problems</a> between them, with EDT being the decision theory that accepts 'why aincha rich?' arguments.</p>
+<ul>
+<li>EDT and CDT agree on two-boxing in the Transparent Newcomb's Problem, both saying, "Omega has chosen to penalize the rational behavior here, alas, but it is too late for me to do anything about that."</li>
+<li>LDT disagrees with both and one-boxes, saying "My algorithm can output whatever behavior I want."</li>
+<li>EDT and CDT agents exhibit the behavior pattern that corresponds to being poor; LDT agents ask, "If your principle of choice is so rational, why aincha rich?"</li>
+</ul>
+<h2 id="trulycleverldtandedtagents">Truly clever LDT and EDT agents</h2>
+<p>Truly clever agents will realize that the (transparently visible) state of Box B reflects oracular reasoning by Omega about any factor that could affect our decision whether to one-box after seeing a full Box B.  The value of an advance prediction about any possible observable factor determining our decision could easily exceed a million dollars.</p>
+<p>For example, suppose we have until the end of the day to actually decide how many boxes to take.  On finding yourself in a transparent Newcomb's Problem, you could postcommit to an obvious strategy such as that you'll one-box iff the S&amp;P 500 ends up on the day.  If you see Box B is full, you can load up on margin and buy short-term call options (and then wait, and actually one-box at the end of the day iff the S&amp;P 500 goes up).</p>
+<p>You could also carry out the converse strategy (buy put options if you see Box B is empty), but only if you're confident that the S&amp;P 500's daily movement is independent of any options you buy and that both of your possible selves converge on the same postcommitment, since what you're learning from seeing Box B in this case is what your action <em>would</em> have been at the end of the day <em>if</em> Box B had been full.</p>
+<p>This general strategy was observed by <a href="https://www.facebook.com/yudkowsky/posts/10154554618439228">Eliezer Yudkowsky and Jack LaSota</a>.</p></main><hr><footer><p class="tagged"><h2>Tagged</h2><span class="page-comma-list"><a class="page-link" href="../page/c_class_meta_tag.html">C-Class</a></span></p><p class="all-creators"><h2>All Creators</h2><span class="page-comma-list"><a class="page-link" href="../page/EliezerYudkowsky.html">Eliezer Yudkowsky</a>,
+ <a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a></span></p><p class="likes"><h2>Likes</h2><span class="page-comma-list"><a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a></span></p><p class="reverse-related"><h2>Reverse Related</h2><ul class="page-list"><li><a class="page-link" href="../page/c_class_meta_tag.html">C-Class</a> <q>This page has substantial content, but may not thoroughly cover the topic, may not meet style and prose standards, or may not explain the concept in a way the target audience will reliably understand.</q> - <a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a></li></ul></p></footer></body></html>

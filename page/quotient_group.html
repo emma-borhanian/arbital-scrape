@@ -1,0 +1,68 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Quotient group</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_SVG" async></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">Quotient group</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/quotient_group.json.html">quotient_group.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/quotient_group">https://arbital.com/p/quotient_group</a></p><p class="creator">by
+ <a class="page-link" href="../page/AdeleLopez.html">Adele Lopez</a> Jun 26 2016 
+updated
+ Jul 1 2016</p></div><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>Quotient group</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="math.html">Mathematics</a></li><li>…</li></ul></nav></nav></header><hr><main><p>[summary:
+Given a <a href="group_mathematics.html">group</a> $~$G$~$ with operation $~$\bullet$~$ and a special kind of <a href="subgroup.html">subgroup</a> $~$N \leq G$~$ called the "<a href="normal_subgroup.html">normal subgroup</a>", there is a way of "dividing" $~$G$~$ by $~$N$~$, written $~$G/N$~$. Usually this is defined so that each <a href="element_mathematics.html">element</a> of $~$G/N$~$ is a [-subset subset] of $~$G$~$. In fact, each of them is an [-equivalence_class equivalence class] of elements in $~$G$~$, so called because we think of everything in one equivalence class as being equivalent. One of the equivalence classes is $~$N$~$, and each of the other equivalence classes can be seen as $~$N$~$ "shifted around" inside $~$G$~$. Because they are equivalence classes, each element of $~$G$~$ only occurs in exactly one of them.</p>
+<p>This collection $~$G/N$~$ of equivalence classes has a [-group_structure group structure] based on the structure on $~$G$~$. Write the [-group_operation operation] as $~$\circ$~$. Say $~$A$~$ and $~$B$~$ are two equivalence classes in $~$G/N$~$. Then $~$A \circ B$~$ is defined by taking an element $~$a \in A$~$ and $~$b \in B$~$, multiplying them as $~$a \bullet b$~$ and checking in which equivalence class this product ends up. </p>
+<p>There are some things to check, namely that the equivalence class in which we end up is the same regardless of which elements in $~$A$~$ and $~$B$~$ we happen to pick. This is guaranteed by the fact that $~$N$~$ is normal in $~$G$~$.</p>
+<p>There is also a <a href="group_homomorphism.html">group homomorphism</a> $~$\phi$~$ from $~$G$~$ to $~$G/N$~$ that "collapses" the elements by sending each element in $~$G$~$ to the equivalence class in which it lies. This is called collapsing because lots of elements in $~$G$~$ are sent to the same element in $~$G/N$~$, so we can see $~$G/N$~$ as a collapsed version of $~$G$~$.
+]</p>
+<p>[summary(brief): 
+A <strong>quotient group</strong> $~$G/N$~$ of a <a href="group_mathematics.html">group</a> $~$G$~$ by a <a href="normal_subgroup.html">normal subgroup</a> $~$N$~$ is obtained by dividing up the group into pieces ([-equivalence_class equivalence classes]), and then treating everything in one class the same way (by treating each class as a single element). The quotient group has a group structure defined on it based on the original structure of $~$G$~$, that works 'basically the same as $~$G$~$ up to equivalence'.
+ ]</p>
+<p>[summary(technical): 
+Given a <a href="group_mathematics.html">group</a> $~$(G, \bullet)$~$ and a <a href="normal_subgroup.html">normal subgroup</a> $~$N \unlhd G$~$. The <strong>quotient</strong> of $~$G$~$ by $~$N$~$, written $~$G/N$~$, has as <a href="underlying_set.html">underlying set</a> the set of (left)-<a href="group_coset.html">cosets</a> of $~$N$~$ in $~$G$~$ and as operation $~$\circ$~$ which is defined as $~$aN \circ  bN = (a \bullet b) N$~$, where $~$xN = \{xn : n \in N\}$~$ for each $~$x \in G$~$. </p>
+<p>The operation $~$\circ$~$ is <a href="well_defined.html">well defined</a> in the sense that if other representatives $~$a'$~$ and $~$b'$~$ are chosen such that 
+$~$a'N = aN$~$ and $~$b'N = bN$~$ then also $~$(a' \bullet b')N = (a \bullet b)N$~$. </p>
+<p>There is a [-canonical canonical] <a href="group_homomorphism.html">homomorphism</a> (sometimes called the [-quotient_projection projection]) $~$\phi: G \rightarrow G/N: a \mapsto aN$~$.</p>
+<p>This is a special case of a [-quotient_universal_algebra quotient] from universal algebra.
+]</p>
+<p>[summary(examples):
+Given the <a href="group_mathematics.html">group</a> of <a href="integer.html">integers</a> $~$\mathbb{Z}$~$, and the [-nomral_subgroup normal subgroup] $~$2 \mathbb{Z}$~$ of all even numbers, we can form the group $~$\mathbb{Z}/2\mathbb{Z}$~$. This group has only two [-element elements] and [-personification_in_mathematics only cares] if a number is odd or even. It tells us that the sum of an odd and an even number is odd, that the sum of two even numbers is even, and the sum of two odd numbers is also even!
+]</p>
+<p>[summary(motivation):
+Let's say we have a group. Maybe the group is kinda large and unwieldy, and we want to find an easier way to think about it. Or maybe we just want to focus on a certain aspect of the group. Some of the actions will change things in ways we just don't really care about, or don't mind ignoring for now. So let's create a group homomorphism that will map all these actions to the identity action in a new group. The image of this homomorphism will be a group much like the first, except that it will ignore all the effects that come from those actions that we're ignoring - just what we wanted! This new group is called the quotient group.
+]</p>
+<h1 id="thebasicidea">The basic idea</h1>
+<p>Let's say we have a <a href="group_mathematics.html">group</a>. Maybe the group is kinda large and unwieldy, and we want to find an easier way to think about it. Or maybe we just want to focus on a certain aspect of the group. Some of the actions will change things in ways we just don't really care about, or don't mind ignoring for now. So let's create a <a href="group_homomorphism.html">group homomorphism</a> that will map all these actions to the identity action in a new group. The image of this homomorphism will be a group much like the first, except that it will ignore all the effects that come from those actions that we're ignoring - just what we wanted! This new group is called the quotient group. </p>
+<h1 id="definition">Definition</h1>
+<p>We start with our group $~$G$~$. The actions we want to ignore form a group $~$N$~$, which must be a <a href="normal_subgroup.html">normal subgroup</a> of $~$G$~$. The quotient group is then called $~$G/N$~$, and has a canonical homomorphism $~$\phi: G \rightarrow G/N$~$ which maps $~$g \in G$~$ to the <a href="group_coset.html">coset</a> $~$gN$~$.  </p>
+<h2 id="thedivisorgroup">The divisor group</h2>
+<p>In the definition, we require the divisor $~$N$~$, to be a normal subgroup of $~$G$~$. Why? Well first, let's see why requiring $~$N$~$ to be a group makes sense. Remember that $~$N$~$ has the actions whose effects we want to ignore. So it makes sense that it should contain the identity action, which has no effect. It also is reasonable that it would be closed under the group operation - doing two things we don't care about shouldn't change anything we care about. Together, these two properties imply it is a <a href="subgroup.html">subgroup</a>: $~$N \le G$~$. </p>
+<p>A subgroup is great, but it isn't quite good enough by itself to work here. That's because we want the quotient group to preserve the overall structure of the group, i.e. it should preserve the group multiplication. In other words, there needs to be a <a href="group_homomorphism.html">group homomorphism</a> $~$\phi$~$ from $~$G$~$ to $~$G/N$~$. Since $~$N$~$ is the subgroup of things we want to ignore, all its actions should get mapped to the identity action under this homomorphism. That means it's the <a href="kernel_of_group_homomorphism.html">kernel</a> of the homomorphism $~$\phi$~$, which means it's a <a href="normal_subgroup.html">normal subgroup</a>: $~$N \trianglelefteq G$~$. </p>
+<h2 id="cosets">Cosets</h2>
+<p>What exactly are the elements of the new group? They are [equivalence_class equivalence classes] of actions, the sets $~$gN = \{gn : n \in N\}$~$ where $~$g \in G$~$, also known as a <a href="group_coset.html">coset</a>. The identity element is the set $~$N$~$ itself. Multiplication is defined by $~$g_1N \cdot g_2N = (g_1g_2)N$~$. </p>
+<h1 id="generalizestheideaofaquotient">Generalizes the idea of a quotient</h1>
+<p>What gives a quotient group the right to call itself a quotient? If $~$G$~$ and $~$N$~$ both have finite order, then $~$|G/N| = |G|/|N|$~$, which can be proved by the fact that $~$G/N$~$ consists of the cosets of $~$N$~$ in $~$G$~$, and that these <a href="left_cosets_biject.html">cosets are the same size</a>, and <a href="left_cosets_partition_parent_group.html">partition</a> $~$G$~$. </p>
+<h1 id="example">Example</h1>
+<p>Suppose you have a collection of objects, and you need to split them into two equal groups. So you are trying to determine under what circumstances changing the number of objects will affect this property. You notice that changing the size of the collection by certain numbers such as 0, 2, 4, 24, and -6 doesn't affect this property. </p>
+<p>The set of different size changes can be modeled as the additive group of integers $~$\mathbb Z$~$. The changes that don't affect this property also form a group: $~$2\mathbb Z = \{2n : n\in \mathbb Z\}$~$. Exercise: verify that this is a normal subgroup of $~$\mathbb Z$~$. </p>
+<p>This subgroup gives us two cosets: $~$0 + 2\mathbb Z$~$ and $~$1 + 2\mathbb Z$~$ (remember that $~$+$~$ is the group operation in this example), which are the elements of our quotient group. We will give them their conventional names: $~$\text{even}$~$ and $~$\text{odd}$~$, and we can apply the coset multiplication rule to see that $~$\text{even}+ \text{even} = \text{even}$~$, $~$\text{even} + \text{odd} = \text{odd}$~$, and $~$\text{odd} + \text{odd} = \text{even}$~$. </p>
+<p>Instead of thinking about specific numbers, and how they will change our ability to split our collection of objects into two equal groups, we now have reduced the problem to its essence. Only the parity matters, and it follows the simple rules of the quotient group we discovered. </p>
+<h1 id="seealso">See also</h1>
+<ul>
+<li><a href="lagrange_theorem_on_subgroup_size.html">Lagrange&#39;s theorem</a>.</li>
+<li>[first_isomorphism_theorem The first isomorphism theorem].  </li>
+</ul></main><hr><section class="comments"><h2>Comments</h2><div class="comment"><p><a class="page-link" href="../page/EricRogstad.html">Eric Rogstad</a></p><p><blockquote class="comment-context">This subgroup gives us two cosets: $~$0 + 2\\mathbb Z$~$ and $~$1 + 2\\mathbb Z$~$ \(remember that $~$+$~$ is the group operation in this example\), which are the elements of our quotient group\. We will give them their conventional names: $~$\\text{even}$~$ and $~$\\text{odd}$~$, and we can apply the coset multiplication rule to see that $~$\\text{even}+ \\text{even} \= \\text{even}$~$, $~$\\text{even} + \\text{odd} \= \\text{odd}$~$, and <mark>$~$\\text{odd} + \\text{odd} \= \\text{odd}$~$</mark>\. </blockquote>
+<p>odd + odd doesn't equal even?</p></p></div></section><footer><p class="all-creators"><h2>All Creators</h2><span class="page-comma-list"><a class="page-link" href="../page/AdeleLopez.html">Adele Lopez</a>,
+ <a class="page-link" href="../page/EricRogstad.html">Eric Rogstad</a>,
+ <a class="page-link" href="../page/MarkChimes.html">Mark Chimes</a></span></p><p class="likes"><h2>Likes</h2><span class="page-comma-list"><a class="page-link" href="../page/8xl.html">8xl</a>,
+ <a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a>,
+ <a class="page-link" href="../page/EricRogstad.html">Eric Rogstad</a>,
+ <a class="page-link" href="../page/PatrickStevens.html">Patrick Stevens</a>,
+ <a class="page-link" href="../page/VladArber.html">Vlad Arber</a></span></p></footer></body></html>

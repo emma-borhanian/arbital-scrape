@@ -1,0 +1,79 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Square visualization of probabilities on two events: (example) Diseasitis</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_SVG" async></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">Square visualization of probabilities on two events: (example) Diseasitis</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/4fh.json.html">4fh.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/4fh">https://arbital.com/p/4fh</a></p><p class="creator">by
+ <a class="page-link" href="../page/TsviBT.html">Tsvi BT</a> Jun 18 2016 
+updated
+ Jun 18 2016</p></div><p class="clickbait">But it *seems* like the patient with the black tongue depressor has diseasitis...</p><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>Square visualization of probabilities on two events: (example) Diseasitis</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="math.html">Mathematics</a></li><li><a href="probability_theory.html">Probability theory</a></li><li><a href="496.html">Square visualization of probabilities on two events</a></li><li>…</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="rationality.html">Rationality</a></li><li><a href="probability_theory.html">Probability theory</a></li><li><a href="496.html">Square visualization of probabilities on two events</a></li><li>…</li></ul></nav></nav></header><hr><main><p>$$~$
+\newcommand{\bP}{\mathbb{P}}
+$~$$</p>
+<p>[summary: $$~$ \newcommand{\bP}{\mathbb{P}} $~$$</p>
+<p>We can visualize the <a href="diseasitis.html">Diseasitis</a>:</p>
+<p><img src="http://i.imgur.com/ssokgJ2.png" width="601" height="322"></p>
+<p>Then we can see at a glance that the probability $~$\bP(D \mid B)$~$ of the patient having Diseasitis given that the tongue depressor is black, despite some intuitions, isn't all that big: </p>
+<p>$$~$\bP(D \mid B) = \frac{\bP(B, D)}{ \bP(B, D) + \bP(B, \neg D)} = \frac{3}{7} $~$$
+<img src="http://i.imgur.com/NJOydOD.png" width="541" height="324"></p>
+<p>]</p>
+<p>From the <a href="diseasitis.html">Diseasitis</a>: </p>
+<blockquote>
+  <p>You are screening a set of patients for a disease, which we'll call Diseasitis. Based on prior epidemiology, you expect that around 20% of the patients in the screening population will in fact have Diseasitis. You are testing for the presence of the disease using a tongue depressor containing a chemical strip. Among patients with Diseasitis, 90% turn the tongue depressor black. However, 30% of the patients without Diseasitis will also turn the tongue depressor black. Among all the patients with black tongue depressors, how many have Diseasitis?  </p>
+</blockquote>
+<p>It seems like, since Diseasitis very strongly predicts that the patient has a black tongue depressor, it should be the case that the <a href="conditional_probability.html">Conditional probability</a> $~$\bP( \text{Diseasitis} \mid \text{black tongue depressor})$~$ is big. But actually, it turns out that a patient with a black tongue depressor is more likely than not to be completely Diseasitis-free.</p>
+<p>Can we see this fact at a glance? Below, we'll use the <a href="496.html">Square visualization of probabilities on two events</a> to draw pictures and use our visual intuition.</p>
+<p>To introduce some notation: our <a href="prior_probability.html">prior probability</a> $~$\bP(D)$~$ that the patient has Diseasitis is $~$0.2$~$. We think that if the patient is sick $~$(D)$~$, then it's 90% likely that the tongue depressor will turn black $~$(B)$~$: we assign conditional probability $~$\bP(B \mid D) = 0.9$~$. We assign conditional probability $~$\bP(B \mid \neg D) = 0.3$~$ that the tongue depressor will be black even if the patient isn't sick. We want to know $~$\bP(D \mid B)$~$, the <a href="posterior_probability.html">posterior probability</a> that the patient has Diseasitis given that we've seen a black tongue depressor.</p>
+<p>If we wanted to, we could solve this problem precisely using <a href="bayes_rule.html">Bayes&#39; rule</a>: </p>
+<p>$$~$
+\begin{align}
+\bP(D \mid B) &amp;= \frac{\bP(B \mid D) \bP(D)}{\bP(B)}\\
+&amp;= \frac{0.9 \times 0.2}{ \bP(B, D) + \bP(B, \neg D)}\\
+&amp;= \frac{0.18}{ \bP(D)\bP(B \mid D) + \bP(\neg D)\bP(B \mid \neg D)}\\
+&amp;= \frac{0.18}{ 0.18 + 0.24}\\
+&amp;= \frac{0.18}{ 0.42} = \frac{3}{7}  \approx 0.43\ .
+\end{align}
+$~$$</p>
+<p>So even if we've seen a black tongue depressor, the patient is more likely to be healthy than not: $~$\bP(D \mid B) &lt; \bP(\neg D \mid B) \approx 0.57$~$. </p>
+<p>Now, this calculation might be enlightening if you are a real expert at <a href="bayes_rule.html">Bayes&#39; rule</a>. A better calculation would probably be the <a href="1x9.html">odds ratio form of Bayes&#39;s rule</a>.</p>
+<p>But either way, maybe there's still an intuition saying that, come on, if the tongue depressor is such a strong indicator of Diseasitis that $~$\bP(B \mid D) = 0.9$~$, it must be that $~$\bP(D \mid B) =big$~$.</p>
+<p>Let's use the <a href="496.html">square visualization of probabilities</a> to make it really visibly obvious that $~$\bP(D \mid B) &lt; \bP(\neg D \mid B)$~$, and to figure out why $~$\bP(B \mid D) = big$~$ doesn't imply $~$\bP(D \mid B) =big$~$. </p>
+<p>We start with the probability of $~$\bP(D)$~$ (so we're  [factoring_probability factoring] our probabilities by $~$D$~$ first): </p>
+<p><img src="http://i.imgur.com/oFctjqn.png" width="330" height="363"></p>
+<p>Now let's break up the red column, where $~$D$~$ is true and the patient has Diseasitis, into a block for the probability $~$\bP(B \mid D)$~$ that $~$B$~$ is also true, and a block for the probability $~$\bP(\neg B \mid D)$~$ that $~$B$~$ is false.</p>
+<blockquote>
+  <p>Among patients with Diseasitis, 90% turn the tongue depressor black.</p>
+</blockquote>
+<p>That is, in 90% of the  outcomes where $~$D$~$ happens, $~$B$~$ also happens. So $~$0.9$~$ of the red column will be dark ($~$B$~$), and $~$0.1$~$ will be light:</p>
+<p><img src="http://i.imgur.com/ra6maoF.png" width="478" height="358"></p>
+<blockquote>
+  <p>However, 30% of the patients without Diseasitis will also turn the tongue depressor black.</p>
+</blockquote>
+<p>So we break up the blue $~$\neg D$~$ column by $~$\bP(B \mid \neg D) = 0.3$~$ and $~$\bP(\neg B \mid \neg D) = 0.7$~$: </p>
+<p><img src="http://i.imgur.com/ssokgJ2.png" width="668" height="358"></p>
+<p>Now we would like to know the probability $~$\bP(D \mid B)$~$ of Diseasitis once we've observed that the tongue depressor is black. Let's break up our diagram by whether or not $~$B$~$ happens: </p>
+<p><img src="http://i.imgur.com/yKv723w.png" width="413" height="402"></p>
+<p>Conditioning on $~$B$~$ is like only looking at the part of our distribution where $~$B$~$ happens. So the probability $~$\bP(D \mid B)$~$ of $~$D$~$  conditioned on $~$B$~$ is the proportion of that area where $~$D$~$ also happens: </p>
+<p><img src="http://i.imgur.com/imiJdSH.png" width="541" height="324"></p>
+<p>Here we can see why $~$\bP(D \mid B)$~$ isn't all that big. It's true that $~$\bP(B,D)$~$ is big relative to $~$\bP(\neg B,D)$~$, since we know that $~$\bP(B \mid D)$~$ is big (patients with Diseasitis almost always have black tongue depressors): </p>
+<p><img src="http://i.imgur.com/kJvtM1X.png" width="471" height="340"></p>
+<p>But this ratio doesn't really matter if we want to know $~$\bP(D \mid B)$~$, the probability that a patient with a black tongue depressor has Diseasitis. What matters is that we also assign a reasonably high probability $~$\bP(B, \neg D)$~$ to the patient having a black tongue depressor but nevertheless <em>not</em> suffering from Diseasitis:</p>
+<p><img src="http://i.imgur.com/NJOydOD.png" width="541" height="324"></p>
+<p>So even when we see a black tongue depressor, there's still a pretty high chance the patient is healthy anyway, and our <a href="posterior_probability.html">Posterior probability</a> $~$\bP(D\mid B)$~$ is not that high. Recall our square of probabilities: </p>
+<p><img src="http://i.imgur.com/ssokgJ2.png" width="601" height="322"></p>
+<p>When asked about $~$\bP(D\mid B)$~$, we think of the really high probability $~$\bP(B\mid D) = 0.9$~$:</p>
+<p><img src="http://i.imgur.com/Hy2FyYP.png" width="601" height="322"></p>
+<p>Really, we should look at the part of our probability mass where $~$B$~$ happens, and see that a sizeable portion goes to places where $~$\neg D$~$ happens, and the patient is healthy:</p>
+<p><img src="http://i.imgur.com/Kk4IgfK.png" width="601" height="322"></p>
+<h2 id="sidenote">Side note</h2>
+<p>The square visualization is very similar to <a href="bayes_waterfall_diseasitis.html">frequency diagrams</a>, except we can just think in terms of probability mass rather than specifically frequency. Also, see that page for <a href="bayes_waterfall_diseasitis.html">waterfall diagrams</a>, another way to visualize updating probabilities.</p></main><hr><footer><p class="likes"><h2>Likes</h2><span class="page-comma-list"><a class="page-link" href="../page/AlexeiAndreev.html">Alexei Andreev</a>,
+ <a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a></span></p></footer></body></html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Two independent events</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_SVG" async></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">Two independent events</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/two_independent_events.json.html">two_independent_events.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/two_independent_events">https://arbital.com/p/two_independent_events</a></p><p class="creator">by
+ <a class="page-link" href="../page/TsviBT.html">Tsvi BT</a> Jun 15 2016 
+updated
+ Jun 16 2016</p></div><p class="clickbait">What do [a pair of dice], [a pair of coins], and [a pair of people on opposite sides of the planet] all have in common?</p><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>Two independent events</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="math.html">Mathematics</a></li><li><a href="probability_theory.html">Probability theory</a></li><li>…</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="rationality.html">Rationality</a></li><li><a href="probability_theory.html">Probability theory</a></li><li>…</li></ul></nav></nav></header><hr><main><p>$$~$
+\newcommand{\bP}{\mathbb{P}}
+$~$$</p>
+<p>[summary: 
+$$~$
+\newcommand{\bP}{\mathbb{P}}
+$~$$
+We say that two [event_probability events], $~$A$~$ and $~$B$~$, are <em>independent</em> when learning that $~$A$~$ has occurred does not change your probability that $~$B$~$ occurs. That is, $~$\bP(B \mid A) =&nbsp;\bP(B)$~$. 
+Another way to state independence is that $~$\bP(A,B) = \bP(A) \bP(B)$~$. ]</p>
+<p>We say that two [event_probability events], $~$A$~$ and $~$B$~$, are <em>independent</em> when learning that $~$A$~$ has occurred does not change your probability that $~$B$~$ occurs. That is, $~$\bP(B \mid A) =&nbsp;\bP(B)$~$. 
+Equivalently,  $~$A$~$ and $~$B$~$ are independent if $~$\bP(A)$~$ doesn't change if you condition on $~$B$~$: $~$\bP(A \mid B) =&nbsp;\bP(A)$~$. </p>
+<p>Another way to state independence is that $~$\bP(A,B) = \bP(A) \bP(B)$~$. </p>
+<p>All these definitions are equivalent: </p>
+<p>$$~$\bP(A,B) = \bP(A)\;  \bP(B \mid A)$~$$</p>
+<p>by the [chain_rule_probability chain rule], so </p>
+<p>$$~$\bP(A,B) = \bP(A)\;  \bP(B)\;\; \Leftrightarrow \;\; \bP(A)\;  \bP(B \mid A) = \bP(A)\;  \bP(B) \ ,$~$$</p>
+<p>and similarly for $~$\bP(B)\;  \bP(A \mid B)$~$.</p></main><hr><section class="comments"><h2>Comments</h2><div class="comment"><p><a class="page-link" href="../page/EricRogstad.html">Eric Rogstad</a></p><p><blockquote class="comment-context">All these definitions are equivalent: </blockquote>
+<p>I'm not sure what this equation is trying to tell me. Some parts of it are only true if A and B are independent, but some parts are true in general, right?</p></p></div></section><footer><p class="tagged"><h2>Tagged</h2><span class="page-comma-list"><a class="page-link" href="../page/stub_meta_tag.html">Stub</a></span></p><p class="all-creators"><h2>All Creators</h2><span class="page-comma-list"><a class="page-link" href="../page/EricRogstad.html">Eric Rogstad</a>,
+ <a class="page-link" href="../page/TsviBT.html">Tsvi BT</a></span></p><p class="likes"><h2>Likes</h2><span class="page-comma-list"><a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a></span></p><p class="reverse-related"><h2>Reverse Related</h2><ul class="page-list"><li><a class="page-link" href="../page/stub_meta_tag.html">Stub</a> <q>This page only gives a very brief overview of the topic. If you're able to, please help expand or improve it!</q> - <a class="page-link" href="../page/EliezerYudkowsky.html">Eliezer Yudkowsky</a></li></ul></p><p class="children"><h2>Children</h2><ul class="page-tree"><li><a class="page-link" href="../page/4cl.html">Two independent events: Square visualization</a> <q>$$
+\newcommand{\true}{\text{True}}
+\newcommand{\false}{\text{False}}
+\newcommand{\bP}{\mathbb{P}}
+…</q> - <a class="page-link" href="../page/TsviBT.html">Tsvi BT</a></li></ul></p></footer></body></html>

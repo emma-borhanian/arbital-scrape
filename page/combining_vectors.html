@@ -1,0 +1,101 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Combining vectors</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_SVG" async></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">Combining vectors</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/combining_vectors.json.html">combining_vectors.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/combining_vectors">https://arbital.com/p/combining_vectors</a></p><p class="creator">by
+ <a class="page-link" href="../page/AdeleLopez.html">Adele Lopez</a> Dec 3 2016 
+updated
+ Jan 1 2018</p></div><p class="clickbait">One of the most useful things we can do with vectors is to combine them!</p><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>Combining vectors</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="geometric_algebra.html">Geometric algebra</a></li><li>…</li></ul></nav></nav></header><hr><main><p>[summary: We can combine vectors to get other vectors, which is called a <strong>linear combination</strong> of vectors. A set of vectors that can be combined to reach all of the vectors in the vector space exactly once is called a <strong>basis</strong>.  The number of elements in the basis for a vector space is called the <strong>dimension</strong> of the vector space because it matches our intuitive notion of dimension.</p>
+<p>By choosing a basis, we can break down any vector into different <strong>components</strong>, each one a scaled basis vector. These scalars are called the <strong>coordinates</strong> of the vector. For convenience, we will usually use a standardized basis with special properties, but other bases are equally valid.]</p>
+<p>Now that we know <a href="vector_arithmetic.html">how vectors work</a>, we want to know how to work with them. In this page, we'll study some fundamental concepts in working with vectors. This will make using them and thinking about them easier. We'll start by combining vectors to make new vectors, and we will use this tool to help us describe and understand vector spaces, and to make it easier to talk about different vectors. In particular, we will learn how we can communicate a particular vector algebraically, without needing to share a picture.</p>
+<h1 id="linearcombinations">Linear combinations</h1>
+<p>Here are some vectors:</p>
+<p><img src="http://imgur.com/nq4N0at.png" alt="vectors u, v, w" /></p>
+<p>We can use these vectors to make other vectors, by taking different amounts of each one, adding all the parts together:</p>
+<p><img src="http://imgur.com/k1OQHXH.png" alt="combinations of u, v and w" /></p>
+<p>This is called a <strong>linear combination</strong>.</p>
+<p>Sometimes, there are different ways to make the same vector from a certain set of ingredient vectors:</p>
+<p><img src="http://imgur.com/U8oDKo9.png" alt="multiple combinations" /></p>
+<p>Sometimes, there are no ways to make a particular vector. This is easiest to see in three dimensions. In this example, by rotating our point of view, we can see that there is no way of combining $~$\mathbf u$~$, $~$\mathbf v$~$, and $~$\mathbf w$~$ to make the vector $~$\mathbf s$~$:</p>
+<p><img src="http://imgur.com/W9yjTBf.gif" alt="no combination can reach the third dimension" /></p>
+<p>We call the set of all the vectors that are reachable by our set of vectors the <strong>span</strong> of those vectors. In the example above, the span of $~$\mathbf u$~$, $~$\mathbf v$~$, and $~$\mathbf w$~$ is the set of all vectors that could lie within the plane highlighted in gray. </p>
+<h1 id="basis">Basis</h1>
+<p>How many vectors do we need to span the whole vector space? It depends on the space!</p>
+<p>For a flat space, we can use the vectors $~$\mathbf x$~$ and $~$\mathbf y$~$ to reach the whole space:</p>
+<p><img src="http://imgur.com/r1F9Y8Y.png" alt="x,y span plane" /></p>
+<p>What happens if we remove one or the other? What vectors can we reach with a linear combination of just $~$\mathbf x$~$, or just $~$\mathbf y$~$?</p>
+<p>%%hidden(Show solution):
+<img src="http://imgur.com/Hk4XfLK.png" alt="span of just x or just y" /></p>
+<p>Linear combinations of just $~$\mathbf x$~$ are just $~$\mathbf x$~$ scaled by different amounts. So the only vectors that will be reachable are the ones that could lie in the same line as $~$\mathbf x$~$. Similarly, with just $~$\mathbf y$~$, we can only reach $~$\mathbf y$~$ scaled by different amounts with linear combinations. 
+%%
+So we might guess that we need at least two vectors to span a flat space.</p>
+<p>To span a space that also has some depth, we can't just use these two vectors though:</p>
+<p><img src="http://imgur.com/ozTrzy2.png" alt="x and y can't get three dimensions" /></p>
+<p>Not even if we just add <em>any</em> other vector in a different direction:</p>
+<p><img src="http://imgur.com/9F1RlU5.png" alt="x, y d still just span plane" /></p>
+<p>This doesn't add anything new since $~$\mathbf d$~$ is a linear combination of $~$\mathbf x$~$ and $~$\mathbf y$~$!</p>
+<p><img src="http://imgur.com/izqKWlS.png" alt="d is a linear combo of x and y" /></p>
+<p>We say that $~$\mathbf d$~$ is <strong>linearly dependent</strong> on $~$\mathbf x$~$ and $~$\mathbf y$~$.</p>
+<p>To get the full depth of the space, we need to add a vector that is <strong>linearly independent</strong> of $~$\mathbf x$~$ and $~$\mathbf y$~$, that is, not a linear combination of $~$\mathbf x$~$ and $~$\mathbf y$~$.</p>
+<p><img src="http://imgur.com/liTnG0E.png" alt="x, y and z" /></p>
+<p>A linearly independent set of vectors that span the whole space is called a <strong>basis</strong> for that space. </p>
+<h2 id="dimension">Dimension</h2>
+<p>What does a vector space with just one vector $~$\mathbf v$~$ in its basis look like?</p>
+<p><img src="http://imgur.com/uqmqphC.png" alt="one dimension" /></p>
+<p>Linear combinations of $~$\mathbf v$~$ are just $~$\mathbf v$~$ scaled by different numbers. So the vector space is just any vector that fits in a line containing $~$\mathbf v$~$. A basis with one vector can reach a one-dimensional space.</p>
+<p>Now if we have two vectors $~$\mathbf x$~$ and $~$\mathbf y$~$ in our basis, we can reach any vector within the plane containing both $~$\mathbf x$~$ and $~$\mathbf y$~$:</p>
+<p><img src="http://imgur.com/6slhOvS.png" alt="two dimensions" /></p>
+<p>So a basis with two vectors spans a two-dimensional space.</p>
+<p>You can probably guess that a basis with three vectors reaches a three-dimensional space.</p>
+<p><img src="http://imgur.com/nXYFllW.png" alt="three dimensions" /></p>
+<p>The <strong>dimension</strong> of a vector space is the number of vectors in the basis!</p>
+<p>This allows us to accurately imagine higher dimensional spaces, even though we cannot visualize them directly. Even though four linearly independent vectors do not exist in physical space, the same mathematical rules can be applied to determine different properties of such a world. </p>
+<p>In this way, math allows us to explore all kinds of strange, exotic worlds beyond our own, including vector spaces of any dimension. It also turns out that many of these higher dimensional vector spaces are very useful for real world situations!</p>
+<h3 id="zerodimensions">Zero dimensions</h3>
+<p>What is a linear combination of nothing? Just as zero is the amount of things we have if we have nothing, the zero vector is the vector of a linear combination of nothing. So a zero-dimensional vector space is a vector space that has practically nothing - just the zero vector!</p>
+<h2 id="standardbasis">Standard basis</h2>
+<p>It's convenient to work in a standardized basis, with vectors that have convenient properties. In many spaces, there's a standard set of vectors with particular magnitudes and directions that are conventionally used. </p>
+<p>In two dimensional geometric space, the standard basis is $~$\mathbf x$~$, $~$\mathbf y$~$, where $~$\mathbf x$~$ and $~$\mathbf y$~$ both have magnitude one.</p>
+<p><img src="http://imgur.com/1ttZA6Z.png" alt="x and y" /></p>
+<p>Similarly, in three dimensional geometric space, a basis with vectors $~$\mathbf x$~$, $~$\mathbf y$~$, and $~$\mathbf z$~$, all unit vectors, is commonly used.</p>
+<p><img src="http://imgur.com/2UD34wV.png" alt="x y and z" /></p>
+<p>However this one is less standardized, and it is not unusual to see things that use a different convention for three dimensional geometric space. </p>
+<p>One property that is very often used is to have a basis where all the basis vectors are normalized to have unit magnitude. This is called a <strong>normal basis</strong>. %note:
+It's also useful to have a basis where all the vectors are in as different directions as possible. However, this only makes sense in vector spaces with a concept of <em>angle</em>. We'll learn about angle in geometric vector spaces soon. A basis with this property is called an <strong>orthogonal basis</strong> (Orthogonal is Greek for right angular). A basis that is both orthogonal and normal is called an <strong>orthonormal basis</strong>.
+%</p>
+<p>Although using a standardized basis is convenient, it's important to remember that standardized bases are not mathematically fundamental. The math works equally well when using <em>any</em> basis. For example, we could also use $~$\mathbf r$~$ and $~$\mathbf s$~$ as a basis for the plane of your screen:</p>
+<p><img src="http://imgur.com/m4jRzj8.png" alt="non-standard basis" /></p>
+<h1 id="coordinates">Coordinates</h1>
+<p>If we have a basis, we can describe any vector as a linear combination of those basis elements in exactly one way.  Here we have $~$\mathbf x$~$ and $~$\mathbf y$~$ as our basis, and we want to describe the vector $~$\mathbf v$~$:</p>
+<p><img src="http://imgur.com/AJQuYot.png" alt="x,y linear combo" /></p>
+<p>We can write $~$\mathbf v = 3\mathbf {x} + 4 \mathbf {y}$~$. The scaled basis vectors we use to reach our vector $~$v$~$ are called the <strong>components</strong> of $~$v$~$. In this example, the $~$\mathbf x$~$-component of $~$\mathbf v$~$ is $~$3$~$, and the $~$\mathbf y$~$-component of $~$\mathbf v$~$ is $~$-1$~$. We can also refer to this vector by the list of the scalars for each of the components – these are called the <strong>coordinates</strong> of the vector. So the coordinates of $~$\mathbf v$~$ are $~$(3,4)$~$ in this case. %note: We also need to know the order of the basis vectors in order to use coordinates unambiguously. In this case, the implicit order is <strong>x</strong>, <strong>y</strong>.%</p>
+<p>It's important to remember that if we use a different basis, the same vector will have different coordinates:</p>
+<p><img src="http://imgur.com/fWXuucS.png" alt="same example, but with different basis" /></p>
+<p>Coordinates give us a handy way to describe different vectors in our vector space:</p>
+<p><img src="http://imgur.com/8cVxDRh.png" alt="basis, vectors and their coordinates" /></p>
+<p>This lets us describe specific vectors in an algebraic way, as long as the basis in use is understood. So we can share a particular
+vector with our friend by sharing the coordinates of the vector using the standard basis, all without needing to draw a picture! </p>
+<h2 id="referencepoint">Reference point</h2>
+<p>We can do a similar thing with points. We choose a particular point as a reference point, called the <strong>origin</strong>, which we usually write with a capital $~$O$~$:</p>
+<p><img src="http://imgur.com/QCep7EV.png" alt="the origin" /></p>
+<p>We can now describe points by the vector will take us from the origin to that point. And that vector can be described in terms of the basis vectors, using coordinates! </p>
+<p><img src="http://imgur.com/pO4129x.png" alt="origin, basis vectors, vectors to points" /></p>
+<p>In this example, $~$p = O + 2\mathbf x + 3\mathbf y$~$, and $~$q = O - 3\mathbf x + \mathbf y$~$.
+We call these the coordinates of the point. For short, we can write these just as $~$p = (2, 3)$~$ and $~$q = (-3,1)$~$ – but it's really important to make sure that we are clear on what basis is being used, and what the origin is. In the $~$\mathbf s, \mathbf t$~$ basis we used earlier, and with the same origin, our points will have different coordinates: </p>
+<p><img src="http://imgur.com/L5Eej0e.png" alt="origin, points, different basis" /></p>
+<p>This time, $~$p$~$ can be described as $~$(2,\frac{1}{2})$~$, and $~$q = (-3,2)$~$. </p>
+<hr />
+<p><a href="6mk.html">Next</a>, we will start exploring the things that make geometric vectors geometric, by thinking about how we can compare different vectors to each other in a geometric vector space.  </p></main><hr><footer><p class="tagged"><h2>Tagged</h2><span class="page-comma-list"><a class="page-link" href="../page/math1.html">Math 1</a></span></p><p class="likes"><h2>Likes</h2><span class="page-comma-list"><a class="page-link" href="../page/8xl.html">8xl</a>,
+ <a class="page-link" href="../page/EricRogstad.html">Eric Rogstad</a>,
+ <a class="page-link" href="../page/KevinClancy.html">Kevin Clancy</a></span></p><p class="reverse-related"><h2>Reverse Related</h2><ul class="page-list"><li><a class="page-link" href="../page/math1.html">Math 1</a> <q>Is math sometimes fun for you, and are you not anxious if you see a math puzzle you don't know how to solve?</q> - <a class="page-link" href="../page/EliezerYudkowsky.html">Eliezer Yudkowsky</a></li></ul></p></footer></body></html>

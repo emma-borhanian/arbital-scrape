@@ -1,0 +1,29 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Least common multiple</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_SVG" async></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">Least common multiple</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/least_common_multiple.json.html">least_common_multiple.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/least_common_multiple">https://arbital.com/p/least_common_multiple</a></p><p class="creator">by
+ <a class="page-link" href="../page/JohannesSchmitt.html">Johannes Schmitt</a> Sep 24 2016 
+updated
+ Sep 25 2016</p></div><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>Least common multiple</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="math.html">Mathematics</a></li><li>…</li></ul></nav></nav></header><hr><main><p>[summary: The <strong>least common multiple (LCM)</strong> of two positive  <a href="natural_number.html">natural numbers</a>  a, b is the smallest natural number that both a and b divide, so for instance LCM(12,10) = 60.]</p>
+<p>Given two positive natural numbers $~$a$~$ and $~$b$~$, their <strong>least common multiple</strong> $~$\text{LCM}(a,b)$~$ is the smallest natural number divided by both $~$a$~$ and $~$b$~$. As an example take $~$a=12, b=10$~$, then the smallest number divided by both of them is $~$60$~$.</p>
+<p>There is an equivalent definition of the LCM, which is strange at first glance but turns out to be mathematically much more suited to generalisation: the LCM $~$l$~$ of $~$a$~$ and $~$b$~$ is the natural number such that for every number $~$c$~$ divisible by both $~$a$~$ and $~$b$~$, we have $~$l$~$ divides $~$c$~$.
+This describes the LCM as a <a href="math_join.html">poset least upper bound</a> (namely the <a href="poset.html">Partially ordered set</a> $~$\mathbb{N}$~$ under the relation of divisibility).</p>
+<p>Note that for $~$a$~$, $~$b$~$ given, their product $~$ab$~$ is a natural number divided by both of them. The least common multiple $~$\text{LCM}(a,b)$~$ divides the product $~$ab$~$ and for $~$\text{GCD}(a,b)$~$ the <a href="greatest_common_divisor.html">Greatest common divisor</a> of $~$a, b$~$ we have the formula
+$$~$a\cdot b = \text{GCD}(a,b) \cdot \text{LCM}(a,b). $~$$
+This formula offers a fast way to compute the least common multiple: one can compute $~$\text{GCD}(a,b)$~$ using the [euclidean_algorithm] and then divide the product $~$ab$~$ by this number.</p>
+<p>In practice, for small numbers $~$a,b$~$ it is often easier to use their factorization into <a href="prime_number.html">prime numbers</a>. In the example above we have $~$12=2 \cdot 2 \cdot 3$~$ and $~$10=2 \cdot 5$~$, so if we want to build the smallest number $~$c$~$ divided by both of them, we can take $~$60=2 \cdot 2 \cdot 3 \cdot 5$~$. Indeed, to compute $~$c$~$ look at each prime number $~$p$~$ dividing one of $~$a,b$~$ (in the example $~$p=2,3,5$~$). Then writing $~$c$~$ as a product we take the factor $~$p$~$ the maximal number of times it appears in $~$a$~$ and $~$b$~$. The factor $~$p=2$~$ appears twice in $~$12$~$ and once in $~$10$~$, so we take it two times. The factor $~$3$~$ appears once in $~$12$~$ and zero times in $~$10$~$, so we only take it once, and so on.</p></main><hr><footer><p class="all-creators"><h2>All Creators</h2><span class="page-comma-list"><a class="page-link" href="../page/JohannesSchmitt.html">Johannes Schmitt</a>,
+ <a class="page-link" href="../page/KevinClancy.html">Kevin Clancy</a>,
+ <a class="page-link" href="../page/PatrickStevens.html">Patrick Stevens</a></span></p><p class="likes"><h2>Likes</h2><span class="page-comma-list"><a class="page-link" href="../page/JaimeSevillaMolina.html">Jaime Sevilla Molina</a>,
+ <a class="page-link" href="../page/JohannesSchmitt.html">Johannes Schmitt</a></span></p></footer></body></html>

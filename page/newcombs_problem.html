@@ -1,0 +1,68 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Newcomb's Problem</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_SVG" async></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">Newcomb's Problem</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/newcombs_problem.json.html">newcombs_problem.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/newcombs_problem">https://arbital.com/p/newcombs_problem</a></p><p class="creator">by
+ <a class="page-link" href="../page/EliezerYudkowsky.html">Eliezer Yudkowsky</a> Aug 1 2016 
+updated
+ Oct 13 2016</p></div><p class="clickbait">There are two boxes in front of you, Box A and Box B.  You can take both boxes, or only Box B.  Box A contains $1000.  Box B contains $1,000,000 if and only if Omega predicted you'd take only Box B.</p><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>Newcomb's Problem</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="decision_theory.html">Decision theory</a></li><li><a href="logical_dt.html">Logical decision theories</a></li><li><a href="newcomblike.html">Newcomblike decision problems</a></li><li>…</li></ul></nav></nav></header><hr><main><p>[summary:  A powerful alien named <a href="omega_troll.html">Omega</a> has presented you with the following dilemma:</p>
+<ul>
+<li>Before you are two boxes, Box A and Box B.</li>
+<li>You can either take both boxes ("two-box"), or take only Box B ("one-box").</li>
+<li>Box A is transparent and contains \$1,000.  Box B is opaque.</li>
+<li>If Omega predicted that you will take only Box B, Omega has put \$1,000,000 in Box B.  Otherwise Omega left Box B empty.</li>
+<li>Omega is an excellent predictor of human behavior (e.g. we can assume Omega has played this game many times before, and never been wrong).</li>
+<li>At the time of your choice, Omega has already made its prediction and left.  Box B is already empty or already full.</li>
+</ul>
+<p>Newcomb's Problem was historically responsible for the invention of <a href="causal_dt.html">causal decision theory</a> and its widespread adoption over <a href="evidential_dt.html">evidential decision theory</a>.  For a discussion of <a href="newcomblike.html">Newcomblike decision problems</a> in general, see <a href="ldt_guide.html">Guide to Logical Decision Theory</a>.]</p>
+<p>Newcomb's Problem is the original <a href="newcomblike.html">Newcomblike decision problem</a> that inspired the creation of <a href="causal_dt.html">causal decision theory</a> as distinct from <a href="evidential_dt.html">evidential decision theory</a>, spawning a vast array of philosophical literature in the process.  It is sometimes called Newcomb's Paradox (despite not being a paradox).  The dilemma was originally formulated by <a href="https://en.wikipedia.org/wiki/William_Newcomb">William Newcomb</a>, and presented to the philosophical community by Robert Nozick.</p>
+<p>The original formulation of Newcomb's Problem was as follows:</p>
+<p><a href="omega_troll.html">An alien named Omega</a> has come to Earth, and has offered some people the following dilemma.</p>
+<p>Before you are two boxes, Box A and Box B.</p>
+<p>You may choose to take both boxes ("two-box"), or take only Box B ("one-box").</p>
+<p>Box A is transparent and contains \$1,000.</p>
+<p>Box B is opaque and contains either \$1,000,000 or \$0.</p>
+<p>The alien Omega has already set up the situation and departed, but previously put \$1,000,000 into Box B if and only if Omega predicted that you would one-box (take only the opaque Box B and leave Box A and its \$1,000 behind).</p>
+<p>Omega is an excellent predictor of human behavior.  For the sake of quantifying this assertion and how we know it, we can assume e.g. that Omega has run 67 previous experiments and not been wrong even once.  Since people are often strongly opinionated about their choices in Newcomb's Problem, it isn't unrealistic to suppose this is the sort of thing you could predict by reasoning about, e.g., a scan of somebody's brain.</p>
+<p>Newcomb originally specified that Omega would leave Box B empty in the case that you tried to decide by flipping a coin; since this violates <a href="fair_problem_class.html">algorithm-independence</a>, we can alternatively suppose that Omega can predict coinflips.</p>
+<p>We may also assume, e.g., that Box A combusts if it is left behind, so nobody else can pick up Box A later; that Omega adds \$1 of pollution-free electricity to the world economy for every \$1 used in Its dilemmas, so that the currency does not represent a zero-sum wealth transfer; etcetera.  Omega never plays this game with a person more than once.</p>
+<p>The two original opposing arguments given about Newcomb's problem were, roughly:</p>
+<ul>
+<li>Argument for one-boxing: People who take only Box B tend to walk away rich. People who two-box tend to walk away poor. It is better to be rich than poor.</li>
+<li>Argument for two-boxing: Omega has already made its prediction. Box B is already empty or already full. It would be irrational to leave behind Box A when this choice cannot <em>cause</em> Box B's contents to change. It's true that Omega has chosen to reward people with irrational dispositions in this setup, but Box B is now already empty, and taking only one box won't change that.</li>
+</ul>
+<p>For the larger argument of which this became part, see <a href="ldt_guide.html">one of the introductions to logical decision theory</a>.  As of 2016, the most academically common view of Newcomb's Problem is that it surfaces the split between <a href="evidential_dt.html">Evidential decision theories</a> and <a href="causal_dt.html">Causal decision theories</a>, and that <a href="causal_dt.html">causal decision theory</a> is correct.  However, both that framing and that conclusion have been variously disputed, most recently by <a href="logical_dt.html">Logical decision theories</a>.</p>
+<p>%todo:  add a diagram of a causal model for Newcomb's Problem.%</p>
+<p>The more extensive <a href="https://en.wikipedia.org/wiki/Newcomb%27s_paradox">Wikipedia page on Newcomb's Problem</a> may be found under <a href="https://en.wikipedia.org/wiki/Newcomb%27s_paradox">"Newcomb's Paradox"</a>.</p>
+<h1 id="repliesbydifferentdecisiontheories">Replies by different decision theories</h1>
+<p>(This section does not remotely do justice to the vast literature on Newcomb's Problem.)</p>
+<h2 id="pretheoreticreactions">Pretheoretic reactions</h2>
+<ul>
+<li>Well, by assumption, Omega is pretty good at predicting me, so I'd better take only Box B.</li>
+<li>Omega's already gone.  I can't possibly get any more money by leaving behind Box A.</li>
+<li>I have free will, so Omega <em>can't</em> predict me.  This problem is paradoxical.</li>
+<li>This is a silly dilemma; why would Omega do that? %note: Other <a href="newcomblike.html">Newcomblike problems</a> may seem more naturally motivated, such as <a href="rationality_of_voting.html">voting in elections</a>, the <a href="prisoners_dilemma.html">Prisoner&#39;s Dilemma</a>, <a href="parfits_hitchhiker.html">Parfit&#39;s Hitchhiker</a>, and the <a href="absentminded_driver.html">Absent-Minded Driver dilemma</a>.%</li>
+</ul>
+<h2 id="evidentialdecisiontheory">Evidential decision theory</h2>
+<p><a href="evidential_dt.html">Evidential decision theories</a> can be seen as a form of decision theory that was originally written down by historical accident--writing the <a href="expected_utility.html">expected utility formula</a> as if it [action_conditional conditioned] using <a href="bayes_update.html">Bayesian updating</a>, because Bayesian updating is usually the way we condition probability functions.   Historically, though, <a href="evidential_dt.html">Evidential decision theories</a> was explicitly named as such in an (arguably failed) attempt to rationalize the pretheoretic answer of "I expect to do better if I one-box" on Newcomb's Problem.</p>
+<p>On <a href="evidential_dt.html">Evidential decision theories</a>, the [-principle_of_rational_choice principle of rational choice] is to choose so that your act is the best news you could have received about your action; in other words, imagine being told that you had in fact made each of your possible choices, imagine what you would believe about the world in that case, and output the choice which would be the best news.  Thus, evidential agents one-box on Newcomb's Problem.</p>
+<p>Although the EDT answer happens to conform with "the behavior of the agents that end up rich" on Newcomb's Problem, LDT proponents note that it does not do so in general; see e.g. the <a href="transparent_newcombs_problem.html">Transparent Newcomb&#39;s Problem</a>.</p>
+<h2 id="causaldecisiontheory">Causal decision theory</h2>
+<p>On causal decision theories, the principle of rational choice is to choose according to the causal consequences of your physical act; formally, to calculate expected utility by conditioning using a [causal_counterfactual causal counterfactual].  To choose, imagine as the world as it is right up until the moment of your physical act; assume that your physical act changes without that changing anything else about the world up until that point; then imagine time running forward under what your model says are the rules or physical laws.</p>
+<p>A causal agent thus believes that Box B is already empty, and takes both boxes.  When they imagine the (counterfactual) result of taking only box B instead, they imagine the world being the same up until that point in time--including Box B remaining empty--and then imagine the result of taking only Box B under physical laws past that point, namely, going home with \$0.</p>
+<p>Historically speaking, <a href="causal_dt.html">causal decision theory</a> was first invented to justify two-boxing on Newcomb's Problem; we can see CDT as formalizing the pretheoretic intuition, "Omega's already gone, so I can't get more money by leaving behind Box A."</p>
+<h2 id="logicaldecisiontheories">Logical decision theories</h2>
+<p>On <a href="logical_dt.html">logical decision theories</a>, the principle of rational choice is "Decide as though you are choosing the logical output of your decision algorithm."  E.g., on [-timeless_dt], our extended causal model of the world would include a logical proposition for whether the output of your decision algorithm is 'one-box' or 'two-box'; and this logical fact would affect both Omega's prediction of you, and your actual decision.  Thus, an LDT agent prefers that its algorithm have the logical output of one-boxing.</p>
+<p>%todo: add graph for TDT on NP%</p></main><hr><footer><p class="all-creators"><h2>All Creators</h2><span class="page-comma-list"><a class="page-link" href="../page/EliezerYudkowsky.html">Eliezer Yudkowsky</a>,
+ <a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a></span></p><p class="likes"><h2>Likes</h2><span class="page-comma-list"><a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a></span></p><p class="reverse-related"><h2>Reverse Related</h2><ul class="page-list"><li><a class="page-link" href="../page/4v4.html">4v4</a></li></ul></p></footer></body></html>

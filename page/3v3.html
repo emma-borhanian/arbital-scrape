@@ -1,0 +1,20 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Fractional bits: Digit usage interpretation</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_SVG" async></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">Fractional bits: Digit usage interpretation</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/3v3.json.html">3v3.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/3v3">https://arbital.com/p/3v3</a></p><p class="creator">by
+ <a class="page-link" href="../page/NateSoares.html">Nate Soares</a> May 27 2016</p></div><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>Fractional bits: Digit usage interpretation</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="math.html">Mathematics</a></li><li><a href="bit.html">Bit</a></li><li><a href="data_bit.html">Bit (of data)</a></li><li><a href="fractional_bit.html">Fractional bits</a></li><li>…</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="math.html">Mathematics</a></li><li><a href="information_theory.html">Information theory</a></li><li><a href="data_bit.html">Bit (of data)</a></li><li><a href="fractional_bit.html">Fractional bits</a></li><li>…</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="math.html">Mathematics</a></li><li><a href="information_theory.html">Information theory</a></li><li><a href="fractional_bit.html">Fractional bits</a></li><li>…</li></ul></nav></nav></header><hr><main><p>It is 316, not 500, that requires about two and a half digits to write down. 500 requires nearly 2.7 digits.</p>
+<p>Short version of the argument that "half a digit" is closer to 300 than 500: If you program your computer such that it interprets a leading 1, 4, or 7 as a 1; and such that it interprets a leading 2, 5, or 8 as a 2; and such that it interprets 3, 6, or 9 as a 3; then when it comes time to transmit a number to you program via <a href="galcom.html">GalCom</a>, you can sell a <a href="trit.html">Trit</a> on the market (and send the high, medium, or low leading digit accordingly). Thus, if your number is around 300, then the amount of information you can sell on GalCom is roughly equal to the amount of information that you're using yourself. [work in progress]</p>
+<p>Also, $~$10 \cdot 10 \cdot \sqrt{10} \approx 316,$~$ and $~$\sqrt{10}$~$ is the "geometric half" of 10. [work in progress]</p></main><hr><footer><p class="tagged"><h2>Tagged</h2><span class="page-comma-list"><a class="page-link" href="../page/stub_meta_tag.html">Stub</a>,
+ <a class="page-link" href="../page/work_in_progress_meta_tag.html">Work in progress</a></span></p></footer></body></html>

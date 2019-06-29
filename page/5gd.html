@@ -1,0 +1,32 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>&quot;I think it would be worthwhile to explicitly ca...&quot;</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_SVG" async></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">&quot;I think it would be worthwhile to explicitly ca...&quot;</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/5gd.json.html">5gd.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/5gd">https://arbital.com/p/5gd</a></p><p class="creator">by
+ <a class="page-link" href="../page/EricRogstad.html">Eric Rogstad</a> Jul 18 2016</p></div><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>&quot;I think it would be worthwhile to explicitly ca...&quot;</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="math.html">Mathematics</a></li><li><a href="proof_technique.html">Proof technique</a></li><li><a href="mathematical_induction.html">Mathematical induction</a></li><li>…</li></ul></nav></nav></header><hr><main><blockquote class="comment-context">We'll do an example to build our intuition before giving the proper definition of the principle\. We'll provide yet another proof that
+$$~$ 1 + 2 + \\cdots + n \= \\frac{n(n+1)}{2}$~$$
+for all integers $~$n \\ge 1$~$\. First, let's check the base case, where $~$n\=1$~$:
+$$~$ 1 \= \\frac{1(1+1)}{2} \= \\frac{2}{2} \= 1.$~$$
+This is \(fairly obviously\) true, so we can move forward with the inductive step\. The inductive step includes an assumption, namely that the statement is true for some integer $~$k$~$ that is larger than the base integer\. For our example, if $~$k\\ge1$~$, we assume that
+$$~$1 + 2 + \\cdots + k \= \\frac{k(k+1)}{2}$~$$
+<mark>and try to prove that</mark>
+$$~$ 1 + 2 + \\cdots + k + (k+1) \= \\frac{(k+1)(\[k+1\]+1)}{2}.$~$$
+Take our assumption and add $~$k+1$~$ to both sides:
+$$~$1+2+\\cdots + k + (k+1) \= \\frac{k(k+1)}{2} + k + 1.$~$$
+Now the left\-hand sides of what we know and what we want are the same\. Hopefully the right\-hand side will shake out to be the same\. Get common denominators so that the right\-hand side of the above equation is
+$$~$\\frac{k(k+1)}{2} + \\frac{2(k+1)}{2} \= \\frac{(k+2)(k+1)}{2} \= \\frac{(k+1)(\[k+1\]+1)}{2}.$~$$
+Therefore,
+$$~$ 1 + 2 + \\cdots + k + (k+1) \= \\frac{(k+1)(\[k+1\]+1)}{2}$~$$
+as desired\.</blockquote>
+<p>I think it would be worthwhile to explicitly call out that what's happening here is that we're replacing $~$n$~$ in the original equation with $~$k+1$~$.</p></main><hr><footer><p class="likes"><h2>Likes</h2><span class="page-comma-list"><a class="page-link" href="../page/KevinClancy.html">Kevin Clancy</a></span></p></footer></body></html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Irreducible element (ring theory)</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_SVG" async></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">Irreducible element (ring theory)</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/irreducible_element_ring_theory.json.html">irreducible_element_ring_theory.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/irreducible_element_ring_theory">https://arbital.com/p/irreducible_element_ring_theory</a></p><p class="creator">by
+ <a class="page-link" href="../page/PatrickStevens.html">Patrick Stevens</a> Jul 27 2016 
+updated
+ Aug 1 2016</p></div><p class="clickbait">This is the appropriate abstraction of the concept of &quot;prime number&quot; to general rings.</p><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>Irreducible element (ring theory)</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="math.html">Mathematics</a></li><li><a href="abstract_algebra.html">Abstract algebra</a></li><li><a href="algebraic_structure.html">Algebraic structure</a></li><li><a href="algebraic_ring.html">Ring</a></li><li>…</li></ul></nav></nav></header><hr><main><p>[summary: An irreducible element of a <a href="algebraic_ring.html">ring</a> is one which cannot be written as a nontrivial product of two other elements of the ring.]</p>
+<p>[summary(Technical): Let $~$(R, +, \times)$~$ be a <a href="algebraic_ring.html">ring</a> which is an <a href="integral_domain.html">integral domain</a>. We say $~$x \in R$~$ is <em>irreducible</em> if, whenever we write $~$r = a \times b$~$, it is the case that (at least) one of $~$a$~$ or $~$b$~$ is a <a href="unit_ring_theory.html">unit</a> (that is, has a multiplicative inverse).]</p>
+<p><a href="algebraic_ring.html">Ring theory</a> can be viewed as the art of taking the integers [48l $~$\mathbb{Z}$~$] and extracting or identifying its essential properties, seeing where they lead.
+In that light, we might ask what the abstracted notion of "<a href="prime_number.html">prime</a>" should be.
+Confusingly, we call this property <em>irreducibility</em> rather than "primality"; "<a href="prime_element_ring_theory.html">prime</a>" in ring theory corresponds to something closely related but not the same.</p>
+<p>In a ring $~$R$~$ which is an <a href="integral_domain.html">Integral domain</a>, we say that an element $~$x \in R$~$ is <em>irreducible</em> if, whenever we write $~$r = a \times b$~$, it is the case that (at least) one of $~$a$~$ or $~$b$~$ is a <a href="unit_ring_theory.html">unit</a> (that is, has a multiplicative inverse).</p>
+<h1 id="whydowerequireddrddtobeanintegraldomain">Why do we require $~$R$~$ to be an integral domain?</h1>
+<p>[todo: this]</p>
+<h1 id="examples">Examples</h1>
+<p>[todo: lots]</p>
+<h1 id="relationshipwithprimalityintheringtheoreticsense">Relationship with primality in the ring-theoretic sense</h1>
+<p>It is always the case that <a href="prime_element_ring_theory.html">primes</a> are irreducible in any integral domain.
+%%hidden(Show proof):
+If $~$p$~$ is prime, then $~$p \mid ab$~$ implies $~$p \mid a$~$ or $~$p \mid b$~$ by definition.
+We wish to show that if $~$p=ab$~$ then one of $~$a$~$ or $~$b$~$ is invertible.</p>
+<p>Suppose $~$p = ab$~$.
+Then in particular $~$p \mid ab$~$ so $~$p \mid a$~$ or $~$p \mid b$~$.
+Assume without loss of generality that $~$p \mid a$~$; so there is some $~$c$~$ such that $~$a = cp$~$.</p>
+<p>Therefore $~$p = ab = cpb$~$; we are working in a commutative ring, so $~$p(1-bc) = 0$~$.
+Since the ring is an integral domain and $~$p$~$ is prime (so is nonzero), we must have $~$1-bc = 0$~$ and hence $~$bc = 1$~$.
+That is, $~$b$~$ is invertible.
+%%</p>
+<p>However, the converse does not hold (though it may in certain rings).</p>
+<ul>
+<li>In $~$\mathbb{Z}$~$, it is a fact that irreducibles are prime. Indeed, it is a consequence of <a href="bezout_theorem.html">Bézout&#39;s theorem</a> that if $~$p$~$ is "prime" in the usual $~$\mathbb{Z}$~$-sense (that is, irreducible in the rings sense) %%note:I'm sorry about the notation. It's just what we're stuck with. It is very confusing.%%, then $~$p$~$ is "prime" in the rings sense. (<a href="irreducibles_are_prime_in_integers.html">Proof.</a>)</li>
+<li>In the ring $~$\mathbb{Z}[\sqrt{-3}]$~$ of <a href="complex_number.html">complex numbers</a> of the form $~$a+b \sqrt{-3}$~$ where $~$a, b$~$ are integers, the number $~$2$~$ is irreducible but we may express $~$4 = 2 \times 2 = (1+\sqrt{-3})(1-\sqrt{-3})$~$. That is, we have $~$2 \mid (1+\sqrt{-3})(1-\sqrt{-3})$~$ but $~$2$~$ doesn't divide either of those factors. Hence $~$2$~$ is not prime.</li>
+</ul>
+<p>%%hidden(Proof that $~$2$~$ is irreducible in $\mathbb{Z}[\sqrt{-3}]):
+A slick way to do this goes via the [norm_complex_number norm] $~$N(2)$~$ of the complex number $~$2$~$; namely $~$4$~$.</p>
+<p>If $~$2 = ab$~$ then $~$N(2) = N(a)N(b)$~$ because [norm_of_complex_number_is_multiplicative the norm is a multiplicative function], and so $~$N(a) N(b) = 4$~$.
+But $~$N(x + y \sqrt{-3}) = x^2 + 3 y^2$~$ is an integer for any element of the ring, and so we have just two distinct options: $~$N(a) = 1, N(b) = 4$~$ or $~$N(a) = 2 = N(b)$~$.
+(The other cases follow by interchanging $~$a$~$ and $~$b$~$.)</p>
+<p>The first case: $~$N(x+y \sqrt{3}) = 1$~$ is only possible if $~$x= \pm 1, y = \pm 0$~$.
+Hence the first case arises only from $~$a=\pm1, b=\pm2$~$; this has not led to any new factorisation of $~$2$~$.</p>
+<p>The second case: $~$N(x+y \sqrt{3}) = 2$~$ is never possible at all, since if $~$y \not = 0$~$ then the norm is too big, while if $~$y = 0$~$ then we are reduced to finding $~$x \in \mathbb{Z}$~$ such that $~$x^2 = 2$~$.</p>
+<p>Hence if we write $~$2$~$ as a product, then one of the factors must be invertible (indeed, must be $~$\pm 1$~$).
+%%</p>
+<p>In fact, in a <a href="principal_ideal_domain.html">Principal ideal domain</a>, "prime" and "irreducible" are equivalent. (<a href="pid_implies_prime_equals_irreducible.html">Proof.</a>)</p>
+<h1 id="relationshipwithuniquefactorisationdomains">Relationship with unique factorisation domains</h1>
+<p>It is a fact that an integral domain $~$R$~$ is a <a href="unique_factorisation_domain.html">UFD</a> if and only if it has "all irreducibles are <a href="prime_element_ring_theory.html">prime</a> (in the sense of ring theory)" and "every $~$r \in R$~$ may be written as a product of irreducibles". ([alternative_condition_for_ufd Proof.])
+This is a slightly easier condition to check than our original definition of a UFD, which instead of "all irreducibles are prime" had "products are unique up to reordering and multiplying by invertible elements".</p>
+<p>Therefore the relationship between irreducibles and primes is at the heart of the nature of a unique factorisation domain.
+Since $~$\mathbb{Z}$~$ is a UFD, in some sense the <a href="fundamental_theorem_of_arithmetic.html">Fundamental Theorem of Arithmetic</a> holds precisely because of the fact that "prime" is the same as "irreducible" in $~$\mathbb{Z}$~$.</p></main><hr><footer><p class="all-creators"><h2>All Creators</h2><span class="page-comma-list"><a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a>,
+ <a class="page-link" href="../page/PatrickStevens.html">Patrick Stevens</a></span></p><p class="likes"><h2>Likes</h2><span class="page-comma-list"><a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a></span></p></footer></body></html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Path targeting</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_SVG" async></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">Path targeting</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/level_targeting.json.html">level_targeting.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/level_targeting">https://arbital.com/p/level_targeting</a></p><p class="creator">by
+ <a class="page-link" href="../page/EliezerYudkowsky.html">Eliezer Yudkowsky</a> Sep 14 2016 
+updated
+ Sep 14 2016</p></div><p class="clickbait">Don't say &quot;We want this price to go up at 2%/year&quot;, say &quot;We want this to be $1 in year 1, $1.02 in year 2, $1.04 in year 3&quot; and don't change the rest of the path if you miss one year's target.</p><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>Path targeting</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="market_monetarism.html">Market monetarism</a></li><li><a href="ngdplt.html">NGDP level targeting</a></li><li>…</li></ul></nav></nav></header><hr><main><p>[summary:  Suppose you're a [ central bank] targeting 2% annual [ inflation] (leaving aside whether this is a good idea).  On path targeting, you should <em>not</em> say:</p>
+<p>"Each year, we want the measured number for widget prices to be around 2% higher than last year."</p>
+<p>And instead say:</p>
+<p>"We want the price of widgets to be \$1 in year 1, \$1.02 in year 2, \$1.04 in year 3, etcetera."</p>
+<p>Even if you undershoot or overshoot on year 2 and the price comes it at \$1.01 or \$1.03, you still target \$1.04 in year 3.</p>
+<p>The argument is that a path of 2%, 2%, 1%, 3%, 2% is <em>more</em> stable and <em>less</em> damaging than a path of 2%, 2%, 1%, 2%, 2%.  The first path is less likely to bankrupt somebody who finds that their nominal loans from year 1 are an unexpectedly high burden in year 5.</p>
+<p>Path targeting is also argued to be <em>far</em> more stable if the central bank isn't great at hitting its targets and often misses in the same direction.  Under annual targeting, a shaky central bank can end up with a path like 1.3%, 1.5%, 0.5%, 1.3%, 1.6%.]</p>
+<p><strong>Path targeting</strong> or <strong>level targeting</strong> is a policy proposal which says that if, e.g., you are a [ central bank] whose [ sole nominal target] is the price of widgets, you should not say:</p>
+<p>"Each year, we [ want the increase] in widget prices to be around 2%."</p>
+<p>Instead you should say:</p>
+<p>"We want the price of widgets to be \$1 in year 1, \$1.02 in year 2, \$1.04 in year 3, and so on."</p>
+<p>Then even if you undershoot the target in year 2 and get a price level of \$1.01 instead of \$1.02, you don't change the targeted level of \$1.04 in year 3.  You just create additional money in year 3 to hit the same price target as before (aka, you try for 3% inflation to "make up" for the previous undershoot).</p>
+<p>On a path target or level target, a central bank's error in one year has no effect on expected prices in future years: everyone still expects the bank to target \$1.04 next year, then \$1.06.  Even if the central bank is consistently undershooting its target by \$0.01 every year, on a level target this merely means the actual path for year 2 and on is \$1.01, \$1.03, \$1.05.</p>
+<p>Conversely, targeting "2%/year inflation", <em>without</em> targeting a stable future path, means that if you undershoot and only get \$1.01 in year 2, you will now say you want a \$1.03 price level in year 3.  This means that when you create too little money in year 2, you've now <em>also</em> said you want to create less money in the future, which adds an <em>additional</em> deflationary force.  This is a form of destabilizing feedback.</p>
+<p>We could evaluate the wisdom of path targeting for e.g. inflation (though a better target might be <a href="ngdplt.html">NGDP</a>) by asking the key question of whether measured inflation of 2%, 2%, 1%, 2%, 2% is experienced by the economy as being more destructively volatile than 2%, 2%, 1%, 3%, 2%.  E.g., consider these two channels of damage:</p>
+<ul>
+<li>"Oh, no!  I didn't expect money to be worth <em>that</em> much in year 5!  I can't afford to pay off the nominal loans I took out in year 1!"</li>
+<li>"Oh, no!  My computer automatically prints menus where the numbers go up by 2% from whatever they were in the previous year, and now I have to reprint my menus!"</li>
+</ul>
+<p>We'd like to have a less straw example above, and solicit suggestions.  In our defense, we're finding it hard to come up with a case where the causal impact is clearly being mediated by the this-year-vs-last-year ratio, and not by the ratio for this-year-vs-2-years-ago.</p>
+<p>Path targeting is particularly advocated by <a href="market_monetarism.html">market monetarism</a>, an [ NGDP]-centric view which suggests that <em>stable long-term growth</em> in NGDP and <em>predictable levels</em> of future NGDP are economic factors of far greater importance than the isolated ratios for this-year-vs-last-year.</p>
+<p>The prominence of path targeting in <a href="market_monetarism.html">market monetarism</a> also reflects concern by market monetarists that in [ sluggish modern economies] (e.g. Japan, the European Union, arguably the USA), the actual sequence of inflation numbers often tends to look like 1.3%, 1.5%, 0.5%, 0.3%, 1.5%.  In other words, where the central bank is turning out to be not very good at hitting its targets and is [ repeatedly missing in the same direction], a path target should be <em>much</em> more predictable and <em>much</em> less volatile than targeting the this-year-vs-last-year ratios as isolated numbers.</p></main><hr><footer><p class="likes"><h2>Likes</h2><span class="page-comma-list"><a class="page-link" href="../page/EricRogstad.html">Eric Rogstad</a></span></p></footer></body></html>

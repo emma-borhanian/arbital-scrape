@@ -1,0 +1,89 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Style guidelines</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_SVG" async></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">Style guidelines</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/arbital_style_guide.json.html">arbital_style_guide.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/arbital_style_guide">https://arbital.com/p/arbital_style_guide</a></p><p class="creator">by
+ <a class="page-link" href="../page/AlexeiAndreev.html">Alexei Andreev</a> Nov 13 2015 
+updated
+ Aug 6 2016</p></div><p class="clickbait">Various stylistic conventions people should follow on Arbital</p><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>Style guidelines</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="Arbital.html">Arbital</a></li><li><a href="arbital_contributing.html">Contributing to Arbital</a></li><li>…</li></ul></nav></nav></header><hr><main><p>Having consistency across pages improves user experience and makes Arbital pages feel more polished. This page lists guidelines to follow when writing a page's title, clickbait, summary, and body text.</p>
+<p>If there are any stylistic considerations you'd like clarified, comment here.</p>
+<p>For style guidelines that apply specifically to the math domain, see <a href="mathematics_style_guide.html">Math style guidelines</a>.</p>
+<h3 id="global">Global</h3>
+<p>Yes: US spelling and terminology %%note: One day we'll have localization.%%.</p>
+<h3 id="title">Title</h3>
+<p>Yes: "First letter is capital"<br />
+Yes: "Is it okay for the title to be a question?"<br />
+Yes: "Short and sweet"<br />
+No: "Capitalize Every Word"<br />
+No: "**Markdown**"<br />
+No: "Period at the end."<br />
+No: "This is a long title that's basically a complete sentence of its own" (Use clickbait for that)  </p>
+<ul>
+<li>Exceptions: asking a question or evaluating a proposition  </li>
+</ul>
+<h3 id="clickbait">Clickbait</h3>
+<p>Yes: "First letter is capital."<br />
+Yes: "Pique user's interest in the topic."<br />
+Yes: "Most clickbaits are just one sentence telling user what they might find out if they read the page."<br />
+Yes: "Can a clickbait ask the reader a leading question?"<br />
+Yes: "Period or other punctuation at the end."<br />
+Yes: Omitting clickbait if the title is descriptive enough.<br />
+No: "Capitalize Every Word"<br />
+No: "**Markdown**"  </p>
+<h3 id="alias">Alias</h3>
+<ul>
+<li>Yes: "lowercase<em>with</em>underscores"</li>
+<li>Yes: "using<em>full</em>words"</li>
+<li>Yes: "be<em>specific</em>style_guide" (as opposed to "specific")</li>
+<li>No: "abrv" (abbreviations)</li>
+<li>No: "MUAs" (made up acronyms)</li>
+<li>No: "alias<em>that</em>is<em>clearly</em>way<em>too</em>long<em>to</em>be<em>useful</em>or_memorable"</li>
+<li>If the alias has alternate meanings, e.g. "element", append the relevant domain's name, e.g. "element<em>mathematics" (or, for arbital domain pages,  prepend e.g. "arbital</em>style_guideline").</li>
+<li>Prefer single ("penguin") to plural version ("penguins"), if possible.</li>
+</ul>
+<h2 id="textbody">Text body</h2>
+<h3 id="summary">Summary</h3>
+<p>Yes: Put it at the top of the page<br />
+Yes: Not having a summary if the first paragraph is already a good summary.
+Yes: "Paragraph long explanation summarizing the contents of the page…"<br />
+Yes: "Using <a href="arbital_markdown.html">Markdown</a> as normal."<br />
+[comment: Yes: "If the page has a vote, describe exactly what the vote is about."]</p>
+<h3 id="body">Body</h3>
+<p>Yes: Conversational, fun tone.<br />
+Yes: We as a personal pronoun.<br />
+Yes: Explaining things in whatever way works best.<br />
+No: I as a personal pronoun.</p>
+<p><strong>Length</strong></p>
+<p>Most Arbital pages are between one to five screens long. They are usually much shorter than Wikipedia pages. It's probably best to break very long pages into a few shorter pages, especially if they need to be used as requisites.</p>
+<h3 id="links">Links</h3>
+<p>Yes: Using a <code>[link]</code> when a concept is introduced or mentioned within a section.<br />
+Yes: Using a [ red link] when you want to indicate that there should be a page for that concept (with or without a title, i.e. <code>[page\_title display text]</code> vs <code>[ display text]</code>).<br />
+Yes: <a href="make_glossary_pages.html">Link glossary pages for overloaded words</a>.<br />
+No: "Using the <code>[same link]</code> in very close proximity to the <code>[same link]</code>."<br />
+No: Specifying the title of the page exactly: <code>&lt;a href="arbital_style_guide.html"&gt;Style guidelines&lt;/a&gt;</code>, instead just do <code>&lt;a href="arbital_style_guide.html"&gt;Style guidelines&lt;/a&gt;</code>  </p>
+<h3 id="headers">Headers</h3>
+<p>Yes: Capitalize first letter and no period at the end<br />
+No: Header for the opening section<br />
+No: "Period or other punctuation at the end."</p></main><hr><section class="comments"><h2>Comments</h2><div class="comment"><p><a class="page-link" href="../page/AlexeiAndreev.html">Alexei Andreev</a></p><p><p><a href="EliezerYudkowsky.html">Eliezer Yudkowsky</a>, <a href="AndrewCritch.html">Andrew Critch</a>, please read, since you'll be creating most of the content. One of Jaan's complaints was that our current content is not standardized. This is the first step in fixing that. Feel free to suggest more rules.</p></p></div><div class="comment"><p><a class="page-link" href="../page/AlexeiAndreev.html">Alexei Andreev</a></p><p><p>Fixed, thanks.</p></p></div><div class="comment"><p><a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a></p><p><p>Should we discourage titles for the top section of a page (e.g. <a href="group_homomorphism.html">Group homomorphism</a>)? I think the top section should universally be an intro paragraph, and additionally having a title on the top line causes bad-looking/useless automatic summaries.</p>
+<p>Edit: Confirmed on Slack and added.</p></p></div><div class="comment"><p><a class="page-link" href="../page/EricRogstad.html">Eric Rogstad</a></p><p><blockquote class="comment-context">Yes: Put it at the top of the page 
+Yes: Not having a summary if the first paragraph works fine\.
+Yes: "Paragraph long explanation summarizing the contents of the page\.\.\." 
+Yes: "Using Markdown as normal\." 
+<mark>Yes: "If the page has a vote, describe exactly what the vote is about\."</mark></blockquote>
+<p>Note that this is an admin-only feature for now. So maybe should be left off the style guide or marked in some way so that people aren't confused about it.</p></p></div><div class="comment"><p><a class="page-link" href="../page/EricRogstad.html">Eric Rogstad</a></p><p><blockquote class="comment-context">Yes: Using a red link when you want to indicate that there should be a page for that concept\. 
+<mark>Yes: Using a red link when you want to indicate that more could be explained about that concept\.</mark>  </blockquote>
+<p>What do you mean by this -- could you say more about how it's different from the previous reason?</p></p></div><div class="comment"><p><a class="page-link" href="../page/JoeZeng.html">Joe Zeng</a></p><p><p>In the body: you as a personal pronoun, y/n?</p></p></div></section><footer><p class="tagged"><h2>Tagged</h2><span class="page-comma-list"><a class="page-link" href="../page/c_class_meta_tag.html">C-Class</a></span></p><p class="all-creators"><h2>All Creators</h2><span class="page-comma-list"><a class="page-link" href="../page/AlexeiAndreev.html">Alexei Andreev</a>,
+ <a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a></span></p><p class="likes"><h2>Likes</h2><span class="page-comma-list"><a class="page-link" href="../page/AlexeiAndreev.html">Alexei Andreev</a>,
+ <a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a>,
+ <a class="page-link" href="../page/EricRogstad.html">Eric Rogstad</a></span></p><p class="reverse-related"><h2>Reverse Related</h2><ul class="page-list"><li><a class="page-link" href="../page/c_class_meta_tag.html">C-Class</a> <q>This page has substantial content, but may not thoroughly cover the topic, may not meet style and prose standards, or may not explain the concept in a way the target audience will reliably understand.</q> - <a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a></li></ul></p><p class="children"><h2>Children</h2><ul class="page-tree"><li><a class="page-link" href="../page/make_glossary_pages.html">Link glossary pages for overloaded words</a> <q>If your subject is using what sound like ordinary-language words in a special sense, create a glossa…</q> - <a class="page-link" href="../page/EliezerYudkowsky.html">Eliezer Yudkowsky</a></li><li><a class="page-link" href="../page/mathematics_style_guide.html">Math style guidelines</a> <q>Stylistic conventions specific to pages about math.</q> - <a class="page-link" href="../page/DylanHendrickson.html">Dylan Hendrickson</a></li><li><a class="page-link" href="../page/ideal_math_page.html">The ideal Arbital math page</a> <q>Think of the best math textbook you've ever read -- why was it good?</q> - <a class="page-link" href="../page/EricRogstad.html">Eric Rogstad</a></li></ul></p></footer></body></html>

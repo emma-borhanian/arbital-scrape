@@ -1,0 +1,28 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>&quot;&gt; The key property we want ...&quot;</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_SVG" async></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">&quot;&gt; The key property we want ...&quot;</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/38p.json.html">38p.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/38p">https://arbital.com/p/38p</a></p><p class="creator">by
+ <a class="page-link" href="../page/EliezerYudkowsky.html">Eliezer Yudkowsky</a> Apr 17 2016 
+updated
+ Apr 17 2016</p></div><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>&quot;&gt; The key property we want ...&quot;</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="ai_alignment.html">AI alignment</a></li><li><a href="AGI_typology.html">Strategic AGI typology</a></li><li><a href="task_agi.html">Task-directed AGI</a></li><li><a href="faithful_simulation.html">Faithful simulation</a></li><li><a href="37b.html">&quot;One natural standard: it sh...&quot;</a></li><li>…</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="ai_alignment.html">AI alignment</a></li><li><a href="AGI_typology.html">Strategic AGI typology</a></li><li><a href="task_agi.html">Task-directed AGI</a></li><li><a href="faithful_simulation.html">Faithful simulation</a></li><li>…</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="ai_alignment.html">AI alignment</a></li><li><a href="task_agi.html">Task-directed AGI</a></li><li><a href="faithful_simulation.html">Faithful simulation</a></li><li><a href="37b.html">&quot;One natural standard: it sh...&quot;</a></li><li>…</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="ai_alignment.html">AI alignment</a></li><li><a href="task_agi.html">Task-directed AGI</a></li><li><a href="faithful_simulation.html">Faithful simulation</a></li><li>…</li></ul></nav></nav></header><hr><main><blockquote>
+  <p>The key property we want from the distinguisher is that it can learn to detect relevant differences between the model and the real system. This seems like it might be the kind of problem that I would classify as "probably easy if the agent is powerful and the difference is really important" and you would classify as "way too hard to count on."</p>
+</blockquote>
+<p><em>Counting on</em> things before you've found a solution to them isn't very <a href="AI_safety_mindset.html">mindset</a>, but I do consider this a promising approach.  Definitely, the generative-adversarial approach in modern neural networks causes me to hope that this is the sort of thing that actually works in practice.  So I might not be as pessimistic as you think?  I still think in general that one does not go about taking things for granted, but the notion of faithful simulation seems like one that could prove to have a tractable core after hammering on it for a bit, and it also seems very possible that if you're reasonably smart and you can't detect any expected differences in the behavior of neural columns then the corresponding human simulation is faithful.</p>
+<p>My current thoughts on possible failure modes:</p>
+<ol>
+<li>"No differences you know about" might mix up the map and the territority in some obscurely fatal way that leads to the equivalent of the AI deliberately managing to 'not know' about inconvenient divergences.</li>
+<li>If we use a limited AI and don't let it run thousands of simulations of people that it can compare to thousands of brains in vats, then in practice its column-level tests won't detect cumulative neural-level differences that lead to an 80% probability of schizophrenia.</li>
+<li>The adversarial approach as written won't work because it will turn out that it's <em>always</em> possible for an equally smart adversary to tell the difference, especially for simulations that can be computed at a worthwhile speedup.  Which means this test won't meaningfully discriminate in the region of intuitively faithful vs. nonfaithful simulations.  (This strikes me as the sort of issue that's repairable, but perhaps not trivially so.)</li>
+</ol></main><hr><footer></footer></body></html>

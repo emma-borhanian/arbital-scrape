@@ -1,0 +1,52 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Metric</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_SVG" async></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">Metric</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/metric.json.html">metric.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/metric">https://arbital.com/p/metric</a></p><p class="creator">by
+ <a class="page-link" href="../page/BryceWoodworth.html">Bryce Woodworth</a> Jul 29 2016 
+updated
+ Mar 23 2017</p></div><p class="clickbait">A metric is a function that defines a distance between elements in a set and follows some basic rules.</p><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>Metric</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="math.html">Mathematics</a></li><li>…</li></ul></nav></nav></header><hr><main><p>[summary:
+Let $~$S$~$ be a set. A <strong>metric</strong> on $~$S$~$ is a function $~$d : S \times S \to \mathbb R_{\ge 0}$~$ such that for all $~$a,b,c \in S$~$,</p>
+<ol>
+<li>$~$d(a,b) = 0 \Leftrightarrow a = b$~$</li>
+<li>$~$d(a,b) = d(b,a)$~$</li>
+<li>$~$d(a,b) + d(b,c) \geq d(a,c)$~$  </li>
+</ol>
+<p>Such a function defines a notion of distance between pairs of elements of $~$S$~$.
+]</p>
+<p>A <strong>metric</strong>, sometimes referred to as a distance function, is a <a href="function.html">Function</a> that defines a <a href="real_number.html">real</a> nonnegative distance between every two elements of a <a href="set_mathematics.html">set</a>. It is commonly denoted by the variable $~$d$~$. In <a href="colon_to_notation.html">Colon-to notation</a>, a metric $~$d$~$ that defines distances between elements of the set $~$S$~$ is written:
+$$~$d: S \times S \to [0, \infty)$~$$</p>
+<p>In this case we say $~$d$~$ <em>is a metric on</em> $~$S$~$.</p>
+<p>That is, a metric $~$d$~$ on a set $~$S$~$ takes as input any two elements $~$a$~$ and $~$b$~$ from $~$S$~$ and outputs a number that is taken to define their distance in $~$S$~$ under $~$d$~$. Apart from being nonnegative real numbers, the distances a metric outputs must follow three other rules in order for the function to meet the definition of a metric. A function that matches the above colon-to notation is called a metric if and only if it satisfies these requirements. The following must hold for any choice of $~$a$~$, $~$b$~$, and $~$c$~$ in $~$S$~$:</p>
+<ol>
+<li><p>$~$d(a, b) = 0 \iff a = b$~$</p></li>
+<li><p>$~$d(a, b) = d(b, a)$~$</p></li>
+<li><p>$~$d(a, b) + d(b, c) \geq d(a, c)$~$</p></li>
+</ol>
+<p>(1) effectively states both that the distance from an element to itself is 0, and that the distance between non-identical elements must be greater than 0. (2) asserts that a metric must be <a href="commutative_operation.html">commutative</a>; informally the distance from $~$a$~$ to $~$b$~$ must be the same as the distance from $~$b$~$ to $~$a$~$. Finally, (3) is known as the [-triangle_inequality] and asserts that the distance from $~$a$~$ to $~$c$~$ is at most as large as the sum of the distances from $~$a$~$ to $~$b$~$ and from $~$b$~$ to $~$c$~$. It is named as such because in [euclidean_space], the points $~$a$~$, $~$b$~$, and $~$c$~$ form a triangle, and the inequality requires that the length of one side of the triangle is not longer than the sum of the lengths of the other two sides; violating this would mean that the shortest path between two points is no longer the straight line between them.</p>
+<p>It is possible (and relatively common!) to deal with multiple different metrics on the same set. This means we are using the same set elements as labels, but treating the distances between elements differently; in this case the different [metric_space metric spaces] we are defining may have very different properties. If multiple metrics are being considered, we must be careful when speaking of distances between elements of the set to specify which metric we are using. For example, if $~$d$~$ and $~$e$~$ are both metrics on $~$S$~$, we cannot just say "the distance between $~$a$~$ and $~$b$~$ in $~$S$~$" because it is ambiguous whether we are referring to $~$d(a, b)$~$ or to $~$e(a, b)$~$. We could instead say something like "the distance between $~$a$~$ and $~$b$~$ under $~$e$~$" to remove the ambiguity.</p>
+<p>The most commonly-used metric on Cartesian space is the Euclidean metric, defined in two dimensions as $~$d(a, b) = \sqrt{(a_1-b_1)^2 + (a_2-b_2)^2}$~$, and more generally in $~$n$~$ dimensions as $~$d(a, b) = \sqrt{\sum_{i=1}^n (a_i-b_i)^2}$~$.</p>
+<p>A less-common metric on Cartesian space is the Manhattan metric, defined generally as $~$d(a, b) = \sum_{i=1}^n |a_i-b_i|$~$; the distance is analogous to the distance taken between two points on a rectangular grid when motion is constrained to be purely vertical or horizontal, but not diagonal.</p>
+<p>[todo: A metric induces a topology]
+[todo: add intuitive/nonalgebraic explanation lens]
+[todo: proof that Euclidean and Manhattan distances are metrics]</p></main><hr><section class="comments"><h2>Comments</h2><div class="comment"><p><a class="page-link" href="../page/EricRogstad.html">Eric Rogstad</a></p><p><blockquote class="comment-context">The first requirement effectively states both that the distance from an element to itself is 0, and that the distance between non\-identical elements must be greater than 0\. The second requirement asserts that a metric must be commutative; informally the distance from $~$a$~$ to $~$b$~$ must be the same as the distance from $~$b$~$ to $~$a$~$\. Finally, the third requirement is known as the triangle inequality and asserts that the distance from $~$a$~$ to $~$c$~$ is at most as large as the sum of the distances from $~$a$~$ to $~$b$~$ and from $~$b$~$ to $~$c$~$\. It is named as such because in Euclidean space, the points $~$a$~$, $~$b$~$, and $~$c$~$ form a triangle, and the inequality requires that the length of one side of the triangle is not longer than the sum of the lengths of the other two sides; violating this would mean that the shortest path between two points is no longer the straight line between them\.</blockquote>
+<p>This is a clear explanation, but I think some formatting changes could enable readers to grok it even more quickly.</p>
+<p>Suppose a reader understands two of the three requirements and just needs an explanation of the third. It would be cool if they could find the sentences they're looking for w/o having to scan a whole paragraph looking for the words, "first", "second", or "third".</p>
+<p>I think we can achieve this by A) moving each explanation right under the equation / inequality it's talking about, or B) putting the three explanations in a second numbered list, or C) leaving the three explanations in a paragraph, but use the numerals 1, 2, and 3 within the paragraph. Might require some experimentation to see what looks best.</p></p></div><div class="comment"><p><a class="page-link" href="../page/AlexeiAndreev.html">Alexei Andreev</a></p><p><blockquote class="comment-context">A metric, sometimes referred to as a distance function, is a function that defines a real nonnegative distance between every two elements of a set\. It is commonly denoted by the variable $~$d$~$\. In colon\-to notation, a metric $~$d$~$ that defines distances between elements of the set $~$S$~$ is written:
+<mark>$$~$d: S \\times S \\to \[0, \\infty)$~$$</mark></blockquote>
+<p>Is [0, inf) same as R+?</p></p></div></section><footer><p class="all-creators"><h2>All Creators</h2><span class="page-comma-list"><a class="page-link" href="../page/AdamBuchbinder.html">Adam Buchbinder</a>,
+ <a class="page-link" href="../page/BryceWoodworth.html">Bryce Woodworth</a>,
+ <a class="page-link" href="../page/KevinClancy.html">Kevin Clancy</a></span></p><p class="likes"><h2>Likes</h2><span class="page-comma-list"><a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a>,
+ <a class="page-link" href="../page/EricRogstad.html">Eric Rogstad</a>,
+ <a class="page-link" href="../page/JaimeSevillaMolina.html">Jaime Sevilla Molina</a></span></p></footer></body></html>

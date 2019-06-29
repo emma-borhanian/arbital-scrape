@@ -1,0 +1,102 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Joint probability distribution: (Motivation) coherent probabilities</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_SVG" async></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">Joint probability distribution: (Motivation) coherent probabilities</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/468.json.html">468.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/468">https://arbital.com/p/468</a></p><p class="creator">by
+ <a class="page-link" href="../page/TsviBT.html">Tsvi BT</a> Jun 11 2016 
+updated
+ Jun 22 2016</p></div><p class="clickbait">If you don't use joint probability distributions, none of your probabilities will make any sense. So, yeah, use joint probability distributions.</p><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>Joint probability distribution: (Motivation) coherent probabilities</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="joint_probability_distribution.html">Joint probability distribution</a></li><li>…</li></ul></nav></nav></header><hr><main><p>$$~$
+\newcommand{\gO}{\Omega}
+\newcommand{\go}{\omega}
+\newcommand{\bP}{\mathbb{P}}
+\newcommand{\pc}{0.4}
+\newcommand{\pnc}{0.6}
+\newcommand{\plc}{0.7}
+\newcommand{\fpcl}{0.9}
+\newcommand{\fpcnl}{0.2}
+\newcommand{\plnc}{0.2}
+\newcommand{\pscr}{0.4}
+\newcommand{\pscnr}{0.1}
+\newcommand{\psncr}{0.7}
+\newcommand{\psncnr}{0.9}
+\newcommand{\pjnclnrns}{0.0036}
+\newcommand{\pjclrs}{0.0784}
+\newcommand{\true}{\text{True}}
+\newcommand{\false}{\text{False}}
+$~$$</p>
+<h1 id="examplemedicaldiagnosis">Example: Medical Diagnosis</h1>
+<p>Imagine you're a doctor. Today's patient, Mr. WebMD, has a terrible cough; so naturally, he either has the flu or cancer. From past experience with
+similar cases, you assign some prior probability $~$\bP(C)$~$ to the [event_probability event]
+ that Mr. W has cancer, and $~$\bP(\neg C) = 1-\bP(C)$~$ to the event that Mr. W doesn't have cancer (and
+does have the flu).</p>
+<p>If he has cancer, then you place conditional probability $~$\bP(L\mid C) = \plc$~$ on finding a lump. If he doesn't have cancer and just has the flu, then you assign 
+$~$\bP(L \mid \neg C) = \plnc$~$ to finding a lump. </p>
+<p>You're going to observe whether Mr. W has a lump, and then you need to decide whether to treat him with radiation ($~$R$~$) or with $~$\text{Not Radiation}^{\text{TM}}$~$
+($~$\neg R$~$).
+ Whether or not the patient survives ($~$S$~$) for at least a year depends on what disease he has, and what treatment you prescribe:</p>
+<p>$$~$\bP(S \mid \;\; C,  \;\; R) = \pscr$~$$</p>
+<p>$$~$\bP(S \mid \;\; C, \neg R) = \pscnr$~$$</p>
+<p>$$~$\bP(S \mid \neg C, \;\; R) = \psncr$~$$</p>
+<p>$$~$\bP(S \mid \neg C, \neg R) = \psncnr$~$$</p>
+<p>So, for instance, if Mr. W has cancer but you don't treat him with radiation, then you believe based on similar cases that he'll only survive with probability 
+$~$\bP(S \mid C, \neg R) = \pscnr$~$.</p>
+<p>Now, what do you do in this situation?
+How do you look at a bunch of conditional probabilities, and use them to figure out
+which disease Mr. W is likely to have and what treatment is likely to keep him
+alive?</p>
+<p>For example, just looking at the probability table for $~$\bP(S \mid C,R)$~$, we
+can see that if we believe that Mr. W has cancer, then we want to treat him with radiation, and if he has the flu, then we do not. These are the choices that
+maximize the probability that Mr. W survives, conditioned on the disease and treatment. </p>
+<p>So, we've got to guess whether or not Mr. W has cancer. Maybe we see a lump, which is a strong indication of cancer, so after we update our beliefs 
+ we have a conditional probability $~$\bP(C \mid L) = \fpcl$~$ of cancer. Since we now think cancer is likely, we treat with radiation.
+On the other hand, if we didn't see a lump, maybe cancer isn't very likely, so we have a conditional probability $~$\bP(C \mid \neg L) = \fpcnl$~$ of cancer, and
+we don't treat with radiation.</p>
+<h1 id="epistemicchaos">Epistemic Chaos!</h1>
+<p>The probabilities we assigned in the medical diagnosis situation might be appealing to those who wish to reason about an uncertain world in an organized way. We've written down lots of numbers that quantify the intuitive relationships between variables that we care about, like "cancer usually leads to lumps" ($~$\bP(L \mid C) = big$~$) or "if the patient has cancer, then survival is more likely if we treat with radiation than if we don't" ($~$\bP(S \mid C, R) &gt;\bP(S \mid C, \neg R)$~$). </p>
+<p>But there is a terrible problem lurking here.</p>
+<h2 id="aterribleproblemincoherentbeliefs">A terrible problem: incoherent beliefs</h2>
+<p>You can get test subjects in a psychology experiment to say that 
+"Linda is a bank teller and is active in the feminist movement" is <em>more likely</em> to be true than "Linda is a bank teller". 
+(See <a href="https://en.wikipedia.org/wiki/Conjunction_fallacy">conjunction fallacy</a>.) </p>
+<p>This is absurd: if Laura is a teller and an active feminist, then she is a teller; ($~$A$~$ and $~$B$~$) logically implies $~$A$~$. There is no [coherent_probability coherent] set of beliefs that could possibly lead to assigning probabilities so that $~$\bP(A,B) &gt; \bP(A)$~$, since whenever $~$(A,B)$~$ happens, $~$A$~$ also happens. </p>
+<p>So we can't just write down any old numbers to represent our uncertainty: our probabilities have to be [coherent_probability coherent].</p>
+<h2 id="incoherenceisntalwaysobvious">Incoherence isn't always obvious…</h2>
+<p>It is a Serious Concern that our beliefs might be [incoherent_probability incoherent], and this won't work itself out automatically. In the medical example, we wrote down these conditional probabilities:  </p>
+<p>$$~$\bP(L\mid \;\; C) = \plc$~$$</p>
+<p>$$~$\bP(L \mid \neg C) = \plnc$~$$</p>
+<p>$$~$\bP(C \mid \;\; L) = \fpcl$~$$</p>
+<p>$$~$\bP(C \mid \neg L) = \fpcnl$~$$</p>
+<p>These probabilities can be justified with intuitive reasons. If Mr. W doesn't have cancer, he probably won't have a lump; if we see that Mr. W has a lump, then he probably has cancer.</p>
+<p>Are you seriously concerned yet? If not, I hope the following diagrams will increase the seriousness of your concern:</p>
+<p><img src="http://i.imgur.com/Mm586rN.png" width="540" height="300"></p>
+<p>we're using the [suqeare reperesnsiont] . we fix the conditionals L given C. free param pc determines everything. inf particul, detremines the p c|l or nl. but need different settings for the different pc|l: 
+<img src="http://i.imgur.com/DqdsRWf.png" width="576" height="960"></p>
+<p>but we don't know the prior p(c). as it slides, it fully specifies the distribution. so it gives probailties p(c|l). but the ones we wrote down happen at different p(c). so it is impossible.</p>
+<p>Let's break this down. We're using the [probability_distribution_square_visualization square visualiation] of our probability distribution. The red regions are the regions where Mr. W has cancer, and the blue regions are where $~$\neg C$~$ is true. The darker regions are where $~$L$~$, and the lighter regions are where $~$\neg L$~$. </p>
+<p>The proportion of the red column that is darker is </p>
+<p>this goes up top. remove p(c). or rather, make theree: 1 with no pc, 1 for each pc for p(c|l). those 2 go after the spectrum 
+$$~$\frac{\bP(L,C)}{\bP(C)} = \bP(L \mid C)\ ,$~$$</p>
+<p>and </p>
+<p><img src="http://i.imgur.com/hRtSpVu.png" width="600" height="600"></p>
+<p>something something inchoroledent</p>
+<h2 id="andincoherenceisnotatallobviousinreallife">…and incoherence is not at all obvious in real life.</h2>
+<p>Mr. W only had two possible diseases, one possible symptom, and one possible treatment. An actual diagnosis could involve many thousands of possible diseases, symptoms, and treatments. </p>
+<p>In real life, how can we be sure that our beliefs are even coherent? If we write down a great big collection of probabilities that look like </p>
+<p>$$~$\bP(\text{disease}_9 \mid \text{symptom}_2, \text{symptom}_5, \text{symptom}_{17})=0.153$~$$ </p>
+<p>or </p>
+<p>$$~$\bP(\text{outcome} = \text{survival} \mid \text{disease}_9, \text{treatment} = \text{bezoar})=0.094,$~$$ </p>
+<p>what's to stop us from writing down something nonsensical like  $~$\bP(A,B) &gt; \bP(A)$~$?</p>
+<h1 id="whattodo">What To Do?</h1>
+<p>In general, if we want to use probability theory to reason in uncertain situations, there will be lots and lots of variables that we care about. So it won't be obvious that our beliefs are coherent. And, if our beliefs aren't coherent, there's nothing to stop us from doing [incoherence_properties_probability all sorts of silly things].</p>
+<p>If only there were some way to organize our uncertainty in a nice, systematic way that is guaranteed to be consistent.</p></main><hr><footer><p class="tagged"><h2>Tagged</h2><span class="page-comma-list"><a class="page-link" href="../page/work_in_progress_meta_tag.html">Work in progress</a></span></p><p class="reverse-related"><h2>Reverse Related</h2><ul class="page-list"><li><a class="page-link" href="../page/work_in_progress_meta_tag.html">Work in progress</a> <q>This page is being actively worked on by an editor. Check with them before making major changes.</q> - <a class="page-link" href="../page/EliezerYudkowsky.html">Eliezer Yudkowsky</a></li></ul></p></footer></body></html>

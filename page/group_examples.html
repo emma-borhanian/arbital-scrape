@@ -1,0 +1,34 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Group: Examples</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_SVG" async></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">Group: Examples</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/group_examples.json.html">group_examples.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/group_examples">https://arbital.com/p/group_examples</a></p><p class="creator">by
+ <a class="page-link" href="../page/QiaochuYuan.html">Qiaochu Yuan</a> May 25 2016 
+updated
+ Oct 21 2016</p></div><p class="clickbait">Why would anyone have invented groups, anyway? What were the historically motivating examples, and what examples are important today? </p><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>Group: Examples</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="math.html">Mathematics</a></li><li><a href="abstract_algebra.html">Abstract algebra</a></li><li><a href="algebraic_structure.html">Algebraic structure</a></li><li><a href="group_mathematics.html">Group</a></li><li>…</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="math.html">Mathematics</a></li><li><a href="group_theory.html">Group theory</a></li><li><a href="group_mathematics.html">Group</a></li><li>…</li></ul></nav></nav></header><hr><main><p>[summary:
+Examples of <a href="group_mathematics.html">groups</a>, including the <a href="symmetric_group.html">symmetric groups</a> and [-general_linear_group general linear groups].
+]</p>
+<h1 id="thesymmetricgroups">The symmetric groups</h1>
+<p>For every positive integer $~$n$~$ there is a group $~$S_n$~$, the <a href="symmetric_group.html">symmetric group</a> of order $~$n$~$, defined as the group of all permutations (bijections) $~$\{ 1, 2, \dots n \} \to \{ 1, 2, \dots n \}$~$ (or any other <a href="set_mathematics.html">Set</a> with $~$n$~$ elements). The symmetric groups play a central role in group theory: for example, a <a href="group_action.html">group action</a> of a group $~$G$~$ on a set $~$X$~$ with $~$n$~$ elements is the same as a <a href="group_homomorphism.html">homomorphism</a> $~$G \to S_n$~$. </p>
+<p>Up to <a href="conjugacy_class.html">conjugacy</a>, a permutation is determined by its <a href="cycle_type_of_a_permutation.html">cycle type</a>. </p>
+<h1 id="thedihedralgroups">The dihedral groups</h1>
+<p>The <a href="dihedral_group.html">dihedral groups</a> $~$D_{2n}$~$ are the collections of symmetries of an $~$n$~$-sided regular polygon. It has a <a href="group_presentation.html">presentation</a> $~$\langle r, f \mid r^n,  f^2,  (rf)^2 \rangle$~$, where $~$r$~$ represents rotation by $~$\tau/n$~$ degrees, and $~$f$~$ represents reflection. </p>
+<p>For $~$n &gt; 2$~$, the dihedral groups are non-commutative.</p>
+<h1 id="thegenerallineargroups">The general linear groups</h1>
+<p>For every <a href="algebraic_field.html">field</a> $~$K$~$ and positive integer $~$n$~$ there is a group $~$GL_n(K)$~$, the [general_linear_group general linear group] of order $~$n$~$ over $~$K$~$. Concretely, this is the group of all invertible $~$n \times n$~$ [matrix matrices] with entries in $~$K$~$; more abstractly, this is the [automorphism automorphism group] of a <a href="vector_space.html">vector space</a> of [vector_space_dimension dimension] $~$n$~$ over $~$K$~$. </p>
+<p>If $~$K$~$ is [algebraically_closed_field algebraically closed], then up to conjugacy, a matrix is determined by its [Jordan_normal_form Jordan normal form]. </p></main><hr><footer><p class="all-creators"><h2>All Creators</h2><span class="page-comma-list"><a class="page-link" href="../page/DanielSatanove.html">Daniel Satanove</a>,
+ <a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a>,
+ <a class="page-link" href="../page/MarkChimes.html">Mark Chimes</a>,
+ <a class="page-link" href="../page/PatrickStevens.html">Patrick Stevens</a>,
+ <a class="page-link" href="../page/QiaochuYuan.html">Qiaochu Yuan</a></span></p></footer></body></html>

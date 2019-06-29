@@ -1,0 +1,38 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Creating a /learn/ link</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_SVG" async></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">Creating a /learn/ link</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/arbital_learn_link.json.html">arbital_learn_link.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/arbital_learn_link">https://arbital.com/p/arbital_learn_link</a></p><p class="creator">by
+ <a class="page-link" href="../page/AlexeiAndreev.html">Alexei Andreev</a> Mar 10 2016 
+updated
+ Jul 21 2016</p></div><p class="clickbait">What options are available when creating a /learn/ link?</p><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>Creating a /learn/ link</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="Arbital.html">Arbital</a></li><li><a href="arbital_contributing.html">Contributing to Arbital</a></li><li><a href="arbital_features.html">Arbital features</a></li><li><a href="Arbital_path.html">Arbital path</a></li><li>…</li></ul></nav></nav></header><hr><main><p>One of Arbital's goals is to <a href="arbital_ambitions.html">solve online explanations</a>. To see how that works, take a look at <a href="bayes_rule_guide.html">Bayes&#39; rule: Guide</a>. After you answer the questions, you are taken to the learning page (with a /learn/ URL) that shows the path that's been dynamically generated for you. You can also create /learn/ links yourself, as explained below.</p>
+<h3 id="basics">Basics</h3>
+<p>The most straightforward way create a /learn/ link is to add the <a href="Arbital_page_basics.html">page id or alias</a> to <a href="https://arbital.com/learn/">https://arbital.com/learn/</a> url. For example, both <a href="https://arbital.com/learn/bayes_rule">https://arbital.com/learn/bayes_rule</a> and <a href="https://arbital.com/learn/1lz">https://arbital.com/learn/1lz</a> will work to teach the user about <a href="bayes_rule.html">Bayes&#39; rule</a>.</p>
+<h3 id="multiplepages">Multiple pages</h3>
+<p>If you want to teach multiple subjects, you can specify them like so: <a href="https://arbital.com/learn/?path=bayes_rule_details,bayes_update_details,bayes_guide_end">https://arbital.com/learn/?path=bayes_rule_details,bayes_update_details,bayes_guide_end</a></p>
+<p>The user will be guided to learn those subjects in the order they are listed. (Unless the prerequisites force one to come before the other.)</p>
+<h3 id="addingthepageitselftothepath">Adding the page itself to the path</h3>
+<p>For the examples above, the pages corresponding to the requisites the user is learning won't necessarily appear in the path. The only pages that appear are the ones that teach the necessary requirements. Sometimes you want to include the requisite page itself, though. You can use the "@" prefix to do that. For example: <a href="https://arbital.com/learn/?path=@bayes_rule_details,@bayes_update_details,@bayes_guide_end">https://arbital.com/learn/?path=@bayes_rule_details,@bayes_update_details,@bayes_guide_end</a></p>
+<p>This will force the <a href="bayes_rule_details.html">bayes<em>rule</em>details</a> page to be included in the path as soon as the user has learned all its requirements.</p>
+<h3 id="filterbasedonwants">Filter based on "wants"</h3>
+<p>Sometimes you might want to create different learn links based on the user's answers to <a href="1m6.html">multiple choice questions</a>. Instead of creating a series of nested if-statements, you could instead mark the subjects the user wants to learn, and then use the "\$" prefix to only teach the corresponding subject if the user wants it.</p>
+<p><a href="https://arbital.com/learn/?path=$~$bayes_rule_details,$~$bayes_update_details,$bayes_guide_end">https://arbital.com/learn/?path=$~$bayes_rule_details,$~$bayes_update_details,$bayes_guide_end</a></p>
+<p>So, for example, the <a href="bayes_rule_details.html">bayes<em>rule</em>details</a> subject will be taught if the user wants the bayes<em>rule</em>details requisite.</p>
+<p>If all the subjects in your path have "\$", you can set the "only_wanted" flag instead, which will automatically apply "\$" prefix to all the subjects. So this URL is equivalent: <a href="https://arbital.com/learn/?path=bayes_rule_details,bayes_update_details,bayes_guide_end&only_wanted=1">https://arbital.com/learn/?path=bayes_rule_details,bayes_update_details,bayes_guide_end&only_wanted=1</a></p>
+<h3 id="stackingprefixes">Stacking prefixes</h3>
+<p>You can combine prefixes, e.g. <a href="https://arbital.com/learn/?path=$@bayes_rule_details">https://arbital.com/learn/?path=$@bayes_rule_details</a></p></main><hr><section class="comments"><h2>Comments</h2><div class="comment"><p><a class="page-link" href="../page/MarkChimes.html">Mark Chimes</a></p><p><p>The urls are displaying as:
+<a href="https://arbital.com/learn/?path=$~$bayes_rule_details,$~$bayes_update_details,$bayes_guide_end">https://arbital.com/learn/?path=$~$bayes_rule_details,$~$bayes_update_details,$bayes_guide_end</a></p>
+<p>I.e., $-signs are being interpreted as math mode.</p></p></div></section><footer><p class="all-creators"><h2>All Creators</h2><span class="page-comma-list"><a class="page-link" href="../page/AlexeiAndreev.html">Alexei Andreev</a>,
+ <a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a>,
+ <a class="page-link" href="../page/RyanHendrickson.html">Ryan Hendrickson</a></span></p><p class="likes"><h2>Likes</h2><span class="page-comma-list"><a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a></span></p></footer></body></html>

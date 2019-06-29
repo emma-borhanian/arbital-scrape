@@ -1,0 +1,61 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Teleological Measure and agency</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_SVG" async></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">Teleological Measure and agency</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/80g.json.html">80g.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/80g">https://arbital.com/p/80g</a></p><p class="creator">by
+ <a class="page-link" href="../page/JaimeSevillaMolina.html">Jaime Sevilla Molina</a> Mar 2 2017</p></div><p class="clickbait">A crackpot's research proposal</p><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>Teleological Measure and agency</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="JaimeSevillaMolina.html">Jaime Sevilla Molina</a></li><li>…</li></ul></nav></nav></header><hr><main><h2 id="introductionandmotivation">Introduction and motivation</h2>
+<p>Certain physical processes allow an elegant charaterization when described as systems obeying an optimization law rather than as complex systems of many particles interacting through mechanical rules.</p>
+<p>One fascinating example is the Law of minimal action, which abstracts all the behaviour of a physical system into the minimization of the integral of the langrangian.</p>
+<p>On a different level, we humans reason about our fellows characterizing them as having "goals" that they try to achieve. Furthermore, it is natural for us to attribute intentions to different processes of the physical world attempting to explain their behaviour.</p>
+<p>All of this points to the usefulness of a teleological point of view when dealing with abstract reasoning, but we are still confused about the notion of a goal. The goal (geddit?) of this essay is to introduce one new conceptual framework to define a non-anthropocentric notion of goal, hoping that it will capture some of the intuitions we have about this concept.</p>
+<p>We later apply the framework to define a new concept of agent.</p>
+<h2 id="teleologicalmeasure">Teleological measure</h2>
+<p>We will model the universe as a computable mathematical entity, which evolves in discrete steps according to a fully deterministic function which maps states of the universe to one another.</p>
+<p>(here goes justification of why computable and deterministic)</p>
+<p>Intuitively, it seems that powerful optimization processes tend to coerce the universe to align with their goals.</p>
+<p>In more abstract terms, universes in which the optimization process exist the evolution function behaves contractively with states "preferred" by the optimizator as atractors.</p>
+<p>This suggests that by repeated application of the function over the universes where the optimizator exists we can derive its goals as a utility function over the set of possible states of the universe.</p>
+<p>We can use measure theory to try to formalize this as follows:</p>
+<ol>
+<li>Start with a mass function over the set of computable universes, ie the occamiam prior.</li>
+<li>Filter those universes in which the target optimization process exists, and renormalize the measure over the rest.</li>
+<li>For each timestep, apply the evolution function and associate to each universe the sum of the measures of the states of the universe which get mapped to it.</li>
+<li>Now associate to each universe the sum over infinite timesteps of its associated measure, discounted by a time factor to ensure convergence.
+$$~$U(S) = \sum_{t=0}^\infty \sum_{\{ S'\in Universes, f^t(S') =S  \}}\Pi(S') \cdot \gamma^t  $~$$</li>
+<li>???</li>
+<li>Profit!</li>
+</ol>
+<h2 id="theproblemofseparation">The problem of separation</h2>
+<p>The conditioning process of step two is the more difficult to conceptualize, as it requires identifying a process happening in the universe.</p>
+<p>This is specially hard to do since we have not defined what a process is, or even if there is a meaningful concept for a process in the universe which is separate from the rest of the universe.</p>
+<p>In the same sense that you cannot split an interacting physical system into different lagrangians, you cannot know where a process begins and ends.</p>
+<p>We tend to think of processes as information patterns, but the frontiers between them and the universe remain blurry.</p>
+<h2 id="agency">Agency</h2>
+<p>Among the optimization processes of the Universe, a certain set becomes salient. We humans, and other animals, seem to have a degree of independence which distinguishes us from rocks and stars.</p>
+<p>It is hard to pinpoint accurately what makes those processes, which we will call 'agents', different. One suggestion is the degree of information they possess about the external world (insofar the concept of external world makes sense).</p>
+<p>It seems that agents can use their knowledge about the world to make better decisions. We call this property <strong>fractality</strong>, because ~~we are snobish elistists~~ it measures the degree of entangledness of a process with its environment, akin to how a portion of a fractal contains information about its whole structure.</p>
+<p>On the other hand, it seems like it is not the actual fractality which defines agency - a human dropped in an unfamiliar universe will have very little information about its environment, yet it would not lose its agency. Thus it makes more sense to relate agency with potential fractality.</p>
+<p>On the other hand, there seem to be some trivial counterexamples. We can imagine an encyclopaedia, which has lots of fractality but intuitively very little agency.</p>
+<p>Thus we need to refine the concept. Another addition we can make is the degree of <strong>influence</strong> a process has over the universe.</p>
+<p>Defining influence its tricky as well, but we can employ the teleological measure framework for an initial approximation. The influence of a process relates to the flatness of its teleological measure; flatter functions indicate the inexistence of powerful attractors, and thus indicate a not very influential process.</p>
+<h2 id="relationshipwithphysicalteleology">Relationship with physical teleology</h2>
+<p>Perhaps the most important example of a physical teleological framework is the concept of <strong>entropy</strong>.
+Entropy can be thought of as a function over system states which describes the statistical behavior of the system, since the system naturally progresses from states with little entropy to states with greater entropy.</p>
+<p>We would expect entropy to roughly correspond with the teleological measure of the universe as a whole agent; ie,  what results from excluding the filtering step.</p>
+<h2 id="reversibility">Reversibility</h2>
+<p>One big problem with this approach is that it results in rather dull measures when the evolution function of the universe is reversible, as it is suspected to be by our formulations of quantum mechanics.</p>
+<p>Well, then again, so does the concept of entropy fail in this scenario. However we can adopt the solution employed by physics. We define an equivalence relation over the graph of possible universes, grouping together similar states. Then we define a new evolution function as an stochastic extension of the old one, which maps each class of states to other class (or to itself) at random according to the proportion of arrows from each member of the class to the target class.</p>
+<p>This allows us to eliminate the problem of in degree $~$1$~$ that resulted in boring measures.</p>
+<h2 id="mathematicalpropertiesoftheteleologicalmeasure">Mathematical properties of the teleological measure</h2>
+<p>To be researched.</p></main><hr><footer></footer></body></html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Proof of Rice's theorem</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_SVG" async></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">Proof of Rice's theorem</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/proof_of_rice_theorem.json.html">proof_of_rice_theorem.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/proof_of_rice_theorem">https://arbital.com/p/proof_of_rice_theorem</a></p><p class="creator">by
+ <a class="page-link" href="../page/PatrickStevens.html">Patrick Stevens</a> Aug 8 2016 
+updated
+ Aug 8 2016</p></div><p class="clickbait">A standalone proof of Rice's theorem, including one surprising lemma.</p><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>Proof of Rice's theorem</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="math.html">Mathematics</a></li><li><a href="turing_machine.html">Turing machine</a></li><li><a href="rice_theorem.html">Rice's Theorem</a></li><li>…</li></ul></nav></nav></header><hr><main><p>[summary: This lens proves <a href="rice_theorem.html">Rice&#39;s theorem</a> via a fixed-point theorem on computable functions.]</p>
+<p>Recall the formal statement of <a href="rice_theorem.html">Rice&#39;s theorem</a>:</p>
+<blockquote>
+  <p>We will use the notation $~$[n]$~$ for the $~$n$~$th <a href="turing_machine.html">Turing machine</a> under some fixed [description_number numbering system].
+  Each such machine induces a <a href="function.html">Function</a>, which we will also write as $~$[n]$~$ where this is unambiguous due to context; then it makes sense to write $~$[n](m)$~$ for the value that machine $~$[n]$~$ outputs when it is run on input $~$m$~$.</p>
+  <p>Let $~$A$~$ be a non-empty, proper %%note:That is, it is not the entire set.%% subset of $~$\{ \mathrm{Graph}(n) : n \in \mathbb{N} \}$~$, where $~$\mathrm{Graph}(n)$~$ is the [graph_of_a_function graph] of the <a href="partial_function.html">Partial function</a> computed by $~$[n]$~$, the $~$n$~$th Turing machine.
+  Then there is no Turing machine $~$[r]$~$ such that:</p>
+  <ul>
+  <li>$~$[r](i)$~$ is $~$1$~$ if $~$\mathrm{Graph}(i) \in A$~$</li>
+  <li>$~$[r](i)$~$ is $~$0$~$ if $~$\mathrm{Graph}(i) \not \in A$~$.</li>
+  </ul>
+</blockquote>
+<p>We give a proof that is (very nearly) constructive: one which (if we could be bothered to work it all through) gives us an explicit example %%note:Well, very nearly; see the next note.%% of a <a href="turing_machine.html">Turing machine</a> whose "am-I-in-$~$A$~$" nature cannot be determined by a Turing machine.
+%%note:It's only "very nearly" constructive. It would be <em>actually</em> constructive if we knew in advance a specific example of a program whose function is in $~$A$~$, and a program whose function is in $~$B$~$. The proof here assumes the existence of a program of each type, but ironically the theorem itself guarantees that there is no fully-general way to <em>find</em> such programs.%%</p>
+<p>We will present an intermediate lemma which does all the heavy lifting; this makes the actual reasoning rather unclear but very succinct, so we will also include an extensive worked example of what this lemma does for us.</p>
+<h1 id="fixedpointtheorem">Fixed point theorem</h1>
+<p>The intermediate lemma is a certain fixed-point theorem.</p>
+<blockquote>
+  <p>Let $~$h: \mathbb{N} \to \mathbb{N}$~$ be [total_function total] computable: that is, it halts on every input.
+  Then there is $~$n \in \mathbb{N}$~$ such that $~$\mathrm{Graph}(n) = \mathrm{Graph}(h(n))$~$. %%note:And, moreover, we can actually <em>find</em> such an $~$n$~$.%%</p>
+</blockquote>
+<p>That is, the "underlying function" of $~$n$~$ - the partial function computed by $~$[n]$~$ - has the same output, at every point, as the function computed by $~$[h(n)]$~$.
+If we view $~$h$~$ as a way of manipulating a program (as specified by its [-description_number]), then this fixed-point theorem states that we can find a program whose underlying function is not changed at all by $~$h$~$.</p>
+<p>The proof of this lemma is quite simple once the magic steps have been discovered, but it is devilishly difficult to intuit, because it involves two rather strange and confusing recursions and some self-reference.</p>
+<p>Recall the [translation_lemma $~$s_{mn}$~$ theorem], which states that there is a total computable function $~$S$~$ of two variables $~$m, n$~$ such that for every $~$e \in \mathbb{N}$~$, we have $~$[e](m, n) = [S(e,m)](n)$~$: that is, there is a total computable way $~$S$~$ of <a href="currying.html">Currying</a> computable functions.
+(Strictly speaking, our Turing machines only take one argument. Therefore we should use a computable pairing scheme such as [cantor_pairing_function Cantor's pairing function], so that actually $~$[e](m,n)$~$ should be interpreted as $~$[e](\mathrm{pair}(m, n))$~$.)</p>
+<p>Then the function which takes the pair $~$(e, x)$~$ and outputs the value of $~$[ h(S(e,e)) ](x)$~$ is computable, so it has a description number $~$a$~$, say.
+%%note:This is the first strange part: we are treating $~$e$~$ both as a description number, and as an input to $~$[e]$~$, when we consider $~$S(e,e)$~$.%%</p>
+<p>Now we claim that $~$S(a, a)$~$ is the $~$n$~$ we seek. %%note:This is the second strange part, for the same reason as $~$S(e,e)$~$ was the first; but this one is even worse, because the definition of $~$a$~$ already involves a weird recursion and we've just added another one on top.%%
+Indeed, for any $~$x$~$, $~$[n](x) = [S(a,a)](x)$~$ by definition of $~$n$~$; this is $~$[a](a, x)$~$ by the $~$s_{mn}$~$ theorem; this is $~$[h(S(a,a))](x)$~$ by definition of $~$[a]$~$; and that is $~$[h(n)](x)$~$ by definition of $~$n$~$.</p>
+<p>Therefore $~$[n](x) = [h(n)](x)$~$, so we have found our fixed point.</p>
+<p>%%hidden(Worked example):
+[todo: I'm not clever enough to check this properly, but someone should]</p>
+<p>Suppose our description numbering scheme is just "expand $~$n$~$ as a number in base $~$128$~$, and interpret the result as an <a href="https://en.wikipedia.org/wiki/ASCII">ASCII</a> %%note:This is a standard, agreed-upon method of turning a number between $~$0$~$ and $~$128$~$ into a character.%% string; then interpret that string as <a href="https://en.wikipedia.org/wiki/Python_(programming_language)">Python</a> code".</p>
+<p>Then our function $~$h$~$, whatever it may be, can be viewed just as transforming Python code.</p>
+<p>Suppose $~$h$~$ does nothing more than insert the following line of code as the second line of its input:</p>
+<pre><code>x = 0
+</code></pre>
+<p>So, for instance, it takes the string </p>
+<pre><code>x = 1
+print(x)
+</code></pre>
+<p>and returns</p>
+<pre><code>x = 1
+x = 0
+print(x)
+</code></pre>
+<p>thereby changing the function computed from "return the constant $~$1$~$" to "return the constant $~$0$~$", in this case.
+Note that many other functions will not change at all: for example, those which don't contain a variable $~$x$~$ in the first place will be unchanged, because all the modification does is add in an initialisation of a variable which will never subsequently be used.</p>
+<p>The fixed-point theorem guarantees that there is indeed a Python program which will not change at all under this modification (though in this case it's very obvious).
+In fact the theorem <em>constructs</em> such a program; can we work out what it is?</p>
+<p>First of all, $~$S(m, n)$~$ can be implemented as follows.
+We will take our Python code to be written so that their input is given in the variable <code>r1</code>, so $~$[e](5)$~$ is simply the Python code represented by $~$e$~$ but where the code-variable <code>r1</code> is initialised to $~$5$~$ first; that is, it can be found by prepending the line <code>r1 = 5</code> to the code represented by $~$e$~$.
+Then we will assume that Python comes with a function <code>eval</code> (corresponding to $~$S$~$) which takes as its input a string %%note:The string is standing in place of $~$m$~$, but we have just skipped the intermediate step of "unpack the integer into a string" and gone straight to assuming it is a string.%% and another argument with which <code>eval</code> initialises the variable <code>x</code> before running the string as a Python program in a separate instance of Python:</p>
+<pre><code>eval("print(r1)", 5)  # does nothing other than print the number 5
+eval("print(y)", 5)  # throws an error because `y` is not defined when it comes to printing it
+eval("print(6)", 5)  # prints 6, ignoring the fact that the variable `r1` is equal to `5` in the sub-instance
+</code></pre>
+<p>Remember, our proof of the fixed point theorem says that the program we want has code $~$S(a, a)$~$, where $~$a$~$ takes a pair $~$(e, x)$~$ as input, and outputs $~$[h(S(e,e))](x)$~$.
+What is $~$a$~$ specifically here?
+Well, on the one hand we're viewing it as a string of code (because it comes as the first argument to $~$S$~$), and on the other we're viewing it as an integer (because it also comes as the second argument to $~$S$~$).</p>
+<p>As code, <code>a</code> is the following string, where <code>h</code> is to be replaced by whatever we've already decided $~$h$~$ is:</p>
+<pre><code>eval("r1 = e; h(eval(r1, str_as_int(r1)))", x)
+</code></pre>
+<p>We are assuming the existence of a function <code>str_as_int</code> which takes an ASCII string and returns the integer whose places in base 128 are the ASCII for each character of the string in turn.</p>
+<p>For example, we have $~$h$~$ inserting the line <code>x = 0</code> as the second line, so our <code>a</code> is:</p>
+<pre><code>eval("r1 = e; x = 0; eval(r1, str_as_int(r1))", x)
+</code></pre>
+<p>As a number, <code>a</code> is just the ASCII for this, interpreted in base 128 (i.e. a certain number which in this case happens to have 106 digits, which is why we don't give it here).</p>
+<p>The claim of the fixed-point theorem, then, is that the following program is unchanged by $~$h$~$:</p>
+<pre><code>eval("eval(\"r1 = e; x = 0; eval(r1, str_as_int(r1))\", x)", str_to_int("eval(\"r1 = e; x = 0; eval(r1, str_as_int(r1))\", x)"))
+</code></pre>
+<p>You may recognise this as a <a href="quine.html">quining</a> construction.
+%%</p>
+<h1 id="deducingricestheoremfromthefixedpointtheorem">Deducing Rice's theorem from the fixed point theorem</h1>
+<p>Finally, Rice's theorem follows quickly: suppose we could decide in general whether $~$\mathrm{Graph}(n) \in A$~$ or not, and label by $~$\iota$~$ the computable function which decides this (that is, whose value is $~$1$~$ if $~$\mathrm{Graph}(n) \in A$~$, and $~$0$~$ otherwise).</p>
+<p>Since $~$A$~$ is nonempty and proper, there are natural numbers $~$a$~$ and $~$b$~$ such that $~$\mathrm{Graph}(a) \in A$~$ but $~$\mathrm{Graph}(b) \not \in A$~$.
+Define the computable function $~$g$~$ which takes $~$n$~$ and outputs $~$a$~$ if $~$\iota(n) = 0$~$, and $~$b$~$ otherwise.
+(That is, it flips its input: if its input had the property of $~$A$~$, the function $~$g$~$ outputs $~$b$~$ whose graph is not in $~$A$~$, and vice versa.
+Informally, it is the program-transformer that reads in a program, determines whether the program computes a function in $~$A$~$ or not, and transforms the program into a specific canonical example of something which has the <em>opposite</em> $~$A$~$-ness status.)</p>
+<p>By the fixed-point theorem, we can find $~$n$~$ such that $~$\mathrm{Graph}(n) = \mathrm{Graph}(g(n))$~$.</p>
+<p>But now we can ask whether $~$\mathrm{Graph}(n)$~$ is in $~$A$~$ (and therefore whether $~$\mathrm{Graph}(g(n))$~$ is in $~$A$~$).</p>
+<ul>
+<li>If it is in $~$A$~$, then $~$g(n) = b$~$ and so $~$\mathrm{Graph}(g(n)) = \mathrm{Graph}(b)$~$ which is not in $~$A$~$.</li>
+<li>If it is not in $~$A$~$, then $~$g(n) = a$~$ and so $~$\mathrm{Graph}(g(n)) = \mathrm{Graph}(a)$~$ is in $~$A$~$.</li>
+</ul>
+<p>We have obtained <a href="proof_by_contradiction.html">contradictions</a> in both cases (namely that $~$\mathrm{Graph}(g(n))$~$ is both in $~$A$~$ and not in $~$A$~$), so it must be the case that $~$\iota$~$ does not exist after all.</p></main><hr><footer><p class="tagged"><h2>Tagged</h2><span class="page-comma-list"><a class="page-link" href="../page/b_class_meta_tag.html">B-Class</a></span></p><p class="likes"><h2>Likes</h2><span class="page-comma-list"><a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a>,
+ <a class="page-link" href="../page/JaimeSevillaMolina.html">Jaime Sevilla Molina</a></span></p><p class="reverse-related"><h2>Reverse Related</h2><ul class="page-list"><li><a class="page-link" href="../page/b_class_meta_tag.html">B-Class</a> <q>This page is mostly complete and without major problems, but has not had detailed feedback from the target audience and reviewers.</q> - <a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a></li></ul></p></footer></body></html>

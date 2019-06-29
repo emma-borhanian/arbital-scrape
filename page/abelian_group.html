@@ -1,0 +1,41 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Abelian group</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_SVG" async></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">Abelian group</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/abelian_group.json.html">abelian_group.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/abelian_group">https://arbital.com/p/abelian_group</a></p><p class="creator">by
+ <a class="page-link" href="../page/NateSoares.html">Nate Soares</a> May 9 2016 
+updated
+ Jul 18 2016</p></div><p class="clickbait">A group where the operation commutes. Named after Niels Henrik Abel. </p><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>Abelian group</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="math.html">Mathematics</a></li><li><a href="abstract_algebra.html">Abstract algebra</a></li><li><a href="algebraic_structure.html">Algebraic structure</a></li><li><a href="group_mathematics.html">Group</a></li><li>…</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="math.html">Mathematics</a></li><li><a href="abstract_algebra.html">Abstract algebra</a></li><li><a href="algebraic_structure.html">Algebraic structure</a></li><li>…</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="math.html">Mathematics</a></li><li><a href="group_theory.html">Group theory</a></li><li><a href="group_mathematics.html">Group</a></li><li>…</li></ul></nav></nav></header><hr><main><p>[summary: An abelian group is a <a href="group_mathematics.html">group</a> where the operation is <a href="commutative_operation.html">commutative</a>. That is, an abelian group $~$G$~$ is a pair $~$(X, \bullet)$~$ where $~$X$~$ is a <a href="set_mathematics.html">set</a> and $~$\bullet$~$ is a binary <a href="operator_mathematics.html">operation</a> obeying the four group axioms plus an axiom of commutativity:</p>
+<ol>
+<li><a href="closure_mathematics.html">Closure</a>: For all $~$x, y$~$ in $~$X$~$, $~$x \bullet y$~$ is defined and in $~$X$~$. We abbreviate $~$x \bullet y$~$ as $~$xy$~$.</li>
+<li><a href="associative_operation.html">Associativity</a>: $~$x(yz) = (xy)z$~$ for all $~$x, y, z$~$ in $~$X$~$.</li>
+<li>Identity: There is an element $~$e$~$ such that for all $~$x$~$ in $~$X$~$, $~$xe=ex=x$~$.</li>
+<li>Inverses: For each $~$x$~$ in $~$X$~$ is an element $~$x^{-1}$~$ in $~$X$~$ such that $~$xx^{-1}=x^{-1}x=e$~$.</li>
+<li><a href="commutative_operation.html">Commutativity</a>: For all $~$x, y$~$ in $~$X$~$, $~$xy=yx$~$.</li>
+</ol>
+<p>Abelian groups are very "well-behaved" groups that are often easier to deal with than their non-commuting counterparts.]</p>
+<p>An abelian group is a <a href="group_mathematics.html">group</a> $~$G=(X, \bullet)$~$ where $~$\bullet$~$ is <a href="commutative_operation.html">commutative</a>. In other words, the group operation satisfies the five axioms:</p>
+<ol>
+<li><a href="closure_mathematics.html">Closure</a>: For all $~$x, y$~$ in $~$X$~$, $~$x \bullet y$~$ is defined and in $~$X$~$. We abbreviate $~$x \bullet y$~$ as $~$xy$~$.</li>
+<li><a href="associative_operation.html">Associativity</a>: $~$x(yz) = (xy)z$~$ for all $~$x, y, z$~$ in $~$X$~$.</li>
+<li>Identity: There is an element $~$e$~$ such that for all $~$x$~$ in $~$X$~$, $~$xe=ex=x$~$.</li>
+<li>Inverses: For each $~$x$~$ in $~$X$~$ is an element $~$x^{-1}$~$ in $~$X$~$ such that $~$xx^{-1}=x^{-1}x=e$~$.</li>
+<li><a href="commutative_operation.html">Commutativity</a>: For all $~$x, y$~$ in $~$X$~$, $~$xy=yx$~$.</li>
+</ol>
+<p>The first four are the standard <a href="group_mathematics.html">group axioms</a>; the fifth is what distinguishes abelian groups from groups. </p>
+<p>Commutativity gives us license to re-arrange chains of elements in formulas about commutative groups. For example, if in a commutative group with elements $~$\{1, a, a^{-1}, b, b^{-1}, c, c^{-1}, d\}$~$, we have the claim $~$aba^{-1}db^{-1}=d^{-1}$~$, we can shuffle the elements to get $~$aa^{-1}bb^{-1}d=d^{-1}$~$ and reduce this to the claim $~$d=d^{-1}$~$. This would be invalid for a nonabelian group, because $~$aba^{-1}$~$ doesn't necessarily equal $~$aa^{-1}b$~$ in general.</p>
+<p>Abelian groups are very well-behaved groups, and they are often much easier to deal with than their non-commutative counterparts. For example, every <a href="subgroup.html">Subgroup</a> of an abelian group is <a href="normal_subgroup.html">normal</a>, and all finitely generated abelian groups are a [group_theory_direct_product direct product] of <a href="cyclic_group.html">cyclic groups</a> (the [structure_theorem_for_finitely_generated_abelian_groups structure theorem for finitely generated abelian groups]). </p></main><hr><section class="comments"><h2>Comments</h2><div class="comment"><p><a class="page-link" href="../page/QiaochuYuan.html">Qiaochu Yuan</a></p><p><p>I strongly recommend keeping to the standard term "abelian group," even though "commutative group" would be more systematic and sensible. The term "abelian group" is universal - I don't know a single mathematician, book, or paper that uses the term "commutative group" - and people comparing what they read here to what they read anywhere else are just going to be confused, and/or are going to confuse third parties when they ask questions. </p></p></div></section><footer><p class="all-creators"><h2>All Creators</h2><span class="page-comma-list"><a class="page-link" href="../page/AlexeiAndreev.html">Alexei Andreev</a>,
+ <a class="page-link" href="../page/EricRogstad.html">Eric Rogstad</a>,
+ <a class="page-link" href="../page/NateSoares.html">Nate Soares</a>,
+ <a class="page-link" href="../page/QiaochuYuan.html">Qiaochu Yuan</a></span></p><p class="likes"><h2>Likes</h2><span class="page-comma-list"><a class="page-link" href="../page/EricRogstad.html">Eric Rogstad</a></span></p></footer></body></html>

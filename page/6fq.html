@@ -1,0 +1,35 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Concrete groups (Draft)</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_SVG" async></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">Concrete groups (Draft)</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/6fq.json.html">6fq.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/6fq">https://arbital.com/p/6fq</a></p><p class="creator">by
+ <a class="page-link" href="../page/DanielSatanove.html">Daniel Satanove</a> Oct 21 2016</p></div><p class="clickbait">Instead of thinking of a group as a set with operations satisfying axoims, we develop groups as symmetry groups of various objects</p><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>Concrete groups (Draft)</li></ul></nav></nav></header><hr><main><p>Lets talk about the symmetries of a square. Label the squares corners clockwise by $~$1$~$, $~$2$~$, $~$3$~$, $~$4$~$ (starting from the top left). Rotating the square by $~$90^\circ$~$ can be represented by the function that sends </p>
+<p>$~$1 \mapsto 2$~$</p>
+<p>$~$2 \mapsto 3$~$</p>
+<p>$~$3 \mapsto 4$~$</p>
+<p>$~$4 \mapsto 1$~$.</p>
+<p>That is, it can be represented by the <a href="cycle_notation_symmetric_group.html">permutation</a> $~$r := (1234)$~$. Composing this with itself, we can get the rest of the rotations: $~$r^2 = (13)(24)$~$ for rotating by $~$180^\circ$~$, and $~$r^3 = (4321)$~$ for rotating by $~$270^\circ$~$. </p>
+<p>We can also flip the square vertically: $~$f:= (1 4)(2 3)$~$. Notice that flipping the square horizontally is the same as flipping it vertically, and then rotating it by $~$180^\circ$~$: r^2\circ f = $~$(13)(24)\circ(14)(23) = (1 2)(3 4)$~$. </p>
+<p>Represent the symmetries of flipping along the 1-3 diagonal, and flipping along the 2-4 diagonal in permutation notation, and as a composition of $~$f$~$ and $~$r$~$ where you flip first.</p>
+<p>%%hidden(Show solution):
+Flipping along the 1-3 diagonal keeps 1 and 3 fixed and swaps 2 and 4, so it is equal to (24). It can be represented by $~$rf = (1234)(14)(23)$~$. Similarly, flipping along the 2-4 diagonal is $~$(13) = r^3f$~$.
+%%</p>
+<p>Note that any symmetry has an inverse. Flipping twice in the same direction gives the trivial permutation, and rotating by $~$90^\circ$~$ can be reversed by rotating by $~$270^\circ$~$. That is, $~$(24)(24) = ()$~$ and $~$(4321)(1234) = ()$~$.</p>
+<p>In total, we have eight symmetries. Rotations: $~$r$~$, $~$r^2$~$, $~$r^3$~$; flips $~$f$~$, $~$rf$~$, $~$r^2f$~$, $~$r^3f$~$; and the trivial symmetry $~$e := ()$~$. They are realized by permutations of the set with four elements. However, not all permutations of the set with four elements are symmetries of the square. The permutation $~$(12)$~$ would twist the top of the square while leaving the bottom fixed.</p>
+<p>Squares aren't special though. We could have done the same thing with a pentagon, or any regular polygon. We could have done the same thing with a dodecahedron to get a subset of permutations of a 20 element set. We could go to higher dimensional polytopes. We could do the same thing with a circle to get an infinite collection of symmetries, or with an infinite ladder where moving the whole ladder up by one rung is a symmetry.</p>
+<p>Now instead of studying these collections of symmetries case by case, it would be good to have a general theory of symmetry. Analysis that might be repeated in the above cases could be merely special cases of a general theory. This is the spirit of abstract algebra. </p>
+<ul>
+<li>First, lets start with a set $~$G$~$, which we will think of as our set of symmetries.</li>
+<li>For any two symmetries, we can compose them to get a new one. So we should have a "composition" operation $~$\circ : G \times G \to G$~$.</li>
+</ul></main><hr><footer></footer></body></html>

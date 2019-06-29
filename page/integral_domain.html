@@ -1,0 +1,53 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Integral domain</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_SVG" async></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">Integral domain</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/integral_domain.json.html">integral_domain.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/integral_domain">https://arbital.com/p/integral_domain</a></p><p class="creator">by
+ <a class="page-link" href="../page/PatrickStevens.html">Patrick Stevens</a> Jul 28 2016</p></div><p class="clickbait">An integral domain is a ring where the only way to express zero as a product is by having zero as one of the terms.</p><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>Integral domain</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="math.html">Mathematics</a></li><li><a href="abstract_algebra.html">Abstract algebra</a></li><li><a href="algebraic_structure.html">Algebraic structure</a></li><li><a href="algebraic_ring.html">Ring</a></li><li>…</li></ul></nav></nav></header><hr><main><p>[summary: An integral domain is a <a href="algebraic_ring.html">ring</a> in which the only way to make $~$0$~$ as a product is to multiply $~$0$~$ by something. For instance, in an integral domain like [48l $~$\mathbb{Z}$~$], $~$2 \times 3$~$ is not equal to $~$0$~$ because neither $~$2$~$ nor $~$3$~$ is.]</p>
+<p>[summary(Technical): An integral domain is a <a href="algebraic_ring.html">ring</a> in which $~$ab=0$~$ implies $~$a=0$~$ or $~$b=0$~$. (We exclude the ring with one element: that is conventionally not considered an integral domain.)]</p>
+<p>In keeping with <a href="algebraic_ring.html">ring theory</a> as the attempt to isolate each individual property of [48l $~$\mathbb{Z}$~$] and work out how the properties interplay with each other, we define the notion of <strong>integral domain</strong> to capture the fact that if $~$a \times b = 0$~$ then $~$a=0$~$ or $~$b=0$~$.
+That is, an integral domain is one which has no "zero divisors": $~$0$~$ cannot be nontrivially expressed as a product.
+(For uninteresting reasons, we also exclude the ring with one element, in which $~$0=1$~$, from being an integral domain.)</p>
+<h1 id="examples">Examples</h1>
+<ul>
+<li>$~$\mathbb{Z}$~$ is an integral domain.</li>
+<li>Any <a href="algebraic_field.html">field</a> is an integral domain. (The proof is an exercise.)</li>
+</ul>
+<p>%%hidden(Show solution):
+Suppose $~$ab = 0$~$, but $~$a \not = 0$~$. We wish to show that $~$b=0$~$.</p>
+<p>Since we are working in a field, $~$a$~$ has an inverse $~$a^{-1}$~$; multiply both sides by $~$a^{-1}$~$ to obtain $~$a^{-1} a b = 0 \times a^{-1}$~$.
+Simplifying, we obtain $~$b = 0$~$.
+%%</p>
+<ul>
+<li>When $~$p$~$ is a <a href="prime_number.html">prime</a> integer, the ring $~$\mathbb{Z}_p$~$ of integers <a href="modular_arithmetic.html">mod</a> $~$p$~$ is an integral domain.</li>
+<li>When $~$n$~$ is a [composite_number composite] integer, the ring $~$\mathbb{Z}_n$~$ is <em>not</em> an integral domain. Indeed, if $~$n = r \times s$~$ with $~$r, s$~$ positive integers, then $~$r s = n = 0$~$ in $~$\mathbb{Z}_n$~$.</li>
+</ul>
+<h1 id="properties">Properties</h1>
+<p>The reason we care about integral domains is because they are precisely the rings in which we may cancel products: if $~$a \not = 0$~$ and $~$ab = ac$~$ then $~$b=c$~$.
+%%hidden(Proof):
+Indeed, if $~$ab = ac$~$ then $~$ab-ac = 0$~$ so $~$a(b-c) = 0$~$, and hence (in an integral domain) $~$a=0$~$ or $~$b=c$~$.</p>
+<p>Moreover, if we are not in an integral domain, say $~$r s = 0$~$ but $~$r, s \not = 0$~$.
+Then $~$rs = r \times 0$~$, but $~$s \not = 0$~$, so we can't cancel the $~$r$~$ from both sides.
+%%</p>
+<h2 id="finiteintegraldomains">Finite integral domains</h2>
+<p>If a ring $~$R$~$ is both finite and an integral domain, then it is a <a href="algebraic_field.html">field</a>.
+The proof is an exercise.
+%%hidden(Show solution):
+Given $~$r \in R$~$, we wish to find a multiplicative inverse.</p>
+<p>Since there are only finitely many elements of the ring, consider $~$S = \{ ar : a \in R\}$~$.
+This set is a subset of $~$R$~$, because the multiplication of $~$R$~$ is <a href="closure_mathematics.html">closed</a>.
+Moreover, every element is distinct, because if $~$ar = br$~$ then we can cancel the $~$r$~$ (because we are in an integral domain), so $~$a = b$~$.</p>
+<p>Since there are $~$|R|$~$-many elements of the subset $~$S$~$ (where $~$| \cdot |$~$ refers to the <a href="cardinality.html">Cardinality</a>), and since $~$R$~$ is finite, $~$S$~$ must in fact be $~$R$~$ itself.</p>
+<p>Therefore in particular $~$1 \in S$~$, so $~$1 = ar$~$ for some $~$a$~$.
+%%</p></main><hr><footer></footer></body></html>

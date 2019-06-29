@@ -1,0 +1,77 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Groups as symmetires</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_SVG" async></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">Groups as symmetires</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/6fp.json.html">6fp.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/6fp">https://arbital.com/p/6fp</a></p><p class="creator">by
+ <a class="page-link" href="../page/DanielSatanove.html">Daniel Satanove</a> Oct 21 2016 
+updated
+ Oct 21 2016</p></div><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>Groups as symmetires</li></ul></nav></nav></header><hr><main><p>[summary:
+A group is an abstraction of a collection of symmetries of an object. Examples of groups include the collection of symmetries of a triangle (rotating by $~$120^\circ$~$ or $~$240^\circ$~$ degrees and flipping), rearrangements of a collection of objects (permutations), or rotations of a sphere.</p>
+<p>A group abstracts from these examples by forgetting what the symmetries are symmetries <em>of</em>, and only considers how symmetries behave.</p>
+<p>As an analogy, a ball can be red; but if we forget <em>what</em> it is that is red, we end up with a certain specific abstract idea, the idea of redness. So, with symmetries and objects, if we forget about the object, we end up with a specific abstract <em>symmetry</em>.</p>
+<ul>
+<li>Any two symmetries can be composed. For the symmetries of flipping and rotating a triangle, the whole action of rotating, and then flipping a triangle at once is a symmetry. So there is an <strong><a href="operator_mathematics.html">operation</a></strong> on a group which represents composition of symmetries.</li>
+<li>There is always a do-nothing symmetry. When composed with another symmetry doesn't change that symmetry. So the operation has an <strong><a href="identity_element.html">identity</a></strong>.</li>
+<li>Any symmetry can be reversed. That is, for any symmetry, there is another symmetry where when composed together, give the do-nothing symmetry. Flipping a triangle, and then flipping it again is the same as doing nothing. So the operation has an <strong>[-inverse_mathematics inverse]</strong> operation.</li>
+<li>Like any collection of functions, when composing symmetries, it doesn't matter what order the individual compositions are computed in. When composing $~$f$~$, $~$g$~$, and $~$h$~$, we can compute $~$g \circ f$~$, and then compute $~$h \circ (g \circ f)$~$, or we can compute $~$h \circ g$~$ and then compute $~$(h \circ g) \circ f$~$, and we will get the same result. So the operation is <strong><a href="associative_operation.html">associative</a></strong>.</li>
+</ul>
+<p>Note that it is not necessarily the case that the operation is <a href="commutative_operation.html">commutative</a>. Flipping and then rotating a triangle will give different symmetry than rotating and then flipping. If it is commutative, then the group is called <a href="abelian_group.html">abelian</a>.
+]</p>
+<p>[summary(technical): A group $~$G$~$ is a pair $~$(X, \bullet)$~$ where $~$X$~$ is a <a href="set_mathematics.html">set</a> and $~$\bullet: X \times X \to X$~$ is a binary <a href="operator_mathematics.html">operation</a> on $~$X$~$ obeying the following laws:</p>
+<ol>
+<li><strong><a href="associative_operation.html">Associativity</a>:</strong> $~$x(yz) = (xy)z$~$ for all $~$x, y, z \in X$~$.</li>
+<li><strong><a href="identity_element.html">Identity</a>:</strong> There is an element $~$e$~$ such that $~$xe=ex=x$~$ for all $~$x \in X$~$.</li>
+<li><strong>[-inverse_element Inverses]:</strong> For each $~$x$~$ in $~$X$~$, there is an element $~$x^{-1} \in X$~$ such that $~$xx^{-1}=x^{-1}x=e$~$.</li>
+</ol>
+<p>The operation need not be <a href="commutative_operation.html">commutative</a>, but if it is then the group is called <a href="abelian_group.html">abelian</a>.
+]</p>
+<p>A group is an abstraction of a collection of symmetries of an object. Examples of groups include the collection of symmetries of a triangle (rotating by $~$120^\circ$~$ or $~$240^\circ$~$ degrees and flipping), rearrangements of a collection of objects (permutations), or rotations of a sphere. A group abstracts from these examples by forgetting what the symmetries are symmetries <em>of</em>, and only considers how symmetries behave. </p>
+<p>As an analogy, a ball can be red; but if we forget <em>what</em> it is that is red, we end up with a certain specific abstract idea, the idea of redness. So, with symmetries and objects, if we forget about the object, we end up with a specific abstract <em>symmetry</em>.</p>
+<p>A group $~$G$~$ is a pair $~$(X, \bullet)$~$ where:</p>
+<ul>
+<li>$~$X$~$ is a <a href="set_mathematics.html">set</a>, called the "underlying set." By abuse of notation, $~$X$~$ is usually denoted by the same symbol as the group $~$G$~$, which we will do for the rest of the article.</li>
+<li>$~$\bullet : G \times G \to G$~$ is a binary <a href="operator_mathematics.html">operation</a>. That is, a function that takes two elements of a set and returns a third. We will abbreviate $~$x \bullet y$~$ by $~$xy$~$ when not ambiguous.  This operation is subject to the following axioms: </li>
+<li><strong><a href="identity_element.html">Identity</a>:</strong> There is an element $~$e$~$ such that $~$xe=ex=x$~$ for all $~$x \in X$~$.</li>
+<li><strong>[-inverse_element Inverses]:</strong> For each $~$x$~$ in $~$X$~$, there is an element $~$x^{-1} \in X$~$ such that $~$xx^{-1}=x^{-1}x=e$~$.</li>
+<li><strong><a href="associative_operation.html">Associativity</a>:</strong> $~$x(yz) = (xy)z$~$ for all $~$x, y, z \in X$~$.</li>
+</ul>
+<p>1) The set X is the collection of abstract symmetries that this group represents. "Abstract," because these elements aren't necessarily symmetries <em>of</em> something, but almost all examples will be.</p>
+<p>2) The operation $~$\bullet$~$ is the abstract composition operation.</p>
+<p>3) The axiom of identity says that there is an element $~$e$~$ in $~$G$~$ that is a do-nothing symmetry: If you apply $~$\bullet$~$ to $~$e$~$ and $~$x$~$, then $~$\bullet$~$ simply returns $~$x$~$. The identity is unique: Given two elements $~$e$~$ and $~$z$~$ that satisfy axiom 2, we have $~$ze = e = ez = z.$~$ Thus, we can speak of "the identity" $~$e$~$ of $~$G$~$. This justifies the use of $~$e$~$ in the axiom of inversion: axioms 1 through 3 ensure that $~$e$~$ exists and is unique, so we can reference it in axiom 4.</p>
+<p>$~$e$~$ is often written $~$1$~$ or $~$1_G$~$, because $~$\bullet$~$ is often treated as an analog of multiplication on the set $~$X$~$, and $~$1$~$ is the multiplicative <a href="identity_element.html">identity</a>. (Sometimes, e.g. in the case of <a href="algebraic_ring.html">rings</a>, $~$\bullet$~$ is treated as an analog of addition, in which case the identity is often written $~$0$~$ or $~$0_G$~$.)</p>
+<p>4) The axiom of inverses says that for every element $~$x$~$ in $~$X$~$, there is some other element $~$y$~$ that $~$\bullet$~$ treats like the opposite of $~$x$~$, in the sense that $~$xy = e$~$ and vice versa. The inverse of $~$x$~$ is usually  written $~$x^{-1}$~$, or sometimes $~$(-x)$~$ in cases where $~$\bullet$~$ is analogous to addition.</p>
+<p>5) The axiom of associativity says that \bullet behaves like composition of functions. When composing a bunch of functions, it doesn't matter what order the individual compositions are computed in. When composing $~$f$~$, $~$g$~$, and $~$h$~$, we can compute $~$g \circ f$~$, and then compute $~$h \circ (g \circ f)$~$, or we can compute $~$h \circ g$~$ and then compute $~$(h \circ g) \circ f$~$, and we will get the same result.</p>
+<p>%%%knows-requisite(<a href="algebraic_monoid.html">Monoid</a>):
+Equivalently, a group is a <a href="algebraic_monoid.html">monoid</a> which satisfies "every element has an inverse".
+%%%</p>
+<p>%%%knows-requisite(<a href="category_theory.html">Category theory</a>):
+Equivalently, a group is a category with exactly one object, which satisfies "every arrow has an inverse"; the arrows are viewed as elements of the group. This justifies the intuition that groups are collections of symmetries. The object of this category can be thought of an abstract object that the isomorphisms are symmetries of. A functor from this category into the category of sets associates this object with a set, and each of the morphisms a permutation of that set.
+%%%</p>
+<h1 id="examples">Examples</h1>
+<p>The most familiar example of a group is perhaps $~$(\mathbb{Z}, +)$~$, the integers under addition. To see that it satisfies the group axioms, note that:</p>
+<ol>
+<li>(a) $~$\mathbb{Z}$~$ is a set, and (b) $~$+$~$ is a function of type $~$\mathbb Z \times \mathbb Z \to \mathbb Z$~$</li>
+<li>$~$(x+y)+z=x+(y+z)$~$</li>
+<li>$~$0+x = x = x + 0$~$</li>
+<li>Every element $~$x$~$ has an inverse $~$-x$~$, because $~$x + (-x) = 0$~$.</li>
+</ol>
+<p>For more examples, see the <a href="group_examples.html">examples page</a>.</p>
+<h1 id="notation">Notation</h1>
+<p>Given a group $~$G = (X, \bullet)$~$, we say "$~$X$~$ forms a group under $~$\bullet$~$." $~$X$~$ is called the <a href="underlying_set.html">underlying set</a> of $~$G$~$, and $~$\bullet$~$ is called the <em>group operation</em>.</p>
+<p>$~$x \bullet y$~$ is usually abbreviated $~$xy$~$.</p>
+<p>$~$G$~$ is generally allowed to substitute for $~$X$~$ when discussing the group. For example, we say that the elements $~$x, y \in X$~$ are "in $~$G$~$," and sometimes write "$~$x, y \in G$~$" or talk about the "elements of $~$G$~$."</p>
+<p>The <a href="group_order.html">order of a group</a>, written $~$|G|$~$, is the size $~$|X|$~$ of its underlying set: If $~$X$~$ has nine elements, then $~$|G|=9$~$ and we say that $~$G$~$ has order nine.</p>
+<h1 id="resources">Resources</h1>
+<p>Groups are a ubiquitous and useful algebraic structure. Whenever it makes sense to talk about symmetries of a mathematical object, or physical system, groups pop up. For a discussion of group theory and its various applications, refer to the <a href="group_theory.html">group theory</a> page.</p>
+<p>A group is a <a href="algebraic_monoid.html">monoid</a> with inverses, and an associative [algebraic_loop loop]. For more on how groups relate to other <a href="algebraic_structure.html">algebraic structures</a>, refer to the <a href="algebraic_structure_tree.html">tree of algebraic structures</a>.</p></main><hr><footer><p class="likes"><h2>Likes</h2><span class="page-comma-list"><a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a></span></p></footer></body></html>

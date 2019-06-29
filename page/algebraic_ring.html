@@ -1,0 +1,64 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Ring</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_SVG" async></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">Ring</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/algebraic_ring.json.html">algebraic_ring.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/algebraic_ring">https://arbital.com/p/algebraic_ring</a></p><p class="creator">by
+ <a class="page-link" href="../page/NateSoares.html">Nate Soares</a> May 9 2016 
+updated
+ Jul 28 2016</p></div><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>Ring</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="math.html">Mathematics</a></li><li><a href="abstract_algebra.html">Abstract algebra</a></li><li><a href="algebraic_structure.html">Algebraic structure</a></li><li>…</li></ul></nav></nav></header><hr><main><p>[summary: A ring is a kind of <a href="algebraic_structure.html">Algebraic structure</a> which we obtain by considering <a href="group_mathematics.html">groups</a> as being "things with addition" and then endowing them with a multiplication operation which must interact appropriately with the pre-existing addition. Terminology varies across sources;  we will take "ring" to refer to "commutative ring with $~$1$~$".]</p>
+<p>[summary(Technical): A ring $~$R$~$ is a triple $~$(X, \oplus, \otimes)$~$ where $~$X$~$ is a <a href="set_mathematics.html">set</a> and $~$\oplus$~$ and $~$\otimes$~$ are binary <a href="set_theory_operation.html">operations</a> subject to the ring axioms. We write $~$x \oplus y$~$ for the application of $~$\oplus$~$ to $~$x, y \in X$~$, which must be defined, and similarly for $~$\otimes$~$. Terminology varies across sources; our rings will have both operations <a href="commutative_operation.html">commutative</a> and will have an <a href="identity_element.html">Identity element</a> under multiplication, denoted $~$1$~$.]</p>
+<p>A ring $~$R$~$ is a triple $~$(X, \oplus, \otimes)$~$ where $~$X$~$ is a <a href="set_mathematics.html">set</a> and $~$\oplus$~$ and $~$\otimes$~$ are binary <a href="set_theory_operation.html">operations</a> subject to the ring axioms. We write $~$x \oplus y$~$ for the application of $~$\oplus$~$ to $~$x, y \in X$~$, which must be defined, and similarly for $~$\otimes$~$. It is standard to abbreviate $~$x \otimes y$~$ as $~$xy$~$ when $~$\otimes$~$ can be inferred from context. The ten ring axioms (which govern the behavior of $~$\oplus$~$ and $~$\otimes$~$) are as follows:</p>
+<ol>
+<li>$~$X$~$ must be a <a href="abelian_group.html">commutative group</a> under $~$\oplus$~$. That means:</li>
+</ol>
+<ul>
+<li>$~$X$~$ must be <a href="closure_mathematics.html">closed</a> under $~$\oplus$~$.</li>
+<li>$~$\oplus$~$ must be [associative_function associative].</li>
+<li>$~$\oplus$~$ must be [commutative_function commutative].</li>
+<li>$~$\oplus$~$ must have an identity, which is usually named $~$0$~$.</li>
+<li>Every $~$x \in X$~$ must have an inverse $~$(-x) \in X$~$ such that $~$x \oplus (-x) = 0$~$.</li>
+</ul>
+<ol>
+<li>$~$X$~$ must be a <a href="algebraic_monoid.html">monoid</a> under $~$\otimes$~$. That means:</li>
+</ol>
+<ul>
+<li>$~$X$~$ must be <a href="closure_mathematics.html">closed</a> under $~$\otimes$~$.</li>
+<li>$~$\otimes$~$ must be [associative_function associative].</li>
+<li>$~$\otimes$~$ must have an identity, which is usually named $~$1$~$.</li>
+</ul>
+<ol>
+<li>$~$\otimes$~$ must [distributive_property distribute] over $~$\oplus$~$. That means:</li>
+</ol>
+<ul>
+<li>$~$a \otimes (x \oplus y) = (a\otimes x) \oplus (a\otimes y)$~$ for all $~$a, x, y \in X$~$.</li>
+<li>$~$(x \oplus y)\otimes a = (x\otimes a) \oplus (y\otimes a)$~$ for all $~$a, x, y \in X$~$.</li>
+</ul>
+<p>Though the axioms are many, the idea is simple: A ring is a <a href="abelian_group.html">commutative group</a> equipped with an additional operation, under which the ring is a <a href="algebraic_monoid.html">monoid</a>, and the two operations play nice together (the monoid operation [distributive_property distributes] over the group operation).</p>
+<p>A ring is an <a href="algebraic_structure.html">algebraic structure</a>.  To see how it relates to other algebraic structures, refer to the <a href="algebraic_structure_tree.html">tree of algebraic structures</a>.</p>
+<h1 id="examples">Examples</h1>
+<p>The integers $~$\mathbb{Z}$~$ form a ring under addition and multiplication.</p>
+<p>[fixme: Add more example rings.]
+[work in progress.]</p>
+<h1 id="notation">Notation</h1>
+<p>Given a ring $~$R = (X, \oplus, \otimes)$~$, we say "$~$R$~$ forms a ring under $~$\oplus$~$ and $~$\otimes$~$." $~$X$~$ is called the <a href="underlying_set.html">underlying set</a> of $~$R$~$. $~$\oplus$~$ is called the "additive operation," $~$0$~$ is called the "additive identity", $~$-x$~$ is called the "additive inverse" of $~$x$~$. $~$\otimes$~$ is called the "multiplicative operation," $~$1$~$ is called the "multiplicative identity", and a ring does not necessarily have multiplicative inverses.</p>
+<h1 id="basicproperties">Basic properties</h1>
+<p>[fixme: Add the basic properties of rings.]
+[work in progress.]</p>
+<h1 id="interpretationsvisualizationsandapplications">Interpretations, Visualizations, and Applications</h1>
+<p>[fixme: Add (links to) interpretations, visualizations, and applications.]
+[work in progress.]</p></main><hr><footer><p class="tagged"><h2>Tagged</h2><span class="page-comma-list"><a class="page-link" href="../page/needs_clickbait_meta_tag.html">Needs clickbait</a>,
+ <a class="page-link" href="../page/start_meta_tag.html">Start</a>,
+ <a class="page-link" href="../page/work_in_progress_meta_tag.html">Work in progress</a></span></p><p class="all-creators"><h2>All Creators</h2><span class="page-comma-list"><a class="page-link" href="../page/NateSoares.html">Nate Soares</a>,
+ <a class="page-link" href="../page/PatrickStevens.html">Patrick Stevens</a></span></p><p class="likes"><h2>Likes</h2><span class="page-comma-list"><a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a>,
+ <a class="page-link" href="../page/MartinEpstein.html">Martin Epstein</a></span></p><p class="reverse-related"><h2>Reverse Related</h2><ul class="page-list"><li><a class="page-link" href="../page/needs_clickbait_meta_tag.html">Needs clickbait</a> <q>This page does not have clickbait (a short teaser for the page displayed on various lists). Feel free to add it!</q> - <a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a></li><li><a class="page-link" href="../page/start_meta_tag.html">Start</a> <q>This page gives a basic overview of the topic, but may be missing important information or have stylistic issues. If you're able to, please help expand or improve it!</q> - <a class="page-link" href="../page/EliezerYudkowsky.html">Eliezer Yudkowsky</a></li><li><a class="page-link" href="../page/work_in_progress_meta_tag.html">Work in progress</a> <q>This page is being actively worked on by an editor. Check with them before making major changes.</q> - <a class="page-link" href="../page/EliezerYudkowsky.html">Eliezer Yudkowsky</a></li></ul></p><p class="children"><h2>Children</h2><ul class="page-tree"><li><a class="page-link" href="../page/euclidean_domain_is_pid.html">Euclidean domains are principal ideal domains</a> <q>A Euclidean domain is one where we may somehow perform the division algorithm; this gives us access to some of the nicest properties of the integers.</q> - <a class="page-link" href="../page/PatrickStevens.html">Patrick Stevens</a></li><li><a class="page-link" href="../page/ideal_equals_kernel_of_ring_homomorphism.html">Ideals are the same thing as kernels of ring homomorphisms</a> <q>In ring theory, the notion of &quot;[ideal\_ring\_theory ideal]&quot; corresponds precisely with the notion o…</q> - <a class="page-link" href="../page/PatrickStevens.html">Patrick Stevens</a></li><li><a class="page-link" href="../page/pid_implies_prime_equals_irreducible.html">In a principal ideal domain, &quot;prime&quot; and &quot;irreducible&quot; are the same</a> <q>Principal ideal domains have a very useful property that we don't need to distinguish between the informal notion of &quot;prime&quot; (i.e. &quot;irreducible&quot;) and the formal notion.</q> - <a class="page-link" href="../page/PatrickStevens.html">Patrick Stevens</a></li><li><a class="page-link" href="../page/integral_domain.html">Integral domain</a> <q>An integral domain is a ring where the only way to express zero as a product is by having zero as one of the terms.</q> - <a class="page-link" href="../page/PatrickStevens.html">Patrick Stevens</a></li><li><a class="page-link" href="../page/irreducible_element_ring_theory.html">Irreducible element (ring theory)</a> <q>This is the appropriate abstraction of the concept of &quot;prime number&quot; to general rings.</q> - <a class="page-link" href="../page/PatrickStevens.html">Patrick Stevens</a></li><li><a class="page-link" href="../page/kernel_of_ring_homomorphism.html">Kernel of ring homomorphism</a> <q>The kernel of a ring homomorphism is the collection of things which that homomorphism sends to 0.</q> - <a class="page-link" href="../page/PatrickStevens.html">Patrick Stevens</a></li><li><a class="page-link" href="../page/ordered_ring.html">Ordered ring</a> <q>A ring with a total ordering compatible with its ring structure.</q> - <a class="page-link" href="../page/DylanHendrickson.html">Dylan Hendrickson</a></li><li><a class="page-link" href="../page/prime_element_ring_theory.html">Prime element of a ring</a> <q>Despite the name, &quot;prime&quot; in ring theory refers not to elements which are &quot;multiplicatively irreducible&quot; but to those such that if they divide a product then they divide some term of the product.</q> - <a class="page-link" href="../page/PatrickStevens.html">Patrick Stevens</a></li><li><a class="page-link" href="../page/principal_ideal_domain.html">Principal ideal domain</a> <q>A principal ideal domain is a kind of ring, in which all ideals have a certain nice form.</q> - <a class="page-link" href="../page/PatrickStevens.html">Patrick Stevens</a></li><li><a class="page-link" href="../page/unique_factorisation_domain.html">Unique factorisation domain</a> <q>This is the correct way to abstract from the integers the fact that every integer can be written uniquely as a product of prime numbers.</q> - <a class="page-link" href="../page/PatrickStevens.html">Patrick Stevens</a></li><li><a class="page-link" href="../page/unit_ring_theory.html">Unit (ring theory)</a> <q>A unit in a ring is just an element with a multiplicative inverse.</q> - <a class="page-link" href="../page/PatrickStevens.html">Patrick Stevens</a></li></ul></p></footer></body></html>

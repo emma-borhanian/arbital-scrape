@@ -1,0 +1,72 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Lagrange theorem on subgroup size: Intuitive version</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_SVG" async></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">Lagrange theorem on subgroup size: Intuitive version</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/lagrange_theorem_on_subgroup_size_intuitive.json.html">lagrange_theorem_on_subgroup_size_intuitive.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/lagrange_theorem_on_subgroup_size_intuitive">https://arbital.com/p/lagrange_theorem_on_subgroup_size_intuitive</a></p><p class="creator">by
+ <a class="page-link" href="../page/PatrickStevens.html">Patrick Stevens</a> Jun 28 2016 
+updated
+ Aug 27 2016</p></div><p class="clickbait">Lagrange's theorem strongly restricts the size a subgroup of a group can be.</p><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>Lagrange theorem on subgroup size: Intuitive version</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="math.html">Mathematics</a></li><li><a href="abstract_algebra.html">Abstract algebra</a></li><li><a href="algebraic_structure.html">Algebraic structure</a></li><li><a href="group_mathematics.html">Group</a></li><li><a href="lagrange_theorem_on_subgroup_size.html">Lagrange theorem on subgroup size</a></li><li>…</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="math.html">Mathematics</a></li><li><a href="group_theory.html">Group theory</a></li><li><a href="group_mathematics.html">Group</a></li><li><a href="lagrange_theorem_on_subgroup_size.html">Lagrange theorem on subgroup size</a></li><li>…</li></ul></nav></nav></header><hr><main><p>[summary: Lagrange's Theorem gives us a restriction on the size of a subgroup of a finite group: namely, subgroups have size dividing the parent group.]</p>
+<p>Given a finite <a href="group_mathematics.html">Group</a> $~$G$~$, it may have many <a href="subgroup.html">subgroups</a>.
+So far, we know almost nothing about those subgroups; it would be great if we had some way of restricting them.</p>
+<p>An example of such a restriction, which we do already know, is that a subgroup $~$H$~$ of $~$G$~$ has to have <a href="group_order.html">size</a> less than or equal to the size of $~$G$~$ itself.
+This is because $~$H$~$ is contained in $~$G$~$, and if the set $~$X$~$ is contained in the set $~$Y$~$ then the size of $~$X$~$ is less than or equal to the size of $~$Y$~$.
+(This would have to be true for any reasonable definition of "size"; the <a href="cardinality.html">usual definition</a> certainly has this property.)</p>
+<p>Lagrange's Theorem gives us a much more powerful restriction: not only is the size $~$|H|$~$ of $~$H$~$ less than or equal to $~$|G|$~$, but in fact $~$|H|$~$ divides $~$|G|$~$.</p>
+<p>%%hidden(Example: subgroups of the cyclic group on six elements):
+<em>A priori</em>, all we know about the subgroups of the <a href="cyclic_group.html">Cyclic group</a> $~$C_6$~$ of order $~$6$~$ is that they are of order $~$1, 2, 3, 4, 5$~$ or $~$6$~$.</p>
+<p>Lagrange's Theorem tells us that they can only be of order $~$1, 2, 3$~$ or $~$6$~$: there are no subgroups of order $~$4$~$ or $~$5$~$.
+Lagrange tells us nothing about whether there <em>are</em> subgroups of size $~$1,2,3$~$ or $~$6$~$: only that if we are given a subgroup, then it is of one of those sizes.</p>
+<p>In fact, as an aside, there are indeed subgroups of sizes $~$1,2,3,6$~$:</p>
+<ul>
+<li>the subgroup containing only the identity is of order $~$1$~$</li>
+<li>the "improper" subgroup $~$C_6$~$ is of order $~$6$~$</li>
+<li>subgroups of size $~$2$~$ and $~$3$~$ are guaranteed by <a href="cauchy_theorem_on_subgroup_existence.html">Cauchy&#39;s theorem</a>.</li>
+</ul>
+<p>%%</p>
+<h1 id="proof">Proof</h1>
+<p>In order to show that $~$|H|$~$ divides $~$|G|$~$, we would be done if we could divide the elements of $~$G$~$ up into separate buckets of size $~$|H|$~$.</p>
+<p>There is a fairly obvious place to start: we already have one bucket of size $~$|H|$~$, namely $~$H$~$ itself (which consists of some elements of $~$G$~$).
+Can we perhaps use this to create more buckets of size $~$|H|$~$?</p>
+<p>For motivation: if we think of $~$H$~$ as being a collection of symmetries (which we can do, by <a href="cayley_theorem_symmetric_groups.html">Cayley&#39;s Theorem</a> which states that all groups may be viewed as collections of symmetries), then we can create more symmetries by "tacking on elements of $~$G$~$".</p>
+<p>Formally, let $~$g$~$ be an element of $~$G$~$, and consider $~$gH = \{ g h : h \in H \}$~$.</p>
+<p>Exercise: every element of $~$G$~$ does have one of these buckets $~$gH$~$ in which it lies.
+%%hidden(Show solution):
+The element $~$g$~$ of $~$G$~$ is contained in the bucket $~$gH$~$, because the identity $~$e$~$ is contained in $~$H$~$ and so $~$ge$~$ is in $~$gH$~$; but $~$ge = g$~$.
+%%</p>
+<p>Exercise: $~$gH$~$ is a set of size $~$|H|$~$. %%note:More formally put, <a href="left_cosets_biject.html">Left cosets are all in bijection</a>.%%
+%%hidden(Show solution):
+In order to show that $~$gH$~$ has size $~$|H|$~$, it is enough to match up the elements of $~$gH$~$ <a href="bijective_function.html">bijectively</a> with the elements of $~$|H|$~$.</p>
+<p>We can do this with the <a href="function.html">Function</a> $~$H \to gH$~$ taking $~$h \in H$~$ and producing $~$gh$~$.
+This has an <a href="inverse_function.html">inverse</a>: the function $~$gH \to H$~$ which is given by pre-multiplying by $~$g^{-1}$~$, so that $~$gx \mapsto g^{-1} g x = x$~$.
+%%</p>
+<p>Now, are all these buckets separate? Do any of them overlap?</p>
+<p>Exercise: if $~$x \in rH$~$ and $~$x \in sH$~$ then $~$rH = sH$~$. That is, if any two buckets intersect then they are the same bucket. %%note:More formally put, <a href="left_cosets_partition_parent_group.html">Left cosets partition the parent group</a>.%%
+%%hidden(Show solution):
+Suppose $~$x \in rH$~$ and $~$x \in sH$~$.</p>
+<p>Then $~$x = r h_1$~$ and $~$x = s h_2$~$, some $~$h_1, h_2 \in H$~$.</p>
+<p>That is, $~$r h_1 = s h_2$~$, so $~$s^{-1} r h_1 = h_2$~$.
+So $~$s^{-1} r = h_2 h_1^{-1}$~$, so $~$s^{-1} r$~$ is in $~$H$~$ by closure of $~$H$~$.</p>
+<p>By taking inverses, $~$r^{-1} s$~$ is in $~$H$~$.</p>
+<p>But that means $~$\{ s h : h \in H \}$~$ and $~$\{ r h : h \in H\}$~$ are equal.
+Indeed, we show that each is contained in the other.</p>
+<ul>
+<li>if $~$a$~$ is in the right-hand side, then $~$a = rh$~$ for some $~$h$~$. Then $~$s^{-1} a = s^{-1} r h$~$; but $~$s^{-1} r$~$ is in $~$H$~$, so $~$s^{-1} r h$~$ is in $~$H$~$, and so $~$s^{-1} a$~$ is in $~$H$~$.
+Therefore $~$a \in s H$~$, so $~$a$~$ is in the left-hand side.</li>
+<li>if $~$a$~$ is in the left-hand side, then $~$a = sh$~$ for some $~$h$~$. Then $~$r^{-1} a = r^{-1} s h$~$; but $~$r^{-1} s$~$ is in $~$H$~$, so $~$r^{-1} s h$~$ is in $~$H$~$, and so $~$r^{-1} a$~$ is in $~$H$~$.
+Therefore $~$a \in rH$~$, so $~$a$~$ is in the right-hand side.
+%%</li>
+</ul>
+<p>We have shown that the "<a href="group_coset.html">cosets</a>" $~$gH$~$ are all completely disjoint and are all the same size, and that every element lies in a bucket; this completes the proof.</p></main><hr><footer><p class="all-creators"><h2>All Creators</h2><span class="page-comma-list"><a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a>,
+ <a class="page-link" href="../page/PatrickStevens.html">Patrick Stevens</a></span></p><p class="likes"><h2>Likes</h2><span class="page-comma-list"><a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a>,
+ <a class="page-link" href="../page/PatrickStevens.html">Patrick Stevens</a></span></p></footer></body></html>

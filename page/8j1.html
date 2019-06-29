@@ -1,0 +1,28 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>&quot;&gt; In principle, a nonperson predicate needs onl...&quot;</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_SVG" async></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">&quot;&gt; In principle, a nonperson predicate needs onl...&quot;</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/8j1.json.html">8j1.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/8j1">https://arbital.com/p/8j1</a></p><p class="creator">by
+ <a class="page-link" href="../page/BogdanButnaru.html">Bogdan Butnaru</a> Jul 8 2017 
+updated
+ Jul 8 2017</p></div><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>&quot;&gt; In principle, a nonperson predicate needs onl...&quot;</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="ai_alignment.html">AI alignment</a></li><li><a href="mindcrime.html">Mindcrime</a></li><li>…</li></ul></nav></nav></header><hr><main><blockquote>
+  <p>In principle, a nonperson predicate needs only two possible outputs, "Don't know" and "Definitely not a person". It's acceptable for many actually-nonperson programs to be labeled "don't know", so long as no people are labeled "definitely not a person". […] The implicit difficulty is that the nonperson predicate must also pass some programs of high complexity that do things like "acceptably model humans" or "acceptably model future versions of the AI".</p>
+</blockquote>
+<p>There's another difficulty: the nonperson predicate must not itself commit mindcrime while evaluating the programs. This sounds obvious enough in retrospect that it doesn't feel worth mentioning, but it took me a while to notice it.</p>
+<p>Obviously, if you're running the program to determine if it's a person by analyzing its behavior (e.g. by asking it if it feels like it's conscious), you already commited mindcrime by the time you return "Don't know".</p>
+<p>But if the tested program and the predicate are complex enough, lots of analysis other than straight running the program could accidentally instantiate persons as sub-processes, potentially ones distinct from those that might be instantiated by the tested program itself.</p>
+<p>In other words: Assume Π is the set of all programs that potentially contain a person, i.e. for any program π, π in Π iff running π could instantiate a person.</p>
+<p>We want a computable safety predicate S such that {S(π): π is a program} implies π ∉ Π, i.e. S(π) means π is safe. (Though !S(π) does <em>not</em> necessarily imply π ∈ Π.)</p>
+<p>The problem is that S(π) is also a program, and we need to make sure that S(π) ∉ Π before running it. We can't use S(S(π)) to check, because we'd need to check first that S(S(π)) ∉ Π…</p>
+<p>(Note that a program that implements a sufficietly complex safety predicate S, when executed with another program π as input, might instantiate a person even if just running π directly would not!)</p></main><hr><footer></footer></body></html>

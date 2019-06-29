@@ -1,0 +1,56 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>The reals (constructed as Dedekind cuts) form a field</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_SVG" async></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">The reals (constructed as Dedekind cuts) form a field</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/reals_as_dedekind_cuts_form_a_field.json.html">reals_as_dedekind_cuts_form_a_field.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/reals_as_dedekind_cuts_form_a_field">https://arbital.com/p/reals_as_dedekind_cuts_form_a_field</a></p><p class="creator">by
+ <a class="page-link" href="../page/PatrickStevens.html">Patrick Stevens</a> Jul 5 2016 
+updated
+ Jul 8 2016</p></div><p class="clickbait">The reals are an archetypal example of a field, but if we are to construct them from simpler objects, we need to show that our construction does indeed have the right properties.</p><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>The reals (constructed as Dedekind cuts) form a field</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="math.html">Mathematics</a></li><li><a href="real_number.html">Real number</a></li><li><a href="real_number_as_dedekind_cut.html">Real number (as Dedekind cut)</a></li><li>…</li></ul></nav></nav></header><hr><main><p>The real numbers, when <a href="real_number_as_dedekind_cut.html">constructed as Dedekind cuts</a> over the <a href="rational_number.html">rationals</a>, form a <a href="algebraic_field.html">field</a>.</p>
+<p>We shall often write the one-sided [dedekind_cut Dedekind cut] $~$(A, B)$~$ %%note:Recall: "one-sided" means that $~$A$~$ has no greatest element.%% as simply $~$\mathbf{A}$~$ (using bold face for Dedekind cuts); we can do this because if we already know $~$A$~$ then $~$B$~$ is completely determined.
+This will make our notation less messy.</p>
+<p>The field structure, together with the [total_order total ordering] on it, is as follows (where we write $~$\mathbf{0}$~$ for the Dedekind cut $~$(\{ r \in \mathbb{Q} \mid r &lt; 0\}, \{ r \in \mathbb{Q}  \mid r \geq 0 \})$~$): </p>
+<ul>
+<li>$~$(A, B) + (C, D) = (A+C, B+D)$~$</li>
+<li>$~$\mathbf{A} \leq \mathbf{C}$~$ if and only if everything in $~$A$~$ lies in $~$C$~$.</li>
+<li>Multiplication is somewhat complicated.</li>
+<li>If $~$\mathbf{0} \leq \mathbf{A}$~$, then $~$\mathbf{A} \times \mathbf{C} = \{ a c \mid a \in A, a &gt; 0, c \in C \}$~$. [todo: we've missed out the complement in this notation, and can't put set-builder sets in boldface]</li>
+<li>If $~$\mathbf{A} < \mathbf{0}$~$ and $~$\mathbf{0} \leq \mathbf{C}$~$, then $~$\mathbf{A} \times \mathbf{C} = \{ a c \mid a \in A, c \in C, c > 0 \}$~$.</li>
+<li>If $~$\mathbf{A} &lt; \mathbf{0}$~$ and $~$\mathbf{C} &lt; \mathbf{0}$~$, then $~$\mathbf{A} \times \mathbf{C} = \{\} $~$ [todo: write down the form of the set]</li>
+</ul>
+<p>where $~$(A, B)$~$ is a one-sided [dedekind_cut Dedekind cut] (so that $~$A$~$ has no greatest element).</p>
+<p>(Here, the "set sum" $~$A+C$~$ is defined as "everything that can be made by adding one thing from $~$A$~$ to one thing from $~$C$~$": namely, $~$\{ a+c \mid a \in A, c \in C \}$~$ in <a href="set_builder_notation.html">Set builder notation</a>; and $~$A \times C$~$ is similarly $~$\{ a \times c \mid a \in A, c \in C \}$~$.)</p>
+<h1 id="proof">Proof</h1>
+<h2 id="welldefinedness">Well-definedness</h2>
+<p>We need to show firstly that these operations do in fact produce [dedekind_cut Dedekind cuts].</p>
+<h3 id="addition">Addition</h3>
+<p>Firstly, we need everything in $~$A+C$~$ to be less than everything in $~$B+D$~$.
+This is true: if $~$a+c \in A+C$~$, and $~$b+d \in B+D$~$, then since $~$a &lt; b$~$ and $~$c &lt; d$~$, we have $~$a+c &lt; b+d$~$.</p>
+<p>Next, we need $~$A+C$~$ and $~$B+D$~$ together to contain all the rationals.
+This is true: [todo: this, it's quite boring]</p>
+<p>Finally, we need $~$(A+C, B+D)$~$ to be one-sided: that is, $~$A+C$~$ needs to have no top element, or equivalently, if $~$a+c \in A+C$~$ then we can find a bigger $~$a' + c'$~$ in $~$A+C$~$.
+This is also true: if $~$a+c$~$ is an element of $~$A+C$~$, then we can find an element $~$a'$~$ of $~$A$~$ which is bigger than $~$a$~$, and an element $~$c'$~$ of $~$C$~$ which is bigger than $~$C$~$ (since both $~$A$~$ and $~$C$~$ have no top elements, because the respective Dedekind cuts are one-sided); then $~$a' + c'$~$ is in $~$A+C$~$ and is bigger than $~$a+c$~$.</p>
+<h3 id="multiplication">Multiplication</h3>
+<p>[todo: this section]</p>
+<h3 id="ordering">Ordering</h3>
+<p>[todo: this section]</p>
+<h2 id="additiveahrefcommutative_operationhtmlcommutativeaahrefgroup_mathematicshtmlgroupstructurea">Additive <a href="commutative_operation.html">commutative</a> <a href="group_mathematics.html">group structure</a></h2>
+<p>[todo: identity, associativity, inverse, commutativity]</p>
+<h2 id="ahrefalgebraic_ringhtmlringstructurea"><a href="algebraic_ring.html">Ring structure</a></h2>
+<p>[todo: multiplicative identity, associativity, distributivity]</p>
+<h2 id="ahrefalgebraic_fieldhtmlfieldstructurea"><a href="algebraic_field.html">Field structure</a></h2>
+<p>[todo: inverses]</p>
+<h2 id="orderingonthefield">Ordering on the field</h2>
+<p>[todo: a &lt;= b implies a+c &lt;= b+c, and 0 &lt;= a, 0 &lt;= b implies 0 &lt;= ab]</p></main><hr><footer><p class="tagged"><h2>Tagged</h2><span class="page-comma-list"><a class="page-link" href="../page/proof_meta_tag.html">Proof</a>,
+ <a class="page-link" href="../page/work_in_progress_meta_tag.html">Work in progress</a></span></p><p class="all-creators"><h2>All Creators</h2><span class="page-comma-list"><a class="page-link" href="../page/DylanHendrickson.html">Dylan Hendrickson</a>,
+ <a class="page-link" href="../page/PatrickStevens.html">Patrick Stevens</a></span></p><p class="likes"><h2>Likes</h2><span class="page-comma-list"><a class="page-link" href="../page/JoeZeng.html">Joe Zeng</a></span></p><p class="reverse-related"><h2>Reverse Related</h2><ul class="page-list"><li><a class="page-link" href="../page/proof_meta_tag.html">Proof</a> <q>This page is just a proof, rather than a motivated explanation.</q> - <a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a></li><li><a class="page-link" href="../page/work_in_progress_meta_tag.html">Work in progress</a> <q>This page is being actively worked on by an editor. Check with them before making major changes.</q> - <a class="page-link" href="../page/EliezerYudkowsky.html">Eliezer Yudkowsky</a></li></ul></p></footer></body></html>

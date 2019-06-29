@@ -1,0 +1,64 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Cantor-Schröder-Bernstein theorem</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_SVG" async></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">Cantor-Schröder-Bernstein theorem</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/cantor_schroeder_bernstein_theorem.json.html">cantor_schroeder_bernstein_theorem.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/cantor_schroeder_bernstein_theorem">https://arbital.com/p/cantor_schroeder_bernstein_theorem</a></p><p class="creator">by
+ <a class="page-link" href="../page/PatrickStevens.html">Patrick Stevens</a> Aug 6 2016 
+updated
+ Aug 27 2016</p></div><p class="clickbait">This theorem tells us that comparing sizes of sets makes sense: if one set is smaller than another, and the other is smaller than the one, then they are the same size.</p><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>Cantor-Schröder-Bernstein theorem</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="math.html">Mathematics</a></li><li><a href="set_mathematics.html">Set</a></li><li>…</li></ul></nav></nav></header><hr><main><p>[summary: The Cantor-Schröder-Bernstein theorem tells us that if one <a href="set_mathematics.html">set</a> is <a href="cardinality.html">smaller-than-or-equal-to</a> another, and the other is smaller-than-or-equal-to the one, then they are the same size. That is, "comparison of set sizes" behaves itself, analogously to the fact in the <a href="natural_number.html">natural numbers</a> that it can't be the case that both $~$1 &lt; 2$~$ and $~$2&lt;1$~$.]</p>
+<p>[summary(Technical): The Cantor-Schröder-Bernstein theorem states that the [class_set_theory class] of <a href="cardinality.html">cardinals</a> forms a <a href="totally_ordered_set.html">total order</a>. (Though not a totally ordered <em>set</em>, because [cardinals_form_a_proper_class there is no set of all cardinals]).]</p>
+<p>Recall that we say a <a href="set_mathematics.html">set</a> $~$A$~$ is <em>smaller than or equal to</em> a set $~$B$~$ if there is an <a href="injective_function.html">injection</a> from $~$A$~$ to $~$B$~$.
+The set $~$A$~$ <em>has the same <a href="cardinality.html">size</a></em> as $~$B$~$ if there is a <a href="bijective_function.html">bijection</a> between $~$A$~$ and $~$B$~$.</p>
+<p>The Cantor-Schröder-Bernstein theorem states that if $~$A$~$ is smaller than or equal to $~$B$~$, and $~$B$~$ is smaller than or equal to $~$A$~$, then $~$A$~$ and $~$B$~$ have the same size.
+This tells us that the arithmetic of <a href="cardinality.html">cardinals</a> is well-behaved in that it behaves like a <a href="totally_ordered_set.html">total order</a>.
+It is similar to the arithmetic of the <a href="natural_number.html">natural numbers</a> in that it can never be the case that simultaneously $~$a &lt; b$~$ and $~$b &lt; a$~$.</p>
+<h1 id="proofs">Proofs</h1>
+<p>There are several proofs, some concrete and some less so.</p>
+<h2 id="concreteproof">Concrete proof</h2>
+<p>A clear explanation of the intuition of this proof <a href="https://www.math.brown.edu/~res/infinity.pdf">has been written</a> by Richard Evan Schwartz; see page 61 of the linked PDF, or search on the word "dog" (which appears in the first page of the explanation).
+[comment: The intuition is Math0 suitable.]</p>
+<p>Let $~$f: A \to B$~$ and $~$g: B \to A$~$ be injections; we will define a bijective function $~$h: A \to B$~$.</p>
+<p>Because $~$f$~$ is injective, if $~$f$~$ ever hits $~$b$~$ (that is, if there is $~$a \in A$~$ such that $~$f(a) = b$~$) then it is possible to define $~$f^{-1}(b)$~$ to be the <em>unique</em> $~$a \in A$~$ such that $~$f(a) = b$~$; similarly with $~$g$~$.
+The slogan is "if $~$f^{-1}(a)$~$ exists, then it is well-defined: there is no leeway about which element we might choose to be $~$f^{-1}(a)$~$".</p>
+<p>Fix some $~$a \in A$~$, and consider the sequence $$~$\dots, f^{-1}(g^{-1}(a)), g^{-1}(a), a, f(a), g(f(a)), \dots$~$$
+Now, this sequence might not extend infinitely to the left; it may not even get past $~$a$~$ to the left (if $~$g^{-1}(a)$~$ doesn't exist, for instance). %%note:On the other hand, perhaps the sequence does extend infinitely to the left.%%
+Also, the sequence might duplicate elements: it might be the case that $~$gfgf(a) = a$~$, for instance. %%note:And maybe there is a repeat somewhere to the left, too.%%</p>
+<p>Similarly, we can fix some $~$b \in B$~$, and consider $$~$\dots g^{-1} f^{-1}(b), f^{-1}(b), b, g(b), f(g(b)), \dots$~$$</p>
+<p>Every element of $~$A$~$, and every element of $~$B$~$, appears in one of these chains.
+Moreover, if $~$a \in A$~$ appears in two different chains, then in fact the two chains are the same %%note:Though maybe we're looking at a different place on the same chain. If we compare the $~$g^{-1} f^{-1}(b)$~$-chain with the $~$b$~$-chain, we see they're the same chain viewed two different ways: one viewing is two places offset from the other viewing.%%, because each element of the chain specifies and is specified by the previous element in the chain (if it exists) and each element of the chain specifies and is specified by the next element of the chain.</p>
+<p>So every element of $~$A$~$ and every element of $~$B$~$ is in exactly one chain.
+Now, it turns out that there are exactly four distinct "types" of chain.</p>
+<ul>
+<li>It could extend infinitely in both directions without repeats. In this case, we define $~$h(a) = f(a)$~$ for each element of $~$A$~$ in the chain. (Basically assigning to each element of $~$A$~$ the element of $~$B$~$ which is next in the chain.)</li>
+<li>It could extend infinitely off to the right, but it has a hard barrier at the left, and has no repeats: the chain stops at an element of $~$A$~$. In this case, again we define $~$h(a) = f(a)$~$ for each element of $~$A$~$ in the chain. (Again, basically assigning to each element of $~$A$~$ the element of $~$B$~$ which is next in the chain.)</li>
+<li>It could extend infinitely off to the right, but it has a hard barrier at the left, and has no repeats: the chain stops at an element of $~$B$~$. In this case, we define $~$h(a) = g^{-1}(a)$~$ for each element of $~$A$~$ in the chain. (Basically assigning to each element of $~$A$~$ the element of $~$B$~$ which is <em>previous</em> in the chain.)</li>
+<li>It could have repeats. Then it must actually be a cycle of even length (unrolled into an infinite line), because each element of the chain only depends on the one before it, and because we can't have two successive elements of $~$A$~$ (since the elements are alternating between $~$A$~$ and $~$B$~$). In this case, we define $~$h(a) = f(a)$~$ for each element of $~$A$~$ in the chain. (Basically assigning to each element of $~$A$~$ the element of $~$B$~$ which is next in the chain.)</li>
+</ul>
+<p>Have we actually made a bijection?
+Certainly our function is well-defined: every element of $~$A$~$ appears in exactly one chain, and we've specified where every element of $~$A$~$ in any chain goes, so we've specified where every element of $~$A$~$ goes.</p>
+<p>Our function is <a href="surjective_function.html">surjective</a>, because every element of $~$B$~$ is in a chain; if $~$b \in B$~$ has an element $~$a$~$ of $~$A$~$ before it in its chain, then we specified that $~$h$~$ takes $~$a$~$ to $~$b$~$, while if $~$b \in B$~$ is at the leftmost end of its chain, we specified that $~$h$~$ takes $~$g(b)$~$ (that is, the following element in the chain) to $~$b$~$.</p>
+<p>Our function is injective.
+Since the chains don't overlap, and the first three cases of "what a chain might look like" have no repeats at all, the only possible way an element of $~$B$~$ can be hit twice by $~$h$~$ is if that element lies in one of the cyclical chains.
+But then to elements of $~$A$~$ in that chain, $~$h$~$ assigns the following element of $~$B$~$; so $~$b \in B$~$ is hit only by the preceding element of $~$A$~$, which is the same in all cases because the chain is a cycle.
+%%note:The picture in the linked intuitive document makes this much clearer.%%</p>
+<h2 id="prooffromtheknaster_tarski_theoremknastertarskitheorem">Proof from the [knaster_tarski_theorem Knaster-Tarski theorem]</h2>
+<p>This proof is very quick, but almost completely opaque.
+It relies on the [knaster_tarski_theorem Knaster-Tarski fixed point theorem], which states that if $~$X$~$ is a [complete_poset complete poset] and $~$f: X \to X$~$ is [order_preserving_map order-preserving], then $~$f$~$ has a [-fixed_point] (i.e. $~$x$~$ such that $~$f(x) = x$~$).</p>
+<p>Let $~$f: A \to B$~$ and $~$g: B \to A$~$ be injective.</p>
+<p>We are looking for a [set_partition partition] $~$P \cup Q$~$ of $~$A$~$, and a partition $~$R \cup S$~$ of $~$B$~$, such that $~$f$~$ is injective from $~$P$~$ to $~$R$~$, and $~$g$~$ is injective from $~$S$~$ to $~$Q$~$.
+(Then we can just define our bijection $~$A \to B$~$ by "do $~$f$~$ on $~$P$~$, and do $~$g^{-1}$~$ on $~$Q$~$".)</p>
+<p>Now, the function $~$P \mapsto A \setminus g(B \setminus f(P))$~$ is order-preserving from the <a href="power_set.html">Power set</a> $~$\mathcal{P}(A)$~$ to $~$\mathcal{P}(A)$~$ (ordered by inclusion), because there is an even number of complements.</p>
+<p>But $~$\mathcal{P}(A)$~$ is complete as a poset ([power_set_poset_is_complete proof]), so by Knaster-Tarski there is a set $~$P$~$ such that $~$P = A \setminus g(B \setminus f(P))$~$.</p>
+<p>This yields our partition as required. [todo: spell this out]</p></main><hr><footer><p class="all-creators"><h2>All Creators</h2><span class="page-comma-list"><a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a>,
+ <a class="page-link" href="../page/PatrickStevens.html">Patrick Stevens</a></span></p><p class="likes"><h2>Likes</h2><span class="page-comma-list"><a class="page-link" href="../page/JaimeSevillaMolina.html">Jaime Sevilla Molina</a></span></p></footer></body></html>

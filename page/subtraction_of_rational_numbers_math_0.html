@@ -1,0 +1,65 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Subtraction of rational numbers (Math 0)</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_SVG" async></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">Subtraction of rational numbers (Math 0)</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/subtraction_of_rational_numbers_math_0.json.html">subtraction_of_rational_numbers_math_0.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/subtraction_of_rational_numbers_math_0">https://arbital.com/p/subtraction_of_rational_numbers_math_0</a></p><p class="creator">by
+ <a class="page-link" href="../page/PatrickStevens.html">Patrick Stevens</a> Jul 7 2016 
+updated
+ Aug 1 2016</p></div><p class="clickbait">In which we meet anti-apples.</p><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>Subtraction of rational numbers (Math 0)</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="math.html">Mathematics</a></li><li><a href="rational_number.html">Rational number</a></li><li><a href="arithmetic_of_rational_numbers_math_0.html">Arithmetic of rational numbers (Math 0)</a></li><li>…</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="math.html">Mathematics</a></li><li><a href="rational_number.html">Rational number</a></li><li><a href="field_structure_of_rational_numbers.html">Field structure of rational numbers</a></li><li><a href="arithmetic_of_rational_numbers_math_0.html">Arithmetic of rational numbers (Math 0)</a></li><li>…</li></ul></nav></nav></header><hr><main><p>[summary: Subtraction is "adding anti-apples", or equivalently removing some apples you already have.]</p>
+<p>So far, we have met <a href="rational_numbers_intro_math_0.html">the idea of a rational number</a>, treating them as chunks of apples, and <a href="addition_of_rational_numbers_math_0.html">how to add them together</a>.
+Now we will discover how the idea of the anti-apple (by analogy with the <a href="integers_intro_math0.html">integers&#39; anti-cow</a>) must work.</p>
+<h1 id="theantiapple">The anti-apple</h1>
+<p>Just as we had an anti-cow, so we can have an anti-apple.
+If we combine an apple with an anti-apple, they both annihilate, leaving nothing behind.
+We write this as $~$1 + (-1) = 0$~$.</p>
+<p>A very useful thing for you to ponder for thirty seconds (though I will give you the answer soon): given that $~$\frac{a}{n}$~$ means "divide an apple into $~$n$~$ equal pieces, then take $~$a$~$ copies of the resulting little-piece", what would $~$\frac{-1}{n}$~$ mean? And what would $~$-\frac{1}{n}$~$ mean?</p>
+<p>%%hidden(Show possible solution):
+$~$\frac{-1}n$~$ would mean "divide an apple into $~$n$~$ equal pieces, then take $~$-1$~$ copies of the resulting little-piece".
+That is, turn it into an anti-little-piece.
+This anti-little-piece will annihilate one little-piece of the same size: $~$\frac{-1}{n} + \frac{1}{n} = 0$~$.</p>
+<p>$~$-\frac{1}{n}$~$, on the other hand, would mean "divide an anti-apple into $~$n$~$ equal pieces, then take $~$1$~$ copy of the resulting little-anti-piece".
+But this is the same as $~$\frac{-1}{n}$~$: it doesn't matter whether we do "convert to anti, then divide up the apple" or "divide up the apple, then convert to anti".
+That is, "little-anti-piece" is the same as "anti-little-piece", which is very convenient.
+%%</p>
+<p>What about chunks of apple?
+If we combine half an apple with half an anti-apple, they should also annihilate, leaving nothing behind.
+We write this as $~$\frac{1}{2} + \left(-\frac{1}{2}\right) = 0$~$.</p>
+<p>How about a bit more abstract?
+If we combine an apple with half an anti-apple, what should happen?
+Well, the apple can be made out of two half-chunks (that is, $~$1 = \frac{1}{2} + \frac{1}{2}$~$); and we've just seen that half an apple will annihilate half an anti-apple; so we'll be left with just one of the two halves of the apple.
+More formally, $~$1 + \left(-\frac{1}{2}\right) = \frac{1}{2}$~$; or, writing out the calculation in full, $$~$1 + \left(-\frac{1}{2}\right) = \frac{1}{2} + \frac{1}{2} + \left(-\frac{1}{2}\right) = \frac{1}{2}$~$$</p>
+<p>Let's go the other way round: if we combine an anti-apple with half an apple, what happens?
+It's pretty much the same as the opposite case except flipped around: the anti-apple is made of two anti-half-chunks, and the half apple will annihilate one of those chunks, leaving us with half an anti-apple: that is, $~$(-1) + \frac{1}{2} = -\frac{1}{2}$~$.</p>
+<p>We call all of these things <strong>subtraction</strong>: "subtracting" a quantity is defined to be the same as the addition of an anti-quantity.</p>
+<h1 id="generalprocedure">General procedure</h1>
+<p>Since we already know how to add, we might hope that subtraction will be easier (since subtraction is just a slightly different kind of adding).</p>
+<p>In general, we write $~$-\frac{1}{n}$~$ for "the $~$\frac{1}{n}$~$-sized building block, but made by dividing an <em>anti</em>-apple (instead of an apple) into $~$n$~$ equal pieces".
+Remember from the pondering above that this is actually the same as $~$\frac{-1}{n}$~$, where we have divided an apple into $~$n$~$ equal pieces but then taken $~$-1$~$ of the pieces.</p>
+<p>Then in general, we can just use the instant addition rule that we've already seen. %%note:Recall: this was $~$\frac{a}{m} + \frac{b}{n} = \frac{a\times n + b \times m}{m \times n}$~$. Remember that the order of operations in the integers is such that in the numerator, we calculate both the products first; then we add them together.%%
+In fact, $$~$\frac{a}{m} - \frac{b}{n} = \frac{a}{m} + \left(\frac{-b}{n}\right) = \frac{a \times n + (-b) \times m}{m \times n} = \frac{a \times n - b \times m}{m \times n}$~$$</p>
+<p>Why are we justified in just plugging these numbers into the formula, without justification?
+You're quite right if you are dubious: you should not be content merely to <em>learn</em> this formula%%note:This goes for all of maths! It's not simply a collection of arbitrary rules, but a proper process that we use to model our thoughts. Behind every pithy, unmemorable formula is a great edifice of motivation and reason, if you can only find it.%%.
+In the rest of this page, we'll go through why it works, and how you might construct it yourself if you forgot it.
+I took the choice here to present the formula first, because it's a good advertisement for why we use the $~$\frac{a}{n}$~$ notation rather than talking about "$~$\frac{1}{n}$~$-chunks" explicitly: it's a very compact and neat way of expressing all this talk of anti-apples, in the light of what we've already seen about addition.</p>
+<p>Very well: what should $~$\frac{a}{m} - \frac{b}{n}$~$ be?
+We should first find a smaller chunk out of which we can build both the $~$\frac{1}{m}$~$ and $~$\frac{1}{n}$~$ chunks.
+We've seen already that $~$\frac{1}{m \times n}$~$ will work as a smaller chunk-size.</p>
+<p>Now, what is $~$\frac{a}{m}$~$ expressed in $~$\frac{1}{m \times n}$~$-chunks?
+Each $~$\frac{1}{m}$~$-chunk is $~$n$~$ of the $~$\frac{1}{m \times n}$~$-chunks, so $~$a$~$ of the $~$\frac{1}{m}$~$-chunks is $~$a$~$ lots of "$~$n$~$ lots of $~$\frac{1}{m \times n}$~$-chunks": that is, $~$a \times n$~$ of them.</p>
+<p>Similarly, $~$\frac{b}{n}$~$ is just $~$b \times m$~$ lots of $~$\frac{1}{m \times n}$~$-chunks.</p>
+<p>So, expressed in $~$\frac{1}{m \times n}$~$-chunks, we have $~$a \times n$~$ lots of positive chunks, and $~$b \times m$~$ lots of anti-chunks.
+Therefore, when we put them together, we'll get $~$a \times n - b \times m$~$ chunks (which might be negative or positive or even zero - after all the annihilation has taken place we might end up with either normal or anti-chunks or maybe no chunks at all - but it's still an integer, being a number of chunks).</p>
+<p>So the total amount of apple we have is $~$\frac{a \times n - b \times m}{m \times n}$~$, just like we got out of the instant formula.</p>
+<p>[todo: the rest of the page, including examples; make an exercises page, including subtracting negatives and so on]</p></main><hr><footer><p class="tagged"><h2>Tagged</h2><span class="page-comma-list"><a class="page-link" href="../page/math0.html">Math 0</a></span></p><p class="all-creators"><h2>All Creators</h2><span class="page-comma-list"><a class="page-link" href="../page/JoeZeng.html">Joe Zeng</a>,
+ <a class="page-link" href="../page/PatrickStevens.html">Patrick Stevens</a></span></p><p class="likes"><h2>Likes</h2><span class="page-comma-list"><a class="page-link" href="../page/JoeZeng.html">Joe Zeng</a></span></p><p class="reverse-related"><h2>Reverse Related</h2><ul class="page-list"><li><a class="page-link" href="../page/math0.html">Math 0</a> <q>Are you not actively bad at math, nor traumatized about math?</q> - <a class="page-link" href="../page/EliezerYudkowsky.html">Eliezer Yudkowsky</a></li></ul></p></footer></body></html>

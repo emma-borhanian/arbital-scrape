@@ -1,0 +1,18 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>&quot;I think it's confusing to introduce multi-argum...&quot;</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_SVG" async></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">&quot;I think it's confusing to introduce multi-argum...&quot;</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/6m0.json.html">6m0.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/6m0">https://arbital.com/p/6m0</a></p><p class="creator">by
+ <a class="page-link" href="../page/KevinClancy.html">Kevin Clancy</a> Nov 26 2016</p></div><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>&quot;I think it's confusing to introduce multi-argum...&quot;</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="math.html">Mathematics</a></li><li><a href="lambda_calculus.html">Lambda calculus</a></li><li>…</li></ul></nav></nav></header><hr><main><blockquote class="comment-context">A $~$\\lambda$~$ expression is something of the form $~$\\lambda x.f(x)$~$, which means "take in an input $~$x$~$, and return $~$f(x)$~$\. For example, $~$\\lambda x.x+1$~$ takes in a number and returns one more than it\. A $~$\\lambda$~$ expression can have multiple inputs; e\.g\. $~$\\lambda x.\\lambda y.x+y$~$<mark> takes in two numbers and returns their sum</mark>\. We can also write this as $~$\\lambda xy.x+y$~$; "$~$\\lambda xy$~$" is simply a shorthand for "$~$\\lambda x.\\lambda y$~$\."</blockquote>
+<p>I think it's confusing to introduce multi-argument functions before talking about currying. This makes it seem as though multi-argument functions are an intrinsic part of the lambda calculus, rather than just functions that return other functions.</p></main><hr><footer></footer></body></html>

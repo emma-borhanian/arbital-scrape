@@ -1,0 +1,41 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Ackermann function</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_SVG" async></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">Ackermann function</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/ackermann_function.json.html">ackermann_function.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/ackermann_function">https://arbital.com/p/ackermann_function</a></p><p class="creator">by
+ <a class="page-link" href="../page/AlexAppel.html">Alex Appel</a> Jun 9 2016 
+updated
+ Jun 10 2016</p></div><p class="clickbait">The slowest-growing fast-growing function.</p><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>Ackermann function</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="math.html">Mathematics</a></li><li><a href="function.html">Function</a></li><li>…</li></ul></nav></nav></header><hr><main><p>The Ackermann function works as follows:</p>
+<p>One may have noticed that addition, multiplication, and exponentiation seem to increase in "power", that is, when pitted against each other, it is easier to produce enormous numbers with exponentiation than with multiplication, and so on.</p>
+<p>The Ackermann function produces a hierarchy of such growth operations, and ascends one step higher in the hierarchy each time.</p>
+<p>Addition is the first operator in the hierarchy (though if we wanted, we could define [-addition_as_repeated_succession] and declare addition the second operator in the hierarchy). The next operator in the hierarchy is produced by iterating the previous element in the hierarchy. For instance, the next few operators in the hierarchy are multiplication, exponentiation, and tetration:</p>
+<p>Multiplication is iterated addition: $~$A \cdot B = \underbrace{A + A + \ldots A}_{B \text{ copies of } A}$~$</p>
+<p>Exponentiation is iterated multiplication: $~$A^B = \underbrace{A \times A \times \ldots A}_{B \text{ copies of } A}$~$.</p>
+<p>($~$A ^ B$~$ is written $~$A \uparrow B$~$ in [knuth_up_arrow_notation].)</p>
+<p>Tetration is iterated exponentiation. $~$A \uparrow\uparrow B = \underbrace{A^{A^{\ldots^A}}}_{B \text{ copies of } A}$~$ times.</p>
+<p>$~$\uparrow^n$~$ just means $~$n$~$ up arrows, so we can also write tetration as: $~$A \uparrow^2 B = \underbrace{A \uparrow^1 (A \uparrow^1 (\ldots A))}_{B \text{ copies of } A}$~$</p>
+<p>Now the pattern can be noticed and generalized, following the rule: $~$A \uparrow^n B = \underbrace{A \uparrow^{n-1} (A \uparrow^{n-1} (\ldots A))}_{B \text{ copies of } A}$~$</p>
+<p>And now we can define the Ackermann function as $~$A(n) = n \uparrow^n n$~$.</p>
+<p>This definition is relatively small, but the functions grow at incredible rates. <a href="http://waitbutwhy.com/2014/11/1000000-grahams-number.html">Wait But Why</a> has a good intuitive description of how incredibly fast tetration, pentation, and hexation grow, but by the time we get to $~$A(6)$~$, the Ackermann function already grows far more quickly than that. $~$A(1)=1$~$, $~$A(2)=4$~$, and $~$A(3)$~$ cannot be written in the universe, as it has enormously more digits than our universe has subatomic particles.</p>
+<p>Interestingly enough, the Ackermann function grows faster than all primitive recursive functions. This is related to a rather deep connection between the consistency strength of a mathematical theory (which sorts of results they are capable of proving) and the slowest-growing function for which the theory cannot prove "this function is defined on all integers."</p></main><hr><section class="comments"><h2>Comments</h2><div class="comment"><p><a class="page-link" href="../page/AlexeiAndreev.html">Alexei Andreev</a></p><p><blockquote class="comment-context">Multiplication is iterated addition\. <mark>$~$A \\cdot B \= A + A + A$~$\.\.\.\. $~$B$~$ times</mark>\.</blockquote>
+<p>If you look on Wikipedia's page about <a href="https://en.wikipedia.org/wiki/Knuth%27s_up-arrow_notation">up arrow</a>, they use the under-bracket notation, which looks much better.</p></p></div><div class="comment"><p><a class="page-link" href="../page/AlexeiAndreev.html">Alexei Andreev</a></p><p><blockquote class="comment-context">Interestingly enough, the Ackermann function grows faster than all primitive recursive functions\. <mark>This is related to a rather deep connection between the consistency strength of a mathematical theory \(which sorts of results they are capable of proving\) and the slowest\-growing function for which the theory cannot prove "this function is defined on all integers\."</mark></blockquote>
+<p>This sounds interesting! Would love to read more about this.</p></p></div></section><footer><p class="tagged"><h2>Tagged</h2><span class="page-comma-list"><a class="page-link" href="../page/needs_summary_meta_tag.html">Needs summary</a>,
+ <a class="page-link" href="../page/start_meta_tag.html">Start</a></span></p><p class="all-creators"><h2>All Creators</h2><span class="page-comma-list"><a class="page-link" href="../page/AlexAppel.html">Alex Appel</a>,
+ <a class="page-link" href="../page/ChrisBarnett.html">Chris Barnett</a>,
+ <a class="page-link" href="../page/EricRogstad.html">Eric Rogstad</a>,
+ <a class="page-link" href="../page/NateSoares.html">Nate Soares</a></span></p><p class="likes"><h2>Likes</h2><span class="page-comma-list"><a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a>,
+ <a class="page-link" href="../page/EricRogstad.html">Eric Rogstad</a>,
+ <a class="page-link" href="../page/JaimeSevillaMolina.html">Jaime Sevilla Molina</a>,
+ <a class="page-link" href="../page/StephanieZolayvar.html">Stephanie Zolayvar</a>,
+ <a class="page-link" href="../page/VladArber.html">Vlad Arber</a></span></p><p class="reverse-related"><h2>Reverse Related</h2><ul class="page-list"><li><a class="page-link" href="../page/needs_summary_meta_tag.html">Needs summary</a> <q>This page does not have a summary which provides an informative overview of the page's primary topic.</q> - <a class="page-link" href="../page/AlexeiAndreev.html">Alexei Andreev</a></li><li><a class="page-link" href="../page/start_meta_tag.html">Start</a> <q>This page gives a basic overview of the topic, but may be missing important information or have stylistic issues. If you're able to, please help expand or improve it!</q> - <a class="page-link" href="../page/EliezerYudkowsky.html">Eliezer Yudkowsky</a></li></ul></p></footer></body></html>

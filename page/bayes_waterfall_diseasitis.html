@@ -1,0 +1,194 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Waterfall diagrams and relative odds</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_SVG" async></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">Waterfall diagrams and relative odds</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/bayes_waterfall_diseasitis.json.html">bayes_waterfall_diseasitis.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/bayes_waterfall_diseasitis">https://arbital.com/p/bayes_waterfall_diseasitis</a></p><p class="creator">by
+ <a class="page-link" href="../page/EliezerYudkowsky.html">Eliezer Yudkowsky</a> Feb 8 2016 
+updated
+ Jan 30 2017</p></div><p class="clickbait">A way to visualize Bayes' rule that yields an easier way to solve some problems</p><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>Waterfall diagrams and relative odds</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="math.html">Mathematics</a></li><li><a href="probability_theory.html">Probability theory</a></li><li><a href="bayes_reasoning.html">Bayesian reasoning</a></li><li><a href="bayes_rule.html">Bayes' rule</a></li><li><a href="bayes_waterfall_diagram.html">Waterfall diagram</a></li><li>…</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="rationality.html">Rationality</a></li><li><a href="probability_theory.html">Probability theory</a></li><li><a href="bayes_reasoning.html">Bayesian reasoning</a></li><li><a href="bayes_rule.html">Bayes' rule</a></li><li><a href="bayes_waterfall_diagram.html">Waterfall diagram</a></li><li>…</li></ul></nav></nav></header><hr><main><p>[summary:  Waterfall diagrams, like <a href="bayes_frequency_diagram.html">frequency diagrams</a>, provide a way of visualizing <a href="bayes_rule.html">Bayes&#39; Rule</a>.  For example, if 20% of the patients in the screening patient are sick (red) and 80% are healthy (blue); and 90% of the sick patients get positive test results; and 30% of the healthy patients get positive test results, we could visualize the probability flows using the following diagram:</p>
+<p><img src="https://i.imgur.com/CXsoZhA.png?0" alt="Waterfall diagram" /></p>
+<p>This diagram helps show that only the <em>relative</em> ratios matter to the final answer.  Twice as much water flowing from both streams at the top, or half as much water from each stream making it to the bottom, wouldn't change the relative proportions in the end result.]</p>
+<p>Imagine a waterfall with two streams of water at the top, a red stream and a blue stream.  These streams separately approach the top of the waterfall, with some of the water from both streams being diverted along the way, and the remaining water falling into a shared pool below.</p>
+<p><img src="https://i.imgur.com/D8EhY65.png?0" alt="unlabeled waterfall" /></p>
+<p>Suppose that:</p>
+<ul>
+<li>At the top of the waterfall, 20 gallons/second of red water are flowing down, and 80 gallons/second of blue water are coming down.</li>
+<li>90% of the red water makes it to the bottom.</li>
+<li>30% of the blue water makes it to the bottom.</li>
+</ul>
+<p>Of the purplish water that makes it to the bottom of the pool, how much was originally from the red stream and how much was originally from the blue stream?</p>
+<p>%%if-after(<a href="bayes_frequency_diagram_diseasitis.html">Frequency diagrams: A first look at Bayes</a>):
+This is structurally identical to the <a href="diseasitis.html">Diseasitis</a> problem from <a href="bayes_frequency_diagram_diseasitis.html">before</a>:</p>
+<ul>
+<li>20% of the patients in the screening population start out with Diseasitis.</li>
+<li>Among patients with Diseasitis, 90% turn the tongue depressor black.</li>
+<li>30% of the patients without Diseasitis will also turn the tongue depressor black.
+%%</li>
+</ul>
+<p>%%!if-after(<a href="bayes_frequency_diagram_diseasitis.html">Frequency diagrams: A first look at Bayes</a>):
+This is structurally similar to the following problem, such as medical students might encounter:</p>
+<p>You are a nurse screening 100 patients for Diseasitis, using a tongue depressor which usually turns black for patients who have the sickness.</p>
+<ul>
+<li>20% of the patients in the screening population start out with Diseasitis.</li>
+<li>Among patients with Diseasitis, 90% turn the tongue depressor black (true positives).</li>
+<li>However, 30% of the patients without Diseasitis will also turn the tongue depressor black (false positives).</li>
+</ul>
+<p>What is the chance that a patient with a blackened tongue depressor has Diseasitis?
+%%</p>
+<p>The 20% of sick patients are analogous to the 20 gallons/second of red water; the 80% of healthy patients are analogous to the 80 gallons/second of blue water:</p>
+<p><img src="https://i.imgur.com/eQh2qUt.png?0" alt="top labeled waterfall" /></p>
+<p>The 90% of the sick patients turning the tongue depressor black is analogous to 90% of the red water making it to the bottom of the waterfall.  30% of the healthy patients turning the tongue depressor black is analogous to 30% of the blue water making it to the bottom pool.</p>
+<p><img src="https://i.imgur.com/6GBBYO5.png?0" alt="middle labeled waterfall" /></p>
+<p>Therefore, the question "what portion of water in the final pool came from the red stream?" has the same answer as the question "what portion of patients that turn the tongue depressor black are sick with Diseasitis?"</p>
+<p>%%if-after(<a href="bayes_frequency_diagram_diseasitis.html">Frequency diagrams: A first look at Bayes</a>):
+Now for the faster way of answering that question.
+%%</p>
+<p>We start with <em>4 times as much blue water as red water</em> at the top of the waterfall.</p>
+<p>Then each molecule of red water is 90% likely to make it to the shared pool, and each molecule of blue water is 30% likely to make it to the pool.  (90% of red water and 30% of blue water make it to the bottom.)  So each molecule of red water is <em>3 times as likely</em> (0.90 / 0.30 = 3) as a molecule of blue water to make it to the bottom.</p>
+<p>So we multiply prior proportions of $~$1 : 4$~$ for red vs. blue by relative likelihoods of $~$3 :  1$~$ and end up with final proportions of $~$(1 \cdot 3) : (4 \cdot 1) = 3 : 4$~$, meaning that the bottom pool has 3 parts of red water to 4 parts of blue water.</p>
+<p><img src="https://i.imgur.com/QIrtuVU.png?0" alt="labeled waterfall" /></p>
+<p>To convert these <em>relative</em> proportions into an <em>absolute</em> probability that a random water molecule at the bottom is red, we calculate 3 / (3 + 4) to see that 3/7ths (roughly 43%) of the water in the shared pool came from the red stream.</p>
+<p>This proportion is the same as the 18 : 24 sick patients with positive results, versus healthy patients with positive test results, that we would get by <a href="bayes_frequency_diagram.html">thinking about 100 patients</a>.</p>
+<p>That is, to solve the Diseasitis problem in your head, you could convert this word problem:</p>
+<blockquote>
+  <p>20% of the patients in a screening population have Diseasitis.  90% of the patients with Diseasitis turn the tongue depressor black, and 30% of the patients without Diseasitis turn the tongue depressor black. Given that a patient turned their tongue depressor black, what is the probability that they have Diseasitis?</p>
+</blockquote>
+<p>Into this calculation:</p>
+<blockquote>
+  <p>Okay, so the initial odds are (20% : 80%) = (1 : 4), and the likelihoods are (90% : 30%) = (3 : 1). Multiplying those ratios gives final odds of (3 : 4), which converts to a probability of 3/7ths.</p>
+</blockquote>
+<p>(You might not be able to convert 3/7 to 43% in your head, but you might be able to eyeball that it was a chunk less than 50%.)</p>
+<p>You can try doing a similar calculation for this problem:</p>
+<ul>
+<li>90% of widgets are good and 10% are bad.</li>
+<li>12% of bad widgets emit sparks.</li>
+<li>Only 4% of good widgets emit sparks.</li>
+</ul>
+<p>What percentage of sparking widgets are bad? If you are sufficiently comfortable with the setup, try doing this problem entirely in your head.</p>
+<p>(You might try visualizing a waterfall with good and bad widgets at the top, and only sparking widgets making it to the bottom pool.)
+%todo: Have a picture of a waterfall here, with no numbers, but with the parts labeled, that can be expanded if the user wants to expand it.%</p>
+<p>%%hidden(Show answer):</p>
+<ul>
+<li>There's (1 : 9) bad vs. good widgets.</li>
+<li>Bad vs. good widgets have a (12 : 4) relative likelihood to spark.</li>
+<li>This simplifies to (1 : 9) x (3 : 1) = (3 : 9) = (1 : 3), 1 bad sparking widget for every 3 good sparking widgets.</li>
+<li>Which converts to a probability of 1/(1+3) = 1/4 = 25%; that is, 25% of sparking widgets are bad.</li>
+</ul>
+<p>Seeing sparks didn't make us "believe the widget is bad"; the probability only went to 25%, which is less than 50/50.  But this doesn't mean we say, "I still believe this widget is good!" and toss out the evidence and ignore it.  A bad widget is <em>relatively more likely</em> to emit sparks, and therefore seeing this evidence should cause us to think it <em>relatively more likely</em> that the widget is a bad one, even if the probability hasn't yet gone over 50%.  We increase our probability from 10% to 25%.%%</p>
+<p>%%if-before(<a href="bayes_rule_odds_intro.html">Introduction to Bayes&#39; rule: Odds form</a>):
+Waterfalls are one way of visualizing the "odds form" of "Bayes' rule", which states that <strong>the prior odds times the likelihood ratio equals the posterior odds.</strong>  In turn, this rule can be seen as formalizing the notion of "the strength of evidence" or "how much a piece of evidence should make us update our beliefs".  We'll take a look at this more general form next.
+%%</p>
+<p>%%!if-before(<a href="bayes_rule_odds_intro.html">Introduction to Bayes&#39; rule: Odds form</a>):
+Waterfalls are one way of visualizing the <a href="bayes_rule_odds.html">odds form</a> of <a href="bayes_rule.html">Bayes&#39; rule</a>, which states that <strong>the prior odds times the likelihood ratio equals the posterior odds</strong>.
+%%</p></main><hr><section class="comments"><h2>Comments</h2><div class="comment"><p><a class="page-link" href="../page/EricRogstad.html">Eric Rogstad</a></p><p><blockquote class="comment-context">This problem is <mark>isomorphic</mark> to:  "20% of the patients in a screening population have Diseasitis\.  90% of the patients with Diseasitis turn the tongue depressor black, and 30% of the patients without Diseasitis turn the tongue depressor black\.  How many patients that turn the tongue depressor black have Diseasitis?"</blockquote>
+<p>I think <em>isomorphic</em> is too advanced vocabulary to be assumed for Math 1. Would this be a good opportunity to use a popover with the definition?</p></p></div><div class="comment"><p><a class="page-link" href="../page/EricRogstad.html">Eric Rogstad</a></p><p><blockquote class="comment-context">\(This is called a "frequency visualization"\.  When talking to people unfamiliar with Bayes, <mark>multiple studies show</mark> that talking about 20 patients produces better problem\-solving ability than talking about 20% of patients\.\)</blockquote>
+<p>Do we want <em>citation needed</em> norms on Arbital?</p>
+<p>(At a higher level, do we want readers to be able to flag portions of a page with a variety of labels, such as, <em>unclear</em>, <em>appears to be factually incorrect</em>, <em>contradictory</em>, etc?)</p></p></div><div class="comment"><p><a class="page-link" href="../page/EricRogstad.html">Eric Rogstad</a></p><p><blockquote class="comment-context">Let's represent a black tongue depressor with a <mark>black halo</mark>\.  We put black halos on 9 out of 10 sick patients and 3 out of 10 healthy patients\.  This produces 90% \* 20 = 18 sick patients with black halos \(black tongue depressors\), and 30% \* 80 = 24 healthy patients with black halos\.</blockquote>
+<p>This text is out of sync with the graphic -- the pic actually shows black tongue depressors.</p></p></div><div class="comment"><p><a class="page-link" href="../page/EricRogstad.html">Eric Rogstad</a></p><p><p>I liked this explanation. In particular, the <em>obvious hard way</em> vs <em>sneaky easy way</em> contrast caught my attention.</p>
+<p>Perhaps that could even serve as an introductory motivating sentence? (e.g. "In this post we'll explore an obvious hard way and also a <em>sneaky easy way</em> to do calculations using Bayes's Rule.")</p></p></div><div class="comment"><p><a class="page-link" href="../page/MaloBourgon.html">Malo Bourgon</a></p><p><blockquote class="comment-context">\(This is called a "frequency visualization"\.  When talking to people unfamiliar with Bayes, multiple studies show <mark>that talking about 20 patients produces better problem\-solving ability than talking about 20% of patients\.</mark>\)</blockquote>
+<p>Wording seem less clear then it could be here, what does it mean to say it “produces better problem-solving.” What about something like:</p>
+<blockquote>
+  <p>. . . that participants arrive at the correct answer more often when the problems is presented in terms of frequencies, 20 patients, rather then probabilities, 20% of patients.”</p>
+</blockquote></p></div><div class="comment"><p><a class="page-link" href="../page/AnarethA.html">Anareth A</a></p><p><blockquote class="comment-context">This proportion is the same as the 18 : 24 sick patients with positive results, versus healthy patients with positive test results, that we would get by thinking about 100 patients\.</blockquote>
+<p>This sentence should be written above the previous paragraph: 18/24 is 3/4, not 3/7.</p></p></div><div class="comment"><p><a class="page-link" href="../page/AnarethA.html">Anareth A</a></p><p><blockquote class="comment-context">
+At the top of the waterfall, 20 gallons/second of red water are flowing down, and 80 gallons/second of blue water are coming down\.
+<mark>90% of the red water makes it to the bottom\.
+30% of the blue water makes it to the bottom\.
+</mark></blockquote>
+<p>It should be clarified that “the bottom” here refers to the pool.</p></p></div><div class="comment"><p><a class="page-link" href="../page/AdamZerner.html">Adam Zerner</a></p><p><blockquote class="comment-context">Now for the faster way of answering that question\.
+
+</blockquote>
+<p>I think it'd be clearer to have two different headers. The way it's set up right now, I didn't initially see that this one article is talking about two different (but related) approaches.</p></p></div><div class="comment"><p><a class="page-link" href="../page/AdamZerner.html">Adam Zerner</a></p><p><blockquote class="comment-context">Waterfalls are one way of visualizing the "odds form" of "Bayes' rule", which states that <mark>the prior odds times the likelihood ratio equals the posterior odds</mark>\.  In turn, this rule can be seen as formalizing the notion of "the strength of evidence" or "how much a piece of evidence should make us update our beliefs"\.  We'll take a look at this more general form next\.
+
+</blockquote>
+<p>Ah, insightful! I hadn't seen forms of Bayes' Rule other than the probability form before today, and this is very helpful (well, perhaps I had seen them but it hasn't "hit me" until now).</p>
+<p>I like that this is emphasized. To further emphasize, I think a formula should be added as a block level element underneath.</p></p></div><div class="comment"><p><a class="page-link" href="../page/rajeevajha.html">rajeeva jha</a></p><p><blockquote class="comment-context">
+At the top of the waterfall, 20 gallons/second of red water are flowing down, and 80 gallons/second of blue water are coming down\.
+90% of the red water makes it to the bottom\.
+30% of the blue water makes it to the bottom\.<mark>
+</mark></blockquote>
+<p>90% of the red water makes it to the shared pool.
+30% of the blue water makes it to the shared pool.</p></p></div><div class="comment"><p><a class="page-link" href="../page/rajeevajha.html">rajeeva jha</a></p><p><blockquote class="comment-context">Of the purplish water that makes it to the bottom of the pool,<mark> how much was originally from the red stream and how much was originally from the blue stream?</mark></blockquote>
+<p>Question of interest.</p></p></div><div class="comment"><p><a class="page-link" href="../page/rajeevajha.html">rajeeva jha</a></p><p><blockquote class="comment-context">To convert these relative proportions into an absolute probability that a random water molecule at the bottom is red, we calculate 3 / \(3 \+ 4\) to see that 3/7ths \(roughly 43%\) of the water in the shared pool came from the red stream\.</blockquote>
+<p>Answer of interest.</p></p></div><div class="comment"><p><a class="page-link" href="../page/yassinechaouche.html">yassine chaouche</a></p><p><blockquote class="comment-context">
+  <mark>Okay, so the initial odds are \(20% : 80%\) = \(1 : 4\), and the likelihoods are \(90% : 30%\) = \(3 : 1\)\. Multiplying those ratios gives final odds of \(3 : 4\), which converts to a probability of 3/7ths\.</mark>
+</blockquote>
+<p>How did it convert to 3/7th is unclear.</p></p></div><div class="comment"><p><a class="page-link" href="../page/KatrielFriedman.html">Katriel Friedman</a></p><p><p>I don't understand how the waterfall concept helps illustrate the "odds form": the amount of each type of water reaching the pool is still expressed as a probability rather than jointly being expressed as the likelihood ratio. The fact that these likelihoods don't matter -- only their ratio -- was the the critical conceptual blockage for me. </p></p></div><div class="comment"><p><a class="page-link" href="../page/RobertEidschun.html">Robert Eidschun</a></p><p><blockquote class="comment-context">Then each molecule of red water is 90% <mark>likely</mark> to make it to the shared pool, and each molecule of blue water is 30% likely to make it to the pool\.  \(90% of red water and 30% of blue water make it to the bottom\.\)  So each molecule of red water is 3 times as likely \(0\.90 / 0\.30 = 3\) as a molecule of blue water to make it to the bottom\.</blockquote>
+<p>"Likely" refers to probability, and yet the point of this essay is to explain probability.  Therefore, the use of "likely" is, in a sense, circular reasoning.  After all, what does "likely" mean?  It's not explained here.  It suggests an outcome frequency of sorts and so this statement and others like it is an attempt to arrive at an outcome frequency (equivalent to the proportions of red and blue water that make it down through) by referring to another outcome frequency; thus the circularity.</p>
+<p>Better to stick with the proportions themselves by explaining that, however much red water makes it down through, there will be three times as much of it as there is blue water that makes it down through.  Say that some fraction, f, of the blue water molecules makes it down through; then for every 100 molecules of water, f x 80 blue molecules make it down through and 3f x 20 red molecules make it down through, making for proportions of 60f red to 80f blue.  Scaling down those proportions by dividing both by f, we get 60:80, which can be further scaled down to 3:4.</p>
+<p>Note that the factor of 3, i.e. the "likelihood ratio" (by which the initial proportions of 20:80 are multiplied) is explicit in the previous paragraph.  (It's in the statement, "3f x 20 red molecules make it down through".)  Putting it another way, the previous paragraph makes it clear that multiplying by 3 will give the same final proportions ("posterior odds") as will, in taking a frequency approach, multiplying 20 by 0.9 and 80 by 0.3, since the latter proportions can be scaled by dividing each by 0.3:  (0.9/0.3 x 20):(0.3/0.3 x 80) = (3 x 20):1 x 80 = 3:4.</p></p></div><div class="comment"><p><a class="page-link" href="../page/samsmith.html">sam smith</a></p><p><blockquote class="comment-context">This proportion is the same as the 18 : <mark>24 </mark>sick patients with positive results, versus healthy patients with positive test results, that we would get by thinking about 100 patients\.</blockquote>
+<p>has to be 18:42. 42 is the sum of 18 and 24 ( these are the proportions of water). </p></p></div><div class="comment"><p><a class="page-link" href="../page/kaiweynberg.html">kai weynberg</a></p><p><blockquote class="comment-context">Show answer
+
+
+There's \(1 : 9\) bad vs\. good widgets\.
+Bad vs\. good widgets have a \(12 : 4\) relative likelihood to spark\.
+This simplifies to \(1 : 9\) x \(3 : 1\) = \(3 : 9\) = \(1 : 3\), 1 bad sparking widget for every 3 good sparking widgets\.
+<mark>Which converts to a probability of 1/\(1\+3\) = 1/4 = 25%; that is, 25% of sparking widgets are bad\.</mark>
+
+
+Seeing sparks didn't make us "believe the widget is bad"; the probability only went to 25%, which is less than 50/50\.  But this doesn't mean we say, "I still believe this widget is good\!" and toss out the evidence and ignore it\.  A bad widget is relatively more likely to emit sparks, and therefore seeing this evidence should cause us to think it relatively more likely that the widget is a bad one, even if the probability hasn't yet gone over 50%\.  We increase our probability from 10% to 25%\.
+
+
+
+</blockquote>
+<p>I'm failing to grasp how the probability conversion works and so some further explanation may be needed </p></p></div><div class="comment"><p><a class="page-link" href="../page/JakobSchmid.html">Jakob Schmid</a></p><p><blockquote class="comment-context">So <mark>we multiply prior proportions of $~$1 : 4$~$ for red vs\. blue by relative likelihoods of $~$3 :  1$~$ and end up with final proportions of $~$(1 \\cdot 3) : (4 \\cdot 1) \= 3 : 4$~$</mark>, meaning that the bottom pool has 3 parts of red water to 4 parts of blue water\.</blockquote>
+<p>The inverse of multiplication is division. To the mathematically steadfast this is completely obvious but I wager this is exactly the point where most non-mathematically inclined people will become confused and give up or will simply read on without absorbing the whole message. Maybe make this mathematical step more clearly?</p></p></div><div class="comment"><p><a class="page-link" href="../page/SteffiGrnert.html">Steffi Gränert</a></p><p><p>I can follow the calculation of diseasitis - that's standard math that I learned in school. What I have a problem to follow is how you get to the "absolute propability" of 3 / (3 + 4). I think the "3+4" are the 3 parts red water and 4 parts blue water, but where does the other 3 come from?
+Wait … is that again the 3 parts red? So 3 Parts of 7 parts in all?
+Hm … I think I have solved my question  ;-)</p></p></div></section><footer><p class="tagged"><h2>Tagged</h2><span class="page-comma-list"><a class="page-link" href="../page/b_class_meta_tag.html">B-Class</a>,
+ <a class="page-link" href="../page/proposed_a_class.html">Proposed A-Class</a></span></p><p class="all-creators"><h2>All Creators</h2><span class="page-comma-list"><a class="page-link" href="../page/AdomHartell.html">Adom Hartell</a>,
+ <a class="page-link" href="../page/AlexeiAndreev.html">Alexei Andreev</a>,
+ <a class="page-link" href="../page/EliezerYudkowsky.html">Eliezer Yudkowsky</a>,
+ <a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a>,
+ <a class="page-link" href="../page/KhanaSantamaria.html">Khana Santamaria</a>,
+ <a class="page-link" href="../page/MaloBourgon.html">Malo Bourgon</a>,
+ <a class="page-link" href="../page/NateSoares.html">Nate Soares</a>,
+ <a class="page-link" href="../page/RobertEidschun.html">Robert Eidschun</a></span></p><p class="likes"><h2>Likes</h2><span class="page-comma-list"><a class="page-link" href="../page/AdeleLopez.html">Adele Lopez</a>,
+ <a class="page-link" href="../page/AlexRay.html">Alex Ray</a>,
+ <a class="page-link" href="../page/AlexanderGonchiy.html">Alexander Gonchiy</a>,
+ <a class="page-link" href="../page/AlexeiAndreev.html">Alexei Andreev</a>,
+ <a class="page-link" href="../page/AndreiPhlmann.html">Andrei Pöhlmann</a>,
+ <a class="page-link" href="../page/AndreyChergik.html">Andrey Chergik</a>,
+ <a class="page-link" href="../page/AnneHinken.html">Anne Hinken</a>,
+ <a class="page-link" href="../page/BenAtkin.html">Ben Atkin</a>,
+ <a class="page-link" href="../page/CharlieRaffaele.html">Charlie Raffaele</a>,
+ <a class="page-link" href="../page/ChrisMacLeod.html">Chris MacLeod</a>,
+ <a class="page-link" href="../page/DavidJung.html">David Jung</a>,
+ <a class="page-link" href="../page/DiegoSilva.html">Diego Silva</a>,
+ <a class="page-link" href="../page/DonyChristie.html">Dony Christie</a>,
+ <a class="page-link" href="../page/EmmanuelSmith.html">Emmanuel Smith</a>,
+ <a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a>,
+ <a class="page-link" href="../page/EricStavarache.html">Eric Stavarache</a>,
+ <a class="page-link" href="../page/GregvandeKrol.html">Greg van de Krol</a>,
+ <a class="page-link" href="../page/GustavoBicalho.html">Gustavo Bicalho</a>,
+ <a class="page-link" href="../page/IanPitchford.html">Ian Pitchford</a>,
+ <a class="page-link" href="../page/JaimeSevillaMolina.html">Jaime Sevilla Molina</a>,
+ <a class="page-link" href="../page/JudeRyan.html">Jude Ryan</a>,
+ <a class="page-link" href="../page/KamilaS.html">Kamila S</a>,
+ <a class="page-link" href="../page/LeonardoVida.html">Leonardo Vida</a>,
+ <a class="page-link" href="../page/MarcinSedlak.html">Marcin Sedlak</a>,
+ <a class="page-link" href="../page/MaximeWillaert.html">Maxime Willaert</a>,
+ <a class="page-link" href="../page/NajuMancheril.html">Naju Mancheril</a>,
+ <a class="page-link" href="../page/PhilWallack.html">Phil Wallack</a>,
+ <a class="page-link" href="../page/PiotrOrszulak.html">Piotr Orszulak</a>,
+ <a class="page-link" href="../page/RogerCavanagh.html">Roger Cavanagh</a>,
+ <a class="page-link" href="../page/SalilKalghatgi.html">Salil Kalghatgi</a>,
+ <a class="page-link" href="../page/ShantanuDutta.html">Shantanu Dutta</a>,
+ <a class="page-link" href="../page/SiddharthHiregowdara.html">Siddharth Hiregowdara</a>,
+ <a class="page-link" href="../page/StephanieKoo.html">Stephanie Koo</a>,
+ <a class="page-link" href="../page/SzymonSlawinski.html">Szymon Slawinski</a>,
+ <a class="page-link" href="../page/SzymonWilczyski.html">Szymon Wilczyński</a>,
+ <a class="page-link" href="../page/TomVoltz.html">Tom Voltz</a>,
+ <a class="page-link" href="../page/aadicavi.html">aadi cavi</a>,
+ <a class="page-link" href="../page/jamesmiller.html">james miller</a>,
+ <a class="page-link" href="../page/samsmith.html">sam smith</a></span></p><p class="reverse-related"><h2>Reverse Related</h2><ul class="page-list"><li><a class="page-link" href="../page/b_class_meta_tag.html">B-Class</a> <q>This page is mostly complete and without major problems, but has not had detailed feedback from the target audience and reviewers.</q> - <a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a></li><li><a class="page-link" href="../page/proposed_a_class.html">Proposed A-Class</a> <q>Pages which have been proposed for A-Class status.</q> - <a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a></li></ul></p></footer></body></html>

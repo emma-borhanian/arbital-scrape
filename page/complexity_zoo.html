@@ -1,0 +1,37 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Complexity theory: Complexity zoo</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_SVG" async></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">Complexity theory: Complexity zoo</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/complexity_zoo.json.html">complexity_zoo.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/complexity_zoo">https://arbital.com/p/complexity_zoo</a></p><p class="creator">by
+ <a class="page-link" href="../page/JaimeSevillaMolina.html">Jaime Sevilla Molina</a> Jun 14 2016 
+updated
+ Jan 25 2017</p></div><p class="clickbait">Pass and see the exotic beasts coming from the lands of afar!</p><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>Complexity theory: Complexity zoo</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="math.html">Mathematics</a></li><li><a href="complexity_theory.html">Complexity theory</a></li><li>…</li></ul></nav></nav></header><hr><main><p>Welcome, visitor! Get ready to exercise your sense of wonder and expand your mind on the <strong>zoo of complexity</strong>.</p>
+<p>That where are the cages of the animals, you ask? No cage could contain our specimens, I must say. But you can get a glimpse of their nature through the chalky definitions in each of those blackboards. Where shall we go first?</p>
+<hr />
+<p>Oh yes! [ $~$P$~$], the class of problems solvable in polynomial time. A popular creature in our installations. It is commonly accepted that this  class encompasses the problems which can be solved efficiently. Now, bear in mind that the classes in this zoo only classify problems attending to how fast the computational power you need to solve them grows compared to the size of the problem you are solving! That means, even if all grow at the same polynomial pace, some of the problems who lurk inside this class need a huge overload of resources from the very beginning, which makes them intractable! Not to talk about the multiplicative factor, which also gets ignored in making this distinction between classes, or the degree of the polynomial which upper bounds the function! Beliefs like that $~$x$~$ grows as fast as $~$1000 x^{42}+10^{100}$~$ can be misleading if not properly understood.</p>
+<p>However, in practice such instances are rare, and $~$P$~$ is still used thorough all computer science as a synonym of efficiency - though they pay special attention to the degree and distinguish between functions in $~$\mathcal{O}(n)$~$ and functions in $~$\mathcal{O}(n*log(n))$~$, even though all programs associated fall within $~$P$~$.</p>
+<hr />
+<p>The next creature is without a doubt the most famous of the zoo! Meet [ $~$NP$~$], the class of problems whose solution are easily checkable. This little creature is the responsible of modern cryptography, which relies on [one_way_functions functions easy to compute but hard to invert].</p>
+<p>$~$NP$~$ also is the main star, together with $~$P$~$, of one great show in the zoo. Oh, look! It is about to start!…</p>
+<p><em>Announcer</em>: Ladies, gentlemen and children who are today with us! We present to you the main attraction of our bestiary, the infamous [ $~$P$~$ vs $~$NP$~$]!</p>
+<p><em>Announcer</em>: You may already have seen both of those creatures, but are they two different beasts? Or only two aspects of the same thing?</p>
+<p><em>Announcer</em>: Look again at them, and realize. If finding a solution to a problem is easy, then checking whether a given solution is true is also easy! You can always just find the solution again from scratch and check that both coincide. So we conclude that $~$P\subset NP$~$. Can the reverse inclusion be true as well?</p>
+<p><em>Announcer</em>: Imagine for a moment! The hard problems of creativity, solved at once through the clever application of an efficient algorithm! [Entscheidungsproble Automated short proof writing]! Instant reversal of one way functions!</p>
+<p><em>Announcer</em>: However, we suspect that they are different, though a proof has remained elusive through the years. </p>
+<p>(the public cries: If we have been searching for decades for such a proof and none has been found then you should revise your beliefs and update against that! Why suspect otherwise?)</p>
+<p><em>Announcer</em>: We seem to have an exceptionally well educated audience today! Then again, we have been also on the search for a proof of the opposite without fruition. Why give this fact more weight in the Bayesian scheme of the things? There happens to be a somewhat convoluted reason for this. For if $~$P=NP$~$, then we would expect proofs to be easier to find, while if $~$P!=NP$~$ the opposite is true! So it only makes sense that is more probable that we live in the world where $~$P!=NP$~$%%note:For a formalization of this notion check [ natural proofs]. Also, see [4bf Arguments against $~$P=NP$~$]%%!</p>
+<p><em>Announcer</em>: And that's all for today, folks. Keep enjoying your visit though the zoo!</p>
+<hr />
+<p>(To be continued)</p></main><hr><footer><p class="tagged"><h2>Tagged</h2><span class="page-comma-list"><a class="page-link" href="../page/start_meta_tag.html">Start</a></span></p><p class="all-creators"><h2>All Creators</h2><span class="page-comma-list"><a class="page-link" href="../page/DuncanWilson.html">Duncan Wilson</a>,
+ <a class="page-link" href="../page/JaimeSevillaMolina.html">Jaime Sevilla Molina</a></span></p><p class="reverse-related"><h2>Reverse Related</h2><ul class="page-list"><li><a class="page-link" href="../page/start_meta_tag.html">Start</a> <q>This page gives a basic overview of the topic, but may be missing important information or have stylistic issues. If you're able to, please help expand or improve it!</q> - <a class="page-link" href="../page/EliezerYudkowsky.html">Eliezer Yudkowsky</a></li></ul></p></footer></body></html>

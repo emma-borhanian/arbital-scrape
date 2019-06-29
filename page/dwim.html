@@ -1,0 +1,48 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Do-What-I-Mean hierarchy</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_SVG" async></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">Do-What-I-Mean hierarchy</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/dwim.json.html">dwim.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/dwim">https://arbital.com/p/dwim</a></p><p class="creator">by
+ <a class="page-link" href="../page/EliezerYudkowsky.html">Eliezer Yudkowsky</a> Mar 23 2016 
+updated
+ Jun 6 2016</p></div><p class="clickbait">Successive levels of &quot;Do What I Mean&quot; or AGIs that understand their users increasingly well</p><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>Do-What-I-Mean hierarchy</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="ai_alignment.html">AI alignment</a></li><li><a href="AGI_typology.html">Strategic AGI typology</a></li><li><a href="task_agi.html">Task-directed AGI</a></li><li><a href="safe_plan_identification.html">Safe plan identification and verification</a></li><li>…</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="ai_alignment.html">AI alignment</a></li><li><a href="task_agi.html">Task-directed AGI</a></li><li><a href="safe_plan_identification.html">Safe plan identification and verification</a></li><li>…</li></ul></nav></nav></header><hr><main><p>[summary:  "Do What I Mean" or "DWIM" refers to the degree to which an AGI can rapidly <a href="safe_plan_identification.html">identify</a> an intended goal and find a <a href="advanced_safety.html">safe</a> plan to it, based on the AI's understanding of what the user <em>means</em> or <em>wants.</em></p>
+<p>Levels of DWIM-ness could range over:</p>
+<ul>
+<li>Having a general idea of which parts of the world the user thinks are significant (so that the AI warns about <a href="low_impact.html">impacts</a> on significant things);</li>
+<li>Having a psychological model of the user's beliefs, and flagging/reporting when the AI thinks the user has a false belief about the consequences of a plan;</li>
+<li>Having a psychological model of the user's desires, and trying to fulfill what the AI thinks the user <em>wants</em> to accomplish by giving the AGI a task;</li>
+<li>At the extreme end: <a href="normative_extrapolated_volition.html">Extrapolated volition</a> models of what the user(s) <em>would</em> want* under idealization conditions.]</li>
+</ul>
+<p>Do-What-I-Mean refers to an aligned AGI's ability to produce better-aligned plans, based on an explicit model of what the user wants or believes.</p>
+<p>Successive levels of DWIM-ness:</p>
+<ul>
+<li>No understanding of human intentions  / zero DWIMness.  E.g. a Task AGI that is focused on one task being communicated, where all the potential <a href="low_impact.html">impacts</a> of that task need to be separately <a href="user_querying.html">vetted</a>.  If you tell this kind of AGI to 'cure cancer', you might need to veto plans which would remove the cancer but kill the patient as a side effect, because the AGI doesn't start out knowing that you'd prefer not to kill the patient.</li>
+<li>Do What You Don't Know I Dislike.  The Task AGI has a background understanding of some human goals or which parts of the world humans consider especially significant, so it can more quickly generate a plan likely to pass human <a href="user_querying.html">vetting</a>.  A Task AGI at this level, told to cure cancer, will take relatively fewer rounds of Q&amp;A to generate a plan which carefully seals off any blood vessels cut by removing the cancer; because the AGI has a general notion of human health, knows that <a href="low_impact.html">impacts</a> on human health are significant, and models that users will generally prefer plans which result in good human health as side effects rather than plans which result in poor human health.</li>
+<li>Do What You Know I Understood.  The Task AGI has a model of human <em>beliefs,</em> and can flag and report divergences between the AGI's model of what the humans expect to happen, and what the AGI expects to happen.</li>
+<li>DWIKIM:  Do What I Know I Mean.  The Task AGI has an explicit psychological model of human preference - not just a list of things in the environment which are significant to users, but a predictive model of how users behave which is informative about their preferences.  At this level, the AGI can read through a dump of online writing, build up a model of human psychology, and guess that you're telling it to cure a cancer because you altruistically want that person to be healthier.</li>
+<li>DWIDKIM:  Do What I Don't Know I Mean.  The AGI can perform some basic <a href="cev.html">extrapolation</a> steps on its model of you and notice when you're trying to do something that, in the AGI's model, some further piece of knowledge might change your mind about.  (Unless we trust the DWIDKIM model a <em>lot</em>, this scenario should imply "Warn the user about that" not "Do what you think the user would've told you.")</li>
+<li>(Coherent) Extrapolated Volition.  The AGI does what it thinks you (or everyone) would've told it to do if you were as smart as the AGI, i.e., your decision model is extrapolated toward improved knowledge, increased ability to consider arguments, improved reflectivity, or other transforms in the direction of a theory of normativity.</li>
+</ul>
+<p>Risks from pushing toward higher levels of DWIM might include:</p>
+<ul>
+<li>To the extent that DWIM can originate plans, some portion of which are not fully supervised, then DWIM is a very complicated goal or preference system that would be harder to train and more likely to break.  This failure mode may be less likely if some level of DWIM is <em>only</em> being used to <em>flag</em> potentially problematic plans that were generated by non-DWIM protocols, rather than generating plans on its own.</li>
+<li>Accurate predictive psychological models of humans might push the system closer to the <a href="programmer_deception.html">programmer deception</a> failure mode being more accessible if something else goes wrong.</li>
+<li>Sufficiently advanced psychological models might constitute <a href="mindcrime.html">mindcrime</a>.</li>
+<li>The human-genie system might end up in the <a href="complacency_valley.html">Valley of Dangerous Complacency</a> where the genie <em>almost</em> always gets it right but occasionally gets it very wrong, and the human user is no longer alert to this possibility during the <a href="user_querying.html">checking phase</a>.</li>
+<li>E.g. you might be tempted to skip the user checking phase, or just have the AI do whatever it thinks you meant, at a point where that trick only works 99% of the time and not 99.999999% of the time.</li>
+<li>Computing sufficiently advanced DWIDKIM or <a href="cev.html">EV</a> possibilities for user querying might expose the human user to cognitive hazards.  ("If you were sufficiently superhuman under scenario 32, you'd want yourself to stare really intently at this glowing spiral for 2 minutes, it might change your mind about some things… want to check and see if you think that's a valid argument?")</li>
+<li>If the AGI was actually behaving like a safe genie, the sense of one's wishes being immediately fulfilled without effort or danger might expose the programmers to additional <a href="moral_hazard.html">moral hazard</a>.</li>
+</ul></main><hr><footer><p class="all-creators"><h2>All Creators</h2><span class="page-comma-list"><a class="page-link" href="../page/DamonPourtahmasebSasi.html">Damon Pourtahmaseb-Sasi</a>,
+ <a class="page-link" href="../page/EliezerYudkowsky.html">Eliezer Yudkowsky</a></span></p><p class="likes"><h2>Likes</h2><span class="page-comma-list"><a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a>,
+ <a class="page-link" href="../page/EricRogstad.html">Eric Rogstad</a></span></p><p class="related"><h2>Related</h2><ul class="page-list"><li><a class="page-link" href="../page/cev.html">Coherent extrapolated volition (alignment target)</a> <q>A proposed direction for an extremely well-aligned autonomous superintelligence - do what humans would want, if we knew what the AI knew, thought that fast, and understood ourselves.</q> - <a class="page-link" href="../page/EliezerYudkowsky.html">Eliezer Yudkowsky</a></li></ul></p></footer></body></html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Join and meet: Examples</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_SVG" async></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">Join and meet: Examples</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/join_examples.json.html">join_examples.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/join_examples">https://arbital.com/p/join_examples</a></p><p class="creator">by
+ <a class="page-link" href="../page/KevinClancy.html">Kevin Clancy</a> May 27 2016 
+updated
+ Jun 20 2016</p></div><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>Join and meet: Examples</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="math.html">Mathematics</a></li><li><a href="order_theory.html">Order theory</a></li><li><a href="math_join.html">Join and meet</a></li><li>…</li></ul></nav></nav></header><hr><main><p>A union of sets and the least common multiple of a set of natural numbers can both be viewed as joins. In addition, joins can be useful to the designers of statically typed programming languages.</p>
+<p>%%%knows-requisite(<a href="real_analysis.html">Real analysis</a>):</p>
+<h2 id="therealnumbers">The real numbers</h2>
+<p>Consider the <a href="poset.html">Partially ordered set</a> $~$\langle \mathbb{R}, \leq \rangle$~$ of all real numbers ordered by the standard comparison relation. For any non-empty $~$X \subseteq \mathbb{R}$~$, $~$\bigvee X$~$ exists if and only if $~$X$~$ has an upper bound; this fact falls directly out of the definition of the set of real numbers.
+%%%</p>
+<h2 id="subtyping">Subtyping</h2>
+<p>Statically typed programming languages often define a poset of types ordered by the subtyping relation; Scala is one such language. Consider the following Scala program.</p>
+<p><img src="http://i.imgur.com/IUkzT7A.png" alt="A scala program with class inheritance" /></p>
+<p>When a programmer defines a class hierarchy in an object-oriented language, they are actually defining a poset of types. The above program defines the simple poset shown in the following Hasse diagram.</p>
+<p><img src="http://i.imgur.com/dk1EHuA.png" alt="Hasse diagram for the nominal subtyping relation defined by the above program" /></p>
+<pre>%%%comment:
+dot source:
+
+digraph G {
+  node [width = 0.1, height = 0.1];
+  edge [arrowhead = &quot;none&quot;];
+  rankdir = BT;
+  Dog -&gt; Animal;
+  Cat -&gt; Animal;
+}
+%%%</pre>
+<p>Now consider the expression <em>if (b) dog else cat</em>. If b is true, then it evaluates to a value of type Dog. If b is false, then it evaluates to a value of type Cat. What type, then, should <em>if (b) dog else cat</em> have? Its type should be the join of Dog and Cat, which is Animal.</p>
+<h2 id="powersets">Power sets</h2>
+<p>Let $~$X$~$ be a <a href="set_mathematics.html">Set</a>. Consider the <a href="poset.html">Partially ordered set</a> $~$\langle \mathcal{P}(X), \subseteq \rangle$~$, the power set of $~$X$~$ ordered by inclusion. In this poset, joins are unions: for all $~$A \subseteq \mathcal{P}(X)$~$, $~$\bigvee A = \bigcup A$~$. This can be shown as follows. Let $~$A \subseteq \mathcal{P}(X)$~$. Then $~$\bigcup A$~$ is an upper bound of $~$A$~$ because a union contains each of its constituent sets. Furthermore, $~$\bigcup A$~$ is the <em>least</em> upper bound of $~$A$~$. For let $~$Z$~$ be an upper bound of $~$A$~$. Then $~$x \in \bigcup A$~$ implies $~$x \in Y$~$ for some $~$Y \in A$~$, and since $~$Y \subseteq Z$~$, we have $~$x \in Y \subseteq Z$~$. Since $~$x \in \bigcup A$~$ implies $~$x \in Z$~$, we have $~$\bigcup A \subseteq Z$~$. Hence, $~$\bigvee A = \bigcup A$~$.</p>
+<h2 id="divisibility">Divisibility</h2>
+<p>Consider the poset $~$\langle \mathbb Z_+, | \rangle$~$ of divisibility on the positive integers. In this poset, the upper bounds of an integer are exactly its multiples. Thus, the join of a set of positive integers in $~$\langle \mathbb Z_+, | \rangle$~$ is their <a href="least_common_multiple.html">least common multiple</a>. Dually, the meet of a set of positive integers in $~$\langle \mathbb Z_+, | \rangle$~$ is their <a href="greatest_common_divisor.html">greatest common divisor</a>.</p></main><hr><section class="comments"><h2>Comments</h2><div class="comment"><p><a class="page-link" href="../page/KevinClancy.html">Kevin Clancy</a></p><p><p><a href="AlexeiAndreev.html">Alexei Andreev</a> This page includes a conditional example that only shows up for people who know real analysis. I'm imagining that someone who reads this may have real analysis familiarity, but has not marked themselves as such on Arbital. I'm not sure what the solution to this is. Maybe it is to automatically add a section at the bottom saying that there is additional content for people who know the subjects that are mentioned in conditionals.   </p></p></div><div class="comment"><p><a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a></p><p><p>Could you add an intro/summary? It's good to have for both popups and avoiding having two headers at the top.</p></p></div></section><footer><p class="all-creators"><h2>All Creators</h2><span class="page-comma-list"><a class="page-link" href="../page/EricRogstad.html">Eric Rogstad</a>,
+ <a class="page-link" href="../page/KevinClancy.html">Kevin Clancy</a></span></p><p class="likes"><h2>Likes</h2><span class="page-comma-list"><a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a></span></p></footer></body></html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>What is a logarithm?</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_SVG" async></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">What is a logarithm?</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/log_definition.json.html">log_definition.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/log_definition">https://arbital.com/p/log_definition</a></p><p class="creator">by
+ <a class="page-link" href="../page/NateSoares.html">Nate Soares</a> Jun 3 2016 
+updated
+ Sep 15 2016</p></div><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>What is a logarithm?</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="math.html">Mathematics</a></li><li><a href="logarithm.html">Logarithm</a></li><li>…</li></ul></nav></nav></header><hr><main><p>[summary: Logarithms are a group of <a href="function.html">functions</a> that take a number as input and produce another number. There is a logarithm function for every positive number $~$b$~$ <a href="log_base_1.html">except 1</a>, and the logarithm function for $~$b$~$ (called "the logarithm base $~$b$~$" or just "log base $~$b$~$") takes an input $~$x$~$ and counts how many times you have to multiply $~$1$~$ by $~$b$~$ to get $~$x$~$. For example, the log base 10 of 1000 is 3, because you have to multiply 1 by 10 three times to get 1000. The log base $~$b$~$ of $~$x$~$ is written $~$\log_b(x).$~$]</p>
+<p>Logarithms are a group of <a href="function.html">functions</a> that map numbers to numbers. There is a logarithm function for every positive number $~$b$~$ <a href="log_base_1.html">except 1</a>, and the logarithm function for $~$b$~$ (called "the logarithm base $~$b$~$" or just "log base $~$b$~$") takes an input $~$x$~$ and counts how many times you have to multiply $~$1$~$ by $~$b$~$ to get $~$x$~$.</p>
+<p>For example, the log base 10 of 1000 is 3, because you have to multiply 1 by 10 three times to get 1000, and the log base 2 of 16 is 4, because you have to multiply 1 by 2 four times to get 16. The log base $~$b$~$ of $~$x$~$ is written $~$\log_b(x).$~$</p>
+<p>The logarithm function grows slowly. For example, $~$\log_{10}(x)$~$ is less than 1 until $~$x$~$ reaches 10, and it's less than 2 until $~$x$~$ reaches 100, and it's less than 6 until $~$x$~$ reaches 1,000,000 and so on. You've got to put a lot of oomph (specifically, a whole factor of 10) into the input in order to make the output go up by 1. Here's a graph of $~$\log_{10}(x)$~$ inching its way towards a measly 2 as $~$x$~$ makes it all the way out to 100:</p>
+<p><img src="http://i.imgur.com/UhUBlTt.png" alt="log10" /></p>
+<p>[fixme: Make this graph interactive.]</p>
+<p>Logarithms may grow slowly, but they never stop growing: For every number $~$n$~$, no matter how large, there is an input $~$x$~$ such that $~$\log_{10}(x) &gt; n.$~$</p>
+<h2 id="examples">Examples</h2>
+<ol>
+<li>$~$\log_{10}(10000) = 4,$~$ because you have to multiply 1 by 10 four times to get ten thousand: $~$1 \cdot 10 \cdot 10 \cdot 10 \cdot 10 = 10000.$~$</li>
+<li>$~$\log_2(8) = 3,$~$ because $~$1 \cdot 2 \cdot 2 \cdot 2 = 8.$~$</li>
+<li>$~$\log_3(9) = 2,$~$ because $~$1 \cdot 3 \cdot 3 = 9.$~$</li>
+<li>$~$\log_{b}(1) = 0$~$ for any $~$b$~$, because no matter what $~$b$~$ is, you don't need to multiply 1 by $~$b$~$ any times to get 1.</li>
+<li>$~$\log_{b}(b) = 1$~$ for any $~$b$~$, because no matter what $~$b$~$ is, if you multiply 1 by $~$b$~$ once, you get $~$b.$~$</li>
+<li>$~$\log_{1.5}(3.375) = 3,$~$ because $~$1 \cdot 1.5 \cdot 1.5 \cdot 1.5 = 3.375.$~$</li>
+</ol>
+<p>Question: What's $~$\log_3(27)$~$?</p>
+<p>%%hidden(Answer):
+Answer: 3, because $~$1 \cdot 3 \cdot 3 \cdot 3 = 27$~$.
+%%</p>
+<p>Question: What's $~$\log_4(16)$~$?</p>
+<p>%%hidden(Answer):
+Answer: 2, because $~$1 \cdot 4 \cdot 4 = 16$~$.
+%%</p>
+<p>Question: What's $~$\log_{10}(\text{1,000,000})$~$?</p>
+<p>%%hidden(Answer):
+Answer: 6, because $~$1 \cdot 10 \cdot 10 \cdot 10 \cdot 10 \cdot 10 \cdot 10 = 1,000,000$~$.
+%%</p>
+<p>All of the examples above are cases where the answer is a whole number, because $~$x$~$ is a [-power] of $~$b.$~$ Logarithms also give answers in cases where the answer is not a whole number. For example, $~$\log_{10}(500) \approx 2.7$~$.</p>
+<p>What's <em>that</em> supposed to mean? That if you multiply 1 by 10 about 2.7 times, you get 500?</p>
+<p>Yes, precisely! If you multiply 1 by ten once, and multiply the result by ten another time, and then multiply that by ten 0.7 times, the result is roughly 500. What does it mean to multiply a number by ten 0.7 times? Well, is there a number $~$x$~$ such that if we multiply 1 by $~$x$~$ ten times, it's the same as multiplying 1 by 10 seven times? Yes! That number is roughly 5:</p>
+<p>$$~$\underbrace{5 \cdot 5 \cdot \ldots 5}_\text{10 times} \approx \underbrace{10 \cdot 10 \cdot \ldots 10}_\text{7 times}$~$$</p>
+<p>Multiplying by 5 (ten times) is about the same as multiplying by 10 (seven times), so multiplying by five (once) is about the same as multiplying by 10 (seven-tenths of a time). Thus, multiplying 1 by ten 2.7 times means multiplying it by 10 twice, then multiplying it by approximately 5, for a result of approximately 500.</p>
+<p>This is why $~$\log_{10}(500) \approx 2.7$~$: that's how many times you need to multiply 1 by 10 to get 500.</p>
+<p>If that answer isn't satisfactory yet, don't worry: Throughout the tutorial, we'll explore both (a) what this means, and (b) why this is the "right way" to multiply a number by $~$b$~$ fractionally-many times.</p>
+<p>You might be saying to yourself, "Ok, I can see how 500 is kinda sorta one times ten 2.7 times, but how do you <em>figure that out?</em> As far as I can tell, you pulled that "$~$5^{10}$~$ is approximately $~$10^7$~$" thing out of thin air. Where did that come from? How is the logarithm actually calculated?"</p>
+<p>The annoying answer is that I calculated $~$\log_{10}(500)$~$ by typing "log10(500)" into <a href="http://www.wolframalpha.com/input/?i=log10(500)">Wolfram Alpha</a>. In more seriousness, in the coming posts, you'll learn how to find things like $~$\log_{10}(500)$~$ on your own.</p>
+<p>That said, the outputs of logarithms are generally difficult to find, but useful once you've found them. Historically, scientists and engineers would pay money for giant tables of pre-computed logarithm values, because those sped up their practical calculations considerably. Why are the outputs of logarithm functions so convenient to use? That question will be answered later in this tutorial.</p>
+<p>You might also be saying to yourself, "ok, I buy that there's a way to see 500 as '1 times 10, 2.7 times,' but what does that <em>mean?</em> What's the point of looking at 500 that way?"</p>
+<p>It's hard to give a short answer to that question, but only because there are so many good answers. One answer goes something like, "if you think of 500 as 2.7 tens, and you think of 8000 as 3.9 tens, then you can multiply the numbers on the left by adding the representations on the right". For example, $~$500 \cdot 8000$~$ is approximately $~$2.7 + 3.9 = 6.6$~$ tens.</p>
+<p>But that's getting ahead of ourselves a bit. The most intuitive interpretation to start with is probably this one: Logarithms are measuring how "long" a number is, in terms of how many digits it takes to write that number down, for a generalized notion of "length."</p>
+<p>It may seem that numbers always take a whole number of digits to write down: 139 and 931 are both written using three digits ('9', '3', and '1'). However, as we will see, there's a sense in which 139 is barely using its third digit, while 931 is using all three of its digits to almost their full extent. Logarithms quantify this intuition, and the precise answer that they give reveals some interesting facts about how many digits it costs to write a given number down.</p></main><hr><section class="comments"><h2>Comments</h2><div class="comment"><p><a class="page-link" href="../page/EricRogstad.html">Eric Rogstad</a></p><p><blockquote class="comment-context">Multiplying by 5 \(ten times\) is about the same as multiplying by 10 \(seven times\), so multiplying by five \(once\) is about the same as multiplying by 10 \(<mark>one seventh</mark> of a time\)\. Thus, $~$\\log\_{10}(500)$~$ is approximately 2\.7: That's how many times you need to multiply 1 by 10 to get 500\.</blockquote>
+<p>Seven tenths?</p></p></div><div class="comment"><p><a class="page-link" href="../page/EricRogstad.html">Eric Rogstad</a></p><p><blockquote class="comment-context">It may seem that numbers always take a whole number of digits to write down: 139 and 931 are both written using three digits \('9', '3', and '1'\)\. However, as we will see, there's a sense in which 139 is barely using its third digit, while 931 is using all three of its digits to almost their full extent\. Logarithms quantify this intuition, and the precise answer that they give reveals some interesting information about how many digits it costs to write a given number down\.</blockquote>
+<p>This paragraph is good -- clearer than some of the other places where you tried to introduced this idea.</p></p></div></section><footer><p class="tagged"><h2>Tagged</h2><span class="page-comma-list"><a class="page-link" href="../page/b_class_meta_tag.html">B-Class</a></span></p><p class="all-creators"><h2>All Creators</h2><span class="page-comma-list"><a class="page-link" href="../page/AbdikarimAweisAbo.html">Abdikarim Aweis Abo</a>,
+ <a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a>,
+ <a class="page-link" href="../page/EricRogstad.html">Eric Rogstad</a>,
+ <a class="page-link" href="../page/JeremySchlatter.html">Jeremy Schlatter</a>,
+ <a class="page-link" href="../page/JoeZeng.html">Joe Zeng</a>,
+ <a class="page-link" href="../page/ManojNeelapu.html">Manoj Neelapu</a>,
+ <a class="page-link" href="../page/NateSoares.html">Nate Soares</a></span></p><p class="likes"><h2>Likes</h2><span class="page-comma-list"><a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a>,
+ <a class="page-link" href="../page/EricRogstad.html">Eric Rogstad</a>,
+ <a class="page-link" href="../page/JaimeSevillaMolina.html">Jaime Sevilla Molina</a>,
+ <a class="page-link" href="../page/NateSoares.html">Nate Soares</a>,
+ <a class="page-link" href="../page/SzymonSlawinski.html">Szymon Slawinski</a>,
+ <a class="page-link" href="../page/SzymonWilczyski.html">Szymon Wilczyński</a>,
+ <a class="page-link" href="../page/ThomasRichardson.html">Thomas Richardson</a>,
+ <a class="page-link" href="../page/TravisRivera.html">Travis Rivera</a></span></p><p class="reverse-related"><h2>Reverse Related</h2><ul class="page-list"><li><a class="page-link" href="../page/b_class_meta_tag.html">B-Class</a> <q>This page is mostly complete and without major problems, but has not had detailed feedback from the target audience and reviewers.</q> - <a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a></li></ul></p></footer></body></html>

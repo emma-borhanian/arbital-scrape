@@ -1,0 +1,24 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>&quot;&gt; &quot;you're allowed to increase P(BadDriver) a li...&quot;</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_SVG" async></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">&quot;&gt; &quot;you're allowed to increase P(BadDriver) a li...&quot;</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/986.json.html">986.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/986">https://arbital.com/p/986</a></p><p class="creator">by
+ <a class="page-link" href="../page/DewiMorgan.html">Dewi Morgan</a> Sep 25 2018</p></div><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>&quot;&gt; &quot;you're allowed to increase P(BadDriver) a li...&quot;</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="math.html">Mathematics</a></li><li><a href="probability_theory.html">Probability theory</a></li><li><a href="bayes_reasoning.html">Bayesian reasoning</a></li><li><a href="bayes_rule.html">Bayes' rule</a></li><li><a href="bayes_rule_probability.html">Bayes' rule: Probability form</a></li><li>…</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="rationality.html">Rationality</a></li><li><a href="probability_theory.html">Probability theory</a></li><li><a href="bayes_reasoning.html">Bayesian reasoning</a></li><li><a href="bayes_rule.html">Bayes' rule</a></li><li><a href="bayes_rule_probability.html">Bayes' rule: Probability form</a></li><li>…</li></ul></nav></nav></header><hr><main><blockquote class="comment-context">If you get in a car accident, and don't want to relinquish the hypothesis that you're a great driver, then you can find all sorts of reasons \("the road was slippery\! my car freaked out\!"\) why $~$\\mathbb P(e \\mid GoodDriver)$~$ is not too low\. But $~$\\mathbb P(e \\mid BadDriver)$~$ is also part of the update equation, and the "bad driver" hypothesis better predicts the evidence\. Thus, your first impulse, when deciding how to update your beliefs in the face of a car accident, should not be "But my preferred hypothesis allows for this evidence\!" It should instead be "Points to the 'bad driver' hypothesis for predicting this evidence better than the alternatives\!"  \(And remember, <mark>you're allowed to increase $~$\\mathbb P(BadDriver)$~$ a little bit,</mark> while still thinking that it's less than 50% probable\.\)</blockquote>
+<blockquote>
+  <p>"you're allowed to increase P(BadDriver) a little bit,"</p>
+</blockquote>
+<p>No, you're really not.</p>
+<p>You're only allowed to <em>replace</em> P(BadDriver) with P(BadDriver|HadOneAccident).</p>
+<p>If you have a second accident, you replace that in turn with P(BadDriver|HadOneAccident^HadASecondAccident), which if you are rational you might reexamine and update to P(BadDriver|HadTwoAccidents^HadQuiteALotOfNearMissesIfWeAreBeingHonest)</p>
+<p>But my point is, when applying each new piece of evidence, you have to remember the conditions that caused you to get your current probability, or you end up with naive Bayes and after seeing a few new bookcases you believe in aliens.</p></main><hr><footer></footer></body></html>

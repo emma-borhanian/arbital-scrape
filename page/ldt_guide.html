@@ -1,0 +1,86 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Guide to Logical Decision Theory</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_SVG" async></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">Guide to Logical Decision Theory</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/ldt_guide.json.html">ldt_guide.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/ldt_guide">https://arbital.com/p/ldt_guide</a></p><p class="creator">by
+ <a class="page-link" href="../page/EliezerYudkowsky.html">Eliezer Yudkowsky</a> Jul 8 2016 
+updated
+ Jul 8 2016</p></div><p class="clickbait">The entry point for learning about logical decision theory.</p><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>Guide to Logical Decision Theory</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="decision_theory.html">Decision theory</a></li><li><a href="logical_dt.html">Logical decision theories</a></li><li>…</li></ul></nav></nav></header><hr><main><p>"Logical decision theory" is a new family of decision theories, of varying levels of formalization, which are argued to have key implications for <em>theories of economic rationality,</em> the design of sufficiently advanced <em>machine intelligence</em> algorithms, and of course the <em>philosophy of rational decision.</em>  Logical decision theories impinge on whether it's rational to vote in elections, or rational to give in to blackmail, or <a href="https://arxiv.org/abs/1401.5577">how computational agents should play in dilemmas if the agents have common knowledge of each others' source code</a>.</p>
+<p>The new idea in logical decision theories can glossed as "choose as though you were choosing the logical output of your decision algorithm".</p>
+<p>Before continuing, please help this page adapt to you by telling it a couple of things about yourself!</p>
+<p>[multiple-choice(q_dt_background):  What's your primary background with respect to decision theory?  How should we initially approach this subject?
+a:  An economic standpoint.  Please start by telling me how this is relevant to economically rational agents deciding whether to vote in elections.
+knows: [dt_economics]
+wants: [dt_economics_intro]
+-wants: [dt_compsci_intro], [dt_newcomblike_intro], [dt_normal_intro], [dt_altruist_intro]
+b:  A computer science or Artificial Intelligence standpoint.  Start by talking to me about programs and code.
+knows: [dt_compsci]
+wants: [dt_compsci_intro]
+-wants: [dt_economics_intro], [dt_newcomblike_intro], [dt_normal_intro], [dt_altruist_intro]
+c:  The standpoint of analytic philosophy.  Talk to me about Newcomblike problems and why this new decision theory is better than a dozen other contenders.
+knows: [dt_philosophy]
+wants: [dt_newcomblike_intro]
+-wants: [dt_compsci_intro], [dt_newcomblike_intro], [dt_normal_intro], [dt_altruist_intro]
+d:  I'm just somebody off the Internet.  Can you explain to me from scratch what's going on?
+wants: [dt_normal_intro]
+-wants: [dt_economics_intro], [dt_compsci_intro], [dt_newcomblike_intro], [dt_altruist_intro]
+e:  I'm an effective altruist or philanthropic grantmaker.  I'm mainly wondering how this mysterious work relates to humanity's big picture and why it was worth whatever funding it received.
+wants: [dt_altruist_intro]
+-wants: [dt_economics_intro], [dt_compsci_intro], [dt_newcomblike_intro], [dt_normal_intro]
+]</p>
+<p>[multiple-choice(q_dt_math):  What level of math should we throw at you?
+a:  As little math as possible, please.
+-knows: [1r5], <a href="math2.html">Math 2</a>, <a href="math3.html">Math 3</a>
+b:  Normal algebra is fine.  Please be careful about how you toss around large formulas full of Greek letters.
+knows: <a href="math1.html">Math 1</a>, <a href="reads_algebra.html">Ability to read algebra</a>
+-knows: <a href="math3.html">Math 3</a>
+c:  I'm confident in my ability to deal with formulas, and you can go through them quickly.
+knows: <a href="math1.html">Math 1</a>, <a href="math2.html">Math 2</a>, <a href="reads_algebra.html">Ability to read algebra</a>
+]</p>
+<p>%%knows-requisite([dt_philosophy]):
+[multiple-choice(q_dt_newcomblike):  How much of the prior debate on decision theory are you familiar with?
+a:  None, I just have a general background in analytic philosophy.
+-knows: [dt_prisonersdilemma],  [dt_newcomb],  [dt_newcomblike]
+b:  I'm familiar with the Prisoner's Dilemma.
+knows: [dt_prisonersdilemma]
+-knows: [dt_newcomb],  [dt_newcomblike]
+c:  I'm familiar with Newcomb's Problem and I understand its relation to the Prisoner's Dilemma.
+knows: [dt_prisonersdilemma], [dt_newcomb]
+-knows:  [dt_newcomblike]
+d:  I'm familiar with a significant portion of the prior debate on causal decision theory versus evidential decision theory.
+knows: [dt_prisonersdilemma], [dt_newcomb], [dt_newcomblike]
+]
+%%</p>
+<p>%%knows-requisite([dt_compsci]):
+[multiple-choice(q_dt_compsci):  Are you already familiar with game theory and the Prisoner's Dilemma?
+a:  Nope.
+-knows: [dt_prisonersdilemma], [dt_gametheory]
+b:  I'm familiar with the Prisoner's Dilemma.
+knows: [dt_prisonersdilemma]
+-knows: [dt_gametheory]
+c:  I'm familiar with Nash equilibria.
+knows: [dt_prisonersdilemma], [dt_gametheory]
+]
+%%</p>
+<p>%%knows-requisite([dt_economics]):
+[multiple-choice(q_dt_compsci):  Are you already familiar with game theory and the Prisoner's Dilemma?
+a:  Nope.
+-knows: [dt_prisonersdilemma], [dt_gametheory]
+b:  I'm familiar with the Prisoner's Dilemma.
+knows: [dt_prisonersdilemma]
+-knows: [dt_gametheory]
+c:  I understand Nash equilibria and Pareto optima, and how the Prisoner's Dilemma contrasts them.
+knows: [dt_prisonersdilemma], [dt_gametheory]
+]
+%%</p></main><hr><footer><p class="tagged"><h2>Tagged</h2><span class="page-comma-list"><a class="page-link" href="../page/guide_meta_tag.html">Guide</a></span></p><p class="reverse-related"><h2>Reverse Related</h2><ul class="page-list"><li><a class="page-link" href="../page/guide_meta_tag.html">Guide</a> <q>Meta tag for the start page of a multi-page guide.</q> - <a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a></li></ul></p></footer></body></html>

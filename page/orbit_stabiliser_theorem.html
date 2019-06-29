@@ -1,0 +1,46 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Orbit-stabiliser theorem</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_SVG" async></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">Orbit-stabiliser theorem</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/orbit_stabiliser_theorem.json.html">orbit_stabiliser_theorem.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/orbit_stabiliser_theorem">https://arbital.com/p/orbit_stabiliser_theorem</a></p><p class="creator">by
+ <a class="page-link" href="../page/PatrickStevens.html">Patrick Stevens</a> Jun 19 2016 
+updated
+ Jul 1 2016</p></div><p class="clickbait">The Orbit-Stabiliser theorem tells us a lot about how a group acts on a given element.</p><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>Orbit-stabiliser theorem</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="math.html">Mathematics</a></li><li><a href="group_theory.html">Group theory</a></li><li><a href="group_action.html">Group action</a></li><li>…</li></ul></nav></nav></header><hr><main><p>[summary: 
+A <a href="group_action.html">group action</a> of a group $~$G$~$ acting on a set $~$X$~$ describes how $~$G$~$ sends elements of $~$X$~$ to other elements of $~$X$~$.  Given a specific element $~$x \in X$~$, the <a href="group_stabiliser.html">stabiliser</a> is all those elements of the group which send $~$x$~$ back to itself, and the <a href="group_orbit.html">orbit</a> of $~$x$~$ is all the elements to which $~$x$~$ can get sent.  </p>
+<p>This theorem tells you that $~$G$~$ is divided into equal-sized pieces using $~$x$~$. Each piece "looks like" the stabilizer of $~$x$~$ (and is the same size), and the orbit of $~$x$~$ tells you how to "move the piece around" over $~$G$~$ in order to cover it.  </p>
+<p>Put another way, each element $~$y$~$ in the orbit of $~$x$~$ is transformed "in the same way" by $~$G$~$ relative to $~$y$~$.  </p>
+<p>This theorem is closely related to <a href="lagrange_theorem_on_subgroup_size.html">Lagrange&#39;s Theorem</a>. 
+]</p>
+<p>[summary(Technical): Let $~$G$~$ be a finite <a href="group_mathematics.html">Group</a>, <a href="group_action.html">acting</a> on a set $~$X$~$. Let $~$x \in X$~$.
+Writing $~$\mathrm{Stab}_G(x)$~$ for the <a href="group_stabiliser.html">stabiliser</a> of $~$x$~$, and $~$\mathrm{Orb}_G(x)$~$ for the <a href="group_orbit.html">orbit</a> of $~$x$~$, we have $$~$|G| = |\mathrm{Stab}_G(x)| \times |\mathrm{Orb}_G(x)|$~$$ where $~$| \cdot |$~$ refers to the size of a set.]</p>
+<p>Let $~$G$~$ be a finite <a href="group_mathematics.html">Group</a>, <a href="group_action.html">acting</a> on a set $~$X$~$. Let $~$x \in X$~$.
+Writing $~$\mathrm{Stab}_G(x)$~$ for the <a href="group_stabiliser.html">stabiliser</a> of $~$x$~$, and $~$\mathrm{Orb}_G(x)$~$ for the <a href="group_orbit.html">orbit</a> of $~$x$~$, we have $$~$|G| = |\mathrm{Stab}_G(x)| \times |\mathrm{Orb}_G(x)|$~$$ where $~$| \cdot |$~$ refers to the size of a set.</p>
+<p>This statement generalises to infinite groups, where the same proof goes through to show that there is a <a href="bijective_function.html">bijection</a> between the <a href="group_coset.html">left cosets</a> of the group $~$\mathrm{Stab}_G(x)$~$ and the orbit $~$\mathrm{Orb}_G(x)$~$.</p>
+<h1 id="proof">Proof</h1>
+<p>Recall that the <a href="stabiliser_is_a_subgroup.html">Stabiliser is a subgroup</a> of the parent group.</p>
+<p>Firstly, it is enough to show that there is a bijection between the left cosets of the stabiliser, and the orbit.
+Indeed, then $$~$|\mathrm{Orb}_G(x)| |\mathrm{Stab}_G(x)| = |\{ \text{left cosets of} \ \mathrm{Stab}_G(x) \}| |\mathrm{Stab}_G(x)|$~$$
+but the right-hand side is simply $~$|G|$~$ because an element of $~$G$~$ is specified exactly by specifying an element of the stabiliser and a coset.
+(This follows because the <a href="left_cosets_partition_parent_group.html">cosets partition the group</a>.)</p>
+<h2 id="findingthebijection">Finding the bijection</h2>
+<p>Define $~$\theta: \mathrm{Orb}_G(x) \to \{ \text{left cosets of} \ \mathrm{Stab}_G(x) \}$~$, by $$~$g(x) \mapsto g \mathrm{Stab}_G(x)$~$$</p>
+<p>This map is well-defined: note that any element of $~$\mathrm{Orb}_G(x)$~$ is given by $~$g(x)$~$ for some $~$g \in G$~$, so we need to show that if $~$g(x) = h(x)$~$, then $~$g \mathrm{Stab}_G(x) = h \mathrm{Stab}_G(x)$~$.
+This follows: $~$h^{-1}g(x) = x$~$ so $~$h^{-1}g \in \mathrm{Stab}_G(x)$~$.</p>
+<p>The map is <a href="injective_function.html">injective</a>: if $~$g \mathrm{Stab}_G(x) = h \mathrm{Stab}_G(x)$~$ then we need $~$g(x)=h(x)$~$.
+But this is true: $~$h^{-1} g \in \mathrm{Stab}_G(x)$~$ and so $~$h^{-1}g(x) = x$~$, from which $~$g(x) = h(x)$~$.</p>
+<p>The map is <a href="surjective_function.html">surjective</a>: let $~$g \mathrm{Stab}_G(x)$~$ be a left coset.
+Then $~$g(x) \in \mathrm{Orb}_G(x)$~$ by definition of the orbit, so $~$g(x)$~$ gets taken to $~$g \mathrm{Stab}_G(x)$~$ as required.</p>
+<p>Hence $~$\theta$~$ is a well-defined bijection.</p></main><hr><footer><p class="all-creators"><h2>All Creators</h2><span class="page-comma-list"><a class="page-link" href="../page/AlexeiAndreev.html">Alexei Andreev</a>,
+ <a class="page-link" href="../page/MarkChimes.html">Mark Chimes</a>,
+ <a class="page-link" href="../page/PatrickStevens.html">Patrick Stevens</a></span></p><p class="likes"><h2>Likes</h2><span class="page-comma-list"><a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a></span></p><p class="children"><h2>Children</h2><ul class="page-tree"><li><a class="page-link" href="../page/orbit_stabiliser_theorem_external_resources.html">Orbit-Stabiliser theorem: External Resources</a> <q>External resources on the Orbit-Stabiliser theorem.</q> - <a class="page-link" href="../page/MarkChimes.html">Mark Chimes</a></li></ul></p></footer></body></html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Proof of Löb's theorem</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_SVG" async></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">Proof of Löb's theorem</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/proof_lobs_thorem.json.html">proof_lobs_thorem.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/proof_lobs_thorem">https://arbital.com/p/proof_lobs_thorem</a></p><p class="creator">by
+ <a class="page-link" href="../page/JaimeSevillaMolina.html">Jaime Sevilla Molina</a> Jul 10 2016 
+updated
+ Oct 14 2016</p></div><p class="clickbait">Proving that I am Santa Claus</p><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>Proof of Löb's theorem</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="math.html">Mathematics</a></li><li><a href="lobs_theorem.html">Löb's theorem</a></li><li>…</li></ul></nav></nav></header><hr><main><p>[summary:
+You can prove <a href="lobs_theorem.html">Löb&#39;s theorem</a> by assuming $~$\square A\to A$~$ and constructing a sentence $~$S$~$ such that $~$PA\vdash S\leftrightarrow (\square S \to A)$~$
+]</p>
+<p>The intuition behind the proof of Löb's theorem invokes the formalization of the following argument:</p>
+<p>Let $~$S$~$ stand for the sentence "If $~$S$~$ is provable, then I am Santa Claus".</p>
+<p>As it is standard, when trying to prove a If…then theorem we can start by supposing the antecedent and checking that the consequent follows. But if $~$S$~$ is provable, then we can chain its proof to an application of modus ponens of $~$S$~$ to itself in order to get a proof of the consequent "I am Santa Claus". If we suppose that showing the existence of a proof of a sentence implies that the sentence is true, then "I am Santa Claus" is true.</p>
+<p>Thus we have supposed that $~$S$~$ is provably true then it follows that "I am Santa Claus", which is a proof of what $~$S$~$ states! Therefore, $~$S$~$ is provably true, and we can apply the same reasoning again (this time without supposing a counterfactual) to get that it is true that "I am Santa Claus".</p>
+<p>Holy Gödel! Have we broken logic? If this argument worked, then we could prove any nonsensical thing we wanted. So where does it fail?</p>
+<p>One suspicious point is our implicit assumption that $~$S$~$ can be constructed in the first place as a first order sentence. But we know that there exists a <a href="provability_predicate.html">provability predicate</a> encoding the meaning we need, and then we can apply the <a href="diagonal_lemma.html">diagonal lemma</a> to the formula $~$Prv(x)\implies$~$ "I am Santa Claus" to get our desired $~$S$~$.</p>
+<p>(We will ignore the fact that expressing "I am Santa Claus" in the language of first order logic is rather difficult, since we could easily replace it with something simple like $~$0=1$~$.)</p>
+<p>It turns out that the culprit of this paradox is the apparently innocent supposition that when "I am Santa Claus" is provable, then it is true.</p>
+<p>How can this be false?, you may ask. Well, the standard provability predicate $~$Prv$~$ is something of the form $~$\exists y Proof(x,y)$~$, where $~$Proof(x,y)$~$ is true iff $~$y$~$ encodes a valid proof of $~$x$~$. But $~$y$~$ might be a [ nonstandard number] encoding a [ nonstandard proof] of infinitely many steps. If the only proofs of $~$x$~$ are nonstandard then certainly you will never be able to prove $~$x$~$ from the axioms of the system using standard methods.</p>
+<p>We can restate this result as Löb's theorem: If $~$Prv(A)\implies A$~$ is provable, then $~$A$~$ is provable.</p>
+<hr />
+<p>Now we go for the formal proof.</p>
+<p>Let $~$T$~$ be an [ axiomatizable] extension of [ minimal arithmetic], and $~$P$~$ a one-place predicate satisfying the <a href="provability_predicate.html">Bernais-Hilbert derivability conditions</a>, which are:</p>
+<ol>
+<li>If $~$T\vdash A$~$, then $~$T\vdash P(A)$~$.</li>
+<li>$~$T\vdash P(A\implies B) \implies (P(A)\implies P(B))$~$</li>
+<li>$~$T\vdash P(A)\implies P(P(A))$~$.</li>
+</ol>
+<p>For example, $~$PA$~$ and the standard provability predicate [ satisfy those conditions].</p>
+<p>Let us suppose that $~$A$~$ is such that $~$T\vdash P(A)\implies A$~$.</p>
+<p>As $~$T$~$ extends [ minimal arithmetic], the <a href="diagonal_lemma.html">Diagonal lemma</a> is applicable, and thus there exists $~$S$~$ such that $~$T\vdash S \iff (P(S)\implies A)$~$.</p>
+<p>By condition 1, $~$T\vdash P(S \implies (P(S)\implies A))$~$.</p>
+<p>By condition 2, $~$T\vdash P(S) \implies P(P(S) \implies A)$~$.</p>
+<p>Also by condition 2, $~$T\vdash P(P(S) \implies A) \implies (P(P(S)) \implies P(A))$~$.</p>
+<p>Combining these, $~$T\vdash P(S) \implies (P(P(S)) \implies P(A))$~$.</p>
+<p>By condition 3, $~$T\vdash P(S)\implies P(P(S))$~$ and thus $~$T\vdash P(S)\implies P(A)$~$.</p>
+<p>By our initial assumption, this means that $~$T\vdash P(S)\implies A$~$.</p>
+<p>But by the construction of $~$S$~$, then $~$T\vdash S$~$!</p>
+<p>By condition 1 again, then $~$T\vdash P(S)$~$, and since we already had shown that $~$T\vdash P(S)\implies A$~$, we have that $~$T\vdash A$~$, which completes the proof.</p>
+<p>We remark that $~$P$~$ can be any predicate satisfying the conditions, such as the verum predicate $~$x=x$~$.</p></main><hr><section class="comments"><h2>Comments</h2><div class="comment"><p><a class="page-link" href="../page/NateSoares.html">Nate Soares</a></p><p><blockquote class="comment-context">The intuition behind the proof of L<mark>ó</mark>b's theorem invokes the formalization of the following argument:</blockquote>
+<p>:, not '</p></p></div><div class="comment"><p><a class="page-link" href="../page/PatrickLaVictoir.html">Patrick LaVictoire</a></p><p><p>This is one of two ways I know of proving Löb's theorem, and I find them both illuminating. (The other is to derive it from Gödel's Second Incompleteness Theorem.)</p></p></div></section><footer><p class="all-creators"><h2>All Creators</h2><span class="page-comma-list"><a class="page-link" href="../page/DylanHendrickson.html">Dylan Hendrickson</a>,
+ <a class="page-link" href="../page/JaimeSevillaMolina.html">Jaime Sevilla Molina</a>,
+ <a class="page-link" href="../page/MYass.html">M Yass</a>,
+ <a class="page-link" href="../page/MalcolmMcCrimmon.html">Malcolm McCrimmon</a></span></p><p class="likes"><h2>Likes</h2><span class="page-comma-list"><a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a>,
+ <a class="page-link" href="../page/JaimeSevillaMolina.html">Jaime Sevilla Molina</a>,
+ <a class="page-link" href="../page/MalcolmMcCrimmon.html">Malcolm McCrimmon</a>,
+ <a class="page-link" href="../page/PatrickLaVictoir.html">Patrick LaVictoire</a>,
+ <a class="page-link" href="../page/PatrickStaples.html">Patrick Staples</a>,
+ <a class="page-link" href="../page/StephanieZolayvar.html">Stephanie Zolayvar</a></span></p></footer></body></html>

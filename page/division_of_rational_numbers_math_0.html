@@ -1,0 +1,82 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Division of rational numbers (Math 0)</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_SVG" async></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">Division of rational numbers (Math 0)</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/division_of_rational_numbers_math_0.json.html">division_of_rational_numbers_math_0.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/division_of_rational_numbers_math_0">https://arbital.com/p/division_of_rational_numbers_math_0</a></p><p class="creator">by
+ <a class="page-link" href="../page/PatrickStevens.html">Patrick Stevens</a> Jul 22 2016 
+updated
+ Aug 1 2016</p></div><p class="clickbait">&quot;Division&quot; is the idea of &quot;dividing something up among some people so that we can give equal amounts to each person&quot;.</p><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>Division of rational numbers (Math 0)</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="math.html">Mathematics</a></li><li><a href="rational_number.html">Rational number</a></li><li><a href="arithmetic_of_rational_numbers_math_0.html">Arithmetic of rational numbers (Math 0)</a></li><li>…</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="math.html">Mathematics</a></li><li><a href="rational_number.html">Rational number</a></li><li><a href="field_structure_of_rational_numbers.html">Field structure of rational numbers</a></li><li><a href="arithmetic_of_rational_numbers_math_0.html">Arithmetic of rational numbers (Math 0)</a></li><li>…</li></ul></nav></nav></header><hr><main><p>[summary: Division captures the idea of "sharing" apples between people, and it is the core motivating idea of the rational numbers.]</p>
+<p>So far in our study of the <a href="arithmetic_of_rational_numbers_math_0.html">arithmetic</a> of <a href="rational_number.html">rational numbers</a>, we've had <a href="addition_of_rational_numbers_math_0.html">addition</a> ("putting apples and chunks of apples side by side and counting what you've got"), <a href="subtraction_of_rational_numbers_math_0.html">subtraction</a> ("the same, but you're allowed anti-apples too"), and <a href="multiplication_of_rational_numbers_math_0.html">multiplication</a> ("make a rational number, but instead of starting from $~$1$~$ apple, start from some other number").</p>
+<p><strong>Division</strong> is what really sets the rational numbers apart from the <a href="integers_intro_math0.html">integers</a>, and it is the mathematician's answer to the question "if I have some apples, how do I share them among my friends?".</p>
+<h1 id="whatswrongwiththeintegers">What's wrong with the integers?</h1>
+<p>If you have an integer number of apples (that is, some number of apples and anti-apples - no chunks allowed, just whole apples and anti-apples), and you want to share them with friends, sometimes you'll get lucky.
+If you have four apples, for instance, then you can share them out between yourself and one friend, giving each person two apples.</p>
+<p>But sometimes (often, in fact) you'll get unlucky.
+If you want to share four apples between yourself and two others, then you can give each person one apple, but there's this pesky single apple left over which you just can't share.</p>
+<h1 id="whattherationalsdoforus">What the rationals do for us</h1>
+<p>The trick, obvious to anyone who has ever eaten a cake, is to cut the leftover apple into three equally-sized pieces and give each person a piece.
+Now we have shared out all four apples equally.</p>
+<p>But in order to do so, we've left the world of the integers, and in getting out our knife, we started working in the rationals.
+How much apple has everyone received, when we shared four apples among three people (that is, myself and two friends as recipients of apple)?
+%%hidden(Show solution):
+Everyone got $~$\frac{4}{3}$~$.</p>
+<p>Indeed, everyone got one whole apple; and then we chopped the remaining apple into three $~$\frac{1}{3}$~$-chunks and gave everyone one chunk.
+So everyone ended up with one apple and one $~$\frac{1}{3}$~$-chunk.</p>
+<p>By our instant addition rule %%note:If you've forgotten it, check out the <a href="addition_of_rational_numbers_math_0.html">addition page</a> again; it came from working out a chunk size out of which we can make both the $~$\frac{1}{3}$~$-chunk and the $~$1$~$-chunk.%%, $$~$1 + \frac{1}{3} = \frac{1}{1} + \frac{1}{3} = \frac{3 \times 1 + 1 \times 1}{3 \times 1} = \frac{3+1}{3} = \frac{4}{3}$~$$ </p>
+<p>There's another way to see this, if (laudably!) you don't like just applying rules.
+We could cut <em>every</em> apple into three pieces at the beginning, so we're left with four collections of three $~$\frac{1}{3}$~$-sized chunks.
+But now it's easy to share this among three people: just give everyone one of the $~$\frac{1}{3}$~$-chunks from each apple.
+We gave everyone four chunks in total, so this is $~$\frac{4}{3}$~$.
+%%</p>
+<p>The rationals provide the natural answer to all "sharing" questions about apples.</p>
+<p>We write "rational number $~$x$~$ divided by rational number $~$y$~$" as $~$\frac{x}{y}$~$: that is, $~$x$~$ apples divided amongst $~$y$~$ people.
+(We'll soon get to what it means to divide by a non-integer number of people; just roll with it for now.)
+If space is a problem, we can write $~$a/n$~$ instead.
+Notice that our familiar notation of "$~$\frac{1}{m}$~$-sized chunks" is actually just $~$1$~$ apple divided amongst $~$m$~$ people: it's the result of dividing $~$1$~$ into $~$m$~$ equal chunks.
+So the notation does make sense, and it's just an extension of the notation we've been using already.</p>
+<h1 id="divisionbyanaturalnumber">Division by a natural number</h1>
+<p>In general, $~$\frac{a}{m}$~$ apples, divided amongst $~$n$~$ people, is obtained by the "other way" above.
+Cut the $~$\frac{a}{m}$~$ into $~$n$~$ pieces, and then give everyone an equal number of pieces.</p>
+<p>Remember, $~$\frac{a}{m}$~$ is made of $~$a$~$ copies of pieces of size $~$\frac{1}{m}$~$; so what we do is cut all of the $~$\frac{1}{m}$~$-chunks individually into $~$n$~$ pieces, and then give everyone $~$a$~$ of the little pieces we've made.
+But "cut a $~$\frac{1}{m}$~$-chunk into $~$n$~$ pieces" is just "cut an apple into $~$n$~$ pieces, but instead of doing it to one apple, do it to a $~$\frac{1}{m}$~$-chunk": that is, it is $~$\frac{1}{m} \times \frac{1}{n}$~$, or $~$\frac{1}{m \times n}$~$.</p>
+<p>So the answer is just $$~$\frac{a}{m} / n = \frac{a}{m \times n}$~$$</p>
+<h2 id="example">Example</h2>
+<p>[todo: pictorial example]</p>
+<h1 id="divisionbyanegativeinteger">Division by a negative integer</h1>
+<p>What would it even mean to divide an apple between four anti-people?
+How about a simpler question: dividing an apple between one anti-person%%note:Remembering that dividing $~$x$~$ apples between one person just gives $~$x$~$, since there's not even any cutting of the apples necessary.%%? (The answer to this would be $~$\frac{1}{-1}$~$.) It's not obvious!</p>
+<p>Well, the thing to think about here is that if I take an apple, and share it among one person %%note:Myself, probably. I'm very selfish.%%, then I've got just the same apple as before (cut into no chunks): that is, $~$\frac{1}{1} = 1$~$.
+Also, if I take an apple and share it among one person who is <em>not</em> myself (and I don't give any apple to myself), then we've also just got the same unsliced apple as before: $~$\frac{1}{1} = 1$~$ again. </p>
+<p>But if I take an apple, and give it to an <em>anti</em>-person%%note:Being very careful not to touch them, because I would annihilate an anti-person!%%, then from their perspective <em>I</em>'m the anti-person, and I've just given them an anti-apple.
+There's a law of symmetry built into reality: the laws of physics are invariant if we reflect "thing" and "anti-thing" throughout the universe.%%note:Technically this is not <em>quite</em> true: the actual symmetry is on reflecting charge, parity and time all together, rather than just parity alone. But for the purposes of this discussion, let's pretend that the universe is parity-symmetric.%%
+The anti-person sees the universe in a way that's the same as my way, but where the "anti" status of everything (and everyantithing) is flipped.</p>
+<p>[todo: write "the universe is unchanged on swapping anti-status" in the Negative Integers chunk too, around where we work out what -5+3 is, and say "remember this!"]</p>
+<p>Put another way, "anti-ness" is not an absolute notion but a relative one.
+I can only determine whether something is the same anti-ness or the opposite anti-ness to myself.</p>
+<p>Sear this into your mind: the laws of rational-number "physics" are the same no matter who is observing.
+If I observe a transaction, like "I, a person, give someone an apple", then an external person will observe "The author, a person, gave someone an apple", while an external anti-person will observe "The author, an anti-person, gave an anti-person an anti-apple".</p>
+<p>From the external person's perspective, they saw "someone (of the same anti-ness as me) gave someone else (of the same anti-ness as me) an apple (of the same anti-ness as me)".
+From the anti-person's perspective, everything is relatively the same: "someone (of the opposite anti-ness to me) gave someone else (of the opposite anti-ness to me) an apple (of the opposite anti-ness to me)".</p>
+<p>So $~$\frac{-1}{-1}$~$, being "one anti-apple shared among one anti-person", can be viewed instead from the perspective of an anti-person; they see one <em>apple</em> being given to one <em>person</em>: that is, $~$\frac{-1}{-1}$~$ is equal to $~$1$~$.</p>
+<p>Armed with the fact that $~$\frac{-1}{-1} = 1$~$, we can just apply our usual multiplication rule that $~$\frac{a}{m} \times \frac{b}{n} = \frac{a \times b}{m \times n}$~$, to deduce that $$~$\frac{1}{-m} = \frac{1}{-m} \times 1 = \frac{1}{-m} \times \frac{-1}{-1} = \frac{-1 \times 1}{-m \times -1} = \frac{-1}{m}$~$$</p>
+<p>The law of symmetry-of-the-universe basically says that $~$\frac{a}{-b} = \frac{-a}{b}$~$.</p>
+<p>[todo: division by rational number]
+[todo: division as "inverse of multiplication]</p>
+<p>[todo: division by zero]</p>
+<p>[todo: exercises]</p></main><hr><section class="comments"><h2>Comments</h2><div class="comment"><p><a class="page-link" href="../page/KevinClancy.html">Kevin Clancy</a></p><p><blockquote class="comment-context">Remember, $~$\\frac{a}{m}$~$ is made of $~$a$~$ copies of pieces of size $~$\\frac{1}{m}$~$; so what we do is cut all of the $~$\\frac{1}{m}$~$\-chunks individually into $~$n$~$ pieces, and then give everyone $~$a$~$ of the little pieces we've made\.
+But "cut a $~$\\frac{1}{m}$~$\-chunk into $~$n$~$ pieces" is just "cut an apple into $~$n$~$<mark> pieces, but instead of doing it to one apple, do it to </mark>a $~$\\frac{1}{m}$~$\-chunk": that is, it is $~$\\frac{1}{m} \\times \\frac{1}{n}$~$, or $~$\\frac{1}{m \\times n}$~$\.</blockquote>
+<p>This relies on a principle "other way" introduces but, in my opinion, is not explicit enough about: $~$\frac{n}{m} = n \times \frac{1}{m}$~$. Could this be made more explicit at the end of the "other way" section? e.g. "What we've really shown here is that $~$\frac{n}{m} = n \times \frac{1}{m}$~$".</p></p></div><div class="comment"><p><a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a></p><p><blockquote class="comment-context">So far in our study of the arithmetic of rational numbers, we've had addition \("putting apples and chunks of apples side by side and counting what you've got"\), subtraction \("the same, but you're allowed anti\-apples too"\), and multiplication \(<mark>"make a rational number, but instead of starting from $~$1$~$ apple, start from some other number"</mark>\)\.</blockquote>
+<p>This does not seem like it'd be transparent, esp. at math 0? The popover also seems potentially confusing.</p></p></div></section><footer><p class="tagged"><h2>Tagged</h2><span class="page-comma-list"><a class="page-link" href="../page/c_class_meta_tag.html">C-Class</a>,
+ <a class="page-link" href="../page/math0.html">Math 0</a></span></p><p class="likes"><h2>Likes</h2><span class="page-comma-list"><a class="page-link" href="../page/EricRogstad.html">Eric Rogstad</a>,
+ <a class="page-link" href="../page/KevinClancy.html">Kevin Clancy</a></span></p><p class="reverse-related"><h2>Reverse Related</h2><ul class="page-list"><li><a class="page-link" href="../page/c_class_meta_tag.html">C-Class</a> <q>This page has substantial content, but may not thoroughly cover the topic, may not meet style and prose standards, or may not explain the concept in a way the target audience will reliably understand.</q> - <a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a></li><li><a class="page-link" href="../page/math0.html">Math 0</a> <q>Are you not actively bad at math, nor traumatized about math?</q> - <a class="page-link" href="../page/EliezerYudkowsky.html">Eliezer Yudkowsky</a></li></ul></p></footer></body></html>

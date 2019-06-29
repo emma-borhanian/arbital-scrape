@@ -1,0 +1,37 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>&quot;I got stuck at this paragraph:
+
+&gt; A causal mode...&quot;</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_SVG" async></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">&quot;I got stuck at this paragraph:
+
+&gt; A causal mode...&quot;</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/8rq.json.html">8rq.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/8rq">https://arbital.com/p/8rq</a></p><p class="creator">by
+ <a class="page-link" href="../page/JuliusJacobsen.html">Julius Jacobsen</a> Oct 21 2017</p></div><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>&quot;I got stuck at this paragraph:
+
+&gt; A causal mode...&quot;</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="decision_theory.html">Decision theory</a></li><li><a href="logical_dt.html">Logical decision theories</a></li><li><a href="ldt_intro_compsci.html">Introduction to Logical Decision Theory for Computer Scientists</a></li><li>…</li></ul></nav></nav></header><hr><main><p>I got stuck at this paragraph:</p>
+<blockquote>
+  <p>A causal model goes beyond the graph by including specific probability
+  functions P(Xi|pai) for how to calculate the probability of each node
+  Xi taking on the value xi given the values pai of xi's immediate
+  ancestors. It is implicitly assumed that the causal model factorizes,
+  so that the probability of any value assignment x to the whole graph
+  can be calculated using the product:</p>
+  <p>P(x)=∏iP(xi|pai)</p>
+  <p>Then the counterfactual conditional P(x|do⁡(Xj=xj)) is calculated via:</p>
+  <p>P(x|do⁡(Xj=xj))=∏i≠jP(xi|pai)</p>
+</blockquote>
+<p>First of all, it seems to me that "..Xi taking on the value xi given the values pai of xi's immediate ancestors" should be "…Xi's immediate ancestors" (capital X). Otherwise I didn't understand this part.<br />
+Further down, I don't know what "do⁡(Xj=xj)" means and I'm unable to figure out from context. So this is where I stopped reading.<br />
+In fairness, I'm not actually a computer scientist, but this is the closest description of me among the advanced courses of this topic.</p></main><hr><footer></footer></body></html>

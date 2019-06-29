@@ -1,0 +1,97 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Why argument structure is important</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_SVG" async></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">Why argument structure is important</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/7gc.json.html">7gc.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/7gc">https://arbital.com/p/7gc</a></p><p class="creator">by
+ <a class="page-link" href="../page/AndreaGallagher.html">Andrea Gallagher</a> Jan 17 2017 
+updated
+ Jan 18 2017</p></div><p class="clickbait">How might we make collaborative truth-seeking both fun and easy?</p><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>Why argument structure is important</li></ul></nav></nav></header><hr><main><p><strong>Tldr;</strong></p>
+<p>Arbital should put design and engineering effort into better ways to structure discussions, such as defining terms, adding evidence for or against a claim, declaring cruxes, proposing tests, and  posting challenges (e.g. “how might we…”).  These structures will improve the quality of discussion and can plug together for collaborative truth-seeking.</p>
+<hr />
+<p><strong>Problem</strong></p>
+<p>I see three structures of community-created content out on the Interwebs today:</p>
+<ul>
+<li>Blogs and articles (long-ish form usually written by one author,
+permanent but sinks out of awareness quickly.)</li>
+<li>Discussions that flow quickly (threaded discussions like reddit or
+Q&amp;A sites like StackExchange), and</li>
+<li>Wikis (permanent but appearing static and the evolution is hidden).</li>
+</ul>
+<p>What’s missing is multi-user collaboration about a permanent topic, seeking to arrive at a high-quality, trusted, and agreed upon statement of truth.</p>
+<p>Reasoned disagreements driven by data, insights, and rationale help the group to test and refine the accuracy of arguments and decisions.  Hashing out a complex problem like this demands diverse viewpoints and sources of knowledge.  </p>
+<p>But coming to that agreement is hard because you have to keep track of a complex and nested web of points and counterpoints, some that really matter and some that are nit-picks.</p>
+<p>Which leaves people within a group feeling either that their point was missed and ignored and a bad decision was made, or that the group takes too long to come to agreement.</p>
+<p><strong>Proposal</strong></p>
+<p>A truth-seeking platform can help groups:</p>
+<ul>
+<li>focus on specific claims or questions,  </li>
+<li>track how they want to decide    (decomposing cases and flagging crux
+arguments)</li>
+<li>track evidence for and against different claims,</li>
+<li>support nested evidence about whether    each piece of evidence is
+true or not.</li>
+</ul>
+<p>Some claims will not be decided absolutely but will have evidence weighted more on one side or another.  </p>
+<p>Software can integrate the quality of the evidence (perhaps measured by reputation-based votes) across the collected evidence to provide an “estimated epistemic strength.”</p>
+<p><strong>How does this relate to other discussion features?</strong></p>
+<p>In trying to create algorithmic ways to surface the best content, contemporary discussion platforms have focused on measures of positive reader engagement (often up or down votes) and calculating writer reputation based on that engagement.</p>
+<p>For a collaborative truth-seeking platform, the voting and reputation system are necessary.  But it’s demonstrably not enough to shift a forum from being a casual watering hole to being a community that develops lasting agreement.   In the face of tribal allegiances and confirmation bias, simple voting has little leverage to improve the quality of a complex and intricate debate. See <a href="793.html">Scalable ways to associate evidence (pro or con) with claims will be more valuable in elevating accuracy than complex voting and reputation systems</a> </p>
+<p>One question I posed was “Without argument structuring features, how is Arbital different than Reddit or Stack Exchange?”</p>
+<p>In reply, Eric Bruylent <a href="7dc.html">wrote</a>:</p>
+<blockquote>
+  <p>Reddit's reputation system gives new arrivals equal weight to
+  long-standing highly trusted members of the community, and does not
+  include priors about content quality based on poster's history. It's
+  the simplest thing which could barely work, and does not allow for
+  high quality discussion to scale without relying heavily on moderators
+  or other social things not present in all communities and not able to
+  resist certain forms of attack. It also lacks adequate indexing and
+  browsing by topic, making discussions temporary rather than able to
+  produce lasting artifacts and be continued easily.</p>
+  <p>SE's reputation system is a little better (you need to prove to the
+  system you can productively engage with the topic before your votes
+  have any weight), but it's very focused on QA, which is not a great
+  format for extended truth-seeking discussion.</p>
+  <p>Cool argument structuring seems like an optional bonus (still great to
+  have, but not necessary for the thing to work), but features that give
+  users reason to expect their high-quality content gets more eyeballs
+  (particularly the eyeballs which most need that specific content) seem
+  core and essential.</p>
+</blockquote>
+<p>Perhaps what I’m proposing is to combine Stack Exchange’s robust reputation system with a format that’s better than QA.  How can we make extended truth-seeking discussion easier?</p>
+<p><strong>P.S.</strong></p>
+<p>How not to do this: <a href="http://truthsift.com/">TruthSift</a></p>
+<ul>
+<li>UI is WAY too heavy and slow</li>
+<li>Writing and reading have to be the core enjoyable task.  The system
+can’t get in the way of laying out a clear and interesting case. 
+(OK, maybe posts <em>are</em> central)</li>
+<li>Visual webs of information have long been dreamt of and yet never
+succeeded.</li>
+</ul></main><hr><section class="comments"><h2>Comments</h2><div class="comment"><p><a class="page-link" href="../page/AlexeiAndreev.html">Alexei Andreev</a></p><p><p>I basically agree with everything here.</p></p></div><div class="comment"><p><a class="page-link" href="../page/JimBabcock.html">Jim Babcock</a></p><p><p>I've come across a number of argument-structuring tools in the past. I think doing this right is much harder than people give it credit for.</p>
+<p>The core problem is that most of the action in a quality discussion doesn't actually consist of claims and counterclaims. For example, I went to Truthsift and the first claim I found on their randomized front page was "vaccines are safe" (<a href="http://truthsift.com/search_view?topic=Are-Vaccines-Safe-?&id=406&nid=4083).">http://truthsift.com/search_view?topic=Are-Vaccines-Safe-?&id=406&nid=4083).</a> The response I wanted to make is that vaccine is too broad a category; a well-managed discussion would first clarify that the discussion was limited to the sort of FDA-approved vaccines one would normally be prescribed, not to random research chemicals, then break into sections about specific vaccines and vaccine additives, the trustworthiness of the FDA approval process, and so on. But Truthsift wouldn't let me say that, first because I'd have to somehow mash that into a pro-and-con structure, and second because I'd have to merge that into an incompatible structure that someone else set up. This is entirely representative of my experiences with argument-structuring sites: I show up, find an elaborate structure that partitions the question in a way I think is wrong, and bounce.</p>
+<p>Arbital is currently better because it <em>doesn't</em> try to structure everything; it leaves space for all the hard-to-tag irregular stuff to happen in comment threads. I think there's a large valley in between comment threads and a structure that can incorporate all the irregular things that happen in discussions, and that TruthSift's mistake was that it tried to squeeze out the irregular stuff.</p></p></div><div class="comment"><p><a class="page-link" href="../page/MalcolmOcean.html">Malcolm Ocean</a></p><p><p>The novel <a href="https://www.amazon.com/Davids-Sling-Marc-Stiegler/dp/0671653695/">David's Sling</a> by Marc Stiegler features a hyper-rationality organization (kind of like a CFAR CEV) and this organization has a truth/argument-mapping process. Notably, it features both a software component as well as a skill/form that people are trained in. This could be considered to be the thing that Double Crux wants to evolve into.</p>
+<p>You're thinking about this problem and you like to read novels, I would recommend it. It doesn't go into enough detail that I would say it's a necessary source though.</p></p></div><div class="comment"><p><a class="page-link" href="../page/JamesAndrix.html">James Andrix</a></p><p><p>I think the Semantic Web solves a lot of this, and could solve all of it. </p>
+<p><a href="http://www.argumentinterchange.org/library">Some argument structuring tools using AIF</a> - I haven't evaluated their UI's yet.</p>
+<p>The <a href="https://www.w3.org/TR/prov-o/#description-starting-point-terms">Provenance ontology</a> lets us assert how information was produced and how it has been evaluated. </p>
+<p>The goal should be the ability to filter conclusions based on arbitrary epistemic standards. </p>
+<p>In <a href="JimBabcock.html">Jim Babcock</a>'s scenario, one could create their own argument structure, linking to appropriate concepts, and linking to the existing argument only where appropriate. Possibly only the conclusion. I <em>think</em> AIF would also allow citing any post or comment as an argument, so freeform stuff can still be connected even if it isn't automatically filterable. Other people could do the structuring and validation.  </p></p></div><div class="comment"><p><a class="page-link" href="../page/JoeZeng.html">Joe Zeng</a></p><p><p>I've been looking for something like this for a long time now. I hope Arbital can be the platform that does it well.</p></p></div></section><footer><p class="tagged"><h2>Tagged</h2><span class="page-comma-list"><a class="page-link" href="../page/labs_meta.html">Meta (Arbital Labs)</a></span></p><p class="all-creators"><h2>All Creators</h2><span class="page-comma-list"><a class="page-link" href="../page/AlexeiAndreev.html">Alexei Andreev</a>,
+ <a class="page-link" href="../page/AndreaGallagher.html">Andrea Gallagher</a></span></p><p class="likes"><h2>Likes</h2><span class="page-comma-list"><a class="page-link" href="../page/AlexeiAndreev.html">Alexei Andreev</a>,
+ <a class="page-link" href="../page/AlistairRoche.html">Alistair Roche</a>,
+ <a class="page-link" href="../page/BenPace.html">Ben Pace</a>,
+ <a class="page-link" href="../page/ChaseRoycroft.html">Chase Roycroft</a>,
+ <a class="page-link" href="../page/DavidSepashvili.html">David Sepashvili</a>,
+ <a class="page-link" href="../page/EricRogstad.html">Eric Rogstad</a>,
+ <a class="page-link" href="../page/HarshaReddy.html">Harsha Reddy</a>,
+ <a class="page-link" href="../page/MichaelEngelhard.html">Michael Engelhard</a></span></p><p class="reverse-related"><h2>Reverse Related</h2><ul class="page-list"><li><a class="page-link" href="../page/labs_meta.html">Meta (Arbital Labs)</a> <q>Tag for meta discussion in Arbital Labs</q> - <a class="page-link" href="../page/EricRogstad.html">Eric Rogstad</a></li></ul></p></footer></body></html>

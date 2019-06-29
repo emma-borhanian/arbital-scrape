@@ -1,0 +1,41 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Diseasitis</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_SVG" async></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">Diseasitis</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/diseasitis.json.html">diseasitis.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/diseasitis">https://arbital.com/p/diseasitis</a></p><p class="creator">by
+ <a class="page-link" href="../page/EliezerYudkowsky.html">Eliezer Yudkowsky</a> Feb 22 2016 
+updated
+ Oct 1 2016</p></div><p class="clickbait">20% of patients have Diseasitis. 90% of sick patients and 30% of healthy patients turn a tongue depressor black. You turn a tongue depressor black. What's the chance you have Diseasitis?</p><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>Diseasitis</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="math.html">Mathematics</a></li><li><a href="probability_theory.html">Probability theory</a></li><li><a href="bayes_reasoning.html">Bayesian reasoning</a></li><li><a href="bayes_rule.html">Bayes' rule</a></li><li><a href="bayes_rule_examples.html">Bayes' rule examples</a></li><li><a href="22w.html">Introductory Bayesian problems</a></li><li>…</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="rationality.html">Rationality</a></li><li><a href="probability_theory.html">Probability theory</a></li><li><a href="bayes_reasoning.html">Bayesian reasoning</a></li><li><a href="bayes_rule.html">Bayes' rule</a></li><li><a href="bayes_rule_examples.html">Bayes' rule examples</a></li><li><a href="22w.html">Introductory Bayesian problems</a></li><li>…</li></ul></nav></nav></header><hr><main><p>[summary:  A nurse is screening a set of patients for an illness, Diseasitis, using a tongue depressor that tends to turn black in the presence of the disease.</p>
+<ul>
+<li>On average, around 20% of the patients in a population like this one will actually have Diseasitis.  (20% prior prevalence.)</li>
+<li>Among the patients with Diseasitis, 90% turn the tongue depressor black.  (90% true positives.)</li>
+<li>30% of patients without Diseasitis also turn the tongue depressor black.  (30% false positives.)</li>
+</ul>
+<p>The probability that a patient with a blackened tongue depressor has Diseasitis can be found using <a href="bayes_rule_fast_intro.html">Bayes&#39; rule</a>.]</p>
+<p>A nurse is screening a student population for a certain illness, Diseasitis (lit. "inflammation of the disease").</p>
+<ul>
+<li>Based on prior epidemiological studies, you expect that around 20% of the students in a screening population like this one will actually have Diseasitis.</li>
+</ul>
+<p>You are testing for the presence of the disease using a color-changing tongue depressor with a sensitive chemical strip.</p>
+<ul>
+<li>Among students with Diseasitis, 90% turn the tongue depressor black.</li>
+<li>30% of the students without Diseasitis will also turn the tongue depressor black.</li>
+</ul>
+<p>One of your students comes into the office, takes your test, and turns the tongue depressor black.</p>
+<p>Given only that information, what is the probability that they have Diseasitis?</p>
+<p>This problem is used as a central example in several introductions to Bayes's Rule, including all paths in the <a href="bayes_rule_guide.html">Arbital Guide to Bayes&#39; Rule</a> and the <a href="bayes_rule_fast_intro.html">High-Speed Intro to Bayes&#39; Rule</a>.  A simple, unnecessarily difficult calculation of the answer can be found in <a href="bayes_frequency_diagram_diseasitis.html">Frequency diagrams: A first look at Bayes</a>.</p></main><hr><footer><p class="tagged"><h2>Tagged</h2><span class="page-comma-list"><a class="page-link" href="../page/b_class_meta_tag.html">B-Class</a>,
+ <a class="page-link" href="../page/example_problem.html">Example problem</a></span></p><p class="all-creators"><h2>All Creators</h2><span class="page-comma-list"><a class="page-link" href="../page/EliezerYudkowsky.html">Eliezer Yudkowsky</a>,
+ <a class="page-link" href="../page/NateSoares.html">Nate Soares</a></span></p><p class="reverse-related"><h2>Reverse Related</h2><ul class="page-list"><li><a class="page-link" href="../page/b_class_meta_tag.html">B-Class</a> <q>This page is mostly complete and without major problems, but has not had detailed feedback from the target audience and reviewers.</q> - <a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a></li><li><a class="page-link" href="../page/example_problem.html">Example problem</a> <q>Tag for pages that provide an example problem referenced by a number of other pages.
+
+The summary of…</q> - <a class="page-link" href="../page/NateSoares.html">Nate Soares</a></li></ul></p></footer></body></html>

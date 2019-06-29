@@ -1,0 +1,47 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Group conjugate</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_SVG" async></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">Group conjugate</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/group_conjugate.json.html">group_conjugate.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/group_conjugate">https://arbital.com/p/group_conjugate</a></p><p class="creator">by
+ <a class="page-link" href="../page/PatrickStevens.html">Patrick Stevens</a> Jun 16 2016 
+updated
+ Jun 20 2016</p></div><p class="clickbait">Conjugation lets us perform permutations &quot;from the point of view of&quot; another permutation.</p><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>Group conjugate</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="math.html">Mathematics</a></li><li><a href="abstract_algebra.html">Abstract algebra</a></li><li><a href="algebraic_structure.html">Algebraic structure</a></li><li><a href="group_mathematics.html">Group</a></li><li>…</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="math.html">Mathematics</a></li><li><a href="group_theory.html">Group theory</a></li><li><a href="group_mathematics.html">Group</a></li><li>…</li></ul></nav></nav></header><hr><main><p>Two elements $~$x, y$~$ of a <a href="group_mathematics.html">Group</a> $~$G$~$ are <em>conjugate</em> if there is some $~$h \in G$~$ such that $~$hxh^{-1} = y$~$.</p>
+<h1 id="conjugacyaschangingtheworldview">Conjugacy as "changing the worldview"</h1>
+<p>Conjugating by $~$h$~$ is equivalent to "viewing the world through $~$h$~$'s eyes".
+This is most easily demonstrated in the <a href="symmetric_group.html">Symmetric group</a>, where it <a href="conjugacy_class_is_cycle_type_in_symmetric_group.html">is a fact</a> that if $$~$\sigma = (a_{11} a_{12} \dots a_{1 n_1})(a_{21} \dots a_{2 n_2}) \dots (a_{k 1} a_{k 2} \dots a_{k n_k})$~$$
+and $~$\tau \in S_n$~$, then $$~$\tau \sigma \tau^{-1} = (\tau(a_{11}) \tau(a_{12}) \dots \tau(a_{1 n_1}))(\tau(a_{21}) \dots \tau(a_{2 n_2})) \dots (\tau(a_{k 1}) \tau(a_{k 2}) \dots \tau(a_{k n_k}))$~$$</p>
+<p>That is, conjugating by $~$\tau$~$ has "caused us to view $~$\sigma$~$ from the point of view of $~$\tau$~$".</p>
+<p>Similarly, in the <a href="dihedral_group.html">Dihedral group</a> $~$D_{2n}$~$ on $~$n$~$ vertices, conjugation of the rotation by a reflection yields the inverse of the rotation: it is "the rotation, but viewed as acting on the reflected polygon".
+Equivalently, if the polygon is sitting on a glass table, conjugating the rotation by a reflection makes the rotation act "as if we had moved our head under the table to look upwards first".</p>
+<p>In general, if $~$G$~$ is a group which <a href="group_action.html">acts</a> as (some of) the symmetries of a certain object $~$X$~$ %%note:Which <a href="cayley_theorem_symmetric_groups.html">we can always view as being the case</a>.%% then conjugation of $~$g \in G$~$ by $~$h \in G$~$ produces a symmetry $~$hgh^{-1}$~$ which acts in the same way as $~$g$~$ does, but on a copy of $~$X$~$ which has already been permuted by $~$h$~$.</p>
+<h1 id="closureunderconjugation">Closure under conjugation</h1>
+<p>If a subgroup $~$H$~$ of $~$G$~$ is closed under conjugation by elements of $~$G$~$, then $~$H$~$ is a <a href="normal_subgroup.html">Normal subgroup</a>.
+The concept of a normal subgroup is extremely important in group theory.</p>
+<p>%%%knows-requisite(<a href="group_action.html">Group action</a>):</p>
+<h1 id="conjugationaction">Conjugation action</h1>
+<p>Conjugation forms a <a href="group_action.html">action</a>.
+Formally, let $~$G$~$ act on itself: $~$\rho: G \times G \to G$~$, with $~$\rho(g, k) = g k g^{-1}$~$.
+It is an exercise to show that this is indeed an action.
+%%hidden(Show solution):
+We need to show that the identity acts trivially, and that products may be broken up to act individually.</p>
+<ul>
+<li>$~$\rho(gh, k) = (gh)k(gh)^{-1} = ghkh^{-1}g^{-1} = g \rho(h, k) g^{-1} = \rho(g, \rho(h, k))$~$;</li>
+<li>$~$\rho(e, k) = eke^{-1} = k$~$.
+%%</li>
+</ul>
+<p>The <a href="group_stabiliser.html">stabiliser</a> of this action, $~$\mathrm{Stab}_G(g)$~$ for some fixed $~$g \in G$~$, is the set of all elements such that $~$kgk^{-1} = g$~$: that is, such that $~$kg = gk$~$.
+Equivalently, it is the [group_centraliser centraliser] of $~$g$~$ in $~$G$~$: it is the subgroup of all elements which commute with $~$G$~$.</p>
+<p>The <a href="group_orbit.html">orbit</a> of the action, $~$\mathrm{Orb}_G(g)$~$ for some fixed $~$g \in G$~$, is the <a href="conjugacy_class.html">Conjugacy class</a> of $~$g$~$ in $~$G$~$.
+By the <a href="orbit_stabiliser_theorem.html">Orbit-stabiliser theorem</a>, this immediately gives that the size of a conjugacy class divides the <a href="group_order.html">order</a> of the parent group.
+%%%</p></main><hr><footer><p class="tagged"><h2>Tagged</h2><span class="page-comma-list"><a class="page-link" href="../page/math2.html">Math 2</a></span></p><p class="likes"><h2>Likes</h2><span class="page-comma-list"><a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a></span></p><p class="reverse-related"><h2>Reverse Related</h2><ul class="page-list"><li><a class="page-link" href="../page/math2.html">Math 2</a> <q>Do you work with math on a fairly routine basis?  Do you have little trouble grasping abstract structures and ideas?</q> - <a class="page-link" href="../page/EliezerYudkowsky.html">Eliezer Yudkowsky</a></li></ul></p></footer></body></html>

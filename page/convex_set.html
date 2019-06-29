@@ -1,0 +1,31 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Convex set</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_SVG" async></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">Convex set</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/convex_set.json.html">convex_set.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/convex_set">https://arbital.com/p/convex_set</a></p><p class="creator">by
+ <a class="page-link" href="../page/JessicaTaylor.html">Jessica Taylor</a> Jul 13 2016 
+updated
+ Jul 13 2016</p></div><p class="clickbait">A set that contains all line segments between points in the set</p><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>Convex set</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="convex.html">Convex</a></li><li>…</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="math.html">Mathematics</a></li><li><a href="set_mathematics.html">Set</a></li><li>…</li></ul></nav></nav></header><hr><main><p>A convex set is a <a href="set_mathematics.html">Set</a> of <a href="vector_space.html">vectors</a> that contains all line segments between vectors in the set.  Consider the following shape:</p>
+<p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/Convex_polygon_illustration1.svg/634px-Convex_polygon_illustration1.svg.png" alt="a convex set" /></p>
+<p>As shown, a line segment between two points $~$x$~$ and $~$y$~$ in this shape lies entirely within the shape.  In fact, this is true for any pair of points in the shape.  Therefore, this shape is convex.  For comparison, the following shape is not convex:</p>
+<p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Convex_polygon_illustration2.svg/634px-Convex_polygon_illustration2.svg.png" alt="a non-convex set" /></p>
+<p>The fact that part of the line segment between $~$x$~$ and $~$y$~$ (both inside the shape) lies outside the shape proves that this shape is not convex.</p>
+<p>Formally, a set $~$S$~$ is convex if</p>
+<p>$$~$\forall x, y \in S, \theta \in [0, 1]: \theta x + (1 - \theta) y \in S$~$$</p>
+<p>(images are from Wikipedia: <a href="https://en.wikipedia.org/wiki/File:Convex_polygon_illustration1.svg">here</a> and <a href="https://en.wikipedia.org/wiki/File:Convex_polygon_illustration2.svg">here</a>)</p>
+<p>[todo: use non-Wikipedia images and remove the attribution]</p></main><hr><footer><p class="tagged"><h2>Tagged</h2><span class="page-comma-list"><a class="page-link" href="../page/split_by_mastery_meta_tag.html">Needs splitting by mastery</a>,
+ <a class="page-link" href="../page/needs_summary_meta_tag.html">Needs summary</a>,
+ <a class="page-link" href="../page/start_meta_tag.html">Start</a></span></p><p class="likes"><h2>Likes</h2><span class="page-comma-list"><a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a>,
+ <a class="page-link" href="../page/EricRogstad.html">Eric Rogstad</a>,
+ <a class="page-link" href="../page/NateSoares.html">Nate Soares</a></span></p><p class="reverse-related"><h2>Reverse Related</h2><ul class="page-list"><li><a class="page-link" href="../page/split_by_mastery_meta_tag.html">Needs splitting by mastery</a> <q>This page seems to serve multiple different mastery levels, and may benefit from being split into separate lenses.</q> - <a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a></li><li><a class="page-link" href="../page/needs_summary_meta_tag.html">Needs summary</a> <q>This page does not have a summary which provides an informative overview of the page's primary topic.</q> - <a class="page-link" href="../page/AlexeiAndreev.html">Alexei Andreev</a></li><li><a class="page-link" href="../page/start_meta_tag.html">Start</a> <q>This page gives a basic overview of the topic, but may be missing important information or have stylistic issues. If you're able to, please help expand or improve it!</q> - <a class="page-link" href="../page/EliezerYudkowsky.html">Eliezer Yudkowsky</a></li></ul></p></footer></body></html>

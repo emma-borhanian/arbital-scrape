@@ -1,0 +1,60 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Associativity: Examples</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_SVG" async></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">Associativity: Examples</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/associativity_examples.json.html">associativity_examples.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/associativity_examples">https://arbital.com/p/associativity_examples</a></p><p class="creator">by
+ <a class="page-link" href="../page/NateSoares.html">Nate Soares</a> May 15 2016 
+updated
+ Aug 19 2016</p></div><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>Associativity: Examples</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="math.html">Mathematics</a></li><li><a href="associative_operation.html">Associative operation</a></li><li>…</li></ul></nav></nav></header><hr><main><p>[summary: Yes: [Addition], [multiplication], <a href="string_concatenation.html">string concatenation</a>. No: [subtraction], [division], a <a href="function.html">Function</a> that concatenates strings and then puts an "x" on the front.]</p>
+<p>[toc:]</p>
+<h2 id="positiveexamples">Positive examples</h2>
+<h3 id="addition">Addition</h3>
+<p>$~$(x + y) + z = x + (y + z)$~$ for all numbers $~$x, y,$~$ and $~$z.$~$ Thus, addition associates. One easy way to see this fact is to consider a <a href="function_physical_metaphor.html">physical system</a> that implements addition, e.g., by taking two piles of poker chips (where a poker chip with $~$n$~$ chips represents the number $~$n$~$) in on two input belts, and producing a pile of poker chips on the output belt. This function can be implemented by simply shoving both input piles onto the output pile. Clearly, when combining three piles, it doesn't matter which piles get shoved onto the output tape in which order, so addition is associative.</p>
+<h3 id="multiplication">Multiplication</h3>
+<p>$~$(x \times y) \times z = x \times (y \times z)$~$ for all numbers $~$x, y,$~$ and $~$z.$~$ Thus, multiplication associates. It is, however, a little harder to see why this must be the case for multiplication.</p>
+<p>Imagine a physical system implementing multiplication, by taking stacks of poker chips as input (where stacks with $~$n$~$ chips in them represents the number $~$n$~$), and producing an output by putting a copy of the left stack on the output tape for every chip in the right stack. Imagine using this function to combine three stacks of poker chips, a blue stack (representing $~$x$~$), a yellow stack (representing $~$y$~$), and a red stack (representing $~$z$~$). We can either calculate $~$(x \times y) \times z$~$ or $~$x \times (y \times z).$~$ In both cases, the result will be a bunch of copies of the original blue $~$x$~$ stack. The question is, how many copies will there be in each case?</p>
+<p>In the first case, the machine first puts $~$y$~$ copies of the blue stack in a line, and then makes $~$z$~$ copies of that line. In the second case, the machine first makes $~$z$~$ copies of the yellow stack. Each of those yellow stacks corresponds to one of the lines from the first case, and each yellow chip on each yellow stack corresponds to one of the blue stacks in the first case. A blue stack is placed on the output in the second case for each of those yellow chips, so the number of blue stacks in each case is the same.</p>
+<h3 id="concatenation">Concatenation</h3>
+<p>The concatenation of <a href="text_string.html">strings</a> is another associative function: <code>concat("a",concat("b","c")) = concat(concat("a","b"),"c") = "abc"</code>.</p>
+<p>Concatenation is an example of an associative function that is not <a href="commutative_operation.html">commutative</a>: When reducing a list of strings to a single string, it doesn't matter what order you combine adjacent elements in, but it <em>does</em> matter that you leave the elements in their original order.</p>
+<p>In fact, any function that just sticks its inputs together (possibly with some extra stuff in the middle) is associative: A function which takes wooden blocks as input, and glues them together (with a small white block in the middle) is associative, because if you put in blue, yellow, and red blocks then you get a blue-white-yellow-white-red block out the end, regardless of the order you combine adjacent blocks in.</p>
+<h2 id="negativeexamples">Negative examples</h2>
+<h3 id="functionswithahistory">Functions with a history</h3>
+<p>The function <code>xconcat</code> that concatenates its inputs and puts an "x" on the front: <code>xconcat("A", xconcat("B","C")) = "xAxBC"</code>, but <code>xconcat(xconcat("A", "B"), "C") = "xxABC"</code>. The problem in this case is that the output carries a trace of which adjacent elements were combined in which order, which makes the function non-associative.</p>
+<p>In fact, any function that carries a history of the application order with it can't be associative. Thus, if the inputs carry history about which inputs were combined with which other inputs, and the output preserves (and adds to) that history, the function can't be associative. Associativity is, fundamentally, about the output not depending on which path was taken to get to it.</p>
+<h3 id="subtraction">Subtraction</h3>
+<p>Subtraction does not associate, as $~$(5-3)-2=0$~$ but $~$5-(3-2)=4.$~$ To see what went wrong, first notice that all inputs contribute either positively or negatively to the result. Label all inputs (in their original positive states) with up-arrows; we will track whether that input has a positive or negative impact on the final output. Subtraction flips its right-hand input upside down before combining it with its left-hand input, so given inputs labeled $~$\uparrow$~$ and $~$\uparrow$~$ we should label its output $~$\uparrow\downarrow.$~$ When combining three inputs, we can either combine the left two first or the right two first. If we combine the left two first, then the second subtraction is run on inputs labeled $~$\uparrow\downarrow$~$ and $~$\uparrow,$~$ and produces an output $~$\uparrow\downarrow\downarrow,$~$ in which the first input contributes positively and the other inputs contribute negatively. But if we combine the right two inputs first, then the second subtraction is run on inputs labeled $~$\uparrow$~$ and $~$\uparrow\downarrow,$~$ and produces an output $~$\uparrow\downarrow\uparrow,$~$ in which the first and third inputs contribute positively and the second contributes negatively. Thus, the contribution of the third input depends on which adjacent elements are combined in which order, so subtraction does not associate.</p>
+<h3 id="cyclicalpreferences">Cyclical preferences</h3>
+<p>Consider a person who is playing a game that works as follows. The board has three positions: red, green, and blue. The player's objective is to complete as many clockwise red-green-blue cycles as possible, without ever backtracking in the counter-clockwise direction.</p>
+<p><img src="http://i.imgur.com/bxCnXUs.png" alt="3-cycle board" /></p>
+<p>Each turn, the game offers them a choice of one of the three spaces, and they get to choose whether or not to travel to that square or stay where they are. Clearly, their preferences depend on where they currently are: If they're on "red", "green" is a good move and "blue" is a bad one; but if they're on "blue" then choosing "green" is ill-advised.</p>
+<p>We can consider a binary operation $~$?$~$ which takes their current position on the left and the proposed position on the right, and returns the position that the player prefers. Specifically:</p>
+<p>\begin{align}
+&amp; red \ ?\  red \ &amp;= red\
+&amp; red \ ?\  green \ &amp;= green\
+&amp; red \ ?\  blue \ &amp;= red\
+\end{align}
+\begin{align}
+&amp; green \ ?\  red \ &amp;= green\
+&amp; green \ ?\  green \ &amp;= green\
+&amp; green \ ?\  blue \ &amp;= blue\
+\end{align}
+\begin{align}
+&amp; blue \ ?\  red \ &amp;= red\
+&amp; blue \ ?\  green \ &amp;= blue\
+&amp; blue \ ?\  blue \ &amp;= blue
+\end{align}</p>
+<p>This function does not associate, because $~$(red\ ?\ green)\ ?\ blue = blue$~$ but $~$red\ ?\ (green\ ?\ blue)=red.$~$ To show that a function is not associative, it is sufficient to simply do out the whole function table and then find any one case that violates the axiom of associativity, as above.</p></main><hr><footer><p class="tagged"><h2>Tagged</h2><span class="page-comma-list"><a class="page-link" href="../page/b_class_meta_tag.html">B-Class</a></span></p><p class="all-creators"><h2>All Creators</h2><span class="page-comma-list"><a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a>,
+ <a class="page-link" href="../page/NateSoares.html">Nate Soares</a></span></p><p class="likes"><h2>Likes</h2><span class="page-comma-list"><a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a>,
+ <a class="page-link" href="../page/NateSoares.html">Nate Soares</a></span></p><p class="reverse-related"><h2>Reverse Related</h2><ul class="page-list"><li><a class="page-link" href="../page/b_class_meta_tag.html">B-Class</a> <q>This page is mostly complete and without major problems, but has not had detailed feedback from the target audience and reviewers.</q> - <a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a></li></ul></p></footer></body></html>

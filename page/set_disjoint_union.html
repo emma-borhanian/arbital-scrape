@@ -1,0 +1,91 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Disjoint union of sets</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_SVG" async></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">Disjoint union of sets</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/set_disjoint_union.json.html">set_disjoint_union.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/set_disjoint_union">https://arbital.com/p/set_disjoint_union</a></p><p class="creator">by
+ <a class="page-link" href="../page/PatrickStevens.html">Patrick Stevens</a> Aug 24 2016 
+updated
+ Oct 23 2016</p></div><p class="clickbait">One of the most basic ways we have of joining two sets together.</p><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>Disjoint union of sets</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="math.html">Mathematics</a></li><li><a href="set_mathematics.html">Set</a></li><li>…</li></ul></nav></nav></header><hr><main><p>[summary: The <em>disjoint union</em> of two <a href="set_mathematics.html">sets</a> is just the <a href="set_union.html">union</a>, but with the additional information that the two sets also don't have any elements in common. That is, we can use the phrase "disjoint union" to indicate that we've taken the union of two sets which have empty <a href="set_intersection.html">intersection</a>. The phrase can also be used to indicate a very slightly different operation: "do something to the elements of each set to make sure they don't overlap, and then take the union".]</p>
+<p>[summary(Technical): The phrase "disjoint union" is used to mean one of two slightly different operations on <a href="set_mathematics.html">sets</a>. It indicates either "just take the <a href="set_union.html">union</a>, but also notice that we've been careful to ensure that the sets have empty <a href="set_intersection.html">intersection</a>", or "perform a specific operation on each set to ensure that the resulting sets have empty intersection, and then take the union".]</p>
+<p>The <em>disjoint union</em> of two <a href="set_mathematics.html">sets</a> is just the <a href="set_union.html">union</a>, but with the additional information that the two sets also don't have any elements in common. That is, we can use the phrase "disjoint union" to indicate that we've taken the union of two sets which have empty <a href="set_intersection.html">intersection</a>. The phrase can also be used to indicate a very slightly different operation: "do something to the elements of each set to make sure they don't overlap, and then take the union".</p>
+<h1 id="definitionofthedisjointunion">Definition of the disjoint union</h1>
+<p>"Disjoint union" can mean one of two things:</p>
+<ul>
+<li>The simple <a href="set_union.html">union</a>, together with the assertion that the two sets don't overlap;</li>
+<li>The operation "do something to the elements of each set to make sure they don't overlap, and then take the union".</li>
+</ul>
+<p>(Mathematicians usually let context decide which of these meanings is intended.)</p>
+<p>The disjoint union has the symbol $~$\sqcup$~$: so the disjoint union of sets $~$A$~$ and $~$B$~$ is $~$A \sqcup B$~$.</p>
+<h2 id="thefirstdefinition">The first definition</h2>
+<p>Let's look at $~$A = \{6,7\}$~$ and $~$B = \{8, 9\}$~$.
+These two sets don't overlap: no element of $~$A$~$ is in $~$B$~$, and no element of $~$B$~$ is in $~$A$~$.
+So we can announce that the union of $~$A$~$ and $~$B$~$ (that is, the set $~$\{6,7,8,9\}$~$) is in fact a <em>disjoint</em> union.</p>
+<p>In this instance, writing $~$A \sqcup B = \{6,7,8,9\}$~$ is just giving the reader an extra little hint that $~$A$~$ and $~$B$~$ are disjoint; I could just have written $~$A \cup B$~$, and the formal meaning would be the same.
+For the purposes of the first definition, think of $~$\sqcup$~$ as $~$\cup$~$ but with a footnote reading "And, moreover, the union is disjoint".</p>
+<p>As a non-example, we could <em>not</em> legitimately write $~$\{1,2\} \sqcup \{1,3\} = \{1,2,3\}$~$, even though $~$\{1,2\} \cup \{1,3\} = \{1,2,3\}$~$; this is because $~$1$~$ is in both of the sets we are unioning.</p>
+<h2 id="theseconddefinition">The second definition</h2>
+<p>This is the more interesting definition, and it requires some fleshing out.</p>
+<p>Let's think about $~$A = \{6,7\}$~$ and $~$B = \{6,8\}$~$ (so the two sets overlap).
+We want to massage these two sets so that they become disjoint, but are somehow "still recognisably $~$A$~$ and $~$B$~$".</p>
+<p>There's a clever little trick we can do.
+We tag every member of $~$A$~$ with a little note saying "I'm in $~$A$~$", and every member of $~$B$~$ with a note saying "I'm in $~$B$~$".
+To turn this into something that fits into set theory, we tag an element $~$a$~$ of $~$A$~$ by putting it in an ordered pair with the number $~$1$~$: $~$(a, 1)$~$ is "$~$a$~$ with its tag".
+Then our massaged version of $~$A$~$ is the set $~$A'$~$ consisting of all the elements of $~$A$~$, but where we tag them first:
+$$~$A' = \{ (a, 1) : a \in A \}$~$$</p>
+<p>Now, to tag the elements of $~$B$~$ in the same way, we should avoid using the tag $~$1$~$ because that means "I'm in $~$A$~$"; so we will use the number $~$2$~$ instead.
+Our massaged version of $~$B$~$ is the set $~$B'$~$ consisting of all the elements of $~$B$~$, but we tag them first as well:
+$$~$B' = \{ (b,2) : b \in B \}$~$$</p>
+<p>Notice that $~$A$~$ <a href="bijective_function.html">bijects</a> with $~$A'$~$ %%note: Indeed, a bijection from $~$A$~$ to $~$A'$~$ is the map $~$a \mapsto (a,1)$~$.%%, and $~$B$~$ bijects with $~$B'$~$, so we've got two sets which are "recognisably $~$A$~$ and $~$B$~$".</p>
+<p>But magically $~$A'$~$ and $~$B'$~$ are disjoint, because everything in $~$A'$~$ is a tuple with second element equal to $~$1$~$, while everything in $~$B'$~$ is a tuple with second element equal to $~$2$~$.</p>
+<p>We define the <em>disjoint union of $~$A$~$ and $~$B$~$</em> to be $~$A' \sqcup B'$~$ (where $~$\sqcup$~$ now means the first definition: the ordinary union but where we have the extra information that the two sets are disjoint).
+That is, "make the sets $~$A$~$ and $~$B$~$ disjoint, and then take their union".</p>
+<h1 id="examples">Examples</h1>
+<h2 id="dda67ddddb68dd">$~$A = \{6,7\}$~$, $~$B=\{6,8\}$~$</h2>
+<p>Take a specific example where $~$A = \{6,7\}$~$ and $~$B=\{6,8\}$~$.
+In this case, it only makes sense to use $~$\sqcup$~$ in the second sense, because $~$A$~$ and $~$B$~$ overlap (they both contain the element $~$6$~$).</p>
+<p>Then $~$A' = \{ (6, 1), (7, 1) \}$~$ and $~$B' = \{ (6, 2), (8, 2) \}$~$, and the disjoint union is $$~$A \sqcup B = \{ (6,1), (7,1), (6,2), (8,2) \}$~$$</p>
+<p>Notice that $~$A \cup B = \{ 6, 7, 8 \}$~$ has only three elements, because $~$6$~$ is in both $~$A$~$ and $~$B$~$ and that information has been lost on taking the union.
+On the other hand, the disjoint union $~$A \sqcup B$~$ has the required four elements because we've retained the information that the two $~$6$~$'s are "different": they appear as $~$(6,1)$~$ and $~$(6,2)$~$ respectively.</p>
+<h2 id="dda12ddddb34dd">$~$A = \{1,2\}$~$, $~$B = \{3,4\}$~$</h2>
+<p>In this example, the notation $~$A \sqcup B$~$ is slightly ambiguous, since $~$A$~$ and $~$B$~$ are disjoint already.
+Depending on context, it could either mean $~$A \cup B = \{1,2,3,4\}$~$, or it could mean $~$A' \cup B' = \{(1,1), (2,1), (3,2), (4,2) \}$~$ (where $~$A' = \{(1,1), (2,1)\}$~$ and $~$B' = \{(3,2), (4,2) \}$~$).
+It will usually be clear which of the two senses is meant; the former is more common in everyday maths, while the latter is usually intended in set theory.</p>
+<h2 id="exercise">Exercise</h2>
+<p>What happens if $~$A = B = \{6,7\}$~$?</p>
+<p>%%hidden(Show): Only the second definition makes sense.</p>
+<p>Then $~$A' = \{(6,1), (7,1)\}$~$ and $~$B' = \{(6,2), (7,2)\}$~$, so $$~$A \sqcup B = \{(6,1),(7,1),(6,2),(7,2)\}$~$$
+which has four elements.%%</p>
+<h2 id="ddamathbbnddddb12xdd">$~$A = \mathbb{N}$~$, $~$B = \{ 1, 2, x \}$~$</h2>
+<p>Let $~$A$~$ be the set $~$\mathbb{N}$~$ of <a href="natural_number.html">natural numbers</a> including $~$0$~$, and let $~$B$~$ be the set $~$\{1,2,x\}$~$ containing two natural numbers and one symbol $~$x$~$ which is not a natural number.</p>
+<p>Then $~$A \sqcup B$~$ only makes sense under the second definition; it is the union of $~$A' = \{ (0,1), (1,1), (2,1), (3,1), \dots\}$~$ and $~$B' = \{(1,2), (2,2), (x,2)\}$~$, or $$~$\{(0,1), (1,1),(2,1),(3,1), \dots, (1,2),(2,2),(x,2)\}$~$$</p>
+<h2 id="ddamathbbnddddbxydd">$~$A = \mathbb{N}$~$, $~$B = \{x, y\}$~$</h2>
+<p>In this case, again the notation $~$A \sqcup B$~$ is ambiguous; it could mean $~$\{ 0,1,2,\dots, x, y \}$~$, or it could mean $~$\{(0,1), (1,1), (2,1), \dots, (x,2), (y,2)\}$~$.</p>
+<h1 id="multipleoperands">Multiple operands</h1>
+<p>We can generalise the disjoint union so that we can write $~$A \sqcup B \sqcup C$~$ instead of just $~$A \sqcup B$~$.</p>
+<p>To use the first definition, the generalisation is easy to formulate: it's just $~$A \cup B \cup C$~$, but with the extra information that $~$A$~$, $~$B$~$ and $~$C$~$ are pairwise disjoint (so there is nothing in any of their intersections: $~$A$~$ and $~$B$~$ are disjoint, $~$B$~$ and $~$C$~$ are disjoint, and $~$A$~$ and $~$C$~$ are disjoin).</p>
+<p>To use the second definition, we just tag each set again: let $~$A' = \{(a, 1) : a \in A \}$~$, $~$B' = \{ (b, 2) : b \in B \}$~$, and $~$C' = \{ (c, 3) : c \in C \}$~$.
+Then $~$A \sqcup B \sqcup C$~$ is defined to be $~$A' \cup B' \cup C'$~$.</p>
+<h2 id="infiniteunions">Infinite unions</h2>
+<p>In fact, both definitions generalise even further, to unions over arbitrary sets.
+Indeed, in the first sense we can define $$~$\bigsqcup_{i \in I} A_i = \bigcup_{i \in I} A_i$~$$ together with the information that no pair of $~$A_i$~$ intersect.</p>
+<p>In the second sense, we can define $$~$\bigsqcup_{i \in I} A_i = \bigcup_{i \in I} A'_i$~$$
+where $~$A'_i = \{ (a, i) : a \in A_i \}$~$.</p>
+<p>For example, $$~$\bigsqcup_{n \in \mathbb{N}} \{0, 1,2,\dots,n\} = \{(0,0)\} \cup \{(0,1), (1,1) \} \cup \{ (0,2), (1,2), (2,2)\} \cup \dots = \{ (n, m) : n \leq m \}$~$$</p>
+<h1 id="whyaretheretwodefinitions">Why are there two definitions?</h1>
+<p>The first definition is basically just a notational convenience: it saves a few words when saying "… and moreover the sets are pairwise disjoint".</p>
+<p>The real meat of the idea is the second definition, which provides a way of forcing the sets to be disjoint.
+It's not necessarily the <em>only</em> way we could coherently define a disjoint union (since there's more than one way we could have tagged the sets; if nothing else, $~$A \sqcup B$~$ could be defined the other way round, as $~$A' \cup B'$~$ where $~$A' = \{ (a, 2) : a \in A \}$~$ and $~$B' = \{ (b,1) : b \in B \}$~$, swapping the tags).
+But it's the one we use by convention.
+Usually when we're using the second definition we don't much care exactly how we force the sets to be disjoint; we only care that there <em>is</em> such a way.
+(For comparison, there is [ordered_pair_formal_definitions more than one way] to define the ordered pair in the [ZF] set theory, but we almost never care really which exact definition we use; only that there is a definition that has the properties we want from it.)</p></main><hr><footer><p class="tagged"><h2>Tagged</h2><span class="page-comma-list"><a class="page-link" href="../page/c_class_meta_tag.html">C-Class</a></span></p><p class="reverse-related"><h2>Reverse Related</h2><ul class="page-list"><li><a class="page-link" href="../page/c_class_meta_tag.html">C-Class</a> <q>This page has substantial content, but may not thoroughly cover the topic, may not meet style and prose standards, or may not explain the concept in a way the target audience will reliably understand.</q> - <a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a></li></ul></p><p class="children"><h2>Children</h2><ul class="page-tree"><li><a class="page-link" href="../page/disjoint_union_universal_property.html">Universal property of the disjoint union</a> <q>Just as the empty set may be described by a universal property, so too may the disjoint union of sets.</q> - <a class="page-link" href="../page/PatrickStevens.html">Patrick Stevens</a></li></ul></p></footer></body></html>

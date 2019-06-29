@@ -1,0 +1,52 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Task (AI goal)</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_SVG" async></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">Task (AI goal)</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/task_goal.json.html">task_goal.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/task_goal">https://arbital.com/p/task_goal</a></p><p class="creator">by
+ <a class="page-link" href="../page/EliezerYudkowsky.html">Eliezer Yudkowsky</a> Jun 20 2016 
+updated
+ Jan 26 2017</p></div><p class="clickbait">When building the first AGIs, it may be wiser to assign them only goals that are bounded in space and time, and can be satisfied by bounded efforts.</p><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>Task (AI goal)</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="ai_alignment.html">AI alignment</a></li><li><a href="AGI_typology.html">Strategic AGI typology</a></li><li><a href="task_agi.html">Task-directed AGI</a></li><li>…</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="ai_alignment.html">AI alignment</a></li><li><a href="task_agi.html">Task-directed AGI</a></li><li>…</li></ul></nav></nav></header><hr><main><p>[summary:  A "Task" is a goal within an <a href="advanced_agent.html">AI</a> that only covers a bounded amount of space and time, and can be satisfied by a limited amount of effort.</p>
+<p>An example might be "fill this cauldron with water before 1pm"; but even there, we have to be careful.  "Maximize the probability that this cauldron contains water at 1pm" would imply unlimited effort, since slightly higher probabilities could be obtained by adding more and more effort.</p>
+<p>"Carry out some policy such that there's at least a 95% chance that the cauldron is at least 90% full of water by 1pm" would be more task-ish.  A limited effort seems like definitely enough to do that, and then it can't be done any further by expending more effort.</p>
+<p>See also <a href="low_impact.html">Low impact</a>, <a href="soft_optimizer.html">Mild optimization</a> and <a href="task_agi.html">Task-directed AGI</a>.]</p>
+<p>A "Task" is a goal or subgoal within an <a href="advanced_agent.html">advanced</a> AI, that can be satisfied as fully as possible by optimizing a bounded part of space, for a limited time, with a limited amount of effort.</p>
+<p>E.g., "make as many <a href="paperclip_maximizer.html">paperclips</a> as possible" is definitely not a 'task' in this sense, since it spans every paperclip anywhere in space and future time.  Creating more and more paperclips, using more and more effort, would be more and more preferable up to the maximum exertable effort.</p>
+<p>For a more subtle example of non-taskishness, consider Disney's "sorcerer's apprentice" scenario:  Mickey Mouse commands a broomstick to fill a cauldron.  The broomstick then adds more and more water to the cauldron until the workshop is flooded.  (Mickey then tries to destroy the broomstick.  But since the broomstick has no <a href="shutdown_problem.html">designed-in reflectively stable shutdown button</a>, the broomstick repairs itself and begins constructing subagents that go on pouring more water into the cauldron.)</p>
+<p>Since the Disney cartoon is a musical, we don't know if the broomstick was given a time bound on its job.  Let us suppose that Mickey tells the broomstick to do its job sometime before 1pm.</p>
+<p>Then we might imagine that the broomstick is a subjective <a href="expected_utility_agent.html">expected utility</a> maximizer with a utility function $~$U_{cauldron}$~$ over outcomes $~$o$~$:</p>
+<p>$$~$U_{cauldron}(o):  \begin{cases}
+1 &amp; \text{if in $o$ the cauldron is $\geq 90\%$ full of water at 1pm} \\
+0 &amp; \text{otherwise}
+\end{cases}$~$$</p>
+<p>This <em>looks</em> at first glance like it ought to be taskish:</p>
+<ul>
+<li>The cauldron is bounded in space.</li>
+<li>The goal only concerns events that happen before a certain time.</li>
+<li>The highest utility that can be achieved is $~$1,$~$ which is reached as soon as the cauldron is $~$\geq 90\%$~$ full of water, which seems achievable using a limited amount of effort.</li>
+</ul>
+<p>The last property in particular makes $~$U_{cauldron}$~$ a "satisficing utility function", one where an outcome is either satisfactory or not-satisfactory, and it is not possible to do any better than "satisfactory".</p>
+<p>But by previous assumption, the broomstick is still optimizing <em>expected</em> utility.  Assume the broomstick reasons with <a href="agi.html">reasonable generality</a> via some <a href="universal_prior.html">universal prior</a>.  Then the <em>subjective probability</em> of the cauldron being full, when it <em>looks</em> full to the broomstick-agent, <a href="cromwells_rule.html">will not be</a> <em>exactly</em> $~$1.$~$  Perhaps (the broomstick-agent reasons) the broomstick's cameras are malfunctioning, or its RAM has malfunctioned producing an inaccurate memory.</p>
+<p>Then the broomstick-agent reasons that it can further increase the probability of the cauldron being full - however slight the increase in probability - by going ahead and dumping in another bucket of water.</p>
+<p>That is:  <a href="cromwells_rule.html">Cromwell&#39;s Rule</a> implies that the subjective probability of the bucket being full never reaches exactly $~$1$~$.  Then there can be an infinite series of increasingly preferred, increasingly more effortful policies $~$\pi_1, \pi_2, \pi_3 \ldots$~$ with</p>
+<p>$$~$\mathbb E [ U_{cauldron} | \pi_1] = 0.99\\
+\mathbb E [ U_{cauldron} | \pi_2] = 0.999 \\
+\mathbb E [ U_{cauldron} | \pi_3] = 0.999002 \\
+\ldots$~$$</p>
+<p>In that case the broomstick can always do better in expected utility (however slightly) by exerting even more effort, up to the maximum effort it can exert.  Hence the flooded workshop.</p>
+<p>If on the other hand the broomstick is an <em>expected utility satisficer</em>, i.e., a policy is "acceptable" if it has $~$\mathbb E [ U_{cauldron} | \pi ] \geq 0.95,$~$ then this is now finally a taskish process (we think).  The broomstick can find some policy that's reasonably sure of filling up the cauldron, execute that policy, and then do no more.</p>
+<p>As described, this broomstick doesn't yet have any <a href="4l.html">impact penalty</a>, or features for <a href="soft_optimizer.html">mild optimization</a>.  So the broomstick could <em>also</em> get $~$\geq 0.90$~$ expected utility by flooding the whole workshop; we haven't yet <a href="soft_optimizer.html">forbidden excess efforts</a>.  Similarly, the broomstick could also go on to destroy the world after 1pm - we haven't yet <a href="4l.html">forbidden excess impacts</a>.</p>
+<p>But the underlying rule of "Execute a policy that fills the cauldron at least 90% full with at least 95% probability" does appear taskish, so far as we know.  It seems <em>possible</em> for an otherwise well-designed agent to execute this goal to the greatest achievable degree, by acting in bounded space, over a bounded time, with a limited amount of effort.  There does not appear to be a sequence of policies the agent would evaluate as better fulfilling its decision criterion, which use successively more and more effort.</p>
+<p>The "taskness" of this goal, even assuming it was correctly <a href="identify_goal_concept.html">identified</a>, wouldn't by itself make the broomstick a fully taskish AGI.  We also have to consider whether every subprocess of the AI is similarly tasky; whether there is any subprocess anywhere in the AI that tries to improve memory efficiency 'as far as possible'.  But it would be a start, and make further safety features more feasible/useful.</p>
+<p>See also <a href="soft_optimizer.html">Mild optimization</a> as an <a href="taskagi_open_problems.html">open problem in AGI alignment</a>.</p></main><hr><section class="comments"><h2>Comments</h2><div class="comment"><p><a class="page-link" href="../page/RyanCarey2.html">Ryan Carey</a></p><p><p>I think the "task AI" term has been a bit confusing. When people first hear the term "task AI" they naturally think of non-autonomy (Jessica and I both did this). It also sounds a bit similar to Holden's "tool AI" which has similar connotations. </p>
+<p>Whereas I'm apparently supposed to be imagining an optionally autonomous satisficing agent. I admittedly don't have any better suggestions.</p></p></div></section><footer><p class="likes"><h2>Likes</h2><span class="page-comma-list"><a class="page-link" href="../page/EricRogstad.html">Eric Rogstad</a></span></p></footer></body></html>

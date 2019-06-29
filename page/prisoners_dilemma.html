@@ -1,0 +1,72 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Prisoner's Dilemma</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_SVG" async></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">Prisoner's Dilemma</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/prisoners_dilemma.json.html">prisoners_dilemma.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/prisoners_dilemma">https://arbital.com/p/prisoners_dilemma</a></p><p class="creator">by
+ <a class="page-link" href="../page/EliezerYudkowsky.html">Eliezer Yudkowsky</a> Aug 1 2016</p></div><p class="clickbait">You and an accomplice have been arrested.  Both of you must decide, in isolation, whether to testify against the other prisoner--which subtracts one year from your sentence, and adds two to theirs.</p><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>Prisoner's Dilemma</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="decision_theory.html">Decision theory</a></li><li><a href="logical_dt.html">Logical decision theories</a></li><li><a href="newcomblike.html">Newcomblike decision problems</a></li><li>…</li></ul></nav></nav></header><hr><main><p>[summary:  In the original Prisoner's Dilemma, you and a confederate have been arrested for a crime.  You are each facing one year in prison.  Each of you, in isolation, is offered the chance to testify against the other.  If you testify, it will subtract one year from your sentence and add two years to the others' sentence.</p>
+<ul>
+<li>If both of you Cooperate (refuse to testify) then you both serve 1 year in prison.</li>
+<li>If one Defects and the other Cooperates, they go free and the other serves 3 years in prison.</li>
+<li>If both of you Defect (testify) then you both serve 2 years in prison.</li>
+</ul>
+<p>You can't communicate and have no means of enforcing an agreement.  What do you do?</p>
+<p>The Prisoner's Dilemma is a <a href="central_example.html">central example</a> in game theory, economics, and decision theory.</p>
+<p>For somewhat more realistic scenarios that evade common objections, see <a href="true_prisoners_dilemma.html">True Prisoner&#39;s Dilemma</a>.]</p>
+<p>[summary(Technical):  The Prisoner's Dilemma is a game played by two agents in which no [nash_equilibrium] is [pareto_optimum Pareto optimal].  The two moves are standardly denoted Defect ($~$D$~$) and Cooperate ($~$C$~$).  The payoffs $~$(p_1, p_2)$~$ for Player 1 and Player 2 respectively are:</p>
+<p>$$~$\begin{array}{r|c|c}
+&amp; D_2 &amp;  C_2 \\
+\hline
+D_1 &amp; (\$1, \$1) &amp; (\$3, \$0) \\ \hline
+C_1 &amp; (\$0, \$3) &amp; (\$2, \$2)
+\end{array}$~$$</p>
+<p>Each agent is better off playing Defect than Cooperate, regardless of the other agent's move.  But both agents prefer the outcome of mutual Cooperation to the outcome of mutual Defection.</p>
+<p>The Prisoner's Dilemma is an archetypal example of a [commons_problem] or [coordination_problem].  The conclusion that two rational agents must Defect against each other, even knowing that the other agent is also rational and hence will probably come to the same decision, was challenged by Hofstadter's 'superrationality' and later by <a href="logical_dt.html">logical decision theory</a>.</p>
+<p>An important variant is the [iterated_prisoners_dilemma].]</p>
+<h1 id="setupandpayoffs">Setup and payoffs</h1>
+<p>In the classic presentation of the <a href="prisoners_dilemma.html">Prisoner&#39;s Dilemma</a>, you and your fellow bank robber have been arrested and imprisoned.  You cannot communicate with each other.  You are facing a prison sentence of one year each.  Both of you have been offered a chance to betray the other (Defect); someone who Defects gets one year off their own prison sentence, but adds two years onto the other person's prison sentence.  Alternatively, you can Cooperate with the other prisoner by remaining silent.</p>
+<p>So:</p>
+<ul>
+<li>If you both Cooperate (refuse to testify), you each get 1 year in prison.</li>
+<li>If one Defects and the other Cooperates, they go free and the other gets 3 years in prison.</li>
+<li>If you both Defect (testify), you each get 2 years in prison.</li>
+</ul>
+<p>Or in the form of an outcome matrix where $~$(o_1, o_2)$~$ is the outcome for Player 1 and Player 2 respectively:</p>
+<p>$$~$\begin{array}{r|c|c}
+&amp; \text{ Player 2 Defects: } &amp; \text{ Player 2 Cooperates: }\\
+\hline
+\text{ Player 1 Defects: }&amp; \text{ (2 years, 2 years) } &amp; \text{ (0 years, 3 years) } \\ \hline
+\text{ Player 1 Cooperates: } &amp; \text{ (3 years, 0 years) } &amp; \text{ (1 year, 1 year) }
+\end{array}$~$$</p>
+<p>As usual, we assume:</p>
+<ul>
+<li>Both you and the other agent are strictly selfish, and don't care at all what happens to the other.</li>
+<li>You also don't care about honor or reputation.</li>
+<li>There's no mob boss to kill anyone who testifies, and you have no other means of enforcement.</li>
+<li>Your <a href="utility_function.html">Utility function</a> is strictly linear in years of prison time avoided.</li>
+</ul>
+<p>(For scenarios that would reproduce the resulting ideal structure with more realistic human motives and situations, see <a href="true_prisoners_dilemma.html">True Prisoner&#39;s Dilemma</a>.)</p>
+<p>Then we can rewrite the Prisoner's Dilemma as a game with moves $~$D$~$ and $~$C,$~$ and positive payoffs where \$X denotes "X <a href="utility_function.html">utility</a>":</p>
+<p>$$~$\begin{array}{r|c|c}
+&amp; D_2 &amp;  C_2 \\
+\hline
+D_1 &amp; (\$1, \$1) &amp; (\$3, \$0) \\ \hline
+C_1 &amp; (\$0, \$3) &amp; (\$2, \$2)
+\end{array}$~$$</p>
+<h1 id="significance">Significance</h1>
+<p>In the Prisoner's Dilemma, each player is individually better off Defecting, regardless of what the other player does.  However, both players prefer the outcome of mutual Cooperation to the outcome from mutual Defection; that is, the game's only [nash_equilibrium Nash equilibrium] is not [pareto_optimum Pareto optimal].  The Prisoner's Dilemma is therefore an archetypal example of a [coordination_problem coordination problem].</p>
+<p>The Prisoner's Dilemma provoked an enormous amount of debate, mainly due to the tension between those who accepted that it was reasonable or 'rational' to Defect in the Prisoner's Dilemma, and those who found it hard to believe that two reasonable or 'rational' agents would have no choice except to helplessly Defect against each other.</p>
+<p>The <a href="IPD">iterated_prisoners_dilemma Iterated Prisoner's Dilemma</a> was another important development in the debate--instead of two agents playing the Prisoner's Dilemma once, we can suppose that they play the PD against each other 100 times in a row.  Another development was 'tournaments', run on a computer, in which many programmed strategies play the Prisoner's Dilemma against every other program.  Combined, these yield an IPD tournament, and almost every IPD tournament--whatever the variations--has been won by some variant or another of Tit for Tat, a strategy which Cooperates on the first round and on each successive round just plays whatever the opponent played previously.</p>
+<p>Examining such tournaments has yielded the conclusion that strategies should be 'nice' (not be the first to Defect, i.e., not play Defect for the opponent has played Defect), 'retaliatory' (Cooperate less when the opponent Defects) and 'forgiving' (not go on Defecting forever after the opponent Defects once).</p>
+<p>The strategy in Tit for Tat stands in contrast to the conclusion that it is reasonable to Defect in the oneshot Prisoner's Dilemma.  Indeed, it stands in contrast to the supposedly 'rational' (on some views) strategy in the Iterated Prisoner's Dilemma.  If the game is to be played 100 times, then clearly it is 'rational' to play Defect on the last and 100th round.  But if both players are 'rational' and know that the other is 'rational', they both know the other player will reason this way and Defect on the 100th round.  Then since play in the 100th round is insensitive to play on the 99th round, both agents reason that they should Defect on the 99th round, and so by induction they both Defect on the 1st and every successive round.</p>
+<p>This conclusion has been challenged from many directions, on both the oneshot and iterated Prisoner's Dilemma.  Douglas Hofstadter observed that two rational agents should both realize that there is only one 'rational' conclusion, whatever that conclusion is; Hofstadter proposed 'superrationality' as rationality taking into account that superrational agents facing similar problems must arrive at similar conclusions.  <a href="logical_dt.html">Logical decision theory</a>, which says that the principle of rational choice is to decide as if choosing the logical output of your decision algorithm, can be seen as generalizing this viewpoint.  Logical decision theorists have also shown that if the agents in the Prisoner's Dilemma have common knowledge of each other's algorithms, <a href="https://arxiv.org/abs/1401.5577">they can end up cooperating</a> (and this works even if the two agents are not identical).</p></main><hr><footer><p class="children"><h2>Children</h2><ul class="page-tree"><li><a class="page-link" href="../page/true_prisoners_dilemma.html">True Prisoner's Dilemma</a> <q>A scenario that would reproduce the ideal payoff matrix of the Prisoner's Dilemma about human beings who care about their public reputation and each other.</q> - <a class="page-link" href="../page/EliezerYudkowsky.html">Eliezer Yudkowsky</a></li></ul></p></footer></body></html>

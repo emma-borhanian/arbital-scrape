@@ -1,0 +1,66 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Infrahuman, par-human, superhuman, efficient, optimal</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_SVG" async></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">Infrahuman, par-human, superhuman, efficient, optimal</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/relative_ability.json.html">relative_ability.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/relative_ability">https://arbital.com/p/relative_ability</a></p><p class="creator">by
+ <a class="page-link" href="../page/EliezerYudkowsky.html">Eliezer Yudkowsky</a> Jan 29 2017 
+updated
+ Mar 8 2017</p></div><p class="clickbait">A categorization of AI ability levels relative to human, with some gotchas in the ordering.  E.g., in simple domains where humans can play optimally, optimal play is not superhuman.</p><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>Infrahuman, par-human, superhuman, efficient, optimal</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="ai_alignment.html">AI alignment</a></li><li><a href="advanced_agent_theory.html">Theory of (advanced) agents</a></li><li><a href="advanced_agent.html">Advanced agent properties</a></li><li>…</li></ul></nav></nav></header><hr><main><p>[summary:</p>
+<ul>
+<li><strong>Strictly infrahuman</strong>: The AI can't do better than a human in any regard (in that domain).</li>
+<li><strong>Infrahuman</strong>:  The AI almost always loses to the human (in that domain).</li>
+<li><strong>Par-human</strong>:  The AI sometimes wins and sometimes loses; it's weaker in some places and stronger in others (in that domain).</li>
+<li><strong>High-human</strong>:  The AI performs around as well as exceptionally competent humans.</li>
+<li><strong>Superhuman</strong>:  The AI almost always wins.</li>
+<li><strong><a href="efficiency.html">Efficient</a></strong>:  Human advice contributes no marginal improvement to the AI's competence.</li>
+<li><strong>Strongly superhuman</strong>:  The AI is <em>much</em> better than human; <a href="rich_domain.html">the domain is rich enough</a> for humans to be <a href="uncontainability.html">surprised</a> at the AI's tactics.</li>
+<li><strong>Optimal</strong>:  Perfect performance for the domain.</li>
+</ul>
+<p>These thresholds aren't always ordered as above.  For example, <a href="logical_game.html">logical Tic-Tac-Toe</a> is simple enough that humans and AIs can both play optimally; so, in the Tic-Tac-Toe domain, optimal play isn't superhuman.]</p>
+<p>Some thresholds in '<a href="advanced_agent.html">sufficiently advanced</a>' machine intelligence are not absolute ability levels within a domain, but abilities relative to the human programmers or operators of the AI.  When this is true, it's useful to think about <em>relative</em> ability levels within a domain; and one generic set of distinguished thresholds in relative ability is:</p>
+<ul>
+<li><strong>Strictly infrahuman:</strong>  The AI cannot do anything its human operators / programmers cannot do.  Computer chess in 1966 relative to a human master.</li>
+<li><strong>Infrahuman:</strong>  The AI is definitely weaker than its operators but can deploy some surprising moves.  Computer chess in 1986 relative to a human master.</li>
+<li><strong>Par-human</strong> (or more confusingly "<strong>human-level</strong>"):  If competing in that domain, the AI would sometimes win, sometimes lose; it's better than human at some things and worse in others; it just barely wins or loses.  Computer chess in 1991 on a home computer, relative to a strong amateur human player.</li>
+<li><strong>High-human</strong>:  The AI performs as well as exceptionally competent humans.  Computer chess just before <a href="deep_blue.html">1996</a>.</li>
+<li><strong>Superhuman:</strong>  The AI always wins.  Computer chess in 2006.</li>
+<li><strong><a href="efficiency.html">Efficient</a>:</strong>  Human advice contributes no marginal improvement to the AI's competence.  Computer chess was somewhere around this level in 2016, with "advanced" / "freestyle" / "hybrid" / "centaur" chess starting to lose out against purely machine players. %note: Citation solicited. Googling gives the impression that nothing has been heard from 'advanced chess' in the last few years.%</li>
+<li><strong>Strongly superhuman:</strong></li>
+<li>The ceiling of possible performance in the domain is far above the human level; the AI can perform orders of magnitudes better.  E.g., consider a human and computer competing at <em>how fast</em> they can do arithmetic.  In principle the domain is simple, but competing with respect to speed leaves room overhead for the computer to do literally billions of times better.</li>
+<li><a href="rich_domain.html">The domain is rich enough</a> that humans don't understand key generalizations, leaving them shocked at <em>how</em> the AI wins.  Computer Go relative to human masters in 2017 was just starting to exhibit the first signs of this ("We thought we were one or two stones below God, but after playing AlphaGo, we think it is more like three or four").  Similarly, consider a human grandmaster playing Go against a human novice.</li>
+<li><strong>Optimal:</strong>  The AI's performance is perfect for the domain; God could do no better.  Computer play in checkers as of 2007.</li>
+</ul>
+<p>The <em>ordering</em> of these thresholds isn't always as above.  For example, in the extremely simple domain of <a href="logical_game.html">logical Tic-Tac-Toe</a>, humans can play optimally after a small amount of training.  Optimal play in Tic-Tac-Toe is therefore not superhuman.  Similarly, if an AI is playing in a rich domain but still has strange weak spots, the AI might be strongly superhuman (its play is <em>much</em> better and shocks human masters) but not <a href="efficiency.html">efficient</a> (the AI still sometimes plays wrong moves that human masters can see are wrong).</p>
+<p>The term "human-equivalent" is deprecated because it confusingly implies a roughly human-style balance of capabilities, e.g., an AI that is roughly as good at conversation as a human and also roughly as good at arithmetic as a human.  This seems pragmatically unlikely.</p>
+<p>The <a href="https://en.wikipedia.org/wiki/Progress_in_artificial_intelligence">other Wiki</a> lists the categories "optimal, super-human, high-human, par-human, sub-human".</p>
+<h1 id="relevantthresholdsforaialignmentproblems">Relevant thresholds for AI alignment problems</h1>
+<p>Considering these categories as <a href="advanced_agent.html">thresholds of advancement</a> relevant to the point at which AI alignment problems first materialize:</p>
+<ul>
+<li>"Strictly infrahuman" means we don't expect to be surprised by any tactic the AI uses to achieve its goals (within a domain).</li>
+<li>"Infrahuman" means we might be surprised by a tactic, but not surprised by overall performance levels.</li>
+<li>"Par-human" means we need to start worrying that humans will lose in any event determined by a competition (although this seems to imply the <a href="nonadversarial.html">non-adversarial principle</a> has already been violated); we can't rely on humans winning some event determined by a contest of relevant ability.  Or this may suppose that the AI gains access to resources or capabilities that we have strong reason to believe are protected by a lock of roughly human ability levels, even if that lock is approached in a different way than usual.</li>
+<li>"High-human" means the AI will <em>probably</em> see strategies that a human sees in a domain; it might be possible for an AI of par-human competence to miss them, but this is much less likely for a high-human AI.  It thus behaves like a slightly weaker version of postulating <a href="efficiency.html">efficiency</a> for purposes of expecting the AI to see some particular strategy or point.</li>
+<li>"Superhuman" implies at least <a href="uncontainability.html">weak cognitive uncontainability</a> by <a href="Vinge_law.html">Vinge&#39;s Law</a>.  Also, if something is known to be difficult or impossible for humans, but seems possibly doable in principle, we may need to consider it becoming possible given some superhuman capability level.</li>
+<li>"Efficiency" is a fully sufficient condition for the AI seeing any opportunity that a human sees; e.g., it is a fully sufficient condition for many instrumentally convergent strategies.  Similarly, it can be postulated as a fully sufficient condition to refute a claim that an AI will take a path such that some other path would get more of its utility function.</li>
+<li>"Strongly superhuman" means we need to expect that an AI's strategies may deploy faster than human reaction times, or overcome great starting disadvantages.  Even if the AI starts off in a much worse position it may still win.</li>
+<li>"Optimality" doesn't obviously correspond to any particular threshold of results, but is still an important concept in the hierarchy, because only by knowing the absolute limits on optimal performance can we rule out strongly superhuman performance as being possible.  See also the claim <a href="real_is_rich.html">Almost all real-world domains are rich</a>.</li>
+</ul>
+<h1 id="humanlevelaiconfusedwithgeneralintelligence">'Human-level AI' confused with 'general intelligence'</h1>
+<p>The term "human-level AI" is sometimes used in the literature to denote <a href="agi.html">Artificial General Intelligence</a>.  This should probably be avoided, because:</p>
+<ul>
+<li>Narrow AIs have achieved par-human or superhuman ability in many specific domains without <a href="general_intelligence.html">general intelligence</a>.</li>
+<li>If we consider <a href="general_intelligence.html">general intelligence</a> as a capability, a kind of superdomain, it seems possible to imagine infrahuman levels of general intelligence (or superhuman levels).  The apparently large jump from humans to chimpanzees mean that we mainly see human levels of general intelligence with no biological organisms exhibiting the same ability at a lower level; but, at least so far as we currently know, AI could possibly take a different developmental path.  So alignment thresholds that could plausibly follow from general intelligence, like <a href="big_picture_awareness.html">big-picture awareness</a>, aren't necessarily locked to par-human performance overall.</li>
+</ul>
+<p>Arguably, the term 'human-level' should just be avoided entirely, because it's been pragmatically observed to function as a <a href="gotcha_button.html">gotcha button</a> that derails the conversation some fraction of the time; with the interrupt being "Gotcha!  AIs won't have a humanlike balance of abilities!"</p></main><hr><section class="comments"><h2>Comments</h2><div class="comment"><p><a class="page-link" href="../page/RyanCarey2.html">Ryan Carey</a></p><p><p>subhuman should contrast with superhuman, or infrahuman with suprahuman.</p></p></div></section><footer><p class="tagged"><h2>Tagged</h2><span class="page-comma-list"><a class="page-link" href="../page/value_alignment_glossary.html">Glossary (Value Alignment Theory)</a></span></p><p class="likes"><h2>Likes</h2><span class="page-comma-list"><a class="page-link" href="../page/EricRogstad.html">Eric Rogstad</a>,
+ <a class="page-link" href="../page/RyanCarey2.html">Ryan Carey</a></span></p><p class="reverse-related"><h2>Reverse Related</h2><ul class="page-list"><li><a class="page-link" href="../page/value_alignment_glossary.html">Glossary (Value Alignment Theory)</a> <q>Words that have a special meaning in the context of creating nice AIs.</q> - <a class="page-link" href="../page/EliezerYudkowsky.html">Eliezer Yudkowsky</a></li></ul></p></footer></body></html>

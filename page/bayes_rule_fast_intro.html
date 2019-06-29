@@ -1,0 +1,234 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>High-speed intro to Bayes's rule</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_SVG" async></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">High-speed intro to Bayes's rule</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/bayes_rule_fast_intro.json.html">bayes_rule_fast_intro.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/bayes_rule_fast_intro">https://arbital.com/p/bayes_rule_fast_intro</a></p><p class="creator">by
+ <a class="page-link" href="../page/EliezerYudkowsky.html">Eliezer Yudkowsky</a> Sep 29 2016 
+updated
+ Dec 25 2017</p></div><p class="clickbait">A high-speed introduction to Bayes's Rule on one page, for the impatient and mathematically adept.</p><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>High-speed intro to Bayes's rule</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="math.html">Mathematics</a></li><li><a href="probability_theory.html">Probability theory</a></li><li><a href="bayes_reasoning.html">Bayesian reasoning</a></li><li><a href="bayes_rule.html">Bayes' rule</a></li><li>…</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="rationality.html">Rationality</a></li><li><a href="probability_theory.html">Probability theory</a></li><li><a href="bayes_reasoning.html">Bayesian reasoning</a></li><li><a href="bayes_rule.html">Bayes' rule</a></li><li>…</li></ul></nav></nav></header><hr><main><p>(This is a high-speed introduction to <a href="bayes_rule.html">Bayes&#39; rule</a> for people who want to get straight to it and are good at math.  If you'd like a gentler or more thorough introduction, try starting at the <a href="bayes_rule_guide.html">Bayes&#39; Rule Guide</a> page instead.)</p>
+<h1 id="percentagesfrequenciesandwaterfalls">Percentages, frequencies, and waterfalls</h1>
+<p>Suppose you're screening a set of patients for a disease, which we'll call Diseasitis.%note:Lit. "inflammation of the disease".% Your initial test is a tongue depressor containing a chemical strip, which usually turns black if the patient has Diseasitis.</p>
+<ul>
+<li>Based on prior epidemiology, you expect that around 20% of patients in the screening population have Diseasitis.</li>
+<li>Among patients with Diseasitis, 90% turn the tongue depressor black.</li>
+<li>30% of the patients without Diseasitis will also turn the tongue depressor black.</li>
+</ul>
+<p>What fraction of patients with black tongue depressors have Diseasitis?</p>
+<p>%%hidden(Answer): 3/7 or 43%, quickly obtainable as follows:  In the screened population, there's 1 sick patient for 4 healthy patients.  Sick patients are 3 times more likely to turn the tongue depressor black than healthy patients.  $~$(1 : 4) \cdot (3 : 1) = (3 : 4)$~$ or 3 sick patients to 4 healthy patients among those that turn the tongue depressor black, corresponding to a probability of $~$3/7 = 43\%$~$ that the patient is sick.%%</p>
+<p>(Take your own stab at answering this question, then please click "Answer" above to read the answer before continuing.)</p>
+<p>Bayes' rule is a theorem which describes the general form of the operation we carried out to find the answer above.  In the form we used above, we:</p>
+<ul>
+<li>Started from the <em>prior odds</em> of (1 : 4) for sick versus healthy patients;</li>
+<li>Multiplied by the <em>likelihood ratio</em> of (3 : 1) for sick versus healthy patients blackening the tongue depressor;</li>
+<li>Arrived at <em>posterior odds</em> of (3 : 4) for a patient with a positive test result being sick versus healthy.</li>
+</ul>
+<p>Bayes' rule in this form thus states that <strong>the prior odds times the likelihood ratio equals the posterior odds.</strong></p>
+<p>We could also potentially see the positive test result as <strong>revising</strong> a <em>prior belief</em> or <em>prior probability</em> of 20% that the patient was sick, to a <em>posterior belief</em> or <em>posterior probability</em> of 43%.</p>
+<p>To make it clearer that we did the correct calculation above, and further pump intuitions for Bayes' rule, we'll walk through some additional visualizations.</p>
+<h2 id="frequencyrepresentation">Frequency representation</h2>
+<p>The <em>frequency representation</em> of Bayes' rule would describe the problem as follows:  "Among 100 patients, there will be 20 sick patients and 80 healthy patients."</p>
+<p><img src="https://i.imgur.com/gvcoqQN.png?0" alt="prior frequency" /></p>
+<p>"18 out of 20 sick patients will turn the tongue depressor black.  24 out of 80 healthy patients will blacken the tongue depressor."</p>
+<p><img src="https://i.imgur.com/0XDbrYi.png?0" alt="posterior frequency" /></p>
+<p>"Therefore, there are (18+24)=42 patients who turn the tongue depressor black, among whom 18 are actually sick. (18/42)=(3/7)=43%."</p>
+<p>(Some experiments show %%note: E.g. "<a href="https://faculty.washington.edu/jmiyamot/p548/eddydm%20prob%20reas%20i%20clin%20medicine.pdf">Probabilistic reasoning in clinical medicine</a>" by David M. Eddy (1982).%% that this way of explaining the problem is the easiest for e.g. medical students to understand, so you may want to remember this format for future use.  Assuming you can't just send them to Arbital!)</p>
+<h2 id="waterfallrepresentation">Waterfall representation</h2>
+<p>The <em>waterfall representation</em> may make clearer why we're also allowed to transform the problem into prior odds and a likelihood ratio, and multiply (1 : 4) by (3 : 1) to get posterior odds of (3 : 4) and a probability of 3/7.</p>
+<p>The following problem is isomorphic to the Diseasitis one:</p>
+<p>"A waterfall has two streams of water at the top, a red stream and a blue stream.  These streams flow down the waterfall, with some of each stream being diverted off to the side, and the remainder pools at the bottom of the waterfall."</p>
+<p><img src="https://i.imgur.com/D8EhY65.png?0" alt="unlabeled waterfall" /></p>
+<p>"At the top of the waterfall, there's around 20 gallons/second flowing from the red stream, and 80 gallons/second flowing from the blue stream.  90% of the red water makes it to the bottom of the waterfall, and 30% of the blue water makes it to the bottom of the waterfall.  Of the purplish water that mixes at the bottom, what fraction is from the red stream versus the blue stream?"</p>
+<p><img src="https://i.imgur.com/QIrtuVU.png?0" alt="labeled waterfall" /></p>
+<p>We can see from staring at the diagram that the <em>prior odds</em> and <em>likelihood ratio</em> are the only numbers we need to arrive at the answer:</p>
+<ul>
+<li>The problem would have the same answer if there were 40 gallons/sec of red water and 160 gallons/sec of blue water (instead of 20 gallons/sec and 80 gallons/sec).  This would just multiply the total amount of water by a factor of 2, without changing the ratio of red to blue at the bottom.</li>
+<li>The problem would also have the same answer if 45% of the red stream and 15% of the blue stream made it to the bottom (instead of 90% and 30%).  This would just cut down the total amount of water by a factor of 2, without changing the <em>relative</em> proportions of red and blue water.</li>
+</ul>
+<p><img src="https://i.imgur.com/6FOndjc.png?0" alt="wide vs narrow waterfall" /></p>
+<p>So only the <em>ratio</em> of red to blue water at the top (prior odds of the proposition), and only the <em>ratio</em> between the percentages of red and blue water that make it to the bottom (likelihood ratio of the evidence), together determine the <em>posterior</em> ratio at the bottom:  3 parts red to 4 parts blue.</p>
+<h2 id="testproblem">Test problem</h2>
+<p>Here's another Bayesian problem to attempt.  If you successfully solved the earlier problem on your first try, you might try doing this one in your head.</p>
+<p>10% of widgets are bad and 90% are good.  4% of good widgets emit sparks, and 12% of bad widgets emit sparks.  What percentage of sparking widgets are bad?</p>
+<p>%%hidden(Answer):</p>
+<ul>
+<li>There's $~$1 : 9$~$ bad vs. good widgets.  (9 times as many good widgets as bad widgets; widgets are 1/9 as likely to be bad as good.)</li>
+<li>Bad vs. good widgets have a $~$12 : 4$~$ relative likelihood to spark, which simplifies to $~$3 : 1.$~$  (Bad widgets are 3 times as likely to emit sparks as good widgets.)</li>
+<li>$~$(1 : 9) \cdot (3 : 1) = (3 : 9) \cong (1 : 3).$~$  (1 bad sparking widget for every 3 good sparking widgets.)</li>
+<li>Odds of $~$1 : 3$~$ convert to a probability of $~$\frac{1}{1+3} = \frac{1}{4} = 25\%.$~$ (25% of sparking widgets are bad.) %%</li>
+</ul>
+<p>(If you're having trouble using odds ratios to represent uncertainty, see <a href="odds_intro.html">this intro</a> or <a href="odds.html">this page</a>.)</p>
+<h1 id="generalequationandproof">General equation and proof</h1>
+<p>To say exactly what we're doing and prove its validity, we need to introduce some notation from <a href="probability.html">probability theory</a>.</p>
+<p>If $~$X$~$ is a proposition, $~$\mathbb P(X)$~$ will denote $~$X$~$'s probability, our quantitative degree of belief in $~$X.$~$</p>
+<p>$~$\neg X$~$ will denote the negation of $~$X$~$ or the proposition "$~$X$~$ is false".</p>
+<p>If $~$X$~$ and $~$Y$~$ are propositions, then $~$X \wedge Y$~$ denotes the proposition that both X and Y are true.  Thus $~$\mathbb P(X \wedge Y)$~$ denotes "The probability that $~$X$~$ and $~$Y$~$ are both true."</p>
+<p>We now define <a href="conditional_probability.html">conditional probability</a>:</p>
+<p>$$~$\mathbb P(X|Y) := \dfrac{\mathbb P(X \wedge Y)}{\mathbb P(Y)}   \tag*{(definition of conditional probability)}$~$$</p>
+<p>We pronounce $~$\mathbb P(X|Y)$~$ as "the conditional probability of X, given Y".  Intuitively, this is supposed to mean "The probability that $~$X$~$ is true, <em>assuming</em> that proposition $~$Y$~$ is true".</p>
+<p>Defining conditional probability in this way means that to get "the probability that a patient is sick, given that they turned the tongue depressor black" we should put all the sick <em>plus</em> healthy patients with positive test results into a bag, and ask about the probability of drawing a patient who is sick <em>and</em> got a positive test result from that bag.  In other words, we perform the calculation $~$\frac{18}{18+24} = \frac{3}{7}.$~$</p>
+<p><img src="https://i.imgur.com/0XDbrYi.png?0" alt="diseasitis frequency" /></p>
+<p>Rearranging <a href="conditional_probability.html">the definition of conditional probability</a>, $~$\mathbb P(X \wedge Y) = \mathbb P(Y) \cdot \mathbb P(X|Y).$~$  So to find "the fraction of all patients that are sick <em>and</em> get a positive result", we multiply "the fraction of patients that are sick" times "the probability that a sick patient blackens the tongue depressor".</p>
+<p>We're now ready to prove Bayes's rule in the form, "the prior odds times the likelihood ratio equals the posterior odds".</p>
+<p>The "prior odds" is the ratio of sick to healthy patients:</p>
+<p>$$~$\frac{\mathbb P(sick)}{\mathbb P(healthy)}  \tag*{(prior odds)}$~$$</p>
+<p>The "likelihood ratio" is how much more <em>relatively</em> likely a sick patient is to get a positive test result (turn the tongue depressor black), compared to a healthy patient:</p>
+<p>$$~$\frac{\mathbb P(positive | sick)}{\mathbb P(positive | healthy)} \tag*{(likelihood ratio)}$~$$</p>
+<p>The "posterior odds" is the odds that a patient is sick versus healthy, <em>given</em> that they got a positive test result:</p>
+<p>$$~$\frac{\mathbb P(sick | positive)}{\mathbb P(healthy | positive)} \tag*{(posterior odds)}$~$$</p>
+<p>Bayes's theorem asserts that <em>prior odds times likelihood ratio equals posterior odds:</em></p>
+<p>$$~$\frac{\mathbb P(sick)}{\mathbb P(healthy)} \cdot \frac{\mathbb P(positive | sick)}{\mathbb P(positive | healthy)} = \frac{\mathbb P(sick | positive)}{\mathbb P(healthy | positive)}$~$$</p>
+<p>We will show this by proving the general form of Bayes's Rule.  For any two hypotheses $~$H_j$~$ and $~$H_k$~$ and any piece of new evidence $~$e_0$~$:</p>
+<p>$$~$
+\frac{\mathbb P(H_j)}{\mathbb P(H_k)}
+\cdot
+\frac{\mathbb P(e_0 | H_j)}{\mathbb P(e_0 | H_k)}
+=
+\frac{\mathbb P(e_0 \wedge H_j)}{\mathbb P(e_0 \wedge H_k)}
+= 
+\frac{\mathbb P(e_0 \wedge H_j)/\mathbb P(e_0)}{\mathbb P(e_0 \wedge H_k)/\mathbb P(e_0)}
+= 
+\frac{\mathbb P(H_j | e_0)}{\mathbb P(H_k | e_0)}
+$~$$</p>
+<p>In the Diseasitis example, this corresponds to performing the operations:</p>
+<p>$$~$
+\frac{0.20}{0.80}
+\cdot
+\frac{0.90}{0.30}
+=
+\frac{0.18}{0.24}
+= 
+\frac{0.18/0.42}{0.24/0.42}
+= 
+\frac{0.43}{0.57}
+$~$$</p>
+<p>Using red for sick, blue for healthy, grey for a mix of sick and healthy patients, and + signs for positive test results, the proof above can be visualized as follows:</p>
+<p><img src="https://i.imgur.com/YBc2nYo.png?0" alt="bayes venn" /></p>
+<p>%todo: less red in first circle (top left).  in general, don't have prior proportions equal posterior proportions graphically!%</p>
+<h2 id="bayestheorem">Bayes' theorem</h2>
+<p>An alternative form, sometimes called "Bayes' theorem" to distinguish it from "Bayes' rule" (although not everyone follows this convention), uses absolute probabilities instead of ratios.  The [marginal_probability law of marginal probability] states that for any set of <a href="exclusive_exhaustive.html">mutually exclusive and exhaustive</a> possibilities $~$\{X_1, X_2, …, X_i\}$~$ and any proposition $~$Y$~$:</p>
+<p>$$~$\mathbb P(Y) = \sum_i \mathbb P(Y \wedge X_i)   \tag*{(law of marginal probability)}$~$$</p>
+<p>Then we can derive an expression for the absolute (non-relative) probability of a proposition $~$H_k$~$ after observing evidence $~$e_0$~$ as follows:</p>
+<p>$$~$
+\mathbb P(H_k | e_0)
+= \frac{\mathbb P(H_k \wedge e_0)}{\mathbb P(e_0)}
+= \frac{\mathbb P(e_0 \wedge H_k)}{\sum_i P(e_0 \wedge H_i)}
+= \frac{\mathbb P(e_0 | X_k) \cdot \mathbb P(X_k)}{\sum_i \mathbb P(e_0 | X_i) \cdot \mathbb P(X_i)}
+$~$$</p>
+<p>The equation of the first and last terms above is what you will usually see described as Bayes' theorem.</p>
+<p>To see why this decomposition might be useful, note that $~$\mathbb P(sick | positive)$~$ is an <em>inferential</em> step, a conclusion that we make after observing a new piece of evidence.  $~$\mathbb P(positive | sick)$~$ is a piece of <em>causal</em> information we are likely to have on hand, for example by testing groups of sick patients to see how many of them turn the tongue depressor black.  $~$\mathbb P(sick)$~$ describes our state of belief before making any new observations.  So Bayes' theorem can be seen as taking what we already believe about the world (including our prior belief about how different imaginable states of affairs would generate different observations), plus an actual observation, and outputting a new state of belief about the world.</p>
+<h2 id="vectorandfunctionalgeneralizations">Vector and functional generalizations</h2>
+<p>Since the proof of Bayes' rule holds for <em>any pair</em> of hypotheses, it also holds for relative belief in any number of hypotheses.  Furthermore, we can repeatedly multiply by likelihood ratios to chain together any number of pieces of evidence.</p>
+<p>Suppose there's a bathtub full of coins:</p>
+<ul>
+<li>Half the coins are "fair" and have a 50% probability of coming up Heads each time they are thrown.</li>
+<li>A third of the coins are biased to produce Heads 25% of the time (Tails 75%).</li>
+<li>The remaining sixth of the coins are biased to produce Heads 75% of the time.</li>
+</ul>
+<p>You randomly draw a coin, flip it three times, and get the result <strong>HTH</strong>.  What's the chance this is a fair coin?</p>
+<p>We can validly calculate the answer as follows:</p>
+<p>$$~$
+\begin{array}{rll}
+  &amp; (3 : 2 : 1) &amp; \cong (\frac{1}{2} : \frac{1}{3} : \frac{1}{6}) \\
+\times &amp; (2 : 1 : 3) &amp; \cong ( \frac{1}{2} : \frac{1}{4} : \frac{3}{4} ) \\
+\times &amp; (2 : 3 : 1) &amp; \cong ( \frac{1}{2} : \frac{3}{4} : \frac{1}{4} ) \\
+\times &amp; (2 : 1 : 3) &amp; \\
+= &amp; (24 : 6 : 9) &amp; \cong (8 : 2 : 3) \cong (\frac{8}{13} : \frac{2}{13} : \frac{3}{13})
+\end{array}
+$~$$</p>
+<p>So the posterior probability the coin is fair is 8/13 or ~62%.</p>
+<p>This is one reason it's good to know the <a href="bayes_rule_odds.html">odds form</a> of Bayes' rule, not just the <a href="bayes_rule_probability.html">probability form</a> in which Bayes' theorem is often given.%%note: Imagine trying to do the above calculation by repeatedly applying the form of the theorem that says: $$~$\mathbb P(H_k | e_0) = \frac{\mathbb P(e_0 | X_k) \cdot \mathbb P(X_k)}{\sum_i \mathbb P(e_o | X_i) \cdot \mathbb P(X_i)}$~$$ %%</p>
+<p>We can generalize further by writing Bayes' rule in a functional form.  If $~$\mathbb O(H_i)$~$ is a relative belief vector or relative belief function on the variable $~$H,$~$ and $~$\mathcal L(e_0 | H_i)$~$ is the likelihood function giving the relative chance of observing evidence $~$e_0$~$ given each possible state of affairs $~$H_i,$~$ then relative posterior belief $~$\mathbb O(H_i | e_0)$~$ is given by:</p>
+<p>$$~$\mathbb O(H_i | e_0) = \mathcal L(e_0 | H_i) \cdot \mathbb O(H_i)$~$$</p>
+<p>If we <a href="normalize_probabilities.html">normalize</a> the relative odds $~$\mathbb O$~$ into absolute probabilities $~$\mathbb P$~$ - that is, divide through $~$\mathbb O$~$ by its sum or integral so that the new function sums or integrates to $~$1$~$ - then we obtain Bayes' rule for probability functions:</p>
+<p>$$~$\mathbb P(H_i | e_0) \propto \mathcal L(e_0 | H_i) \cdot \mathbb P(H_i)  \tag*{(functional form of Bayes' rule)}$~$$</p>
+<h1 id="applicationsofbayesianreasoning">Applications of Bayesian reasoning</h1>
+<p>This general Bayesian framework - prior belief, evidence, posterior belief - is a lens through which we can view a <em>lot</em> of formal and informal reasoning plus a large amount of entirely nonverbal cognitive-ish phenomena.%%note:This broad statement is widely agreed.  Exactly <em>which</em> phenomena are good to view through a Bayesian lens is sometimes disputed.%%</p>
+<p>Examples of people who might want to study Bayesian reasoning include:</p>
+<ul>
+<li>Professionals who use statistics, such as scientists or medical doctors.</li>
+<li>Computer programmers working in the field of machine learning.</li>
+<li>Human beings trying to think.</li>
+</ul>
+<p>The third application is probably of the widest general interest.</p>
+<h2 id="examplehumanapplicationsofbayesianreasoning">Example human applications of Bayesian reasoning</h2>
+<p>Philip Tetlock found when studying "superforecasters", people who were especially good at predicting future events:</p>
+<p>"The superforecasters are a numerate bunch: many know about Bayes' theorem and could deploy it if they felt it was worth the trouble. But they rarely crunch the numbers so explicitly. What matters far more to the superforecasters than Bayes' theorem is Bayes' core insight of gradually getting closer to the truth by constantly updating in proportion to the weight of the evidence." &mdash; Philip Tetlock and Dan Gardner, <a href="https://en.wikipedia.org/wiki/Superforecasting"><em>Superforecasting</em></a></p>
+<p>This is some evidence that <em>knowing about</em> Bayes' rule and understanding its <em>qualitative</em> implications is a factor in delivering better-than-average intuitive human reasoning.  This pattern is illustrated in the next couple of examples.</p>
+<h3 id="theokcupiddate">The OKCupid date.</h3>
+<p>One realistic example of Bayesian reasoning was deployed by one of the early test volunteers for a much earlier version of a guide to Bayes' rule.  She had scheduled a date with a 96% OKCupid match, who had then cancelled that date without other explanation.  After spending some mental time bouncing back and forth between "that doesn't seem like a good sign" versus "maybe there was a good reason he canceled", she decided to try looking at the problem using that Bayes thing she'd just learned about.  She estimated:</p>
+<ul>
+<li>A 96% OKCupid match like this one, had prior odds of 2 : 5 for being a desirable versus undesirable date.  (Based on her prior experience with 96% OKCupid matches, and the details of his profile.)</li>
+<li>Men she doesn't want to go out with are 3 times as likely as men she might want to go out with to cancel a first date without other explanation.</li>
+</ul>
+<p>This implied posterior odds of 2 : 15 that this was an undesirable date, which was unfavorable enough not to pursue him further.%%note: She sent him what might very well have been the first explicitly Bayesian rejection notice in dating history, reasoning that if he wrote back with a Bayesian counterargument, this would promote him to being interesting again.  He didn't write back.%%</p>
+<p>The point of looking at the problem this way is not that she knew <em>exact</em> probabilities and could calculate that the man had an exactly 88% chance of being undesirable.  Rather, by breaking up the problem in that way, she was able to summarize what she thought she knew in compact form, see what those beliefs already implied, and stop bouncing back and forth between imagined reasons why a good date might cancel versus reasons to protect herself from potential bad dates.  An answer <em>roughly</em> in the range of 15/17 made the decision clear.</p>
+<h3 id="internmentofjapaneseamericansduringworldwarii">Internment of Japanese-Americans during World War II</h3>
+<p>From Robyn Dawes's <a href="https://amazon.com/Rational-Choice-Uncertain-World-Robyn/dp/0155752154">Rational Choice in an Uncertain World</a>:</p>
+<blockquote>
+  <p>Post-hoc fitting of evidence to hypothesis was involved in a most grievous chapter in United States history: the internment of Japanese-Americans at the beginning of the Second World War.  When California governor Earl Warren testified before a congressional hearing in San Francisco on February 21, 1942, a questioner pointed out that there had been no sabotage or any other type of espionage by the Japanese-Americans up to that time.  Warren responded, "I take the view that this lack [of subversive activity] is the most ominous sign in our whole situation. It convinces me more than perhaps any other factor that the sabotage we are to get, the Fifth Column activities are to get, are timed just like Pearl Harbor was timed… I believe we are just being lulled into a false sense of security."</p>
+</blockquote>
+<p>You might want to take your own shot at guessing what Dawes had to say about a Bayesian view of this situation, before reading further.</p>
+<p>%%hidden(Answer):Suppose we put ourselves into the shoes of this congressional hearing, and imagine ourselves trying to set up this problem.</p>
+<ul>
+<li>The <a href="prior_probability.html">prior</a> <a href="odds.html">odds</a> that there would be a conspiracy of Japanese-American saboteurs.</li>
+<li>The <a href="likelihood_ratio.html">likelihood</a> of the observation "no visible sabotage or any other type of espionage", <em>given</em> that a Fifth Column actually existed.</li>
+<li>The likelihood of the observation "no visible sabotage from Japanese-Americans", in the possible world where there is <em>no</em> such conspiracy.</li>
+</ul>
+<p>As soon as we set up this problem, we realize that, whatever the probability of "no sabotage" being observed if there is a conspiracy, the likelihood of observing "no sabotage" if there <em>isn't</em> a conspiracy must be even higher.  This means that the likelihood ratio:</p>
+<p>$$~$\frac{\mathbb P(\neg \text{sabotage} | \text {conspiracy})}{\mathbb P(\neg \text {sabotage} | \neg \text {conspiracy})}$~$$</p>
+<p>…must be <em>less than 1,</em> and accordingly:</p>
+<p>$$~$
+\frac{\mathbb P(\text {conspiracy} | \neg \text{sabotage})}{\mathbb P(\neg \text {conspiracy} | \neg \text{sabotage})}
+&lt;
+\frac{\mathbb P(\text {conspiracy})}{\mathbb P(\neg \text {conspiracy})}
+\cdot
+\frac{\mathbb P(\neg \text{sabotage} | \text {conspiracy})}{\mathbb P(\neg \text {sabotage} | \neg \text {conspiracy})}
+$~$$</p>
+<p>Observing the total absence of any sabotage can only decrease our estimate that there's a Japanese-American Fifth Column, not increase it.  (It definitely shouldn't be "the most ominous" sign that convinces us "more than any other factor" that the Fifth Column exists.)</p>
+<p>Again, what matters is not the <em>exact</em> likelihood of observing no sabotage given that a Fifth Column actually exists.  As soon as we set up the Bayesian problem, we can see there's something <em>qualitatively</em> wrong with Earl Warren's reasoning.%%</p>
+<h1 id="furtherreading">Further reading</h1>
+<p>This has been a very brief and high-speed presentation of Bayes and Bayesianism.  It should go without saying that a vast literature, nay, a universe of literature, exists on Bayesian statistical methods and Bayesian epistemology and Bayesian algorithms in machine learning.  Staying inside Arbital, you might be interested in moving on to read:</p>
+<h2 id="moreonthetechnicalsideofbayesrule">More on the technical side of Bayes' rule</h2>
+<ul>
+<li>A sadly short list of <a href="22w.html">example Bayesian word problems</a>.  Want to add more?  (Hint hint.)</li>
+<li><a href="bayes_rule_proportional.html"><strong>Bayes&#39; rule: Proportional form.</strong></a> The fastest way to present a step in Bayesian reasoning in a way that will sound sort of understandable to somebody who's never heard of Bayes.</li>
+<li><a href="bayes_log_odds.html"><strong>Bayes&#39; rule: Log-odds form.</strong></a> A simple transformation of Bayes' rule reveals tools for measuring degree of belief, and strength of evidence.</li>
+<li><a href="bayes_rule_multiple.html"><strong>The &quot;Naive Bayes&quot; algorithm.</strong></a>  (Scroll down to the middle.)  The original simple Bayesian spam filter.</li>
+<li><a href="bayes_rule_multiple.html"><strong>Non-naive multiple updates.</strong></a>  (Scroll down past Naive Bayes.)  How to avoid double-counting the evidence, or worse, when considering multiple items of <em>correlated</em> evidence.</li>
+<li><a href="laplace_rule_of_succession.html"><strong>Laplace&#39;s Rule of Succession.</strong></a>  The classic example of an <a href="inductive_prior.html">inductive prior</a>.</li>
+</ul>
+<h2 id="moreonintuitiveimplicationsofbayesrule">More on intuitive implications of Bayes' rule</h2>
+<ul>
+<li><a href="bayes_science_virtues.html"><strong>A Bayesian view of scientific virtues.</strong></a> Why is it that science relies on bold, precise, and falsifiable predictions? Because of Bayes' rule, of course.</li>
+<li>[update_by_inches __Update by inches.__] It's virtuous to change your mind in response to overwhelming evidence. It's even more virtuous to shift your beliefs a little bit at a time, in response to <em>all</em> evidence (no matter how small).</li>
+<li><a href="bayes_rule_elimination.html"><strong>Belief revision as probability elimination.</strong></a> Update your beliefs by throwing away large chunks of probability mass.</li>
+<li><a href="flee_from_surprise.html"><strong>Shift towards the hypothesis of least surprise.</strong></a> When you see new evidence, ask: which hypothesis is <em>least surprised?</em></li>
+<li><a href="bayes_extraordinary_claims.html"><strong>Extraordinary claims require extraordinary evidence.</strong></a> The people who adamantly claim they were abducted by aliens do provide <em>some</em> evidence for aliens. They just don't provide quantitatively <em>enough</em> evidence.</li>
+<li>[ <strong>Ideal reasoning via Bayes' rule.</strong>] Bayes' rule is to reasoning as the <a href="https://en.wikipedia.org/wiki/Carnot_cycle">Carnot cycle</a> is to engines: Nobody can be a perfect Bayesian, but Bayesian reasoning is still the theoretical ideal.</li>
+<li><a href="likelihood_vs_pvalue.html"><strong>Likelihoods, p-values, and the replication crisis.</strong></a>  Arguably, a large part of the replication crisis can ultimately be traced back to the way journals treat p-values, and a large number of those problems can be summed up as "P-values are not Bayesian."</li>
+</ul></main><hr><footer><p class="tagged"><h2>Tagged</h2><span class="page-comma-list"><a class="page-link" href="../page/b_class_meta_tag.html">B-Class</a>,
+ <a class="page-link" href="../page/high_speed_meta_tag.html">High-speed explanation</a></span></p><p class="all-creators"><h2>All Creators</h2><span class="page-comma-list"><a class="page-link" href="../page/BrieHoffman.html">Brie Hoffman</a>,
+ <a class="page-link" href="../page/ConnorFlexman2.html">Connor Flexman</a>,
+ <a class="page-link" href="../page/EliezerYudkowsky.html">Eliezer Yudkowsky</a>,
+ <a class="page-link" href="../page/MikeTotman.html">Mike Totman</a></span></p><p class="likes"><h2>Likes</h2><span class="page-comma-list"><a class="page-link" href="../page/ConnorFlexman2.html">Connor Flexman</a>,
+ <a class="page-link" href="../page/DianNortier.html">Dian Nortier</a>,
+ <a class="page-link" href="../page/EliezerYudkowsky.html">Eliezer Yudkowsky</a>,
+ <a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a>,
+ <a class="page-link" href="../page/GordonLee.html">Gordon Lee</a>,
+ <a class="page-link" href="../page/JacksonFriess.html">Jackson Friess</a>,
+ <a class="page-link" href="../page/JaimeSevillaMolina.html">Jaime Sevilla Molina</a>,
+ <a class="page-link" href="../page/JuanBGarcaMartnez.html">Juan B García Martínez</a>,
+ <a class="page-link" href="../page/NateSoares.html">Nate Soares</a></span></p><p class="reverse-related"><h2>Reverse Related</h2><ul class="page-list"><li><a class="page-link" href="../page/b_class_meta_tag.html">B-Class</a> <q>This page is mostly complete and without major problems, but has not had detailed feedback from the target audience and reviewers.</q> - <a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a></li><li><a class="page-link" href="../page/high_speed_meta_tag.html">High-speed explanation</a> <q>Use this tag to indicate that a page offers a relatively faster and more terse explanation.
+
+Note th…</q> - <a class="page-link" href="../page/EricRogstad.html">Eric Rogstad</a></li></ul></p></footer></body></html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Kripke model</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_SVG" async></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">Kripke model</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/kripke_model.json.html">kripke_model.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/kripke_model">https://arbital.com/p/kripke_model</a></p><p class="creator">by
+ <a class="page-link" href="../page/JaimeSevillaMolina.html">Jaime Sevilla Molina</a> Jul 26 2016 
+updated
+ Jul 26 2016</p></div><p class="clickbait">The semantics of modal logic</p><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>Kripke model</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="math.html">Mathematics</a></li><li><a href="modal_logic.html">Modal logic</a></li><li>…</li></ul></nav></nav></header><hr><main><p><strong>Kripke models</strong> are [ interpretations] of <a href="modal_logic.html">Modal logic</a> which turn out to be adequate under some basic constraints for a wide array of systems of modal logic.</p>
+<h1 id="definition">Definition</h1>
+<p>A Kripke model $~$M$~$ is formed by three elements:</p>
+<ul>
+<li>A set of <strong>worlds</strong> $~$W$~$</li>
+<li>A <strong>visibility relationship</strong> between worlds $~$R$~$. If $~$wRx$~$, we will say that $~$w$~$ sees $~$x$~$ or that $~$x$~$ is a successor of $~$w$~$.</li>
+<li>A <strong>valuation function</strong> $~$V$~$ that associates pairs of worlds and sentence letters to truth values.</li>
+</ul>
+<p>You can visualize Kripke worlds as a [-digraph] in which each node is a world, and the edges represent visibility.</p>
+<p>[todo: images of Kripke worlds]</p>
+<p>The valuation function can be extended to assign truth values to whole modal sentences. We will say that a world $~$w \in W$~$ makes a modal sentence $~$A$~$ true (<em>notation</em>: $~$M,w\models A$~$) if it is assigned a truth value of true according to the following rules:</p>
+<ul>
+<li>If $~$A$~$ is a sentence letter $~$p$~$, then $~$M,w\models p$~$ if $~$V(w,p)=\top$~$.</li>
+<li>If $~$A$~$ is a truth functional compound of sentences, then its value comes from the propositional calculus and the values of its components. For example, if $~$A=B\to C$~$, then $~$M,w\models A$~$ <a href="iff.html">Iff</a> $~$M,w\not\models B$~$ or $~$M,w\models C$~$.</li>
+<li>If $~$A$~$ is of the form $~$\square B$~$, then $~$M,w\models \square B$~$ if $~$M,x\models B$~$ for every successor $~$x$~$ of $~$w$~$.</li>
+</ul>
+<p>Given this way of assigning truth values to sentences, we will say the following:</p>
+<ul>
+<li>$~$A$~$ is valid in a model $~$M$~$ (<em>notation</em>: $~$M\models A$~$) if $~$M,w\models A$~$ for every $~$w$~$ in $~$W$~$. </li>
+<li>$~$A$~$ is valid in a class of models if it is valid in every model of the class.</li>
+<li>$~$A$~$ is satisfiable in a model $~$M$~$ if there exists $~$w \in W$~$ such that $~$M,w\models A$~$.</li>
+<li>$~$A$~$ is satisfiable in a class of models if it is satisfiable in some model of the class.</li>
+</ul>
+<p>Notice that a sentence $~$A$~$ is valid in a class of models iff its negation is not satisfiable.</p>
+<h1 id="kripkemodelsassemanticsofmodallogic">Kripke models as semantics of modal logic</h1>
+<p>Kripke models are tightly connected to the interpretations of certain modal logics.</p>
+<p>For example, they model well the rules of <a href="normal_system_of_provability.html">normal provability systems</a>.</p>
+<p><strong>Exercise</strong>: show that Kripke models satisfy the necessitation rule of modal logic. That is, if $~$A$~$ is valid in $~$M$~$, then $~$\square A$~$ is valid in $~$M$~$.</p>
+<p>%%hidden(Show solution):
+Let $~$w \in W$~$ be a world of $~$M$~$. Let $~$x$~$ be an arbitrary successor of $~$w$~$. Then, as $~$M\models A$~$, then $~$M,x\models A$~$. Since $~$x$~$ was arbitrary, every successor of $~$w$~$ models $~$A$~$, so $~$w\models \square A$~$. As $~$w$~$ was arbitrary, then every world in $~$M$~$ models $~$\square A$~$, and thus $~$M\models \square A$~$.
+%%</p>
+<p><strong>Exercise</strong>: Show that the distributive axioms are always valid in Kripke models. Distributive axioms are modal sentences of the form $~$\square[A\to B]\to(\square A \to \square B)$~$.</p>
+<p>%%hidden(Show solution):
+Suppose that $~$w \in W$~$ is such that $~$w\models \square[A\to B]$~$ and $~$w\models \square A$~$.</p>
+<p>Let $~$x$~$ be a successor of $~$w$~$. Then $~$x\models A\to B$~$ and $~$x\models A$~$. We conclude by the propositional calculus that $~$x\models B$~$, so as $~$x$~$ was an arbitrary successor we have that $~$w\models \square B$~$, and thus $~$w\models\square[A\to B]\to(\square A \to \square B)$~$.</p>
+<p>We conclude that $~$M\models\square[A\to B]\to(\square A \to \square B)$~$, no matter what $~$M$~$ is.
+%%</p>
+<p>Those two last exercises prove that the [ K system] of modal logic is [soundness sound] for the class of all Kripke models. This is because we have proved that its axioms and rules of inference hold in all Kripke models (propositional tautologies and modus ponens trivially hold).</p>
+<h2 id="someadequacytheorems">Some adequacy theorems</h2>
+<p>Now we present a relation of modal logics and the class of Kripke models in which they are [adequacy adequate]. You can check the proofs of adequacy in their respective pages.</p>
+<ul>
+<li>The class of <em>all</em> Kripke models is adequate to the [ K system]</li>
+<li>The class of <a href="transitive_relation.html">transitive</a> Kripke models is adequate to [ K4]</li>
+<li>The class of [ reflexive] Kripke models is adequate to [ T]</li>
+<li>The class of [ reflexive] and <a href="transitive_relation.html">transitive</a> Kripke models is adequate to [ S4]</li>
+<li>The class of [ reflexive] and [ symmetric] Kripke models is adequate to [ B]</li>
+<li>The class of [ reflexive] and [ euclidean] Kripke models is adequate to [ S5]</li>
+<li>The class of [ finite], [ irreflexive] and <a href="transitive_relation.html">transitive</a> Kripke models is adequate to <a href="provability_logic.html">GL</a></li>
+</ul>
+<p>Notice that as the constraint on the models becomes stronger, the set of valid sentences increases, and thus the correspondent adequate system is stronger.</p>
+<p>A note about notation may be in order. We say that a Kripke model is, e.g, <a href="transitive_relation.html">transitive</a> if its visibility relation is transitive %%note:Same for reflexive, symmetric and euclidean %%. Similarly, a Kripke model is finite if its set of worlds is finite.</p></main><hr><footer><p class="all-creators"><h2>All Creators</h2><span class="page-comma-list"><a class="page-link" href="../page/DylanHendrickson.html">Dylan Hendrickson</a>,
+ <a class="page-link" href="../page/JaimeSevillaMolina.html">Jaime Sevilla Molina</a></span></p><p class="likes"><h2>Likes</h2><span class="page-comma-list"><a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a></span></p></footer></body></html>

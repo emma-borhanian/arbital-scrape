@@ -1,0 +1,56 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Coherence theorems</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_SVG" async></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">Coherence theorems</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/coherence_theorems.json.html">coherence_theorems.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/coherence_theorems">https://arbital.com/p/coherence_theorems</a></p><p class="creator">by
+ <a class="page-link" href="../page/EliezerYudkowsky.html">Eliezer Yudkowsky</a> Feb 7 2017</p></div><p class="clickbait">A 'coherence theorem' shows that something bad happens to an agent if its decisions can't be viewed as 'coherent' in some sense. E.g., an inconsistent preference ordering leads to going in circles.</p><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>Coherence theorems</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="decision_theory.html">Decision theory</a></li><li><a href="expected_utility_formalism.html">Expected utility formalism</a></li><li>…</li></ul></nav></nav></header><hr><main><p>[summary:  In the context of decision theory, a <em>coherence theorem</em> shows that bad things happen to an agent whose behavior or beliefs can't be viewed as having property X.  Conversely, an agent that doesn't stumble over its own feet in this sense, must be acting in a way that we can view as the agent being coherent in sense X.</p>
+<p>Or as Steve Omohundro put it:  If you prefer being in San Francisco to being in San Jose, prefer being in Oakland to being in San Francisco, and prefer being in San Jose to being in Oakland, you're going to waste a lot of money on taxi rides.</p>
+<p>(In other words:  If we can't view an agent's local choices as being coherent with <em>some</em> consistent global preference ordering, the agent is executing qualitatively dominated strategies.  This is the sort of thing that coherence theorems say.)]</p>
+<p><em>A tutorial introducing this concept exists <a href="intro_utility_coherence.html">here</a>.</em></p>
+<p>In the context of <a href="decision_theory.html">decision theory</a>, "coherence theorems" are theorems saying that an agent's beliefs or behavior must be viewable as consistent in way X, or else penalty Y happens.</p>
+<p>E.g., suppose we're talking about an agent's preference in pizza toppings.  Let us say an agent locally prefers pizza topping A over pizza topping B if, offered a choice between a slice of A pizza and a slice of B pizza, the agent takes the A pizza.</p>
+<p>Then suppose some agent:</p>
+<ul>
+<li>Locally prefers onion pizza over pineapple pizza.</li>
+<li>Locally prefers pineapple pizza over mushroom pizza.</li>
+<li>Locally prefers mushroom pizza over onion pizza.</li>
+</ul>
+<p>Suppose also that at least the first preference is strong enough that, e.g. the agent would pay one penny to switch from pineapple pizza to onion pizza. %note: We can also say, e.g., that the agent would spend some small amount of time and effort to reach out and change pizza slices, even if this did not directly involve spending money.%</p>
+<p>Then we can, e.g.:</p>
+<ul>
+<li>Start by offering the agent pineapple pizza;</li>
+<li>Collect one penny from the agent to switch their option to onion pizza;</li>
+<li>Offer the agent a free switch from onion to mushroom;</li>
+<li>Finally, offer them a slice of pineapple pizza instead of the mushroom pizza.</li>
+</ul>
+<p>Now the agent has the same pineapple pizza slice it started with, and is strictly one penny poorer.  This is a <em>qualitatively</em> dominated strategy--the agent could have pursued a better strategy that would end with the same slice of pineapple pizza plus one penny. %note: Or without having lost whatever other opportunity costs, including the simple expenditure of time, it sacrificed to change pizza slices.%</p>
+<p>Or as Steve Omohundro put it:  If you prefer being in San Francisco to being in San Jose, prefer being in Oakland to being in San Francisco, and prefer being in San Jose to being in Oakland, you're going to waste a lot of money on taxi rides. </p>
+<p>This in turn suggests that we might be able to prove some kind of theorem saying, "If we can't view the agent's behavior as being coherent with some <em>consistent global preference ordering,</em> the agent must be executing dominated strategies."</p>
+<p>Broadly speaking, this is the sort of thing that coherence theorems say.  Although nailing down caveats and generalizing to continuous spaces etcetera, often makes the standard proofs a lot more complicated than the above argument suggests.</p>
+<p>Another class of coherence theorems says, "If some aspect of your decisions or beliefs has coherence properties X, we can map it onto mathematical structure Y."  For example, other coherence theorems show that we can go from alternative representations of belief and credence, like log odds, to the standard form of probabilities, given assumptions like "If the agent sees piece of evidence A and then piece of evidence B, the agent's final belief state is the same as if it sees evidence B and then evidence A."</p>
+<p>Coherence theorems generally point at consistent <a href="utility_function.html">utility functions</a>, consistent <a href="probability_theory.html">probability assignments</a>, local decisions consistent with <a href="expected_utility_formalism.html">expected utility</a>, or belief updates consistent with <a href="bayes_rule.html">Bayes&#39;s Rule</a>.</p>
+<p>Since relaxing the assumptions used in a coherence theorem is an improvement on that theorem (and hence good for a publication), the total family of coherence theorems is rather large and very technical.</p>
+<p>Coherence theorems are relevant because, e.g.:</p>
+<ul>
+<li>If we are trying to figure out an optimal strategy for some problem, we're justified in saying that <em>any</em> optimal strategy ought to let us say how much we like different possible outcomes and what we believe about our chances of getting there.</li>
+<li>If we're dealing with a <a href="sufficiently_advanced_ai.html">very advanced AI</a>; and whatever process was responsible for the AI getting that cognitively powerful in the first place, has ironed out all the shooting-off-your-own-foot running-in-circles behaviors <a href="efficiency.html">visible to us humans</a>; then <em>so far as we can tell</em>, the AI <a href="optimized_agent_appears_coherent.html">will probably <em>look to us</em> like it is behaving in a way coherent with it having a consistent utility function and probabilistic beliefs</a>.</li>
+</ul>
+<h1 id="extremelyincompletelistofsomecoherencetheoremsindecisiontheory">Extremely incomplete list of some coherence theorems in decision theory</h1>
+<p>(somebody fill this out more, please)</p>
+<ul>
+<li><a href="https://projecteuclid.org/euclid.aoms/1177730345">Wald's complete class theorem</a>:  Given a set of possible worlds, a quantitative utility function on outcomes, and an agent receiving observations that rule out subsets of those possible worlds, every non-dominated strategy for taking different actions conditional on observations can be viewed as the agent starting with a consistent <a href="bayesian_prior.html">prior</a> on the set of possible worlds and executing <a href="bayes_update.html">Bayesian updates</a>.</li>
+<li><a href="https://en.wikipedia.org/wiki/Von_Neumann%E2%80%93Morgenstern_utility_theorem">Von Neumann-Morgenstern utility theorem</a>:  If an agent's choice function over uncertain states of the world is complete, transitive, continuous in probabilities, and doesn't change when we add to every gamble the same probability of some alternative outcome, that agent's choices are consistent with taking the expectation of some utility function.</li>
+<li><a href="https://en.wikipedia.org/wiki/Cox's_theorem">Cox's Theorem</a> (and variants with weaker assumptions):  If updating on evidence A, then evidence B, leads to the same belief state as updating on evidence B, then evidence A, plus some other stuff, we can map your belief states onto classical probabilities.  (E.g., if you happen to represent all your beliefs in <a href="odds.html">Odds</a>, but your beliefs still obey coherence properties like believing the same thing regardless of the order in which you viewed the evidence, there is a variant of Cox's Theorem which will construct a mapping from your odds to classical probabilities.)</li>
+<li><a href="https://en.wikipedia.org/wiki/Dutch_book">Dutch book arguments</a>:  If the odds at which you accept or reject bets aren't consistent with standard probabilities, you will accept combinations of bets that lead to certain losses or reject combinations of bets that lead to certain gains.</li>
+</ul></main><hr><footer></footer></body></html>

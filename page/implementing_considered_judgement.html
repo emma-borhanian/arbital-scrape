@@ -1,0 +1,138 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Implementing our considered judgment</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_SVG" async></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">Implementing our considered judgment</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/implementing_considered_judgement.json.html">implementing_considered_judgement.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/implementing_considered_judgement">https://arbital.com/p/implementing_considered_judgement</a></p><p class="creator">by
+ <a class="page-link" href="../page/PaulChristiano.html">Paul Christiano</a> Feb 1 2016 
+updated
+ Feb 26 2016</p></div><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>Implementing our considered judgment</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="paul_ai_control.html">Paul Christiano's AI control blog</a></li><li>…</li></ul></nav></nav></header><hr><main><p>Suppose I had a very powerful prediction algorithm. How might I use this algorithm to build a smart machine that does what I want?</p>
+<p>If I could implement a function J which returned the “right” answer to any question, I could build a machine which computed J (“What should the machine do?”) and did that. As far as I’m concerned, that would be good enough.</p>
+<p>It’s far from clear what the “right” answer is, but I’m going to describe an algorithm that tries to find it anyway.</p>
+<p>(I’m actually happy to settle for a very good answer, rather than the best one. If we could build a very good machine—one which is much more productive than any combination of humans, say—then we could ask it to design a very, very good successor.)</p>
+<h3 id="thesetup">The setup</h3>
+<h3 id=""> </h3>
+<p>I’ll assume I have a function Predict( ) that takes as input a sequence of observations and predicts the next one.</p>
+<p>I’ll assume that Predict( ) predicts&nbsp;<em>very</em>&nbsp;well. In the future I’ll talk about scaling down—using a mediocre predictor to get a mediocre version of the “right” answer—but for now I’ll start with a strong assumption and end with a strong conclusion.</p>
+<p>Predict( ) can be physically instantiated, and can make reasonable predictions about itself. (It’s some work to formalize this, but there are no intrinsic problems with self-reference. If I ask Predict( ) to predict what Predict( ) won’t predict, it will just output a uniform distribution.)</p>
+<p>The notion of “observation” is going to become a bit confusing, so let’s be clear: in the background is some (approximate, implicit) prior over binary sequences&nbsp;<em>x</em>. Predict(<em>x</em>[:_n_]) outputs a sample from the (approximate) posterior distribution of&nbsp;<em>x</em>[_n_] given the values of&nbsp;<em>x</em>[0],&nbsp;<em>x</em>[1],…,&nbsp;<em>x</em>[_n_-1].</p>
+<p>I’ll assume we have some source of randomness that is unpredictable to Predict( ). This is a very mild assumption. For example, we can use Predict’s self-predictions to generate pseudorandomness.</p>
+<p>Finally: I’m going to write a program to answer questions, but I’m actually going to have to interact with it each time it answers a question. This may look like a serious drawback, but it’s actually quite mild. If I’m tired of making decisions, I can use Predict( ) to lighten the load. Every time it answers a question, it asks for my help with probability 1%. With probability 99%, it just predicts what I would have said if I had helped. (Similar tricks can lower my workload even further.)</p>
+<h1 id="theideal">The ideal</h1>
+<h3 id="-1"> </h3>
+<p>In this section, I’ll describe a formalization of “considered judgment.” In the next section,&nbsp;<strong>The implementation</strong>, I’ll describe how to use Predict( ) to find our considered judgment.</p>
+<p>The answer to any complicated question can depend on the answers to a host of related questions. The length of a flight depends on the weather, the competence of the crew, and the congestion at the destination. The competence of the crew depends on the competence of each member of the crew. The competence of one individual depends on a host of psychological considerations. And so on.</p>
+<p>In order to find the right answer to any one question, it would be nice if I could first learn the right answer to each related question that I can think of.</p>
+<p>To define my&nbsp;<em>considered judgment</em>&nbsp;about a question Q, suppose I am told Q and spend a few days trying to answer it. But in addition to all of the normal tools—reasoning, programming, experimentation, conversation—I also have access to a special oracle. I can give this oracle any question Q’, and the oracle will immediately reply with my considered judgment about Q’. And what is my considered judgment about Q’? Well, it’s whatever I would have output if we had performed exactly the same process, starting with Q’ instead of Q.</p>
+<h3 id="definition">Definition</h3>
+<h3 id="-2"> </h3>
+<p>First we have to choose a representation of questions and answers. Let’s pick a particular computer and represent Q and A as files stored on this computer, each of size at most one gigabyte.</p>
+<p>We also need to define the “oracle” which can tell me my own considered judgment. Let’s say there is a special function J which I can use as a black box. J reads one file, corresponding to a question, and then immediately writes the answer.</p>
+<p>In order to answer a question Q, I interact with my computer, on which Q is stored as a file. I can do whatever I like—write programs, call the function J, consult a friend, run an experiment, and so on. At the end of a few days, I write a new file A, which records my answer.</p>
+<p>The outcome of this process depends both on the initial question Q, and on the behavior of the function J. (It also depends on me and my environment, but let’s hold those fixed. Every time we talk about me deciding something, it’s the same two days unfolding over and over again, just with a different question Q and a different function J.)</p>
+<p>I’ll write R[Q J] for my answer to the question Q, where I am allowed to call the function J.</p>
+<p>We can think of R[J] is an “improved” version of J. After all, to compute R[J] I can make any number of function calls to J, so in some sense it should be at least as good.</p>
+<p>If in fact J = R[J], then we say that J&nbsp;reflects my considered judgment.&nbsp;In this case, further reflection on my views leaves them unchanged; I have reached a reflective equilibrium. There is always at least one (randomized) function J which has this property, by Brouwer’s fixed point theorem.</p>
+<p>A key feature of this definition is that we can actually compute R[Q J] if we can compute J. Indeed, we just have to give me a few days to think about it.</p>
+<h3 id="areourconsideredjudgmentsgood">Are our considered judgments good?</h3>
+<h3 id="-3"> </h3>
+<p>You might ask: is this a satisfactory notion of “the right answer”? Are the answers it produces actually any good?</p>
+<p>Of course, the quality of the answers depends on how I choose to produce them. I am optimistic about my considered judgment because I think there is at least one good strategy, and that we can find it.</p>
+<p>In this section, I’ll describe my reasons for optimism. In the next section, I’ll give some reasons for pessimism.</p>
+<p>These are long sections. Once you get the idea, you might want to skip ahead to the section&nbsp;<strong>The implementation</strong>&nbsp;below.</p>
+<p><strong>Recursion</strong>. I’ve defined considered judgment as a fixed point of the map J → R[J]. Simple recursion is buried inside this fixed point computation as a special case.</p>
+<p>For example, if I wanted to know “Does white win this game of chess?” I could consider each move for white in turn, and for each one compute J(“Does white win in&nbsp;<em>this</em>&nbsp;position if black gets to play next?”). If white wins in any one of those positions then white wins the original game. If white loses in all of them, then black wins. If J makes correct judgments about each of these possible positions, then R[J] makes a correct judgment about the original one.</p>
+<p>To answer each of these sub-questions, I would use a similar procedure. For checkmate positions, I would simply return the correct result. (I need to be careful about drawn games if I want to make sure that my recursion is well-founded, but this is not hard.) By induction, my considered judgment can be perfect about questions like “Does white have a winning strategy in chess?”</p>
+<p>Most questions can’t be quite so easily broken down into intermediate questions. But even for messy questions—“How could I best get to the moon?”—the ability to exhaustively consider&nbsp;<em>every</em>&nbsp;intermediate seems to be very powerful.</p>
+<p><strong>Brute force search.</strong> A special case of the above is the ability to consider&nbsp;<em>every</em> possibility. This reduces the problem of “finding the best X” to the problem of “reliably determining which X is better.”</p>
+<p>I can use a few techniques to do a brute force search:</p>
+<ul>
+<li>Break down the search space into two pieces, and then recursively find the best item from each one. Then compare them. These breakdowns could be “dumb,” such as considering “Proposals that start with ‘a’,” “proposals that start with ‘b’,” etc., or they could be context-dependent such as breaking down proposals to get to the moon according to where the energy comes from.</li>
+<li>Break down the possible methodologies you could use into two classes, and then recursively find the best item produced by a methodology from either class. Then compare them. For example, we could do a brute force search over ways to do a brute force search.</li>
+<li>After searching for a good X and finding our best guess, we can ask “What is the best X?” (Yes, this is the question that&nbsp;we&nbsp;were asked.) If the result is better than our current best guess, we can adopt it instead. This implies that if we produce the best X with any probability, it will be identified as the fixed point. As described in the next section, this is a dangerous approach.</li>
+</ul>
+<p>I can also do a brute force search for possible flaws in a design or argument, or to evaluate the expected value of a random variable, or so on.</p>
+<p><strong>Search for methodologies.</strong>&nbsp;In addition to trying to answer a question directly, I can consult my considered judgment to find the best methodologies for answering a question; to find the best frameworks for aggregating evidence; to identify the most relevant lines of reasoning and experiments that I should explore; to find considerations I may have overlooked; to identify possible problems in a proposed methodology; and so on.</p>
+<p><strong>Long computations</strong>. By storing intermediate results in questions, my considered judgment can reach correct answers about very long-running computations. For example, for any computation C using at most a gigabyte of memory, I could answer “What is the result of computation C?” This can be defined by advancing the computation a single step to C’ and then asking “What is the result of computation C’?”</p>
+<p><strong>Intellectual development</strong>. Suppose I were tasked with a question like “What physical theory best explains our observations of the world?” Using the techniques described so far, it looks like I could come up with answer as good as contemporary physics—by thinking through each consideration in unlimited detail, considering all possible theories, and so on.</p>
+<p>Similarly, I would expect my considered judgment to reflect many future intellectual and methodological developments.</p>
+<p><strong>Robustness the hard way</strong>. Many of the techniques listed so far have possible issues with robustness. For example, if I perform a brute force search, I may find a solution which is very persuasive without being accurate. If I try to explore the game tree of chess without realizing that the game can loop, I may end up with a cycle, which could be incorrectly assigned any value rather than correctly recognized as a draw.</p>
+<p>However, I also have a lot of room to make my computations more robust:</p>
+<ul>
+<li>Every time I do anything I can record my proposed action and ask “Will taking this action introduce a possible error? How could I reduce that risk?”</li>
+<li>I can re-run checks and comparisons in different ways to make sure the results line up.</li>
+<li>I can sanitize my own answers by asking “Is there any reason that looking at this answer would lead me to make a mistake?”</li>
+<li>I can proceed extremely slow in general, splitting up work across more questions rather than trying to bite off a large issue in a single sitting.</li>
+</ul>
+<h3 id="areourconsideredjudgmentsbad">Are our considered judgments bad?</h3>
+<h3 id="-4"> </h3>
+<p>On the other hand, there are some reasons to be skeptical of this definition:</p>
+<p><strong>Universality?</strong> The considered judgment of a 4-year-old about political economy would not be particularly reasonable. In fact, it probably wouldn’t be any better than the 4-year-old’s knee-jerk reaction. And if I had to come up with answers in a few seconds, rather than a few days, my judgment would be reasonable either.</p>
+<p>It’s reasonable to be skeptical of a proposed definition of “the right answer,” if it wouldn’t have helped a stupider version of you—we might reasonably expect a smarter version of ourselves to look back and say “It was a fine process, but they were just not smart enough to implement it.”</p>
+<p>But I think there is a good chance that our considered judgment is universal in a sense that the 4-year-old’s is not. We know to ask questions like “How should I approach this question?” which a 4-year-old would not. And in a few days we have time to process the answers, though we wouldn’t in a few seconds.</p>
+<p>In simple domains, like mathematical questions, it seems pretty clear that there is such a universality property: the 4-year-old would play a terrible game of chess even if they could consult their considered judgment, but we would probably play a perfect game.</p>
+<p>If there is no universality phenomenon, then the fact that the 4-year-old gets the wrong answer strongly suggests that we will also get the wrong answer. But this might be OK anyway. It at least seems likely that our considered judgment is much wiser than we are.</p>
+<p><strong>Malignant failure modes</strong>. Suppose that my “considered judgment” about every question was a virus V, an answer which led me to answer whatever question I was currently considering with V. This is a fixed-point, but it doesn’t seem like a good one.</p>
+<p>Such an extreme outcome seems unlikely. For example, there are some questions that I can answer directly, and I probably wouldn’t respond to them with a complicated virus V. It’s also not clear whether there is any answer that has this malicious property.</p>
+<p>That said, especially as we consider brute force searches or cyclical dependencies, it becomes increasingly plausible that we get unanticipated answers which have surprising effects. Adversarial effects could potentially spread throughout the network of related questions, even if it couldn’t literally replicate itself or spread with 100% fidelity.</p>
+<p>I am optimistic about this problem because we can painlessly go to heroic lengths to scrutinize our own reasoning at very high levels of detail. I expect there are levels of scrutiny sufficiently great that they could catch all plausible malignant failures. If this weren’t possible, we would want to focus our attention on well-founded sets of queries, in order to avoid the implicit optimization power of a fixed point computation.</p>
+<p>This problem feels interestingly analogous to computing in the presence of errors. In both cases, the critical question is whether an error-correcting step is itself so error-prone that it introduces more errors than it fixes. This depends on the reliability of the underlying process (and is another possible source of a universality phenomenon) but my intuition is that by proceeding carefully we can remove possible errors from our computations faster than they are introduced.</p>
+<p><strong>Experiments and big computations.</strong> My considered judgment about the question “Exactly how much does Mars weigh?” is not accurate unless I know enough information to figure out the answer (or I can collect that information over a few days). Similarly for sufficiently complex computations, which I’ll treat as another kind of empirical fact.</p>
+<p>It’s not clear this is a meaningful drawback. In the intended use case of a machine that consults our considered judgment to figure out “What should I do?”, it’s not clear that this is a drawback at all.</p>
+<p>If we need to know some empirical fact and the machine asks “What should I do?” then our answer may be: “an experiment.” But this is the right answer, regardless of what definitions we use. We could define our considered judgment so that it knew the results of all possible experiments. But since those results aren’t available to the machine it would need to do the experiment anyway before it could actually act on the result.</p>
+<p>Once we have any evidence that bears on an empirical question, then our considered judgment can use that judgment extremely efficiently.</p>
+<h1 id="theimplementation">The implementation</h1>
+<h3 id="-5"> </h3>
+<p>We are free to define terms however we like. But can we use Predict( ) to approximate this notion of “considered judgment”?</p>
+<h3 id="thefirstattempt">The first attempt</h3>
+<h3 id="-6"> </h3>
+<p>We’ll maintain a log L of questions and answers (encoded in self-delimited binary). By definition, Predict(L) predicts the next item to be added to the log. We’ll write Predict(L) for the prediction of the next question or answer rather than the next bit.</p>
+<p>We start with a large enough log that Predict can build a good model of the world. Once it’s made enough initial errors, it should be able to predict the next log entry as well as a human could. At this point, we start asking questions.</p>
+<p>Define J(Q) to be Predict(L+Q), where + is concatenation of lists. That is, J(Q) imagines that Q was appended to the log, and predicts what comes next. We will always follow a question with its “correct” answer, so that J(Q) will try to predict the “correct” answer to Q.</p>
+<p>If we want to compute J(Q₀), then with 99% probability we make a single call to Predict. But with 1% probability, we should perform the following “training” process:</p>
+<ol>
+<li>Compute J(Q₀).</li>
+<li>Generate a random question Q.</li>
+<li>Determine R[Q J]. That is, I answer the question Q, consulting J and following the procedure described in the definition of considered judgment. Computing J requires only a single call to Predict, so this is feasible. Note that the log L is not changed during this process.</li>
+<li>Set L = L + Q + R[Q J].</li>
+</ol>
+<p>If Predict( ) makes perfect predictions, then J(Q) must reflect my considered judgment: R[Q J] always follows L+Q in the log, so J(Q) = Predict(L + Q) = R[Q J], which is precisely the definition of considered judgment.</p>
+<p>To ensure that Predict keeps making good predictions, we might want to continue appending sensor readings to the log, so that Predict understands its current environment and can make good predictions. (If we don’t keep the log up to date, Predict should still make reasonable predictions, but it will no longer be aware of context. If my considered judgment depends on context that Predict doesn’t know, then its predictions won’t be so good.)</p>
+<h3 id="aproblem">A problem</h3>
+<h3 id="-7"> </h3>
+<p>We hope that J(Q) reflects my considered judgment even if Predict( ) is sometimes wrong. Unfortunately, it doesn’t.</p>
+<p>The problem is that Predict is trained to answer random questions—only random questions+answers every appear in its log. A machine which answers 99.999% of random questions “correctly” need not do anything useful at all, since 99.999% of all possible questions are meaningless garbage.</p>
+<p>When we ask Predict(L+Q’) a&nbsp;real question Q’, one that actually makes sense, it could be wrong 100% of the time, without having any serious effect on Predict( )’s overall performance.</p>
+<p>The same problem might affect the human as well. J(Q’) = Predict(L + Q’) is supposed to predict what the human would output, if Q’ was generated as a random question. But what does a human do if they flip 100,000 coins and find that they spell out a meaningful question about the methodology of science?</p>
+<p>The human may (correctly) infer that something fishy is going on. Hopefully they would continue to behave sensibly, but it’s hard to predict and essentially impossible to test. This is closely linked to problems that Wei Dai and Vladimir Slepnev have raised with&nbsp;<a href="https://ordinaryideas.wordpress.com/2014/08/27/specifying-enlightened-judgment-precisely-reprise/">an earlier definition of enlightened judgment</a>.</p>
+<h3 id="thesecondattempt">The second attempt</h3>
+<h3 id="-8"> </h3>
+<p>In order to fix this problem, we would like to ensure that Predict is trained using the same kinds of questions that J has to answer. We can do this with a nice trick.</p>
+<p>Let Q be our random “training” question, and let Q* be a random question that we ask in the course of answering Q. We want the distribution of Q to be the same as the distribution of Q<em>. We will do this by asking the predictor to sample Q from its predicted distribution over Q</em>, rather than generating Q uniformly at random.</p>
+<p>To this end, before asking a question we either insert a 0 or a 1 into the log. 0 indicates that we will give the predictor a question, and then expect it to predict the answer. 1 indicates that we want the predictor to predict the next question, but we won’t tell it the answer.</p>
+<p>We define J(Q) = Predict(L + [0] + Q). If we want to compute J(Q₀), then with probability 99% we make a single call to Predict. But with probability 1%, we perform the following process:</p>
+<ol>
+<li>Compute J(Q₀).</li>
+<li>Let Q = Predict(L+[1]). That is, sample a question from the predicted distribution.</li>
+<li>Determine R[Q J] = R[Q’ → Predict(L+[0]+Q’)].</li>
+<li>Let Q* be a random question that J answered in step 1 or step 3.<br />
+With probability 1/2, set L = L + [0] + Q + R[Q J].<br />
+With probability 1/2, set L = L + [1] + Q*.</li>
+</ol>
+<p>As before, if Predict does a good job then Predict(L+[0]+Q) will be R[Q J], and so J implements our considered judgment.</p>
+<p>But now, rather than being uniformly random, Q is distributed according to Predict(L+[1]). If Predict( ) is making good predictions, this is the distribution of Q*, a random question that was posed to J. So Predict( ) is being trained with exactly the same distribution of questions that J is being asked to answer.</p>
+<h1 id="conclusion">Conclusion</h1>
+<h3 id="-9"> </h3>
+<p>Given a sufficiently powerful predictor Predict( ), we can implement a function J which reflects our considered judgment. If we trust the definition of considered judgment, then a machine that asks J(“What should I do?”) is almost as good as a machine that acts optimally.</p>
+<p>With a more realistic predictor we will have to scale back our ambitions, and instead try to produce a the “most right” answer we can. Although this will require many new ideas, I am optimistic about scaling down to obtain reasonable behavior using significantly sub-human predictors.</p>
+<p>I hope that the case of a powerful predictor helps illustrate what it might mean for a machine to do “the right thing,” and that the concrete example can help move forward the theoretical discussion about AI safety.</p></main><hr><footer></footer></body></html>

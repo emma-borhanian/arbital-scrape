@@ -1,0 +1,39 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Group coset</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_SVG" async></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">Group coset</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/group_coset.json.html">group_coset.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/group_coset">https://arbital.com/p/group_coset</a></p><p class="creator">by
+ <a class="page-link" href="../page/PatrickStevens.html">Patrick Stevens</a> Jun 17 2016</p></div><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>Group coset</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="math.html">Mathematics</a></li><li><a href="abstract_algebra.html">Abstract algebra</a></li><li><a href="algebraic_structure.html">Algebraic structure</a></li><li><a href="group_mathematics.html">Group</a></li><li>…</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="math.html">Mathematics</a></li><li><a href="group_theory.html">Group theory</a></li><li><a href="group_mathematics.html">Group</a></li><li>…</li></ul></nav></nav></header><hr><main><p>Given a subgroup $~$H$~$ of <a href="group_mathematics.html">Group</a> $~$G$~$, the <em>left cosets</em> of $~$H$~$ in $~$G$~$ are sets of the form $~$\{ gh : h \in H \}$~$, for some $~$g \in G$~$.
+This is written $~$gH$~$ as a shorthand.</p>
+<p>Similarly, the <em>right cosets</em> are the sets of the form $~$Hg = \{ hg: h \in H \}$~$.</p>
+<h1 id="examples">Examples</h1>
+<p>%%%knows-requisite(<a href="symmetric_group.html">Symmetric group</a>):</p>
+<h2 id="symmetricgroup">Symmetric group</h2>
+<p>In $~$S_3$~$, the <a href="symmetric_group.html">Symmetric group</a> on three elements, we can list the elements as $~$\{ e, (123), (132), (12), (13), (23) \}$~$, using <a href="cycle_notation_symmetric_group.html">cycle notation</a>.
+Define $~$A_3$~$ (which happens to have a name: the <a href="alternating_group.html">Alternating group</a>) to be the subgroup with elements $~$\{ e, (123), (132) \}$~$.</p>
+<p>Then the coset $~$(12) A_3$~$ has elements $~$\{ (12), (12)(123), (12)(132) \}$~$, which is simplified to $~$\{ (12), (23), (13) \}$~$.</p>
+<p>The coset $~$(123)A_3$~$ is simply $~$A_3$~$, because $~$A_3$~$ is a subgroup so is closed under the group operation. $~$(123)$~$ is already in $~$A_3$~$.
+%%%</p>
+<p>[todo: more examples, with different requirements]</p>
+<h1 id="properties">Properties</h1>
+<ul>
+<li>The left cosets of $~$H$~$ in $~$G$~$ [set_partition partition] $~$G$~$. (<a href="left_cosets_partition_parent_group.html">Proof.</a>)</li>
+<li>For any pair of left cosets of $~$H$~$, there is a <a href="bijective_function.html">bijection</a> between them; that is, all the cosets are all the same size. (<a href="left_cosets_biject.html">Proof.</a>)</li>
+</ul>
+<h1 id="whyareweinterestedincosets">Why are we interested in cosets?</h1>
+<p>Under certain conditions (namely that the subgroup $~$H$~$ must be <a href="normal_subgroup.html">normal</a>), we may define the <a href="quotient_group.html">Quotient group</a>, a very important concept; see the page on <a href="left_cosets_partition_parent_group.html">&quot;left cosets partition the parent group&quot;</a> for a glance at why this is useful.
+[todo: there must be a less clumsy way to do it]</p>
+<p>Additionally, there is a key theorem whose usual proof considers cosets (<a href="lagrange_theorem_on_subgroup_size.html">Lagrange&#39;s theorem</a>) which strongly restricts the possible sizes of subgroups of $~$G$~$, and which itself is enough to classify all the groups of <a href="group_order.html">order</a> $~$p$~$ for $~$p$~$ <a href="prime_number.html">prime</a>.
+Lagrange's theorem also has very common applications in [-number_theory], in the form of the [fermat_euler_theorem Fermat-Euler theorem].</p></main><hr><footer><p class="tagged"><h2>Tagged</h2><span class="page-comma-list"><a class="page-link" href="../page/formal_definition_meta_tag.html">Formal definition</a>,
+ <a class="page-link" href="../page/needs_clickbait_meta_tag.html">Needs clickbait</a></span></p><p class="likes"><h2>Likes</h2><span class="page-comma-list"><a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a></span></p><p class="reverse-related"><h2>Reverse Related</h2><ul class="page-list"><li><a class="page-link" href="../page/formal_definition_meta_tag.html">Formal definition</a> <q>This page gives a purely formal definition of a topic, rather than motivating, explaining, and giving examples.</q> - <a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a></li><li><a class="page-link" href="../page/needs_clickbait_meta_tag.html">Needs clickbait</a> <q>This page does not have clickbait (a short teaser for the page displayed on various lists). Feel free to add it!</q> - <a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a></li></ul></p><p class="children"><h2>Children</h2><ul class="page-tree"><li><a class="page-link" href="../page/left_cosets_biject.html">Left cosets are all in bijection</a> <q>The left cosets of a subgroup in a parent group are all the same size.</q> - <a class="page-link" href="../page/PatrickStevens.html">Patrick Stevens</a></li><li><a class="page-link" href="../page/left_cosets_partition_parent_group.html">Left cosets partition the parent group</a> <q>In a group, every element has a unique coset in which it lies, allowing us to compress some of the information about the group.</q> - <a class="page-link" href="../page/PatrickStevens.html">Patrick Stevens</a></li></ul></p></footer></body></html>

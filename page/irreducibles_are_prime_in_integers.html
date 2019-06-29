@@ -1,0 +1,53 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Euclid's Lemma on prime numbers</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_SVG" async></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">Euclid's Lemma on prime numbers</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/irreducibles_are_prime_in_integers.json.html">irreducibles_are_prime_in_integers.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/irreducibles_are_prime_in_integers">https://arbital.com/p/irreducibles_are_prime_in_integers</a></p><p class="creator">by
+ <a class="page-link" href="../page/PatrickStevens.html">Patrick Stevens</a> Jul 28 2016 
+updated
+ Aug 7 2016</p></div><p class="clickbait">A very basic but vitally important property of the prime numbers is that they &quot;can't be split between factors&quot;: if a prime divides a product then it must divide one of the individual factors.</p><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>Euclid's Lemma on prime numbers</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="math.html">Mathematics</a></li><li>…</li></ul></nav></nav></header><hr><main><p>[summary: The <a href="prime_number.html">prime numbers</a> have a special property that they "can't be distributed between terms of a product": if $~$p$~$ is a prime dividing a product $~$ab$~$ of <a href="integer.html">integers</a>, then $~$p$~$ wholly divides one or both of $~$a$~$ or $~$b$~$. It cannot be the case that "some but not all of $~$p$~$ divides into $~$a$~$, and the rest of $~$p$~$ divides into $~$b$~$".]</p>
+<p>[summary(Technical): Let $~$p$~$ be a <a href="prime_number.html">prime</a> natural number. Then $~$p \mid ab$~$ implies $~$p \mid a$~$ or $~$p \mid b$~$.]</p>
+<p>Euclid's lemma states that if $~$p$~$ is a <a href="prime_number.html">prime number</a>, which divides a product $~$ab$~$, then $~$p$~$ divides at least one of $~$a$~$ or $~$b$~$.</p>
+<h1 id="proof">Proof</h1>
+<h2 id="elementaryproof">Elementary proof</h2>
+<p>Suppose $~$p \mid ab$~$ %%note:That is, $~$p$~$ divides $~$ab$~$.%%, but $~$p$~$ does not divide $~$a$~$.
+We will show that $~$p \mid b$~$.</p>
+<p>Indeed, $~$p$~$ does not divide $~$a$~$, so the <a href="greatest_common_divisor.html">Greatest common divisor</a> of $~$p$~$ and $~$a$~$ is $~$1$~$ (exercise: do this without using integer factorisation); so by [bezouts_theorem Bézout's theorem] there are integers $~$x, y$~$ such that $~$ax+py = 1$~$.</p>
+<p>%%hidden(Show solution to exercise):
+We are not allowed to use the fact that we can factorise integers, because we need "$~$p \mid ab$~$ implies $~$p \mid a$~$ or $~$p \mid b$~$" as a lemma on the way towards the proof of the <a href="fundamental_theorem_of_arithmetic.html">Fundamental Theorem of Arithmetic</a> (which is the theorem that tells us we can factorise integers).</p>
+<p>Recall that the highest common factor of $~$a$~$ and $~$p$~$ is defined to be the number $~$c$~$ such that:</p>
+<ul>
+<li>$~$c \mid a$~$;</li>
+<li>$~$c \mid p$~$;</li>
+<li>for any $~$d$~$ which divides $~$a$~$ and $~$p$~$, we have $~$d \mid c$~$.</li>
+</ul>
+<p>[euclidean_algorithm Euclid's algorithm] tells us that $~$a$~$ and $~$p$~$ do have a (unique) highest common factor.</p>
+<p>Now, if $~$c \mid p$~$, we have that $~$c = p$~$ or $~$c=1$~$, because $~$p$~$ is <a href="prime_number.html">prime</a>.
+But $~$c$~$ is not $~$p$~$ because we also know that $~$c \mid a$~$, and we already know $~$p$~$ does not divide $~$a$~$.</p>
+<p>Hence $~$c = 1$~$.
+%%</p>
+<p>But multiplying through by $~$b$~$, we see $~$abx + pby = b$~$.
+$~$p$~$ divides $~$ab$~$ and divides $~$p$~$, so it divides the left-hand side; hence it must divide the right-hand side too.
+That is, $~$p \mid b$~$.</p>
+<h2 id="moreabstractproof">More abstract proof</h2>
+<p>This proof uses much more theory but is correspondingly much more general, and it reveals the important feature of $~$\mathbb{Z}$~$ here.</p>
+<p>$~$\mathbb{Z}$~$, viewed as a <a href="algebraic_ring.html">ring</a>, is a <a href="principal_ideal_domain.html">Principal ideal domain</a>. ([integers_is_pid Proof.])
+The theorem we are trying to prove is that the <a href="irreducible_element_ring_theory.html">irreducibles</a> in $~$\mathbb{Z}$~$ are all <a href="prime_element_ring_theory.html">prime</a> in the sense of ring theory.</p>
+<p>But it is generally true that in a PID, "prime" and "irreducible" coincide (<a href="pid_implies_prime_equals_irreducible.html">proof</a>), so the result is immediate.</p>
+<h1 id="converseisfalse">Converse is false</h1>
+<p>Any composite number $~$pq$~$ (where $~$p, q$~$ are greater than $~$1$~$) divides $~$pq$~$ without dividing $~$p$~$ or $~$q$~$, so the converse is very false.</p>
+<h1 id="whyisthisimportant">Why is this important?</h1>
+<p>This lemma is a nontrivial step on the way to proving the <a href="fundamental_theorem_of_arithmetic.html">Fundamental Theorem of Arithmetic</a>; and in fact in a certain general sense, if we can prove this lemma then we can prove the FTA.
+It tells us about the behaviour of the primes with respect to products: we now know that the primes "cannot be split up between factors" of a product, and so they behave, in a sense, <a href="irreducible_element_ring_theory.html">&quot;irreducibly&quot;</a>.</p>
+<p>The lemma is also of considerable use as a tiny step in many different proofs.</p></main><hr><section class="comments"><h2>Comments</h2><div class="comment"><p><a class="page-link" href="../page/JaimeSevillaMolina.html">Jaime Sevilla Molina</a></p><p><p>Out of curiosity, is there any reason you are avoiding calling this lemma by its traditional name, Euclid's lemma?</p></p></div></section><footer><p class="likes"><h2>Likes</h2><span class="page-comma-list"><a class="page-link" href="../page/JaimeSevillaMolina.html">Jaime Sevilla Molina</a></span></p></footer></body></html>

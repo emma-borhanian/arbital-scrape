@@ -1,0 +1,34 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Quine</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_SVG" async></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">Quine</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/quine.json.html">quine.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/quine">https://arbital.com/p/quine</a></p><p class="creator">by
+ <a class="page-link" href="../page/PatrickLaVictoir.html">Patrick LaVictoire</a> Apr 3 2016 
+updated
+ May 8 2016</p></div><p class="clickbait">A computer program that prints (or does other computations to) its own source code, using indirect self-reference.</p><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>Quine</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="math.html">Mathematics</a></li><li><a href="diagonal_lemma.html">Diagonal lemma</a></li><li>…</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="math.html">Mathematics</a></li><li><a href="godel_codes.html">Gödel encoding and self-reference</a></li><li>…</li></ul></nav></nav></header><hr><main><p>A quine is a computer program that 'knows' its own entire source code via indirect self-reference, rather than by getting it as input. The classic exercise in this domain is writing a (non-empty) program that takes no input and which outputs its own entire source code. But the same trick can be used to do more than that; for any program that takes a string as input and performs some operations on it, we can write a quining program that takes no input and performs the same operations on the program's own source code.</p>
+<p>The trick to write a quining program is to take a recipe for substituting a string into various places in a program, and then to apply this recipe to itself.  If you've not encountered this idea before, but you know a programming language, it is a nice exercise to try and write a quine which prints its own source code.</p>
+<p>An example of a quine in Python (due to <a href="NateSoares.html">Nate Soares</a>) which prints its own source code:</p>
+<pre><code>template = 'template = {hole}\nprint(template.format(hole=repr(template)))'
+print(template.format(hole=repr(template)))
+</code></pre>
+<p>Wikipedia has a <a href="https://en.wikipedia.org/wiki/Quine_(computing)#Examples">list of examples of quining programs</a> in various languages.</p>
+<p>Named after the logician <a href="https://en.wikipedia.org/wiki/Willard_Van_Orman_Quine">W.V.O. Quine</a>, as coined by <a href="https://en.wikipedia.org/wiki/Douglas_Hofstadter">Douglas Hofstadter</a> in <a href="https://en.wikipedia.org/wiki/G%C3%B6del,_Escher,_Bach">Gödel, Escher, Bach</a>, in the informal context of English phrases like</p>
+<blockquote>
+  <p>"Yields falsehood when preceded by its quotation" yields falsehood
+  when preceded by its quotation.</p>
+</blockquote>
+<p>Quining has been used for practical purposes and even seen in the wild, most famously in <a href="http://en.wikipedia.org/wiki/Backdoor_(computing)#Compiler_backdoors">Ken Thompson's illustration of a C compiler Trojan backdoor</a>.</p></main><hr><footer><p class="all-creators"><h2>All Creators</h2><span class="page-comma-list"><a class="page-link" href="../page/NateSoares.html">Nate Soares</a>,
+ <a class="page-link" href="../page/PatrickLaVictoir.html">Patrick LaVictoire</a></span></p><p class="likes"><h2>Likes</h2><span class="page-comma-list"><a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a>,
+ <a class="page-link" href="../page/EricRogstad.html">Eric Rogstad</a>,
+ <a class="page-link" href="../page/NateSoares.html">Nate Soares</a></span></p></footer></body></html>

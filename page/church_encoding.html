@@ -1,0 +1,88 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Church encoding</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_SVG" async></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">Church encoding</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/church_encoding.json.html">church_encoding.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/church_encoding">https://arbital.com/p/church_encoding</a></p><p class="creator">by
+ <a class="page-link" href="../page/DylanHendrickson.html">Dylan Hendrickson</a> Dec 6 2016</p></div><p class="clickbait">How can you represent things like numbers as lambda expressions?</p><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>Church encoding</li></ul></nav></nav></header><hr><main><p>In <a href="lambda_calculus.html">Lambda calculus</a>, the only objects we can work with are $~$\lambda$~$ expressions, which represent functions. So how can we talk about, and perform computations on, more familiar objects like <a href="number.html">numbers</a>? We'll have to come up with a way to encode numbers, and operations on them, as $~$\lambda$~$ expressions.</p>
+<h1 id="ahrefnatural_numberhtmlnaturalnumbersa"><a href="natural_number.html">Natural numbers</a></h1>
+<p>Let's figure out how to express the natural numbers $~$0,1,2,\dots$~$ in $~$\lambda$~$ calculus. First of all, they shouldn't have any free variables; we don't want numbers to depend on some undefined $~$x$~$. So, like any $~$\lambda$~$ expression with no free variables, they need to start with a $~$\lambda$~$. That is, they need to be functions.</p>
+<p>Say they only take in one input, so they're $~$\lambda x.M$~$, where $~$M$~$ is a $~$\lambda$~$ expression (that varies with the number encoded) containing only the variable $~$x$~$. What could $~$M$~$ look like? The obvious things to try look like $~$x\ (x\ (x\ x))$~$ and $~$((x\ x)\ x)\ x$~$. To encode $~$0$~$, we would use the simplest version of this: just $~$x$~$. So the examples listed earlier would encode for $~$3$~$.</p>
+<p>While it's possible to use one of those definitions for numbers, they don't work that well. What type of object is $~$x$~$ supposed to be? Should it be a function, or the input to a function? (Yes, everything in $~$\lambda$~$ calculus can be both, but it can still help to think of those two types differently.) Instead, we'll have each natural number be a function on two inputs, of the form $~$\lambda f.\lambda x.M$~$, where we think of $~$f$~$ as a "function" and $~$x$~$ as an "object."</p>
+<p>So what should $~$0$~$ be? How about it does nothing to its inputs, and just returns $~$x$~$, so $~$0=\lambda f.\lambda x.x$~$. What about $~$1$~$? We have a function and an object, so the natural thing to do is apply the one to the other: $~$1=\lambda f.\lambda x.f\ x$~$. At this point it should be clear how we're going to continue:</p>
+<ul>
+<li>$~$2=\lambda f.\lambda x.f\ (f\ x)$~$</li>
+<li>$~$3=\lambda f.\lambda x.f\ (f\ (f\ x))$~$</li>
+<li>$~$4=\lambda f.\lambda x.f\ (f\ (f\ (f\ x)))$~$</li>
+</ul>
+<p>And so on, so $~$n$~$ is the function that, on inputs $~$f$~$ and $~$x$~$, applies $~$f$~$ to $~$x$~$ $~$n$~$ times. Informally, we could write $~$n=\lambda f.\lambda x.f^n(x)$~$.</p>
+<h1 id="operationsonnumbers">Operations on numbers</h1>
+<p>We've defined natural numbers, but so far they aren't doing anything. We expect numbers to be able to be added and multiplied, so let's figure out how to express those in $~$\lambda$~$ calculus. We'll start easy: with the successor function $~$S(n)=n+1$~$.</p>
+<h2 id="successor">[successor]</h2>
+<p>On to defining $~$S$~$. It's a function that takes in a number, so let's start with $~$\lambda n$~$. What should it return? Another number, of course, which starts $~$\lambda f.\lambda x$~$. Now we should use $~$n$~$, which applies $~$f$~$ to $~$x$~$, $~$n$~$ times. But we want $~$n+1$~$, so we want to apply $~$f$~$ to $~$x$~$, $~$n+1$~$ times. If we apply $~$f$~$ $~$n$~$ times, and then once more, we can achieve this:</p>
+<p>$$~$S=\lambda n.\lambda f.\lambda x.f\ (n\ f\ x).$~$$</p>
+<p>Here $~$(n\ f\ x)$~$ gives us $~$f^n(x)$~$, so $~$f\ (n\ f\ x)$~$ is $~$f(f^n(x))=f^{n+1}(x)$~$. We could do these applications in the other order, first taking $~$f\ x$~$ and then applying $~$f$~$ to that $~$n$~$ times, so</p>
+<p>$$~$S^\prime=\lambda n.\lambda y.\lambda x.n\ f\ (f\ x).$~$$</p>
+<p>While $~$S$~$ and $~$S^\prime$~$ are equivalent when $~$n$~$ is a natural number, they aren't equal; if we plug in $~$\lambda a.\lambda b.a$~$ for $~$n$~$, we have
+\begin{align}
+  S\ (\lambda a.\lambda b.a) &amp;= \lambda f.\lambda x.f\ ((\lambda a.\lambda b.a)\ f\ x) \newline
+  &amp;= \lambda f.\lambda x.f\ f
+\end{align}
+but
+\begin{align}
+  S^\prime\ (\lambda a.\lambda b.a) &amp;= \lambda f.\lambda x.(\lambda a.\lambda b.a)\ f\ (f\ x)) \newline
+  &amp;= \lambda f.\lambda x.f
+\end{align}
+which is a different function.</p>
+<p>To check that $~$S$~$ works as we want, let's verify that $~$S\ 3=4$~$. For these worked examples, it's probably much more informative if you work through them yourself; they're provided here so you can check that you did it right.</p>
+<p>%%hidden(Worked example: successor):
+\begin{align}
+  S\ 3 &amp;= (\lambda n.\lambda f.\lambda x.f\ (n\ f\ x))\ (\lambda f.\lambda x.f\ (f\ (f\ x))) \newline
+  &amp;= (\lambda f.\lambda x.f\ ((\lambda f.\lambda x.f\ (f\ (f\ x)))\ f\ x)) \newline
+  &amp;= (\lambda f.\lambda x.f\ (f\ (f\ (f\ x))) \newline
+  &amp;= 4
+\end{align}
+%%</p>
+<h2 id="addition">[addition]</h2>
+<p>Now that we know how to add $~$1$~$, let's figure out how to add arbitrary numbers. Suppose we have two numbers $~$m$~$ and $~$n$~$; remember $~$m$~$ means "on inputs $~$f$~$ and $~$x$~$, apply $~$f$~$ to $~$x$~$ $~$m$~$ times," and similarly for $~$n$~$. We want $~$m+n$~$ to apply $~$f$~$ to $~$x$~$ $~$m+n$~$ times, so how can we accomplish that? If we apply $~$f$~$ to $~$x$~$ $~$n$~$ times, and then $~$m$~$ more times, it should have the desired effect. Writing this as a $~$\lambda$~$ term,</p>
+<p>$$~$+=\lambda m.\lambda n.\lambda f.\lambda x.m\ f\ (n\ f\ x)$~$$</p>
+<p>Again $~$n\ f\ x$~$ is $~$f$~$ of $~$x$~$ $~$n$~$ times, and the $~$m\ f$~$ in front applies $~$f$~$ to the result $~$m$~$ more times. We could of course swap $~$m$~$ and $~$n$~$, since addition is <a href="commutative_operation.html">commutative</a>.</p>
+<p>Let's verify that $~$2+3=5$~$. We have to write $~$2+3$~$ as $~$+\ 2\ 3$~$ because we haven't defined infixes in $~$\lambda$~$ calculus (though we could define $~$m+n$~$ to mean $~$+\ m\ n$~$.</p>
+<p>%%hidden(Worked example: addition):
+\begin{align}
+  +\ 2\ 3 &amp;= (\lambda m.\lambda n.\lambda f.\lambda x.m\ f\ (n\ f\ x))\ (\lambda f.\lambda x.f\ (f\ x))\ (\lambda f.\lambda x.f\ (f\ (f\ x))) \newline
+  &amp;= \lambda f.\lambda x.(\lambda f.\lambda x.f\ (f\ x))\ f\ ((\lambda f.\lambda x.f\ (f\ (f\ x)))\ f\ x) \newline
+  &amp;= \lambda f.\lambda x.(\lambda f.\lambda x.f\ (f\ x))\ f\ (f\ (f\ (f\ x))) \newline
+  &amp;= \lambda f.\lambda x.f\ (f\ (f\ (f\ (f\ x)))) \newline
+  &amp;= 5
+\end{align}
+%%</p>
+<h2 id="multiplication">[multiplication]</h2>
+<p>Multiplication might seem a bit harder. Now, given two numbers $~$m$~$ and $~$n$~$, we want to apply some function $~$f$~$ to $~$x$~$ $~$m\times n$~$ times. If we take a function that applies $~$f$~$ $~$n$~$ times, and then apply that function $~$m$~$ times, we should get something that applies $~$f$~$ $~$n$~$ times, $~$n$~$ times, which is the same as applying $~$f$~$ $~$m\times n$~$ times. That is, $~$(f^n)^m(x)=f^{m\times n}(x)$~$. The intermediate function that applies $~$f$~$ $~$n$~$ times is $~$\lambda x.n\ f\ x$~$, or using [eta_convesion $~$\eta$~$-conversion], simply $~$n\ f$~$. We just need to apply $~$n\ f$~$, $~$m$~$ times, so we can define</p>
+<p>$$~$\times=\lambda m.\lambda n.\lambda f.\lambda x.m\ (n\ f) x$~$$</p>
+<p>or, using $~$\eta$~$-conversion again,</p>
+<p>$$~$\times=\lambda m.\lambda n.\lambda f.m\ (n\ f).$~$$</p>
+<p>Again multiplication is commutative, so we could swap $~$m$~$ and $~$n$~$ to get an equally good definition.</p>
+<p>We should have $~$\times\ 2\ 3=6$~$; let's check this.</p>
+<p>%%hidden(Worked example: multiplication):
+\begin{align}
+  \times\ 2\ 3 &amp;= (\lambda m.\lambda n.\lambda f.m\ (n\ f))\ (\lambda f.\lambda x.f\ (f\ x))\ (\lambda f.\lambda x.f\ (f\ (f\ x))) \newline
+  &amp;= \lambda f.(\lambda f.\lambda x.f\ (f\ x))\ ((\lambda f.\lambda x.f\ (f\ (f\ x)))\ f) \newline
+  &amp;= \lambda f.(\lambda f.\lambda x.f\ (f\ x))\ (\lambda x.f\ (f\ (f\ x))) \newline
+  &amp;= \lambda f.\lambda x.(\lambda x.f\ (f\ (f\ x)))\ ((\lambda x.f\ (f\ (f\ x)))\ x) \newline
+  &amp;= \lambda f.\lambda x.(\lambda x.f\ (f\ (f\ x)))\ (f\ (f\ (f\ x))) \newline
+  &amp;= \lambda f.\lambda x.f\ (f\ (f\ (f\ (f\ (f\ x)))))) \newline
+  &amp;= 6
+\end{align}
+%%</p>
+<h2 id="thispageisunfinished">(this page is unfinished)</h2></main><hr><footer><p class="likes"><h2>Likes</h2><span class="page-comma-list"><a class="page-link" href="../page/PatrickStevens.html">Patrick Stevens</a></span></p></footer></body></html>

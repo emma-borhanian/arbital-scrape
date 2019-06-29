@@ -1,0 +1,36 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Empty set</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_SVG" async></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">Empty set</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/empty_set.json.html">empty_set.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/empty_set">https://arbital.com/p/empty_set</a></p><p class="creator">by
+ <a class="page-link" href="../page/PatrickStevens.html">Patrick Stevens</a> Aug 24 2016 
+updated
+ Sep 26 2016</p></div><p class="clickbait">The empty set does what it says on the tin: it is the set which is empty.</p><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>Empty set</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="math.html">Mathematics</a></li><li><a href="set_mathematics.html">Set</a></li><li>…</li></ul></nav></nav></header><hr><main><p>The empty set is the set having no members. It is usually denoted as $~$\emptyset$~$. Whatever object is considered, it can't be a member of $~$\emptyset$~$. It might be useful in the beginning to think about the empty set as an empty box. It has nothing inside it, but it still does exist.</p>
+<p>Formally, the existence of the empty set is asserted by the <strong>Empty Set Axiom</strong>:</p>
+<p>$$~$\exists B \forall x : x∉B$~$$</p>
+<p>The empty set axiom itself does not postulate the uniqueness of $~$\emptyset$~$. However, this fact is easy to prove using the <a href="extensionality_axiom.html">axiom of extensionality</a>.
+Consider sets $~$A$~$ and $~$B$~$ such that both $~$\forall x : x∉A$~$ and $~$\forall x: x∉B$~$. %%note: That is, suppose we had two empty sets.%% Remember that the extensionality axiom tells us that if we can show $~$\forall x : (x ∈ A \Leftrightarrow x ∈ B)$~$, then we may deduce that $~$A=B$~$. 
+In this case, for every $~$x$~$, both parts of the statement $~$(x ∈ A \Leftrightarrow x ∈ B)$~$ are false: we have $~$x \not \in A$~$ and $~$x \not \in B$~$.
+Therefore the <a href="iff.html">Iff</a> relation is true.</p>
+<p>The existence of the empty set can be derived from the existence of any other set using the axiom schema of bounded comprehension, which states that for any formula $~$\phi$~$ in the language of set theory, $~$\forall a \exists b \forall x : x \in b \Leftrightarrow (x \in a \wedge \phi(x))$~$. In particular, taking $~$\phi$~$ to be $~$\bot$~$, the always-false formula, we have that $~$\forall a \exists b \forall x : x \in b \Leftrightarrow (x \in a \wedge \bot)$~$. Since $~$x \in b \Leftrightarrow (x \in a \wedge \bot)$~$ is logically equivalent to $~$x \in b \Leftrightarrow \bot$~$ and hence to $~$x \notin b$~$, the quantified statement is logically equivalent to $~$\forall a \exists b \forall x : x \notin b$~$, and as soon as we have the existence of at least one set to use as $~$a$~$, we obtain the Empty Set Axiom above.</p>
+<p>It is worth noting that the empty set is itself a single object. One can construct a set <em>containing</em> the empty set: $~$\{\emptyset\}$~$. $~$\{\emptyset\} \not= \emptyset$~$, because $~$\emptyset ∈ \{\emptyset\}$~$ but $~$\emptyset ∉ \emptyset$~$; so the two sets have different elements and therefore cannot be equal by extensionality.
+%%note: In terms of the box metaphor above, $~$\{\emptyset\}$~$ is a box, containing an empty box, whilst $~$\emptyset$~$ is just an empty box%%</p>
+<p>Another way to think about this is using <a href="cardinality.html">Cardinality</a>.
+Indeed, $~$|\{\emptyset\}| = 1$~$ (as this set contains a single element - $~$\emptyset$~$) and $~$|\emptyset| = 0$~$ (as it contains no elements at all). Consequently, the two sets have different amounts of members and can not be equal.</p>
+<p>[todo: the empty set is often used to represent the ordinal 0]</p>
+<p>[comment: Punctuation can be weird in this edit, as the author is not a native English speaker. Might need to be improved]</p></main><hr><section class="comments"><h2>Comments</h2><div class="comment"><p><a class="page-link" href="../page/PatrickStevens.html">Patrick Stevens</a></p><p><p><a href="IliaZaichuk.html">Ilia Zaichuk</a> Thanks for the edit! I made a couple of linguistic changes, and made the "uniqueness of $~$\emptyset$~$" a bit less compact.</p></p></div></section><footer><p class="tagged"><h2>Tagged</h2><span class="page-comma-list"><a class="page-link" href="../page/start_meta_tag.html">Start</a></span></p><p class="all-creators"><h2>All Creators</h2><span class="page-comma-list"><a class="page-link" href="../page/DylanHendrickson.html">Dylan Hendrickson</a>,
+ <a class="page-link" href="../page/EricRogstad.html">Eric Rogstad</a>,
+ <a class="page-link" href="../page/IliaZaichuk.html">Ilia Zaichuk</a>,
+ <a class="page-link" href="../page/LukeSciarappa.html">Luke Sciarappa</a>,
+ <a class="page-link" href="../page/PatrickStevens.html">Patrick Stevens</a></span></p><p class="related"><h2>Related</h2><ul class="page-list"><li><a class="page-link" href="../page/empty_set_universal_property.html">Universal property of the empty set</a> <q>The empty set can be characterised by how it interacts with other sets, rather than by any explicit property of the empty set itself.</q> - <a class="page-link" href="../page/PatrickStevens.html">Patrick Stevens</a></li></ul></p><p class="reverse-related"><h2>Reverse Related</h2><ul class="page-list"><li><a class="page-link" href="../page/start_meta_tag.html">Start</a> <q>This page gives a basic overview of the topic, but may be missing important information or have stylistic issues. If you're able to, please help expand or improve it!</q> - <a class="page-link" href="../page/EliezerYudkowsky.html">Eliezer Yudkowsky</a></li></ul></p><p class="children"><h2>Children</h2><ul class="page-tree"><li><a class="page-link" href="../page/6gb.html">Empty set</a> <q>The empty set, $\emptyset$, is the set with no elements. For every object $x$, $x$ is not in $\empt…</q> - <a class="page-link" href="../page/PatrickStevens.html">Patrick Stevens</a></li></ul></p></footer></body></html>

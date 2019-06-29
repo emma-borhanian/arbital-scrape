@@ -1,0 +1,41 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Monoid</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_SVG" async></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">Monoid</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/algebraic_monoid.json.html">algebraic_monoid.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/algebraic_monoid">https://arbital.com/p/algebraic_monoid</a></p><p class="creator">by
+ <a class="page-link" href="../page/NateSoares.html">Nate Soares</a> May 9 2016 
+updated
+ Jun 15 2016</p></div><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>Monoid</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="math.html">Mathematics</a></li><li><a href="abstract_algebra.html">Abstract algebra</a></li><li><a href="algebraic_structure.html">Algebraic structure</a></li><li>…</li></ul></nav></nav></header><hr><main><p>A monoid $~$M$~$ is a pair $~$(X, \diamond)$~$ where $~$X$~$ is a [set_theory_set set] and $~$\diamond$~$ is an [associative_function associative] binary <a href="operator_mathematics.html">operator</a> with an identity. $~$\diamond$~$ is often interpreted as concatenation; data structures that support concatenation and have an "empty element" (such as lists, strings, and the natural numbers under addition) are examples of monoids.</p>
+<p>Monoids are <a href="algebraic_structure.html">algebraic structures</a>. We write $~$x \diamond y$~$ for the application of $~$\diamond$~$ to $~$x, y \in X$~$, which must be defined. $~$x \diamond y$~$ is commonly abbreviated $~$xy$~$ when $~$\diamond$~$ can be inferred from context. The monoid axioms (which govern the behavior of $~$\diamond$~$) are as follows.</p>
+<ol>
+<li>(Closure) For all $~$x, y$~$ in $~$X$~$, $~$xy$~$ is also in $~$X$~$.</li>
+<li>(Associativity) For all $~$x, y, z$~$ in $~$X$~$, $~$x(yz) = (xy)z$~$.</li>
+<li>(Identity) There is an $~$e$~$ in $~$X$~$ such that, for all $~$x$~$ in $~$X$~$, $~$xe = ex = x.$~$</li>
+</ol>
+<p>The axiom of closure says that $~$x \diamond y \in X$~$, i.e. that combining two elements of $~$X$~$ using $~$\diamond$~$ yields another element of $~$X$~$. In other words, $~$X$~$ is <a href="closure_mathematics.html">closed</a> under $~$\diamond$~$.</p>
+<p>The axiom of associativity says that $~$\diamond$~$ is an <a href="associative_operation.html">associative</a> operation, which justifies omitting parenthesis when describing the application of $~$\diamond$~$ to many elements in sequence..</p>
+<p>The axiom of identity says that there is some element $~$e$~$ in $~$X$~$ that $~$\diamond$~$ treats as "empty": If you apply $~$\diamond$~$ to $~$e$~$ and $~$x$~$, then $~$\diamond$~$ simply returns $~$x$~$. The identity is unique: Given two elements $~$e$~$ and $~$z$~$ that satisfy the axiom of identity, we have $~$ze = e = ez = z.$~$ Thus, we can speak of "the identity" $~$e$~$ of $~$M$~$. $~$e$~$ is often written $~$1$~$ or $~$1_M$~$.</p>
+<p>%%%knows-requisite(<a href="category_theory.html">Category theory</a>):
+Equivalently, a monoid is a category with exactly one object.
+%%%</p>
+<p>Monoids are [algebraic_semigroup semigroups] equipped with an identity. <a href="group_mathematics.html">Groups</a> are monoids with inverses. For more on how monoids relate to other [algerbraic_structure algebraic structures], refer to the <a href="algebraic_structure_tree.html">tree of algebraic structures</a>.</p>
+<h1 id="notation">Notation</h1>
+<p>Given a monoid $~$M = (X, \diamond)$~$, we say "$~$X$~$ forms a monoid under $~$\diamond$~$." For example, the set of finite bitstrings forms a monoid under concatenation: The set of finite bitstrings is closed under concatenation; concatenation is an associative operation; and the empty bitstring is a finite bitstring that acts like an identity under concatenation. </p>
+<p>$~$X$~$ is called the <a href="underlying_set.html">underlying set</a> of $~$M$~$, and $~$\diamond$~$ is called the <em>monoid operation</em>. $~$x \diamond y$~$ is usually abbreviated $~$xy$~$. $~$M$~$ is generally allowed to substitute for $~$X$~$ when discussing the monoid. For example, we say that the elements $~$x, y \in X$~$ are "in $~$M$~$," and sometimes write "$~$x, y \in M$~$" or talk about the "elements of $~$M$~$."</p>
+<h1 id="examples">Examples</h1>
+<p>Bitstrings form a monoid under concatenation, with the empty string as the identity.</p>
+<p>The set of finite lists of elements drawn from $~$Y$~$ (for any set $~$Y$~$) form a monoid under concatenation, with the empty list as the identity.</p>
+<p>The natural numbers [45h $~$\mathbb N$~$] form a monid under addition, with $~$0$~$ as the identity.</p>
+<p>Monoids have found some use in functional programming languages such as <a href="https://en.wikipedia.org/wiki/Haskell_(programming_language)">Haskell</a> and <a href="https://en.wikipedia.org/wiki/Scala_(programming_language)">Scala</a>, where they are used to generalize over data types in which values can be "combined" (by some operation $~$\diamond$~$) and which include an "empty" value (the identity).</p></main><hr><footer><p class="tagged"><h2>Tagged</h2><span class="page-comma-list"><a class="page-link" href="../page/needs_clickbait_meta_tag.html">Needs clickbait</a></span></p><p class="all-creators"><h2>All Creators</h2><span class="page-comma-list"><a class="page-link" href="../page/NateSoares.html">Nate Soares</a>,
+ <a class="page-link" href="../page/PatrickStevens.html">Patrick Stevens</a></span></p><p class="likes"><h2>Likes</h2><span class="page-comma-list"><a class="page-link" href="../page/JaimeSevillaMolina.html">Jaime Sevilla Molina</a></span></p><p class="reverse-related"><h2>Reverse Related</h2><ul class="page-list"><li><a class="page-link" href="../page/needs_clickbait_meta_tag.html">Needs clickbait</a> <q>This page does not have clickbait (a short teaser for the page displayed on various lists). Feel free to add it!</q> - <a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a></li></ul></p></footer></body></html>
