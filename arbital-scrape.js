@@ -44,7 +44,7 @@ let argv = require('yargs')
          .option('remote-mathjax', {
            desc: 'use remote mathjax rather than vendored',
            boolean: true,
-           default: false }))
+           default: true }))
   .help()
   .argv
 
