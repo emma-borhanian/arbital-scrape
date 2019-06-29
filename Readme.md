@@ -3,7 +3,7 @@ Scrapes https://arbital.com into browsable plain HTML for personal use:
 https://emma-borhanian.github.io/arbital-scrape/
 
 ```bash
-npm install && ./arbital-scrape.js
+npm install && node arbital-scrape.js
 ```
 
 Content has already been downloaded from arbital and included in the `out/` directory to avoid stressing arbital's servers. Run `./arbital-scrape.js` to generate HTML files.
