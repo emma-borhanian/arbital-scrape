@@ -1,0 +1,51 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Solovay's theorems of arithmetical adequacy for GL</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="../MathJax-2.7.5/MathJax.js"></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">Solovay's theorems of arithmetical adequacy for GL</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/arithmetical_adequacy_GL.json.html">arithmetical_adequacy_GL.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/arithmetical_adequacy_GL">https://arbital.com/p/arithmetical_adequacy_GL</a></p><p class="creator">by
+ <a class="page-link" href="../page/JaimeSevillaMolina.html">Jaime Sevilla Molina</a> Jul 29 2016</p></div><p class="clickbait">Using GL to reason about PA, and viceversa</p><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>Solovay's theorems of arithmetical adequacy for GL</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="math.html">Mathematics</a></li><li><a href="modal_logic.html">Modal logic</a></li><li><a href="provability_logic.html">Provability logic</a></li><li>…</li></ul></nav></nav></header><hr><main><p>[summary:
+$~$GL\vdash A$~$ iff $~$PA\vdash A^*$~$ for every realization $~$*$~$.</p>
+<p>Realizations are translations from modal sentences to sentences of arithmetic.
+]</p>
+<p>One of the things that makes <a href="provability_logic.html">Provability logic</a> such an interesting formal system is the direct relation between its theorems and a restricted albeit rich class of theorems regarding <a href="provability_predicate.html">provability predicates</a> in <a href="peano_arithmetic.html">Peano Arithmetic</a>.</p>
+<p>As usual, the adequacy result comes in the form of a pair of theorems, proving respectively [-soundness] and [-completeness] for this class. Before stating the results, we describe the way to [translation translate]  modal sentences to sentences of arithmetic, thus describing the class of sentences of arithmetic the result alludes to.</p>
+<h2 id="realizations">Realizations</h2>
+<p>A realization $~$*$~$ is a function from the set of well-formed sentences of modal logic to the set of sentences of arithmetic. Intuitively, we are trying to preserve the structure of the sentence while mapping the expressions proper of modal logic to related predicates in the language of $~$PA$~$.</p>
+<p>Concretely,</p>
+<ul>
+<li>$~$p^* = S_p$~$: sentence letters are mapped to arbitrary closed sentences of arithmetic.</li>
+<li>$~$(\square A)^*=P(A^*)$~$: the box operator is mapped to a <a href="provability_predicate.html">Provability predicate</a> $~$P$~$, usually the <a href="standard_provability_predicate.html">Standard provability predicate</a>.</li>
+<li>$~$(A\to B)^* = A^* \to B^*$~$: truth functional compounds are mapped as expected.</li>
+<li>$~$\bot ^* = \neg X$~$, where $~$X$~$ is any theorem of $~$PA$~$, for example, $~$0\ne 1$~$.</li>
+</ul>
+<p>The class of sentences of $~$PA$~$ such that there exists a modal sentence of which they are a realization is the set for which we will prove the soundness and completeness.</p>
+<h2 id="arithmeticalsoundness">Arithmetical soundness</h2>
+<blockquote>
+  <p>If $~$GL\vdash A$~$, then $~$PA\vdash A^*$~$ for every realization $~$*$~$.</p>
+</blockquote>
+<p>The applications to this result are endless. For example, this theorem allows us to take advantage of the procedures to calculate <a href="fixed_point_theorem_provability_logic.html">fixed points</a> in $~$GL$~$ to get results about $~$PA$~$.</p>
+<p>To better get an intuition of how this correspondence works, try figuring out how the properties of the <a href="provability_predicate.html">Provability predicate</a> relate to the axioms and rules of inference of $~$GL$~$.</p>
+<p>[ Proof]</p>
+<h2 id="arithmeticalcompleteness">Arithmetical completeness</h2>
+<blockquote>
+  <p>If $~$GL\not\vdash A$~$, then there exists a realization $~$*$~$ such that $~$PA\not\vdash A^*$~$.</p>
+</blockquote>
+<p>The proof of arithmetical completeness is a beautiful and intricate construction that exploits the semantical relationship between $~$GL$~$ and the finite, transitive and irreflexive <a href="kripke_model.html">Kripke models</a>. Check [ its page] for the details.</p>
+<h2 id="uniformarithmeticalcompleteness">Uniform arithmetical completeness</h2>
+<blockquote>
+  <p>There exists a realization $~$*$~$ such that for every modal sentence $~$A$~$ we have that $~$GL\not\vdash A$~$ only if $~$PA\not\vdash A$~$.</p>
+</blockquote>
+<p>This result generalizes the arithmetical completeness theorem to a new level.</p>
+<p>[ Proof]</p></main><hr><footer><p class="tagged"><h2>Tagged</h2><span class="page-comma-list"><a class="page-link" href="../page/work_in_progress_meta_tag.html">Work in progress</a></span></p><p class="likes"><h2>Likes</h2><span class="page-comma-list"><a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a>,
+ <a class="page-link" href="../page/PatrickStevens.html">Patrick Stevens</a></span></p><p class="reverse-related"><h2>Reverse Related</h2><ul class="page-list"><li><a class="page-link" href="../page/work_in_progress_meta_tag.html">Work in progress</a> <q>This page is being actively worked on by an editor. Check with them before making major changes.</q> - <a class="page-link" href="../page/EliezerYudkowsky.html">Eliezer Yudkowsky</a></li></ul></p></footer></body></html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Symmetric group</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="../MathJax-2.7.5/MathJax.js"></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">Symmetric group</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/symmetric_group.json.html">symmetric_group.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/symmetric_group">https://arbital.com/p/symmetric_group</a></p><p class="creator">by
+ <a class="page-link" href="../page/PatrickStevens.html">Patrick Stevens</a> Jun 14 2016 
+updated
+ Jun 17 2016</p></div><p class="clickbait">The symmetric groups form the fundamental link between group theory and the notion of symmetry.</p><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>Symmetric group</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="math.html">Mathematics</a></li><li><a href="abstract_algebra.html">Abstract algebra</a></li><li><a href="algebraic_structure.html">Algebraic structure</a></li><li><a href="group_mathematics.html">Group</a></li><li>…</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="math.html">Mathematics</a></li><li><a href="group_theory.html">Group theory</a></li><li><a href="group_mathematics.html">Group</a></li><li>…</li></ul></nav></nav></header><hr><main><p>The notion that group theory captures the idea of "symmetry" derives from the notion of the symmetric group, and the very important theorem due to Cayley that every group is a subgroup of a symmetric group.</p>
+<h1 id="definition">Definition</h1>
+<p>Let $~$X$~$ be a <a href="set_mathematics.html">Set</a>. A <a href="bijective_function.html">bijection</a> $~$f: X \to X$~$ is a <em>permutation</em> of $~$X$~$.
+Write $~$\mathrm{Sym}(X)$~$ for the set of permutations of the set $~$X$~$ (so its elements are functions).</p>
+<p>Then $~$\mathrm{Sym}(X)$~$ is a group under the operation of composition of functions; it is the <em>symmetric group on $~$X$~$</em>.
+(It is also written $~$\mathrm{Aut}(X)$~$, for the <em>automorphism group</em>.)</p>
+<p>We write $~$S_n$~$ for $~$\mathrm{Sym}(\{ 1,2, \dots, n\})$~$, the <em>symmetric group on $~$n$~$ elements</em>.</p>
+<h1 id="elementsofdds_ndd">Elements of $~$S_n$~$</h1>
+<p>We can represent a permutation of $~$\{1,2,\dots, n\}$~$ in two different ways, each of which is useful in different situations.</p>
+<h2 id="doublerownotation">Double-row notation</h2>
+<p>Let $~$\sigma \in S_n$~$, so $~$\sigma$~$ is a function $~$\{1,2,\dots,n\} \to \{1,2,\dots,n\}$~$.
+Then we write $$~$\begin{pmatrix}1 &amp; 2 &amp; \dots &amp; n \\ \sigma(1) &amp; \sigma(2) &amp; \dots &amp; \sigma(n) \\ \end{pmatrix}$~$$
+for $~$\sigma$~$.
+This has the advantage that it is immediately clear where every element goes, but the disadvantage that it is quite hard to see the properties of an element when it is written in double-row notation (for example, "$~$\sigma$~$ cycles round five elements" is hard to spot at a glance), and it is not very compact.</p>
+<h2 id="cyclenotation">Cycle notation</h2>
+<p><a href="cycle_notation_symmetric_group.html">Cycle notation</a> is a different notation, which has the advantage that it is easy to determine an element's order and to get a general sense of what the element does.
+Every element of $~$S_n$~$ <a href="disjoint_cycle_notation_is_unique.html">can be expressed in (disjoint) cycle notation in an essentially unique way</a>.</p>
+<h2 id="productoftranspositions">Product of transpositions</h2>
+<p>It is a useful fact that every permutation in a (finite) symmetric group <a href="symmetric_group_is_generated_by_transpositions.html">may be expressed</a> as a product of <a href="transposition_in_symmetric_group.html">transpositions</a>.</p>
+<h1 id="examples">Examples</h1>
+<ul>
+<li>The group $~$S_1$~$ is the group of permutations of a one-point set. It contains the identity only, so $~$S_1$~$ is the trivial group.</li>
+<li>The group $~$S_2$~$ is isomorphic to the <a href="cyclic_group.html">Cyclic group</a> of order $~$2$~$. It contains the identity map and the map which interchanges $~$1$~$ and $~$2$~$.</li>
+</ul>
+<p>Those are the only two <a href="abelian_group.html">abelian</a> symmetric groups.
+Indeed, in cycle notation, $~$(123)$~$ and $~$(12)$~$ do not commute in $~$S_n$~$ for $~$n \geq 3$~$, because $~$(123)(12) = (13)$~$ while $~$(12)(123) = (23)$~$.</p>
+<ul>
+<li>The group $~$S_3$~$ contains the following six elements: the identity, $~$(12), (23), (13), (123), (132)$~$. It is isomorphic to the <a href="dihedral_group.html">Dihedral group</a> $~$D_6$~$ on three vertices. ([group_s3_isomorphic_to_d6 Proof.])</li>
+</ul>
+<h1 id="whywecareaboutthesymmetricgroups">Why we care about the symmetric groups</h1>
+<p>A very important (and rather basic) result is <a href="cayley_theorem_symmetric_groups.html">Cayley&#39;s Theorem</a>, which states the link between group theory and symmetry.</p>
+<p>%%%knows-requisite(<a href="conjugacy_class.html">Conjugacy class</a>):</p>
+<h1 id="conjugacyclassesofdds_ndd">Conjugacy classes of $~$S_n$~$</h1>
+<p>It is a useful fact that the conjugacy class of an element in $~$S_n$~$ is precisely the set of elements which share its <a href="cycle_type_of_a_permutation.html">cycle type</a>. (<a href="conjugacy_class_is_cycle_type_in_symmetric_group.html">Proof.</a>)
+We can therefore <a href="symmetric_group_five_conjugacy_classes.html">list the conjugacy classes</a> of $~$S_5$~$ and their sizes.
+%%%</p>
+<h1 id="relationshiptotheahrefalternating_grouphtmlalternatinggroupa">Relationship to the <a href="alternating_group.html">Alternating group</a></h1>
+<p>The <a href="alternating_group.html">Alternating group</a> $~$A_n$~$ is defined as the collection of elements of $~$S_n$~$ which can be made by an even number of <a href="transposition_in_symmetric_group.html">transpositions</a>. This does form a group (<a href="even_signed_permutations_form_a_group.html">proof</a>).</p>
+<p>%%%knows-requisite(<a href="normal_subgroup.html">Normal subgroup</a>):
+In fact $~$A_n$~$ is a <a href="normal_subgroup.html">Normal subgroup</a> of $~$S_n$~$, obtained by taking the quotient by the <a href="sign_homomorphism_symmetric_group.html">sign homomorphism</a>.
+%%%</p></main><hr><section class="comments"><h2>Comments</h2><div class="comment"><p><a class="page-link" href="../page/PatrickStevens.html">Patrick Stevens</a></p><p><p>Request for comment: is the definition of "cycle" something that should be on its own page? They're not about the symmetric group per se, but I've only heard of cycles being used in the context of symmetric groups.</p></p></div></section><footer><p class="tagged"><h2>Tagged</h2><span class="page-comma-list"><a class="page-link" href="../page/needs_summary_meta_tag.html">Needs summary</a></span></p><p class="likes"><h2>Likes</h2><span class="page-comma-list"><a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a>,
+ <a class="page-link" href="../page/JaimeSevillaMolina.html">Jaime Sevilla Molina</a></span></p><p class="reverse-related"><h2>Reverse Related</h2><ul class="page-list"><li><a class="page-link" href="../page/needs_summary_meta_tag.html">Needs summary</a> <q>This page does not have a summary which provides an informative overview of the page's primary topic.</q> - <a class="page-link" href="../page/AlexeiAndreev.html">Alexei Andreev</a></li></ul></p><p class="children"><h2>Children</h2><ul class="page-tree"><li><a class="page-link" href="../page/cayley_theorem_symmetric_groups.html">Cayley's Theorem on symmetric groups</a> <q>The &quot;fundamental theorem of symmetry&quot;, forging the connection between symmetry and group theory.</q> - <a class="page-link" href="../page/PatrickStevens.html">Patrick Stevens</a></li><li><a class="page-link" href="../page/conjugacy_class_is_cycle_type_in_symmetric_group.html">Conjugacy class is cycle type in symmetric group</a> <q>There is a neat characterisation of the conjugacy classes in the symmetric group on a finite set.</q> - <a class="page-link" href="../page/PatrickStevens.html">Patrick Stevens</a></li><li><a class="page-link" href="../page/symmetric_group_five_conjugacy_classes.html">Conjugacy classes of the symmetric group on five elements</a> <q>The symmetric group on five elements is a group of just the right size to make a good example of a table of conjugacy classes.</q> - <a class="page-link" href="../page/PatrickStevens.html">Patrick Stevens</a></li><li><a class="page-link" href="../page/cycle_notation_symmetric_group.html">Cycle notation in symmetric groups</a> <q>Cycle notation is a convenient way to represent the elements of a symmetric group.</q> - <a class="page-link" href="../page/PatrickStevens.html">Patrick Stevens</a><ul class="page-tree"><li><a class="page-link" href="../page/cycle_type_of_a_permutation.html">Cycle type of a permutation</a> <q>The cycle type is an invariant of a permutation in the symmetric group.</q> - <a class="page-link" href="../page/PatrickStevens.html">Patrick Stevens</a></li><li><a class="page-link" href="../page/disjoint_cycle_notation_is_unique.html">Disjoint cycle notation is unique</a> <q>Disjoint cycle notation provides a canonical way to express elements of the symmetric group.</q> - <a class="page-link" href="../page/PatrickStevens.html">Patrick Stevens</a></li></ul></li><li><a class="page-link" href="../page/disjoint_cycles_commute_symmetric_group.html">Disjoint cycles commute in symmetric groups</a> <q>In cycle notation, if two cycles are disjoint, then they commute.</q> - <a class="page-link" href="../page/PatrickStevens.html">Patrick Stevens</a></li><li><a class="page-link" href="../page/symmetric_group_is_generated_by_transpositions.html">Every member of a symmetric group on finitely many elements is a product of transpositions</a> <q>This fact can often simplify arguments about permutations: if we can show that something holds for transpositions, and that it holds for products, then it holds for everything.</q> - <a class="page-link" href="../page/PatrickStevens.html">Patrick Stevens</a></li><li><a class="page-link" href="../page/sign_homomorphism_symmetric_group.html">Sign homomorphism (from the symmetric group)</a> <q>The sign homomorphism is how we extract the alternating group from the symmetric group.</q> - <a class="page-link" href="../page/PatrickStevens.html">Patrick Stevens</a></li><li><a class="page-link" href="../page/sign_of_permutation_is_well_defined.html">The sign of a permutation is well-defined</a> <q>This result is what allows the alternating group to exist.</q> - <a class="page-link" href="../page/PatrickStevens.html">Patrick Stevens</a></li><li><a class="page-link" href="../page/transposition_in_symmetric_group.html">Transposition (as an element of a symmetric group)</a> <q>A transposition is the simplest kind of permutation: it swaps two elements.</q> - <a class="page-link" href="../page/PatrickStevens.html">Patrick Stevens</a></li></ul></p></footer></body></html>

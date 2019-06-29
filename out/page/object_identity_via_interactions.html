@@ -1,0 +1,54 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Object identity via interactions</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="../MathJax-2.7.5/MathJax.js"></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">Object identity via interactions</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/object_identity_via_interactions.json.html">object_identity_via_interactions.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/object_identity_via_interactions">https://arbital.com/p/object_identity_via_interactions</a></p><p class="creator">by
+ <a class="page-link" href="../page/PatrickStevens.html">Patrick Stevens</a> Aug 25 2016 
+updated
+ Sep 12 2016</p></div><p class="clickbait">If we think of objects as opaque &quot;black boxes&quot;, how can we tell whether two objects are different? By looking at how they interact with other objects!</p><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>Object identity via interactions</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="math.html">Mathematics</a></li><li><a href="category_theory.html">Category theory</a></li><li>…</li></ul></nav></nav></header><hr><main><p>[summary: Central to the mindset of category theory is the idea that we don't really care what an object is; we only care about the interactions between them. But if we don't care what an object is, how can we tell even the most basic properties of the objects? For instance, how can we even tell two objects apart? But we <em>can</em> do it, and we do it by looking at the interactions with <em>other</em> objects.]</p>
+<p>Central to the mindset of category theory is the idea that we don't really care what an object is; we only care about the interactions between them. But if we don't care what an object is, how can we tell even the most basic properties of the objects? For instance, how can we even tell two objects apart? But we <em>can</em> do it, and we do it by looking at the interactions with <em>other</em> objects.</p>
+<h1 id="howtotellsetsapart">How to tell sets apart</h1>
+<p>If we're allowed to look at maps between sets, but not at the structure of the sets themselves, how can we tell whether two sets are the same?
+We aren't allowed to look at the elements of the set directly, so it would be very optimistic to hope to do better than telling the sets apart "up to isomorphism"; indeed, it turns out not to be possible to tell whether two sets are literally identical without looking at their elements.</p>
+<p>But how about telling whether there is a <a href="bijective_function.html">bijection</a> between two sets or not? That is the next best thing, because a bijection between the sets would tell us that they "behave the same in all reasonable ways".</p>
+<p>It turns out we can do this!
+Let $~$A$~$ and $~$B$~$ be two sets; we want to tell if they're different or not.</p>
+<p>Let's make a clever choice: we'll pick a kind of "anchor" set, such that the maps involving $~$A$~$, $~$B$~$ and the "anchor" set are enough to determine whether or not $~$A$~$ and $~$B$~$ are the same.
+It will turn out that $~$\{1\}$~$ works.</p>
+<p>Consider all possible maps $~$\{1\} \to A$~$ and $~$\{1\} \to B$~$.
+A map from $~$\{1\}$~$ to $~$A$~$ is just a function $~$f$~$ which takes the input value $~$1$~$ (there's no choice about that) and returns a value in $~$A$~$.
+So we can think of it as being "a mappy way of specifying an element of $~$A$~$": for every element of $~$A$~$, there is one of these functions, while every one of these functions denotes an element of $~$A$~$.</p>
+<p>So $~$A$~$ is isomorphic to this collection of maps, and the key thing is that we don't need to know about $~$A$~$'s elements to say this!
+If we only have access to the maps and we know nothing about the internal structure of $~$A$~$, we can still say $~$A$~$ is isomorphic to the set of all the maps from $~$\{1\}$~$ to $~$A$~$.</p>
+<p>%%hidden(Example):
+Let $~$A = \{ 5, 6 \}$~$.</p>
+<p>Then the functions $~$\{1\} \to A$~$ are precisely the two following:</p>
+<ul>
+<li>$~$f: 1 \mapsto 5$~$;</li>
+<li>$~$g: 1 \mapsto 6$~$.</li>
+</ul>
+<p>So we have the "mappy" way of viewing $~$5 \in A$~$: namely, $~$f$~$.
+Similarly, we have the "mappy" way of viewing $~$6 \in A$~$: namely, $~$g$~$.</p>
+<p>And $~$A$~$ is isomorphic to the set $~$\{ f, g \}$~$.
+So we've specified $~$A$~$ up to isomorphism without having to look at its elements!
+%%</p>
+<p>Given access to the maps, then, we have worked out what $~$A$~$ is (up to isomorphism, which is the best we can do if we're not allowed to look into the internal structure of $~$A$~$); and we can similarly work out what $~$B$~$ is by looking at the maps $~$\{1\} \to B$~$.</p>
+<p>[todo: another example, using f: {2} \to A as "pair from A"]</p>
+<h2 id="lessstructure">Less structure</h2>
+<p>That previous construction was rather contrived, and it doesn't seem at all practical.</p>
+<p>[todo: practical example]</p>
+<p>[todo: example in Set, where there is a separator: {1}, and a coseparator: {0,1}. Don't define these words, or if we do, do it in passing. Remember to note that this doesn't pick out the set uniquely, but it <em>does</em> pick it out up to isomorphism. Often we only care about things up to isomorphism; explain this]</p>
+<p>[todo: example in Top, where there is a separator {1}, and a coseparator: the closed interval 0,1. This is a nontrivial fact, and it is known as Uryson’s Lemma. ]</p>
+<p>[todo: example in Groups, where Z is a separator]</p>
+<p>[todo: "the entire category" together makes a coseparating class, so we can tell objects apart if we are given the freedom to look at every other object]</p></main><hr><footer><p class="tagged"><h2>Tagged</h2><span class="page-comma-list"><a class="page-link" href="../page/start_meta_tag.html">Start</a></span></p><p class="reverse-related"><h2>Reverse Related</h2><ul class="page-list"><li><a class="page-link" href="../page/start_meta_tag.html">Start</a> <q>This page gives a basic overview of the topic, but may be missing important information or have stylistic issues. If you're able to, please help expand or improve it!</q> - <a class="page-link" href="../page/EliezerYudkowsky.html">Eliezer Yudkowsky</a></li></ul></p></footer></body></html>

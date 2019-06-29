@@ -1,0 +1,33 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Programmer deception</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="../MathJax-2.7.5/MathJax.js"></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">Programmer deception</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/programmer_deception.json.html">programmer_deception.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/programmer_deception">https://arbital.com/p/programmer_deception</a></p><p class="creator">by
+ <a class="page-link" href="../page/EliezerYudkowsky.html">Eliezer Yudkowsky</a> Jul 16 2015 
+updated
+ Dec 16 2015</p></div><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>Programmer deception</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="ai_alignment.html">AI alignment</a></li><li><a href="corrigibility.html">Corrigibility</a></li><li>…</li></ul></nav></nav></header><hr><main><p><a href="value_alignment_programmer.html">Programmer</a> deception is when the AI's decision process leads it to optimize for an instrumental goal of causing the programmers to have false beliefs.  For example, if the programmers <a href="intended_goal.html">intended</a> to create a <a href="happiness_maximizer.html">happiness maximizer</a> but actually created a pleasure maximizer, then the pleasure maximizer will estimate that there would be more pleasure later if the programmers go on falsely believing that they've created a happiness maximizer (and hence don't edit the AI's current utility function).  Averting such incentives to deceive programmers is one of the major subproblems of <a href="corrigibility.html">corrigibility</a>.</p>
+<p>The possibility of programmer deception is a central difficulty of <a href="advanced_safety.html">advanced safety</a> - it means that, unless the rest of the AI is working as intended and whatever programmer-deception-defeaters were built are functioning as planned, we can't rely on observations of nice current behavior to indicate future behavior.  That is, if something went wrong with your attempts to build a nice AI, you could currently be observing a non-nice AI that is <em>smart</em> and trying to <em>fool you</em>.  Arguably, some methodologies that have been proposed for building advanced AI are not robust to this possibility.</p>
+<p>[todo: clean this up and expand]</p>
+<ul>
+<li>[ instrumental pressure] exists every time the AI's best strategic path doesn't have a global optimum that coincides with the programmers believing true things.</li>
+<li>consider the highest utility obtainable if the programmers believe true beliefs B, and call this outcome O and the true beliefs B.  if there's a higher-utility outcome O' which can be obtained when the programmers believe B' with B'!=B, we have an instrumental pressure to deceive the programmers.</li>
+<li>happens when you combine the advanced agent properties of consequentialism with programmer modeling</li>
+<li>this is an instrumental convergence problem, which means it involves an undesired instrumental goal, which means that we'll get Nearest Neighbor on attempts to define utility penalties for the programmers believing false things or otherwise exclude this as a special case</li>
+<li>if we try to define a utility bonus for programmers believing true things, then of course ceteris paribus we tile the universe with tiny 'programmers' believing lots and lots of even numbers are even, and getting to this point temporarily involves deceiving a few programmers now</li>
+<li>relation to the problem of programmer manipulation</li>
+<li>central example of how divergences between intended goals and AI goals can blow up into astronomical failure</li>
+<li>central driver of Treacherous Turn which in turn contributes to <a href="context_disaster.html">Context Change</a></li>
+</ul></main><hr><footer><p class="tagged"><h2>Tagged</h2><span class="page-comma-list"><a class="page-link" href="../page/work_in_progress_meta_tag.html">Work in progress</a></span></p><p class="all-creators"><h2>All Creators</h2><span class="page-comma-list"><a class="page-link" href="../page/AlexeiAndreev.html">Alexei Andreev</a>,
+ <a class="page-link" href="../page/EliezerYudkowsky.html">Eliezer Yudkowsky</a></span></p><p class="likes"><h2>Likes</h2><span class="page-comma-list"><a class="page-link" href="../page/EliezerYudkowsky.html">Eliezer Yudkowsky</a>,
+ <a class="page-link" href="../page/NathanFish.html">Nathan Fish</a></span></p><p class="reverse-related"><h2>Reverse Related</h2><ul class="page-list"><li><a class="page-link" href="../page/work_in_progress_meta_tag.html">Work in progress</a> <q>This page is being actively worked on by an editor. Check with them before making major changes.</q> - <a class="page-link" href="../page/EliezerYudkowsky.html">Eliezer Yudkowsky</a></li></ul></p><p class="children"><h2>Children</h2><ul class="page-tree"><li><a class="page-link" href="../page/cognitive_steganography.html">Cognitive steganography</a> <q>Disaligned AIs that are modeling human psychology and trying to deceive their programmers will want to hide their internal thought processes from their programmers.</q> - <a class="page-link" href="../page/EliezerYudkowsky.html">Eliezer Yudkowsky</a></li></ul></p></footer></body></html>

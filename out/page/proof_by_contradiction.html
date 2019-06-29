@@ -1,0 +1,65 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Proof by contradiction</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="../MathJax-2.7.5/MathJax.js"></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">Proof by contradiction</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/proof_by_contradiction.json.html">proof_by_contradiction.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/proof_by_contradiction">https://arbital.com/p/proof_by_contradiction</a></p><p class="creator">by
+ <a class="page-link" href="../page/JaimeSevillaMolina.html">Jaime Sevilla Molina</a> Jun 12 2016 
+updated
+ Aug 20 2016</p></div><p class="clickbait">Discover what 'reductio ad absurdum' means!</p><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>Proof by contradiction</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="math.html">Mathematics</a></li><li><a href="proof_technique.html">Proof technique</a></li><li>…</li></ul></nav></nav></header><hr><main><p>A proof by contradiction (a.k.a. <em>reductio ad absurdum</em>, reduction to absurdity) is a <a href="proof_technique.html">strategy</a> used by mathematicians to show that a mathematical statement is true by proving that the [-negation] of that statement leads to being able to prove that two opposite statements are simultaneously true (a [-contradiction]). </p>
+<h2 id="outline">Outline</h2>
+<p>The outline of the strategy is as follows:</p>
+<ol>
+<li>Suppose that what you want to prove is false.</li>
+<li>Derive a contradiction from it.</li>
+<li>Conclude that the supposition is wrong.</li>
+</ol>
+<h2 id="examples">Examples</h2>
+<p>To illustrate the concept, we will do a simple, non rigorous reasoning. Imagine yourself in the next situation:</p>
+<p>You are a defense lawyer. Your client is accused of stealing the cookie from the cookie jar. You want to prove her innocence. Lets say you have evidence that the jar is still sealed. Reason as follows:</p>
+<ol>
+<li>Assume she stole the cookie from the cookie jar.</li>
+<li>Then she would have had to open the jar.</li>
+<li>The jar is still sealed.</li>
+<li>For the jar to be sealed and for her to have opened it is a contradiction.</li>
+<li>Hence the assumption in 1 is false (given the deductions below it are true).</li>
+<li>Hence she did not steal the cookie from the cookie jar.</li>
+</ol>
+<p>Now we will work through an actual mathematical example: we will show that $~$\sqrt 2$~$ is not <a href="rational_number.html">rational</a>; that is, it cannot be expressed as the division of two <a href="natural_number.html">natural numbers</a>.</p>
+<ol>
+<li>We suppose that $~$\sqrt 2$~$ is rational, which means that there exist $~$a,b\in\mathbb{N}$~$ such that $~$\sqrt 2 = \frac{a}{b}$~$. Without loss of generality, we can suppose that $~$a$~$ and $~$b$~$ [coprime have no common divisors], since otherwise we can just divide both numbers by their greatest common divisor to obtain a pair of numbers which satisfy both properties.</li>
+<li>If this was the case, $~$b\sqrt2=a$~$. by squaring both sides, we arrive to $~$2b^2=a^2$~$. But then $~$2$~$ divides $~$a$~$, so we can express $~$a$~$ as $~$2n$~$ for some $~$n\in\mathbb{N}$~$. Substituing in the previous expression, we arrive to $~$2b^2 = 4n^2\implies b^2 =2 n^2$~$. By the same reasoning, $~$2$~$ must divide $~$b$~$, but then $~$a$~$ and $~$b$~$ have a common divisor! We have a contradiction.</li>
+<li>We conclude that our original assumption that $~$\sqrt 2$~$ is rational must be false, and thus $~$\sqrt 2$~$ is not rational.</li>
+</ol>
+<h2 id="whentouseit">When to use it</h2>
+<p>Proof by contradiction is one of the most useful techniques one can use to prove anything.</p>
+<p>In particular, if you get stuck while doing a proof, resorting to proof by contradiction is a great way to keep exploring a problem from a different perspective. Even if you do not get to solve the problem, you may get a useful insight about the problem when performing the procedure of proof by contradiction.</p>
+<p>Also, trying to do proof by contradiction may result in a [ counterexample], which dissolves the problem in question.</p>
+<p>[todo: exercises]</p></main><hr><section class="comments"><h2>Comments</h2><div class="comment"><p><a class="page-link" href="../page/MarkChimes.html">Mark Chimes</a></p><p><p>Could be nice to add a concrete "real-life" (non-math) example, say like the following:</p>
+<p>You are a defense lawyer. Your client is accused of <em>stealing the cookie from the cookie jar</em>. You want to prove her innocence. Lets say you have evidence that the jar is still sealed. Reason as follows:</p>
+<ol>
+<li>Assume she stole the cookie from the cookie jar.</li>
+<li>Then she would have had to open the jar.</li>
+<li>The jar is still sealed.</li>
+<li>For the jar to be sealed and for her to have opened it is a contradiction.</li>
+<li>Hence the assumption in 1 is false (given the deductions below it are true).</li>
+<li>Hence she did <em>not</em> steal the cookie from the cookie jar.</li>
+</ol>
+<p>(Yes, I'm sure you can still figure out a way in which she stole the cookie. You're very clever. This is just an example to illustrate the method.)</p></p></div></section><footer><p class="tagged"><h2>Tagged</h2><span class="page-comma-list"><a class="page-link" href="../page/math1.html">Math 1</a></span></p><p class="all-creators"><h2>All Creators</h2><span class="page-comma-list"><a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a>,
+ <a class="page-link" href="../page/EricRogstad.html">Eric Rogstad</a>,
+ <a class="page-link" href="../page/JaimeSevillaMolina.html">Jaime Sevilla Molina</a>,
+ <a class="page-link" href="../page/MarkChimes.html">Mark Chimes</a></span></p><p class="likes"><h2>Likes</h2><span class="page-comma-list"><a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a>,
+ <a class="page-link" href="../page/EricRogstad.html">Eric Rogstad</a>,
+ <a class="page-link" href="../page/MalcolmMcCrimmon.html">Malcolm McCrimmon</a>,
+ <a class="page-link" href="../page/MarkChimes.html">Mark Chimes</a>,
+ <a class="page-link" href="../page/TravisRivera.html">Travis Rivera</a></span></p><p class="reverse-related"><h2>Reverse Related</h2><ul class="page-list"><li><a class="page-link" href="../page/math1.html">Math 1</a> <q>Is math sometimes fun for you, and are you not anxious if you see a math puzzle you don't know how to solve?</q> - <a class="page-link" href="../page/EliezerYudkowsky.html">Eliezer Yudkowsky</a></li></ul></p></footer></body></html>

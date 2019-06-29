@@ -1,0 +1,48 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Unique factorisation domain</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="../MathJax-2.7.5/MathJax.js"></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">Unique factorisation domain</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/unique_factorisation_domain.json.html">unique_factorisation_domain.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/unique_factorisation_domain">https://arbital.com/p/unique_factorisation_domain</a></p><p class="creator">by
+ <a class="page-link" href="../page/PatrickStevens.html">Patrick Stevens</a> Aug 14 2016 
+updated
+ Aug 14 2016</p></div><p class="clickbait">This is the correct way to abstract from the integers the fact that every integer can be written uniquely as a product of prime numbers.</p><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>Unique factorisation domain</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="math.html">Mathematics</a></li><li><a href="abstract_algebra.html">Abstract algebra</a></li><li><a href="algebraic_structure.html">Algebraic structure</a></li><li><a href="algebraic_ring.html">Ring</a></li><li>…</li></ul></nav></nav></header><hr><main><p>[summary(Technical): An <a href="integral_domain.html">Integral domain</a> $~$R$~$ is said to be a <em>unique factorisation domain</em> if every nonzero non-<a href="unit_ring_theory.html">unit</a> element of $~$R$~$ may be written as a product of <a href="irreducible_element_ring_theory.html">irreducibles</a>, and moreover this product is unique up to reordering and multiplying by units.]</p>
+<p>[summary: A <a href="algebraic_ring.html">ring</a> $~$R$~$ is a <em>unique factorisation domain</em> if an analog of the <a href="fundamental_theorem_of_arithmetic.html">Fundamental Theorem of Arithmetic</a> holds in it. The condition is as follows: every nonzero element, which does not have a multiplicative inverse, must be expressible as a product of <a href="irreducible_element_ring_theory.html">irreducibles</a>, and the expression must be unique if we do not care about ordering or about multiplying by elements which have multiplicative inverses.]</p>
+<p><a href="algebraic_ring.html">Ring theory</a> is the art of extracting properties from the <a href="integer.html">integers</a> and working out how they interact with each other.
+From this point of view, a <em>unique factorisation domain</em> is a ring in which the integers' <a href="fundamental_theorem_of_arithmetic.html">Fundamental Theorem of Arithmetic</a> holds.</p>
+<p>There have been various incorrect "proofs" of Fermat's Last Theorem throughout the ages; it turns out that if we assume the false "fact" that all subrings of [4zw $~$\mathbb{C}$~$] are unique factorisation domains, then FLT is not particularly difficult to prove.
+This is an example of where abstraction really is helpful: having a name for the concept of a UFD, and a few examples, makes it clear that it is not a trivial property and that it does need to be checked whenever we try and use it.</p>
+<h1 id="formalstatement">Formal statement</h1>
+<p>Let $~$R$~$ be an <a href="integral_domain.html">Integral domain</a>.
+Then $~$R$~$ is a <em>unique factorisation domain</em> if every nonzero non-<a href="unit_ring_theory.html">unit</a> element of $~$R$~$ may be expressed as a product of <a href="irreducible_element_ring_theory.html">irreducibles</a>, and moreover this expression is unique up to reordering and multiplying by units.</p>
+<h1 id="whyignoreunits">Why ignore units?</h1>
+<p>We must set things up so that we don't care about units in the factorisations we discover.
+Indeed, if $~$u$~$ is a unit %%note:That is, it has a multiplicative inverse $~$u^{-1}$~$.%%, then $~$p \times q$~$ is always equal to $~$(p \times u) \times (q \times u^{-1})$~$, and this "looks like" a different factorisation into irreducibles.
+($~$p \times u$~$ is irreducible if $~$p$~$ is irreducible and $~$u$~$ is a unit.)
+The best we could possibly hope for is that the factorisation would be unique if we ignored multiplying by invertible elements, because those we may always forget about.</p>
+<h2 id="example">Example</h2>
+<p>In $~$\mathbb{Z}$~$, the units are precisely $~$1$~$ and $~$-1$~$.
+We have that $~$-10 = -1 \times 5 \times 2$~$ or $~$-5 \times 2$~$ or $~$5 \times -2$~$; we need these to be "the same" somehow.</p>
+<p>The way we make them be "the same" is to insist that the $~$5$~$ and $~$-5$~$ are "the same" and the $~$2$~$ and $~$-2$~$ are "the same" (because they only differ by multiplication of the unit $~$-1$~$), and to note that $~$-1$~$ is not irreducible (because irreducibles are specifically defined to be non-unit) so $~$-1 \times 5 \times 2$~$ is not actually a factorisation into irreducibles.</p>
+<p>That way, $~$-1 \times 5 \times 2$~$ is not a valid decomposition anyway, and $~$-5 \times 2$~$ is just the same as $~$5 \times -2$~$ because each of the irreducibles is the same up to multiplication by units.</p>
+<h1 id="examples">Examples</h1>
+<ul>
+<li>Every <a href="principal_ideal_domain.html">Principal ideal domain</a> is a unique factorisation domain. ([pid_implies_ufd Proof.]) This fact is not trivial! Therefore $~$\mathbb{Z}$~$ is a UFD, though we can also prove this directly; this is the <a href="fundamental_theorem_of_arithmetic.html">Fundamental Theorem of Arithmetic</a>.</li>
+<li>$~$\mathbb{Z}[-\sqrt{3}]$~$ is <em>not</em> a UFD. Indeed, $~$4 = 2 \times 2$~$ but also $~$(1+\sqrt{-3})(1-\sqrt{-3})$~$; these are both decompositions into irreducible elements. (See the page on <a href="irreducible_element_ring_theory.html">irreducibles</a> for a proof that $~$2$~$ is irreducible; the same proof can be adapted to show that $~$1 \pm \sqrt{-3}$~$ are both irreducible.)</li>
+</ul>
+<h1 id="properties">Properties</h1>
+<ul>
+<li>If it is hard to test for uniqueness up to reordering and multiplying by units, there is an easier but equivalent condition to check: an integral domain is a unique factorisation domain if and only if every element can be written (not necessarily uniquely) as a product of irreducibles, and all irreducibles are <a href="prime_element_ring_theory.html">prime</a>. ([alternative_condition_for_ufd Proof.])</li>
+</ul></main><hr><footer><p class="likes"><h2>Likes</h2><span class="page-comma-list"><a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a>,
+ <a class="page-link" href="../page/JaimeSevillaMolina.html">Jaime Sevilla Molina</a>,
+ <a class="page-link" href="../page/VladArber.html">Vlad Arber</a></span></p></footer></body></html>

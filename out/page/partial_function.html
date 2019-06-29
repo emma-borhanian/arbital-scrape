@@ -1,0 +1,42 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Partial function</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="../MathJax-2.7.5/MathJax.js"></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">Partial function</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/partial_function.json.html">partial_function.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/partial_function">https://arbital.com/p/partial_function</a></p><p class="creator">by
+ <a class="page-link" href="../page/PatrickStevens.html">Patrick Stevens</a> Jul 30 2016 
+updated
+ Aug 6 2016</p></div><p class="clickbait">A partial function is one which &quot;might not be defined everywhere one might expect it to be&quot;.</p><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>Partial function</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="math.html">Mathematics</a></li><li><a href="function.html">Function</a></li><li>…</li></ul></nav></nav></header><hr><main><p>A <strong>partial function</strong> is like a <a href="function.html">Function</a> $~$f: A \to B$~$, but where we relax the requirement that $~$f(a)$~$ must be defined for all $~$a \in A$~$.
+That is, it must still be the case that "$~$a = b$~$ and $~$f(a)$~$ is defined" implies "$~$f(b)$~$ is defined and $~$f(a) = f(b)$~$", but now we no longer need $~$f(a)$~$ to be defined everywhere.
+We can write $~$f: A \rightharpoonup B$~$ %%note:In LaTeX, this symbol is given by <code>\rightharpoonup</code>.%%to denote that $~$f$~$ is a partial function with <strong>domain</strong> $~$A$~$ and <strong>codomain</strong> $~$B$~$: that is, whenever $~$f(x)$~$ is defined then we have $~$x \in A$~$ and $~$f(x) \in B$~$.</p>
+<p>This idea is essentially the "flip side" to the distinction between the <a href="codomain_vs_image.html">Codomain vs image</a> dichotomy.</p>
+<h1 id="implementationinsettheory">Implementation in set theory</h1>
+<p>Just as a function can be implemented as a set $~$f$~$ of ordered pairs $~$(a, b)$~$ such that: </p>
+<ul>
+<li>every $~$x \in A$~$ appears as the first element of some ordered pair in $~$f$~$</li>
+<li>if $~$(a, b)$~$ is an ordered pair in $~$f$~$ then $~$a \in A$~$ and $~$b \in B$~$</li>
+<li>if $~$(a, b)$~$ and $~$(a, c)$~$ are ordered pairs in $~$f$~$, then $~$b=c$~$</li>
+</ul>
+<p>so we can define a <em>partial</em> function as a set $~$f$~$ of ordered pairs $~$(a,b)$~$ such that:</p>
+<ul>
+<li>if $~$(a, b)$~$ is an ordered pair in $~$f$~$ then $~$a \in A$~$ and $~$b \in B$~$</li>
+<li>if $~$(a, b)$~$ and $~$(a, c)$~$ are ordered pairs in $~$f$~$, then $~$b=c$~$</li>
+</ul>
+<p>(That is, we omit the first listed requirement from the definition of a <em>bona fide</em> function.)</p>
+<h1 id="relationshiptoturingmachines">Relationship to Turing machines</h1>
+<p>[todo: maybe this should be under Turing machine rather than partial function?]</p>
+<p>Morally speaking, every <a href="turing_machine.html">Turing machine</a> $~$\mathcal{T}$~$ may be viewed as computing some function $~$f: \mathbb{N} \to \mathbb{N}$~$, by defining $~$f(n)$~$ to be the state of the tape after $~$\mathcal{T}$~$ has been allowed to execute on the tape which has been initialised with the value $~$n$~$.</p>
+<p>However, if $~$\mathcal{T}$~$ does not terminate on input $~$n$~$ (for example, it may be the machine "if $~$n = 3$~$ then return $~$1$~$; otherwise loop indefinitely"), then this "morally correct" state of affairs is not accurate: how should we define $~$f(4)$~$?
+The answer is that we should instead view $~$f$~$ as a <em>partial</em> function which is just undefined if $~$\mathcal{T}$~$ fails to halt on the input in question.
+So with the example $~$\mathcal{T}$~$ above, $~$f$~$ is the partial function which is only defined at $~$3$~$, and $~$f(3) = 1$~$.</p></main><hr><footer><p class="likes"><h2>Likes</h2><span class="page-comma-list"><a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a>,
+ <a class="page-link" href="../page/PatrickStaples.html">Patrick Staples</a></span></p></footer></body></html>

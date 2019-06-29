@@ -1,0 +1,39 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Joint probability distribution</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="../MathJax-2.7.5/MathJax.js"></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">Joint probability distribution</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/joint_probability_distribution.json.html">joint_probability_distribution.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/joint_probability_distribution">https://arbital.com/p/joint_probability_distribution</a></p><p class="creator">by
+ <a class="page-link" href="../page/TsviBT.html">Tsvi BT</a> Jun 11 2016</p></div><p class="clickbait">A probability distribution over the collection of joint configurations of all the variables you care about.</p><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>Joint probability distribution</li></ul></nav></nav></header><hr><main><p>[summary: 
+$$~$\newcommand{\bR}{\mathbb{R}}
+\newcommand{\bP}{\mathbb{P}}
+\newcommand{\cS}{\mathcal{S}}
+\newcommand{\cF}{\mathcal{F}}
+\newcommand{\gO}{\Omega}
+\newcommand{\go}{\omega}
+\newcommand{\ts}{\times}$~$$</p>
+<p>A joint probability distribution of real-valued random variables $~$X_1, X_2, \cdots, X_n$~$ is a probability distribution $~$\bP$~$ over $~$\bR^n$~$. The probability of the event $~$(X_1 \in A_1, X_2 \in A_2, \cdots, X_n \in A_n)$~$&nbsp;is $~$\bP(A_1,A_2, \cdots, A_n)$~$. 
+]</p>
+<p>$$~$
+\newcommand{\bR}{\mathbb{R}}
+\newcommand{\bP}{\mathbb{P}}
+\newcommand{\cS}{\mathcal{S}}
+\newcommand{\cF}{\mathcal{F}}
+\newcommand{\gO}{\Omega}
+\newcommand{\go}{\omega}
+\newcommand{\ts}{\times}
+$~$$</p>
+<p>A joint probability distribution of real-valued random variables $~$X_1, X_2, \cdots, X_n$~$ is a probability distribution $~$\bP$~$ over $~$\bR^n$~$. The probability of the event $~$(X_1 \in A_1, X_2 \in A_2, \cdots, X_n \in A_n)$~$&nbsp;is $~$\bP(A_1,A_2, \cdots, A_n)$~$. </p>
+<h1 id="formaldefinition">Formal definition</h1>
+<p>Let $~$\{X_i \}_{i \in I}$~$ be a collection of random variables taking values in the spaces $~$(S_i, \cS_i)$~$. Then a joint distribution of the $~$\{X_i \}_{i \in I}$~$ is a probability distribution over $~$\prod_{i \in I} S_i$~$. </p>
+<p>If the $~$\{X_i \}_{i \in I}$~$ are defined on a probability space $~$(\gO, \cF, \bP)$~$, then $~$\bP$~$ induces a joint distribution of the $~$X_i$~$. The induced function is a distribution because an event $~$(X_1 \in A_1, X_2 \in A_2, \cdots, X_n \in A_n)$~$ with $~$A_k \in \cS_k$~$ can be viewed as the event $~$\{ \go \in \gO : X_1(\go)  \in A_1, \cdots, X_n(\go) \in A_n\}$~$, which is in $~$\cF$~$ because $~$\go \mapsto  (X_1(\go), \cdots, X_n(\go))$~$ is a measurable map $~$\gO \to S_1 \ts \cdots \ts S_k$~$.</p></main><hr><footer><p class="children"><h2>Children</h2><ul class="page-tree"><li><a class="page-link" href="../page/468.html">Joint probability distribution: (Motivation) coherent probabilities</a> <q>If you don't use joint probability distributions, none of your probabilities will make any sense. So, yeah, use joint probability distributions.</q> - <a class="page-link" href="../page/TsviBT.html">Tsvi BT</a></li></ul></p></footer></body></html>

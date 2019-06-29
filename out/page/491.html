@@ -1,0 +1,37 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>&quot;**Karma system**
+
+We want t...&quot;</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="../MathJax-2.7.5/MathJax.js"></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">&quot;**Karma system**
+
+We want t...&quot;</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/491.json.html">491.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/491">https://arbital.com/p/491</a></p><p class="creator">by
+ <a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a> Jun 14 2016</p></div><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>&quot;**Karma system**
+
+We want t...&quot;</li></ul></nav></nav></header><hr><main><p><strong>Karma system</strong></p>
+<p>We want to keep track of several important characteristics separately. They are different in important respects and attempts to merge any of them will cause things to go Wrong.</p>
+<p>If we get it right the karma system is the biggest thing we'll have over other sites. It's important to get it right the first time and/or to specifically add features which make changing it less likely to cause a riot (e.g. bundling people into tiers rather than letting them see how their numbers change).</p>
+<p><strong>Contributor karma</strong> - Make and improve content (edit, review, make stuff for the wiki side)</p>
+<p>Simple-ish. Lots of specific hidden easily adjustable per-domain parameters tracking every type of positive interaction with content, tuned to match our intuitions of high-value users.</p>
+<p>User's exact score may be hidden, progress in tiers, which allows us more flexibility in changing the backend without users complaining (we avoid dropping users down tiers as we adjust the backend scores, their next level up is just delayed).</p>
+<p><strong>Prediction karma</strong> - Be right about the future</p>
+<p>Prediction markets. Users only get non-zero weight on the markets when they pass a moderate threshold on either of the other two karma systems, but can make predictions before then. Users are given 1000 (or something) credits when they hit a certain level of contrib or discussion karma (enough to make it effortful to make spam accounts, low enough that most people won't have to seriously work to get there), and whenever they vote on a prediction bar they're offered a popup with a suggested credit amount to bet (based on a few factors). Limits on how much of a user's net worth is bettable on a proposition, to avoid people throwing it away super fast then being sad/unable to recover.</p>
+<p>How to handle interaction with highly liquid+accessible monetary prediction markets (<a href="https://www.augur.net/">Augur</a> seems likely to be the first) is a challenge, but it may just be okay, and can be partched in later if it becomes a problem (mostly writing this so my brain will stop reminding me about it so much because it's a fun but low-priority puzzle).</p>
+<p><strong>Discussion karma</strong> - Be a valued contributor to discussion (follow healthy discussion norms, have and explain valuable insights)</p>
+<p>Hardest one, because it needs to collect lots of subjective judgements, and needs to weight those judgements appropriately. Current best model works like:</p>
+<p>Collect basic likes (later also other reactions e.g. impolite, super-likes, changed-my-mind, etc) on comments. Do not display raw counts, especially not prominently. Raw counts are terrible and make it easy for bad users to distort the system.</p>
+<p>Start with a founding user or small group of users, and portion out layer 1 karma according to just their likes/reactions. Tier 2 based on tier 1's, and so on. Prevent cycles of karma. Add decay, so each tier gets to hand out less than they receive. Handle different reactions sanely (don't make the most impolite people the only ones able to mark the tier below as impolite).</p>
+<p>And now the fun part: Allow users to pick different founding groups to filter by (possibly scarily computationally expensive, but Scott Garrabrant thinks there are efficient approximations). Possibly have the default founding group based of prediction karma. Possibly only have a few options for founding groups, possibly allow a paid version which sets the founder group to you (so you see exactly the content filtered by what you are most likely to like). This means it's not a walled garden, it's an ecosystem of movable filters.</p>
+<p>(inspiration from eigenmorality and Robert Miles)</p></main><hr><footer></footer></body></html>

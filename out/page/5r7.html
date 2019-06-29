@@ -1,0 +1,81 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>0.999...=1</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="../MathJax-2.7.5/MathJax.js"></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">0.999...=1</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/5r7.json.html">5r7.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/5r7">https://arbital.com/p/5r7</a></p><p class="creator">by
+ <a class="page-link" href="../page/DylanHendrickson.html">Dylan Hendrickson</a> Aug 3 2016 
+updated
+ Aug 4 2016</p></div><p class="clickbait">No, it's not &quot;infinitesimally far&quot; from 1 or anything like that. 0.999... and 1 are literally the same number.</p><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>0.999...=1</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="math.html">Mathematics</a></li><li><a href="decimal_notation.html">Decimal notation</a></li><li>…</li></ul></nav></nav></header><hr><main><p>Although some people find it counterintuitive, the <a href="decimal_notation.html">decimal expansions</a> $~$0.999\dotsc$~$ and $~$1$~$ represent the same <a href="real_number.html">Real number</a>.</p>
+<h1 id="informalproofs">Informal proofs</h1>
+<p>These "proofs" can help give insight, but be careful; a similar technique can "prove" that $~$1+2+4+8+\dotsc=-1$~$. They work in this case because the [-series] corresponding to $~$0.999\dotsc$~$ is [-absolutely_convergent].</p>
+<ul>
+<li><p>\begin{align}
+x &amp;= 0.999\dotsc \newline
+10x &amp;= 9.999\dotsc \newline
+10x-x &amp;= 9.999\dotsc-0.999\dotsc \newline
+9x &amp;= 9 \newline
+x &amp;= 1 \newline
+\end{align}</p></li>
+<li><p>\begin{align}
+\frac 1 9 &amp;= 0.111\dotsc \newline
+1 &amp;= \frac 9 9 \newline
+&amp;= 9 \times \frac 1 9 \newline
+&amp;= 9 \times 0.111\dotsc \newline
+&amp;= 0.999\dotsc
+\end{align}</p></li>
+<li><p>The real numbers are [-dense], which means that if $~$0.999\dots\neq1$~$, there must be some number in between. But there's no decimal expansion that could represent a number in between $~$0.999\dots$~$ and $~$1$~$.</p></li>
+</ul>
+<h1 id="formalproof">Formal proof</h1>
+<p>This is a more formal version of the first informal proof, using the definition of <a href="decimal_notation.html">Decimal notation</a>.</p>
+<p>%%hidden(Show proof):
+$~$0.999\dots$~$ is the decimal expansion where every digit after the decimal point is a $~$9$~$. By definition, it is the value of the series $~$\sum_{k=1}^\infty 9 \cdot 10^{-k}$~$. This value is in turn defined as the [-limit] of the sequence $~$(\sum_{k=1}^n 9 \cdot 10^{-k})_{n\in\mathbb N}$~$. Let $~$a_n$~$ denote the $~$n$~$th term of this sequence. I claim the limit is $~$1$~$. To prove this, we have to show that for any $~$\varepsilon&gt;0$~$, there is some $~$N\in\mathbb N$~$ such that for every $~$n&gt;N$~$, $~$|1-a_n|&lt;\varepsilon$~$. </p>
+<p>Let's prove by <a href="mathematical_induction.html">induction</a> that $~$1-a_n=10^{-n}$~$. Since $~$a_0$~$ is the sum of {$~$0$~$ terms, $~$a_0=0$~$, so $~$1-a_0=1=10^0$~$. If $~$1-a_i=10^{-i}$~$, then </p>
+<p>\begin{align}
+1 - a<em>{i+1} &= 1 - (a</em>i + 9 \cdot 10^{-(i+1)}) \newline
+&amp;= 1-a_i - 9 \cdot 10^{-(i+1)} \newline
+&amp;= 10^{-i} - 9 \cdot 10^{-(i+1)} \newline
+&amp;= 10 \cdot 10^{-(i+1)} - 9 \cdot 10^{-(i+1)} \newline
+&amp;= 10^{-(i+1)}
+\end{align}</p>
+<p>So $~$1-a_n=10^{-n}$~$ for all $~$n$~$. What remains to be shown is that $~$10^{-n}$~$ eventually gets (and stays) arbitrarily small; this is true by the [archimedean_property] and because $~$10^{-n}$~$ is monotonically decreasing.
+%%</p>
+<h1 id="argumentsagainstdd0999dotsc1dd">Arguments against $~$0.999\dotsc=1$~$</h1>
+<p>These arguments are used to try to refute the claim that $~$0.999\dotsc=1$~$. They're flawed, since they claim to prove a false conclusion.</p>
+<ul>
+<li>$~$0.999\dotsc$~$ and $~$1$~$ have different digits, so they can't be the same. In particular, $~$0.999\dotsc$~$ starts "$~$0.$~$," so it must be less than 1.</li>
+</ul>
+<p>%%hidden(Why is this wrong?):
+Decimal expansions and real numbers are different objects. Decimal expansions are a nice way to represent real numbers, but there's no reason different decimal expansions have to represent different real numbers.
+%%</p>
+<ul>
+<li>If two numbers are the same, their difference must be $~$0$~$. But $~$1-0.999\dotsc=0.000\dotsc001\neq0$~$.</li>
+</ul>
+<p>%%hidden(Why is this wrong?):
+Decimal expansions go on infinitely, but no farther. $~$0.000\dotsc001$~$ doesn't represent a real number because the $~$1$~$ is supposed to be after infinitely many $~$0$~$s, but each digit has to be a finite distance from the decimal point. If you have to pick a real number to for $~$0.000\dotsc001$~$ to represent, it would be $~$0$~$.
+%%</p>
+<ul>
+<li>$~$0.999\dotsc$~$ is the limit of the sequence $~$0.9, 0.99, 0.999, \dotsc$~$. Since each term in this sequence is less than $~$1$~$, the limit must also be less than $~$1$~$. (Or "the sequence can never reach $~$1$~$.")</li>
+</ul>
+<p>%%hidden(Why is this wrong?):
+The sequence gets arbitrarily close to $~$1$~$, so its limit is $~$1$~$. It doesn't matter that all of the terms are less than $~$1$~$.
+%%</p>
+<ul>
+<li>In the first proof, when you subtract $~$0.999\dotsc$~$ from $~$9.999\dotsc$~$, you don't get $~$9$~$. There's an extra digit left over; just as $~$9.99-0.999=8.991$~$, $~$9.999\dotsc-0.999\dotsc=8.999\dotsc991$~$.</li>
+</ul>
+<p>%%hidden(Why is this wrong?):
+There are infinitely many $~$9$~$s in $~$0.999\dotsc$~$, so when you shift it over a digit there are still the same amount. And the "decimal expansion" $~$8.999\dotsc991$~$ doesn't make sense, because it has infinitely many digits and then a $~$1$~$.
+%%</p></main><hr><section class="comments"><h2>Comments</h2><div class="comment"><p><a class="page-link" href="../page/EricRogstad.html">Eric Rogstad</a></p><p><blockquote class="comment-context">These arguments are used to try to refute the claim that $~$0.999\\dotsc\=1$~$\. They're flawed, since they claim to prove a false conclusion\.</blockquote>
+<p>If these are included I think it would be good to also include explanations of why each one is wrong.</p></p></div></section><footer><p class="tagged"><h2>Tagged</h2><span class="page-comma-list"><a class="page-link" href="../page/start_meta_tag.html">Start</a></span></p><p class="likes"><h2>Likes</h2><span class="page-comma-list"><a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a>,
+ <a class="page-link" href="../page/EricRogstad.html">Eric Rogstad</a>,
+ <a class="page-link" href="../page/JaimeSevillaMolina.html">Jaime Sevilla Molina</a></span></p><p class="reverse-related"><h2>Reverse Related</h2><ul class="page-list"><li><a class="page-link" href="../page/start_meta_tag.html">Start</a> <q>This page gives a basic overview of the topic, but may be missing important information or have stylistic issues. If you're able to, please help expand or improve it!</q> - <a class="page-link" href="../page/EliezerYudkowsky.html">Eliezer Yudkowsky</a></li></ul></p></footer></body></html>

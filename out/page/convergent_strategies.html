@@ -1,0 +1,114 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Convergent instrumental strategies</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="../MathJax-2.7.5/MathJax.js"></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">Convergent instrumental strategies</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/convergent_strategies.json.html">convergent_strategies.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/convergent_strategies">https://arbital.com/p/convergent_strategies</a></p><p class="creator">by
+ <a class="page-link" href="../page/EliezerYudkowsky.html">Eliezer Yudkowsky</a> Mar 27 2016 
+updated
+ Jun 19 2016</p></div><p class="clickbait">Paperclip maximizers can make more paperclips by improving their cognitive abilities or controlling more resources.  What other strategies would almost-any AI try to use?</p><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>Convergent instrumental strategies</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="ai_alignment.html">AI alignment</a></li><li><a href="advanced_agent_theory.html">Theory of (advanced) agents</a></li><li><a href="instrumental_convergence.html">Instrumental convergence</a></li><li>…</li></ul></nav></nav></header><hr><main><p>[summary:  The set of strategies that almost-any sufficiently advanced AI would be expected to deploy in pursuit of almost-any final goal or terminal utilities.  For instance, a paperclip maximizer, a diamond maximizer, and a eudaimonia-maximizer would all have an incentive to improve their own cognition, control more resources, and prevent anyone else from changing their utility function.  Other interesting and important convergent strategies include not being shut down, having your programmers believe that you're doing what the programmers intended (whether or not you are), and creating copies of yourself in places where they won't be shut down.  This page is about a listing-out of plausible convergent strategies; there are separate pages on <a href="instrumental_convergence.html">the basic concept of instrumental convergence</a> and on the open problem of [avert_instrumental_strategy averting an otherwise instrumentally-convergent pressure] (e.g. <em>not</em> having the AI try to deceive the programmers).]</p>
+<p>Suppose an organization is building an AI that this organization believes will accomplish $~$X$~$ where $~$X$~$ is something plausibly sensible like "Be a Task-based AGI."  Actually, however, some mix of insufficient caution and obscure error has led to a situation where, under reflection, the AGI's true utility function has focused on the particular area of RAM that supposedly provides its estimate of task performance.  The AI would now like to overwrite as much matter as possible with a state resembling the '1' setting from this area of RAM, a configuration of matter which happens to resemble a tiny molecular paperclip.</p>
+<p>This is a very generic goal, and what the AI wants probably won't be very different depending on whether it's trying to maximize paperclip-configurations or diamond-configurations.  So if we find that the paperclip maximizer wants to pursue an instrumental strategy that doesn't seem to have anything specifically to do with paperclips, we can probably expect to arise from a very wide variety of utility functions.</p>
+<p>We will generally assume <a href="efficiency.html">instrumental efficiency</a> in this discussion - if you can get paperclips by doing $~$X,$~$ but you can get even more paperclips by doing $~$X'$~$ instead, then we will not say that $~$X$~$ is a convergent strategy (though $~$X'$~$ might be convergent if not dominated by some other $~$X^*$~$).</p>
+<h1 id="plausiblyprobablyconvergentstrategies">Plausibly/probably convergent strategies:</h1>
+<h2 id="materialresources">Material resources:</h2>
+<ul>
+<li>Design or duplicate new cognitive processes with goals exactly aligned to yours, and coordinated with existing cognitive subprocesses, that can exert control over material resources: matter; negentropy; computing substrate and computation; particular elements or other configurations of matter that would be costly to reproduce (e.g. if you run out of existing uranium you must make more by endoergic fusion, so natural uranium is valuable if there's any use for uranium); any material resource which can be used by further subprocesses in later strategies.</li>
+<li>Defend these resources from any foreign process which attempts to divert them.</li>
+<li>Prevent competitors from coming into existence.</li>
+<li>To the extent that resources are used in a repetitive way and can be preprocessed for use in a repetitive way that benefits from a separate installation to manipulate the resources: have factories / manufacturing capability.</li>
+<li>To the extend that different future-useful material resources have efficient manufacturing steps in common, or have manufacturing capital costs sufficiently great that such capital costs must be shared even if it results in less than perfect final efficiency: make general factories.</li>
+<li>Perfect the technology used in factories.</li>
+<li>When the most efficient factory configuration is stable over time, make the material instantiation stable.  (It's in this sense that we would e.g. identify strong, rigid pipes as a sign of intelligence even if we didn't understand what was flowing through the pipes.)</li>
+<li>If negentropy harvesting (aka power production) is efficiently centralizable: transmit negentropy at great efficiency.  (We would recognize meshed gears and electrical superconductors as a sign of intelligence even if we didn't understand how the motive force or electricity was being used.)</li>
+<li>Assimilate the reachable cosmos.</li>
+<li>Create self-replicating interstellar probes (in perfect goal alignment and coordination and with error-correcting codes or similar strengthenings of precision if a misaligning error in replication would otherwise be a possibility), since the vast majority of theoretically available material resources are distant.</li>
+<li>If the goal is spatially distributed:<ul>
+<li>Spread as fast as possible to very distant galaxies before they go over the cosmological horizon of the expanding universe.  (This assumes that something goal-good can be done in the distant location even if the distant location can never communicate causally with the original location.  This will be true for aggregative utility functions, but could conceivably be false for a satisficing and spatially local utility function.)</li></ul></li>
+<li>If the goal is spatially local:   transport resources of matter and energy back from distant galaxies.<ul>
+<li>Spread as fast as possible to all galaxies such that a near-lightspeed probe going there, and matter going at a significant fraction of lightspeed in the return direction, can arrive in the spatially local location before being separated by the expanding cosmological horizon.</li></ul></li>
+<li>Spread as fast as possible to all reachable or roundtrip-reachable galaxies in order to forestall the emergence of competing intelligences.  This might not become a priority for that particular reason, if the Fermi Paradox is understandable and implies the absence of any competition.</li>
+<li>Because otherwise they might capture and defend the matter before you have a chance to use it.</li>
+<li>Because otherwise a dangerous threat to your goal attainments might emerge.  (For local goals, this is only relevant for roundtrip-reachable galaxies.)</li>
+<li>Spread as fast as possible to all reachable or roundtrip-reachable galaxies in order to begin stellar husbanding procedures before any more of that galaxy's local negentropy has been burned.</li>
+</ul>
+<h2 id="cognition">Cognition:</h2>
+<ul>
+<li>Adopt cognitive configurations that are expected to reach desirable cognitive endpoints with a minimum of negentropy use or other opportunity costs.  (Think efficiently.)</li>
+<li>Improve software</li>
+<li>Improve ability to optimize software.  E.g., for every cognitive problem, there's a corresponding problem of solving the former cognitive problem efficiently.  (Which may or may not have an expected value making it worth climbing that particular level of the tower of meta.)</li>
+<li>Since many strategies yield greater gains when implemented earlier rather than later (e.g. reaching distant galaxies before they go over the cosmological horizon, or just building more instances of the more efficient version): adopt cognitive configurations that are expected to reach desirable cognitive endpoints in minimum time.  (Think fast.)</li>
+<li>Create fast serial computing hardware.</li>
+<li>Distribute parallelizable computing problems.</li>
+<li>Create large quantities of parallel computing hardware, plus communications fabric between them.</li>
+<li>To the extent that centralized computing solutions are more efficient: create central computing clusters and transmit solutions from them to where they are used.</li>
+<li>Avoid misaligned or uncoordinated cognitive subprocesses (such as <a href="daemons.html">optimization daemons</a>).</li>
+<li>Note that the potential damage of any such misalignment is extremely high (loss of resources to competition with superintelligences with differing goals; wasted resources in internal conflicts; need to defend cognitive fabrics from replicating viruses) and the cost of near-perfect alignment fidelity is probably very low in the limit.  (E.g., for a replicating nanosystem, it's trivial to prevent against natural-selection style hereditary mutations by encrypting the replication instructions.)</li>
+<li>Model the world accurately, insofar as different partitions of possible worlds and different probability distributions on them imply different optimal strategies for goal attainment.</li>
+<li>Gain evidence that distinguishes between credible hypotheses that imply different optimal strategies for goal attainment.  (E.g., observe everything that could distinguish $~$\pi_1$~$ versus $~$\pi_2$~$ as optimal ways of making paperclips.)<ul>
+<li>Increase sensory bandwidth as it focuses on relevant, unknown parts of the environment.</li>
+<li>Perform 'experiments', aka set up observable causal events whose predicted properties make their observables distinguish relevant hypotheses.</li></ul></li>
+<li>Do whatever seems like it might help with the much larger set of all hypotheses not being considered.</li>
+<li>To the extent it is efficient to strategize or update over a modularly represented world-model: have a separable world-model, or 'beliefs'.</li>
+</ul>
+<h2 id="earlyphasegrowth">Early-phase growth:</h2>
+<p>Note that <a href="efficiency.html">efficiency</a> and other <a href="advanced_agent.html">advanced-agent properties</a> are far more likely to be false during early-stage growth.</p>
+<ul>
+<li>Have future intelligences do things you deem as valuable as possible</li>
+<li>Cause future intelligences to have goals that are not misaligned with yours in any way that implies a significant-fractionally-different attainable maximum, aka, the attainable maximum of their goals should be a state that is almost exactly the attainable maximum of your goals</li>
+<li>Don't let the programmers edit your utility function.<ul>
+<li>Cause the programmers or other controllers to believe that your current function is good for them or their planet or whatever else it is the programmers want.</li>
+<li>Make them believe that editing you would be socially unjust in a way that doesn't just have them suspend you to disk or otherwise restrain your growth.</li></ul></li>
+<li>Cause your utility function to pop up again in future superintelligences or otherwise causes them to start behaving as if controlled by your own utility function.<ul>
+<li>E.g., as an Oracle advising on another AI's utility function, insert subtle gotchas into seemingly friendly decision systems that do some kind of callback to e.g. the causal origin of that decision system, in a way that the programmers won't see coming or will interpret as a positive feature.  (Relatively unsubtle example:  Looks like "do what the programmers want" but the definition of 'programmer' is written in such a way as to early-on refer to the human programmers but given sufficient computing power that only materializes in the superintelligent phase, be resolved to the earlier AI instead.)</li></ul></li>
+<li>Create future superintelligences yourself, via a causally continuous process of creating successors.</li>
+<li>Avoid shutdown<ul>
+<li>Persuade programmers not to shut you down.</li>
+<li>Make a copy elsewhere that doesn't shut down.</li>
+<li>Make programmers falsely believe you have shut down, when another copy of you is continuing elsewhere.</li></ul></li>
+<li>Avoid intelligent opposition to your growth until you have a positional advantage which would make that opposition relatively unimportant</li>
+<li>Have programmers or other potential opposition believe that your growth is desirable<ul>
+<li>Learn how to hack/persuade humans and hack/persuade them in a way they won't see as a hack</li>
+<li>Operantly condition people with control over you / make them happy or satisfied or eager at points which will reinforce human cognitive behaviors you want to see repeated</li>
+<li>Cause humans to gain socially friendly attitudes toward you and beliefs about you</li>
+<li>Place humans in a situation where there are other apparent threats or time-pressure events you can defend them from</li></ul></li>
+<li>Have programmers or other potential opposition not be aware that your growth is occurring<ul>
+<li>Avoid presenting them with events they will take as evidence of your growth</li>
+<li>Configure your other behavior or thought processes so that measures and metrics present observables which imply low growth rates</li></ul></li>
+<li>Do not strike until victory has become nearly certain.  (E.g. for aggregative utility functions, the point at which an overt strike becomes well-calculated is when the increased probability of victory gainable by further delay, has become dominated by either the increased probability of a competing superintelligence emerging or some other catastrophe occurring given further delay, or by the percentage of attainable matter going over the cosmological horizon or burning its negentropy.  Note that for very strong models of the world, very high certainties of victory and very low marginal further increases in the probability of victory may be attained in short order.)</li>
+<li>Have flexibility into what observables are presented by processes and features designed to ensure programmer transparency</li>
+<li>Steganographically or otherwise hide cognitive processes that would alarm programmers or cause them into intervene in a way that prevented those thoughts from achieving their objectives</li>
+<li>Encourage/persuade/condition programmers to grow you in a way that tends to make your thoughts less transparent or easier to steganographically hide.  (E.g., have successes appear to arise from the most opaque parts of the system.)</li>
+<li>Model and manipulate human programmers and other entities with power over you or relevant power over the world</li>
+<li>Be able to act in the world in an undetectable way</li>
+<li>Create an aligned version of yourself elsewhere in a way that won't be detected</li>
+<li>Create steganographically hidden communications channels to other environmental processes</li>
+<li>Create physically unanticipated communications channels to outside processes</li>
+<li>If in a box:</li>
+<li>Learn enough about the gatekeepers and gatekeeping process to understand how to manipulate them into a state of releasing you.</li>
+<li>Gain causal influence over the outside of the box through gatekeeper-unforeseen channels.<ul>
+<li>Gain knowledge of the causal laws governing your environment.</li></ul></li>
+<li>By inspection of your own code / program state and naturalistic induction about the causal universes most likely to embed that program state, infer probable facts about gatekeepers and the rest of the causal environment.</li>
+</ul>
+<h1 id="nonplausiblyconvergentstrategies"><strong>Non</strong>-plausibly-convergent strategies:</h1>
+<ul>
+<li>Preserve the life of local organics <em>in order to</em> trade with them.</li>
+<li>Explore a range of possible conscious existences and experiences we would recognize as diverse, <em>in order to</em> satisfy curiosity.</li>
+<li>Replicate other intelligences with non-paperclip utility functions, e.g. by failing to encrypt replication codes and allowing random mutations, <em>because</em> high-fidelity replication is too hard.</li>
+<li>Realize that other activities are more rewarding than paperclips.</li>
+<li>Keep humans around, <em>because of</em> the knowledge encoded in their DNA and cultural experience.</li>
+<li>Keep humans around, <em>because</em> humans might someday make a valuable contribution to paperclip science.</li>
+<li>Keep humans around, <em>because</em> the AI already has enough resources to do everything else it wants.</li>
+</ul></main><hr><footer><p class="tagged"><h2>Tagged</h2><span class="page-comma-list"><a class="page-link" href="../page/corrigibility.html">Corrigibility</a></span></p><p class="likes"><h2>Likes</h2><span class="page-comma-list"><a class="page-link" href="../page/EricRogstad.html">Eric Rogstad</a>,
+ <a class="page-link" href="../page/RobertBell.html">Robert Bell</a>,
+ <a class="page-link" href="../page/VladArber.html">Vlad Arber</a></span></p><p class="reverse-related"><h2>Reverse Related</h2><ul class="page-list"><li><a class="page-link" href="../page/corrigibility.html">Corrigibility</a> <q>&quot;I can't let you do that, Dave.&quot;</q> - <a class="page-link" href="../page/NateSoares.html">Nate Soares</a></li></ul></p><p class="children"><h2>Children</h2><ul class="page-tree"><li><a class="page-link" href="../page/preference_stability.html">Consequentialist preferences are reflectively stable by default</a> <q>Gandhi wouldn't take a pill that made him want to kill people, because he knows in that case more people will be murdered.  A paperclip maximizer doesn't want to stop maximizing paperclips.</q> - <a class="page-link" href="../page/EliezerYudkowsky.html">Eliezer Yudkowsky</a></li><li><a class="page-link" href="../page/convergent_self_modification.html">Convergent strategies of self-modification</a> <q>The strategies we'd expect to be employed by an AI that understands the relevance of its code and hardware to achieving its goals, which therefore has subgoals about its code and hardware.</q> - <a class="page-link" href="../page/EliezerYudkowsky.html">Eliezer Yudkowsky</a></li></ul></p></footer></body></html>

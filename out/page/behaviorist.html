@@ -1,0 +1,65 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Behaviorist genie</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="../MathJax-2.7.5/MathJax.js"></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">Behaviorist genie</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/behaviorist.json.html">behaviorist.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/behaviorist">https://arbital.com/p/behaviorist</a></p><p class="creator">by
+ <a class="page-link" href="../page/EliezerYudkowsky.html">Eliezer Yudkowsky</a> Jul 14 2015 
+updated
+ Mar 31 2016</p></div><p class="clickbait">An advanced agent that's forbidden to model minds in too much detail.</p><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>Behaviorist genie</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="ai_alignment.html">AI alignment</a></li><li><a href="AGI_typology.html">Strategic AGI typology</a></li><li><a href="task_agi.html">Task-directed AGI</a></li><li>…</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="ai_alignment.html">AI alignment</a></li><li><a href="task_agi.html">Task-directed AGI</a></li><li>…</li></ul></nav></nav></header><hr><main><p>[summary:  A behaviorist <a href="task_agi.html">genie</a> is an <a href="advanced_agent.html">advanced AI</a> that can understand, e.g., material objects and technology, but does not model human minds (or possibly its own mind) in unlimited detail.  If creating a behaviorist agent were possible, it might meliorate several <a href="foreseeable_difficulties.html">anticipated difficulties</a> simultaneously, like the problems of <a href="mindcrime.html">creating models of humans that are themselves sapient</a> or <a href="user_manipulation.html">the AI psychologically manipulating its users</a>.  Since the AI would only be able to model humans via some restricted model class, it would be metaphorically similar to a <a href="http://plato.stanford.edu/entries/behaviorism/#1">Skinnerian behaviorist</a> from the days when it was considered unprestigious for scientists to talk about the internal mental details of human beings.]</p>
+<p>A behaviorist <a href="task_agi.html">genie</a> is an AI that has been <a href="epistemic_exclusion.html">averted from modeling</a> minds in more detail than some whitelisted class of models.</p>
+<p>This is <em>possibly</em> a good idea because many <a href="foreseeable_difficulties.html">possible difficulties</a> seem to be associated with the AI having a sufficiently advanced model of human minds or AI minds, including:</p>
+<ul>
+<li><a href="mindcrime.html">Mindcrime</a></li>
+<li><a href="programmer_deception.html">Programmer deception</a> and <a href="programmer_deception.html">programmer manipulation</a></li>
+<li>[ Recursive self-improvement]</li>
+<li><a href="probable_environment_hacking.html">Modeling distant adversarial superintelligences</a></li>
+</ul>
+<p>…and yet an AI that is extremely good at understanding material objects and technology (just not other minds) would still be capable of some important classes of <a href="pivotal.html">pivotal achievement</a>.</p>
+<p>A behaviorist genie would still require most of <a href="task_agi.html">genie theory</a> and <a href="corrigibility.html">corrigibility</a> to be solved.  But it's plausible that the restriction away from modeling humans, programmers, and some types of reflectivity, would collectively make it significantly easier to make a safe form of this genie.</p>
+<p>Thus, a behaviorist genie is one of fairly few open candidates for "AI that is restricted in a way that actually makes it safer to build, without it being so restricted as to be incapable of game-changing achievements".</p>
+<p>Nonetheless, limiting the degree to which the AI can understand cognitive science, other minds, its own programmers, and itself is a very severe restriction that would prevent a number of <a href="dwim.html">obvious ways</a> to make progress on the AGI subproblem and the <a href="value_identification.html">value identification problem</a> even for <a href="task_identification.html">commands given to Task AGIs</a> (<a href="task_agi.html">Genies</a>).  Furthermore, there could perhaps be easier types of genies to build, or there might be grave difficulties in restricting the model class to some space that is useful without being dangerous.</p>
+<h1 id="requirementsforimplementation">Requirements for implementation</h1>
+<p>Broadly speaking, two possible clusters of behaviorist-genie design are:</p>
+<ul>
+<li>A cleanly designed, potentially self-modifying genie that can internally detect modeling problems that threaten to become mind-modeling problems, and route them into a special class of allowable mind-models.</li>
+<li>A <a href="KANSI.html">known-algorithm non-self-improving AI</a>, whose complete set of capabilities have been carefully crafted and limited, which was shaped to not have much capability when it comes to modeling humans (or distant superintelligences).</li>
+</ul>
+<p>Breaking the first case down into more detail, the potential desiderata for a behavioristic design are:</p>
+<ul>
+<li>(a) avoiding mindcrime when modeling humans</li>
+<li>(b) not modeling distant superintelligences or alien civilizations</li>
+<li>(c) avoiding programmer manipulation</li>
+<li>(d) avoiding mindcrime in internal processes</li>
+<li>(e) making self-improvement somewhat less accessible.</li>
+</ul>
+<p>These are different goals, but with some overlap between them.  Some of the things we might need:</p>
+<ul>
+<li>A working <a href="nonperson_predicate.html">Nonperson predicate</a> that was general enough to screen the entire hypothesis space AND that was resilient against loopholes AND passed enough okay computations to screen the entire hypothesis space</li>
+<li>A working <a href="nonperson_predicate.html">Nonperson predicate</a> that was general enough to screen the entire space of potential self-modifications and subprograms AND was resilient against loopholes AND passed enough okay computations to compose the entire AI</li>
+<li>An allowed class of human models, that was clearly safe in the sense of not being sapient, AND a reliable way to tell <em>every</em> time the AI was trying to model a human (including modeling something else that was partially affected by humans, etc) (possibly with the programmers as a special case that allowed a more sophisticated model of some programmer intentions, but still not one good enough to psychologically manipulate the programmers)</li>
+<li>A way to tell whenever the AI was trying to model a distant civilization, which shut down the modeling attempt or avoided the incentive to model (this might not require healing a bunch of entanglements, since there are no visible aliens and therefore their exclusion shouldn't mess up other parts of the AI's model)</li>
+<li>A reflectively stable way to support any of the above, which are technically <a href="epistemic_exclusion.html">epistemic exclusions</a></li>
+</ul>
+<p>In the KANSI case, we'd presumably be 'naturally' working with limited model classes (on the assumption that everything the AI is using is being monitored, has a known algorithm, and has a known model class) and the goal would just be to prevent the KANSI agent from spilling over and creating other human models somewhere else, which might fit well into a general agenda against self-modification and subagent creation.  Similarly, if every new subject is being identified and whitelisted by human monitors, then just not whitelisting the topic of modeling distant superintelligences or devising strategies for programmer manipulation, might get most of the job done to an acceptable level <em>if</em> the underlying whitelist is never being evaded (even emergently).  This would require a lot of <em>successfully maintained</em> vigilance and human monitoring, though, especially if the KANSI agent is trying to allocate a new human-modeling domain once per second and every instance has to be manually checked.</p></main><hr><section class="comments"><h2>Comments</h2><div class="comment"><p><a class="page-link" href="../page/PaulChristiano.html">Paul Christiano</a></p><p><p>I can imagine this concept becoming relevant one day. But it seems sufficiently improbable that it doesn't seem worth thinking about until we run out of urgent things to think about. Reasons it seems improbable:</p>
+<ul>
+<li>It would be shocking if people were willing to take such a massive efficacy hit for the sake of safety. This seems to require the "very well-coordinated group takes over world" / "world becomes very well-coordinated," as well "all reasonable approaches to AI control fail."</li>
+<li>It doesn't look like this makes the problem much easier. It's hard for me to imagine a capability state where you can kind of solve AI control, but then you have trouble if the AI starts thinking about people. That seems like a super scary bug that indicates something deeply wrong that will probably bite you one way or another. (I would assume that this is the MIRI view.)</li>
+</ul></p></div></section><footer><p class="tagged"><h2>Tagged</h2><span class="page-comma-list"><a class="page-link" href="../page/KANSI.html">Known-algorithm non-self-improving agent</a>,
+ <a class="page-link" href="../page/mindcrime.html">Mindcrime</a>,
+ <a class="page-link" href="../page/work_in_progress_meta_tag.html">Work in progress</a></span></p><p class="all-creators"><h2>All Creators</h2><span class="page-comma-list"><a class="page-link" href="../page/AlexeiAndreev.html">Alexei Andreev</a>,
+ <a class="page-link" href="../page/EliezerYudkowsky.html">Eliezer Yudkowsky</a>,
+ <a class="page-link" href="../page/NateSoares.html">Nate Soares</a></span></p><p class="likes"><h2>Likes</h2><span class="page-comma-list"><a class="page-link" href="../page/EliezerYudkowsky.html">Eliezer Yudkowsky</a>,
+ <a class="page-link" href="../page/NathanFish.html">Nathan Fish</a>,
+ <a class="page-link" href="../page/NopeNope.html">Nope Nope</a>,
+ <a class="page-link" href="../page/RolandPihlakas.html">Roland Pihlakas</a></span></p><p class="related"><h2>Related</h2><ul class="page-list"><li><a class="page-link" href="../page/probable_environment_hacking.html">Distant superintelligences can coerce the most probable environment of your AI</a> <q>Distant superintelligences may be able to hack your local AI, if your AI's preference framework depends on its most probable environment.</q> - <a class="page-link" href="../page/EliezerYudkowsky.html">Eliezer Yudkowsky</a></li><li><a class="page-link" href="../page/distant_SIs.html">Modeling distant superintelligences</a> <q>The several large problems that might occur if an AI starts to think about alien superintelligences.</q> - <a class="page-link" href="../page/EliezerYudkowsky.html">Eliezer Yudkowsky</a></li></ul></p><p class="reverse-related"><h2>Reverse Related</h2><ul class="page-list"><li><a class="page-link" href="../page/KANSI.html">Known-algorithm non-self-improving agent</a> <q>Possible advanced AIs that aren't self-modifying, aren't self-improving, and where we know and understand all the component algorithms.</q> - <a class="page-link" href="../page/EliezerYudkowsky.html">Eliezer Yudkowsky</a></li><li><a class="page-link" href="../page/mindcrime.html">Mindcrime</a> <q>Might a machine intelligence contain vast numbers of unhappy conscious subprocesses?</q> - <a class="page-link" href="../page/EliezerYudkowsky.html">Eliezer Yudkowsky</a></li><li><a class="page-link" href="../page/work_in_progress_meta_tag.html">Work in progress</a> <q>This page is being actively worked on by an editor. Check with them before making major changes.</q> - <a class="page-link" href="../page/EliezerYudkowsky.html">Eliezer Yudkowsky</a></li></ul></p></footer></body></html>

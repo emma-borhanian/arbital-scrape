@@ -1,0 +1,29 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>&quot;You are right. 
+
+In contrast, without manual op...&quot;</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="../MathJax-2.7.5/MathJax.js"></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">&quot;You are right. 
+
+In contrast, without manual op...&quot;</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/8qn.json.html">8qn.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/8qn">https://arbital.com/p/8qn</a></p><p class="creator">by
+ <a class="page-link" href="../page/AltoClef.html">Alto Clef</a> Oct 9 2017</p></div><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>&quot;You are right. 
+
+In contrast, without manual op...&quot;</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="dnn1.html">Some Thoughts on Deep Neural Networks and Handwritten digit recognition </a></li><li><a href="8qf.html">&quot;My understanding is that [8qg neural nets alrea...&quot;</a></li><li>…</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="dnn1.html">Some Thoughts on Deep Neural Networks and Handwritten digit recognition </a></li><li>…</li></ul></nav></nav></header><hr><main><p>You are right. </p>
+<p>In contrast, without manual optimization, a huge problem is that the neural networks are learning features limited in the training set (like the position of the digit) the do not apply to the testing set. </p>
+<p>This makes regular DNNs really prone to position shifting. The CNN model, in my understanding, is really more like a work around, which is manually telling the network to separate two kinds of features from the raw pixels--the actual features and their locations--as feature maps, preventing the network being confused by the features shifting between different location. </p>
+<p>However, this also means CNNs make the assumption that all the features are at the same size of the reception field, thus making it prone to shape/size shifting. </p>
+<p>If my understanding above is correct, maybe it's possible to design a model, like CNNs, but instead, manually telling the network to separate three features from the raw pixels--features, locations and sizes. This way, maybe it's possible to create an architecture resistant to size/shape/location shifting. </p>
+<p>As far as I thought, one possible way of doing that is, instead of treating a picture as (raw pixels in DNN)/(raw feature maps in RNN), treating the picture as vectors or even Bézier curves, thus the features extracted, such as the number of closed areas, are no longer depended to any of the fore-mentioned shifts. However, the actual way of doing it is still under my experiment.</p>
+<p>The above are just naive thought from a beginner in machine learning, and I can't help but wanting to express them. If there's any errors and/or there are already existed matured architectures fit my description above, please let me know so I could improve myself…. Thanks a lot : ).</p></main><hr><footer></footer></body></html>

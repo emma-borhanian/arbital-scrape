@@ -1,0 +1,51 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Empty set</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="../MathJax-2.7.5/MathJax.js"></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">Empty set</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/6gb.json.html">6gb.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/6gb">https://arbital.com/p/6gb</a></p><p class="creator">by
+ <a class="page-link" href="../page/PatrickStevens.html">Patrick Stevens</a> Oct 23 2016 
+updated
+ Oct 25 2016</p></div><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>Empty set</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="math.html">Mathematics</a></li><li><a href="set_mathematics.html">Set</a></li><li><a href="empty_set.html">Empty set</a></li><li>…</li></ul></nav></nav></header><hr><main><p>[summary: The empty set, $~$\emptyset$~$, is the set with no elements. For every object $~$x$~$, $~$x$~$ is not in $~$\emptyset$~$.]</p>
+<p>The empty set, $~$\emptyset$~$, is the set with no elements.
+Why, <em>a priori</em>, should this set exist at all?
+Well, if we think of sets as "containers of elements", the idea of an empty container is intuitive: just imagine a box with nothing in it.</p>
+<h1 id="definitions">Definitions</h1>
+<h2 id="definitioninzf">Definition in [ZF]</h2>
+<p>In the set theory [ZF], there are exactly two axioms which assert the existence of a set <em>ex nihilo</em>; all of the rest of set theory builds sets from those given sets, or else postulates the existence of more sets.</p>
+<p>There is the [-axiom_of_infinity], which asserts the existence of an infinite set, and there is the [-empty_set_axiom], which asserts that an empty set exists.</p>
+<p>In fact, we can deduce the existence of an empty set even without using the empty set axiom, as long as we are allowed to use the [-axiom_of_comprehension] to select a certain specially-chosen subset of an infinite set.
+More formally: let $~$X$~$ be an infinite set (as guaranteed by the axiom of infinity).
+Then select the subset of $~$X$~$ consisting of all those members $~$x$~$ of $~$X$~$ which have the property that $~$x$~$ contains $~$X$~$ and also does not contain $~$X$~$.</p>
+<p>There are no such members, so we must have just constructed an empty set.</p>
+<h2 id="definitionbyauniversalproperty">Definition by a universal property</h2>
+<p>The empty set <a href="empty_set_universal_property.html">has a definition</a> in terms of a <a href="universal_property.html">Universal property</a>: the empty set is the unique set $~$X$~$ such that for every set $~$A$~$, there is exactly one map from $~$X$~$ to $~$A$~$.
+More succinctly, it is the [-initial_object] in the [-category_of_sets] (or in the <a href="category_of_finite_sets.html">Category of finite sets</a>).</p>
+<h1 id="uniquenessoftheemptyset">Uniqueness of the empty set</h1>
+<p>The [-axiom_of_extensionality] states that two sets are the same if and only if they have exactly the same elements.
+If we had two empty sets $~$A$~$ and $~$B$~$, then certainly anything in $~$A$~$ is also in $~$B$~$ ([vacuous_truth vacuously]), and anything in $~$B$~$ is also in $~$A$~$, so they have the same elements.
+Therefore $~$A = B$~$, and we have shown the uniqueness of the empty set.</p>
+<h1 id="acommonmisconceptionddemptysetddvsddemptysetdd">A common misconception: $~$\emptyset$~$ vs $~$\{ \emptyset \}$~$</h1>
+<p>It is very common for people to start out by getting confused between $~$\emptyset$~$ and $~$\{\emptyset\}$~$.
+The first contains no elements; the second is a set containing exactly one element (namely $~$\emptyset$~$).
+The sets don't <a href="bijective_function.html">biject</a>, because they are finite and have different numbers of elements.</p>
+<h1 id="vacuous_truthvacuoustruthawhistlestoptour">[vacuous_truth Vacuous truth]: a whistlestop tour</h1>
+<p>The idea of vacuous truth can be stated as follows:</p>
+<blockquote>
+  <p>For <em>any</em> property $~$P$~$, everything in $~$\emptyset$~$ has the property $~$P$~$.</p>
+</blockquote>
+<p>It's a bit unintuitive at first sight: it's true that everything in $~$\emptyset$~$ is the Pope, for instance.
+Why should this be the case?</p>
+<p>In order for there to be a counterexample to the statement that "everything in $~$\emptyset$~$ is the Pope", we would need to find an element of $~$\emptyset$~$ which was not the Pope. %%note: Strictly, we'd only need to show that such an element must exist, without necessarily finding it.%%
+But there aren't <em>any</em> elements of $~$\emptyset$~$, let alone elements which fail to be the Pope.
+So there can't be any counterexample to the statement that "everything in $~$\emptyset$~$ is the Pope", so the statement is true.</p></main><hr><footer><p class="likes"><h2>Likes</h2><span class="page-comma-list"><a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a></span></p></footer></body></html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Left cosets partition the parent group</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="../MathJax-2.7.5/MathJax.js"></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">Left cosets partition the parent group</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/left_cosets_partition_parent_group.json.html">left_cosets_partition_parent_group.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/left_cosets_partition_parent_group">https://arbital.com/p/left_cosets_partition_parent_group</a></p><p class="creator">by
+ <a class="page-link" href="../page/PatrickStevens.html">Patrick Stevens</a> Jun 17 2016 
+updated
+ Jun 28 2016</p></div><p class="clickbait">In a group, every element has a unique coset in which it lies, allowing us to compress some of the information about the group.</p><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>Left cosets partition the parent group</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="math.html">Mathematics</a></li><li><a href="abstract_algebra.html">Abstract algebra</a></li><li><a href="algebraic_structure.html">Algebraic structure</a></li><li><a href="group_mathematics.html">Group</a></li><li><a href="group_coset.html">Group coset</a></li><li>…</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="math.html">Mathematics</a></li><li><a href="group_theory.html">Group theory</a></li><li><a href="group_mathematics.html">Group</a></li><li><a href="group_coset.html">Group coset</a></li><li>…</li></ul></nav></nav></header><hr><main><p>Given a <a href="group_mathematics.html">Group</a> $~$G$~$ and a subgroup $~$H$~$, the <a href="group_coset.html">left cosets</a> of $~$H$~$ in $~$G$~$ [set_partition partition] $~$G$~$, in the sense that every element of $~$g$~$ is in precisely one coset.</p>
+<h1 id="proof">Proof</h1>
+<p>Firstly, every element is in a coset: since $~$g \in gH$~$ for any $~$g$~$.
+So we must show that no element is in more than one coset.</p>
+<p>Suppose $~$c$~$ is in both $~$aH$~$ and $~$bH$~$.
+Then we claim that $~$aH = cH = bH$~$, so in fact the two cosets $~$aH$~$ and $~$bH$~$ were the same.
+Indeed, $~$c \in aH$~$, so there is $~$k \in H$~$ such that $~$c = ak$~$.
+Therefore $~$cH = \{ ch : h \in H \} = \{ akh : h \in H \}$~$.</p>
+<p>Exercise: $~$\{ akh : h \in H \} = \{ ar : r \in H \}$~$.
+%%hidden(Show solution):
+Suppose $~$akh$~$ is in the left-hand side.
+Then it is in the right-hand side immediately: letting $~$r=kh$~$.</p>
+<p>Conversely, suppose $~$ar$~$ is in the right-hand side.
+Then we may write $~$r = k k^{-1} r$~$, so $~$a k k^{-1} r$~$ is in the right-hand side; but then $~$k^{-1} r$~$ is in $~$H$~$ so this is exactly an object which lies in the left-hand side.
+%%</p>
+<p>But that is just $~$aH$~$.</p>
+<p>By repeating the reasoning with $~$a$~$ and $~$b$~$ interchanged, we have $~$cH = bH$~$; this completes the proof.</p>
+<h1 id="whyisthisinteresting">Why is this interesting?</h1>
+<p>The fact that the left cosets partition the group means that we can, in some sense, "compress" the group $~$G$~$ with respect to $~$H$~$.
+If we are only interested in $~$G$~$ "up to" $~$H$~$, we can deal with the partition rather than the individual elements, throwing away the information we're not interested in.</p>
+<p>This concept is most importantly used in defining the <a href="quotient_group.html">Quotient group</a>.
+To do this, the subgroup must be <a href="normal_subgroup.html">normal</a> (<a href="quotient_by_subgroup_is_well_defined_iff_normal.html">proof</a>).
+In this case, the collection of cosets itself inherits a group structure from the parent group $~$G$~$, and the structure of the quotient group can often tell us a lot about the parent group.</p></main><hr><footer><p class="likes"><h2>Likes</h2><span class="page-comma-list"><a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a></span></p></footer></body></html>

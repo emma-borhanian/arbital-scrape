@@ -1,0 +1,43 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Prime number</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="../MathJax-2.7.5/MathJax.js"></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">Prime number</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/prime_number.json.html">prime_number.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/prime_number">https://arbital.com/p/prime_number</a></p><p class="creator">by
+ <a class="page-link" href="../page/PatrickStevens.html">Patrick Stevens</a> Jun 20 2016 
+updated
+ Jul 27 2016</p></div><p class="clickbait">The prime numbers are the &quot;building blocks&quot; of the counting numbers.</p><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>Prime number</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="math.html">Mathematics</a></li><li><a href="natural_number.html">Natural number</a></li><li>…</li></ul></nav></nav></header><hr><main><p>A <a href="natural_number.html">Natural number</a> $~$n &gt; 1$~$ is <em>prime</em> if it has no [divisor_number_theory divisors] other than itself and $~$1$~$.
+Equivalently, it has the property that if $~$n \mid ab$~$ %%note:That is, $~$n$~$ divides the product $~$ab$~$%% then $~$n \mid a$~$ or $~$n \mid b$~$.
+Conventionally, $~$1$~$ is considered to be neither prime nor [composite_number composite] (i.e. non-prime).</p>
+<h1 id="examples">Examples</h1>
+<ul>
+<li>The number $~$2$~$ is prime, because its divisors are $~$1$~$ and $~$2$~$; therefore it has no divisors other than itself and $~$1$~$.</li>
+<li>The number $~$3$~$ is also prime, as are $~$5, 7, 11, 13, \dots$~$.</li>
+<li>The number $~$4$~$ is not prime; neither are $~$6, 8, 9, 10, 12, \dots$~$.</li>
+</ul>
+<h1 id="properties">Properties</h1>
+<ul>
+<li>There are infinitely many primes. (<a href="infinitely_many_primes.html">Proof.</a>)</li>
+<li>Every natural number may be written as a product of primes; moreover, this can only be done in one way (if we count "the same product but with the order swapped" as being the same: for example, $~$2 \times 3 = 3 \times 2$~$ is just one way of writing $~$6$~$). (<a href="fundamental_theorem_of_arithmetic.html">Proof.</a>)</li>
+</ul>
+<h1 id="howtofindprimes">How to find primes</h1>
+<p>If we want to create a list of all the primes below a given number, or the first $~$n$~$ primes for some fixed $~$n$~$, then an efficient way to do it is the [sieve_of_eratosthenes Sieve of Eratosthenes].
+(There are other sieves available, but Eratosthenes is the simplest.)</p>
+<p>There are many [primality_testing tests] for primality and for compositeness.</p>
+<h1 id="moregeneralconcept">More general concept</h1>
+<p>This definition of "prime" is, in a more general <a href="algebraic_ring.html">ring-theoretic</a> setting, known instead as the property of <a href="irreducible_element_ring_theory.html">irreducibility</a>.
+Confusingly, there is a slightly different notion in this ring-theoretic setting, which goes by the name of "prime"; this notion has <a href="prime_element_ring_theory.html">a separate page on Arbital</a>.
+In the ring of integers, the two ideas of "prime" and "irreducible" actually coincide, but that is because the integers form a ring with several very convenient properties: in particular, being a [euclidean_domain Euclidean domain], they are a <a href="principal_ideal_domain.html">Principal ideal domain</a> (PID), and [pid_implies_ufd PIDs have unique factorisation].</p>
+<p>[todo: add requisite for divisor<em>number</em>theory]</p></main><hr><footer><p class="tagged"><h2>Tagged</h2><span class="page-comma-list"><a class="page-link" href="../page/formal_definition_meta_tag.html">Formal definition</a>,
+ <a class="page-link" href="../page/stub_meta_tag.html">Stub</a></span></p><p class="likes"><h2>Likes</h2><span class="page-comma-list"><a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a>,
+ <a class="page-link" href="../page/IvanKuzmin.html">Ivan Kuzmin</a></span></p><p class="reverse-related"><h2>Reverse Related</h2><ul class="page-list"><li><a class="page-link" href="../page/formal_definition_meta_tag.html">Formal definition</a> <q>This page gives a purely formal definition of a topic, rather than motivating, explaining, and giving examples.</q> - <a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a></li><li><a class="page-link" href="../page/stub_meta_tag.html">Stub</a> <q>This page only gives a very brief overview of the topic. If you're able to, please help expand or improve it!</q> - <a class="page-link" href="../page/EliezerYudkowsky.html">Eliezer Yudkowsky</a></li></ul></p><p class="children"><h2>Children</h2><ul class="page-tree"><li><a class="page-link" href="../page/infinitely_many_primes.html">Proof that there are infinitely many primes</a> <q>Suppose there were finitely many primes. Then consider the product of all the primes plus 1...</q> - <a class="page-link" href="../page/JoeZeng.html">Joe Zeng</a></li></ul></p></footer></body></html>

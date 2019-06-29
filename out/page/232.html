@@ -1,0 +1,30 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>&quot;**Tree-Structured Comment S...&quot;</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="../MathJax-2.7.5/MathJax.js"></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">&quot;**Tree-Structured Comment S...&quot;</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/232.json.html">232.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/232">https://arbital.com/p/232</a></p><p class="creator">by
+ <a class="page-link" href="../page/MYass.html">M Yass</a> Feb 24 2016 
+updated
+ Feb 24 2016</p></div><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>&quot;**Tree-Structured Comment S...&quot;</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="Arbital.html">Arbital</a></li><li><a href="arbital_community_input.html">Arbital community input</a></li><li>…</li></ul></nav></nav></header><hr><main><p><strong>Tree-Structured Comment Sections</strong></p>
+<p>Currently the comment system seems to be limited to one level of indentation. Although one level of indentation is very good, full nesting would be better.
+I guess it might be argued that full nesting wont be needed here, but I wouldn't bet on that. Full threading has its own implementation challenges though. Eventually comments will hit the right side of the page and become unreasonably compressed. I can think of two solutions:</p>
+<ul>
+<li><p>The more straightforward solution: render comments at the deepest displayable depth with their subthreads hidden, then serve comment permalinks as separate pages, where the subject comment is rendered as a root thread. To read replies to comments at the depth limit, the user goes to their parent's page.</p></li>
+<li><p>Something I havn't seen done: Comments just keep going right, but they don't compress. Comment views will have to be horizontally scrollable.</p></li>
+</ul>
+<p>If you were going to increase the depth limit, you'd probably want to rethink the gratuitous consumption of whitespace that's going on in the current style. I'm more partial to the way reddit's material design themes tend to do things <a href="https://i.imgur.com/6dHto8n.png">https://i.imgur.com/6dHto8n.png</a> . Root threads may be in separate cards, but nested comments are rendered as parts of the whole with implied boundaries.</p></main><hr><section class="comments"><h2>Comments</h2><div class="comment"><p><a class="page-link" href="../page/MYass.html">M Yass</a></p><p><p>lol I can like my own comments. Dunno if that should be fixed or not. A user liking their own comment.. it <em>is</em> is information, which might mean something, though one gets the sense that it's usually going to be dishonest information, that doesn't mean what it appears to mean, which <em>probably</em> makes it an anti-pattern</p></p></div><div class="comment"><p><a class="page-link" href="../page/AlexeiAndreev.html">Alexei Andreev</a></p><p><p>Thanks for the feedback. :)<br />
+Yeah, there is a lot left to do on the comment side. That's going to be the next area of improvement.</p>
+<p>Yeah, you can like your own comment and pages. The reason is that indeed it is a valuable signal. We are going to end up treating likes somewhat differently than most platforms, so this will come in handy.</p></p></div><div class="comment"><p><a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a></p><p><p>I'm skeptical of infinite nesting. It does help in some cases, but disrupts the vast bulk of threads visually and adds a complicating decision to replying. Longer chains with branching are horrible to navigate, and the replies get shifted ever rightwards. This puts a limit on the effective number of replies (even if you subthread it like lesswrong, having to click through is clunky inconvenience), which is much worse than the problems caused by lack of nesting imo.</p>
+<p>You can gain much of the advantage of infinite nesting without any of the major costs by creating a "reply in new thread" option for those cases where it really is important to reply to different parts of a post separately, which creates a post linking to the new thread.</p>
+<p>Having strong norms of "one topic per top level comment" (possibly mod-action splitting posts for a while, or having a way to give feedback suggesting it easily) would also reduce the need for heavy nesting, and organize discussion more neatly.</p></p></div><div class="comment"><p><a class="page-link" href="../page/EmileKroeger.html">Emile Kroeger</a></p><p><p>I, for one, am fine with the current, simple comment system. It's close to what's on Stack Overflow (which also has two layers with extra constraints on replies to comments), which seems to work fine.</p></p></div></section><footer></footer></body></html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Proof of Bayes' rule</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="../MathJax-2.7.5/MathJax.js"></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">Proof of Bayes' rule</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/bayes_rule_proof.json.html">bayes_rule_proof.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/bayes_rule_proof">https://arbital.com/p/bayes_rule_proof</a></p><p class="creator">by
+ <a class="page-link" href="../page/EliezerYudkowsky.html">Eliezer Yudkowsky</a> Feb 9 2016 
+updated
+ Jul 10 2016</p></div><p class="clickbait">Proofs of Bayes' rule, with graphics</p><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>Proof of Bayes' rule</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="math.html">Mathematics</a></li><li><a href="probability_theory.html">Probability theory</a></li><li><a href="bayes_reasoning.html">Bayesian reasoning</a></li><li><a href="bayes_rule.html">Bayes' rule</a></li><li>…</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="rationality.html">Rationality</a></li><li><a href="probability_theory.html">Probability theory</a></li><li><a href="bayes_reasoning.html">Bayesian reasoning</a></li><li><a href="bayes_rule.html">Bayes' rule</a></li><li>…</li></ul></nav></nav></header><hr><main><p>Bayes' rule (in the <a href="bayes_rule_odds.html">odds form</a>) says that, for every pair of hypotheses $~$H_i$~$ and $~$H_j$~$ and piece of evidence $~$e,$~$</p>
+<p>$$~$\dfrac{\mathbb P(H_i)}{\mathbb P(H_j)} \times \dfrac{\mathbb P(e \mid H_i)}{\mathbb P(e \mid H_j)} = \dfrac{\mathbb P(H_i \mid e)}{\mathbb P(H_j \mid e)}.$~$$</p>
+<p>By the definition of <a href="conditional_probability.html">conditional probability</a>, $~$\mathbb P(e \land H)$~$ $~$=$~$ $~$\mathbb P(H) \cdot \mathbb P(e \mid H),$~$ so</p>
+<p>$$~$ \dfrac{\mathbb P(H_i)}{\mathbb P(H_j)} \times  \dfrac{\mathbb P(e\mid H_i)}{\mathbb P(e\mid H_j)} = \dfrac{\mathbb P(e \wedge H_i)}{\mathbb P(e \wedge H_j)} $~$$</p>
+<p>Dividing both the numerator and the denominator by $~$\mathbb P(e),$~$ we have</p>
+<p>$$~$ \dfrac{\mathbb P(e \wedge H_i)}{\mathbb P(e \wedge H_j)} = \dfrac{\mathbb P(e \wedge H_i) / \mathbb P(e)}{\mathbb P(e \wedge H_j) / \mathbb P(e)} $~$$</p>
+<p>Invoking the definition of conditional probability again,</p>
+<p>$$~$ \dfrac{\mathbb P(e \wedge H_i) / \mathbb P(e)}{\mathbb P(e \wedge H_j) / \mathbb P(e)} = \dfrac{\mathbb P(H_i\mid e)}{\mathbb P(H_j\mid e)}.$~$$</p>
+<p>Done.</p>
+<hr />
+<p>Of note is the equality</p>
+<p>$$~$\frac{\mathbb P(H_i\mid e)}{\mathbb P(H_j\mid e)} = \frac{\mathbb P(H_i \land e)}{\mathbb P(H_j \land e)},$~$$</p>
+<p>which says that the posterior odds (on the left) for $~$H_i$~$ (vs $~$H_j$~$) given evidence $~$e$~$ is exactly equal to the prior odds of $~$H_i$~$ (vs $~$H_j$~$) in the parts of $~$\mathbb P$~$ where $~$e$~$ was already true. $~$\mathbb P(x \land e)$~$ is the amount of probability mass that $~$\mathbb P$~$ allocated to worlds where both $~$x$~$ and $~$e$~$ are true, and the above equation says that after observing $~$e,$~$ your belief in $~$H_i$~$ relative to $~$H_j$~$ should be equal to $~$H_i$~$'s odds relative to $~$H_j$~$ <em>in those worlds.</em> In other words, Bayes' rule can be interpreted as saying: "Once you've seen $~$e$~$, simply throw away all probability mass except the mass on worlds where $~$e$~$ was true, and then continue reasoning according to the remaining probability mass." See also <a href="bayes_rule_elimination.html">Belief revision as probability elimination</a>.</p>
+<h2 id="illustrationusingthediseasitisexample">Illustration (using the Diseasitis example)</h2>
+<p>Specializing to the <a href="diseasitis.html">Diseasitis</a> problem, using red for sick, blue for healthy, and + signs for positive test results, the proof above can be visually depicted as follows:</p>
+<p><img src="https://i.imgur.com/YBc2nYo.png?0" alt="bayes venn" /></p>
+<p>This visualization can be read as saying: The ratio of the initial sick population (red) to the initial healthy population (blue), times the ratio of positive results (+) in the sick population to positive results in the blue population, equals the ratio of the positive-and-red population to positive-and-blue population. Thus we can divide both into the proportion of the whole population which got positive results (grey and +), yielding the posterior odds of sick (red) vs healthy (blue) among only those with positive results.</p>
+<p>The corresponding numbers are:</p>
+<p>$$~$\dfrac{20\%}{80\%} \times  \dfrac{90\%}{30\%} = \dfrac{18\%}{24\%} = \dfrac{0.18 / 0.42}{0.24 / 0.42} = \dfrac{3}{4}$~$$</p>
+<p>for a final probability $~$\mathbb P(sick)$~$ of $~$\frac{3}{7} \approx 43\%.$~$</p>
+<h2 id="generality">Generality</h2>
+<p>The <a href="bayes_rule_odds.html">odds</a> and <a href="bayes_rule_proportional.html">proportional</a> forms of Bayes' rule talk about the <em>relative</em> probability of two hypotheses $~$H_i$~$ and $~$H_j.$~$ In the particular example of Diseasitis it happens that <a href="exclusive_exhaustive.html">every patient is either sick or not-sick</a>, so that we can <a href="normalize_probabilities.html">normalize</a> the final odds 3 : 4 to probabilities of $~$\frac{3}{7} : \frac{4}{7}.$~$ However, the proof above shows that even if we were talking about two different possible diseases and their total prevalances did not sum to 1, the equation above would still hold between the <em>relative</em> prior odds for $~$\frac{\mathbb P(H_i)}{\mathbb P(H_j)}$~$ and the <em>relative</em> posterior odds for $~$\frac{\mathbb P(H_i\mid e)}{\mathbb P(H_j\mid e)}.$~$</p>
+<p>The above proof can be specialized to the probabilistic case; see <a href="bayes_rule_probability_proof.html">Proof of Bayes&#39; rule: Probability form</a>.</p></main><hr><footer><p class="tagged"><h2>Tagged</h2><span class="page-comma-list"><a class="page-link" href="../page/b_class_meta_tag.html">B-Class</a></span></p><p class="all-creators"><h2>All Creators</h2><span class="page-comma-list"><a class="page-link" href="../page/EliezerYudkowsky.html">Eliezer Yudkowsky</a>,
+ <a class="page-link" href="../page/NateSoares.html">Nate Soares</a></span></p><p class="likes"><h2>Likes</h2><span class="page-comma-list"><a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a>,
+ <a class="page-link" href="../page/JacksonFriess.html">Jackson Friess</a>,
+ <a class="page-link" href="../page/NateSoares.html">Nate Soares</a></span></p><p class="reverse-related"><h2>Reverse Related</h2><ul class="page-list"><li><a class="page-link" href="../page/b_class_meta_tag.html">B-Class</a> <q>This page is mostly complete and without major problems, but has not had detailed feedback from the target audience and reviewers.</q> - <a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a></li></ul></p><p class="children"><h2>Children</h2><ul class="page-tree"><li><a class="page-link" href="../page/bayes_rule_probability_proof.html">Proof of Bayes' rule: Probability form</a> <q>Let $\mathbf H$ be a [random\_variable variable] in $\mathbb P$ for the true hypothesis, and let $H_…</q> - <a class="page-link" href="../page/NateSoares.html">Nate Soares</a></li></ul></p></footer></body></html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>The alternating group on five elements is simple: Simpler proof</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="../MathJax-2.7.5/MathJax.js"></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">The alternating group on five elements is simple: Simpler proof</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/simplicity_of_alternating_group_five_simpler_proof.json.html">simplicity_of_alternating_group_five_simpler_proof.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/simplicity_of_alternating_group_five_simpler_proof">https://arbital.com/p/simplicity_of_alternating_group_five_simpler_proof</a></p><p class="creator">by
+ <a class="page-link" href="../page/PatrickStevens.html">Patrick Stevens</a> Jun 17 2016 
+updated
+ Jun 17 2016</p></div><p class="clickbait">A proof which avoids some of the heavy machinery of the main proof.</p><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>The alternating group on five elements is simple: Simpler proof</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="math.html">Mathematics</a></li><li><a href="abstract_algebra.html">Abstract algebra</a></li><li><a href="algebraic_structure.html">Algebraic structure</a></li><li><a href="group_mathematics.html">Group</a></li><li><a href="alternating_group.html">Alternating group</a></li><li><a href="alternating_group_five_is_simple.html">The alternating group on five elements is simple</a></li><li>…</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="math.html">Mathematics</a></li><li><a href="group_theory.html">Group theory</a></li><li><a href="group_mathematics.html">Group</a></li><li><a href="alternating_group.html">Alternating group</a></li><li><a href="alternating_group_five_is_simple.html">The alternating group on five elements is simple</a></li><li>…</li></ul></nav></nav></header><hr><main><p>If there is a non-trivial <a href="normal_subgroup.html">Normal subgroup</a> $~$H$~$ of the <a href="alternating_group.html">Alternating group</a> $~$A_5$~$ on five elements, then <a href="subgroup_normal_iff_union_of_conjugacy_classes.html">it is a union of conjugacy classes</a>.
+Additionally, by <a href="lagrange_theorem_on_subgroup_size.html">Lagrange&#39;s theorem</a>, the <a href="group_order.html">order</a> of a subgroup must divide the order of the group, so the total size of $~$H$~$ must divide $~$60$~$.</p>
+<p>We can list the [alternating<em>group</em>five<em>conjugacy</em>classes conjugacy classes of $~$A_5$~$]; they are of size $~$1, 20, 15, 12, 12$~$ respectively.</p>
+<p>By a brute-force check, no sum of these containing $~$1$~$ can possibly divide $~$60$~$ (which is the size of $~$A_5$~$) unless it is $~$1$~$ or $~$60$~$.</p>
+<h1 id="thebruteforcecheck">The brute-force check</h1>
+<p>We first list the [number_theory_divisor divisors] of $~$60$~$: they are $$~$1, 2, 3, 4, 5, 6, 10, 12, 15, 20, 30, 60$~$$</p>
+<p>Since the subgroup $~$H$~$ must contain the identity, it must contain the conjugacy class of size $~$1$~$.
+If it contains any other conjugacy class (which, as it is a non-trivial subgroup by assumption, it must), then the total size must be at least $~$13$~$ (since the smallest other class is of size $~$12$~$); so it is allowed to be one of $~$15$~$, $~$20$~$, $~$30$~$, or $~$60$~$.
+Since $~$H$~$ is also assumed to be a <em>proper</em> subgroup, it cannot be $~$A_5$~$ itself, so in fact $~$60$~$ is also banned.</p>
+<h2 id="theclassofsizedd20dd">The class of size $~$20$~$</h2>
+<p>If $~$H$~$ then contains the conjugacy class of size $~$20$~$, then $~$H$~$ can only be of size $~$30$~$ because we have already included $~$21$~$ elements.
+But there is no way to add just $~$9$~$ elements using conjugacy classes of size bigger than or equal to $~$12$~$.</p>
+<p>So $~$H$~$ cannot contain the class of size $~$20$~$.</p>
+<h2 id="theclassofsizedd15dd">The class of size $~$15$~$</h2>
+<p>In this case, $~$H$~$ is allowed to be of size $~$20$~$ or $~$30$~$, and we have already found $~$16$~$ elements of it. So there are either $~$4$~$ or $~$14$~$ elements left to find; but we are only allowed to add classes of size exactly $~$12$~$, so this can't be done either.</p>
+<h2 id="theclassesofsizedd12dd">The classes of size $~$12$~$</h2>
+<p>What remains is two classes of size $~$12$~$, from which we can make $~$1+12 = 13$~$ or $~$1+12+12 = 25$~$.
+Neither of these divides $~$60$~$, so these are not legal options either.</p>
+<p>This exhausts the search, and completes the proof.</p></main><hr><footer></footer></body></html>

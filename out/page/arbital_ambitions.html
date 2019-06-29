@@ -1,0 +1,58 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Arbital: Solving online explanations</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="../MathJax-2.7.5/MathJax.js"></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">Arbital: Solving online explanations</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/arbital_ambitions.json.html">arbital_ambitions.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/arbital_ambitions">https://arbital.com/p/arbital_ambitions</a></p><p class="creator">by
+ <a class="page-link" href="../page/EliezerYudkowsky.html">Eliezer Yudkowsky</a> Mar 3 2016 
+updated
+ Apr 5 2016</p></div><p class="clickbait">An explanation of Arbital's mid-term goals</p><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>Arbital: Solving online explanations</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="Arbital.html">Arbital</a></li><li><a href="arbital_blog.html">Arbital Blog</a></li><li>…</li></ul></nav></nav></header><hr><main><p>[summary:  Arbital is trying to do for the problem of 'writing and learning explanations of things' what Wikipedia did for 'recording agreed-on facts'.]</p>
+<p>I've spent my entire life since age 15 trying to explain complicated subjects.  Sometimes I succeeded, more often I failed.  I knew that the technology I was using - long essays, and later, sequences of blog posts with internal links - wasn't up to the job; but envisioning something better was hard.</p>
+<p>It wasn't just that my particular topics were difficult.  In general, our civilization's online technology does not seem to be very good at systematically solving the problem of "explaining things".  If you want to know the population of Melbourne, <a href="https://en.wikipedia.org/wiki/Melbourne">Wikipedia has you covered</a>.  If you look at the <a href="https://en.wikipedia.org/wiki/Bayes%27_rule">Wikipedia page on Bayes's Rule</a> - which is itself more accessible than the <a href="https://en.wikipedia.org/wiki/Bayes%27_theorem">Wikipedia page on Bayes's Theorem</a> that someone would probably encounter first - and imagine some ordinary innocent reader trying to understand the equations… well, it's clear that Wikipedia isn't trying to solve the problem of explaining things to a realistic distribution of incoming readers with different levels of math ability.</p>
+<p>Which is not Wikipedia's fault.  Wiki technology and the encyclopedia idiom are not set up to solve the problem of explaining topics to many readers coming in with different levels of background knowledge.  A good explanation for a computer programmer is inaccessible to a high school student who's good at math.  An explanation aimed at the high school student would be painfully long and boring for a mathematician.</p>
+<p>Proliferate different versions of pages aimed at different readers?  That's not as easy as making more wiki pages - information is only helpful if you can find it.  Wikipedia tries to have relatively few web pages (hence 'notability') because their central idiom for discovering information is 'search under the obvious name for it'.  If Wikipedia pages started proliferating subpages, the site would become much more difficult to navigate, assuming nothing else changed.</p>
+<p>So real explanations, explanations that try to be accessible, live in randomly scattered places around the Internet.  Google around for Bayes intros?  Good luck trying to find the one that fits you!  Need to learn another concept so you can understand this one?  Enjoy trying to figure out what you need or where to look for it!  See a mysterious word you don't understand?  If it's highlighted, you get to click on it blindly; if not, you get to Google it blindly.  Then you encounter a whole new page, and can restart the problem of figuring out how to learn that page from scratch.  The only systematic way our civilization has of solving this problem is to go through a series of college courses in which you read textbooks that assume you've taken all the previous college courses and have read all the previous chapters in the textbook.</p>
+<p>With Arbital, we're making a serious run at solving the UI and structural problems that prevent Wikipedia, wikis, online webpages, and college textbooks from making knowledge easily accessible.  After you've walked through the <a href="bayes_rule_guide.html">Arbital Guide to Bayes&#39;s Rule</a> and gotten used to Arbital's tabs, requisites, and popups, you'll have some idea of where Arbital is heading  - though, I rush to emphasize, the Bayes Guide is just a demo, and Arbital isn't feature-complete for the job of explaining things, let alone its larger ambitions.</p>
+<p>By the way: since we don't yet have crowd-management / karma-threshold features implemented, Arbital is not presently open for commenting or editing except to selected invitees.  That said…</p>
+<p>We have a dream.  We have a dream of a world where anyone who wants to understand something navigates to <a href="bayes_rule.html">Arbital&#39;s page on Bayes</a>, or on NGDP targeting, or on population genetics, sees weird terms, pops up the summary, says "What the heck?", goes to the least technical tab for the page, says "What the heck?" again, and hits Arbital's "Plot a learning path to this concept" button.  Remember a time when people used to be able to have huge arguments over the population of Melbourne, the time before Wikipedia?  And now we don't live in that time anymore?  Making the same kind of advance for 'explaining things' potentially matters A LOT.</p>
+<p>Arbital has bigger ambitions than even that.  We all dream of a world that eliminates the duplication of effort in online argument - a world where, the same way that Wikipedia centralized the recording of definite facts, an argument only needs to happen once, instead of being reduplicated all over the Internet; with all the branches of the argument neatly recorded in the same place, along with some indication of who believes what.  A world where 'just check Arbital' had the same status for determining the current state of debates, as 'just check Wikipedia' now has when somebody starts arguing about the population of Melbourne.  There's entirely new big subproblems and solutions, not present at all in the current Arbital, that we'd need to tackle that considerably more difficult problem.  But to solve 'explaining things' is something of a first step.  If you have a single URL that you can point anyone to for 'explaining Bayes', and if you can dispatch people to different pages depending on how much math they know, you're starting to solve some of the key subproblems in removing the redundancy in online arguments.</p>
+<p>But even if we fail at that part, making humanity's knowledge more accessible and <em>actually learnable in real life</em> is something that matters by itself.</p>
+<p>Alexei Andreev and I have been working on Arbital for the last year or so - I file more requests for fine-tuning Arbital's shape, Alexei actually does it instead of strangling me.  But Arbital can't be finished as a one-programmer project, and we need pre-seed / seed funding to take it further.  Since Title III of the JOBS Act has not yet come into play, we can't do this via crowdfunding (yet).  But Title II of the JOBS Act permits companies to publicly disclose that they are interested in taking investment, from accredited investors / sophisticated investors only.</p>
+<p>If you are an accredited investor / sophisticated investor (the legal definition revolves around income and wealth thresholds) and you'd like to talk to us about moving Arbital forward, please contact us at <a href="&#109;&#x61;&#105;&#x6c;&#116;&#111;&#58;&#121;&#x75;&#x64;&#x6b;&#x6f;&#x77;&#115;&#107;&#121;&#64;&#103;&#x6d;a&#x69;&#x6c;&#x2e;&#99;&#x6f;&#109;">&#x79;&#117;&#x64;&#107;&#x6f;&#x77;&#x73;&#x6b;&#121;&#x40;&#103;&#x6d;&#97;&#x69;&#108;&#x2e;c&#x6f;&#x6d;</a> and alexei.andreev@gmail.com.</p>
+<p>(This is not an offer to sell securities nor a solicitation to buy securities. This is merely a solicitation of interest to begin a discussion with the Company’s officers. Any offer to buy or sell securities will be made by formal documents and be made to accredited investors only, in accordance with Title II of the JOBS Act.)</p></main><hr><footer><p class="all-creators"><h2>All Creators</h2><span class="page-comma-list"><a class="page-link" href="../page/AlexeiAndreev.html">Alexei Andreev</a>,
+ <a class="page-link" href="../page/EliezerYudkowsky.html">Eliezer Yudkowsky</a>,
+ <a class="page-link" href="../page/NateSoares.html">Nate Soares</a></span></p><p class="likes"><h2>Likes</h2><span class="page-comma-list"><a class="page-link" href="../page/AdrianMusat.html">Adrian Musat</a>,
+ <a class="page-link" href="../page/AlexeiAndreev.html">Alexei Andreev</a>,
+ <a class="page-link" href="../page/AndrewMcKnight.html">Andrew McKnight</a>,
+ <a class="page-link" href="../page/ConorIgoe.html">Conor Igoe</a>,
+ <a class="page-link" href="../page/DonyChristie.html">Dony Christie</a>,
+ <a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a>,
+ <a class="page-link" href="../page/EricRogstad.html">Eric Rogstad</a>,
+ <a class="page-link" href="../page/GregorGerasev.html">Gregor Gerasev</a>,
+ <a class="page-link" href="../page/JeffHull.html">Jeff Hull</a>,
+ <a class="page-link" href="../page/JeremyPerret.html">Jeremy Perret</a>,
+ <a class="page-link" href="../page/JonathanPidgeon.html">Jonathan Pidgeon</a>,
+ <a class="page-link" href="../page/KennyEvitt.html">Kenny Evitt</a>,
+ <a class="page-link" href="../page/KristijanIvancic.html">Kristijan Ivancic</a>,
+ <a class="page-link" href="../page/MYass.html">M Yass</a>,
+ <a class="page-link" href="../page/MaelleAndre.html">Maelle Andre</a>,
+ <a class="page-link" href="../page/MalcolmOcean.html">Malcolm Ocean</a>,
+ <a class="page-link" href="../page/ManuHerrn.html">Manu Herrán</a>,
+ <a class="page-link" href="../page/MarianAndrecki.html">Marian Andrecki</a>,
+ <a class="page-link" href="../page/MatthewGraves.html">Matthew Graves</a>,
+ <a class="page-link" href="../page/MeaganSullivan.html">Meagan Sullivan</a>,
+ <a class="page-link" href="../page/OrenMilman.html">Oren Milman</a>,
+ <a class="page-link" href="../page/PeterNorvig2.html">Peter Norvig</a>,
+ <a class="page-link" href="../page/RafaelCosman.html">Rafael Cosman</a>,
+ <a class="page-link" href="../page/TimothyJohnson.html">Timothy Johnson</a>,
+ <a class="page-link" href="../page/TravisRivera.html">Travis Rivera</a></span></p></footer></body></html>

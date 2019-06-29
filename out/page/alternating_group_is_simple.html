@@ -1,0 +1,51 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>The alternating groups on more than four letters are simple</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="../MathJax-2.7.5/MathJax.js"></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">The alternating groups on more than four letters are simple</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/alternating_group_is_simple.json.html">alternating_group_is_simple.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/alternating_group_is_simple">https://arbital.com/p/alternating_group_is_simple</a></p><p class="creator">by
+ <a class="page-link" href="../page/PatrickStevens.html">Patrick Stevens</a> Jun 17 2016 
+updated
+ Jun 17 2016</p></div><p class="clickbait">The alternating groups are the most accessible examples of simple groups, and this fact also tells us that the symmetric groups are &quot;complicated&quot; in some sense.</p><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>The alternating groups on more than four letters are simple</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="math.html">Mathematics</a></li><li><a href="abstract_algebra.html">Abstract algebra</a></li><li><a href="algebraic_structure.html">Algebraic structure</a></li><li><a href="group_mathematics.html">Group</a></li><li><a href="alternating_group.html">Alternating group</a></li><li>…</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="math.html">Mathematics</a></li><li><a href="group_theory.html">Group theory</a></li><li><a href="group_mathematics.html">Group</a></li><li><a href="alternating_group.html">Alternating group</a></li><li>…</li></ul></nav></nav></header><hr><main><p>Let $~$n &gt; 4$~$ be a <a href="natural_number.html">Natural number</a>. Then the <a href="alternating_group.html">Alternating group</a> $~$A_n$~$ on $~$n$~$ elements is <a href="simple_group.html">simple</a>.</p>
+<h1 id="proof">Proof</h1>
+<p>We go by <a href="mathematical_induction.html">induction</a> on $~$n$~$.
+The base case of $~$n=5$~$ <a href="alternating_group_five_is_simple.html">we treat separately</a>.</p>
+<p>For the inductive step: let $~$n \geq 6$~$, and suppose $~$H$~$ is a nontrivial <a href="normal_subgroup.html">Normal subgroup</a> of $~$A_n$~$.
+Ultimately we aim to show that $~$H$~$ contains the $~$3$~$-<a href="cycle_notation_symmetric_group.html">cycle</a> $~$(123)$~$; since $~$H$~$ <a href="subgroup_normal_iff_union_of_conjugacy_classes.html">is a union of conjugacy classes</a>, and since the $~$3$~$-cycles <a href="splitting_conjugacy_classes_in_alternating_group.html">form a conjugacy class</a> in $~$A_n$~$, this means every $~$3$~$-cycle is in $~$H$~$ and <a href="alternating_group_generated_by_three_cycles.html">hence</a> $~$H = A_n$~$.</p>
+<h2 id="lemmaddhddcontainsamemberofdda_n1dd">Lemma: $~$H$~$ contains a member of $~$A_{n-1}$~$</h2>
+<p>To start, we will show that at least $~$H$~$ contains <em>something</em> from $~$A_{n-1}$~$ (which we view as all the elements of $~$A_n$~$ which don't change the letter $~$n$~$). %%note:Recall that $~$A_n$~$ <a href="group_action.html">acts</a> naturally on the set of "letters" $~$\{1,2,\dots, n \}$~$ by permutation.%%
+(This approach has to be useful for an induction proof, because we need some way of introducing the simplicity of $~$A_{n-1}$~$.)
+That is, we will show that there is some $~$\sigma \in H$~$ with $~$\sigma \not = e$~$, such that $~$\sigma(n) = n$~$.</p>
+<p>Let $~$\sigma \in H$~$, where $~$\sigma$~$ is not the identity.
+$~$\sigma$~$ certainly sends $~$n$~$ somewhere; say $~$\sigma(n) = i$~$, where $~$i \not = n$~$ (since if it is, we're done immediately).</p>
+<p>Then if we can find some $~$\sigma' \in H$~$, not equal to $~$\sigma$~$, such that $~$\sigma'(n) = i$~$, we are done: $~$\sigma^{-1} \sigma'(n) = n$~$.</p>
+<p>$~$\sigma$~$ must move something other than $~$i$~$ (that is, there must be $~$j \not = i$~$ such that $~$\sigma(j) \not = j$~$), because if it did not, it would be the transposition $~$(n i)$~$, which is not in $~$A_n$~$ because it is an odd number of transpositions.
+Hence $~$\sigma(j) \not = j$~$ and $~$j \not = i$~$; also $~$j \not = n$~$ because if it were, [todo: this]</p>
+<p>Now, since $~$n \geq 6$~$, we can pick $~$x, y$~$ distinct from $~$n, i, j, \sigma(j)$~$.
+Then set $~$\sigma' = (jxy) \sigma (jxy)^{-1}$~$, which must lie in $~$H$~$ because $~$H$~$ is closed under <a href="group_conjugate.html">conjugation</a>.</p>
+<p>Then $~$\sigma'(n) = i$~$; and $~$\sigma' \not = \sigma$~$, because $~$\sigma'(j) = \sigma(y)$~$ which is not equal to $~$\sigma(j)$~$ (since $~$y \not = j$~$).
+Hence $~$\sigma'$~$ and $~$\sigma$~$ have different effects on $~$j$~$ so they are not equal.</p>
+<h2 id="lemmaddhddcontainsallofdda_n1dd">Lemma: $~$H$~$ contains all of $~$A_{n-1}$~$</h2>
+<p>Now that we have shown $~$H$~$ contains some member of $~$A_{n-1}$~$.
+But $~$H \cap A_{n-1}$~$ is normal in $~$A_n$~$, because $~$H$~$ is normal in $~$A_n$~$ and it is <a href="normal_subgroup.html">_intersect _subgroup _is _normal the intersection of a subgroup with a normal subgroup</a>.
+Therefore by the inductive hypothesis, $~$H \cap A_{n-1}$~$ is either the trivial group or is $~$A_{n-1}$~$ itself.</p>
+<p>But $~$H \cap A_{n-1}$~$ is certainly not trivial, because our previous lemma gave us a non-identity element in it; so $~$H$~$ must actually contain $~$A_{n-1}$~$.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>Finally, $~$H$~$ contains $~$A_{n-1}$~$ so it contains $~$(123)$~$ in particular; so we are done by the initial discussion.</p>
+<h1 id="behaviourforddnleq4dd">Behaviour for $~$n \leq 4$~$</h1>
+<ul>
+<li>$~$A_1$~$ is the trivial group so is vacuously not simple.</li>
+<li>$~$A_2$~$ is also the trivial group. </li>
+<li>$~$A_3$~$ is isomorphic to the <a href="cyclic_group.html">Cyclic group</a> $~$C_3$~$ on three generators, so it is simple: it has no nontrivial proper subgroups, let alone normal ones.</li>
+<li>$~$A_4$~$ has the following normal subgroup (the [klein_four_group Klein four-group]): $~$\{ e, (12)(34), (13)(24), (14)(23) \}$~$. Therefore $~$A_4$~$ is not simple.</li>
+</ul></main><hr><section class="comments"><h2>Comments</h2><div class="comment"><p><a class="page-link" href="../page/PatrickStevens.html">Patrick Stevens</a></p><p><p>A question about the requisites for this page: should <a href="alternating_group_five_is_simple.html">The alternating group on five elements is simple</a> be a requisite? It's necessary for the base case of the induction, but one can probably understand the proof without it, simply referring to it as a known fact.</p></p></div></section><footer><p class="tagged"><h2>Tagged</h2><span class="page-comma-list"><a class="page-link" href="../page/stub_meta_tag.html">Stub</a></span></p><p class="likes"><h2>Likes</h2><span class="page-comma-list"><a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a></span></p><p class="reverse-related"><h2>Reverse Related</h2><ul class="page-list"><li><a class="page-link" href="../page/stub_meta_tag.html">Stub</a> <q>This page only gives a very brief overview of the topic. If you're able to, please help expand or improve it!</q> - <a class="page-link" href="../page/EliezerYudkowsky.html">Eliezer Yudkowsky</a></li></ul></p></footer></body></html>

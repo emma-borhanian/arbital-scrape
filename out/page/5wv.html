@@ -1,0 +1,131 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Factorial</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="../MathJax-2.7.5/MathJax.js"></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">Factorial</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/5wv.json.html">5wv.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/5wv">https://arbital.com/p/5wv</a></p><p class="creator">by
+ <a class="page-link" href="../page/PatrickStevens.html">Patrick Stevens</a> Aug 17 2016 
+updated
+ Aug 18 2016</p></div><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>Factorial</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="math.html">Mathematics</a></li><li><a href="factorial.html">Factorial</a></li><li>…</li></ul></nav></nav></header><hr><main><p>[summary: The <em>factorial</em> of a number $~$n$~$ is how we describe "how many different ways we can arrange $~$n$~$ objects in a row".]</p>
+<h1 id="threeobjectsinaline">Three objects in a line</h1>
+<p>How many ways are there to arrange three objects in a line?
+(I'll use numbers $~$1,2,3$~$ to represent the objects; pretend I painted the numbers onto the respective objects.)
+For example, $~$1,2,3$~$ is one way to arrange the three objects; $~$1,3,2$~$ is another; and so on.</p>
+<p>To be completely concrete, let's say I have three same-sized cubes and I have three same-sized boxes to place them in; the boxes are arranged into one row and can't be moved (they're too heavy), but the cubes are made of balsa wood and can be moved freely.
+The number $~$1$~$ is painted on one cube; $~$2$~$ on another; and $~$3$~$ on the third.
+How many ways are there to arrange the cubes into the fixed boxes?</p>
+<p>Have a think about this, then reveal the answer and a possible way of getting the answer.</p>
+<p>%%hidden(Show solution):
+The total number of ways is $~$6$~$.
+The complete list of possible options is:</p>
+<ul>
+<li>$~$1,2,3$~$</li>
+<li>$~$1,3,2$~$</li>
+<li>$~$2,1,3$~$</li>
+<li>$~$2,3,1$~$</li>
+<li>$~$3,1,2$~$</li>
+<li>$~$3,2,1$~$</li>
+</ul>
+<p>I've listed them in an order that hopefully makes it fairly easy to see that there are no more possibilities.
+First I listed every possible way $~$1$~$ could come at the beginning; then every possible way $~$2$~$ could; then every possible way $~$3$~$ could.</p>
+<p>If you got the answer $~$6$~$ through some <em>other</em> method, that's (probably) fine: there are many ways to think about this problem.
+%%</p>
+<p>How about arranging four objects in a line? (That is, four cubes into four fixed boxes.)</p>
+<p>The total number of ways is $~$24$~$.
+The complete list of possible options is:</p>
+<ul>
+<li>$~$1,2,3,4$~$</li>
+<li>$~$1,2,4,3$~$</li>
+<li>$~$1,3,2,4$~$</li>
+<li>$~$1,3,4,2$~$</li>
+<li>$~$1,4,2,3$~$</li>
+<li>$~$1,4,3,2$~$</li>
+<li>$~$2,1,3,4$~$</li>
+</ul>
+<p>… I got bored.</p>
+<p>How could we do this <em>without</em> listing all the possibilities?
+I promise the answer really is $~$24$~$, but you should think about this for a bit before continuing.</p>
+<h1 id="howtoarrangefourobjects">How to arrange four objects</h1>
+<p>There's an insight that makes everything much easier.</p>
+<blockquote>
+  <p>Once we've placed a cube into the leftmost box, all we have left to do is fit the remaining three cubes into the remaining three boxes.</p>
+</blockquote>
+<p>We've already seen above that there are $~$6$~$ ways to arrange three cubes among three boxes!</p>
+<p>So the total number of ways of doing four cubes among four boxes is:</p>
+<ul>
+<li>$~$6$~$ ways where the leftmost box contains cube $~$1$~$ (and I actually listed all of those above before I got bored);</li>
+<li>$~$6$~$ ways where the leftmost box contains cube $~$2$~$;</li>
+<li>$~$6$~$ ways where the leftmost box contains cube $~$3$~$;</li>
+<li>$~$6$~$ ways where the leftmost box contains cube $~$4$~$.</li>
+</ul>
+<p>That comes to $~$24$~$ in total.</p>
+<h1 id="interludeexercise">Interlude: Exercise</h1>
+<p>Can you work out how many ways there are to arrange <em>five</em> cubes into <em>five</em> fixed boxes?
+Take a hint from how we did four boxes above.</p>
+<p>%%hidden(Show solution):
+There are $~$120$~$ ways to do this.
+Remember, there are $~$24$~$ ways to arrange four cubes among four boxes.</p>
+<p>Then to arrange five cubes among five boxes:</p>
+<ul>
+<li>$~$24$~$ ways where the leftmost box contains cube $~$1$~$</li>
+<li>$~$24$~$ ways where the leftmost box contains cube $~$2$~$</li>
+<li>$~$24$~$ ways where the leftmost box contains cube $~$3$~$</li>
+<li>$~$24$~$ ways where the leftmost box contains cube $~$4$~$</li>
+<li>$~$24$~$ ways where the leftmost box contains cube $~$5$~$</li>
+</ul>
+<p>That comes to $~$120$~$ in total.
+%%</p>
+<h1 id="ingeneral">In general</h1>
+<p>OK, that was all well and good.
+But if we didn't already know how to arrange four objects into four boxes, how could we jump straight to arranging five objects into five boxes?</p>
+<p>Well, you might have noticed a pattern already.</p>
+<ul>
+<li>To arrange five boxes, we added the four-boxes number to itself five times; that is, we multiplied the four-boxes number by $~$5$~$.</li>
+<li>To arrange four boxes, we added the three-boxes number to itself four times; that is, we multiplied the three-boxes number by $~$4$~$.</li>
+</ul>
+<p>Perhaps you can see that this will <em>always</em> work: to arrange $~$n$~$ boxes, we add the $~$n-1$~$-boxes number to itself $~$n$~$ times. That is, we multiply the $~$n-1$~$-boxes number by $~$n$~$.
+Indeed, there are $~$n$~$ possible ways to fill the leftmost box %%note:We can do it with the number $~$1$~$, or the number $~$2$~$, or… or the number $~$n$~$; that's $~$n$~$ ways.%% and once we've done that, there are "the $~$n-1$~$-boxes number" ways to fill the remaining $~$n-1$~$ boxes.</p>
+<p>But this still doesn't help us jump straight to how to arrange five objects into five boxes.
+Here comes the clever bit.</p>
+<p>Let's write $~$5!$~$ (with an exclamation mark) for the number that is "how many ways to arrange five objects into five boxes". %%note:We already know this number is actually $~$120$~$.%%
+Similarly, $~$4!$~$ is "how many ways to arrange four objects into four boxes", and in general $~$n!$~$ is "how many ways to arrange $~$n$~$ objects into $~$n$~$ boxes".</p>
+<p>Then the patterns we noted earlier become:</p>
+<ul>
+<li>$~$5! = 5 \times 4!$~$</li>
+<li>$~$4! = 4 \times 3!$~$</li>
+</ul>
+<p>(Notice how much cleaner that is than "To arrange five boxes, we added the four-boxes number to itself five times; that is, we multiplied the four-boxes number by $~$5$~$". This is why mathematicians use notation: to make everything easier to say.)</p>
+<p>And the general rule is: %%note: Being careful to put $~$n-1$~$ in brackets, because otherwise it looks like $~$n \times n - 1!$~$, which means $~$(n \times n)-1!$~$ according to the <a href="order_of_operations.html">Order of operations</a>.%% $$~$n! = n \times (n-1)!$~$$</p>
+<p>OK, we have</p>
+<ul>
+<li>$~$n! = n \times (n-1)!$~$, and </li>
+<li>$~$(n-1)! = (n-1) \times (n-2)!$~$, and </li>
+<li>$~$(n-2)! = (n-2) \times (n-3)!$~$, and so on.</li>
+</ul>
+<p>So $$~$n! = n \times (n-1)! = n \times (n-1) \times (n-2)! = n \times (n-1) \times (n-2) \times (n-3)!$~$$
+and so on.</p>
+<p>If we just keep going, we'll eventually reach $$~$n \times (n-1) \times (n-2) \times \dots \times 5 \times 4 \times 3!$~$$
+and we already know that $~$3! = 6$~$, which I'll write as $~$3 \times 2 \times 1$~$ for reasons which are about to become obvious.</p>
+<p>So we have the following formula, which is how we define the <strong>factorial</strong>:</p>
+<p>$$~$n! = n \times (n-1) \times \dots \times 4 \times 3 \times 2 \times 1$~$$</p>
+<p>"$~$n!$~$" is read out loud as "$~$n$~$ factorial", and it means "the number of ways to arrange $~$n$~$ objects into any order".</p>
+<h1 id="edgecases">Edge cases</h1>
+<p>We've seen $~$3!$~$, but never $~$2!$~$ or $~$1!$~$.</p>
+<ul>
+<li>It's easy to see that there are two ways to arrange two objects into an order: $~$1,2$~$ or $~$2,1$~$.
+So $~$2! = 2$~$.</li>
+<li>It's also easy (if a bit weird) to see that there is just one way of arranging one object into an order: $~$1$~$ is the only possible way. So $~$1! = 1$~$.</li>
+<li>How about arranging <em>no</em> objects into an order? This is even weirder, but the answer is $~$1$~$. There <em>is</em> a way to arrange no objects into an order: just don't put down any objects. This is something which you should just accept without thinking about it too hard, and it almost never crops up. Anyway, $~$0! = 1$~$.</li>
+</ul></main><hr><footer><p class="tagged"><h2>Tagged</h2><span class="page-comma-list"><a class="page-link" href="../page/c_class_meta_tag.html">C-Class</a></span></p><p class="likes"><h2>Likes</h2><span class="page-comma-list"><a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a>,
+ <a class="page-link" href="../page/EvanHicks.html">Evan Hicks</a>,
+ <a class="page-link" href="../page/JaimeSevillaMolina.html">Jaime Sevilla Molina</a></span></p><p class="reverse-related"><h2>Reverse Related</h2><ul class="page-list"><li><a class="page-link" href="../page/c_class_meta_tag.html">C-Class</a> <q>This page has substantial content, but may not thoroughly cover the topic, may not meet style and prose standards, or may not explain the concept in a way the target audience will reliably understand.</q> - <a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a></li></ul></p></footer></body></html>

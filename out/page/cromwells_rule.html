@@ -1,0 +1,38 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Empirical probabilities are not exactly 0 or 1</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="../MathJax-2.7.5/MathJax.js"></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">Empirical probabilities are not exactly 0 or 1</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/cromwells_rule.json.html">cromwells_rule.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/cromwells_rule">https://arbital.com/p/cromwells_rule</a></p><p class="creator">by
+ <a class="page-link" href="../page/EliezerYudkowsky.html">Eliezer Yudkowsky</a> Jun 20 2016 
+updated
+ Jul 6 2016</p></div><p class="clickbait">&quot;Cromwell's Rule&quot; says that probabilities of exactly 0 or 1 should never be applied to empirical propositions - there's always some probability, however tiny, of being mistaken.</p><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>Empirical probabilities are not exactly 0 or 1</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="math.html">Mathematics</a></li><li><a href="probability_theory.html">Probability theory</a></li><li><a href="bayes_reasoning.html">Bayesian reasoning</a></li><li>…</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="rationality.html">Rationality</a></li><li><a href="probability_theory.html">Probability theory</a></li><li><a href="bayes_reasoning.html">Bayesian reasoning</a></li><li>…</li></ul></nav></nav></header><hr><main><p>[summary:  <a href="https://en.wikipedia.org/wiki/Cromwell%27s_rule">Cromwell's Rule</a> in statistics forbids us to assign probabilities of exactly $~$0$~$ or $~$1$~$ to any empirical proposition - that is, it is always possible to be mistaken.</p>
+<ul>
+<li>Probabilities of exactly $~$0$~$ or $~$1$~$ correspond to infinite <a href="bayes_log_odds.html">log odds</a>, meaning that no finite amount of evidence can ever suffice to reach them, or overturn them.  Once you assign probability $~$0$~$ or $~$1,$~$ you can never change your mind.</li>
+<li>Sensible <a href="universal_prior.html">universal priors</a> never assign probability exactly $~$0$~$ or $~$1$~$ to any predicted future observation - their hypothesis space is always broad enough to include a scenario where the future is different from the past.]</li>
+</ul>
+<p><a href="https://en.wikipedia.org/wiki/Cromwell%27s_rule">Cromwell's Rule</a> in statistics argues that no empirical proposition should be assigned a subjective probability of <em>exactly</em> $~$0$~$ or $~$1$~$ - it is always <em>possible</em> to be mistaken.  (Some argue that this rule should be generalized to logical facts as well.)</p>
+<p>A probability of exactly $~$0$~$ or $~$1$~$ corresponds to infinite <a href="bayes_log_odds.html">log odds</a>, and would require infinitely <a href="bayes_strength_of_evidence.html">strong</a> evidence to reach starting from any finite <a href="prior_probability.html">prior</a>.  To put it another way, if you don't start out infinitely certain of a fact before making any observations (before you were born), you won't reach infinite certainty after any finite number of observations involving finite probabilities.</p>
+<p>All sensible <a href="universal_prior.html">universal priors</a> seem so far to have the property that they never assign probability exactly $~$0$~$ or $~$1$~$ to any predicted future observation, since their hypothesis space is always broad enough to include an imaginable state of affairs in which the future is different from the past.</p>
+<p>If you did assign a probability of exactly $~$0$~$ or $~$1,$~$ you would be unable to <a href="bayes_update.html">update</a> no matter how much contrary evidence you observed.  <a href="odds.html">Prior odds</a> of 0 : 1 (or 1 : 0), times any finite <a href="relative_likelihood.html">likelihood ratio</a>, end up yielding 0 : 1 (or 1 : 0).</p>
+<p>As Rafal Smigrodski put it:</p>
+<blockquote>
+  <p>"I am not totally sure I have to be always unsure.  Maybe I could be legitimately sure about something.  But once I assign a probability of 1 to a proposition, I can never undo it.  No matter what I see or learn, I have to reject everything that disagrees with the axiom.  I don't like the idea of not being able to change my mind, ever."</p>
+</blockquote></main><hr><footer><p class="tagged"><h2>Tagged</h2><span class="page-comma-list"><a class="page-link" href="../page/c_class_meta_tag.html">C-Class</a></span></p><p class="likes"><h2>Likes</h2><span class="page-comma-list"><a class="page-link" href="../page/CharlieRaffaele.html">Charlie Raffaele</a>,
+ <a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a>,
+ <a class="page-link" href="../page/JaimeSevillaMolina.html">Jaime Sevilla Molina</a>,
+ <a class="page-link" href="../page/MalcolmMcCrimmon.html">Malcolm McCrimmon</a>,
+ <a class="page-link" href="../page/NateSoares.html">Nate Soares</a>,
+ <a class="page-link" href="../page/StephanieZolayvar.html">Stephanie Zolayvar</a>,
+ <a class="page-link" href="../page/StevenZuber.html">Steven Zuber</a>,
+ <a class="page-link" href="../page/SzymonWilczyski.html">Szymon Wilczyński</a></span></p><p class="reverse-related"><h2>Reverse Related</h2><ul class="page-list"><li><a class="page-link" href="../page/c_class_meta_tag.html">C-Class</a> <q>This page has substantial content, but may not thoroughly cover the topic, may not meet style and prose standards, or may not explain the concept in a way the target audience will reliably understand.</q> - <a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a></li></ul></p></footer></body></html>

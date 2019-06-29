@@ -1,0 +1,39 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Standard provability predicate</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="../MathJax-2.7.5/MathJax.js"></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">Standard provability predicate</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/standard_provability_predicate.json.html">standard_provability_predicate.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/standard_provability_predicate">https://arbital.com/p/standard_provability_predicate</a></p><p class="creator">by
+ <a class="page-link" href="../page/JaimeSevillaMolina.html">Jaime Sevilla Molina</a> Jul 19 2016 
+updated
+ Jul 23 2016</p></div><p class="clickbait">Encoding provability as a statement of arithmetic</p><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>Standard provability predicate</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="math.html">Mathematics</a></li><li><a href="modal_logic.html">Modal logic</a></li><li>…</li></ul></nav></nav></header><hr><main><p>[summary: In theories extending [-minimal_arithmetic] there exists a $~$\exists_1$~$-formula $~$\square_T$~$(x) which defines the existence of a proof in an [ axiomatizable theory] $~$T$~$. </p>
+<p>The formula satisfies <a href="provability_predicate.html">some nice propereties</a>, but fails to capture some intuitions about provability due to non-standard weirdness.]</p>
+<p>We know that every theory as [expressiveness_mathematics expressive] as [-minimal_arithmetic] (i.e., [Peano_Arithmetic $~$PA$~$]) is capable of talking about [statement_mathematics statements] about itself via [encoding encodings] of [sentence_mathematics sentences] of the language of [-arithmetic] into the <a href="natural_number.html">natural numbers</a>.</p>
+<p>Of particular interest is figuring out whether it is possible to write a formula $~$Prv(x)$~$ which is true <a href="iff.html">Iff</a> there exists a proof of $~$x$~$ from the axioms and rules of inference of our theory.</p>
+<p>If we reflect on what a proof is, we will come to the conclusion that a proof is a sequence of symbols which follows certain rules. Concretely, it is a sequence of strings such that either:</p>
+<ol>
+<li>The string is an <a href="axiom.html">Axiom</a> of the system or…</li>
+<li>The string is a theorem that can be deduced from previous strings of the system by applying a [ rule of inference].</li>
+</ol>
+<p>And the last string in the sequence corresponds to the theorem we want to prove.</p>
+<p>If the axioms are a [-computable_set], and the rules of inference are also effectively computable, then checking whether a certain string is a proof of a given theorem is also computable.</p>
+<p>Since every computable set can be defined by a [ $~$\Delta_1$~$-formula] in arithmetic %%note:[ Proof]%% then we can define the $~$\Delta_1$~$-formula $~$Prv(x,y)$~$ such that $~$PA\vdash Prv(n,m)$~$ iff $~$m$~$ encodes a proof of the sentence of arithmetic encoded by $~$n$~$.</p>
+<p>Then a sentence $~$S$~$ is a theorem of $~$PA$~$ if $~$PA\vdash \exists y Prv(\ulcorner S \urcorner, y)$~$.</p>
+<p>This formula is the standard provability predicate, which we will abbreviate as $~$\square_{PA}(x)$~$, and has some nice properties which correspond to what one would expect of a <a href="provability_predicate.html">Provability predicate</a>.</p>
+<p>However, due to [non_standard_model non-standard models], there are some intuitions about provability that the standard provability predicate fails to capture. For example, it turns out that $~$\square_{PA}A\rightarrow A$~$ [55w is not always a theorem of $~$PA$~$].</p>
+<p>There are non-standard models of $~$PA$~$ which contain numbers other than $~$0,1,2,..$~$ (called [non_standard_models_of_arithmetic non-standard models of arithmetic]). In those models, the standard predicate $~$\square_{PA}x$~$ can be true even if for no natural number $~$n$~$ it is the case that $~$Prv(x,n)$~$. %%note:This condition is called [ $~$\omega$~$-inconsistency]%% This means that there is a non-standard number which satisfies the formula, but nonstandard numbers do not encode standard proofs!</p></main><hr><section class="comments"><h2>Comments</h2><div class="comment"><p><a class="page-link" href="../page/EricRogstad.html">Eric Rogstad</a></p><p><blockquote class="comment-context">Of particular interest is figuring out whether it is possible to write a formula $~$Prv(x)$~$ which is true iff there exists a proof of $~$x$~$ from the axioms and rules of inference of our theory\.</blockquote>
+<p>Does x correspond to a <em>statement</em> (as used in the previous sentence about expressiveness), or does the formula Prv(x) correspond to a statement?</p>
+<p>What's the relationship between a formula and a statement?</p></p></div></section><footer><p class="all-creators"><h2>All Creators</h2><span class="page-comma-list"><a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a>,
+ <a class="page-link" href="../page/EricRogstad.html">Eric Rogstad</a>,
+ <a class="page-link" href="../page/JaimeSevillaMolina.html">Jaime Sevilla Molina</a></span></p><p class="likes"><h2>Likes</h2><span class="page-comma-list"><a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a>,
+ <a class="page-link" href="../page/PatrickStevens.html">Patrick Stevens</a></span></p></footer></body></html>

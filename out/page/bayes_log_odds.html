@@ -1,0 +1,194 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Bayes' rule: Log-odds form</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="../MathJax-2.7.5/MathJax.js"></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">Bayes' rule: Log-odds form</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/bayes_log_odds.json.html">bayes_log_odds.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/bayes_log_odds">https://arbital.com/p/bayes_log_odds</a></p><p class="creator">by
+ <a class="page-link" href="../page/EliezerYudkowsky.html">Eliezer Yudkowsky</a> Feb 13 2016 
+updated
+ Jul 10 2017</p></div><p class="clickbait">A simple transformation of Bayes' rule reveals tools for measuring degree of belief, and strength of evidence.</p><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>Bayes' rule: Log-odds form</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="math.html">Mathematics</a></li><li><a href="probability_theory.html">Probability theory</a></li><li><a href="bayes_reasoning.html">Bayesian reasoning</a></li><li><a href="bayes_rule.html">Bayes' rule</a></li><li>…</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="rationality.html">Rationality</a></li><li><a href="probability_theory.html">Probability theory</a></li><li><a href="bayes_reasoning.html">Bayesian reasoning</a></li><li><a href="bayes_rule.html">Bayes' rule</a></li><li>…</li></ul></nav></nav></header><hr><main><p>[summary:  <a href="bayes_rule_odds.html">Bayes&#39;s Rule</a> states that the <a href="prior_probability.html">prior odds</a> times the <a href="likelihood_ratio.html">likelihood ratio</a> equals the <a href="posterior_probability.html">posterior odds</a>.  We can take the logarithms of both sides of the equation to get an equivalent rule which uses addition instead of multiplication.  Letting $~$H_i$~$ and $~$H_j$~$ denote hypotheses and $~$e$~$ denote evidence:</p>
+<p>$$~$
+\log \left ( \dfrac
+   {\mathbb P(H_i\mid e)}
+   {\mathbb P(H_j\mid e)}
+\right )
+=
+\log \left ( \dfrac
+   {\mathbb P(H_i)}
+   {\mathbb P(H_j)}
+\right )
++
+\log \left ( \dfrac
+   {\mathbb P(e\mid H_i)}
+   {\mathbb P(e\mid H_j)}
+\right ).
+$~$$</p>
+<p>To use a real-life example, a study of Chinese blood donors found that roughly 1 in 100,000 of them had HIV (as determined by a very reliable gold-standard test). The non-gold-standard test used for initial screening had a sensitivity of 99.7% and a specificity of 99.8%, meaning that it was 500 times as likely to return positive for infected as non-infected patients.  Then our prior belief is -5 orders of magnitude against HIV, and if we then observe a positive test result, this is evidence of strength +2.7 orders of magnitude for HIV.  Our posterior belief is -2.3 orders of magnitude, or odds of less than 1 to a 100, against HIV.]</p>
+<p><a href="bayes_rule_odds.html">The odds form</a> of <a href="bayes_rule.html">Bayes&#39;s Rule</a> states that the <a href="prior_probability.html">prior</a> [odds_ratio odds] times the <a href="likelihood_ratio.html">likelihood ratio</a> equals the <a href="posterior_probability.html">posterior odds</a>. We can take the log of both sides of this equation, yielding an equivalent equation which uses addition instead of multiplication.</p>
+<p>Letting $~$H_i$~$ and $~$H_j$~$ denote hypotheses and $~$e$~$ denote evidence, the log-odds form of Bayes' rule states:</p>
+<p>$$~$
+\log \left ( \dfrac
+   {\mathbb P(H_i\mid e)}
+   {\mathbb P(H_j\mid e)}
+\right )
+=
+\log \left ( \dfrac
+   {\mathbb P(H_i)}
+   {\mathbb P(H_j)}
+\right )
++
+\log \left ( \dfrac
+   {\mathbb P(e\mid H_i)}
+   {\mathbb P(e\mid H_j)}
+\right ).
+$~$$</p>
+<p>This can be numerically efficient for when you're carrying out <a href="bayes_rule_multiple.html">lots of updates one after another</a>.  But a more important reason to think in log odds is to get a better grasp on the notion of 'strength of evidence'.</p>
+<h1 id="logarithmsoflikelihoodratios">Logarithms of likelihood ratios</h1>
+<p>Suppose you're visiting your friends Andrew and Betty, who are a couple. They promised that one of them would pick you up from the airport when you arrive. You're not sure which one is in fact going to pick you up (<a href="prior_probability.html">prior odds</a> of 50:50), but you do know three things:</p>
+<ol>
+<li>They have both a blue car and a red car. Andrew prefers to drive the blue car, Betty prefers to drive the red car, but the correlation is relatively weak. (Sometimes, which car they drive depends on which one their child is using.) Andrew is 2x as likely to drive the blue car as Betty.</li>
+<li>Betty tends to honk the horn at you to get your attention. Andrew does this too, but less often. Betty is 4x as likely to honk as Andrew.</li>
+<li>Andrew tends to run a little late (more often than Betty). Betty is 2x as likely to have the car already at the airport when you arrive.</li>
+</ol>
+<p>All three observations are independent as far as you know (that is, you don't think Betty's any more or less likely to be late if she's driving the blue car, and so on).</p>
+<p>Let's say we see a blue car, already at the airport, which honks.</p>
+<p>The odds form of this calculation would be a $~$(1 : 1)$~$ prior for Betty vs. Andrew, times likelihood ratios of $~$(1 : 2) \times (4 : 1) \times (2 : 1),$~$ yielding posterior odds of $~$(1 \times 4 \times 2 : 2 \times 1 \times 1) = (8 : 2) = (4 : 1)$~$, so it's 4/5 = 80% likely to be Betty.</p>
+<p>Here's the log odds form of the same calculation, using 1 <strong>bit</strong> to denote each factor of $~$2$~$ in belief or evidence:</p>
+<ul>
+<li>Prior belief in Betty of $~$\log_2 (\frac{1}{1}) = 0$~$ bits.</li>
+<li>Evidence of $~$\log_2 (\frac{1}{2}) = {-1}$~$ bits against Betty.</li>
+<li>Evidence of $~$\log_2 (\frac{4}{1}) = {+2}$~$ bits for Betty.</li>
+<li>Evidence of $~$\log_2 (\frac{2}{1}) = {+1}$~$ bit for Betty.</li>
+<li>Posterior belief of $~$0 + {^-1} + {^+2} + {^+1} = {^+2}$~$ bits that Betty is picking us up.</li>
+</ul>
+<p>If your posterior belief is +2 bits, then your posterior odds are $~$(2^{+2} : 1) = (4 : 1),$~$ yielding a posterior probability of 80% that Betty is picking you up.</p>
+<p>Evidence and belief represented this way is <em>additive,</em> which can make it an easier fit for intuitions about "strength of credence" and "strength of evidence"; we'll soon develop this point in further depth.</p>
+<h1 id="thelogoddsline">The log-odds line</h1>
+<p>Imagine you start out thinking that the hypothesis $~$H$~$ is just as likely as $~$\lnot H,$~$ its negation. Then you get five separate independent $~$2 : 1$~$ updates in favor of $~$H.$~$ What happens to your probabilities?</p>
+<p>Your odds (for $~$H$~$) go from $~$(1 : 1)$~$ to $~$(2 : 1)$~$ to $~$(4 : 1)$~$ to $~$(8 : 1)$~$ to $~$(16 : 1)$~$ to $~$(32 : 1).$~$</p>
+<p>Thus, your probabilities go from $~$\frac{1}{2} = 50\%$~$ to $~$\frac{2}{3} \approx 67\%$~$ to $~$\frac{4}{5} = 80\%$~$ to $~$\frac{8}{9} \approx 89\%$~$ to $~$\frac{16}{17} \approx 94\%$~$ to $~$\frac{32}{33} \approx 97\%.$~$</p>
+<p>Graphically representing these changing probabilities on a line that goes from 0 to 1:</p>
+<p><img src="https://i.imgur.com/pJOVvl1.png" alt="0 updates" />
+<img src="https://i.imgur.com/9AxEpQA.png" alt="3 updates" />
+<img src="https://i.imgur.com/HHeyAzO.png" alt="5 updates" /></p>
+<p>We observe that the probabilities approach 1 but never get there &mdash; they just keep stepping across a fraction of the remaining distance, eventually getting all scrunched up near the right end.</p>
+<p>If we instead convert the probabilities into log-odds, the story is much nicer. 50% probability becomes 0 bits of credence, and every independent $~$(2 : 1)$~$ observation in favor of $~$H$~$ shifts belief by one unit along the line.</p>
+<p><img src="https://i.imgur.com/TquetiU.png" alt="the log-odds line" /></p>
+<p>(As for what happens when we approach the end of the line, there isn't one!  0% probability becomes $~$-\infty$~$ bits of credence and 100% probability becomes $~$+\infty$~$ bits of credence.%%%knows-requisite(<a href="math2.html">Math 2</a>):%%note: This un-scrunching of the [-interval] $~$(0,1)$~$ into the entire [-real_line] is done by an application of the [inverse_logistic_function inverse logistic] function.%% %%%)</p>
+<h1 id="intuitionsaboutthelogoddsline">Intuitions about the log-odds line</h1>
+<p>There are a number of ways in which this infinite log-odds line is a better place to anchor your intuitions about "belief" than the usual [0, 1] probability interval. For example:</p>
+<ul>
+<li>Evidence you are twice as likely to see if the hypothesis is true than if it is false is $~${+1}$~$ bits of evidence and a $~${^+1}$~$-bit update, regardless of how confident or unconfident you were to start with--the strength of new evidence, and the distance we update, shouldn't <em>depend on</em> our prior belief.</li>
+<li>If your credence in something is 0 bits--neither positive or negative belief--then you think the odds are 1:1.</li>
+<li>The distance between $~$0.01$~$ and $~$0.000001$~$ is much greater than the distance between $~$0.11$~$ and $~$0.100001.$~$</li>
+</ul>
+<p>To expand on the final point: on the 0-1 probability line, the difference between 0.01 (a 1% chance) and 0.000001 (a 1 in a million chance) is roughly the same as the distance between 11% and 10%.  This doesn't match our sense for the intuitive strength of a claim:  The difference between "1 in 100!" and "1 in a million!" feels like a far bigger jump than the difference between "11% probability" and "a hair over 10% probabiility."</p>
+<p>On the log-odds line, a 1 in 100 credibility is $~${^-2}$~$ orders of magnitude, and a "1 in a million" credibility is $~${^-6}$~$ orders of magnitude.  The distance between them is minus 4 orders of magnitude, that is, $~$\log_{10}(10^{-6}) - \log_{10}(10^{-2})$~$ yields $~${^-4}$~$ magnitudes, or roughly $~${^-13.3}$~$ bits.  On the other hand, 11% to 10% is $~$\log_{10}(\frac{0.10}{0.90}) - \log_{10}(\frac{0.11}{0.89}) \approx {^-0.954}-{^-0.907} \approx {^-0.046}$~$ magnitudes, or $~${^-0.153}$~$ bits.</p>
+<p>The log-odds line doesn't compress the vast differences available near the ends of the probability spectrum. Instead, it exhibits a "belief bar" carrying on indefinitely in both directions--every time you see evidence with a likelihood ratio of $~$2 : 1,$~$ it adds one more bit of credibility.</p>
+<p>The <a href="https://en.wikipedia.org/wiki/Weber%E2%80%93Fechner_law">Weber-Fechner law</a> says that most human sensory perceptions are logarithmic, in the sense that a factor-of-2 intensity change <em>feels</em> like around the same amount of increase no matter where you are on the scale.  Doubling the physical intensity of a sound feels to a human like around the same amount of change in that sound whether the initial sound was 40 decibels or 60 decibels.  That's why there's an exponential decibel scale of sound intensities in the first place!</p>
+<p>Thus the log-odds form should be, in a certain sense, the <em>most</em> intuitive variant of Bayes' rule to use: Just add the evidence-strength to the belief-strength!  If you can make your feelings of evidence-strength and belief-strength be proportional to the logarithms of ratios, that is.</p>
+<p>Finally, the log-odds representation gives us an even easier way to see how <a href="bayes_extraordinary_claims.html">extraordinary claims require extraordinary evidence</a>: If your prior belief in $~$H$~$ is -30 bits, and you see evidence on the order of +5 bits for $~$H$~$, then you're going to wind up with -25 bits of belief in $~$H$~$, which means you still think it's far less likely than the alternatives.</p>
+<h1 id="exampleblueoysters">Example: Blue oysters</h1>
+<p>Consider the <a href="blue_oysters.html">blue oyster</a> example problem:</p>
+<p>You're collecting exotic oysters in Nantucket, and there are two different bays from which you could harvest oysters.</p>
+<ul>
+<li>In both bays, 11% of the oysters contain valuable pearls and 89% are empty.</li>
+<li>In the first bay, 4% of the pearl-containing oysters are blue, and 8% of the non-pearl-containing oysters are blue.</li>
+<li>In the second bay, 13% of the pearl-containing oysters are blue, and 26% of the non-pearl-containing oysters are blue.</li>
+</ul>
+<p>Would you rather have a blue oyster from the first bay or the second bay?  Well, we first note that the likelihood ratio from "blue oyster" to "full vs. empty" is $~$1 : 2$~$ in either case, so both kinds of blue oyster are equally valuable.  (Take a moment to reflect on how obvious this would <em>not</em> seem before learning about Bayes' rule!)</p>
+<p>But what's the chance of (either kind of) a blue oyster containing a pearl?  Hint: this would be a good time to convert your credences into bits (factors of 2).</p>
+<p>%%hidden(Answer):
+89% is around 8 times as much as 11%, so we start out with $~${^-3}$~$ bits of belief that a random oyster contains a pearl.</p>
+<p>Full oysters are 1/2 as likely to be blue as empty oysters, so seeing that an oyster is blue is $~${^-1}$~$ bits of evidence against it containing a pearl.</p>
+<p>Posterior belief should be around $~${^-4}$~$ bits or $~$(1 : 16)$~$ against, or a probability of 1/17… so a bit more than 5% (1/20) maybe?  (Actually 5.88%.)
+%%</p>
+<h1 id="reallifeexamplehivtest">Real-life example: HIV test</h1>
+<p>[todo: Find &amp; cite the referenced study]
+A study of Chinese blood donors %note: Citation needed% found that roughly 1 in 100,000 of them had HIV (as determined by a very reliable gold-standard test).  The non-gold-standard test used for initial screening had a <em>sensitivity</em> of 99.7% and a <em>specificity</em> of 99.8%, meaning respectively that $~$\mathbb P({positive}\mid {HIV}) = .997$~$ and $~$\mathbb P({negative}\mid \neg {HIV}) = .998$~$, i.e., $~$\mathbb P({positive} \mid  \neg {HIV}) = .002.$~$</p>
+<p>That is: the prior odds are $~$1 : 100,000$~$ against HIV, and a positive result in an initial screening favors HIV with a likelihood ratio of $~$500 : 1.$~$</p>
+<p>Using log base 10 (because those are <a href="log_as_length.html">easier to do in your head</a>):</p>
+<ul>
+<li>The prior belief in HIV was about -5 magnitudes.</li>
+<li>The evidence was a tad less than +3 magnitudes strong, since 500 is less than 1,000.  ($~$\log_{10}(500) \approx 2.7$~$).</li>
+</ul>
+<p>So the posterior belief in HIV is a tad underneath -2 magnitudes, i.e., less than a 1 in 100 chance of HIV.</p>
+<p>Even though the screening had a $~$500 : 1$~$ likelihood ratio in favor of HIV, someone with a positive screening result <em>really</em> should not panic!</p>
+<p>Admittedly, this setup had people being screened randomly, in a relatively non-AIDS-stricken country.  You'd need separate statistics for people who are getting tested for HIV because of specific worries or concerns, or in countries where HIV is highly prevalent.  <em>Nonetheless,</em> the points that "only a tiny fraction of people have illness X" and that "preliminary observations Y may not have <em>correspondingly tiny</em> false positive rates" are worth remembering for many illnesses X and observations Y.</p>
+<h1 id="exposinginfinitecredences">Exposing infinite credences</h1>
+<p>The log-odds representation exposes the degree to which $~$0$~$ and $~$1$~$ are very unusual among the classical probabilities. For example, <a href="cromwells_rule.html">if you ever assign probability absolutely 0 or 1 to a hypothesis, then no amount of evidence can change your mind about it, ever</a>.</p>
+<p>On the log-odds line, credences range from $~$-\infty$~$ to $~$+\infty,$~$ with the infinite extremes corresponding to probability $~$0$~$ and $~$1$~$ which can thereby be seen as "infinite credences". That's not to say that $~$0$~$ and $~$1$~$ probabilities should never be used. For an ideal reasoner, the probability $~$\mathbb P(X) + \mathbb P(\lnot X)$~$ should be 1 (where $~$\lnot X$~$ is the logical negation of $~$X$~$).%note:For us mere mortals, <a href="http://lesswrong.com/lw/jr/how_to_convince_me_that_2_2_3/">consider avoiding extreme probabilities even then</a>.% Nevertheless, these infinite credences of 0 and 1 behave like 'special objects' with a qualitatively different behavior from the ordinary credence spectrum. Statements like "After seeing a piece of strong evidence, my belief should never be exactly what it was previously" are false for extreme credences, just as statements like "subtracting 1 from a number produces a lower number" are false if you insist on regarding %%knows-requisite(<a href="math2.html">Math 2</a>): [aleph_0 $~$\aleph_0$~$] %% %%!knows-requisite(<a href="math2.html">Math 2</a>): infinity %% as a number.</p>
+<h1 id="evidenceindecibels">Evidence in decibels</h1>
+<p>E.T. Jaynes, in <em>Probability Theory: The Logic of Science</em> (section 4.2), reports that using decibels of evidence makes them easier to grasp and use by humans.</p>
+<p>If an hypothesis has a likelihood ratio of $~$o$~$, then its evidence in decibels is given by the formula $~$e = 10\log_{10}(o)$~$.</p>
+<p>In this scheme, multiplying the likelihood ratio by 2 means approximately adding 3dB. Multiplying by 10 means adding 10dB.</p>
+<p>Jayne reports having used decimal logarithm first, for their  ease of calculation and having tried to switch to natural logarithms with the advent of pocket calculators. But decimal logarithms were found to be easier to grasp.</p></main><hr><section class="comments"><h2>Comments</h2><div class="comment"><p><a class="page-link" href="../page/NateSoares.html">Nate Soares</a></p><p><p>I recommend rethinking the magnet metaphor, on the grounds that it is physically wrong. If you have two magnets on either end of a ruler, and one is twice as strong as the other, then an iron ball at the center of the ruler is going to roll all the way to the larger magnet (accelerating as it goes, because inverse square law), unless I'm missing something. Perhaps a better physical metaphor would be something like rubber bands, with each bit of evidence adding another rubber band from the belief level to pins at the ends of the ruler?</p></p></div><div class="comment"><p><a class="page-link" href="../page/EliTyre.html">Eli Tyre</a></p><p><blockquote class="comment-context">\(<mark>Actually, since log\-likelihoods are never positive \- no likelihood greater than $$~$1$~$$ whose log is 0 \- our belief is really being attracted to the hypothesis that has the negative logarithm closest to 0\.</mark>  We should really visualize hypotheses radiating repulsive pushes corresponding to how much they make the evidence surprising, with the net force on our belief moving it toward the hypotheses that radiate the least surprise\.  But we can also still imagine high likelihoods as pulling more and low likelihoods as pulling less, so long as the absolute distance between pulls still corresponds to the log of the likelihood ratio between them\.\)</blockquote>
+<p>I don't understand this sentence. </p></p></div><div class="comment"><p><a class="page-link" href="../page/EricRogstad.html">Eric Rogstad</a></p><p><blockquote class="comment-context">Why is this worth doing? Well, if you're carrying out lots and lots of Bayesian updates, then you have to combine lots and lots of <mark>odds</mark>\. Multiplication is computationally more expensive than addition, so it's often computationally cheaper to do your updating in log space\.</blockquote>
+<p>odds ratios?</p>
+<p>The thing inside the log(this part) is an odds ratio, right?</p></p></div><div class="comment"><p><a class="page-link" href="../page/EricRogstad.html">Eric Rogstad</a></p><p><blockquote class="comment-context">All three observations are independent as far as you know \(that is, you don't think Betty's any more or less likely to be late if she's driving the blue car, and so on\)\. <mark>Each observation — red car, honking, punctuality — carries a $~$2 : 1$~$ likelihood in favor of the driver being Betty\.</mark> If the red car is punctual and honks at you, but you can't yet see the driver, then your odds that the driver is Betty should be about $~$8 : 1,$~$ because, by Bayes' rule you should multiply three $~$2 : 1$~$ likelihood ratios together\. But let's say you only get to make two of the observations — your plane lands late, so you don't get to see whether the car was punctual\. Given only two pieces of evidence, your odds that the driver is Betty should be about $~$4 : 1.$~$</blockquote>
+<p>I would expect this sentence only after another telling me that the observations were red car, honking, and punctuality. I think the next sentence should be broken apart and this should be inserted inside.</p></p></div><div class="comment"><p><a class="page-link" href="../page/yassinechaouche.html">yassine chaouche</a></p><p><blockquote class="comment-context">That is: the prior odds are $~$1 : 100,000$~$ against HIV, and a positive result in an initial screening favors HIV with <mark>a likelihood ratio of</mark> $~$500 : 1.$~$</blockquote>
+<p>It would be nice to show how to go from 99.8% to the 500:1 ratio.</p></p></div><div class="comment"><p><a class="page-link" href="../page/GradySimon.html">Grady Simon</a></p><p><blockquote class="comment-context">Evidence and belief represented this way is additive, which can make it an easier fit for intuitions about <mark>"strength of credence" and "strength of evidence"</mark>; we'll soon develop this point in further depth\.</blockquote>
+<p>I don't think these terms have been defined yet. The difference between "strength of credence" and "strength of evidence" isn't obvious to me, but it seems like it's assumed throughout the rest of the article that the reader knows what they mean. </p></p></div><div class="comment"><p><a class="page-link" href="../page/DewiMorgan.html">Dewi Morgan</a></p><p><blockquote class="comment-context">Answer
+
+89% is around 8 times as much as 11%, so we start out with $~${^-3}$~$ bits of belief that a random oyster contains a pearl\.
+
+Full oysters are 1/2 as likely to be blue as empty oysters, so seeing that an oyster is blue <mark>is $~${^-1}$~$ bits of evidence against</mark> it containing a pearl\.
+
+Posterior belief should be around $~${^-4}$~$ bits or $~$(1 : 16)$~$ against, or a probability of 1/17\.\.\. so a bit more than 5% \(1/20\) maybe?  \(Actually 5\.88%\.\)
+
+
+
+</blockquote>
+<p>Is "-1 against" the same as "+1 for"?</p>
+<p>Expressing the first practical example entirely in terms of negative numbers seems like a poor pedagogical choice.</p>
+<p>Phrasing as "3 bits against" and then "a further 1 bit against" may help.</p>
+<p>Adding that the blue ones are not a great pick if you want pearls may help people understand the direction of "against".</p></p></div><div class="comment"><p><a class="page-link" href="../page/DewiMorgan.html">Dewi Morgan</a></p><p><blockquote class="comment-context">On the log\-odds line, credences range from $~$-\\infty$~$ to $~$+\\infty,$~$ with the infinite extremes corresponding to probability $~$0$~$ and $~$1$~$ which can thereby be seen as "infinite credences"\. That's not to say that $~$0$~$ and $~$1$~$ probabilities should never be used\. For an ideal reasoner, the probability $~$\\mathbb P(X) + \\mathbb P(\\lnot X)$~$ should be 1 \(where $~$\\lnot X$~$ is the logical negation of $~$X$~$\)\.3 Nevertheless, these infinite credences of 0 and 1 behave like 'special objects' with a qualitatively different behavior from the ordinary credence spectrum\. Statements like "After seeing a piece of strong evidence, my belief should never be exactly what it was previously" <mark>are false for extreme credences</mark>, just as statements like "subtracting 1 from a number produces a lower number" are false if you insist on regarding $~$\\aleph\_0$~$  infinity  as a number\.</blockquote>
+<p>"Extreme credences" here should likely be "infinite credences".</p>
+<p>Even so, previous page made the exact counterpoint: </p>
+<p>While <em>strong</em> evidence may not change your view of things, things, <em>extreme</em> evidence absolutely <em>should</em> make you revisit your estimate of even an <em>infinite</em> credence level.</p></p></div><div class="comment"><p><a class="page-link" href="../page/ViktorRiabtsev.html">Viktor Riabtsev</a></p><p><blockquote class="comment-context">On the log\-odds line, a 1 in 100 credibility is $~${^-2}$~$ orders of magnitude, and a "1 in a million" credibility is $~${^-6}$~$ orders of magnitude\.  The distance between them is minus 4 orders of magnitude, that is, $~$\\log\_{10}(10^{-6}) - \\log\_{10}(10^{-2})$~$ yields $~${^-4}$~$ magnitudes, or roughly $~${^-13.3}$~$ bits\.  On the other hand, 11% to 10% is $~$\\log\_{10}(\\frac{0.10}{0.90}) - \\log\_{10}(\\frac{0.11}{0.89}) \\approx {^-0.954}-{^-0.907} \\approx {^-0.046}$~$ magnitudes, or $~${^-0.153}$~$<mark> bits\.</mark></blockquote>
+<p>One of these does log( prob/ 1 - prob) the other does log( prob) …</p>
+<p>I get your point about orders of magnitude difference, but for me this ends up more confusing then anything.</p></p></div><div class="comment"><p><a class="page-link" href="../page/EyalRoth.html">Eyal Roth</a></p><p><blockquote class="comment-context">
+Evidence you are twice as likely to see if the hypothesis is true than if it is false is $~${+1}$~$ bits of evidence and a $~${^+1}$~$\-bit update, regardless of how confident or unconfident you were to start with\-\-the strength of new evidence, and the distance we update, shouldn't depend on our prior belief\.
+If your credence in something is 0 bits\-\-neither positive or negative belief\-\-then you think the odds are 1:1\.
+<mark>The distance between $~$0.01$~$ and $~$0.000001$~$ is much greater than the distance between $~$0.11$~$ and $~$0.100001.$~$
+</mark></blockquote>
+<p>Wrong, they are exactly the same distances. I read the next paragraph so I get where you were going with this, but I find it confusing to start off with a blatantly wrong claim, especially when the next line compares <code>0.11</code> to <code>0.1</code> (11% to 10%) -- not to <code>0.100001</code> -- in order to describe how the significance of <code>0.00001</code> gets "lost in translation" when speaking in probabilities and not in bits.</p></p></div><div class="comment"><p><a class="page-link" href="../page/EyalRoth.html">Eyal Roth</a></p><p><blockquote class="comment-context">Using log base 10 \(because those are easier to do in your head\):</blockquote>
+<p>But that really gives a different magnitude to the evidence. Why not be consistent with the log base?</p>
+<p>For example, if we were to use log base 2, the prior would be ~16.6 magnitudes strong and the evidence ~8. This means that the evidence would alter the prior by (slightly) less than half the order of magnitudes, where's in the case of log base 10 the alteration is (slightly) more than half the order of magnitudes (5 vs 2.7).</p>
+<p>Also, imagine the absurd choice of log base 100k. The prior would remain practically intact in terms of this kind of order of magnitudes.</p></p></div><div class="comment"><p><a class="page-link" href="../page/EyalRoth.html">Eyal Roth</a></p><p><blockquote class="comment-context">
+A study of Chinese blood donors 2 found that roughly 1 in 100,000 of them had HIV \(as determined by a very reliable gold\-standard test\)\.  <mark>The non\-gold\-standard test used for initial screening</mark> had a sensitivity of 99\.7% and a specificity of 99\.8%, meaning respectively that $~$\\mathbb P({positive}\\mid {HIV}) \= .997$~$ and $~$\\mathbb P({negative}\\mid \\neg {HIV}) \= .998$~$, i\.e\., $~$\\mathbb P({positive} \\mid  \\neg {HIV}) \= .002.$~$</blockquote>
+<p>It is really confusing to apply one of the initial steps of a study as evidence to a prior which is the <strong>result</strong> (last step) of the same study.</p></p></div><div class="comment"><p><a class="page-link" href="../page/EyalRoth.html">Eyal Roth</a></p><p><blockquote class="comment-context">Jayne reports having used decimal logarithm first, for their  ease of calculation and having tried to switch to natural logarithms with the advent of pocket calculators\.<mark> But decimal logarithms were found to be easier to grasp\.</mark></blockquote>
+<p>Easier to grasp perhaps, but dangerously misleading. Increasing the likelihood of an event from <code>10^-100</code> to <code>10^-99</code> is very different and much less significant than increasing it from <code>10^-2</code> (1%) to <code>10^-1</code> (10%). I hope this is covered later in this guide.</p></p></div></section><footer><p class="tagged"><h2>Tagged</h2><span class="page-comma-list"><a class="page-link" href="../page/b_class_meta_tag.html">B-Class</a>,
+ <a class="page-link" href="../page/proposed_a_class.html">Proposed A-Class</a></span></p><p class="all-creators"><h2>All Creators</h2><span class="page-comma-list"><a class="page-link" href="../page/AlexeiAndreev.html">Alexei Andreev</a>,
+ <a class="page-link" href="../page/EliezerYudkowsky.html">Eliezer Yudkowsky</a>,
+ <a class="page-link" href="../page/EricRogstad.html">Eric Rogstad</a>,
+ <a class="page-link" href="../page/JoeZeng.html">Joe Zeng</a>,
+ <a class="page-link" href="../page/JohnSchmitt.html">John Schmitt</a>,
+ <a class="page-link" href="../page/Larsvlisen.html">Lars Øvlisen</a>,
+ <a class="page-link" href="../page/NateSoares.html">Nate Soares</a>,
+ <a class="page-link" href="../page/PierreThierry.html">Pierre Thierry</a>,
+ <a class="page-link" href="../page/SzymonSlawinski.html">Szymon Slawinski</a>,
+ <a class="page-link" href="../page/ViktorGregor.html">Viktor Gregor</a></span></p><p class="likes"><h2>Likes</h2><span class="page-comma-list"><a class="page-link" href="../page/7qk.html">7qk</a>,
+ <a class="page-link" href="../page/AndreiAlexandru.html">Andrei Alexandru</a>,
+ <a class="page-link" href="../page/ElaMadej.html">Ela Madej</a>,
+ <a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a>,
+ <a class="page-link" href="../page/GregvandeKrol.html">Greg van de Krol</a>,
+ <a class="page-link" href="../page/IvanTarasov.html">Ivan Tarasov</a>,
+ <a class="page-link" href="../page/MalcolmMcCrimmon.html">Malcolm McCrimmon</a>,
+ <a class="page-link" href="../page/MarkGovea.html">Mark Govea</a>,
+ <a class="page-link" href="../page/NadeemMohsin.html">Nadeem Mohsin</a>,
+ <a class="page-link" href="../page/NateSoares.html">Nate Soares</a>,
+ <a class="page-link" href="../page/RonnyFernandez.html">Ronny Fernandez</a>,
+ <a class="page-link" href="../page/SzymonSlawinski.html">Szymon Slawinski</a>,
+ <a class="page-link" href="../page/SzymonWilczyski.html">Szymon Wilczyński</a>,
+ <a class="page-link" href="../page/freddiestewart.html">freddie stewart</a></span></p><p class="reverse-related"><h2>Reverse Related</h2><ul class="page-list"><li><a class="page-link" href="../page/b_class_meta_tag.html">B-Class</a> <q>This page is mostly complete and without major problems, but has not had detailed feedback from the target audience and reviewers.</q> - <a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a></li><li><a class="page-link" href="../page/proposed_a_class.html">Proposed A-Class</a> <q>Pages which have been proposed for A-Class status.</q> - <a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a></li></ul></p></footer></body></html>

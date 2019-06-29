@@ -1,0 +1,30 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Logical system</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="../MathJax-2.7.5/MathJax.js"></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">Logical system</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/logical_system.json.html">logical_system.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/logical_system">https://arbital.com/p/logical_system</a></p><p class="creator">by
+ <a class="page-link" href="../page/JaimeSevillaMolina.html">Jaime Sevilla Molina</a> Jul 20 2016 
+updated
+ Jul 22 2016</p></div><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>Logical system</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="logic.html">Logic</a></li><li><a href="2h8.html">Formal Logic</a></li><li>…</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="logic.html">Logic</a></li><li>…</li></ul></nav></nav></header><hr><main><p>Logical systems (a.k.a. formal systems) are mathematical abstractions that aim to capture the notion of reasoning to reach valid conclusions from certain premises.</p>
+<p>A logical system can be thought of as a procedure which divides a [-language] in badly-formed and well-formed sentences, and further splits this last group into theorems and not theorems.</p>
+<p>Logical systems are made from a series of elements: a <strong>language</strong>, a <strong>syntax</strong>, <strong>axioms</strong> and <strong>rules of inference</strong>.</p>
+<p>A <strong>language</strong> consists of the [word words] that can be formed from a set of symbols. Typically, we will want our language to be [-enumerable] and [-computable]. For example, a possible language for arithmetic is $~$\Sigma^* = \{\neg,\wedge,\vee,=,+,\cdot ,0,a_1,a_2,a_3,…\}^*$~$.</p>
+<p>A <strong>syntax</strong> is the collection of rules which determine whether a word of our language is a well-formed formula. </p>
+<p>The <strong>axioms</strong> are distinguished formulas of the language that are taken to true <em>a priori</em>. A logical system is [-axiomatizable] if its set of axioms is computable.</p>
+<p>The <strong>rules of inference</strong> are $~$n+1$~$-[-tuples] that represent a function from $~$n$~$ formulas (premises) to a new formula (conclusion). For example, we have <em>modus ponens</em> as a rule of inference, which says that from a formula of the form $~$A\rightarrow B$~$ and another of the form $~$A$~$ you can deduce $~$B$~$. Almost always we will want our rules of inference to be [-computable]. Axioms can be thought of as rules of inference for which no premise is necessary.</p>
+<p>Axioms and rules of inference are used to construct proofs. A proof of a sentence $~$S$~$ of the language is a finite sequence of sentences, such that every sentence is either an axiom or can be deduced from the previous sentences using a rule of inference, and the last sentence in the sequence is $~$S$~$. Sentences which have a proof are called theorems of the system.</p>
+<p>Note that logical systems are purely syntactical entities - they talk for themselves about nothing. Logical systems are given meaning through [-semantics]. </p>
+<p>Logical systems can relate to one another through [-translations].</p></main><hr><footer><p class="tagged"><h2>Tagged</h2><span class="page-comma-list"><a class="page-link" href="../page/needs_clickbait_meta_tag.html">Needs clickbait</a></span></p><p class="all-creators"><h2>All Creators</h2><span class="page-comma-list"><a class="page-link" href="../page/DylanHendrickson.html">Dylan Hendrickson</a>,
+ <a class="page-link" href="../page/EricRogstad.html">Eric Rogstad</a>,
+ <a class="page-link" href="../page/JaimeSevillaMolina.html">Jaime Sevilla Molina</a></span></p><p class="likes"><h2>Likes</h2><span class="page-comma-list"><a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a></span></p><p class="reverse-related"><h2>Reverse Related</h2><ul class="page-list"><li><a class="page-link" href="../page/needs_clickbait_meta_tag.html">Needs clickbait</a> <q>This page does not have clickbait (a short teaser for the page displayed on various lists). Feel free to add it!</q> - <a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a></li></ul></p></footer></body></html>

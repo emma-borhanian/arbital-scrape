@@ -1,0 +1,28 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>The set of rational numbers is countable</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="../MathJax-2.7.5/MathJax.js"></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">The set of rational numbers is countable</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/rationals_are_countable.json.html">rationals_are_countable.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/rationals_are_countable">https://arbital.com/p/rationals_are_countable</a></p><p class="creator">by
+ <a class="page-link" href="../page/PatrickStevens.html">Patrick Stevens</a> Jul 3 2016</p></div><p class="clickbait">Although there are &quot;lots and lots&quot; of rational numbers, there are still only countably many of them.</p><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>The set of rational numbers is countable</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="math.html">Mathematics</a></li><li>…</li></ul></nav></nav></header><hr><main><p>The set $~$\mathbb{Q}$~$ of <a href="rational_number.html">rational numbers</a> is countable: that is, there is a <a href="bijective_function.html">bijection</a> between $~$\mathbb{Q}$~$ and the set $~$\mathbb{N}$~$ of <a href="natural_number.html">natural numbers</a>.</p>
+<h1 id="proof">Proof</h1>
+<p>By the <a href="cantor_schroeder_bernstein_theorem.html">Schröder-Bernstein theorem</a>, it is enough to find an <a href="injective_function.html">injection</a> $~$\mathbb{N} \to \mathbb{Q}$~$ and an injection $~$\mathbb{Q} \to \mathbb{N}$~$.</p>
+<p>The former is easy, because $~$\mathbb{N}$~$ is a subset of $~$\mathbb{Q}$~$ so the identity injection $~$n \mapsto \frac{n}{1}$~$ works.</p>
+<p>For the latter, we may define a function $~$\mathbb{Q} \to \mathbb{N}$~$ as follows.
+Take any rational in its lowest terms, as $~$\frac{p}{q}$~$, say. %%note:That is, the <a href="greatest_common_divisor.html">GCD</a> of the numerator $~$p$~$ and denominator $~$q$~$ is $~$1$~$.%%
+At most one of $~$p$~$ and $~$q$~$ is negative (if both are negative, we may just cancel $~$-1$~$ from the top and bottom of the fraction); by multiplying by $~$\frac{-1}{-1}$~$ if necessary, assume without loss of generality that $~$q$~$ is positive.
+If $~$p = 0$~$ then take $~$q = 1$~$.</p>
+<p>Define $~$s$~$ to be $~$1$~$ if $~$p$~$ is positive, and $~$2$~$ if $~$p$~$ is negative.</p>
+<p>Then produce the natural number $~$2^p 3^q 5^s$~$.</p>
+<p>The function $~$f: \frac{p}{q} \mapsto 2^p 3^q 5^s$~$ is injective, because <a href="fundamental_theorem_of_arithmetic.html">prime factorisations are unique</a> so if $~$f\left(\frac{p}{q}\right) = f \left(\frac{a}{b} \right)$~$ (with both fractions in their lowest terms, and $~$q$~$ positive) then $~$|p| = |a|, q=b$~$ and the sign of $~$p$~$ is equal to the sign of $~$a$~$.
+Hence the two fractions were the same after all.</p></main><hr><footer><p class="tagged"><h2>Tagged</h2><span class="page-comma-list"><a class="page-link" href="../page/proof_meta_tag.html">Proof</a></span></p><p class="likes"><h2>Likes</h2><span class="page-comma-list"><a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a></span></p><p class="reverse-related"><h2>Reverse Related</h2><ul class="page-list"><li><a class="page-link" href="../page/proof_meta_tag.html">Proof</a> <q>This page is just a proof, rather than a motivated explanation.</q> - <a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a></li></ul></p></footer></body></html>

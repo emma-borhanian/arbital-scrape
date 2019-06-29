@@ -1,0 +1,43 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>&quot;(This part was written firs...&quot;</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="../MathJax-2.7.5/MathJax.js"></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">&quot;(This part was written firs...&quot;</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/24j.json.html">24j.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/24j">https://arbital.com/p/24j</a></p><p class="creator">by
+ <a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a> Feb 27 2016 
+updated
+ Feb 27 2016</p></div><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>&quot;(This part was written firs...&quot;</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="Arbital.html">Arbital</a></li><li><a href="arbital_community_input.html">Arbital community input</a></li><li><a href="20h.html">&quot;**Transclusion / Template s...&quot;</a></li><li>…</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="Arbital.html">Arbital</a></li><li><a href="arbital_community_input.html">Arbital community input</a></li><li>…</li></ul></nav></nav></header><hr><main><p>(This part was written first, but the conclusion/outline seemed more valuable than this background thought) I realized why I'm struggling to come up with good ideas for this one: I only really know much about MW's system.</p>
+<p>So, did a bit of research into how it's done on other software. They mostly do similar things, and all major wiki software includes some form of templating, but many have different takes on the core idea (e.g. <a href="https://www.youtube.com/watch?v=WaUVBnxJJkY">Cofluence</a> is clearly optimized for non-technical users).</p>
+<p>Misc thoughts/findings:</p>
+<ul>
+<li>Some wikis have non-global templates.</li>
+<li>This seems mostly bad. It would allow short domain specific templates, but having the same text display differently seems like a much worse problem</li>
+<li>However, it does bring up the question of how to handle templates between subdomains. Probably allow templates from the main arbital repository to be called from private groups, with slightly different syntax (a ! at the start of the name or something)?</li>
+<li>Templates are generally stored separately from pages, but often use the same edit interface.</li>
+<li>Most wikis allow multiple layers of transclusion.</li>
+<li>This can be very useful for maintaining consistency and ease of template creation, but can also lead to unreadable mazes with 8 layers of template which are inefficient to unpack every time a page is served (MW gets around this through extensive caching).</li>
+<li><ul>
+<li>There are several different attempts to make templates more user friendly. The main approach is having a flexible form which allows you to input variables, rather than doing it directly as text.</li></ul></li>
+<li>The variables are usually stored in page text, but they could be stored separately.</li>
+<li>In text has the advantage of being editable from the normal edit window, but the disadvantage of having a lot of scary visual clutter at the top of edit windows (a lot of users would get put off by <a href="https://en.wikipedia.org/w/index.php?title=London&action=edit">this</a>, for example).</li>
+<li>Separately has the advantage of having structured information stored in a form which invites complex searching and analysis, and would work by having templates show up differently in the edit window, with the option to click on them to edit their variables via popup form.</li>
+<li>I suspect separate storage is significantly better, but requires extra UI work. Wikimedia's use of <a href="https://www.wikidata.org/wiki/Wikidata:Introduction">Wikidata</a> rather than adoption of <a href="https://www.semantic-mediawiki.org/wiki/Help:Introduction_to_Semantic_MediaWiki">SMW</a> and their creation of the <a href="https://www.mediawiki.org/wiki/Extension:TemplateData">TemplateData</a> extension both feel like attempts at approximating the advantages of it, patching over a bad design decision which got baked in.</li>
+</ul>
+<p>Some other links:</p>
+<ul>
+<li><a href="https://wikiapiary.com/w/index.php?title=Effective_Altruism_Wiki&action=formedit">An advanced example of Semantic Mediawiki's edit with form</a> (<a href="https://wikiapiary.com/w/index.php?title=Form:Website&action=edit">form definition</a>).</li>
+<li><a href="https://wikiapiary.com/w/index.php?title=Farm:Wikimedia&action=formedit">Basic SMW form</a> (<a href="https://wikiapiary.com/w/index.php?title=Form:Farm&action=edit">form definition</a>)</li>
+<li><a href="https://phabricator.wikimedia.org/T8455">An informative discussion about whether Wikimedia should add StringFunctions</a></li>
+<li><a href="http://foswiki.org/System/TemplateTopics">FOSS Wiki Template docs</a></li>
+<li><a href="https://www.xwiki.org/xwiki/bin/view/FAQ/How+can+I+create+a+new+page+based+on+a+form">XWiki</a> <a href="https://www.xwiki.org/xwiki/bin/view/FAQ/How+can+I+create+a+new+page+based+on+a+form">Docs</a></li>
+</ul></main><hr><footer></footer></body></html>

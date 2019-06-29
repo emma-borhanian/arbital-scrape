@@ -1,0 +1,57 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Optimizing with comparisons</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="../MathJax-2.7.5/MathJax.js"></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">Optimizing with comparisons</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/optimizing_with_comparisons.json.html">optimizing_with_comparisons.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/optimizing_with_comparisons">https://arbital.com/p/optimizing_with_comparisons</a></p><p class="creator">by
+ <a class="page-link" href="../page/PaulChristiano.html">Paul Christiano</a> Feb 4 2016 
+updated
+ Feb 24 2016</p></div><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>Optimizing with comparisons</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="paul_ai_control.html">Paul Christiano's AI control blog</a></li><li>…</li></ul></nav></nav></header><hr><main><p>I could&nbsp;<a href="abstract_approval_direction.html">elicit a user’s approval</a>&nbsp;of an action&nbsp;<em>a</em> by having them supply a rating V(<em>a</em>) ∈ [0, 1]. But putting myself in the shoes of the rater, administering such a rating&nbsp;<em>feels really hard</em>. My intuitive evaluation depends on what our system is capable of, and what the alternative actions were. I often lack an absolute sense of how good an option is in isolation.</p>
+<p>It feels much easier to specify comparisons, e.g. via a function C(<em>a</em>,&nbsp;<em>a</em>′) ∈ [-1, 1] that compares two alternatives. When the function is positive the first argument is better (the more positive, the more better); when it is negative the second argument is better.</p>
+<p>I’ve found myself feeling this way about many aspects of AI control proposals. So it seems worth exploring the idea more generally.</p>
+<p>I’ll assume that C(<em>a, a</em>′) = -C(<em>a</em>′<em>, a</em>), but this can always be ensured by anti-symmetrizing. It might be easiest for the reviewer if C is ±1 valued, or perhaps {-1, 0, +1}-valued.</p>
+<h3 id="howtooptimize">How to optimize?</h3>
+<p>Comparisons can be used to evaluate a proposed perturbations of a model, or to select amongst several candidate models. For most optimization approaches, this is all we need.</p>
+<p>For gradient ascent, we can train by taking the partial derivative of $~$\mathbb{E}$~$[C(_a_,&nbsp;_a_′)] with respect to only the first argument of C, where&nbsp;<em>a</em>&nbsp;and&nbsp;<em>a'</em> are independent samples from the current model.</p>
+<p>For evolutionary search you could evaluate the fitness of each individual&nbsp;<em>x</em>by computing $~$\mathbb{E}$~$[C(_x_,&nbsp;_y_)] for&nbsp;<em>y</em>&nbsp;sampled from the current population.</p>
+<h3 id="whatisbeingoptimized">What is being optimized?</h3>
+<p>When optimizing a real-valued function V, we know where the optimization is going — towards inputs that are scored well under V. But what happens when we optimize for preferences defined by a comparison C? If C is transitive, then it’s clear what the optimum is. But if C isn’t transitive then the situation is a bit more subtle.</p>
+<p>In fact there is an easy answer. If we consider C as the payoff function of a zero-sum game, then the systems described above will converge to the minimax equilibrium of the game (if they converge). This seems to be a very natural generalization of maximizing a scalar function V, via the correspondence C(<em>a, a</em>′) = V(<em>a</em>) - V(<em>a</em>′).</p>
+<p>This suggests a general recipe for building agents to maximize preferences specified as (potentially intransitive) comparisons — we can apply the same techniques we use to play two player games with large state spaces.</p>
+<h3 id="isthisok">Is this OK?</h3>
+<p>If preferences are given as comparisons, then I think the minimax equilibrium is really the only possibly-sensible solution. But that doesn’t necessarily mean its sensible.</p>
+<p>For most applications I have in mind, I think this equilibrium is perfectly fine even if C is ±1 valued and throws out all information about the strength of comparisons.</p>
+<p>The minimax equilibrium is supported entirely on solutions which can’t be robustly improved upon. That is, for each action&nbsp;<em>x</em>&nbsp;in the support of the minimax equilibrium, there is no option&nbsp;<em>y</em>&nbsp;which “reliably outperforms”&nbsp;<em>x</em> - for every&nbsp;<em>y</em>≠<em>x</em> there is some plausible option&nbsp;<em>z</em> such that C(<em>x, z</em>) &gt; C(<em>y, z</em>).</p>
+<p>I think this is basically enough to make me happy with an AI’s behavior, without even exploiting the further guarantee that $~$\mathbb{E}$~$[C(_x, z_)] &gt; $~$\mathbb{E}$~$[C(_y, z_)] for a random action&nbsp;<em>z</em>&nbsp;selected by the system.</p>
+<h1 id="alternatives">Alternatives</h1>
+<p>If we don’t use comparisons, what would we do? I’ll talk about the case of <a href="abstract_approval_direction.html">assigning approval values to actions</a>, but the discussion seems more general.</p>
+<h3 id="option1spreadoutoverthescale">Option 1: spread out over the scale</h3>
+<p>I could try to give actions scores ranging over the whole scale between 0 and 1, such that every pair of importantly different options have significantly different scores.</p>
+<p>This seems quite difficult. It requires my judgments to be quite sensitive to slight variations in the quality of outcomes, since otherwise our system will not have any incentive to make small improvements. But it also requires different judgments to be extremely consistent, which is tension with sensitivity.</p>
+<p>Even if we have estimates which are sensitive and consistent in expectation, if the estimates are at all noisy then&nbsp;<a href="http://rationalaltruist.com/2013/04/28/estimates-vs-head-to-head-comparisons/">they will introduce unnecessary noise</a> that we could avoid by using direct comparisons.</p>
+<p>Overall, I don’t think this is a good option.</p>
+<h3 id="option2reasonaboutinternalstate">Option 2: reason about internal state</h3>
+<p>In my&nbsp;<a href="abstract_approval_direction.html">unsupervised approval-directed proposal</a>, the evaluating process has all of the time in the world. So it can literally enumerate different possible actions, and determine the capabilities of the agent by intensive inspection. I think this is a fine solution as far as it goes, but it’s not going to fly for evaluation processes that actually exist.</p>
+<h3 id="option3compareproposals">Option 3: compare proposals</h3>
+<p>In my&nbsp;<a href="concrete_approval_directed_agents.html">supervised approval-directed proposals</a>, each action is reviewed by a critic who can make a counterproposal. We can adjust our rating of the action based on the quality of the counterproposal.</p>
+<p>The scheme in this post is a simpler and cleaner version of the previous scheme. It is cleanly separated from the other kinds of “argument” that might occur between AI systems and the other kinds of help that the human might get from AI assistants.</p>
+<p>In particular, it seems important to notice that the same learning system can play both sides of the game — there is no need to have two different learners, or for one of the players to “move second.”</p>
+<p>It also seems worth noticing that this is a very simple modification to existing training procedures, and we could already implement it in practice if it seems necessary.</p>
+<h1 id="applications">Applications</h1>
+<h3 id="humanfeedback">Human feedback</h3>
+<p>As discussed&nbsp;<a href="efficient_feedback.html">here</a>, we could learn a function to predict which of two outputs a human would prefer, and then use this predictor to train an actor to produce good outputs. This sounds significantly more promising than having the human score individual outputs and training a predictor to guess those scores, especially during the early phases of training when all of the outputs would be pretty bad.</p>
+<p>(I think this is the most important application.)</p>
+<h3 id="imitation">Imitation</h3>
+<p>Suppose that we are following&nbsp;<a href="elaborations_apprenticeship_learning.html">this approach</a>&nbsp;to imitation learning, in which a classifier learns to distinguish human and machine behavior, while a reinforcement learner tries to fool the classifier.</p>
+<p>Rather than training the classifier to predict labels, we can train it to pick which of two trajectories is a human and which is machine. We can then use this comparison function to directly train the reinforcement learner to look more human-like.</p>
+<p>I don’t know whether this would be a more robust approach. For the SVM in <a href="http://ai.stanford.edu/~ang/papers/icml04-apprentice.pdf">Abbeel and Ng 2004</a>&nbsp;it wouldn’t make any difference. For more complex classifiers it seems plausible that the comparison would work better then using the log probability, especially during early phases of training when the imitator is not doing a very good job.</p></main><hr><footer></footer></body></html>

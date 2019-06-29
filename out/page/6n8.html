@@ -1,0 +1,61 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Geometric product</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="../MathJax-2.7.5/MathJax.js"></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">Geometric product</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/6n8.json.html">6n8.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/6n8">https://arbital.com/p/6n8</a></p><p class="creator">by
+ <a class="page-link" href="../page/AdeleLopez.html">Adele Lopez</a> Nov 30 2016 
+updated
+ Nov 30 2016</p></div><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>Geometric product</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="geometric_algebra.html">Geometric algebra</a></li><li>…</li></ul></nav></nav></header><hr><main><h1 id="motivation">Motivation</h1>
+<p>want to incorporate rotors like $~$e^{\text{I}\theta}$~$ and scalars $~$n$~$ in the same system</p>
+<p>also want $~$|a|^2 + |b|^2 = |a+b|^2$~$ to be incorporated into the product</p>
+<p>want to follow standard laws of products in algebra as much as possible - distribute over vector sum</p>
+<p>but, we don't want it to be commutative, because we've seen that rotations in 3d are not commutative, so it would lose its power to describe geometric relations if we kept that (scalars themselves will always be commutable with everything)</p>
+<p>there is a product that satisfies all of these. it was hard to find, carefully designed, and has a lot of built up mathematical insight going into it. we will try to understand why it is the way it is</p>
+<h2 id="contractionrule">Contraction rule</h2>
+<p>key idea - look at $~$(a+b)^2 = a^2 + ab + ba + b^2$~$ (remember $~$ab$~$ and $~$ba$~$ should different in general, so we can't combine them into $~$2ab$~$)
+pretty close to pythagorean theorem!</p>
+<p>if we set $~$a^2 = |a|^2$~$, this will almost get us to the pythagorean theorem:
+$~$|a+b|^2 = |a|^2 + ab + ba + |b|^2$~$</p>
+<p>it's good that there's the $~$ab + ba$~$ in there, because the pythagorean theorem is only true for vectors at right angles
+so $~$ab + ba$~$ should be zero exactly when $~$a$~$ and $~$b$~$ are at right angles</p>
+<p>what about when $~$a$~$ and $~$b$~$ are in the same direction?
+then $~$|a+b|^2 = (|a| + |b|)^2 = |a|^2 + 2|a||b| + |b|^2$~$
+so in this case, $~$ab + ba$~$ should be $~$2|a||b|$~$</p>
+<p>so for right angles $~$ab = - ba$~$</p>
+<p>for parallel vectors makes sense to have $~$ab = ba = |a||b|$~$</p>
+<p>important consequence: $~$\frac{1}{a}=\frac{a}{|a|^2}$~$ - actually need to use $~$a^{-1}$~$ bc non-commutative</p>
+<h2 id="rotations">Rotations</h2>
+<p>from rotor theory, for right angles, $~$ae^{\text{I}\pi/2} = b$~$ for same magnitude
+so $~$e^{\text{I}\pi/2} = \frac{ab}{|a|^2}$~$, so $~$ab = |a|^2e^{\text{I}\pi/2}$~$, when $~$|a| = |b|$~$</p>
+<p>then if $~$b$~$ is diff magnitude, $~$a|b|/|a|e^{\text{I}\pi/2} = b$~$, so $~$ab = |a||b|e^{\text{I}\pi/2}$~$.</p>
+<p>this means $~$|b||a|=-e^{\text{I}\pi/2}$~$. </p>
+<p>one more thing we have to set, we will identify $~$e^{\text{I}\pi/2}$~$ with the unit bivector $~$\text{I}$~$ itself.</p>
+<p>so for perpendicular angles, $~$ab = |a||b|I$~$</p>
+<p>this means $~$I^2 = -1$~$</p>
+<p>so what is $~$ab$~$ in general?</p>
+<p>write $~$a = a_xx+a_yy$~$, $~$b = b_xx+b_yy$~$
+$~$ab = (a_xx + a_yy)(b_xx + b_yy) = a_xb_xx^2 + a_yb_xyx + a_xb_yxy+a_yb_yy^2 = a_xb_x + a_yb_y - a_yb_xI + a_xb_yI$~$</p>
+<p>scalar part + bivector part</p>
+<p>this gives us an alternate way of writing angles</p>
+<p>$~$e^{\text{I}\pi/4} = \frac{1 + I}{\sqrt{2}}$~$</p>
+<p>call the scalar part the cosine, and the bivector part the sine</p>
+<p>$~$e^{\text{I}\theta} = \cos(\theta) + \text{I}\sin(\theta)$~$</p>
+<p>(btw this is where all those trig identities you hated come from - they are much easier to work with in exponential form)</p>
+<h2 id="multivectors">Multivectors</h2>
+<p>rotor is sum of scalar and bivector</p>
+<p>in general - we can add together any type of $~$k$~$-vector</p>
+<p>can think of the different parts as different aspects of the transformation</p>
+<p>different parts are called grades</p></main><hr><footer><p class="likes"><h2>Likes</h2><span class="page-comma-list"><a class="page-link" href="../page/8xl.html">8xl</a>,
+ <a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a></span></p><p class="children"><h2>Children</h2><ul class="page-tree"><li><a class="page-link" href="../page/6nn.html">Geometric product: summary</a> <q>Product for [multivectors multivectors].
+Associative, left and right distributive. Non-commutative. …</q> - <a class="page-link" href="../page/AdeleLopez.html">Adele Lopez</a></li></ul></p></footer></body></html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Normal system of provability logic</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="../MathJax-2.7.5/MathJax.js"></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">Normal system of provability logic</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/normal_system_of_provability.json.html">normal_system_of_provability.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/normal_system_of_provability">https://arbital.com/p/normal_system_of_provability</a></p><p class="creator">by
+ <a class="page-link" href="../page/JaimeSevillaMolina.html">Jaime Sevilla Molina</a> Jul 22 2016 
+updated
+ Apr 22 2017</p></div><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>Normal system of provability logic</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="math.html">Mathematics</a></li><li><a href="modal_logic.html">Modal logic</a></li><li>…</li></ul></nav></nav></header><hr><main><p>Between the modal systems of provability, the normal systems distinguish themselves by exhibiting nice properties that make them useful to reason.</p>
+<p>A normal system of provability is defined as satisfying the following conditions:</p>
+<ol>
+<li>Has <strong>necessitation</strong> as a rule of inference. That is, if $~$L\vdash A$~$ then $~$L\vdash \square A$~$.</li>
+<li>Has <strong>modus ponens</strong> as a rule of inference: if $~$L\vdash A\rightarrow B$~$ and $~$L\vdash A$~$ then $~$L\vdash B$~$.</li>
+<li>Proves all <strong>tautologies</strong> of propositional logic.</li>
+<li>Proves all the <strong>distributive axioms</strong> of the form $~$\square(A\rightarrow B)\rightarrow (\square A \rightarrow \square B)$~$.</li>
+<li>It is <strong>closed under substitution</strong>. That is, if $~$L\vdash F(p)$~$ then $~$L\vdash F(H)$~$ for every modal sentence $~$H$~$.</li>
+</ol>
+<p>The simplest normal system, which only has as axioms the tautologies of propositional logic and the distributive axioms, it is known as the [ K system].</p>
+<h2 id="normality">Normality</h2>
+<p>The good properties of normal systems are collectively called <strong>normality</strong>.</p>
+<p>Some theorems of normality are:</p>
+<ul>
+<li>$~$L\vdash \square(A_1\wedge … \wedge A_n)\leftrightarrow (\square A_1 \wedge … \wedge \square A_n)$~$</li>
+<li>Suppose $~$L\vdash A\rightarrow B$~$. Then $~$L\vdash \square A \rightarrow \square B$~$ and $~$L\vdash \diamond A \rightarrow \diamond B$~$.</li>
+<li>$~$L\vdash \diamond A \wedge \square B \rightarrow \diamond (A\wedge B)$~$</li>
+</ul>
+<h2 id="firstsubstitutiontheorem">First substitution theorem</h2>
+<p>Normal systems also satisfy the first substitution theorem.</p>
+<blockquote>
+  <p>(<strong>First substitution theorem</strong>) Suppose $~$L\vdash A\leftrightarrow B$~$, and $~$F(p)$~$ is a formula in which the sentence letter $~$p$~$ appears. Then $~$L\vdash F(A)\leftrightarrow F(B)$~$.</p>
+</blockquote>
+<h2 id="thehierarchyofnormalsystems">The hierarchy of normal systems</h2>
+<p>The most studied normal systems can be ordered by extensionality:</p>
+<p><img src="http://i.imgur.com/1yrL9FU.png" alt="Hierarchy of normal systems" /></p>
+<p>Those systems are:</p>
+<ul>
+<li>The system K</li>
+<li>The system K4</li>
+<li>The system <a href="provability_logic.html">GL</a></li>
+<li>The system T</li>
+<li>The system S4</li>
+<li>The system B</li>
+<li>The system S5</li>
+</ul></main><hr><footer><p class="tagged"><h2>Tagged</h2><span class="page-comma-list"><a class="page-link" href="../page/needs_summary_meta_tag.html">Needs summary</a></span></p><p class="reverse-related"><h2>Reverse Related</h2><ul class="page-list"><li><a class="page-link" href="../page/needs_summary_meta_tag.html">Needs summary</a> <q>This page does not have a summary which provides an informative overview of the page's primary topic.</q> - <a class="page-link" href="../page/AlexeiAndreev.html">Alexei Andreev</a></li></ul></p></footer></body></html>

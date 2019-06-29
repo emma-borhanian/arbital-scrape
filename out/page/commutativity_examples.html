@@ -1,0 +1,40 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Commutativity: Examples</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="../MathJax-2.7.5/MathJax.js"></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">Commutativity: Examples</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/commutativity_examples.json.html">commutativity_examples.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/commutativity_examples">https://arbital.com/p/commutativity_examples</a></p><p class="creator">by
+ <a class="page-link" href="../page/NateSoares.html">Nate Soares</a> May 15 2016 
+updated
+ May 15 2016</p></div><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>Commutativity: Examples</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="math.html">Mathematics</a></li><li><a href="commutative_operation.html">Commutative operation</a></li><li>…</li></ul></nav></nav></header><hr><main><p>[summary: Yes: addition, multiplication, maximum, minimum, rock-paper-scissors. No: subtraction, division, string concatenation, matrix multiplication.]</p>
+<h2 id="positiveexamples">Positive examples</h2>
+<h3 id="addition">Addition</h3>
+<p>$~$x+y = y+x$~$ for all numbers $~$x$~$ and $~$y,$~$ so addition commutes. One easy way to see this fact is to consider a physical system that implements addition, e.g., by taking two piles of poker chips (where a poker chip with nn chips represents the number nn) in on two input belts, and producing a pile of poker chips on the output belt. This function can be implemented by simply shoving both input piles onto the output pile. Because a pile of chips represents the same number regardless of how those chips are arranged on the output belt, it doesn't matter which pile comes in on which input belt, so addition is commutative.</p>
+<h3 id="multiplication">Multiplication</h3>
+<p>$~$x \times y = y \times x$~$ for all numbers $~$x$~$ and $~$y,$~$ so multiplication also commutes. It is a bit harder to see why this must be so in the case of multiplication, as $~$x \times y$~$ can be interpreted as "take the $~$x$~$ input and stretch it out according to the $~$y$~$ input," and it's not entirely obvious that "stretching the $~$x$~$ input according to $~$y$~$" should yield the same result as "stretching the $~$y$~$ input according to $~$x.$~$"</p>
+<p>To see that multiplication commutes, it is helpful to visualize <em>copying</em> $~$x$~$ (rather than stretching it out) into $~$y$~$ many rows. This allows us to visualize $~$x \times y$~$ as a square divided into $~$x$~$ parts along one side and $~$y$~$ parts along the other side, which makes it clearer that multiplication commutes.</p>
+<p><img src="http://i.imgur.com/Q3QBUT6.png" alt="Multiplicaiton commutes" /></p>
+<p>It is worth noting that the concept of "multiplication" generalizes beyond the concept of "numbers," and in those contexts, "stretching $~$x$~$ out according to $~$y$~$" and "stretching $~$y$~$ out according to $~$x$~$" might be quite different operations. For example, [matrix_multiplication multiplication of matrices] does not commute.</p>
+<h3 id="maximumandminimum">Maximum and minimum</h3>
+<p>The [maximum_function max] and [minimum_function min] functions commute, because "which of these elements is largest/smallest?" is a question that doesn't depend upon the order that the elements are presented in.</p>
+<h3 id="rockpaperscissors">Rock, Paper, Scissors</h3>
+<p>The question of who won in a game of [rock_paper_scissors rock-paper-scissors] is commutative. Writing $~$r$~$ for rock, $~$p$~$ for paper, $~$s$~$ for scissors, and $~$?$~$ for the binary operator saying who won, we have $~$r ? p = p,$~$ $~$r ? s = r,$~$ and $~$p ? s = s,$~$ and so on. This function is commutative: who won a game of rock-paper-scissors does not depend upon which side of the judge they were standing on.</p>
+<p>This provides an example of a commutative function that is not <a href="associative_operation.html">associative</a>: $~$r?p=p?r$~$ and so on, but $~$(r?p)?s=s$~$ while $~$r?(p?s)=r.$~$ In other words, who won a game of rock-paper-scissors does not depend on which side of the judge they were standing on, but if you have a line of people throw "rock," "paper," or "scissors," then the question "who won?" <em>does</em> depend on which end of the line you start from.</p>
+<h2 id="negativeexamples">Negative examples</h2>
+<h3 id="concatenation">Concatenation</h3>
+<p>Any function that includes its inputs in its outputs <em>in order</em> is not commutative. For example, the function <code>pair</code> which puts its inputs into a pair (such that <code>pair(x, y) = (x, y)</code>) is not commutative. The function <a href="string_concatenation.html">concat</a>, which also sticks its inputs together in order, is also not commutative, though it is associative.</p>
+<h3 id="division">Division</h3>
+<p>Division is not commutative, because $~$x / y$~$ does not equal $~$y / x$~$ in general. In this case, the function is using $~$x$~$ and $~$y$~$ in a very different way. One is interpreted as a numerator that will be cut up, the other is treated as a denominator that says how many times to cut the numerator up. Numerator and denominator are not exchangeable concepts: Division needs to know which input is intended to be the numerator and which is intended to be the denominator.</p>
+<h3 id="matrixmultiplication">Matrix multiplication</h3>
+<p>[matrix_multiplication Matrix multiplication] is not only non-commutative, it may fail to even make sense. Two [linear_algebra_matrix matrices] can be multiplied if and only if the number of columns in the left-hand matrix is equal to the number of rows in the right-hand matrix. Thus, a $~$2 \times 3$~$ matrix can be multiplied with a $~$3 \times 5$~$ matrix if and only if the $~$2 \times 3$~$ matrix is on the left. Clearly, then, matrix multiplication does not commute.</p></main><hr><footer><p class="tagged"><h2>Tagged</h2><span class="page-comma-list"><a class="page-link" href="../page/needs_clickbait_meta_tag.html">Needs clickbait</a></span></p><p class="likes"><h2>Likes</h2><span class="page-comma-list"><a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a>,
+ <a class="page-link" href="../page/NateSoares.html">Nate Soares</a></span></p><p class="reverse-related"><h2>Reverse Related</h2><ul class="page-list"><li><a class="page-link" href="../page/needs_clickbait_meta_tag.html">Needs clickbait</a> <q>This page does not have clickbait (a short teaser for the page displayed on various lists). Feel free to add it!</q> - <a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a></li></ul></p></footer></body></html>

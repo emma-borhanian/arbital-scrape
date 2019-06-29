@@ -1,0 +1,107 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Geometry of vectors: direction</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="../MathJax-2.7.5/MathJax.js"></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">Geometry of vectors: direction</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/6mk.json.html">6mk.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/6mk">https://arbital.com/p/6mk</a></p><p class="creator">by
+ <a class="page-link" href="../page/AdeleLopez.html">Adele Lopez</a> Nov 30 2016 
+updated
+ Jan 13 2017</p></div><p class="clickbait">What rotation would it take to line up this vector to this one?</p><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>Geometry of vectors: direction</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="geometric_algebra.html">Geometric algebra</a></li><li>…</li></ul></nav></nav></header><hr><main><p>To understand geometry of vectors, we need a good way to compare directions, and a way to rotate vectors. It was hard to find a good way to algebraically represent differences between directions, and rotations. Lots of cumbersome and complicated formulas and methods were developed – which you may have suffered through in a high-school trigonometry class – before we finally found a clean and powerful way of thinking about it, that is also much more intuitive! </p>
+<p>This article is a introduction to the important concepts and ideas for handling vector directions, with lots of visual representations of them. This will help us understand the pieces that go into the [geometric_product geometric product], which is a powerful way to manipulate these concepts algebraically. In turn, having the geometric product at hand will allow us to gain a more substantial understanding of the ideas introduced here. %note: Note that we are not using angles in this page, which is the typical way of thinking about the directions of vectors. Instead, we are using a closely related, but different, concept called a bivector. Bivectors allow us to see deeper facts about rotations more easily than angles will, and when the time is right, we will see exactly how angles fit in with the concepts presented here.% </p>
+<h1 id="comparingdirection">Comparing direction</h1>
+<p>What would it take to change the direction of $~$\mathbf a$~$ to match the direction of $~$\mathbf b$~$?  We want our answer to be specific enough that we could use it to tell our friend exactly how to make the same change in direction. </p>
+<p><img src="http://imgur.com/hmhkehJ.png" alt="two vectors" /></p>
+<p>It should not depend on the size of the vectors:</p>
+<p><img src="http://imgur.com/mVMGxXP.png" alt="resized a and b" /></p>
+<p>It should also be the same for vectors which have been rotated in the same direction:</p>
+<p><img src="http://imgur.com/oL0KqwT.png" alt="two vectors, rotated" /></p>
+<p>And it should be able to work for vectors in three (or more) dimensions. So you should be able to tell your friend whether you want to change the direction of $~$\mathbf x$~$ to match $~$\mathbf y$~$, or to match $~$\mathbf z$~$:</p>
+<p><img src="http://imgur.com/538E8Q0.png" alt="x y z basis" /></p>
+<p>Try thinking of a way to communicate this yourself before moving on.</p>
+<p>%%hidden(Angle?):
+An angle is a good way to describe the <em>size</em> of the difference between the directions of the two vectors, but by itself it is missing information about <em>which way</em> you would need to turn it to get the vectors to match. In two dimensions you can get away with using negative angles to represent this, but in three (or more) dimensions, it becomes clear that an angle by itself will not work.</p>
+<p><img src="http://imgur.com/PUC5ZvQ.png" alt="many right angles in 3d" />
+%%</p>
+<p>%%hidden(Show solution):
+We need to keep track of three things: the size of the turn we would need, the plane in which the turn takes place, and which way to turn it within the plane. Sound familiar? Considering the plane together with the direction of the turn in the plane as a 2-dimensional direction, we can make a <a href="vector_arithmetic.html">vector</a>! Here's a picture of one to describe the difference in direction from $~$\mathbf a$~$ to $~$\mathbf b$~$:</p>
+<p><img src="http://imgur.com/XLtNeNw.png" alt="bivector examples" /></p>
+<p>This is a different kind of vector from our vectors $~$\mathbf a$~$ and $~$\mathbf b$~$, so to keep things from getting confusing, we will call the new kind of vector a <strong>bivector</strong>. Since bivectors are a kind of vector, we can describe a bivector exactly by describing it in terms of a basis for bivector space! We'll see how all of this works below.
+%%</p>
+<h2 id="bivectors">Bivectors</h2>
+<p>So how do bivectors work? A bivector is a new type of vector. Its size is its area, and its direction is a two-dimensional sort of direction that determines its orientation in space, along with which way it turns things. </p>
+<p><img src="http://imgur.com/A7b9ZpH.png" alt="basic bivector" /></p>
+<p>The bivector $~$\mathbf B$~$ lies in the plane of your screen, and has a counter-clockwise orientation (i.e. it moves things in the opposite way that the hands of a clock move). We usually use a bold, upper-case letter for bivectors.</p>
+<p>Bivectors are particularly important in three-dimensions, where there are many more directions that they could have:</p>
+<p><img src="http://imgur.com/nG251pE.png" alt="three dimensional examples" /></p>
+<p>The size of a bivector is its area, so the unit bivector has the area of a square with unit length sides: </p>
+<p><img src="http://imgur.com/5CemfIY.png" alt="unit bivector" /></p>
+<p>We'll usually use $~$\mathbf I$~$ to write a unit bivector. </p>
+<p>The negative of a bivector is a bivector with the same size and which lies in the same plane, but which turns things the opposite way. You can think of it like flipping a piece of paper over:</p>
+<p><img src="http://imgur.com/WvHa5Af.png" alt="negative bivector" /></p>
+<p>As with all types of vectors, the size and direction of a bivector are all there is to it! This means that bivectors do not have positions or shapes, since we do not keep track of that information anywhere. So since these bivectors have the same direction, and both have area 1, these are both the same bivector:</p>
+<p><img src="http://imgur.com/f0kH9Rb.png" alt="square and circle unit bivector" /></p>
+<p>Similarly, rotating a bivector without changing the plane it lies in doesn't change it since its size and direction remain the same. So this bivector stays the same even though we're shaking it around:</p>
+<p><img src="http://imgur.com/XjY8Oyd.png" alt="rotating bivector gif" /></p>
+<p>We can add two bivectors to get another bivector. This is one place where doing things algebraically helps us a lot – it is kinda hard to visualize what the new bivector will look like. Here is one way to do it:</p>
+<p><img src="http://imgur.com/tRQQbFB.png" alt="3d sum of bivectors" /></p>
+<p>When two bivectors have the same (or opposite) direction though, it's a lot easier: addition can be done just by adding (or subtracting) the sizes of the two bivectors:</p>
+<p><img src="http://imgur.com/ID1MWeZ.png" alt="2d sum of bivectors" /></p>
+<p>This is just the distributive law for scalars over vectors (in this case, bivectors) – can you see why?</p>
+<h3 id="bivectorbasis">Bivector basis</h3>
+<p>If we have a basis of ordinary vectors, we can use these to create a basis for the bivectors that would be needed for vectors in that space. For any pair of basis vectors, we can use the bivector that describes the difference in direction of those two vectors.  </p>
+<p>In three dimensions, there are three possible pairs: $~$(\mathbf {x},\mathbf{y})$~$, $~$(\mathbf{y},\mathbf{z})$~$, and $~$(\mathbf{x},\mathbf{z})$~$. Here's the normalized basis we can construct from these pairs:</p>
+<p><img src="http://imgur.com/CHyZVN3.png" alt="3d bivector basis" /></p>
+<p>In two dimensions, there is only one pair $~$(\mathbf {x},\mathbf{y})$~$, and the space of bivectors is one-dimensional:</p>
+<p><img src="http://imgur.com/en8e2Qu.png" alt="2d bivector basis" /></p>
+<p>How many dimensions does bivector space have for for vectors in 4-dimensions?</p>
+<p>%%hidden(Answer):
+It has 6-dimensions. If the basis for ordinary vectors in 4-dimensions is $~$\mathbf w$~$, $~$\mathbf x$~$, $~$\mathbf y$~$, $~$\mathbf z$~$, then the basis for the bivectors will be the bivectors for each of the pairs: $~$(\mathbf{w},\mathbf{x})$~$, $~$(\mathbf{w},\mathbf{y})$~$, $~$(\mathbf {w},\mathbf{z})$~$, $~$(\mathbf{x},\mathbf{y})$~$, $~$(\mathbf{x},\mathbf{z})$~$, and $~$(\mathbf{y},\mathbf{z})$~$. </p>
+<p>The fact that it didn't have 4-dimensions, the way that the space of bivectors is 3-dimensional for vectors in 3-dimensions, confused mathematicians for a long time. In fact, while I was working on my math degree, I was taught that there was something special about three dimensions that made rotations work nicely in a way that just wasn't possible in other dimensions. %note: What made it hard was that these mathematicians didn't have a concept of a bivector, and so they were trying to fit the same information that goes into a bivector into an ordinary vector. This works fine for three-dimensions, using the <a href="https://en.wikipedia.org/wiki/Cross_product">cross product</a>, but not so well for other dimensions.%</p>
+<p>We now know that that's not true, and in geometric algebra, rotations work about as nicely for any dimension! The only thing that makes things tricky still is that we can't rely on our intuition for 4 or more dimensions the way we can for 2 and 3 dimensions – we have to trust the algebra to get things right.
+%%</p>
+<hr />
+<p>Now that we know about bivectors, lets go back to seeing how we can use them to describe differences in direction. We can visualize the difference in direction between two vectors $~$\mathbf a$~$ and $~$\mathbf b$~$ by normalizing them, adding them both to the same point, and then using the area swept out by rotating one to match the other one. This area is what we'll use for the size of the bivector that represents the difference between these two directions. </p>
+<p><img src="http://imgur.com/t8rLHpk.png" alt="bivector recipe" /></p>
+<p>The direction of the bivector will be the direction it would take to turn vector $~$\mathbf a$~$ to match the direction of $~$\mathbf b$~$. If we reverse the order, to describe the difference in direction from $~$\mathbf b$~$ to $~$\mathbf a$~$, then we'll use a bivector with the reverse direction:</p>
+<p><img src="http://imgur.com/yPICud9.png" alt="reverse bivector" /></p>
+<p>We use the sizes of bivectors to describe how much of a rotation is needed. The most natural value to use is just the area of the piece of the unit circle. The unit circle has area $~$\pi$~$ (about $~$3.14$~$): </p>
+<p><img src="http://imgur.com/XR0XBZF.png" alt="unit circle" /> </p>
+<p>So we can use fractions of $~$\pi$~$ to say what fraction of a full turn is needed. %note: But isn't this half of what it should actually be?!? Well, it's true that the equivalent angle has a value (in radians) equal to twice the area of the bivector. While radians measure the <em>length</em> of the arc swept out, bivectors measure the <em>area</em> swept out – so rest assured that this is actually the right way to do it.% Here's a bivector with an area one-sixth of that of the unit circle:</p>
+<p><img src="http://imgur.com/w7UFxdE.png" alt="wedge bivector" /></p>
+<p>A special amount of direction change is given by a bivector of size $~$\frac{\pi}{2}$~$. This bivector represents the difference in direction between a vector and its reverse:</p>
+<p><img src="http://imgur.com/wBq5xX7.png" alt="bivector for vector and reverse" /></p>
+<p>One interesting property is that <em>any</em> bivector with size $~$\frac{\pi}{2}$~$ will represent this difference in direction. A similar thing happens for bivectors of size $~$0$~$ or size $~$\pi$~$ –&nbsp;any bivector of these sizes represents vectors with <em>no</em> difference in their direction, i.e. <strong>parallel</strong> vectors. </p>
+<p>Even though vectors with opposite directions have the biggest possible difference in direction, it's still not going in a completely <em>new</em> direction, it is just going backwards from the original direction. There's another special size bivectors can have, which represents a change to a completely <em>new</em> direction, equally far from both the original vector and its reverse. This size is $~$\frac{\pi}{4}$~$:</p>
+<p><img src="http://imgur.com/lNL4HHS.png" alt="quarter turn" /></p>
+<p>There are lots of words for vectors that differ by a bivector of this size: we can say that the vectors are at <strong>right angles</strong> to each other, <strong>perpendicular</strong>, or <strong>orthogonal</strong>. </p>
+<h1 id="rotatingvectors">Rotating vectors</h1>
+<p>When applied to vectors, scalars represent different <a href="group_action.html">actions</a> we can do to a vector: the act of stretching a vector, or shrinking one, or reversing one, or erasing one, or leaving it alone.</p>
+<p><img src="http://imgur.com/RDLc7Gl.gif" alt="gifs for all of these" /></p>
+<p>We can depict scalar actions algebraically simply by multiplying the scalar to the vector. </p>
+<p>Rotation is another action we can apply to vectors. Things that rotate other things are called <strong>rotors</strong>:</p>
+<p><img src="http://imgur.com/zUwj1cF.png" alt="gif for rotor action" /></p>
+<p>We usually will use a capital $~$R$~$ to write a rotor. Since bivectors can describe differences in direction, we can also use them to describe rotors. To make a rotor from the bivector $~$\mathbf B$~$, we use the letter $~$e$~$, like this: $~$R = e^{\mathbf B}$~$.  %note: If you are familiar with [exponent exponents], you might notice that this is the same as exponential notation. We'll later see that there is a deep connection between rotors and exponents, which is the reason we use this notation!% Here are some examples of different bivectors, the rotors we make from them, and the action of the rotors on the same initial vector:</p>
+<p><img src="http://imgur.com/etRUSGR.gif" alt="rotor examples different bivectors" /></p>
+<p>The same rotor can also act on different vectors, even vectors that don't lie in the same plane as the bivector. Sometimes, the action of the rotor on a certain vector is to do nothing at all!</p>
+<p><img src="http://imgur.com/NgDtise.gif" alt="rotor action examples using exponential rotation (gifs)" /></p>
+<p>The reason we don't use bivectors directly to represent rotors is that the rules for combining rotors are different from the rules for combining bivectors (which are just the <a href="vector_arithmetic.html">Vector arithmetic</a> rules). It doesn't make sense to use some sort of bivector multiplication, because if we have two rotors in the same direction, the size of the bivector for the combined rotor is the <em>sum</em> of the sizes of the bivectors for the two rotors, and not the product. </p>
+<p><img src="http://imgur.com/xVNuf2U.png" alt="rotor bivector sum" /></p>
+<p>And it can't be bivector addition, since rotors are non-commutative:</p>
+<p><img src="http://imgur.com/vco4VnQ.png" alt="non commutative gif" /></p>
+<p>In order to depict how rotor actions work algebraically, we'll first need to develop the [geometric_product geometric product]. In fact, getting rotors to work algebraically is an important part of what led to the development of the geometric product in the first place! </p>
+<hr />
+<p>We're really close to having a basic grasp of all the ideas that go into the geometric product!  We've learned in this page about the geometry of vector directions; the last thing we'll need is a geometric understanding of how the <em>sizes</em> of different vectors relate to each other. </p>
+<p>Once we have the geometric product, we'll be able to take a deeper look at how rotors work.</p></main><hr><footer><p class="likes"><h2>Likes</h2><span class="page-comma-list"><a class="page-link" href="../page/8xl.html">8xl</a>,
+ <a class="page-link" href="../page/AlexeiAndreev.html">Alexei Andreev</a>,
+ <a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a>,
+ <a class="page-link" href="../page/KevinClancy.html">Kevin Clancy</a></span></p></footer></body></html>

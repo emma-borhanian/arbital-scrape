@@ -1,0 +1,86 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Online guarantees and AI control</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="../MathJax-2.7.5/MathJax.js"></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">Online guarantees and AI control</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/1vc.json.html">1vc.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/1vc">https://arbital.com/p/1vc</a></p><p class="creator">by
+ <a class="page-link" href="../page/PaulChristiano.html">Paul Christiano</a> Feb 3 2016 
+updated
+ Mar 4 2016</p></div><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>Online guarantees and AI control</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="paul_ai_control.html">Paul Christiano's AI control blog</a></li><li><a href="Easy_goal_inference_problem_still_hard.html">The easy goal inference problem is still hard</a></li><li>…</li></ul></nav></nav></header><hr><main><p>I’m interested in claims of the form: “If we had an AI that could do X well, then we could build an AI which could do Y well.”</p>
+<p>X may be “prediction,” “reinforcement learning,” “question-answering,” or so on. For concreteness, in this post I’ll assume X is prediction.</p>
+<p>If we had an AI that could predict well, then we could attack this problem empirically: we could try to build things using our predictor as a building block, and see how far we get.</p>
+<p>But if we want to think about the problem in advance, we need some model of what “predict well” means. Normally when people think about AI safety they have an informal model in mind, but I think there are some advantages to precision.</p>
+<p>In this post I’ll describe a modeling approach based online guarantees. This is the best approach that I’m familiar with, and I think that it’s good enough that it’s better than a less precise model (or than not doing any theoretical work in advance). But I’m always interested in more suggestions, and I’m not too attached to this approach. (I’m also aware that I may be biased by my own intellectual background.)</p>
+<p>Precise thinking about the guarantees of AI is relevant now in order to start doing theoretical work before such AI is available. But this thinking may also be useful in its own right, to reason about the behavior of the systems that we actually build.</p>
+<p>In this post I’ll focus on stating assumptions about what an AI can do; I won’t touch on assumptions about what an AI&nbsp;<em>can’t</em>&nbsp;do, though those may also be useful.</p>
+<h3 id="comparisons">Comparisons</h3>
+<p>Suppose that we have a sequence predictor Predict, and we want to articulate the assumption “Predict is a good predictor.”</p>
+<p>What do we mean by “good”? Normally we’ll fix some comparison class C of predictors (which could consist of a single predictor), and say “Predict predicts as well as the best predictor in C.”</p>
+<p>For example, we might say that Predict predicts as well as the best strategy that any living human could implement, i.e. that Predict is a superhuman predictor. Or we might say that say that Predict predicts as well as the best linear classifier. Or so on.</p>
+<p>To make the comparison, we can take our pick from a range of modeling approaches. Some of these assumptions make distributional assumptions on the data — they only apply if the prediction problem is drawn from some particular distribution. These assumptions seem very difficult to work with.</p>
+<p>There are two guarantees I am particularly familiar with, that make unusually weak assumptions on the data:</p>
+<ul>
+<li><strong>Batch.</strong> If you give Predict enough training sequences, and then you give it a new sequence sampled from the same distribution, then in expectation Predict’s predictions will be almost as good as the predictions of the best fixed predictor from C. This is much weaker than the next assumption, but it’s more or less impossible to use rigorously in a realistic scenario. For example, we can’t usually apply such a classifier to real-world test data collected&nbsp;<em>after</em> training the system, since the distribution will normally be different from the training.</li>
+<li><strong>Online</strong>. For any sequence, the total quality of Predict’s predictions is close to the total quality of the best fixed predictor from C. I think that this is probably a good compromise between “attainability” (it is almost as easy as the batch guarantee) and “usefulness” (you can often get strong bounds on real world systems using this assumption).</li>
+</ul>
+<p>If you can’t tell, I prefer to use online assumptions. They are the easiest way to get traction on a system’s performance without making distributional assumptions on the data. I think this isn’t just a pedantic point — these distributional assumptions can actually be important to discussions about AI safety.</p>
+<p>These models are pretty crude; even for algorithms designed to have an online guarantee, the online guarantee doesn’t very well characterize the algorithm’s performance. That said, this is a general problem with precise characterizations. Working with online assumptions can let us have a precise discussion, and algorithms that work with online assumptions are at least promising candidates to think about more deeply or explore empirically.</p>
+<h3 id="regret">Regret</h3>
+<p>Both of these assumptions are parametrized by the “regret,” the gap between the performance of Predict and the performance of the best predictor in C.</p>
+<p>The regret may be “small” or “large”, depending on the nature of the task:</p>
+<ul>
+<li><strong>Small:</strong> Logarithmic in the size of the class C. This normally happens when it is possible to do “off-policy” learning, evaluating the quality of an algorithm even when you aren’t using it.</li>
+<li><strong>Large</strong> : If you can’t do off-policy learning, you might not be able to notice a “good” algorithm until you try it out. In this case, the regret — the gap between the payoff of our algorithm and the payoff of the best algorithm in C — will typically be linear in the size of C, since we have to try each option.</li>
+</ul>
+<p>For prediction, it is possible to do off-policy learning — once you see the next data point, you can tell how well every predictor did — and so the regret is logarithmic. (Though of course efficient algorithms don’t actually consider all of the predictors.) For reinforcement learning, off-policy learning isn’t always possible, and so in general the regret must be linear.</p>
+<p>When it is possible to do off-policy learning to a limited extent, you can interpolate between these extremes.</p>
+<h1 id="elaborations">Elaborations</h1>
+<h3 id="semisupervisedlearning">Semi-supervised learning</h3>
+<p>In semi-supervised learning, the learner is only given feedback on a small amount of data, but is given a larger volume of data in order to help it learn. For example, imagine a classifier which can see billions of images, but only learns the correct classification for a few thousand thousand of them.</p>
+<p>This is modeled automatically by online guarantees, if the comparison class C includes algorithms that learn from data. For example, if we compare to the class of humans, then we are implicitly making a guarantee about the system’s ability to do semi-supervised learning — since it is competing with humans, who will certainly use all of the data.</p>
+<p>Semi-supervised learning still requires some feedback — you can’t start labeling data correctly until you’ve seen some labels. This is an unavoidable limitation of the online learning framework. Of course, sometimes (e.g. for prediction) the “feedback” is inherent in the data itself.</p>
+<h3 id="modifications">Modifications</h3>
+<p>A traditional online guarantee on its own, is probably not enough for most AI control applications. Instead, it seems more useful to compare an algorithm Predict to a comparison class that is defined in terms of Predict, which contains every “simple modification” of Predict.</p>
+<p>To illustrate the problem, assume that Predict is a human-level predictor, i.e. that it is competitive with any strategy that can be implemented by a human. But we make no further assumptions, and so subject to this condition Predict may behave adversarially (for all that we know).</p>
+<p>Suppose further that in at least one respect Predict is very superhuman. When asked to make predictions, there is some trivial detail that seems random to a human but which Predict can predict well.</p>
+<p>Then Predict can foil most AI control schemes as follows. Every time it predicts the trivial detail well, it can give itself a “point.” Whenever we try to use Predict to make an important decision, it can spend a point to make a completely wrong prediction.</p>
+<p>If the number of predictions that we care about is smaller than the amount of extraneous detail that Predict can superhumanly predict, then Predict can flub every single important prediction!</p>
+<p>It may be possible to cope with this problem, but it seems like we shouldn’t have to — this is a very unnatural behavior for Predict.</p>
+<p>One way to express this intuition is that while Predict is a human-level predictor, it’s a much worse predictor than it could be. That is, a team consisting of Predict and a human predictor can easily obtain a much larger payoff than Predict, by simply defaulting to normal human judgment on the important decisions.</p>
+<p>We can formalize this by defining a class C[Predict], as a class of elaborations on Predict. For example, we can consider the class of all strategies that humans could implement if they were able to consult with Predict, or the class of all linear predictors that use Predict’s outputs as an additional feature. By saying that Predict is a better predictor than anything from this class, we can express the idea that it’s not doing anything really dumb.</p>
+<p>This is an unsatisfying approach, to say the least.</p>
+<h3 id="counterfactuals">Counterfactuals</h3>
+<p>Consider an agent that plays the following game: in each round it is given an input&nbsp;<em>x</em> ∈ X, then provides an output&nbsp;<em>y&nbsp;=</em> ∈ Y, then is told a function&nbsp;<em>f</em> X × Y → [0,1] and receives a payoff&nbsp;<em>f</em> (<em>x, y</em>).</p>
+<p>When we actually apply such a system, the payoff&nbsp;<em>f</em>&nbsp;may be causally related to the agent’s choice&nbsp;<em>y</em>. For example, a human user may provide a map&nbsp;<em>f</em>&nbsp;that scores each possible action by the agent. In the meantime the agent’s action<em>y</em>&nbsp;might have affected the world, and perhaps also affected the user’s judgments.</p>
+<p>The agent might play this game in two ways:</p>
+<ol>
+<li>It predicts what the function&nbsp;<em>f</em>&nbsp;will be, and chooses the action&nbsp;<em>y</em> maximizing E[_f_(_x, y_)].</li>
+<li>For each action&nbsp;<em>y</em>, it predicts what the function&nbsp;<em>f</em> will be if it takes action <em>y</em>. The agent chooses the action maximizing E[_f(x, y) |the agent did&nbsp;_y_]. If the agent has a causal model of the world, it could also use a causal intervention E[_f(x, y)_|do(_y_)].</li>
+</ol>
+<p>Doing well according to [1] and doing well according to [2] are different guarantees. We can express each of them as an online guarantee:</p>
+<ol>
+<li>For any fixed sequence of inputs&nbsp;<em>x</em>&nbsp;and functions&nbsp;<em>f,</em> the agent performs almost as well as the best algorithm in the comparison class.</li>
+<li>For any fixed sequence of points&nbsp;<em>x</em>&nbsp;and mappings from&nbsp;<em>y</em>&nbsp;to&nbsp;<em>f</em>, the agent performs almost as well as the best algorithm in the comparison class.</li>
+</ol>
+<p>These guarantees are achieved by different algorithms, have different difficulties (typically, guarantees like #1 are easier to obtain), and may be useful in different applications (guarantees like #1 seem more useful for AI control). We just need to be clear about which one we are assuming.</p>
+<p>In more complex situations there may be more possibilities. A precise statement of the online guarantee will necessarily be completely unambiguous, however.</p>
+<h3 id="anoteontransferlearning">A note on transfer learning</h3>
+<p>Many approaches to AI control rest on a form of transfer learning.</p>
+<p>For example, suppose that I have a proposal for AI control that requires a powerful question-answering system, e.g.&nbsp;<a href="safe_ai_from_question_answering.html?title=safe-ai-from-question-answering">this one</a>. This system requires the question-answerer to answer questions to which we don’t know the answer.</p>
+<p>I could try to create a question-answering system using a predictor, by giving the predictor a bunch of pairs of the form (Question, Answer).</p>
+<p>But if we do this, we are training the predictor only with questions to which we know the answer, and then expecting it to perform well on questions where we don’t know the answer.</p>
+<p>It seem plausible that this would work. But I don’t think you’ll be able to state any&nbsp;<em>sufficient</em>&nbsp;property of the predictor, without making some unappealing assumptions.</p>
+<p>The basic problem is that there are many models that the predictor could learn in order to predict your (Question, Answer) pairs. And you need to know that the predictor is going to choose the “right” one — without being able to really say what the right one is. For example, Solomonoff induction may well learn&nbsp;<em>your</em>&nbsp;answer, rather than the “correct” answer (and there many other “failure” modes).</p>
+<p>Overall, I am somewhat skeptical about proposals that rest on this kind of transfer learning, because they often make implicit and assumptions about what kind of generalization is the “right” one. I don’t think that the kinds of AI we actually build respects these assumptions very reliably, or at all.</p>
+<p>Moreover, if you can’t ever generate the training data that would distinguish the “right” answer from your answer, then by the same token you can’t test whether the learner is doing the right thing — if you can test something, you can train it (at least a bit).</p>
+<p>Note that semi-supervised learning is also very similar to transfer learning — the data from one task can be used to help learn how to solve another task, reducing the amount of feedback needed to find a good approach to the new task. But “reducing the amount of feedback needed” is quite different from “eliminating the need for feedback altogether.”</p></main><hr><footer></footer></body></html>

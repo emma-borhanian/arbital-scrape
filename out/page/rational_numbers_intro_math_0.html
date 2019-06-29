@@ -1,0 +1,110 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Rational numbers: Intro (Math 0)</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="../MathJax-2.7.5/MathJax.js"></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">Rational numbers: Intro (Math 0)</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/rational_numbers_intro_math_0.json.html">rational_numbers_intro_math_0.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/rational_numbers_intro_math_0">https://arbital.com/p/rational_numbers_intro_math_0</a></p><p class="creator">by
+ <a class="page-link" href="../page/PatrickStevens.html">Patrick Stevens</a> Jul 1 2016 
+updated
+ Aug 1 2016</p></div><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>Rational numbers: Intro (Math 0)</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="math.html">Mathematics</a></li><li><a href="rational_number.html">Rational number</a></li><li>…</li></ul></nav></nav></header><hr><main><p>[summary: The rational numbers are "fractions". While the <a href="natural_number.html">natural numbers</a> measure the answer to the question "how many apples?" when we have some apples, the rationals measure the answer to the question "how much apple?" when we can cut the apples up in different ways and remove pieces before counting them. ]</p>
+<p><em>In order to get the most out of this page, you probably want a good grasp of the <a href="integers_intro_math0.html">integers</a> first.</em></p>
+<p>"Rational number" is a phrase mathematicians use for the idea of a "fraction".
+Here, we'll go through what a fraction is and why we should care about them.</p>
+<h1 id="whatisafraction">What is a fraction?</h1>
+<p>So far, we've met the <a href="integer.html">integers</a>: whole numbers, which can be either bigger than $~$0$~$ or less than $~$0$~$ (or the very special $~$0$~$ itself).
+The <a href="natural_number.html">natural numbers</a> can count the number of cows I have in my possession; the integers can also count the number of cows I have after I've given away cows from having nothing, resulting in anti-cows.</p>
+<p>In this article, though, we'll stop talking about cows and start talking about apples instead. The reason will become clear in a moment.</p>
+<p>Suppose I have two apples. %%note:I'm terrible at drawing, so my apples look suspiciously like circles.%%</p>
+<p><img src="http://i.imgur.com/ZqYDkEX.png" alt="Two apples" /></p>
+<p>What if I chopped one of the apples into two equally-sized pieces? (And now you know why we stopped talking about cows.)</p>
+<p>Now what I have is a whole apple, and… another apple which is in two pieces.</p>
+<p><img src="http://i.imgur.com/pdUyIQe.png" alt="Two apples, one halved" /></p>
+<p>Let's imagine now that I chop one of the pieces itself into two pieces, and for good measure I chop my remaining whole apple into three pieces.</p>
+<p><img src="http://i.imgur.com/Zv1Y7EP.png" alt="Two apples, formed as two quarters, one half, three thirds" /></p>
+<p>I still have the same amount of apple as I started with - I haven't eaten any of the pieces or anything - but now it's all in funny-sized chunks.</p>
+<p>Now I'll eat one of the smallest chunks. How many apples do I have now?</p>
+<p><img src="http://i.imgur.com/Bh0ekJQ.png" alt="Two apples, with a quarter eaten from one" /></p>
+<p>I certainly don't just have one apple, because three of the chunks I've got in front of me will together make an apple; and I've also got some chunks left over once I've done that.
+But I can't have two apples either, because I <em>started</em> with two and then I ate a bit.
+Mathematicians like to be able to compare things, and if I forced you to make a comparison, you could say that I have "more than one apple" but "fewer than two apples".</p>
+<p>If you're happy with that, then it's a reasonable thing to ask: "exactly how much apple do I have?".
+And the mathematician will give an answer of "one apple and three quarters".
+"One and three quarters" is an example of a <strong>rational number</strong> or <strong>fraction</strong>: it expresses a quantity that came from dividing some number of things into some number of equal parts, then possibly removing some of the parts.
+%%note:I've left out the point that just as you moved from the <a href="natural_number.html">counting numbers</a> to the <a href="integer.html">integers</a>, thereby allowing you to owe someone some apples, so we can also have a negative rational number of apples. We'll get to that in time.%%</p>
+<h1 id="thebasicbuildingblock">The basic building block</h1>
+<p>From a certain point of view, the building block of the <em>natural</em> numbers is just the number $~$1$~$: all natural numbers can be made by just adding together the number $~$1$~$ some number of times. (If I have a heap of apples, I can build it up just from single apples.)
+The building block of the integers is also the number $~$1$~$, because if you gave me some apples %%note:which perhaps I've now eaten%% so that I owe you some apples, you might as well have given them to me one by one.</p>
+<p>Now the <em>rationals</em> have building blocks too, but this time there are lots and lots of them, because if you give me any kind of "building block" - some quantity of apple - I can always just chop it into two pieces and make a smaller "building block".
+(This wasn't true when we were confined just to whole apples, as in the natural numbers! If I can't divide up an apple, then I can't make any quantity of apples smaller than one apple. %%note:Except no apples at all.%%)</p>
+<p>It turns out that a good choice of building blocks is "one piece, when we divide an apple into several equally-sized pieces".
+If we took our apple, and divided it into five equal pieces, then the corresponding building-block is "one fifth of an apple": five of these building blocks makes one apple.
+To a mathematician, we have just made the rational number which is written $~$\frac{1}{5}$~$.</p>
+<p>Similarly, if we divided our apple instead into six equal pieces, and take just one of the pieces, then we have made the rational number which is written $~$\frac{1}{6}$~$.</p>
+<p>The (positive) rational numbers are just whatever we could make by taking lots of copies of building blocks.</p>
+<h1 id="examples">Examples</h1>
+<ul>
+<li>$~$1$~$ is a rational number. It can be made with the building block that is just $~$1$~$ itself, which is what we get if we take an apple and divide it into just one piece - that is, making no cuts at all. Or, if you're a bit squeamish about not making any cuts, $~$1$~$ can be made out of two halves: two copies of the building block that results when we take an apple and cut it into two equal pieces, taking just one of the pieces. (We write $~$\frac{1}{2}$~$ for that half-sized building block.)</li>
+<li>$~$2$~$ is a rational number: it can be made out of two lots of the $~$1$~$-building-block, or indeed out of four lots of the $~$\frac{1}{2}$~$-building-block.</li>
+<li>$~$\frac{1}{2}$~$ is a rational number: it is just the half-sized building block itself.</li>
+<li>If we took the apple and instead cut it into three pieces, we obtain a building block which we write as $~$\frac{1}{3}$~$; so $~$\frac{1}{3}$~$ is a rational number.</li>
+<li>Two copies of the $~$\frac{1}{3}$~$-building-block makes the rational number which we write $~$\frac{2}{3}$~$.</li>
+<li>Five copies of the $~$\frac{1}{3}$~$-building-block makes somewhat more than one apple. Indeed, three of the building blocks can be put together to make one full apple, and then we've got two building blocks left over. We write the rational number represented by five $~$\frac{1}{3}$~$-building-blocks as $~$\frac{5}{3}$~$.</li>
+</ul>
+<h1 id="notation">Notation</h1>
+<p>Now you've seen the notation $~$\frac{\cdot}{\cdot}$~$ used a few times, where there are numbers in the places of the dots.
+You might be able to guess how this notation works in general now: if we take the blocks resulting when we divide an apple into "dividey-number"-many pieces, and then take "lots" of those pieces, then we obtain a rational number which we write as $~$\frac{\text{lots}}{\text{dividey-number}}$~$.
+Mathematicians use the words "numerator" and "denominator" for what I called "lots" and "dividey-number"; so it would be $~$\frac{\text{numerator}}{\text{denominator}}$~$ to a mathematician.</p>
+<h1 id="exercises">Exercises</h1>
+<p>Can you give some examples of how we can make the number $~$3$~$ from smaller building blocks? (There are lots and lots of ways you could correctly answer this question.)
+%%hidden(Show a possible solution):
+You already know about one way from when we talked about the natural numbers: just take three copies of the $~$1$~$-block. (That is, three apples is three single apples put together.)</p>
+<p>Another way would be to take six half-sized blocks: $~$\frac{6}{2}$~$ is another way to write $~$3$~$.</p>
+<p>Yet another way is to take fifteen fifth-sized blocks: $~$\frac{15}{5}$~$ is another way to write $~$3$~$.</p>
+<p>If you want to mix things up, you could take four half-sized blocks and three third-sized blocks: $~$\frac{4}{2}$~$ and $~$\frac{3}{3}$~$ together make $~$3$~$.
+<img src="http://i.imgur.com/JBpqyko.png" alt="Three apples: four halves and three thirds" />
+%%</p>
+<p>If you felt deeply uneasy about the last of my possible solutions above, there is a good and perfectly valid reason why you might have done; we will get to that eventually. If that was you, just forget I mentioned that last one for now.
+If you were comfortable with it, that's also normal.</p>
+<p>How about making the number $~$\frac{1}{2}$~$ from smaller blocks?
+%%hidden(Show a possible solution):
+Of course, you could start by taking just one $~$\frac{1}{2}$~$ block.</p>
+<p>For a more interesting answer, you could take three copies of the sixth-sized block: $~$\frac{3}{6}$~$ is the same as $~$\frac{1}{2}$~$. </p>
+<p><img src="http://i.imgur.com/5OBeBRE.png" alt="A half, expressed in sixths" /></p>
+<p>Alternatively, five copies of the tenth-sized block: $~$\frac{5}{10}$~$ is the same as $~$\frac{1}{2}$~$.</p>
+<p><img src="http://i.imgur.com/IfOm2xH.png" alt="A half, expressed in tenths" />
+%%</p>
+<p>The way I've drawn the pictures might be suggestive: in some sense, when I've given different answers just now, they all look like "the same answer" but with different lines drawn on.
+That's because the rational numbers ("fractions", remember) correspond to answers to the question "how much?".
+While there is always more than one way to build a given rational number out of the building blocks, the way that we build the number doesn't affect the ultimate answer to the question "how much?".
+$~$\frac{5}{10}$~$ and $~$\frac{1}{2}$~$ and $~$\frac{3}{6}$~$ are all simply different ways of writing the same underlying quantity: the number which represents the fundamental concept of "chop something into two equal pieces".
+They each express different ways of making the same amount (for instance, out of five $~$\frac{1}{10}$~$-blocks, or one $~$\frac{1}{2}$~$-block), but the amount itself hasn't changed.</p>
+<h1 id="goingmoregeneral">Going more general</h1>
+<p>Remember, from when we treated the integers using cows, that I can give you a cow (even if I haven't got one) by creating a cow/anti-cow pair and then giving you the cow, leaving me with an anti-cow.
+We count the number of anti-cows that I have by giving them a <em>negative</em> number.</p>
+<p>We can do the same here with chunks of apple.
+If I wanted to give you half an apple, but I didn't have any apples, I could create a half-apple/half-anti-apple pair, and then give you the half-apple; this would leave me with a half-anti-apple.</p>
+<p>We count anti-apples in the same way as we count anti-cows: they are <em>negative</em>.</p>
+<p>See the page on <a href="subtraction_of_rational_numbers_math_0.html">subtraction</a> for a much more comprehensive explanation; this page is more of a whistle-stop tour.</p>
+<h1 id="limitations">Limitations</h1>
+<p>We've had the idea of building-blocks: as $~$\frac{1}{n}$~$, where $~$n$~$ was a natural number.
+Why should $~$n$~$ be just a natural number, though?
+We've already seen the integers; why can't it be one of those? %%note:That is, why not let it be negative?%%</p>
+<p>As it turns out, we <em>can</em> let $~$n$~$ be an integer, but we don't actually get anything new if we do.
+We're going to pretend for the moment that $~$n$~$ has to be positive, because it gets a bit weird trying to divide things into three anti-chunks; this approach doesn't restrict us in any way, but if you are of a certain frame of mind, it might just look like a strange and artificial boundary to draw.</p>
+<p>However, you must note that $~$n$~$ cannot be $~$0$~$ (whatever your stance on dividing things into anti-chunks).
+While there is a way to finesse the idea of an anti-chunk %%note: And if you sit and think really hard for a long time, you might even come up with it yourself!%%, there is simply no way to make it possible to divide an apple into $~$0$~$ equal pieces.
+That is, $~$\frac{1}{0}$~$ is not a rational number (and you should be very wary of calling it anything that suggests it's like a number - like "infinity" - and under no account may you do arithmetic on it).</p>
+<h1 id="summary">Summary</h1>
+<p>So far, you've met what a rational number is! We haven't gone through how to do things with them yet, but hopefully you now understand vaguely what they're there for: they express the idea of "dividing something up into parts", or "sharing things out among people" (if I have two apples to split fairly among three people, I can be fair by chopping each apple into three $~$\frac{1}{3}$~$-sized building blocks, and then giving each person two of the blocks).</p>
+<p><a href="arithmetic_of_rational_numbers_math_0.html">Next up</a>, we will see how we can combine rational numbers together, eventually making a very convenient shorthand. %%note:The study of this shorthand is known as "arithmetic".%%</p></main><hr><footer><p class="all-creators"><h2>All Creators</h2><span class="page-comma-list"><a class="page-link" href="../page/JoeZeng.html">Joe Zeng</a>,
+ <a class="page-link" href="../page/PatrickStevens.html">Patrick Stevens</a></span></p><p class="likes"><h2>Likes</h2><span class="page-comma-list"><a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a></span></p></footer></body></html>

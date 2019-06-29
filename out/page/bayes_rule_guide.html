@@ -1,0 +1,208 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Bayes' rule: Guide</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="../MathJax-2.7.5/MathJax.js"></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">Bayes' rule: Guide</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/bayes_rule_guide.json.html">bayes_rule_guide.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/bayes_rule_guide">https://arbital.com/p/bayes_rule_guide</a></p><p class="creator">by
+ <a class="page-link" href="../page/EliezerYudkowsky.html">Eliezer Yudkowsky</a> Feb 14 2016 
+updated
+ Oct 25 2016</p></div><p class="clickbait">The Arbital guide to Bayes' rule</p><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>Bayes' rule: Guide</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="math.html">Mathematics</a></li><li><a href="probability_theory.html">Probability theory</a></li><li><a href="bayes_reasoning.html">Bayesian reasoning</a></li><li><a href="bayes_rule.html">Bayes' rule</a></li><li>…</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="rationality.html">Rationality</a></li><li><a href="probability_theory.html">Probability theory</a></li><li><a href="bayes_reasoning.html">Bayesian reasoning</a></li><li><a href="bayes_rule.html">Bayes' rule</a></li><li>…</li></ul></nav></nav></header><hr><main><p>Bayes' rule or Bayes' theorem is the law of probability governing <em>the strength of evidence</em> - the rule saying <em>how much</em> to revise our probabilities (change our minds) when we learn a new fact or observe new evidence.</p>
+<p>You may want to learn about Bayes' rule if you are:</p>
+<ul>
+<li>A professional who uses statistics, such as a scientist or doctor;</li>
+<li>A computer programmer working in machine learning;</li>
+<li>A human being.</li>
+</ul>
+<p>As Philip Tetlock found when studying "superforecasters", people who were especially good at predicting future events:</p>
+<blockquote>
+  <p>The superforecasters are a numerate bunch: many know about Bayes' theorem and could deploy it if they felt it was worth the trouble. But they rarely crunch the numbers so explicitly. What matters far more to the superforecasters than Bayes' theorem is Bayes' core insight of gradually getting closer to the truth by constantly updating in proportion to the weight of the evidence. <br><br>&mdash; Philip Tetlock and Dan Gardner, <a href="https://en.wikipedia.org/wiki/Superforecasting"><em>Superforecasting</em></a></p>
+</blockquote>
+<h2 id="learningbayesrule">Learning Bayes' rule</h2>
+<p>This guide to Bayes' rule uses Arbital's technology to allow for multiple flavors of introduction. They vary by technical level, speed, and topics covered. After you pick your path, remember that you can still switch between pages, in particular by using the "Say what?" and "Go faster" buttons.</p>
+<p>[multiple-choice(q_wants_angles): Which case fits you best?
+a: I want to have a basic theoretical and practical understanding of the Bayes' rule.
+-wants: [62d],<a href="62f.html">Bayes&#39; Rule and its implications</a>
+b: I can easily read algebra and don't mind the explanation moving at a fast pace. Just give me the basics, quick!
+wants: <a href="62d.html">Bayes&#39; Rule and its different forms</a>
+-wants: <a href="62f.html">Bayes&#39; Rule and its implications</a>
+c: I want the basics, but I'm also interested in reading more about the theoretical implications and the reasons why Bayes' rule is considered so important.
+wants: <a href="62f.html">Bayes&#39; Rule and its implications</a>
+-wants: <a href="62d.html">Bayes&#39; Rule and its different forms</a>
+d: I'd like to read everything! I want to have a <em>deep</em> theoretical and practical understanding of the Bayes' rule.
+wants: <a href="62d.html">Bayes&#39; Rule and its different forms</a>,<a href="62f.html">Bayes&#39; Rule and its implications</a>
+]</p>
+<p>%%%wants-requisite(<a href="62d.html">Bayes&#39; Rule and its different forms</a>):
+%%wants-requisite(<a href="62f.html">Bayes&#39; Rule and its implications</a>):
+%box:
+<em>Your path will go over all forms of Baye's Rule, along with developing deep appreciation for its scientific usefulness. Your path will contain 12 pages:</em></p>
+<ul>
+<li><em>Frequency diagrams: A first look at Bayes</em></li>
+<li><em>Waterfall diagrams and relative odds</em></li>
+<li><em>Introduction to Bayes' rule: Odds form</em></li>
+<li><em>Bayes' rule: Proportional form</em></li>
+<li><em>Extraordinary claims require extraordinary evidence</em></li>
+<li><em>Ordinary claims require ordinary evidence</em></li>
+<li><em>Bayes' rule: Log-odds form</em></li>
+<li><em>Shift towards the hypothesis of least surprise</em></li>
+<li><em>Bayes' rule: Vector form</em></li>
+<li><em>Belief revision as probability elimination</em></li>
+<li><em>Bayes' rule: Probability form</em></li>
+<li><em>Bayesian view of scientific virtues</em>
+%</li>
+</ul>
+<p>%start-path(<a href="61b.html">Comprehensive guide to Bayes&#39; Rule</a>)%
+%%
+%%!wants-requisite(<a href="62f.html">Bayes&#39; Rule and its implications</a>):
+%box:
+No time to waste! Let's plunge directly into <a href="bayes_rule_fast_intro.html">a single-page abbreviated introduction to Bayes&#39; rule</a>.
+%
+%%
+%%%</p>
+<p>%%%!wants-requisite(<a href="62d.html">Bayes&#39; Rule and its different forms</a>):
+%%wants-requisite(<a href="62f.html">Bayes&#39; Rule and its implications</a>):
+%box:
+<em>Your path will teach you the basic odds form of Bayes' rule at a reasonable pace and then delve into the deep mysteries of the Bayes' Rule! Your path will contain 8 pages:</em></p>
+<ul>
+<li><em>Frequency diagrams: A first look at Bayes</em></li>
+<li><em>Waterfall diagrams and relative odds</em></li>
+<li><em>Introduction to Bayes' rule: Odds form</em></li>
+<li><em>Belief revision as probability elimination</em></li>
+<li><em>Extraordinary claims require extraordinary evidence</em></li>
+<li><em>Ordinary claims require ordinary evidence</em></li>
+<li><em>Shift towards the hypothesis of least surprise</em></li>
+<li><em>Bayesian view of scientific virtues</em>
+%</li>
+</ul>
+<p>%start-path(<a href="62f.html">Bayes&#39; Rule and its implications</a>)%
+%%</p>
+<p>%%!wants-requisite(<a href="62f.html">Bayes&#39; Rule and its implications</a>):
+%box:
+<em>Your path will teach you the basic odds form of Bayes' rule at a reasonable pace. It will contain 3 pages:</em></p>
+<ul>
+<li><em>Frequency diagrams: A first look at Bayes</em></li>
+<li><em>Waterfall diagrams and relative odds</em></li>
+<li><em>Introduction to Bayes' rule: Odds form</em>
+%</li>
+</ul>
+<p>%start-path(<a href="62c.html">Introduction to Bayes&#39; Rule odds form</a>)%
+%%
+%%%</p></main><hr><section class="comments"><h2>Comments</h2><div class="comment"><p><a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a></p><p><blockquote class="comment-context">help\_outlineDifferent versions of Arbital pages are keyed to different levels of general math ability\.  What would you say is your general math level?
+
+
+<mark>I'm bad at math\.
+
+I'm not bad at math, but I'm not especially good at it either\.</mark>
+
+I can have fun with math, and I won't be anxious if I see a word problem I don't already know how to solve\.
+
+I am a programmer, physical engineer, or some other profession that calls on me to sometimes think in algebra\.
+
+I do research\-level math\.  Hit me with the LaTeX formulas\.
+
+
+
+
+</blockquote>
+<p>Joe made a good point about the way this is phrased not sorting people quite right:</p>
+<p>joe [11:50 AM]<br />
+“bad at math” = out of Arbital’s range</p>
+<p>eric_bruylant [11:50 AM]<br />
+currently, yes
+the bad at math we're talking about is significantly a psychological aversion, not lack of background</p>
+<p>joe [11:51 AM]<br />
+I’d say one of the things you might want to do</p>
+<p>is to … oh</p>
+<p>eric_bruylant [11:51 AM]<br />
+and we can't do therapy yet</p>
+<p>joe [11:51 AM]<br />
+in that case, I think it’s somewhat poorly worded</p>
+<p>because some people who are not psychologically averse might still consider themselves “bad at math”</p>
+<p>just because they never really put any effort into it</p>
+<p>like, they can’t multiply two-digit numbers, but they’d whip out a calculator if they had to</p>
+<p>anyway: I’d say one of the things you might want to do is to have a list of problems that those people should be able to understand the full meaning of, although not necessarily solve</p>
+<p>eric_bruylant [11:52 AM]<br />
+hm, yea. I kinda agree, though I'm not sure how to get all the people with an aversion</p>
+<p>joe [11:53 AM]<br />
+I’d say more, “I don’t like math.”</p>
+<p>eric_bruylant [11:53 AM]<br />
+since many of them won't realize the issue is an aversion rather than them being bad at math</p>
+<p>that seems like an improvement to me</p>
+<p>I'll put a mark on the page about it</p>
+<p>joe [11:54 AM]<br />
+and I’d reword math 0 to “I don’t ​<em>hate</em>​ math, but I’m not particularly good at it.” (edited)</p>
+<p>since Math 0 is supposed to represent “not very skilled”</p>
+<p>eric_bruylant [11:54 AM]<br />
+seems good</p>
+<p>joe [11:54 AM]<br />
+so they ​<em>are</em>​ “bad at math”, just not bad enough to have a phobia around it</p></p></div><div class="comment"><p><a class="page-link" href="../page/EricRogstad.html">Eric Rogstad</a></p><p><p>What about calling this page the "tutorial" rather than "guide"? Tutorials are more likely to be interactive. And both the main and explore tabs feel more like what I would expect a "guide" to be than this page.</p>
+<p>Guided walk-through or guided path would also work.</p></p></div><div class="comment"><p><a class="page-link" href="../page/AlexeiAndreev.html">Alexei Andreev</a></p><p><blockquote class="comment-context">You can plunge directly into a single\-page abbreviated introduction to Bayes' rule by clicking here\.
+
+</blockquote>
+<p>I'm very confused why you need two links to the same page (and one of them is blue).</p></p></div><div class="comment"><p><a class="page-link" href="../page/JordanBennett.html">Jordan Bennett</a></p><p><p>a.) As Neil Tyson Degrasse expresses, science is true regardless of belief:</p>
+<p>b.) Source: <a href="https://www.youtube.com/watch?v=WtBnm0X50VQ">https://www.youtube.com/watch?v=WtBnm0X50VQ</a></p>
+<p>1.) I no longer subscribe to the concept of belief.</p>
+<p>2.) By definition and research, belief is a concept that especially permits ignorance of evidence. (See google definition of belief…)</p>
+<p>3.) Such a model, while permitting evidence based thoughts, otherwise largely permits ignorance of evidence!</p>
+<p>4.) Instead, I contact scientific thinking, something which has long permitted mankind to make mistakes, but however, largely facilitating keenness of evidence, contrary to the concept of belief!</p>
+<p>See <a href="http://nonbeliefism.com">http://nonbeliefism.com</a></p></p></div></section><footer><p class="tagged"><h2>Tagged</h2><span class="page-comma-list"><a class="page-link" href="../page/a_class_meta_tag.html">A-Class</a>,
+ <a class="page-link" href="../page/guide_meta_tag.html">Guide</a></span></p><p class="all-creators"><h2>All Creators</h2><span class="page-comma-list"><a class="page-link" href="../page/AlexeiAndreev.html">Alexei Andreev</a>,
+ <a class="page-link" href="../page/ChrisCooper.html">Chris Cooper</a>,
+ <a class="page-link" href="../page/EliezerYudkowsky.html">Eliezer Yudkowsky</a>,
+ <a class="page-link" href="../page/EricRogstad.html">Eric Rogstad</a>,
+ <a class="page-link" href="../page/JoeZeng.html">Joe Zeng</a>,
+ <a class="page-link" href="../page/NateSoares.html">Nate Soares</a>,
+ <a class="page-link" href="../page/TimHuegerich.html">Tim Huegerich</a></span></p><p class="likes"><h2>Likes</h2><span class="page-comma-list"><a class="page-link" href="../page/AlexRay.html">Alex Ray</a>,
+ <a class="page-link" href="../page/AlexanderGonchiy.html">Alexander Gonchiy</a>,
+ <a class="page-link" href="../page/AlexeiAndreev.html">Alexei Andreev</a>,
+ <a class="page-link" href="../page/AnilKumar.html">Anil Kumar</a>,
+ <a class="page-link" href="../page/BelaSelendy.html">Bela Selendy</a>,
+ <a class="page-link" href="../page/BrianOConnor.html">Brian O'Connor</a>,
+ <a class="page-link" href="../page/CHand.html">C Hand</a>,
+ <a class="page-link" href="../page/DamonPourtahmasebSasi.html">Damon Pourtahmaseb-Sasi</a>,
+ <a class="page-link" href="../page/DavidNardi.html">David Nardi</a>,
+ <a class="page-link" href="../page/DevinBranstetter.html">Devin Branstetter</a>,
+ <a class="page-link" href="../page/EliezerYudkowsky.html">Eliezer Yudkowsky</a>,
+ <a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a>,
+ <a class="page-link" href="../page/EvanSandhoefner.html">Evan Sandhoefner</a>,
+ <a class="page-link" href="../page/EwigeKrieg.html">Ewige Krieg</a>,
+ <a class="page-link" href="../page/EyalRoth.html">Eyal Roth</a>,
+ <a class="page-link" href="../page/FlynSequeira.html">Flyn Sequeira</a>,
+ <a class="page-link" href="../page/FredrikBrnstrm.html">Fredrik Bränström</a>,
+ <a class="page-link" href="../page/GonzalezYuri.html">Gonzalez Yuri</a>,
+ <a class="page-link" href="../page/GradySimon.html">Grady Simon</a>,
+ <a class="page-link" href="../page/HashinJithu.html">Hashin Jithu</a>,
+ <a class="page-link" href="../page/IgorMakarov.html">Igor Makarov</a>,
+ <a class="page-link" href="../page/IordanisChatzinikolaidis.html">Iordanis Chatzinikolaidis</a>,
+ <a class="page-link" href="../page/IvanKuzmin.html">Ivan Kuzmin</a>,
+ <a class="page-link" href="../page/JacksonFriess.html">Jackson Friess</a>,
+ <a class="page-link" href="../page/JamesMiles.html">James Miles</a>,
+ <a class="page-link" href="../page/JosephRatliff.html">Joseph Ratliff</a>,
+ <a class="page-link" href="../page/JustinWilliams.html">Justin Williams</a>,
+ <a class="page-link" href="../page/KevinClancy.html">Kevin Clancy</a>,
+ <a class="page-link" href="../page/MaelleAndre.html">Maelle Andre</a>,
+ <a class="page-link" href="../page/MarkoFilipovic.html">Marko Filipovic</a>,
+ <a class="page-link" href="../page/MaxCramer.html">Max Cramer</a>,
+ <a class="page-link" href="../page/MikeWake.html">Mike Wake</a>,
+ <a class="page-link" href="../page/NateSoares.html">Nate Soares</a>,
+ <a class="page-link" href="../page/NivedSemaj.html">Nived Semaj</a>,
+ <a class="page-link" href="../page/PabloGSoto.html">Pablo G. Soto</a>,
+ <a class="page-link" href="../page/RichardJoyce.html">Richard Joyce</a>,
+ <a class="page-link" href="../page/RobertBarlow.html">Robert Barlow</a>,
+ <a class="page-link" href="../page/SamuelJolley.html">Samuel Jolley</a>,
+ <a class="page-link" href="../page/SimonMendelsohn.html">Simon Mendelsohn</a>,
+ <a class="page-link" href="../page/StephanieZolayvar.html">Stephanie Zolayvar</a>,
+ <a class="page-link" href="../page/StevenDee.html">Steven Dee</a>,
+ <a class="page-link" href="../page/SzymonWilczyski.html">Szymon Wilczyński</a>,
+ <a class="page-link" href="../page/TonyBoyles.html">Tony Boyles</a>,
+ <a class="page-link" href="../page/WilliamCasarin.html">William Casarin</a>,
+ <a class="page-link" href="../page/donaldklein.html">donald klein</a></span></p><p class="reverse-related"><h2>Reverse Related</h2><ul class="page-list"><li><a class="page-link" href="../page/a_class_meta_tag.html">A-Class</a> <q>This page is well-written, high-quality, and essentially complete.</q> - <a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a></li><li><a class="page-link" href="../page/guide_meta_tag.html">Guide</a> <q>Meta tag for the start page of a multi-page guide.</q> - <a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a></li></ul></p><p class="children"><h2>Children</h2><ul class="page-tree"><li><a class="page-link" href="../page/62d.html">Bayes' Rule and its different forms</a> <q>This is an arc that includes different ways to look at Bayes' Rule.</q> - <a class="page-link" href="../page/AlexeiAndreev.html">Alexei Andreev</a></li><li><a class="page-link" href="../page/62f.html">Bayes' Rule and its implications</a> <q>This is an arc that includes implications of the Bayes's Rule.</q> - <a class="page-link" href="../page/AlexeiAndreev.html">Alexei Andreev</a></li><li><a class="page-link" href="../page/61b.html">Comprehensive guide to Bayes' Rule</a> <q>This is an arc that includes all Bayes content.</q> - <a class="page-link" href="../page/AlexeiAndreev.html">Alexei Andreev</a></li><li><a class="page-link" href="../page/62c.html">Introduction to Bayes' Rule odds form</a> <q>This is an arc that includes just enough content to teach about Bayes's Rule odds form.</q> - <a class="page-link" href="../page/AlexeiAndreev.html">Alexei Andreev</a></li><li><a class="page-link" href="../page/692.html">Wants to get straight to Bayes</a> <q>A simple requisite page to mark whether the user has selected wanting to get straight into Bayes on …</q> - <a class="page-link" href="../page/EliezerYudkowsky.html">Eliezer Yudkowsky</a></li></ul></p></footer></body></html>

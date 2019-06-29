@@ -1,0 +1,171 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Axiom of Choice: Guide</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="../MathJax-2.7.5/MathJax.js"></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">Axiom of Choice: Guide</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/axiom_of_choice_guide.json.html">axiom_of_choice_guide.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/axiom_of_choice_guide">https://arbital.com/p/axiom_of_choice_guide</a></p><p class="creator">by
+ <a class="page-link" href="../page/MarkChimes.html">Mark Chimes</a> Oct 10 2016 
+updated
+ Dec 2 2016</p></div><p class="clickbait">Learn about the most controversial axiom of the 20th century.</p><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>Axiom of Choice: Guide</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="math.html">Mathematics</a></li><li><a href="axiom.html">Axiom</a></li><li><a href="axiom_of_choice.html">Axiom of Choice</a></li><li>…</li></ul></nav></nav></header><hr><main><h2 id="learningtheaxiomofchoice">Learning the Axiom of Choice</h2>
+<p>[multiple-choice(q_level_of_math_logic): What do you know about set theory, mathematical logic and axiom systems?
+a: Almost nothing
+wants: [axiom_of_choice_definition_intutive] [axiom_of_choice_finite_sets] [banach_tarski_paradox] [axiom_of_choice_function_existence] [axiom_of_choice_how_can_something_be_neither_true_nor_false]
+-wants: <a href="axiom_of_choice_definition_mathematical.html"> Axiom of Choice: Definition (Formal)</a>
+b: Well, I've used them for other maths, but haven't studied them directly.
+wants: [axiom_of_choice_definition_intutive] [axiom_of_choice_finite_sets] [axiom_of_choice_function_existence] [axiom_of_choice_how_can_something_be_neither_true_nor_false]
+-wants: <a href="axiom_of_choice_definition_mathematical.html"> Axiom of Choice: Definition (Formal)</a> [banach_tarski_paradox]
+c: I have a good grasp of it, but would like some explanation anyway. 
+wants: <a href="axiom_of_choice_definition_mathematical.html"> Axiom of Choice: Definition (Formal)</a> [axiom_of_choice_finite_sets]  [axiom_of_choice_function_existence] [axiom_of_choice_how_can_something_be_neither_true_nor_false]
+-wants: <a href="axiom_of_choice_definition_intuitive.html">Axiom of Choice Definition (Intuitive)</a> [banach_tarski_paradox]
+d: I have a good grasp of it and don't need to hear more.<br />
+wants: <a href="axiom_of_choice_definition_mathematical.html"> Axiom of Choice: Definition (Formal)</a> 
+-wants: <a href="axiom_of_choice_definition_intuitive.html">Axiom of Choice Definition (Intuitive)</a> [axiom_of_choice_finite_sets]  [axiom_of_choice_function_existence] [banach<em>tarski</em>paradox][axiom<em>of</em>choice<em>how</em>can<em>something</em>be<em>neither</em>true<em>nor</em>false]
+]</p>
+<p>[multiple-choice(q_axiom_of_choice_history): This axiom has a rich and interesting history.  How much do you want to learn about? 
+a: Give me all of the juicy history side-facts!
+wants: [6c7] <a href="axiom_of_choice_history_and_controversy.html">Axiom of Choice: History and Controversy</a>
+b: Eh, give me a short intro.
+wants: <a href="axiom_of_choice_introduction.html">Axiom of Choice: Introduction</a>
+-wants: <a href="axiom_of_choice_history_and_controversy.html">Axiom of Choice: History and Controversy</a>
+c: Just stick to the mathematics, please.
+-wants: <a href="axiom_of_choice_introduction.html">Axiom of Choice: Introduction</a> <a href="axiom_of_choice_history_and_controversy.html">Axiom of Choice: History and Controversy</a>
+]</p>
+<p>[multiple-choice(q_axiom_of_choice_history): This axiom has a rich and interesting history.  How much do you want to learn about? 
+a: Give me all of the juicy history side-facts!
+wants: [6c7] <a href="axiom_of_choice_history_and_controversy.html">Axiom of Choice: History and Controversy</a>
+b: Eh, give me a short intro.
+wants: <a href="axiom_of_choice_introduction.html">Axiom of Choice: Introduction</a>
+-wants: <a href="axiom_of_choice_history_and_controversy.html">Axiom of Choice: History and Controversy</a>
+c: Just stick to the mathematics, please.
+-wants: <a href="axiom_of_choice_introduction.html">Axiom of Choice: Introduction</a> <a href="axiom_of_choice_history_and_controversy.html">Axiom of Choice: History and Controversy</a>
+]</p>
+<p>[multiple-choice(q_axiom_of_choice_mathematics): How heavy should the maths be that we show you? 
+a: Lay it on me! Give me the formal logical notation.
+wants: [6c8]
+-wants: <a href="axiom_of_choice_definition_intuitive.html">Axiom of Choice Definition (Intuitive)</a>
+b: Just give me an intuitive description with words. No mathematical notation.
+-wants: <a href="axiom_of_choice_definition_mathematical.html"> Axiom of Choice: Definition (Formal)</a>
+wants: <a href="axiom_of_choice_definition_intuitive.html">Axiom of Choice Definition (Intuitive)</a>
+]</p>
+<p>%%%box:
+You will get the following pages:
+%%wants-requisite(<a href="axiom_of_choice_introduction.html">Axiom of Choice: Introduction</a>):
+Basic intro %%
+%%wants-requisite(<a href="axiom_of_choice_history_and_controversy.html">Axiom of Choice: History and Controversy</a>):
+History and controversy %%
+%%wants-requisite(<a href="axiom_of_choice_definition_mathematical.html"> Axiom of Choice: Definition (Formal)</a>):
+Definition (Formal) %%
+%%wants-requisite(<a href="axiom_of_choice_introduction.html">Axiom of Choice: Introduction</a>):
+Definition (Intuitive) %%
+%%wants-requisite(<a href="axiom_of_choice_definition_intuitive.html">Axiom of Choice Definition (Intuitive)</a>):</p>
+<p>%start-path(<a href="axiom_of_choice_history_and_controversy.html">Axiom of Choice: History and Controversy</a>)%
+%%
+%%%</p>
+<p>Plan for this guide:</p>
+<p>Axiom of Choice: Guide</p>
+<p>Conditional paragraphs for concepts being described on later pages.</p>
+<p>Questions on what the main page should look like</p>
+<p>1 Introduction
+2 Getting the Heavy Maths out the Way: Definitions
+3 Axiom Unnecessary for Finite Collections of Sets
+4 Controversy: Mathematicians Divided! Counter-Intuitive Results, and The History of the Axiom of Choice
+5 So, What is this Choice Thing Good for Anyways?
+6 Physicists Hate Them! Find out How Banach and Tarski Make Infinity Dollars with this One Simple Trick!
+7 How Something Can Exist Without Actually Existing: The Zermelo Fraenkel Axioms and the Existence of a Choice Function
+8 How Something can be Neither True nor False:
+9 A Rose by Any Other Name: Alternative Characterizations of AC
+10 Zorn's Lemma? I hardly Know her!
+11 Getting Your Ducks in a Row, or, Rather, Getting Your Real Numbers in a Row: The Well-Ordering Principle
+12 AC On a Budget: Weaker Versions of the Axiom
+13 And In Related News: The Continuum Hypothesis
+14 Axiom of Choice Considered Harmful: Constructive Mathematics and the Potential Pitfalls of AC
+15 Choosing Not to Choose: Set-Theoretic Axioms Which Contradict Choice
+16 I Want to Play a Game: Counterintuitive Strategies Using AC </p>
+<p>-Guide Questions-</p>
+<p>I'd also like the corresponding pages to show or hide some information based on what is chosen here. </p>
+<p>Choose one of the pregenerated paths, or customize your own.
+a. Comprehensive path: Learn more than you wanted to know!
+    Add all pages
+b. Substantial path: All the most important stuff
+    Add 1,2,3,4,5,6,7,8,10,14
+c. Compact path: Only the very important stuff
+    Add 2, 3, 5, 7, 10
+d. First-time path: Learn the important basics without getting too bogged down.
+    Add 1. 2 (intuitive), 2 (definition), 3, 4, 5, 6, 7, 8, 10
+e. Overview path: Just get a taste of the axiom
+    Add 1, 2 (intuitive), 2 (definition), 3, 4, 5, 7
+f. Custom Path</p>
+<p>If the user chooses to customize a path:</p>
+<ol>
+<li><p>What do you know about set theory, mathematical logic and axioms?
+a. Almost nothing
+Add Definitions (Intuitive)
+Add 3. Finite Sets
+Add 6. Banach-Tarski
+Add 7. ZF Axioms and Existence of a Choice Function
+Add 8. How can something be neither True nor False
+b. Well, I've used them for other maths, but haven't studied them directly.
+Add 2. Definitions<br />
+Add 3. Finite Sets
+Add 7. ZF Axioms and Existence of a Choice Function
+Add 8. How can something be neither True nor False
+c. I have a good grasp of it, but would like some explanation anyway. 
+Add 2. Definitions
+Add 3. Finite Sets
+Add 7. ZF Axioms and Existence of a Choice Function
+Add 8. How can something be neither True nor False
+d. I have a good grasp of it and don't need to hear more.<br />
+Add 2. Definitions</p></li>
+<li><p>This axiom has a rich and interesting history. How much do you want to learn about?
+a. Give me all of the juicy history side-facts!
+Adds 1. Introduction
+Adds 4. Controversy (History)
+b. Eh, give me a short intro.
+Adds 1. Intro
+c. Just stick to the mathematics, please.</p></li>
+</ol>
+<p>-Questions 3-5 are revealed if, and only if, the answer to Question 1 is b,c, or d.-</p>
+<ol start="32">
+<li><p>How much detail would you like to read about the mathematics related to the axiom?
+a. I'd like to know a lot of the detail.
+Adds 5. What is this Choice Thing Good For
+Adds 9. Alternative Characterizations
+Adds 10. Zorn's Lemma
+Adds 12. Weaker Versions of the Axiom
+Adds 13. Continuum Hypthesis
+b. I only want the most important extra details.
+Adds 5. What is this Choice thing good for
+Adds 10. Zorn's Lemma
+c. I only want the absolute essentials.</p></li>
+<li><p>How much would you like to know about constructive mathematics and its relation to the axiom of choice?
+a. I don't care to read about it right now.
+b. I don't know what that is, please tell me about it.
+Adds 14. Constructive Mathematics and Pitfalls of AC
+Potentially adds a link to an intro on constructivsm.
+c. I know what it is, but I would like to hear more about how it relates to Axiom of Choice.
+Adds 14. Constructive Mathematics and Pitfalls of AC</p></li>
+<li><p>How much do you care about the paradoxes the axiom implies? 
+a. I don't care about them, I just want to know about the axiom itself.
+b. Give me a very basic overview.
+Adds 6. Banach-Tarski Paradox
+d. Just tell me some interesting ones.
+Adds 6. Banach-Tarksi Paradox
+Adds 16. Counterintuitive strategies using AC
+c. Tell me the whole story! 
+Adds 6. Banach-Tarski Paradox
+Adds 11. Well-Ordering Principle
+Adds 15. Axioms which contradict choice
+Adds 16. Counterintuitive strategies using AC</p></li>
+</ol>
+<p>O</p></main><hr><footer><p class="all-creators"><h2>All Creators</h2><span class="page-comma-list"><a class="page-link" href="../page/AlexeiAndreev.html">Alexei Andreev</a>,
+ <a class="page-link" href="../page/MarkChimes.html">Mark Chimes</a></span></p></footer></body></html>

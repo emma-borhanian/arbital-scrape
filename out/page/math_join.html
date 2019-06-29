@@ -1,0 +1,59 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Join and meet</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="../MathJax-2.7.5/MathJax.js"></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">Join and meet</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/math_join.json.html">math_join.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/math_join">https://arbital.com/p/math_join</a></p><p class="creator">by
+ <a class="page-link" href="../page/KevinClancy.html">Kevin Clancy</a> May 21 2016 
+updated
+ Dec 21 2016</p></div><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>Join and meet</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="math.html">Mathematics</a></li><li><a href="order_theory.html">Order theory</a></li><li>…</li></ul></nav></nav></header><hr><main><p>[summary: Let $~$\langle P, \leq \rangle$~$ be a <a href="poset.html">poset</a>, and let $~$S \subseteq P$~$. The <strong>join</strong> of $~$S$~$ in $~$P$~$, denoted by $~$\bigvee_P S$~$, is an element $~$p \in P$~$ satisfying the following two properties:</p>
+<ul>
+<li>p is an <em>upper bound</em> of $~$S$~$; that is, for all $~$s \in S$~$, $~$s \leq p$~$.</li>
+<li>For all upper bounds $~$q$~$ of $~$S$~$ in $~$P$~$, $~$p \leq q$~$.</li>
+</ul>
+<p>$~$\bigvee_P S$~$ does not necessarily exist, but if it does then it is unique. The notation $~$\bigvee S$~$ is typically used instead of $~$\bigvee_P S$~$ when $~$P$~$ is clear from context. Joins are often called <em>least upper bounds</em> or <em>supremums</em>. For $~$a, b$~$ in $~$P$~$, the join of $~$\{a,b\}$~$ in $~$P$~$ is denoted by $~$a \vee_P b$~$, or $~$a \vee b$~$ when $~$P$~$ is clear from context. <strong>Meets</strong> are greatest lower bounds, and are related to joins by duality. 
+]</p>
+<p>Let $~$\langle P, \leq \rangle$~$ be a <a href="poset.html">Partially ordered set</a>, and let $~$S \subseteq P$~$. The <strong>join</strong> of $~$S$~$ in $~$P$~$, denoted by $~$\bigvee_P S$~$, is an element $~$p \in P$~$ satisfying the following two properties:</p>
+<ul>
+<li>p is an <em>upper bound</em> of $~$S$~$; that is, for all $~$s \in S$~$, $~$s \leq p$~$.</li>
+<li>For all upper bounds $~$q$~$ of $~$S$~$ in $~$P$~$, $~$p \leq q$~$.</li>
+</ul>
+<p>$~$\bigvee_P S$~$ does not necessarily exist, but if it does then it is unique. The notation $~$\bigvee S$~$ is typically used instead of $~$\bigvee_P S$~$ when $~$P$~$ is clear from context. Joins are often called <em>least upper bounds</em> or <em>supremums</em>. For $~$a, b$~$ in $~$P$~$, the join of $~$\{a,b\}$~$ in $~$P$~$ is denoted by $~$a \vee_P b$~$, or $~$a \vee b$~$ when $~$P$~$ is clear from context.</p>
+<p>The dual concept of the join is that of the meet. The <strong>meet</strong> of $~$S$~$ in $~$P$~$, denoted by $~$\bigwedge_P S$~$, is defined an element $~$p \in P$~$ satisfying.</p>
+<ul>
+<li>p is a <em>lower bound</em> of $~$S$~$; that is, for all $~$s$~$ in $~$S$~$, $~$p \leq s$~$.</li>
+<li>For all lower bounds $~$q$~$ of $~$S$~$ in $~$P$~$, $~$q \leq p$~$.</li>
+</ul>
+<p>Meets are also called <em>infimums</em>, or <em>greatest lower bounds</em>. The notations $~$\bigwedge S$~$, $~$p \wedge_P q$~$, and $~$p \wedge q$~$ are all have meanings that are completely analogous to the aforementioned notations for joins. </p>
+<h2 id="basicexample">Basic example</h2>
+<p><img src="http://i.imgur.com/sx1Ss9w.png" alt="Joins Failing to exist in a finite lattice" /></p>
+<p>The above Hasse diagram represents a poset with elements $~$a$~$, $~$b$~$, $~$c$~$, and $~$d$~$. $~$\bigvee \{a,b\}$~$ does not exist because the set $~$\{a,b\}$~$ has no upper bounds. $~$\bigvee \{c,d\}$~$ does not exist for a different reason: although $~$\{c, d\}$~$ has upper bounds $~$a$~$ and $~$b$~$, these upper bounds are incomparable, and so $~$\{c, d\}$~$ has no <em>least</em> upper bound. There do exist subsets of this poset which possess joins; for example, $~$a \vee c = a$~$, $~$\bigvee \{b,c,d\} = b$~$, and $~$\bigvee \{c\} = c$~$.</p>
+<p>Now for some examples of meets. $~$\bigwedge \{a, b, c, d\}$~$ does not exist because $~$c$~$ and $~$d$~$ have no common lower bounds. However, $~$\bigwedge \{a,b,d\} = d$~$ and $~$a \wedge c = c$~$.</p>
+<h2 id="additionalmaterial">Additional Material</h2>
+<ul>
+<li><a href="join_examples.html">Examples</a></li>
+<li><a href="poset_join_exercises.html">Exercises</a></li>
+</ul>
+<h2 id="furtherreading">Further reading</h2>
+<ul>
+<li><a href="order_lattice.html">Lattices</a></li>
+</ul></main><hr><section class="comments"><h2>Comments</h2><div class="comment"><p><a class="page-link" href="../page/NateSoares.html">Nate Soares</a></p><p><p>Examples?</p></p></div></section><footer><p class="tagged"><h2>Tagged</h2><span class="page-comma-list"><a class="page-link" href="../page/b_class_meta_tag.html">B-Class</a>,
+ <a class="page-link" href="../page/math2.html">Math 2</a></span></p><p class="all-creators"><h2>All Creators</h2><span class="page-comma-list"><a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a>,
+ <a class="page-link" href="../page/KevinClancy.html">Kevin Clancy</a></span></p><p class="likes"><h2>Likes</h2><span class="page-comma-list"><a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a>,
+ <a class="page-link" href="../page/azoubd.html">azo ubd</a></span></p><p class="reverse-related"><h2>Reverse Related</h2><ul class="page-list"><li><a class="page-link" href="../page/b_class_meta_tag.html">B-Class</a> <q>This page is mostly complete and without major problems, but has not had detailed feedback from the target audience and reviewers.</q> - <a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a></li><li><a class="page-link" href="../page/math2.html">Math 2</a> <q>Do you work with math on a fairly routine basis?  Do you have little trouble grasping abstract structures and ideas?</q> - <a class="page-link" href="../page/EliezerYudkowsky.html">Eliezer Yudkowsky</a></li></ul></p><p class="children"><h2>Children</h2><ul class="page-tree"><li><a class="page-link" href="../page/join_examples.html">Join and meet: Examples</a> <q>A union of sets and the least common multiple of a set of natural numbers can both be viewed as join…</q> - <a class="page-link" href="../page/KevinClancy.html">Kevin Clancy</a></li><li><a class="page-link" href="../page/poset_join_exercises.html">Join and meet: Exercises</a> <q>Try these exercises to test your knowledge of joins and meets.
+
+
+Tangled up 
+--------------------
+
+!…</q> - <a class="page-link" href="../page/KevinClancy.html">Kevin Clancy</a></li></ul></p></footer></body></html>

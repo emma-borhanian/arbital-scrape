@@ -1,0 +1,9 @@
+body > main,
+body > header,
+body > footer,
+body > hr {
+  width: 1000px;
+  margin: 0 auto;
+  word-break: break-word;
+}
+ul { list-style: none }

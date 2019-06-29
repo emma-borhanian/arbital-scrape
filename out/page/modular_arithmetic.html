@@ -1,0 +1,28 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Modular arithmetic</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="../MathJax-2.7.5/MathJax.js"></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">Modular arithmetic</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/modular_arithmetic.json.html">modular_arithmetic.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/modular_arithmetic">https://arbital.com/p/modular_arithmetic</a></p><p class="creator">by
+ <a class="page-link" href="../page/MalcolmMcCrimmon.html">Malcolm McCrimmon</a> Jul 30 2016 
+updated
+ Aug 2 2016</p></div><p class="clickbait">Addition as traveling around a circle, instead of along a line.</p><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>Modular arithmetic</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="math.html">Mathematics</a></li><li>…</li></ul></nav></nav></header><hr><main><p>[summary:
+Modular arithmetic is the type of [-addition] we use when calculating dates and times.  In ordinary [-arithmetic], $~$9 + 6 = 15$~$, but when working with the hours of the day, 6 hours after 9 o'clock is 3 o'clock, not 15 o'clock.  This type of "wrap-around" addition generalizes to many other domains.
+]</p>
+<p>[todo: needs images!]</p>
+<p>In ordinary [-arithmetic], you can think of [-addition] and [-subtraction] as traveling in different directions along an [infinity infinitely] long road.  A calculation like $~$9 + 6$~$ can be thought of as starting at kilometer marker 9, then driving for another 6 kilometers, which would bring you to kilometer marker 15 ([-negative_numbers] are analogous to driving along the road backwards). If the road is perfectly straight, you can never go back to a marker you've already visited by driving forward.  But what if the road were a circle?</p>
+<p>Modular arithmetic is a type of addition that's more like driving around in a circle than along an infinite straight line.  In modular arithmetic, you can start with a number, add a positive number to it, and come out with the same number you started with--just as you can drive forward on a circular road to get right back where you started.  If the length of the road were 12, for example, then if you drove 12 kilometers you would wind up right back where you started.  In this case, we would call it <em>modulus 12</em> arithmetic, or <em>mod 12</em> for short.</p>
+<p>Modular arithmetic may seem strange, but in fact, you probably use it every day!  The hours on the face of a clock "wrap around" from 12 to 1 in exactly the same way that a circular road wraps around on itself.  Thus, while in ordinary arithmetic $~$9 + 6 = 15$~$, when figuring out what time it will be 6 hours after 9 o'clock, we use modular arithmetic to arrive at the correct answer of 3 o'clock, rather than 15 o'clock.</p></main><hr><footer><p class="tagged"><h2>Tagged</h2><span class="page-comma-list"><a class="page-link" href="../page/cyclic_group_intro_math_0.html">Cyclic Group Intro (Math 0)</a>,
+ <a class="page-link" href="../page/needs_parent_meta_tag.html">Needs parent</a>,
+ <a class="page-link" href="../page/start_meta_tag.html">Start</a></span></p><p class="all-creators"><h2>All Creators</h2><span class="page-comma-list"><a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a>,
+ <a class="page-link" href="../page/MalcolmMcCrimmon.html">Malcolm McCrimmon</a></span></p><p class="likes"><h2>Likes</h2><span class="page-comma-list"><a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a></span></p><p class="reverse-related"><h2>Reverse Related</h2><ul class="page-list"><li><a class="page-link" href="../page/needs_parent_meta_tag.html">Needs parent</a> <q>This page is not attached to an appropriate parent page. If you know where it should go, please help categorize it!</q> - <a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a></li><li><a class="page-link" href="../page/start_meta_tag.html">Start</a> <q>This page gives a basic overview of the topic, but may be missing important information or have stylistic issues. If you're able to, please help expand or improve it!</q> - <a class="page-link" href="../page/EliezerYudkowsky.html">Eliezer Yudkowsky</a></li></ul></p></footer></body></html>

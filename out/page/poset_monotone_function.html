@@ -1,0 +1,122 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Monotone function</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="../MathJax-2.7.5/MathJax.js"></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">Monotone function</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/poset_monotone_function.json.html">poset_monotone_function.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/poset_monotone_function">https://arbital.com/p/poset_monotone_function</a></p><p class="creator">by
+ <a class="page-link" href="../page/KevinClancy.html">Kevin Clancy</a> Jul 22 2016 
+updated
+ Dec 3 2016</p></div><p class="clickbait">An order-preserving map between posets.</p><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>Monotone function</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="math.html">Mathematics</a></li><li><a href="order_theory.html">Order theory</a></li><li>…</li></ul></nav></nav></header><hr><main><p>Let $~$\langle P, \leq_P \rangle$~$ and $~$\langle Q, \leq_Q \rangle$~$ be <a href="poset.html">posets</a>. Then a function $~$\phi : P \rightarrow Q$~$ is said to be <strong>monotone</strong> (alternatively, <strong>order-preserving</strong>) if for all $~$s, t \in P$~$, $~$s \le_P t$~$ implies $~$\phi(s) \le_Q \phi(t)$~$.</p>
+<h2 id="positiveexample">Positive example</h2>
+<p><img src="http://i.imgur.com/6w11VT2.png" alt="A simple monotone map phi" /></p>
+<pre>%%comment:
+dot source:
+
+digraph G {
+  node [width = 0.1, height = 0.1]
+  rankdir = BT;
+  rank = same;
+  compound = true;
+  fontname=&quot;MathJax_Main&quot;;
+
+  subgraph cluster_P {
+    node [style=filled,color=white];
+    edge [arrowhead = &quot;none&quot;];
+    style = filled;
+    color = lightgrey;
+    fontcolor = black;
+    label = &quot;P&quot;;
+    labelloc = b;
+    b -&gt; a;
+    c -&gt; a;
+
+  }
+  subgraph cluster_Q {
+    node [style=filled];
+    edge [arrowhead = &quot;none&quot;];
+    color = black;
+    fontcolor = black;
+    label= &quot;Q&quot;;
+    labelloc = b;
+    u -&gt; t;
+  }
+  edge [color = blue, style = dashed]
+  fontcolor = blue;
+  label = &quot;φ&quot;;  
+  labelloc = t; 
+  b -&gt; t [constraint = false];
+  a -&gt; t [constraint = false];
+  c -&gt; u [constraint = false];
+}
+
+%%</pre>
+<p>Here is an example of a monotone map $~$\phi$~$ from a poset $~$P$~$ to another poset $~$Q$~$. Since $~$\le_P$~$ has two comparable pairs of elements, $~$(c,a)$~$ and $~$(b,a)$~$, there are two constraints that $~$\phi$~$ must satisfy to be considered monotone. Since $~$c \leq_P a$~$, we need $~$\phi(c) = u \leq_Q t = \phi(a)$~$. This is, in fact, the case. Also, since $~$b \leq_P a$~$, we need $~$\phi(b) = t \leq_Q t = \phi(a)$~$. This is also true.</p>
+<h2 id="negativeexample">Negative example</h2>
+<p><img src="http://i.imgur.com/Zp0wSnP.png" alt="A simple, non-monotone map" /></p>
+<pre>%%comment:
+dot source:
+
+digraph G {
+  node [width = 0.1, height = 0.1]
+  rankdir = BT;
+  rank = same;
+  compound = true;
+  fontname=&quot;MathJax_Main&quot;;
+
+  subgraph cluster_P {
+    node [style=filled,color=white];
+    edge [arrowhead = &quot;none&quot;];
+    style = filled;
+    color = lightgrey;
+    fontcolor = black;
+    label = &quot;P&quot;;
+    labelloc = b;
+    a -&gt; b;
+  }
+
+  subgraph cluster_Q {
+    node [style=filled];
+    edge [arrowhead = &quot;none&quot;];
+    color = black;
+    fontcolor = black;
+    label= &quot;Q&quot;;
+    labelloc = b;
+    w -&gt; u;
+    w -&gt; v;
+    u -&gt; t;
+    v -&gt; t;
+  }
+  edge [color = blue, style = dashed]
+  fontcolor = blue;
+  label = &quot;φ&quot;;   
+  labelloc = t;
+  b -&gt; u [constraint = false];
+  a -&gt; v [constraint = false];
+}
+%%</pre>
+<p>Here is an example of another map $~$\phi$~$ between two other posets $~$P$~$ and $~$Q$~$. This map is not monotone, because $~$a \leq_P b$~$ while $~$\phi(a) = v \parallel_Q u = \phi(b)$~$.</p>
+<h2 id="additionalmaterial">Additional material</h2>
+<p>For some examples of montone functions and their applications, see <a href="order_monotone_examples.html">Monotone function: examples</a>. To test your knowledge of monotone functions, head on over to <a href="order_monotone_exercises.html">Monotone function: exercises</a>.</p></main><hr><footer><p class="likes"><h2>Likes</h2><span class="page-comma-list"><a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a>,
+ <a class="page-link" href="../page/EricRogstad.html">Eric Rogstad</a>,
+ <a class="page-link" href="../page/JaimeSevillaMolina.html">Jaime Sevilla Molina</a></span></p><p class="children"><h2>Children</h2><ul class="page-tree"><li><a class="page-link" href="../page/order_monotone_examples.html">Monotone function: examples</a> <q>Here are some examples of monotone functions.
+
+A cunning plan
+--------
+
+There's a two-player game ca…</q> - <a class="page-link" href="../page/KevinClancy.html">Kevin Clancy</a></li><li><a class="page-link" href="../page/order_monotone_exercises.html">Monotone function: exercises</a> <q>Try these exercises and become a *deity* of monotonicity.
+
+
+Monotone composition
+-----
+
+Let $P, Q$, …</q> - <a class="page-link" href="../page/KevinClancy.html">Kevin Clancy</a></li></ul></p></footer></body></html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Conjugacy classes of the symmetric group on five elements</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="../MathJax-2.7.5/MathJax.js"></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">Conjugacy classes of the symmetric group on five elements</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/symmetric_group_five_conjugacy_classes.json.html">symmetric_group_five_conjugacy_classes.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/symmetric_group_five_conjugacy_classes">https://arbital.com/p/symmetric_group_five_conjugacy_classes</a></p><p class="creator">by
+ <a class="page-link" href="../page/PatrickStevens.html">Patrick Stevens</a> Jun 14 2016 
+updated
+ Jun 15 2016</p></div><p class="clickbait">The symmetric group on five elements is a group of just the right size to make a good example of a table of conjugacy classes.</p><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>Conjugacy classes of the symmetric group on five elements</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="math.html">Mathematics</a></li><li><a href="abstract_algebra.html">Abstract algebra</a></li><li><a href="algebraic_structure.html">Algebraic structure</a></li><li><a href="group_mathematics.html">Group</a></li><li><a href="symmetric_group.html">Symmetric group</a></li><li>…</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="math.html">Mathematics</a></li><li><a href="group_theory.html">Group theory</a></li><li><a href="group_mathematics.html">Group</a></li><li><a href="symmetric_group.html">Symmetric group</a></li><li>…</li></ul></nav></nav></header><hr><main><p>The <a href="symmetric_group.html">Symmetric group</a> $~$S_5$~$ on five generators has size $~$5! = 120$~$ (where the exclamation mark denotes the <a href="factorial.html">Factorial</a> function).
+By the result that <a href="conjugacy_class_is_cycle_type_in_symmetric_group.html">in a symmetric group, conjugacy classes coincide with cycle types</a>, we can list the conjugacy classes of $~$S_5$~$ easily.</p>
+<h1 id="thetable">The table</h1>
+<p>$$~$\begin{array}{|c|c|c|c|}
+\hline
+\text{Representative}&amp; \text{Size of class} &amp; \text{Cycle type} &amp; \text{Order of element} \\ \hline
+(12345) &amp; 24 &amp; 5 &amp; 5 \\ \hline
+(1234) &amp; 30 &amp; 4,1 &amp; 4 \\ \hline
+(123) &amp; 20 &amp; 3,1,1 &amp; 3 \\ \hline
+(123)(45) &amp; 20 &amp; 3,2 &amp; 6 \\ \hline
+(12)(34) &amp; 15 &amp; 2,2,1 &amp; 2 \\ \hline
+(12) &amp; 10 &amp; 2,1,1,1 &amp; 2 \\ \hline
+e &amp; 1 &amp; 1,1,1,1,1 &amp; 1 \\ \hline
+\end{array}$~$$</p>
+<h1 id="determiningthelistofcycletypesandsizes">Determining the list of cycle types and sizes</h1>
+<p>There are five elements to permute; we need to find all the possible ways of grouping them up into disjoint cycles.
+We will go through this systematically.
+Note first that since there are only five elements to permute, there cannot be any element with a $~$6$~$-cycle or higher.</p>
+<h2 id="thosewithlargestcycleoflengthdd5dd">Those with largest cycle of length $~$5$~$</h2>
+<p>If there is a $~$5$~$-cycle, then it permutes everything, so its <a href="cycle_type_of_a_permutation.html">cycle type</a> is $~$5$~$.
+That is, we can take a representative $~$(12345)$~$, and this is the only conjugacy class with a $~$5$~$-cycle.</p>
+<p>Recall that every cycle of length $~$5$~$ may be written in five different ways: $~$(12345)$~$ or $~$(23451)$~$ or $~$(34512)$~$, and so on.
+Without loss of generality, we may assume $~$1$~$ comes at the start (by cycling round the permutation if necessary).</p>
+<p>Then there are $~$4!$~$ ways to fill in the remaining slots of the cycle (where the exclamation mark denotes the <a href="factorial.html">Factorial</a> function).</p>
+<p>Hence there are $~$24$~$ elements of this conjugacy class.</p>
+<h2 id="thosewithlargestcycleoflengthdd4dd">Those with largest cycle of length $~$4$~$</h2>
+<p>If there is a $~$4$~$-cycle, then it permutes everything except one element, so its cycle type must be $~$4,1$~$ (abbreviated as $~$4$~$).
+That is, we can take a representative $~$(1234)$~$, and this is the only conjugacy class with a $~$4$~$-cycle.</p>
+<p>Either the element $~$1$~$ is permuted by the $~$4$~$-cycle, or it is not.</p>
+<ul>
+<li>In the first case, we have $~$4$~$ possible ways to pick the image $~$a$~$ of $~$1$~$; then $~$3$~$ possible ways to pick the image $~$b$~$ of $~$a$~$; then $~$2$~$ possible ways to pick the image $~$c$~$ of $~$b$~$; then $~$c$~$ must be sent back to $~$1$~$.
+That is, there are $~$4 \times 3 \times 2 = 24$~$ possible $~$4$~$-cycles containing $~$1$~$.</li>
+<li>In the second case, the cycle does not contain $~$1$~$, so there are $~$3$~$ possible ways to pick the image $~$a$~$ of $~$2$~$; then $~$2$~$ possible ways to pick the image $~$b$~$ of $~$a$~$; then $~$1$~$ possible way to pick the image $~$c$~$ of $~$b$~$; then $~$c$~$ must be sent back to $~$2$~$.
+So there are $~$3 \times 2 \times 1 = 6$~$ possible $~$4$~$-cycles not containing $~$1$~$.</li>
+</ul>
+<p>This comes to a total of $~$30$~$ possible $~$4$~$-cycles in this conjugacy class.</p>
+<h2 id="thosewithlargestcycleoflengthdd3dd">Those with largest cycle of length $~$3$~$</h2>
+<p>Now we have two possible conjugacy classes: $~$3,1,1$~$ and $~$3,2$~$.</p>
+<h3 id="thedd311ddclass">The $~$3,1,1$~$ class</h3>
+<p>An example representative for this class is $~$(123)$~$.</p>
+<p>We proceed with a slightly different approach to the $~$4,1$~$ case.
+Using the notation for the [-binomial_coefficient], we have $~$\binom{5}{3} = 10$~$ possible ways to select the numbers which appear in the $~$3$~$-cycle.
+Each selection has two distinct ways it could appear as a $~$3$~$-cycle: the selection $~$\{1,2,3\}$~$ can appear as $~$(123)$~$ (or the duplicate cycles $~$(231)$~$ and $~$(312)$~$), or as $~$(132)$~$ (or the duplicate cycles $~$(321)$~$ or $~$(213)$~$).</p>
+<p>That is, we have $~$2 \times 10 = 20$~$ elements of this conjugacy class.</p>
+<h3 id="thedd32ddclass">The $~$3,2$~$ class</h3>
+<p>An example representative for this class is $~$(123)(45)$~$.</p>
+<p>Again, there are $~$\binom{5}{3} = 10$~$ possible ways to select the numbers which appear in the $~$3$~$-cycle; having made this selection, we have no further choice about the $~$2$~$-cycle.</p>
+<p>Given a selection of the elements of the $~$3$~$-cycle, as before we have two possible ways to turn it into a $~$3$~$-cycle.</p>
+<p>We are also given the selection of the elements of the $~$2$~$-cycle, but there is no choice about how to turn this into a $~$2$~$-cycle because, for instance, $~$(12)$~$ is equal to $~$(21)$~$ as cycles.
+So this time the selection of the elements of the $~$3$~$-cycle has automatically determined the corresponding $~$2$~$-cycle.</p>
+<p>Hence there are again $~$2 \times 10 = 20$~$ elements of this conjugacy class.</p>
+<h2 id="thosewithlargestcycleoflengthdd2dd">Those with largest cycle of length $~$2$~$</h2>
+<p>There are two possible cycle types: $~$2,2,1$~$ and $~$2,1,1,1$~$.</p>
+<h3 id="thedd221ddclass">The $~$2,2,1$~$ class</h3>
+<p>An example representative for this class is $~$(12)(34)$~$.</p>
+<p>There are $~$\binom{5}{2}$~$ ways to select the first two elements; then once we have done so, there are $~$\binom{3}{2}$~$ ways to select the second two.
+Having selected the elements moved by the first $~$2$~$-cycle, there is only one distinct way to make them into a $~$2$~$-cycle, since (for example) $~$(12)$~$ is equal to $~$(21)$~$ as permutations; similarly the selection of the elements determines the second $~$2$~$-cycle.</p>
+<p>However, this time we have double-counted each element, since (for example) the permutation $~$(12)(34)$~$ is equal to $~$(34)(12)$~$ by the result that <a href="disjoint_cycles_commute_symmetric_group.html">disjoint cycles commute</a>.</p>
+<p>Therefore there are $~$\binom{5}{2} \times \binom{3}{2} / 2 = 15$~$ elements of this conjugacy class.</p>
+<h3 id="thedd2111ddclass">The $~$2,1,1,1$~$ class</h3>
+<p>An example representative for this class is $~$(12)$~$.</p>
+<p>There are $~$\binom{5}{2}$~$ ways to select the two elements which this cycle permutes.
+Once we have selected the elements, there is only one distinct way to put them into a $~$2$~$-cycle, since (for example) $~$(12)$~$ is equal to $~$(21)$~$ as permutations.</p>
+<p>Therefore there are $~$\binom{5}{2} = 10$~$ elements of this conjugacy class.</p>
+<h2 id="thosewithlargestcycleoflengthdd1dd">Those with largest cycle of length $~$1$~$</h2>
+<p>There is only the identity in this class, so it is of size $~$1$~$.</p></main><hr><footer></footer></body></html>

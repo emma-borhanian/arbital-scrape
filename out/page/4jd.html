@@ -1,0 +1,24 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>&quot;I might try to introduce th...&quot;</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="../MathJax-2.7.5/MathJax.js"></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">&quot;I might try to introduce th...&quot;</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/4jd.json.html">4jd.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/4jd">https://arbital.com/p/4jd</a></p><p class="creator">by
+ <a class="page-link" href="../page/EricRogstad.html">Eric Rogstad</a> Jun 17 2016</p></div><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>&quot;I might try to introduce th...&quot;</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="math.html">Mathematics</a></li><li><a href="isomorphism.html">Isomorphism</a></li><li><a href="Isomorphism_intro_math_0.html">Isomorphism: Intro (Math 0)</a></li><li>…</li></ul></nav></nav></header><hr><main><blockquote class="comment-context">Imagine you are the Count von Count\. You care only about counting things\. You don't care what it is you count, you just care how many there are\. You decide that you want to collect the objects that you count into boxes, and you consider two boxes equal if there are the same number of items in both boxes\. How do you know if two boxes have the same number of items? You take one element out of each box and put them to one side\. You continue pairing elements up in this way and when one box runs out you check if there are any left over in the other box\. <mark>If there aren't any left over, then the boxes are bijective and the way that you paired them up is a bijection\. A bijection is a simple form of an isomorphism and the boxes are said to be isomorphic\.</mark></blockquote>
+<p>I might try to introduce these terms one at a time, and a bit more slowly -- the paragraph up to this point reads like <a href="https://en.wikipedia.org/wiki/Simple_English">Simple English</a> (good!), and then in the last two sentences I've got two terms thrown at me.</p>
+<p>I think if a reader doesn't yet know what an isomorphism is, it would be helpful to spend more time building the intuition that there's something the same about both boxes, maybe like this:</p>
+<blockquote>
+  <p>If there aren't any left over, then you know there were the same number of items in each box. So to Count von Count, who only cares about counting things, the two boxes are basically equivalent, and might as well be the same box. Whenever two objects are the <em>same</em> from a certain perspective, we say that they are <em>isomorphic</em>.</p>
+  <p>In this example, the way in which the boxes were the same is that you could pair up each item in one box with an item in the other (which you wouldn't have been able to do if the boxes had different numbers of elements). Whenever you can match each item in one set with exactly one item in another set, we say that the sets are [-bijective] and the way you paired them is a [-bijection]. %%note: Note that two sets have to have the same number of elements to be bijective, but that's not enough &mdash; you also need some way to say which item in one should be paired with which item in the other. In the case above, we paired the items up using the order in which they were removed from their boxes.%% A bijection is a kind of isomorphism.</p>
+</blockquote>
+<p>What do you think?</p></main><hr><footer></footer></body></html>

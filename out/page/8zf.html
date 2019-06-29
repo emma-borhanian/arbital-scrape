@@ -1,0 +1,29 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Harry Potter at Ollivander's</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="../MathJax-2.7.5/MathJax.js"></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">Harry Potter at Ollivander's</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/8zf.json.html">8zf.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/8zf">https://arbital.com/p/8zf</a></p><p class="creator">by
+ <a class="page-link" href="../page/VojtaKovarik.html">Vojta Kovarik</a> Jan 31 2018 
+updated
+ Jan 31 2018</p></div><p class="clickbait">A simple word problem on the application of Bayes rule.</p><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>Harry Potter at Ollivander's</li></ul></nav></nav></header><hr><main><p><strong>Harry Potter went shopping for a magic-wand, only to find out that wand which fits him the most is a twin-wand of the evil Lord Voldemort. How worried should Harry be about a possibility of some sinister connection with Voldemort (as opposed to this just being a coincidence)?</strong></p>
+<p>We assume that:</p>
+<ul>
+<li>the shop has 15 000 wands on offer;</li>
+<li>for a typical wizard, any of them is equally likely to be the best fit;</li>
+<li>upon entering, the unsuspecting Harry puts the odds of any connection with Voldemort at 1 to 1 000 and </li>
+<li>Harry assumes that if any such connection existed, it would have a 10% chance of affecting the wand-choice.</li>
+</ul>
+<p>(example stolen from J.K. Rowling and E. Yudkowsky)</p>
+<p>The solution can be found by applying the <a href="bayes_rule_odds_intro.html">Bayes&#39; rule</a>:</p>
+<p>By the assumption, the prior odds are (1 : 1 000). The likelihood ratio is (10% : 1/15000), which puts the updated probability at (1 : 1000) (1/10 : 1/15000) = (1/10 : 1/15) = ( 3 : 2). Therefore, the probability of a ``sinister connection’’ with Voldemort is 60% and Harry should be pretty worried.</p></main><hr><footer></footer></body></html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>&quot;Seems like there's main two...&quot;</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="../MathJax-2.7.5/MathJax.js"></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">&quot;Seems like there's main two...&quot;</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/24h.json.html">24h.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/24h">https://arbital.com/p/24h</a></p><p class="creator">by
+ <a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a> Feb 27 2016 
+updated
+ Feb 27 2016</p></div><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>&quot;Seems like there's main two...&quot;</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="Arbital.html">Arbital</a></li><li><a href="arbital_community_input.html">Arbital community input</a></li><li><a href="20h.html">&quot;**Transclusion / Template s...&quot;</a></li><li>…</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="Arbital.html">Arbital</a></li><li><a href="arbital_community_input.html">Arbital community input</a></li><li>…</li></ul></nav></nav></header><hr><main><p>Seems like there's main two parts:</p>
+<p><strong>How do we make it intuitive for editors</strong></p>
+<p>Displaying template parameters in the text <a href="https://en.wikipedia.org/wiki/London?action=edit">scales badly</a>, is not a natural way of entering information, and generally scares away editors. My current best idea for solving this is copying <a href="https://en.wikipedia.org/wiki/Cat?veaction=edit">TemplateData's method</a> (click on the infobox template, it lets you open a form to edit template parameters), but have the template call code highlighted in source editor (<img src="https://i.imgur.com/9g2kWcp.png" alt="highlight" />), and make clicking that bring up a form to edit the parameters.</p>
+<p>A bonus is storing the parameters separately makes it much easier to reuse the structured information.</p>
+<p><strong>What features does it need to be handle the major use cases</strong></p>
+<p>Essential:</p>
+<ul>
+<li>Single layer transclusion</li>
+<li><a href="https://www.mediawiki.org/wiki/Help:Templates#Parameters">Template parameters</a></li>
+</ul>
+<p>Important</p>
+<ul>
+<li>A way to conditionally hide parts of a template when a variable is not present.</li>
+<li>Possibly via a basic <a href="https://www.mediawiki.org/wiki/Help:Extension:ParserFunctions">parser function</a> for IF?</li>
+<li>Possibly by using the syntax for parameters so it's easy to specify which parts should only be shown if the parameter is included?</li>
+<li>Core <a href="https://www.mediawiki.org/wiki/Help:Magic_words">magic words</a></li>
+<li>PAGENAME, PARENTS, CHILDREN, DOMAIN, some time/date ones?</li>
+</ul>
+<p>Would be good:</p>
+<ul>
+<li>Multi layer transclusion</li>
+<li>Not certain about this, but not having it probably causes more problems than having it.</li>
+<li>More flexible scripting for complex templates</li>
+<li>The only really good implementation I know of is <a href="https://en.wikipedia.org/wiki/Wikipedia:Lua">Scribunto</a></li>
+<li>MW got by with parser functions for a while. It worked, but it was ugly and terrible. Maybe a with some thought a parser function like solution could be made less bad.</li>
+<li>A wider collection of <a href="https://www.mediawiki.org/wiki/Help:Magic_words">magic words</a></li>
+</ul>
+<p>Wishlist:</p>
+<ul>
+<li>Use the structured data stored in templates to improve search</li>
+<li>Allow in-page display of structured data, like <a href="https://www.semantic-mediawiki.org/wiki/Help:Inline_queries">SMW's Inline Queries</a></li>
+</ul></main><hr><footer></footer></body></html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Group action induces homomorphism to the symmetric group</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="../MathJax-2.7.5/MathJax.js"></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">Group action induces homomorphism to the symmetric group</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/group_action_induces_homomorphism.json.html">group_action_induces_homomorphism.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/group_action_induces_homomorphism">https://arbital.com/p/group_action_induces_homomorphism</a></p><p class="creator">by
+ <a class="page-link" href="../page/PatrickStevens.html">Patrick Stevens</a> Jun 14 2016 
+updated
+ Jun 14 2016</p></div><p class="clickbait">We can view group actions as &quot;bundles of homomorphisms&quot; which behave in a certain way.</p><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>Group action induces homomorphism to the symmetric group</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="math.html">Mathematics</a></li><li><a href="group_theory.html">Group theory</a></li><li><a href="group_action.html">Group action</a></li><li>…</li></ul></nav></nav></header><hr><main><p>Just as we can <a href="currying.html">curry</a> functions, so we can "curry" <a href="group_homomorphism.html">homomorphisms</a> and <a href="group_action.html">actions</a>.</p>
+<p>Given an action $~$\rho: G \times X \to X$~$ of group $~$G$~$ on set $~$X$~$, we can consider what happens if we fix the first argument to $~$\rho$~$. Writing $~$\rho(g)$~$ for the induced map $~$X \to X$~$ given by $~$x \mapsto \rho(g, x)$~$, we can see that $~$\rho(g)$~$ is a <a href="bijective_function.html">bijection</a>.</p>
+<p>Indeed, we claim that $~$\rho(g^{-1})$~$ is an inverse map to $~$\rho(g)$~$.
+Consider $~$\rho(g^{-1})(\rho(g)(x))$~$.
+This is precisely $~$\rho(g^{-1})(\rho(g, x))$~$, which is precisely $~$\rho(g^{-1}, \rho(g, x))$~$.
+By the definition of an action, this is just $~$\rho(g^{-1} g, x) = \rho(e, x) = x$~$, where $~$e$~$ is the group's identity.</p>
+<p>We omit the proof that $~$\rho(g)(\rho(g^{-1})(x)) = x$~$, because it is nearly identical.</p>
+<p>That is, we have proved that $~$\rho(g)$~$ is in $~$\mathrm{Sym}(X)$~$, where $~$\mathrm{Sym}$~$ is the <a href="symmetric_group.html">Symmetric group</a>; equivalently, we can view $~$\rho$~$ as mapping elements of $~$G$~$ into $~$\mathrm{Sym}(X)$~$, as well as our original definition of mapping elements of $~$G \times X$~$ into $~$X$~$.</p>
+<h1 id="ddrhoddisahomomorphisminthisnewsense">$~$\rho$~$ is a homomorphism in this new sense</h1>
+<p>It turns out that $~$\rho: G \to \mathrm{Sym}(X)$~$ is a homomorphism.
+It suffices to show that $~$\rho(gh) = \rho(g) \rho(h)$~$, where recall that the operation in $~$\mathrm{Sym}(X)$~$ is composition of permutations.</p>
+<p>But this is true: $~$\rho(gh)(x) = \rho(gh, x)$~$ by definition of $~$\rho(gh)$~$; that is $~$\rho(g, \rho(h, x))$~$ because $~$\rho$~$ is a group action; that is $~$\rho(g)(\rho(h, x))$~$ by definition of $~$\rho(g)$~$; and that is $~$\rho(g)(\rho(h)(x))$~$ by definition of $~$\rho(h)$~$ as required.</p></main><hr><footer></footer></body></html>

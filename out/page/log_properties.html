@@ -1,0 +1,132 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Properties of the logarithm</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="../MathJax-2.7.5/MathJax.js"></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">Properties of the logarithm</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/log_properties.json.html">log_properties.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/log_properties">https://arbital.com/p/log_properties</a></p><p class="creator">by
+ <a class="page-link" href="../page/NateSoares.html">Nate Soares</a> Jun 15 2016 
+updated
+ Oct 21 2016</p></div><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>Properties of the logarithm</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="math.html">Mathematics</a></li><li><a href="logarithm.html">Logarithm</a></li><li>…</li></ul></nav></nav></header><hr><main><p>[summary:</p>
+<ul>
+<li>$~$\log_b(x \cdot y) = \log_b(x) + \log_b(y)$~$ for any $~$b$~$, this is the defining characteristic of logarithms.</li>
+<li>$~$\log_b(1) = 0,$~$ because $~$\log_b(1) = \log_b(1 \cdot 1) = \log_b(1) + \log_b(1).$~$</li>
+<li>$~$\log_b\left(\frac{1}{x}\right) = -\log_b(x),$~$ because $~$\log_b(1) = \log_b\left(x \cdot \frac{1}{x}\right) = \log_b(x) + \log_b\left(\frac{1}{x}\right) = 0.$~$</li>
+<li>$~$\log_b\left(\frac{x}{y}\right) = \log_b(x) - \log_b(y),$~$ which follows immediately from the above.</li>
+<li>$~$\log_b\left(x^n\right) = n \cdot \log_b(x),$~$ because $~$x^n$~$ = $~$\underbrace{x \cdot x \cdot \ldots x}_{n\text{ times}}$~$.</li>
+<li>$~$\log_b\left(\sqrt[n]{x}\right) = \frac{\log_b(x)}{n},$~$ because $~$\log_b(x) = \log_b\left((\sqrt[n]{x})^n\right) = n \cdot \log_b(\sqrt[n]{x}).$~$</li>
+<li>For every $~$f$~$ that satisfies $~$f(x \cdot y) = f(x) + f(y)$~$ for all $~$x, y \in \mathbb R^+,$~$ either $~$f$~$ sends every input to 0 or there exists some $~$b$~$ such that $~$f(b) = 1,$~$ in which case we call $~$f$~$ $~$\log_b.$~$ Thus, $~$\log_b(b) = 1.$~$</li>
+<li>$~$\log_b(b^n) = n,$~$ because $~$\log_b(x^n) = n \log_b(x)$~$ and $~$\log_b(b) = 1.$~$
+]</li>
+</ul>
+<p>With a <a href="log_as_comm_cost.html">solid interpretation of logarithms</a> under our belt, we are now in a position to look at the basic properties of the logarithm and understand what they are saying. The defining <a href="log_characteristic.html">characteristic of logarithm functions</a> is that they are [-real_valued] functions $~$f$~$ such that</p>
+<p><strong>Property 1: Multiplying inputs adds outputs.</strong>
+$$~$
+f(x \cdot y) = f(x) + f(y) \tag{1}
+$~$$
+for all $~$x, y \in$~$ [positive_reals $~$\mathbb R^+$~$]. This says that whenever the input grows (or shrinks) by a factor of $~$y$~$, the output goes up (or down) by only a fixed amount, which depends on $~$y$~$. In fact, equation (1) alone tells us quite a bit about the behavior of $~$f,$~$ and from it, we can _almost_ guarantee that $~$f$~$ is a logarithm function. First, let's see how far we can get using equation (1) all by itself:</p>
+<hr />
+<p><strong>Property 2: 1 is mapped to 0.</strong>
+$$~$
+f(1) = 0. \tag{2}
+$~$$</p>
+<p>This says that the amount the output changes if the input grows by a factor of 1 is zero &mdash; i.e., the output does not change if the input changes by a factor of 1. This is obvious, as "the input changed by a factor of 1" means "the input did not change."</p>
+<p><strong>Exercise:</strong> Prove (2) from (1).
+%%hidden(Proof):
+$$~$f(x) = f(x \cdot 1) = f(x) + f(1),\text{ so }f(1) = 0.$~$$
+%%</p>
+<hr />
+<p><strong>Property 3: Reciprocating the input negates the output.</strong>
+$$~$
+f(x) = -f\left(\frac{1}{x}\right). \tag{3}
+$~$$</p>
+<p>This says that the way that growing the input by a factor of $~$x$~$ changes the output is exactly the opposite from the way that shrinking the input by a factor of $~$x$~$ changes the output. In terms of the "communication cost" interpretation, if doubling (or tripling, or $~$n$~$-times-ing) the possibility space increases costs by $~$c$~$, then halving (or thirding, or $~$n$~$-parts-ing) the space decreases costs by $~$c.$~$</p>
+<p><strong>Exercise:</strong> Prove (3) from (2) and (1).
+%%hidden(Proof):
+$$~$x \cdot \frac{1}{x} = 1,\text{ so }f(1) = f\left(x \cdot \frac{1}{x}\right) = f(x) + f\left(\frac{1}{x}\right).$~$$</p>
+<p>$$~$f(1)=0,\text{ so }f(x)\text{ and }f\left(\frac{1}{x}\right)\text{ must be opposites.}$~$$
+%%</p>
+<hr />
+<p><strong>Property 4: Dividing inputs subtracts outputs.</strong></p>
+<p>$$~$
+f\left(\frac{x}{y}\right) = f(x) - f(y). \tag{4}
+$~$$</p>
+<p>This follows immediately from (1) and (3).</p>
+<p><strong>Exercise:</strong> Give an interpretation of (4).
+%%hidden(Interpretation):
+There are at least two good interpretations:</p>
+<ol>
+<li>$~$f\left(x \cdot \frac{1}{y}\right) = f(x) - f(y),$~$ i.e., shrinking the input by a factor of $~$y$~$ is the opposite of growing the input by a factor of $~$y.$~$</li>
+<li>$~$f\left(z \cdot \frac{x}{y}\right) = f(z) + f(x) - f(y),$~$ i.e., growing the input by a factor of $~$\frac{x}{y}$~$ affects the output just like growing the input by $~$x$~$ and then shrinking it by $~$y.$~$</li>
+</ol>
+<p>Try translating these into the communication cost interpretation if it is not clear why they're true.
+%%</p>
+<hr />
+<p><strong>Property 5: Exponentiating the input multiplies the output.</strong></p>
+<p>$$~$
+f\left(x^n\right) = n \cdot f(x). \tag{5}
+$~$$</p>
+<p>This says that multiplying the input by $~$x$~$, $~$n$~$ times incurs $~$n$~$ identical changes to the output. In terms of the communication cost metaphor, this is saying that you can emulate an $~$x^n$~$ digit using $~$n$~$ different $~$x$~$-digits.</p>
+<p><strong>Exercise:</strong> Prove (5).
+%%hidden(Proof):
+This is easy to prove when $~$n \in \mathbb N:$~$
+$$~$f\left(x^n\right) = f(\underbrace{x \cdot x \cdot \ldots x}_{n\text{ times}}) = \underbrace{f(x) + f(x) + \ldots f(x)}_{n\text{ times}} = n \cdot f(x).$~$$</p>
+<p>For $~$n \in \mathbb Q,$~$ this is a bit more difficult; we leave it as an exercise to the reader. Hint: Use the proof of (6) below, for $~$n \in \mathbb N,$~$ to bootstrap up to the case where $~$n \in \mathbb Q.$~$</p>
+<p>For $~$n \in \mathbb R,$~$ this is actually <em>not</em> provable from (1) alone; we need an additional assumption (such as [-continuity]) on $~$f$~$.
+%%</p>
+<p>Property 5 is actually <em>false,</em> in full generality &mdash; it's possible to create a function $~$f$~$ that obeys (1), and obeys (5) for $~$n \in \mathbb Q,$~$ but which exhibits pathological behavior on irrational numbers. For more on this, see [ pathological near-logarithms].</p>
+<p>This is the first place that property (1) fails us: 5 is true for $~$n \in \mathbb Q,$~$ but if we want to guarantee that it's true for $~$n \in \mathbb R,$~$ we need $~$f$~$ to be [continuity continuous], i.e. we need to ensure that if $~$f$~$ follows 5 on the rationals it's not allowed to do anything insane on irrational numbers only.</p>
+<hr />
+<p><strong>Property 6: Rooting the input divides the output.</strong></p>
+<p>$$~$
+f(\sqrt[n]{x}) = \frac{f(x)}{n}. \tag{6}
+$~$$</p>
+<p>This says that, to change the output one $~$n$~$th as much as you would if you multiplied the input by $~$x$~$, multiply the input by the $~$n$~$th root of $~$x$~$. See <a href="fractional_digits.html">Fractional digits</a> for a physical interpretation of this fact.</p>
+<p><strong>Exercise:</strong> Prove (6).
+%%hidden(Proof):
+$$~$(\sqrt[n]{x})^n = x,\text{ so }f\left((\sqrt[n]{x})^n\right)\text{ has to equal }f(x).$~$$</p>
+<p>$$~$f\left((\sqrt[n]{x})^n\right) = n \cdot f(\sqrt[n]{x}),\text{ so }f(\sqrt[n]{x}) = \frac{f(x)}{n}.$~$$
+%%</p>
+<p>As with (5), (6) is always true if $~$n \in \mathbb Q,$~$ but not necessarily always true if $~$n \in \mathbb R.$~$ To prove (6) in full generality, we additionally require that $~$f$~$ be continuous.</p>
+<hr />
+<p><strong>Property 7: The function is either trivial, or sends some input to 1.</strong></p>
+<p>$$~$
+\text{Either $f$ sends all inputs to $0$, or there exists a $b \neq 1$ such that $f(b)=1.$}\tag{7}
+$~$$</p>
+<p>This says that either $~$f$~$ is very boring (and does nothing regardless of its inputs), or there is some particular factor $~$b$~$ such that when the input changes by a factor of $~$b$~$, the output changes by exactly $~$1$~$. In the communication cost interpretation, this says that if you're measuring communication costs, you've got to pick some unit (such as $~$b$~$-digits) with which to measure.</p>
+<p><strong>Exercise:</strong> Prove (7).
+%%%hidden(Proof):
+Suppose $~$f$~$ does not send all inputs to $~$0$~$, and let $~$x$~$ be an input that $~$f$~$ sends to some $~$y \neq 0.$~$ Then $~$f(\sqrt[y]{x}) = \frac{f(x)}{y} = 1.$~$%%note: You may be wondering, "what if $~$y$~$ is negative, or a fraction?" If so, see [ Strange roots]. Short version: $~$\sqrt[-3/4]{x}$~$ is perfectly well-defined.%%</p>
+<p>$~$b$~$ is $~$\sqrt[y]{x}.$~$ We know that $~$b \neq 1$~$ because $~$f(b) = 1$~$ whereas, by (2), $~$f(1) = 0$~$.
+%%%</p>
+<hr />
+<p><strong>Property 8: If the function is continuous, it is either trivial or a logarithm.</strong></p>
+<p>$$~$
+\text{If $f(b)=1$ then } f(b^x) = x. \tag{8}
+$~$$</p>
+<p>This property follows immediately from (5). Thus, (8) is always true if $~$x$~$ is a <a href="rational_number.html">rational</a>, and if $~$f$~$ is continuous then it's also true when $~$x$~$ is irrational.</p>
+<p>Property (8) states that if $~$f$~$ is non-trivial, then it inverts <a href="exponential.html">exponentials</a> with base $~$b.$~$ In other words, $~$f$~$ counts the number of $~$b$~$-factors in $~$x$~$. In other words, $~$f$~$ counts how many times you need to multiply $~$1$~$ by $~$b$~$ to get $~$x$~$. In other words, $~$f = \log_b$~$!</p>
+<hr />
+<p>Many texts take (8) to be the defining characteristic of the logarithm. As we just demonstrated, one can also define logarithms by (1) as [continuity continuous] [trivial_mathematics non-trivial] functions whose outputs grow by a constant (that depends on $~$y$~$) whenever their inputs grow by a factor of $~$y$~$. All other properties of the logarithm follow from that.</p>
+<p>If you want to remove the "continuous" qualifier, you're still fine as long as you stick to <a href="rational_number.html">rational</a> inputs. If you want to remove the "non-trivial" qualifier, you can interpret the function $~$z$~$ that sends everything to zero as [4c8 $~$\log_\infty$~$]. Allowing $~$\log_\infty$~$ and restricting ourselves to rational inputs, <em>every</em> function $~$f$~$ that satisfies equation (1) is <a href="isomorphism.html">isomorphic</a> to a logarithm function.</p>
+<p>In other words, if you find a function whose output changes by a constant (that depends on $~$y$~$)  whenever its input grows by a factor of $~$y$~$, there is basically only one way it can behave. Furthermore, that function only has one degree of freedom &mdash; the choice of $~$b$~$ such that $~$f(b)=1.$~$ As we will see next, even that degree of freedom is rather paltry: All logarithm functions behave in essentially the same way. As such, if we find any $~$f$~$ such that $~$f(x \cdot y) = f(x) + f(y)$~$ (or any physical process well-modeled by such an $~$f$~$), then we immediately know quite a bit about how $~$f$~$ behaves.</p></main><hr><section class="comments"><h2>Comments</h2><div class="comment"><p><a class="page-link" href="../page/EricRogstad.html">Eric Rogstad</a></p><p><blockquote class="comment-context">Exercise: <mark>Given an interpretation to \(4\)</mark>\.</blockquote>
+<p>I'm having trouble parsing interpretation #1 -- which part is supposed to map onto the right hand side of equation (4)?</p></p></div><div class="comment"><p><a class="page-link" href="../page/EricRogstad.html">Eric Rogstad</a></p><p><blockquote class="comment-context">This says that the way that growing the input by a factor of $~$x$~$ changes the <mark>input</mark> is exactly the opposite from the way that shrinking the input by a factor of $~$x$~$ changes the input\. In terms of the "communication cost" interpretation, if doubling \(or tripling, or $~$n$~$\-times\-ing\) the possibility space increases costs by $~$c$~$, then halving \(or thirding, or $~$n$~$\-parts\-ing\) the space decreases costs by $~$c.$~$</blockquote>
+<p>output?</p></p></div><div class="comment"><p><a class="page-link" href="../page/EricRogstad.html">Eric Rogstad</a></p><p><blockquote class="comment-context">This says that the way that growing the input by a factor of $~$x$~$ changes the output is exactly the opposite from the way that shrinking the input by a factor of $~$x$~$ changes the output\. In terms of the "communication cost" interpretation, if doubling \(or tripling, or $~$n$~$\-times\-ing\) the possibility space increases costs by $~$c$~$, then halving \(or thirding, or $~$n$~$\-parts\-ing\) the space decreases costs by $~$c.$~$</blockquote>
+<p>May need to build the intuition that knowing how f(x) behaves tells me how f(c*x) is different from f(c).</p>
+<p>(You're using the language of "growing the input," but I just see a static input called x.)</p></p></div><div class="comment"><p><a class="page-link" href="../page/KayaFallenstein.html">Kaya Fallenstein</a></p><p><p>(8) doesn't follow from (5). The assumption in (5) was than $~$n$~$ ranged over naturals, not reals. In fact, (1) only implies (8) if you also require the function to be continuous.</p>
+<p>(1) essentially says $~$f$~$ is a homomorphism from $~$(\mathbb{R}^{&gt;0},\cdot)$~$ to $~$(\mathbb{R},+)$~$. To generate a function satisfying (1) but not (8), we need only compose $~$log$~$ (choose a base) with an automorphism in the additive group and show that the composition is not a multiple of a logarithm. We can get such an automorphism by considering $~$\mathbb{R}$~$ as an infinite dimensional vector space over the rationals and, for example, swapping two dimensions.</p></p></div></section><footer><p class="tagged"><h2>Tagged</h2><span class="page-comma-list"><a class="page-link" href="../page/b_class_meta_tag.html">B-Class</a></span></p><p class="all-creators"><h2>All Creators</h2><span class="page-comma-list"><a class="page-link" href="../page/AdomHartell.html">Adom Hartell</a>,
+ <a class="page-link" href="../page/EricRogstad.html">Eric Rogstad</a>,
+ <a class="page-link" href="../page/NateSoares.html">Nate Soares</a></span></p><p class="likes"><h2>Likes</h2><span class="page-comma-list"><a class="page-link" href="../page/AlexeiAndreev.html">Alexei Andreev</a>,
+ <a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a>,
+ <a class="page-link" href="../page/NateSoares.html">Nate Soares</a>,
+ <a class="page-link" href="../page/AlexanderGough.html">S Gough</a>,
+ <a class="page-link" href="../page/SzymonSlawinski.html">Szymon Slawinski</a></span></p><p class="reverse-related"><h2>Reverse Related</h2><ul class="page-list"><li><a class="page-link" href="../page/b_class_meta_tag.html">B-Class</a> <q>This page is mostly complete and without major problems, but has not had detailed feedback from the target audience and reviewers.</q> - <a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a></li></ul></p></footer></body></html>

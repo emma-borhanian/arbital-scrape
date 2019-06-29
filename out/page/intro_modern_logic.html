@@ -1,0 +1,140 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>An introductory guide to modern logic</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="../MathJax-2.7.5/MathJax.js"></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">An introductory guide to modern logic</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/intro_modern_logic.json.html">intro_modern_logic.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/intro_modern_logic">https://arbital.com/p/intro_modern_logic</a></p><p class="creator">by
+ <a class="page-link" href="../page/JaimeSevillaMolina.html">Jaime Sevilla Molina</a> Sep 24 2016 
+updated
+ Oct 21 2016</p></div><p class="clickbait">Logic, provability, Löb, Gödel and more!</p><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>An introductory guide to modern logic</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="math.html">Mathematics</a></li><li>…</li></ul></nav></nav></header><hr><main><p>Welcome! We are about to start a journey through modern logic, in which we will visit two central results of this branch of mathematics, which are often misunderstood and sometimes even misquoted: [ Löb's theorem] and [ Gödel's second incompleteness theorem].</p>
+<p>Modern logic can be said to have been born in the ideas of Gödel regarding the amazing property of self-reference that plagues arithmetic. Badly explained, this means that we can force an interpretation over natural numbers which relates how deductions are made in arithmetic to statements about arithmetical concepts such as divisibility.</p>
+<p>[toc:]</p>
+<p>This guide is targets people who are already comfortable with mathematical thinking and mathematical notation. It requires however no specific background knowledge about logic or math to be read. The guide starts lightweight and gets progressively more technical.</p>
+<h1 id="formalproofs">Formal proofs</h1>
+<p>What is logic anyway? A short explanation refers to the fact that we humans happen to be able to draw conclusions about things we have not experienced by using facts about how the world is. For example, if you see somebody entering the room and is dripping water, then you infer that it is raining outside, even though you have not seen the rain yourself.</p>
+<p>This may seem trivial, but what if we are trying to program that into a computer? How can we capture this intuition of what reasoning is and write down the rules for proper reasoning in a way precise enough to be turned into a program?</p>
+<p>To accomplish that is to do logic. The ultimate goal is to have an efficient procedure that if followed will allow to <strong>deduce</strong> every true consequence of a set of premises, so simple that it could be taught to a dumb machine which only follows mechanical operations.</p>
+<p>So let's try to formalize reasoning!</p>
+<p>We are going to draw inspiration from mathematicians and see what they are doing when proving a result.</p>
+<p>Though the method is often convoluted, non linear and hard to understand, in essence what they are doing is writing down some hypothesis and facts that they assume to be true. Then they apply some manipulation rules which they assume that when applied on true premises allow to derive true facts. After iterating this process, they arrive to the wanted result.</p>
+<h2 id="gettingformal">Getting formal</h2>
+<p>Well, let's wrap together this intuitive process in a formal definition. </p>
+<blockquote>
+  <p>A [ proof of a sentence $~$\phi$~$]  is a sequence of [ well formed sentences] such that every sentence in the sequence is either an <a href="axiom.html">Axiom</a> or can be derived of the previous sentences using a [ derivation rule], and the final sentence in the sequence is $~$\phi$~$. A sentence which has a proof is called a [ theorem].</p>
+</blockquote>
+<p>Don't be scared by all the new terms! Let's go briefly over them.</p>
+<p>A <strong>well formed sentence</strong> is just a combination of letters which satisfies a certain criteria which makes them easy to interpret. The sentences we will be dealing with are logical formulas, which use a particular set of symbols such as $~$=, \wedge, \implies$~$. Our goal is to assign truth values to sentences. That is, to say if particular sentences are true or false.</p>
+<p>An <strong>axiom</strong> is something that we assume to be true without requiring a proof. For example, a common axiom in arithmetic is assuming that $~$0$~$ is different than $~$n+1$~$ for all natural numbers $~$n$~$. Or expressed as a well formed sentence, $~$\forall n. 0 \not = n+1$~$. %%note:The symbol $~$\forall$~$ is an upside-down A and means "[ for all]".%%</p>
+<p>A <strong>derivation rule</strong> is a valid basic step in a proof. Perhaps the simplest example is [ modus ponens] . Modus ponens tells you that if you have deduced somehow that $~$A\implies B$~$ and also $~$A$~$, then you can deduce from both facts $~$B$~$.</p>
+<p>Those three components constitute the basis of a <strong>logical system</strong> for reasoning: a criteria for constructing [ well formed sentences], a set of  <a href="axiom.html">axioms</a> which we know to be true %%note: The set of axioms does not have to be finite! In particular, we can specify a criteria to identify infinitely many axioms. This is called an [ axiom schema]%% and some [ derivation rules] which allow us to deduce new conclusions.</p>
+<p>%%hidden(Show example):
+For a rather silly example, let's consider the system $~$A$~$ with the following components:</p>
+<ul>
+<li>Well formed sentences: the set of words in the Webster dictionary.</li>
+<li>Axioms: The word 'break'.</li>
+<li>Deduction rules: If a word $~$w$~$ is a theorem of $~$A$~$, then so it is a word which only differs in one letter of $~$w$~$, either by adding, substracting or replacing it anywhere in $~$w$~$.</li>
+</ul>
+<p>Thus the word 'trend' is a theorem of $~$A$~$, as shown by the 4 steps long proof 'break - bread - tread - trend'. The first sentence in the proof is an axiom. Every sentence after is deduced from our deduction rule using the previous sentence as a premise.
+%%</p>
+<h2 id="interpretations">Interpretations</h2>
+<p>Given how we defined a logical system, there is a certain degree of freedom we have, as we can choose the underlying sets of well formed sentences, the axioms and the deduction rules. However, as shown in the example above, if we want to make meaningful deductions we should be careful in what components do we choose for our logical system.</p>
+<p>The criteria we use to choose these components is intertwined with the [-model] we are trying to reason about. Models can be anything that captures an aspect of the world, or just a mathematical concept. To put it simply, they are the thing we are trying to reason <em>about</em>.</p>
+<p>Depending on what kind of entities the model has, we will lean towards a particular choice of sentences. For example, if our model consists in just facts which are subject to some known logical relations we could use the language of [-propositional_logic]. But if our model contains different objects which are related in different ways, we will prefer to use the language of [first_order_logic].</p>
+<p>Each model has an interpretation associated, which relates the terms in the sentences to aspects of the model. For all practical purposes, a model and its interpretation are the same once we have fixed the language, and thus we will use the terms as synonyms.</p>
+<p>Then, depending on how the model evolves and what things can we infer from what facts we should choose some deduction rules. Together, the sentences and the deduction rules specify a class of possible models. If the deduction rules correctly capture the properties of the class of models we had in mind, in the sense that from true premises we really derive true consequences, then we will say that they are [-sound]. </p>
+<p>Intuitively, we say that the choice of language and deduction rules decides the "shape" that our models will have. Every model with such a shape will be part of the universe of models specified by those components of a logical system.</p>
+<p>With this imagery of a class of models, we can think of axioms as an attempt to reduce the class of models and pin down the concrete model we are interested in, by choosing as axioms sentences whose interpretation is true in only the model we are interested in and in no other model %%note: sadly, there are occasions in which this is just not possible%%.</p>
+<p>A property tightly related to soundness is [-completeness]. A system is complete if every sentence which is true under all interpretations which satisfy our axioms has a proof.</p>
+<p>It is important to realize that logical systems can be talking about many models at once. In particular, if two interpretations satisfy the axioms but disagree on the truth of a particular sentence, then that sentence will be [ undecidable] in our model.</p>
+<p>This suggest a technique for proving independence of logical statements. To show that a certain sentence is independent from some axioms, construct two models which satisfy those axioms but contradict each other on the value of the statement. A nice example of this is how Lobachevsky showed that <a href="https://en.wikipedia.org/wiki/Parallel_postulate#History">Euclides Fifth postulate is independent from the other four postulates</a>.</p>
+<p>[todo: add more examples everywhere]</p>
+<h2 id="introducingpa">Introducing PA</h2>
+<p>For our purposes, we will stick to a particular logical system called <a href="peano_arithmetic.html">Peano arithmetic</a>. This particular choice of axioms and deduction rules is interesting because it reflects a lot of our intuitions about how numbers work, which in turn can be used to talk about many phenomena in the real world. In particular, <em>they can talk about themselves</em>.</p>
+<p>Before we move on to this "talking about themselves" business I am going to introduce more notation. We will refer to Peano Arithmetic as $~$PA$~$. If a sentence $~$\phi$~$ follows from the axioms of $~$PA$~$ and its deduction rules %%note: ie, there is a proof of $~$\phi$~$ using only axioms and deduction rules from $~$PA$~$%%, we will say that $~$PA\vdash \phi$~$, read as "$~$PA$~$ proves $~$\phi$~$".</p>
+<h1 id="selfreferenceandtheprovabilitypredicate">Self reference and the provability predicate</h1>
+<p>Let's try to get an intuition of what I mean when I say that numbers can talk about themselves.</p>
+<p>The first key intuition is that we can refer to arbitrary sequences of characters using numbers. For example, I can declare that from now onwards the number $~$1$~$ is going to refer to the sequence of letters "I love Peano Arithmetic". Furthermore, using a clever rule to relate numbers and sentences I can make sure that every possible finite sentence gets assigned a number %%note: This is called [-encoding]%%.</p>
+<p>A simple encoding goes by the name of <strong>Gödel encoding</strong>, and consists of assigning to every symbol we are going to allow to be used in sentences a number. For example, $~$=$~$ could be $~$1$~$, and $~$a$~$ could be $~$0$~$, and so on and so forth. Then we could encode a sentence consisting of $~$n$~$ symbols as the number $~$2^{a_1}3^{a_2}5^{a_3}\cdots p(n)^{a_n}$~$. That is, we take the number which is the product of the $~$n$~$th first primes with exponents equal to the assigned numbers.%%note:This is possible because every number can be <a href="fundamental_theorem_of_arithmetic.html">decomposed as a unique product of primes</a>.%%</p>
+<p>The process can be repeated to encode sequences of sentences as single numbers. Thus, we can encode whole proofs as single numbers. We could also encode sequences of sequences of sentences, but that is going too far for our purposes.</p>
+<p>[todo: whole example of Gödel encoding, define carefully notation of godelquotes]</p>
+<p>So the point is, we can exchange sentences by numbers and vice versa. Can we also talk about deduction using numbers?</p>
+<p>It turns out we can! With the encoding we have chosen it is cumbersome to show, but we can write a <strong>predicate</strong> $~$Axiom(x)$~$ %%note: A predicate is a well formed sentence in which we have left one or more "holes" in the form of variables which we can substitute for literal numbers or quantify over. For example, we can have the predicate $~$IsEqualTo42(x)$~$ of the form $~$x = 42$~$. Then $~$PA\vdash IsEqualTo42(42)$~$ and $~$PA\vdash \exists x IsEqualTo42(x)$~$, but $~$PA\not\vdash IsEqualTo42(7)$~$%% in the language of Peano Arithmetic such that $~$PA\vdash Axiom(\textbf{n})$~$ if and only if $~$n$~$ is a number which encodes an axiom of $~$PA$~$. </p>
+<p>Furthermore, deduction rules which require $~$n$~$ premises can be represented by $~$n+1$~$ predicates $~$Rule(p_1, p_2,…, p_n, r)$~$ which is provable in $~$PA$~$ if and only if $~$p_1, …., p_n$~$ are numbers encoding valid premises for the rule and $~$r$~$ is the corresponding deduced fact.</p>
+<p>A bit more of work and we can put together a predicate $~$Proof(x,y)$~$, which is provable in $~$PA$~$ if and only if $~$x$~$ encodes the valid proof of the sentence $~$y$~$. Isn't that neat!? </p>
+<p>Since we are not too interested in the proof itself, and more in the fact that there is a proof at all, we are going to construct the <strong>provability predicate</strong> $~$\exists x. Proof(x,y)$~$,  which we will call $~$\square_{PA}(y)$~$.%%note: $~$\exists$~$ is a backwards E and means "there exists"%%. So then, $~$\square_{PA}(x)$~$ literally means "There is a proof in $~$PA$~$ of $~$x$~$". </p>
+<p>Thus we can say that if the number $~$\ulcorner 1+1=2 \urcorner$~$ corresponds to the sentence $~$1+1=2$~$%%note: This notation remains in effect for the rest of the article.%%, then $~$PA\vdash \square_{PA}(\ulcorner 1+1=2 \urcorner)$~$. That is, $~$PA$~$ proves that there is a proof in $~$PA$~$ of $~$1+1=2$~$.</p>
+<p>Now, the predicates we have seen so far are quite intuitive and nicely behaved, in the sense that their deducibility from $~$PA$~$ matches quite well what we would expect from our intuition. However, adding the existential quantifier in front of $~$Proof(x,y)$~$ we get some nasty side effects.</p>
+<p>Warning! Really bad analogy incoming!</p>
+<p>The thing is that $~$PA$~$ "hallucinates" numbers which it is not sure whether they exist or not. Those are no mere natural numbers, but infinite numbers further in the horizon of math. While $~$PA$~$ cannot prove their existence, it neither cannot prove its non existence. So $~$PA$~$ becomes wary of asserting that proofs do not exist for a certain false sentence. After all, one of those <strong>non standard</strong> numbers may encode the proof of the false sentence! Who is to prove otherwise?</p>
+<p>Can we patch this somehow? Maybe by adding more axioms or deduction rules to $~$PA$~$ so that it can prove that those numbers do not exists? The answer is yes but not really. While it is doable in principle, the resulting theory becomes too difficult to manage, and we can no longer use it for effective deduction %%note: Technically, $~$PA$~$ loses its [ semidecidability] that way.%%.</p>
+<p>We will now proceed to prove two technical results which better formalize this idea: Löb's theorem and Gödel's Second Incompleteness Theorem.</p>
+<h1 id="lbstheorem">Löb's theorem</h1>
+<p>Löb's result follows from the intuitive properties of deduction that the provability predicate actually manages to capture. This points to the fact that it is not our definition what is wrong, but rather to a fundamental impossibility in logic.</p>
+<p>The intuitive, good properties of $~$\square_{PA}$~$ are known as the Hilbert-Bernais derivability conditions, and are as follows:</p>
+<ol>
+<li>If $~$PA\vdash A$~$, then $~$PA\vdash \square_{PA}(\ulcorner A\urcorner)$~$.</li>
+<li>$~$PA\vdash \square_{PA}(\ulcorner A\rightarrow B\urcorner) \rightarrow [\square_{PA}(\ulcorner A \urcorner)\rightarrow \square_{PA}(\ulcorner B \urcorner)]$~$</li>
+<li>$~$PA\vdash \square_{PA}(\ulcorner A\urcorner) \rightarrow \square_{PA} \square_{PA} (\ulcorner A\urcorner)$~$.</li>
+</ol>
+<p>Let's go over each of them in turn. </p>
+<p>1) says reasonably that if $~$PA$~$ proves a sentence $~$A$~$, then it also proves that there is a proof of $~$A$~$.</p>
+<p>2) affirms that if you can prove that $~$A$~$ implies $~$B$~$ then the existence of a proof of $~$A$~$ implies the existence of a proof of $~$B$~$. This is quite intuitive, as we can concatenate a proof of $~$A$~$ with a proof of $~$A\rightarrow B$~$ and deduce $~$B$~$ from an application of <em>modus ponens</em>.</p>
+<p>3) is a technical result which states that the formalization of 1) is provable when we are dealing with sentences of the form $~$\square_{PA}(\ulcorner A \urcorner)$~$.</p>
+<p>One more ingredient is needed to derive Löb's: the <a href="diagonal_lemma.html">Diagonal lemma</a>, which states that for all predicates $~$\phi(x)$~$ there is a formula $~$\psi$~$ such that $~$PA\vdash \psi \leftrightarrow \phi(\ulcorner \psi \urcorner)$~$.</p>
+<p>The details of the proof can be found in <a href="proof_lobs_thorem.html">Proof of Löb&#39;s theorem</a>. </p>
+<p>The details are not essential to the main idea, but it can be illustrative to work through the formal proof. Plus the intuition behind related to the non-standard numbers we talked about before.</p>
+<p>What is really interesting is that now we are in position to enunciate and understand Löb's theorem!</p>
+<blockquote>
+  <p><strong>Löb's theorem</strong></p>
+  <p>If $~$PA\vdash \square_{PA}(\ulcorner A\urcorner) \rightarrow A$~$, then $~$PA\vdash A$~$.</p>
+  <p>(or equivalently, if $~$PA\not\vdash A$~$ then $~$PA\not\vdash \square_{PA}(\ulcorner A\urcorner) \rightarrow A$~$).</p>
+</blockquote>
+<p>Talk about an unintuitive result! Let's take a moment to ponder about its meaning.</p>
+<p>Intuitively, we should be able to derive from the existence of a proof of $~$A$~$ that $~$A$~$ is true. After all, proofs are guarantees that something really follows from the axioms, so if we got those right and our derivation rules are correct then $~$A$~$ should be true. However, $~$PA$~$ does not trust that being able to find the existence of a proof is enough to make $~$A$~$ true!</p>
+<p>Indeed, he needs to be able to see by himself the proof. In other words, there must be a $~$n$~$ such that $~$PA\vdash Proof(\textbf n, \ulcorner A\urcorner)$~$. Then he will trust that it is indeed the case that $~$A$~$.</p>
+<p>I will repeat that again because it looks like a tongue twister. Suppose somebody came and assured $~$PA$~$ that from the axioms of $~$PA$~$ it follows that there exists a number $~$n$~$ satisfying $~$Proof(\textbf n,\ulcorner A\urcorner)$~$. Then $~$PA$~$ would say, show me the proof or I am going to assume that that $~$n$~$ is actually a non standard number and you a friggin' liar.</p>
+<p>If somebody just comes saying he has a proof, but produces none, $~$PA$~$ becomes suspicious. After all, the proof in question could be a non-standard proof encoded by one of the dreaded non standard numbers! Who is going to trust that!</p>
+<h1 id="gdelii">Gödel II</h1>
+<p>And finally we arrive to Gödel's Second Incompleteness Theorem, perhaps the most widely misunderstood theorem of all mathematics.</p>
+<p>We first need to introduce the notion of [ consistency.] Simply enough, a logical system is consistent if it does not prove a contradiction, where a contradiction is something impossible. For example, it cannot ever be the case that $~$P\wedge \neg P$~$, so $~$P\wedge \neg P$~$ is a contradiction no matter what $~$P$~$ is. We use the symbol $~$\bot$~$ to represent a contradiction.</p>
+<p>The statement of GII is as follows:</p>
+<blockquote>
+  <p>Gödel Second Incompleteness Theorem (concrete form)
+  If $~$PA$~$ is consistent, then $~$PA\not \vdash \neg \square_{PA}(\bot)$~$</p>
+</blockquote>
+<p>Notice that GII follows quite directly from Löb's theorem. Actually, it is the case that Löb's theorem also follows from GII, so <a href="5hs.html">both results are equivalent</a>.</p>
+<p>This result can be interpreted as follows: you cannot make a system as complex as $~$PA$~$ in which you can talk about deduction with complete certainty, and thus about consistency. In particular, such a system cannot prove that he himself is consistent.</p>
+<p>The result is startling, but in the light of our previous exposition is clear what is going on! There is always the shadow of non standard numbers menacing our deductions.</p>
+<h1 id="summary">Summary</h1>
+<p>And that concludes our introduction to formal logic!</p>
+<p>To recall some important things we have learned:</p>
+<ul>
+<li>Logical systems capture the intuition behind deductive reasoning. They are composed of axioms and deductive rules that are chained to compose proofs.</li>
+<li>Simple logical systems that are used to talk about numbers, such as $~$PA$~$, can be interpreted as talking about many things through encodings, and in particular they can talk about themselves.</li>
+<li>There are expressions in logic that capture the concepts involved in deductions. However, the most important of them, the provability predicate $~$\square_{PA}$~$, fails to satisfy some intuitive properties due to the inability of $~$PA$~$ to prove that non standard numbers do not exists.</li>
+<li>Löb's theorem says that if $~$PA$~$ cannot prove $~$A$~$, then it can neither prove that from $~$\square_{PA}(\ulcorner A\urcorner$~$ follows $~$A$~$.</li>
+<li>$~$PA$~$ cannot prove its own consistency, in the sense that it cannot prove that the standard predicate is never satisfied by a contradiction.</li>
+</ul>
+<p>If you want to get deeper in the rabbit hole, read about [ model theory] and [-semantics] or <a href="modal_logic.html">Modal logic</a>. </p></main><hr><section class="comments"><h2>Comments</h2><div class="comment"><p><a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a></p><p><blockquote class="comment-context">
+Logical systems capture the intuition behind deductive reasoning\. They are composed of axioms and deductive rules that are chained to compose proofs\.
+Simple logical systems that are used to talk about numbers, such as $~$PA$~$, can be interpreted as talking about many things through encodings, and in particular they can talk about themselves\.
+There are expressions in logic that capture the concepts involved in deductions\. However, the most important of them, the provability predicate $~$\\square\_{PA}$~$, fails to satisfy some intuitive properties due to the inability of $~$PA$~$ to prove that non standard numbers do not exists\.
+Löb's theorem says that if $~$PA$~$ cannot prove $~$A$~$, then it can neither prove that fro<mark>m $~$\\square\_{PA}(\\ulcorener A\\urcorner$~$</mark> follows $~$A$~$\.
+$~$PA$~$ cannot prove its own consistency, in the sense that it cannot prove that the standard predicate is never satisfied by a contradiction\.
+</blockquote>
+<p>Looks like a mathjax error?</p></p></div><div class="comment"><p><a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a></p><p><blockquote class="comment-context">Welcome\! We are about to start a journey through modern logic, in <mark>which we will visit two central results of this branch of mathematics, which are often misquoted and badly explained\.</mark></blockquote>
+<p>Mention them?</p></p></div></section><footer><p class="all-creators"><h2>All Creators</h2><span class="page-comma-list"><a class="page-link" href="../page/JaimeSevillaMolina.html">Jaime Sevilla Molina</a>,
+ <a class="page-link" href="../page/MarkChimes.html">Mark Chimes</a></span></p><p class="likes"><h2>Likes</h2><span class="page-comma-list"><a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a>,
+ <a class="page-link" href="../page/JaimeSevillaMolina.html">Jaime Sevilla Molina</a>,
+ <a class="page-link" href="../page/PatrickStevens.html">Patrick Stevens</a>,
+ <a class="page-link" href="../page/TravisRivera.html">Travis Rivera</a></span></p></footer></body></html>

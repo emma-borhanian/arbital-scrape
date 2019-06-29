@@ -1,0 +1,117 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Aligning an AGI adds significant development time</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="../MathJax-2.7.5/MathJax.js"></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">Aligning an AGI adds significant development time</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/aligning_adds_time.json.html">aligning_adds_time.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/aligning_adds_time">https://arbital.com/p/aligning_adds_time</a></p><p class="creator">by
+ <a class="page-link" href="../page/EliezerYudkowsky.html">Eliezer Yudkowsky</a> Feb 22 2017 
+updated
+ Feb 22 2017</p></div><p class="clickbait">Aligning an advanced AI foreseeably involves extra code and extra testing and not being able to do everything the fastest way, so it takes longer.</p><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>Aligning an AGI adds significant development time</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="ai_alignment.html">AI alignment</a></li><li><a href="value_achievement_dilemma.html">Value achievement dilemma</a></li><li>…</li></ul></nav></nav></header><hr><main><h1 id="definition">Definition</h1>
+<p>The votable proposition is true if, comparing reasonably attainable development paths for…</p>
+<ul>
+<li><strong>Project Path 1:  An <a href="ai_alignment.html">aligned</a> <a href="sufficiently_advanced_ai.html">advanced AI</a> created by a responsible project</strong> that is hurrying where it can, but still being careful enough to maintain a success probability greater than 25%</li>
+<li><strong>Project Path 2: An unaligned unlimited <a href="superintelligent.html">superintelligence</a> produced by a project cutting all possible corners</strong></li>
+</ul>
+<p>…where otherwise <strong>both projects have access to the same ideas or discoveries</strong> in the field of AGI capabilities and similar computation resources; then, as the default / ordinary / modal case after conditioning on all of the said assumptions:</p>
+<p><strong>Project Path 1 will require <em>at least</em> 50% longer serial time to complete than Project Path 2, or two years longer, whichever is less.</strong></p>
+<p>[toc:]</p>
+<h1 id="purpose">Purpose</h1>
+<p>This page was written to address multiple questioners who seem to have accepted the <a href="orthogonality.html">Orthogonality thesis</a>, but still mostly disbelieve it would take significantly longer to develop aligned AGI than unaligned AGI, if I've understood correctly.</p>
+<p>At present this page is an overview of possible places of disagreement, and may later be selectively rather than fully expanded.</p>
+<h1 id="arguments">Arguments</h1>
+<h2 id="relatedpropositions">Related propositions</h2>
+<p>Propositions feeding into this one include:</p>
+<ul>
+<li>(1a) <a href="complexity_of_value.html">Complexity of value</a> (even as applied to a [minimum_pivotal_task])</li>
+<li>(1b) <a href="meta_unsolved.html">Meta-rules for (narrow) value learning are still unsolved</a></li>
+</ul>
+<p>If questioner believes the negation of either of these, it would imply easy specifiability of a decision function suitable for an unlimited superintelligence.  That could greatly reduce the need for, e.g:</p>
+<ul>
+<li>(2a) <a href="nonadversarial.html">Non-adversarial design</a></li>
+<li>(2b) <a href="minimality_principle.html">Minimal design</a></li>
+<li>(2c) <a href="limited_agi.html">Limitation</a> of the AGI's abilities</li>
+<li>(2d) <a href="understandability_principle.html">Understandable design</a> or [transparency transparent elements] for design aspects besides the top-level preferences (and the <a href="actual_effectiveness.html">actual effectiveness</a> of those preferences within the AGI)</li>
+</ul>
+<p>It's worth checking whether any of these time-costly development principles seem to questioner to <em>not</em> follow as important from the basic idea of value alignment being necessary and not trivially solvable.</p>
+<h2 id="outsideview">Outside view</h2>
+<p>To the best of my knowledge, it is normal / usual / unsurprising for <em>at least</em> 50% increased development time to be required by strong versus minimal demands on <em>any one</em> of:</p>
+<ul>
+<li>(3a) safety of any kind</li>
+<li>(3b) robust behavior in new one-shot contexts that can't be tested in advance</li>
+<li>(3c) robust behavior when experiencing strong forces</li>
+<li>(3d) reliable avoidance of a single catastrophic failure</li>
+<li>(3e) resilience in the face of strong optimization pressures that can potentially lead the system to traverse unusual execution paths</li>
+<li>(3f) conformance to complicated details of a user's desired system behavior</li>
+</ul>
+<p>%comment: It would indeed be unusual--some project managers might call it <em>extra-ordinary</em> good fortune--if a system demanding <em>two or more</em> of these properties did <em>not</em> require at least 50% more development time compared to a system that didn't.%</p>
+<p>Obvious-seeming-to-me analogies include:</p>
+<ul>
+<li>Launching a space probe that cannot be corrected once launched, a deed which usually calls for extraordinary additional advance checking and testing</li>
+<li>Launching the simplest working rocket that will experience uncommonly great accelerations and forces, compared to building the simplest working airplane</li>
+<li>It would be far less expensive to design rockets if "the rocket explodes" were not a problem; most of the cost of a rocket is having the rocket not explode</li>
+<li>NASA managing to write almost entirely bug-free code for some projects at 100x the cost per line of code, using means that involved multiple reviews and careful lines of organizational approval for every aspect and element of the system</li>
+<li>The OpenBSD project to produce a secure operating system, which needed to constrain its code to be more minimal than larger Linux projects, and probably added a lot more than 50% time per function point to approve each element of the code</li>
+<li>The difference in effort put forth by an amateur writing an encryption system they think is secure, versus the cryptographic ecosystem trying to ensure a channel is secure</li>
+<li>The real premium on safety for hospital equipment, as opposed to the bureaucratic premium on it, is probably still over 50% because it <em>does</em> involve legitimate additional testing to try to not kill the patient</li>
+<li>Surgeons probably legitimately require at least 50% longer to operate on humans than they would require to perform operations of analogous complexity on large plants it was okay to kill 10% of the time</li>
+<li>Even in the total absence of regulatory overhead, it seems legitimately harder to build a nuclear power plant that <em>usually</em> does not melt down, compared to a coal power plant (confirmable by the Soviet experience?)</li>
+</ul>
+<p>Some of the standard ways in which systems with strong versus minimal demands on (3*)-properties *usually* require additional development time:</p>
+<ul>
+<li>(4a) Additional work for:</li>
+<li>Whole extra modules</li>
+<li>Universally enforced properties</li>
+<li>Lots of little local function points</li>
+<li>(4b) Needing a more extended process of interactive shaping in order to conform to a complicated target</li>
+<li>(4c) Legitimately requiring longer organizational paths to approve ideas, changes and commits</li>
+<li>(4d) Longer and deeper test phases; on whole systems, on local components, and on function points</li>
+<li>(4e) Not being able to deploy a fast or easy solution (that you could use at some particular choice point if you didn't need to worry about the rocket exploding)</li>
+</ul>
+<h3 id="outsideviewonaiproblems">Outside view on AI problems</h3>
+<p>Another reference class that feels relevant to me is that things <em>having to do with AI</em> are often more difficult than expected.  E.g. the story of computer vision being assigned to 2 undergrads over the summer.  This seems like a relevant case in point of "uncorrected intuition has a directional bias in underestimating the amount of work required to implement things having to do with AI, and you should correct that directional bias by revising your estimate upward".</p>
+<p>Given a sufficiently advanced Artificial General Intelligence, we might perhaps get narrow problems on the order of computer vision for free.  But the whole point of Orthogonality is that you do <em>not</em> get AI alignment for free with general intelligence.  Likewise, identifying <a href="value_laden.html">value-laden</a> concepts or executing value-laden behaviors doesn't come free with identifying natural empirical concepts.  We have <em>separate</em> basic AI work to do for alignment.  So the analogy to underestimating a narrow AI problem, in the early days before anyone had confronted that problem, still seems relevant.</p>
+<p>%comment: I can't see how, after <a href="http://lesswrong.com/lw/j0/making_history_available/">imagining oneself in the shoes</a> of the early researchers tackling computer vision and 'commonsense reasoning' and 'natural-language processing', after the entirety of the history of AI, anyone could reasonably stagger back in shocked and horrified surprise upon encountering the completely unexpected fact of a weird new AI problem being… kinda hard.%</p>
+<h2 id="insideview">Inside view</h2>
+<p>While it is possible to build new systems that aren't 100% understood, and have them work, the successful designs were usually greatly overengineered.  Some Roman bridges have stayed up two millennia later, which probably wasn't in the design requirements, so in that sense they turned out to be hugely overengineered, but we can't blame them.  "What takes good engineering is building bridges that <em>just barely</em> stay up."</p>
+<p>If we're trying for an aligned <a href="task_agi.html">Task AGI</a> <em>without</em> a <a href="effability.html">really deep understanding</a> of how to build exactly the right AGI with no extra parts or extra problems--which must certainly be lacking on any scenario involving relatively short timescales--then we have to do <em>lots of</em> safety things in order to have any chance of surviving, because we don't know in advance which part of the system will nearly fail.  We don't know in advance that the O-Rings are the part of the Space Shuttle that's going to suddenly behave unexpectedly, and we can't put in extra effort to armor only that part of the process.  We have to overengineer everything to catch the small number of aspects that turn out not to be so "overengineered" after all.</p>
+<p>This suggests that even if one doesn't believe my particular laundry list below, whoever walks through this problem, <em>conditional</em> on their eventual survival, will have shown up with <em>some</em> laundry list of precautions, including costly precautions; and they will (correctly) not imagine themselves able to survive based on "minimum necessary" precautions.</p>
+<p>Some specific extra time costs that I imagine might be required:</p>
+<ul>
+<li>The AGI can only deploy internal optimization on pieces of itself that are small enough to be relatively safe and not vital to fully understand</li>
+<li>In other words, the cautious programmers must in general do extra work to obtain functionality that a corner-cutting project could get in virtue of the AGI having further self-improved</li>
+<li>Everything to do with real <a href="value_alignment_problem.html">value alignment</a> (as opposed to the AI having a <a href="environmental_goals.html">reward button</a> or being reinforcement-trained to 'obey orders' on some channel) is an additional set of function points</li>
+<li>You have to build new pieces of the system for transparency and monitoring.</li>
+<li>Including e.g. costly but important notions like "There's actually a [monitor_oracle separatish AI over here] that we built to inspect the first AI and check for problems, including having this separate AI [independently_learned_concept trained on different data] for safety-related concepts"</li>
+<li>There's a lot of <a href="https://en.wikipedia.org/wiki/Trusted_system">trusted</a> function points where you can't just toss in an enormous deepnet because that wouldn't meet the [-transparency] or <a href="effability.html">effability</a> requirements at that function point</li>
+<li>When somebody proposes a new optimization thingy, it has to be rejiggered to ensure e.g. that it meets the top-to-bottom <a href="task_goal.html">taskishness</a> requirement, and everyone has to stare at it to make sure it doesn't blow up the world somehow</li>
+<li>You can't run jobs on AWS because you don't trust Amazon with the code and you don't want to put your AI in close causal contact with the Internet</li>
+<li>Some of your system designs rely on [major_monitored all 'major' events being monitored and all unseen events being 'minor'], and the major monitored events go through a human in the loop.  The humans in the loop are then a rate-limiting factor and you can't just 'push the lever all the way up' on that process.</li>
+<li>E.g., maybe only 'major' goals can recruit subgoals across all known <a href="cognitive_domain.html">domains</a> and 'minor' goals always operate within a single domain using limited cognitive resources.</li>
+<li>Deployment involves a long conversation with the AI about '[check_expected_outcome what do you expect to happen after you do X]?', and during that conversation other programmers are slowing down the AI to look at [passive_transparency passively transparent] interpretations of the AI's internal thoughts</li>
+<li>The project has a much lower threshold for saying "wait, what the hell just happened, we need to stop melt and catch fire, not just try different <a href="patch_resistant.html">patches</a> until it seems to run again"</li>
+<li>The good project perhaps does a tad more testing</li>
+</ul>
+<p>Indepedently of the particular list above, this doesn't feel to me like a case where the conclusion is highly dependent on Eliezer-details.  Anyone with a concrete plan for aligning an AI will walk in with a list of plans and methods for safety, some of which require close inspection of parts, and constrain allowable designs, and just plain take more work.  One of the important ideas is going to turn out to take 500% more work than required, or solving a deep AI problem, and this isn't going to shock them either.</p>
+<h2 id="metaview">Meta view</h2>
+<p>I genuinely have some trouble imagining what objection is standing in the way of accepting "ceteris paribus, alignment takes at least 50% more time", having granted Orthogonality and alignment not being completely trivial.  I did not expect the argument to bog down at this particular step.  I wonder if I'm missing some basic premise or misunderstanding questioner's entire thesis.</p>
+<p>If I'm not misunderstanding, or if I consider the thesis as-my-ears-heard-it at face value, then I can only imagine the judgment "alignment probably doesn't take that much longer" being produced by ignoring what I consider to be basic principles of cognitive realism.  Despite the dangers of <a href="psychologizing.html">psychologizing</a>, for purposes of oversharing, I'm going to say what <em>feels to me</em> like it would need to be missing:</p>
+<ul>
+<li>(5a) Even if one feels intuitively optimistic about a project, one ought to expect in advance to run into difficulties not immediately obvious.  You should not be in a state of mind where tomorrow's surprises are a lot more likely to be unpleasant than pleasant; this is [-predictable_updating].  The person telling you your hopeful software project is going to take longer than 2 weeks should not need to argue you into acknowledging in advance that some particular delay will occur.  It feels like the ordinary skill of "standard correction for optimistic bias" is not being applied.</li>
+<li>(5b) It feels like this is maybe being put into a mental bucket of "futuristic scenarios" rather than "software development projects", and is being processed as pessimistic future versus normal future, or something.  Instead of:  "If I ask a project manager for a mission-critical deep feature that impacts every aspect of the software project and needs to be implemented to a high standard of reliability, can that get done in just 10% more time than a project that's eliminating that feature and cutting all the corners?"</li>
+<li>(5c) I similarly recall the old experiment in which students named their "best case" scenarios where "everything goes as well as it reasonably could", or named their "average case" scenarios; and the two elicitations produced indistinguishable results; and reality was usually slightly worse than the "worse case" scenario.  I wonder if the "normal case" for AI alignment work required is being evaluated along much the same lines as "the best case / the case if every individual event goes as well as I imagine by default".</li>
+</ul>
+<p>AI alignment could be easy in theory and still take 50% more development time in practice.  That is a very ordinary thing to have happen when somebody asks the project manager to make sure a piece of highly novel software <em>actually</em> implements an "easy" property the first time the software is run under new conditions that can't be fully tested in advance.</p>
+<p>"At least 50% more development time for the aligned AI project, versus the corner-cutting project, assuming both projects otherwise have access to the same stock of ideas and methods and computational resources" seems to me like an extremely probable and <em>normal</em> working premise to adopt. What am I missing?</p>
+<p>%comment: I have a sense of "Why am I not up fifty points in the polls?" and "What experienced software manager on the face of the Earth (assuming they didn't go mentally haywire on hearing the words 'Artificial Intelligence', and considered this question as if it were engineering), even if they knew almost nothing else about AI alignment theory, would not be giving a rather skeptical look to the notion that carefully crafting a partially superhuman intelligence to be safe and robust would <em>only</em> take 1.5 times as long compared to cutting all the corners?" %</p></main><hr><footer><p class="likes"><h2>Likes</h2><span class="page-comma-list"><a class="page-link" href="../page/EliTyre.html">Eli Tyre</a>,
+ <a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a>,
+ <a class="page-link" href="../page/RobBensinger.html">Rob Bensinger</a></span></p></footer></body></html>

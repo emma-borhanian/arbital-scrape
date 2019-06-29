@@ -1,0 +1,123 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Arbital Markdown</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="../MathJax-2.7.5/MathJax.js"></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">Arbital Markdown</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/arbital_markdown.json.html">arbital_markdown.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/arbital_markdown">https://arbital.com/p/arbital_markdown</a></p><p class="creator">by
+ <a class="page-link" href="../page/AlexeiAndreev.html">Alexei Andreev</a> Apr 2 2015 
+updated
+ Sep 15 2016</p></div><p class="clickbait">All about Arbital's extended Markdown syntax.</p><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>Arbital Markdown</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="Arbital.html">Arbital</a></li><li><a href="arbital_contributing.html">Contributing to Arbital</a></li><li><a href="arbital_features.html">Arbital features</a></li><li>…</li></ul></nav></nav></header><hr><main><p>[summary: Arbital uses <a href="https://en.wikipedia.org/wiki/Markdown">Markdown</a> with many custom extensions to help you create awesome explanations. Become a pro editor by learning how to create <a href="arbital_todo.html">todos</a>, <a href="arbital_greenlink.html">greenlinks</a>, <a href="arbital_summaries.html">page summaries</a>,  [arbital_note notes], <a href="arbital_hidden_text.html">hidden text</a>, and insert <a href="LaTeX.html">LaTeX</a>!]</p>
+<p>The <a href="Arbital_editor.html">Arbital editor</a> uses <a href="https://en.wikipedia.org/wiki/Markdown">Markdown</a> syntax for editing the <a href="arbital_page.html">pages</a>. If you've used Reddit or any of the StackOverflow, it's the same syntax. Here is a helpful <a href="http://mathoverflow.net/editing-help">intro to Markdown syntax</a>.</p>
+<p>[toc:]</p>
+<h2 id="arbitalmarkdownsyntax">Arbital Markdown syntax</h2>
+<p>Arbital adds a few extra features to Markdown syntax.</p>
+<h3 id="tableofcontents">Table of contents</h3>
+<p><code>[toc:]</code> creates a table of contents, like the one above.</p>
+<h3 id="ahrefarbital_greenlinkhtmlgreenlinksa"><a href="arbital_greenlink.html">Greenlinks</a></h3>
+<p>[todo: Add note about the Intrasite Link button on the toolbar.]</p>
+<p>You can quickly link to a page by using <code>[id]</code> or, even better, <code>[alias]</code> syntax. For example:<br />
+<code>&lt;a href="arbital_markdown.html"&gt;Arbital Markdown&lt;/a&gt;</code> =&gt; <a href="arbital_markdown.html">Arbital Markdown</a><br />
+<code>[Arbital\_markdown]</code> =&gt; <a href="arbital_markdown.html">Arbital Markdown</a></p>
+<p>%%hidden(Advanced): If you want the inserted title to be lower-cased, add a dash:<br />
+<code>&lt;a href="value_alignment_problem.html"&gt;Value alignment problem&lt;/a&gt;</code> =&gt; <a href="value_alignment_problem.html">Value alignment problem</a><br />
+<code>&lt;a href="value_alignment_problem.html"&gt;Value alignment problem&lt;/a&gt;</code> =&gt; <a href="value_alignment_problem.html">Value alignment problem</a></p>
+<p>If you want to specify what text shows up as the link, use <code>[alias text]</code>. For example:<br />
+<code>&lt;a href="arbital_markdown.html"&gt;Custom link&lt;/a&gt;</code> =&gt; <a href="arbital_markdown.html">Custom link</a></p>
+<p>If you link to a page that doesn't exist, the link will show up red:<br />
+<code>[definitely\_doesnt\_exist Doesn't exist]</code> =&gt; [definitely_doesnt_exist Doesn't exist]</p>
+<p>If you want to just create a red link with some text:<br />
+<code>[ create a page for this concept later]</code> =&gt; [ create a page for this concept later]</p>
+<p>If you want to mention someone use <code>[@userId]</code> or <code>[@userAlias]</code>:<br />
+<code>&lt;a href="AlexeiAndreev.html"&gt;Alexei Andreev&lt;/a&gt;</code> =&gt; <a href="AlexeiAndreev.html">Alexei Andreev</a><br />
+<code>&lt;a href="AlexeiAndreev.html"&gt;Alexei Andreev&lt;/a&gt;</code> =&gt; <a href="AlexeiAndreev.html">Alexei Andreev</a><br />
+NOTE: the user will get an update if the mention is in a comment.
+%%</p>
+<h3 id="ahrefarbital_summarieshtmlsummariesa"><a href="arbital_summaries.html">Summaries</a></h3>
+<p>You can set the page's summary, which shows up in <a href="arbital_greenlink.html">greenlink</a> popovers and other places. For example:<br />
+<code>[summary: Summary of the page goes here. *Markdown* is okay!]</code><br />
+Or to set a specific summary:<br />
+<code>[summary(Technical): Very technical summary. *Markdown* is okay!]</code><br />
+Make sure that the entire summary block is in a paragraph of its own.</p>
+<h3 id="ahrefarbital_hidden_texthtmlhiddentexta"><a href="arbital_hidden_text.html">Hidden text</a></h3>
+<p>You can create <strong>hidden text</strong>:</p>
+<pre><code>%%hidden(Button text):
+Hidden text goes here.
+%%
+</code></pre>
+<p>%%hidden(Button text):
+Surprise!
+%%</p>
+<p>You can use this for hiding problem answers and asking the user to solve the problem themselves before clicking the button to see the correct answer. Button text is required.</p>
+<h3 id="arbital_notenotes">[arbital_note Notes]</h3>
+<p>You can create <strong>notes</strong>, which are snippets of text hidden behind a question mark. You can put footnotes or other text that might be interesting to some users, but not to everyone. For example:<br />
+<code>%note:Fun note text!%</code> will show up as: %note:Fun note text!%</p>
+<pre>%%%comment:
+[1]: this is not something we want to advertise at this time.  
+You can embed [3r votes] from other pages. For example:  
+`[vote: 3r]` creates this voting bar:  
+[vote: 3r]
+%%%</pre>
+<h3 id="ahrefarbital_todohtmltodosaarbital_inline_commentscommentsandarbital_fixmefixmes"><a href="arbital_todo.html">Todos</a>, [arbital_inline_comments comments], and [arbital_fixme fixmes]</h3>
+<p>You can leave <a href="arbital_todo.html"><strong>todo</strong></a> markers for yourself or other authors. For example:<br />
+<code>[todo: finish this section]</code> [todo: finish this section]<br />
+<code>%%todo:  
+You can put any funky *markdown* syntax here including `[Arbital\_greenlink links]`.  
+%%</code><br />
+This will only appear in the top <a href="arbital_quality.html">quality</a> bar when expanded, not the page text. Red links and "todo" markers count towards the todo score, which you will see next to the pages on the Explore and your Profile pages.
+%%todo:
+You can put any funky <em>markdown</em> syntax here including <a href="arbital_greenlink.html">links</a>.
+%%</p>
+<p>Similarly, you can leave <strong>comments</strong> or <strong>fixmes</strong> for other authors, but without increasing the todo count. For example:<br />
+<code>[comment: there has got to be a better metaphor for this]</code> <code>[fixme: this needs to be fixed, but I've got it]</code> [comment: there has got to be a better metaphor for this]  [fixme: this needs to be fixed, but I've got it]
+<code>&lt;pre&gt;%%comment:  
+You can put any funky *markdown* syntax here. You can vary the number of %s to envelop other similar blocks.  
+%%&lt;/pre&gt;</code><br />
+Again, this doesn't show up for the reader in any way.</p>
+<pre>%%comment:
+You can put any funky *markdown* syntax here. You can vary the number of %s to envelop other similar blocks.
+%%</pre>
+<p>[todo: questions and path generation]</p>
+<p>[todo: conditional text]</p>
+<h2 id="latex">LaTeX</h2>
+<p><em>If you're new to LaTeX you may want to read the <a href="https://en.wikibooks.org/wiki/LaTeX">Wikibooks guide</a></em></p>
+<p>You can use <strong>\$</strong> to create inline mathematical expressions, e.g. <code>$~$ax^2 + bx + c \= 0$~$</code> will be displayed as: $~$ax^2 + bx + c = 0$~$<br />
+And <strong>\$\$</strong> to create centered math expressions, e.g. <code>$$~$\\lim\_{N \\to \\infty} \\sum\_{k\=1}^N f(t\_k) \\Delta t$~$$</code> will be displayed as: $$~$\lim_{N \to \infty} \sum_{k=1}^N f(t_k) \Delta t$~$$</p>
+<p>The <a href="Arbital_editor.html">editor</a> can get a little slow if you are editing very LaTeX-heavy pages. If this is an issue for you, <a href="arbital_slack.html">let us know</a>, and in the meantime you can disable MathJax on the <a href="https://arbital.com/settings/">settings page</a>.</p></main><hr><section class="comments"><h2>Comments</h2><div class="comment"><p><a class="page-link" href="../page/AlexeiAndreev.html">Alexei Andreev</a></p><p><p><a href="AndrewCritch.html">Andrew Critch</a>, these are all the Arbital-specific markdown addons we have.</p></p></div><div class="comment"><p><a class="page-link" href="../page/MaelleAndre.html">Maelle Andre</a></p><p><p>Is "coment" (below) a typo?</p>
+<p>"[comment: there has got to be a better metaphor for this]
+%%<strong>coment:</strong> this supports line breaks, but needs to be its own paragraph. You can vary the number of |s to envelop other similar blocks. "</p></p></div><div class="comment"><p><a class="page-link" href="../page/NateSoares.html">Nate Soares</a></p><p><blockquote class="comment-context">You can leave "todo" markers for yourself or other authors\. For example: 
+<mark>\[todo: finish this section\] 
+%%todo: 
+This supports line breaks, but needs to be its own paragraph 
+%% </mark>
+This will not show up on the page in any way\. Red links and "todo" markers count towards the todo score, which you will see next to the pages on the Explore and your Profile pages\.</blockquote>
+<p>What's with the %% marks? Can all [square bracket thingies] be turned into percent-demarcated blocks? How do the percent-demarcated blocks work?</p></p></div><div class="comment"><p><a class="page-link" href="../page/RegexRationalist.html">Regex Rationalist</a></p><p><p>"$~$ax2+bx+c=0$~$ will be displayed as: $~$ax2+bx+c=0$~$" </p>
+<p>Displays instead of </p>
+<p>"S ax^2 + bx + c = 0 S will be displayed as: $~$ax2+bx+c=0$~$" </p>
+<p>(Where S = dollar sign, putting commenting syntax ironically duplicates the error.)</p>
+<p>The same problem applies to the centered version. </p>
+<p>Now, for some reason <a href="http://i.imgur.com/TPZ7dAo.png">the editor displays it just fine</a>, but the actual page does not. (At least on <a href="http://i.imgur.com/Pyp4j75.png">my screen</a>.) The same thing occurs with the previewing of comments versus actually publishing the comments.</p>
+<p>"Smart links
+You can quickly link to a page by using '[id]' or, even better, '[alias]' syntax. For example: </p>
+<p><code>&lt;a href="arbital_markdown.html"&gt;Arbital Markdown&lt;/a&gt;</code> =&gt; <a href="arbital_markdown.html">Arbital Markdown</a><br />
+<code>&lt;a href="arbital_markdown.html"&gt;Arbital Markdown&lt;/a&gt;</code> =&gt; <a href="arbital_markdown.html">Arbital Markdown</a>"</p>
+<p>Is 3w both the alias and the id? </p></p></div><div class="comment"><p><a class="page-link" href="../page/EricLeese.html">Eric Leese</a></p><p><p>There appears to be an inconsistency in the rendering of this page and its rendering in the preview pane when editing this page. The LaTeX extension behaves differently, so on this page we see only the rendered expressions twice, when what we are meant to see is the markdown and then the rendered version of the equation. But if you go to edit page, in the preview pane it is correct. Is there a way to file a bug?</p></p></div><div class="comment"><p><a class="page-link" href="../page/TsviBT.html">Tsvi BT</a></p><p><p>Is there a way to link to a section within a page? (E.g. for tables of contents.)</p></p></div><div class="comment"><p><a class="page-link" href="../page/ChrisHolden.html">Chris Holden</a></p><p><p>Does arbital markdown use any of the markdown table formats? Can latex be included within? Is there a way to insert an html table into a page or parse other html?</p></p></div><div class="comment"><p><a class="page-link" href="../page/MalcolmOcean.html">Malcolm Ocean</a></p><p><p>Tiny but important remark:</p>
+<p>It seems weird to me that the links in the TOC are blue, since blue normally means external link whereas green means internal link. But maybe there should be a link color that's further towards green on the blue-green spectrum of links, for links that are on the page itself? At any rate, making the TOC links greyish or greenish by default seems like a good plan.</p></p></div><div class="comment"><p><a class="page-link" href="../page/AlexPeterson2.html">Alex Peterson</a></p><p><p>Can we add support for colors? I would find it very helpful to be able to color code words that relate to each other, in the way that <a href="https://www.youtube.com/user/blackpenredpen">redpenblackpen</a> and <a href="https://www.youtube.com/channel/UCYO_jab_esuFRV4b17AJtAw">3blue1brown</a> do.</p></p></div></section><footer><p class="tagged"><h2>Tagged</h2><span class="page-comma-list"><a class="page-link" href="../page/c_class_meta_tag.html">C-Class</a></span></p><p class="all-creators"><h2>All Creators</h2><span class="page-comma-list"><a class="page-link" href="../page/AlexeiAndreev.html">Alexei Andreev</a>,
+ <a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a>,
+ <a class="page-link" href="../page/EricRogstad.html">Eric Rogstad</a>,
+ <a class="page-link" href="../page/NateSoares.html">Nate Soares</a>,
+ <a class="page-link" href="../page/RyanHendrickson.html">Ryan Hendrickson</a></span></p><p class="likes"><h2>Likes</h2><span class="page-comma-list"><a class="page-link" href="../page/AlexeiAndreev.html">Alexei Andreev</a>,
+ <a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a>,
+ <a class="page-link" href="../page/JaimeSevillaMolina.html">Jaime Sevilla Molina</a>,
+ <a class="page-link" href="../page/JeremyPerret.html">Jeremy Perret</a>,
+ <a class="page-link" href="../page/KonradSeifert.html">Konrad Seifert</a>,
+ <a class="page-link" href="../page/TravisRivera.html">Travis Rivera</a></span></p><p class="reverse-related"><h2>Reverse Related</h2><ul class="page-list"><li><a class="page-link" href="../page/c_class_meta_tag.html">C-Class</a> <q>This page has substantial content, but may not thoroughly cover the topic, may not meet style and prose standards, or may not explain the concept in a way the target audience will reliably understand.</q> - <a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a></li></ul></p><p class="children"><h2>Children</h2><ul class="page-tree"><li><a class="page-link" href="../page/1m6.html">Arbital Markdown questionnaire</a> <q>How to ask questions in Markdown.</q> - <a class="page-link" href="../page/AlexeiAndreev.html">Alexei Andreev</a><ul class="page-tree"><li><a class="page-link" href="../page/1m7.html">Questionnaire helper 1</a> <q>Just a helper page to demonstrate Arbital's questionnaire features.</q> - <a class="page-link" href="../page/AlexeiAndreev.html">Alexei Andreev</a></li><li><a class="page-link" href="../page/1m8.html">Questionnaire helper 2</a> <q>Just a helper page to demonstrate Arbital's questionnaire features.</q> - <a class="page-link" href="../page/AlexeiAndreev.html">Alexei Andreev</a></li><li><a class="page-link" href="../page/1m9.html">Questionnaire helper 3</a> <q>Just a helper page to demonstrate Arbital's questionnaire features.</q> - <a class="page-link" href="../page/AlexeiAndreev.html">Alexei Andreev</a></li></ul></li><li><a class="page-link" href="../page/arbital_hidden_text.html">Arbital hidden text</a> <q>How to hide text in Markdown behind a button.</q> - <a class="page-link" href="../page/AlexeiAndreev.html">Alexei Andreev</a></li><li><a class="page-link" href="../page/arbital_markdown_demo.html">Arbital markdown demo</a> <q>Demo of Arbital's markdown</q> - <a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a></li><li><a class="page-link" href="../page/3r0.html">Arbital page summaries Markdown syntax</a> <q>How to create page summaries using Arbital's Markdown syntax.</q> - <a class="page-link" href="../page/AlexeiAndreev.html">Alexei Andreev</a></li><li><a class="page-link" href="../page/arbital_todo.html">Arbital todo</a> <q>So many things todo!</q> - <a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a></li></ul></p></footer></body></html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>The plan </title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="../MathJax-2.7.5/MathJax.js"></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">The plan </h1><div class="page-info"><p class="metadata-link"><a href="../metadata/the_plan.json.html">the_plan.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/the_plan">https://arbital.com/p/the_plan</a></p><p class="creator">by
+ <a class="page-link" href="../page/AlexeiAndreev.html">Alexei Andreev</a> Jan 26 2017 
+updated
+ Jan 31 2017</p></div><p class="clickbait">Root page for the plan on how to approach and navigate through AGI development.</p><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>The plan </li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="the_plan_experiment.html">The plan experiment</a></li><li>…</li></ul></nav></nav></header><hr><main><p>The Plan is backchained from the desired goal:</p>
+<p>Jill's team has solved the hard problem of intelligence, meaning they understand how intelligence works and can implement it. They also solved the problem of value-loading.</p>
+<p>Jill is sitting at her computer ready to run the next, improved iteration of the AGI she and her team have been working on. We assume that this version of AI is different in that it will go FOOM, whereas every version before then did not (whether by design or not). She and her team also believe <a href="7h5.html">this AGI will implement something like CEV</a>.</p>
+<p>There is currently no ongoing <a href="7hy.html">AI arms race</a>, or at the very least Jill strongly believes her team is ahead by many months, where she would feel comfortable taking additional time to launch this version if she felt like her team actually needed to do that.</p>
+<h3 id="whatcangowrong">What can go wrong?</h3>
+<p>Assuming the given scenario, what can go wrong? I think the most likely failure scenario is that Jill and her team were actually wrong in thinking that this AGI will implement their version of CEV. We can assume that the previous versions they ran showed correct behavior. So what went wrong with this new version:</p>
+<ul>
+<li>Mistaken about CEV: it's possible Jill's team was mistaken about how to value-load the AGI.</li>
+<li>Previous version lied: previous versions of their AI were "advanced" enough that they could lie on the tests.</li>
+<li><a href="value_alignment_value.html">Value</a> drift: AGI was modifying its value function, and this additional iteration modified it in a bad way. If Jill's team had proved than this shouldn't have happened, it's now clear that they made a mistake.</li>
+<li>A code bug: a code bug was introduced since the time they ran the previous version. The team didn't code a correct unit test / there was no proof checker.</li>
+</ul>
+<h3 id="argumentsforadifferentgoal">Arguments for a different goal</h3>
+<p>There are some arguments about why the goal stated above shouldn't be the one we aim for…</p>
+<p>There are also arguments against some of the assumptions stated in the goal…</p>
+<h2 id="mlvariation">ML variation</h2>
+<p>It's possible that the first AGI to go FOOM will employ some variation on the current ML algorithms. In that case, the scenario and the list of things that can go wrong are quite different…</p></main><hr><footer><p class="tagged"><h2>Tagged</h2><span class="page-comma-list"><a class="page-link" href="../page/start_meta_tag.html">Start</a></span></p><p class="reverse-related"><h2>Reverse Related</h2><ul class="page-list"><li><a class="page-link" href="../page/start_meta_tag.html">Start</a> <q>This page gives a basic overview of the topic, but may be missing important information or have stylistic issues. If you're able to, please help expand or improve it!</q> - <a class="page-link" href="../page/EliezerYudkowsky.html">Eliezer Yudkowsky</a></li></ul></p></footer></body></html>

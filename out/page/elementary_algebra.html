@@ -1,0 +1,71 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Elementary Algebra</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="../MathJax-2.7.5/MathJax.js"></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">Elementary Algebra</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/elementary_algebra.json.html">elementary_algebra.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/elementary_algebra">https://arbital.com/p/elementary_algebra</a></p><p class="creator">by
+ <a class="page-link" href="../page/AdeleLopez.html">Adele Lopez</a> Jul 26 2016 
+updated
+ Aug 6 2016</p></div><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>Elementary Algebra</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="math.html">Mathematics</a></li><li>…</li></ul></nav></nav></header><hr><main><p>How do we describe relations between different things? How can we figure out new true things from true things we already know?
+How can we find and think about patterns we notice with numbers? Algebra is a unified framework for thinking about these questions, and gives us lots of tools to help us answer them, which work in an extremely wide variety of situations. </p>
+<h1 id="equations">Equations</h1>
+<p>Algebra is based on the arithmetic of numbers, and the relations between them. 
+Let's look at a basic equation: $$~$2 + 2 = 4$~$$
+The 'equals' sign (=) tells us that both sides of the equation are actually the same. If we have two, and add two more to it, then we'll have four. </p>
+<p>Some other relations are 'less than' (<), for example $~$2 < 4$~$. or 'greater than' (>), for example $~$5 &gt; 1$~$. </p>
+<h2 id="therightorder">The right order</h2>
+<p>In equations, parenthesis tell us the right order to do things - things inside of parenthesis have to be done before the rest. This is important because doing things in different orders can give us different answers!
+$$~$2 + (3 \times 4) = 14$~$$
+$$~$(2 + 3) \times 4 = 20$~$$</p>
+<p>It's annoying to have to use parentheses all the time (though it might be helpful if you find yourself getting confused about something). It would be nice if we could just write $~$2 + 3 \times 4$~$ and have everyone know that we meant $~$2 + (3 \times 4)$~$ . There's a standard <a href="order_of_operations.html">order of operations</a> that everyone uses so that we don't have to use too many parentheses. </p>
+<h1 id="balancingthetruth">Balancing the truth</h1>
+<p>If we know one equation, what are some ways we could get <em>new</em> equations from it, that will still be true? 
+We could make a change to one side, but then the equation would stop being true… unless we did the same change to the other side also! For example, we know $~$2+2=4$~$. What if we add three to both sides? If we check 
+$~$(2 + 2) + 3 = 4 + 3$~$, we can see that it's still true! </p>
+<h2 id="substitution">Substitution</h2>
+<p>One way of getting new true things is really important. If we know two things are the same, we can always substitute one of them for the other, and this automatically will give us an equality relation between the two things! </p>
+<p>This is really helpful for breaking down calculations into manageable pieces. For example, if we want to calculate $~$2^3 \times 2^4$~$, we can first expand $~$2^3 = 2 \times 2 \times 2$~$, and then calculate $~$2 \times 2 \times 2 = 8$~$. Now, we combine these last two equations to see that $~$2^3 = 8$~$. Often, people will do both of these in one step, so if you ever are having a hard time figuring out how someone got an equation, you can try breaking it down like this to see if that helps. Next, we can do the same thing to see that $~$2^4 = 2 \times 2 \times 2 \times 2 = 16$~$. We can then substitute both of these back into the original expression, to get $~$2^3 \times 2^4 = 8 \times 16$~$. One final calculation lets us see that $~$2^3\times 2^4 = 128$~$. </p>
+<h1 id="namingnumbers">Naming numbers</h1>
+<p>What are all those letters doing in math, anyway?</p>
+<p>When you first learn someone's name, do you know everything there is to know about them? Sometimes, we know that there's <em>some</em> number that fits in an equation, but we don't know what particular number it is yet. It's really helpful to be able to talk about the number anyway, in fact, giving it a name is often the first step to figuring out what it really is. </p>
+<p>This kind of name is called a <strong>variable</strong>.</p>
+<h2 id="doinglotsofthingsatonce">Doing lots of things at once</h2>
+<p>Another way names are useful is if we want to say something about lots of numbers at once!
+For example, you might notice that $~$0 \times 3 = 0$~$, $~$0 \times -4 = 0$~$, $~$0 \times 1224 = 0$~$ and so on. In fact, it's true that zero times <em>any</em> number is zero. We could write this as $~$0 \times \text{any number} = 0$~$. Or if we need to keep referring to that number, we could give it a shorter name, while mentioning it could be any number: $~$0 \times x = 0$~$, where $~$x$~$ can be any number. This is really useful because it allows us to express patterns much more easily!</p>
+<h1 id="importantpatterns">Important patterns</h1>
+<p>These patterns hold for all <a href="natural_number.html">natural numbers</a>, <a href="integer.html">integers</a>, and <a href="rational_number.html">rational numbers</a>, including for variables that are known to be one of these types of numbers, and much more! For an in-depth exploration of these patterns and their consequences, see the page on <a href="algebraic_ring.html">rings</a>. </p>
+<h2 id="commutativity">Commutativity</h2>
+<p>$$~$ a + b = b + a$~$$
+$$~$ a \times b = b\times a$~$$</p>
+<h2 id="identity">Identity</h2>
+<p>$$~$ 0 + a = a$~$$
+$$~$ 1 \times a = a$~$$</p>
+<h2 id="associativity">Associativity</h2>
+<p>$$~$ (a + b) + c = a + (b + c)$~$$
+$$~$ (a \times b ) \times c = a \times (b\times c)$~$$</p>
+<h2 id="distributivity">Distributivity</h2>
+<p>$$~$ a \times (b + c) = a\times b + a\times c$~$$</p>
+<h2 id="additiveinverse">Additive inverse</h2>
+<p>$$~$ a + (-a) = a - a = 0 $~$$</p>
+<h1 id="nextsteps">Next steps</h1>
+<ul>
+<li>[Solving_equations]</li>
+<li><a href="function.html">Functions</a></li>
+</ul></main><hr><section class="comments"><h2>Comments</h2><div class="comment"><p><a class="page-link" href="../page/KevinClancy.html">Kevin Clancy</a></p><p><blockquote class="comment-context">One way of getting new true things is really important\. If we know two things are the same, we can always substitute one of them for the other, <mark>and this automatically will give us an equality relation between the two things\! </mark></blockquote>
+<p>This is sentence is kind of confusing. It seems like it's trying to say that if we know A = B, then we can substitute A for B (or vice versa) and get…. A = B?</p>
+<p>It seems like it should say that if A = B, and A occurs in some equation, then we can substitute B in for A in that equation, and the resulting equation will hold.</p></p></div><div class="comment"><p><a class="page-link" href="../page/KevinClancy.html">Kevin Clancy</a></p><p><p>I suspect that this is going to be too fast-paced for beginners. They are going to need multiple examples and exercises for each of the concepts introduced.</p></p></div></section><footer><p class="tagged"><h2>Tagged</h2><span class="page-comma-list"><a class="page-link" href="../page/c_class_meta_tag.html">C-Class</a></span></p><p class="all-creators"><h2>All Creators</h2><span class="page-comma-list"><a class="page-link" href="../page/AdeleLopez.html">Adele Lopez</a>,
+ <a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a>,
+ <a class="page-link" href="../page/GabrielSjstrand.html">Gabriel Sjöstrand</a></span></p><p class="likes"><h2>Likes</h2><span class="page-comma-list"><a class="page-link" href="../page/8xl.html">8xl</a>,
+ <a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a>,
+ <a class="page-link" href="../page/JaimeSevillaMolina.html">Jaime Sevilla Molina</a>,
+ <a class="page-link" href="../page/KevinClancy.html">Kevin Clancy</a></span></p><p class="reverse-related"><h2>Reverse Related</h2><ul class="page-list"><li><a class="page-link" href="../page/c_class_meta_tag.html">C-Class</a> <q>This page has substantial content, but may not thoroughly cover the topic, may not meet style and prose standards, or may not explain the concept in a way the target audience will reliably understand.</q> - <a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a></li></ul></p></footer></body></html>

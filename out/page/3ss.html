@@ -1,0 +1,53 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Arbital editor buttons</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="../MathJax-2.7.5/MathJax.js"></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">Arbital editor buttons</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/3ss.json.html">3ss.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/3ss">https://arbital.com/p/3ss</a></p><p class="creator">by
+ <a class="page-link" href="../page/AlexeiAndreev.html">Alexei Andreev</a> May 25 2016</p></div><p class="clickbait">What do all the buttons in the editor do?</p><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>Arbital editor buttons</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="Arbital.html">Arbital</a></li><li><a href="arbital_contributing.html">Contributing to Arbital</a></li><li><a href="arbital_features.html">Arbital features</a></li><li><a href="Arbital_editor.html">Arbital editor</a></li><li>…</li></ul></nav></nav></header><hr><main><p>From left to right:</p>
+<ul>
+<li><strong>Snapshot</strong>: <a href="Arbital_editor.html">saves</a> the current page text, so you can use it later.</li>
+<li><strong>Bold</strong>: makes the text <strong>bold</strong>.</li>
+<li><strong>Italics</strong>: makes the text <em>italic</em>.</li>
+<li><strong>Hyperlink</strong>: insert a normal <a href="https://arbital.com">link</a>.</li>
+<li><strong>Intrasite link</strong>: insert a <a href="arbital_greenlink.html">greenlink</a> to an Arbital page. This also allows you to search for existing pages and <a href="Arbital_page_basics.html">aliases</a>.</li>
+<li><strong>@Mention</strong>: insert a greenlink to a user's page. The user will be notified. Example: <a href="AlexeiAndreev.html">Alexei Andreev</a></li>
+<li><strong>New page</strong>: create a new page in a popup without leaving your current area.</li>
+<li><strong>Blockquote</strong>: adds blockquote to a text.</li>
+</ul>
+<blockquote>
+  <p>Blockquote</p>
+  <ul>
+  <li><strong>Preformatted</strong>: formats the text using <code>monospaced font</code>.  Useful for typing code. Also all Markdown inside the preformatted section is ignored.</li>
+  <li><strong>Image</strong>: inserts an image. <img src="https://arbital.com/static/images/default-image-link.png" alt="enter image description here" /></li>
+  <li><strong>Arbital extension</strong>: a menu for <a href="arbital_markdown.html">Arbital-specific Markdown extensions</a>.</li>
+  <li><strong>Numbered list</strong>: inserts a numbered list.</li>
+  </ul>
+  <ol>
+  <li>Numbered list.</li>
+  </ol>
+  <ul>
+  <li><strong>Bullet list</strong>: inserts a bullet list. (Like the one you are reading right now.)</li>
+  <li><strong>Heading</strong>: inserts a header.</li>
+  </ul>
+  <h1 id="headerexample">Header example</h1>
+  <ul>
+  <li><strong>Line</strong>: inserts a horizontal line.</li>
+  </ul>
+</blockquote>
+<hr />
+<ul>
+<li><strong>Undo</strong>: undoes the last action.</li>
+<li><strong>Redo</strong>: undoes the undo.</li>
+</ul>
+<p>Depending on your screen size, some of the buttons might be hidden.</p></main><hr><footer></footer></body></html>

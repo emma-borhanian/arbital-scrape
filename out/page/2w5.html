@@ -1,0 +1,18 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>&quot;In the sudoku and first OWF...&quot;</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="../MathJax-2.7.5/MathJax.js"></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">&quot;In the sudoku and first OWF...&quot;</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/2w5.json.html">2w5.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/2w5">https://arbital.com/p/2w5</a></p><p class="creator">by
+ <a class="page-link" href="../page/PaulChristiano.html">Paul Christiano</a> Mar 26 2016</p></div><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>&quot;In the sudoku and first OWF...&quot;</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="ai_alignment.html">AI alignment</a></li><li><a href="informed_oversight.html">Informed oversight</a></li><li>…</li></ul></nav></nav></header><hr><main><p>In the sudoku and first OWF example, the agent can justify their answer, and its easy to incentivize them to reveal it. In the steganography and second OWF example, there is no short proof that something is good, only a proof that something is bad. In realistic settings there will be lots of arguments on both sides. Another way of looking at the question is: how do you elicit the negative arguments?</p>
+<p>Katja wrote about a scheme <a href="https://meteuphoric.wordpress.com/2014/07/21/how-to-buy-a-truth-from-a-liar">here</a>. I think it's a nice idea that feels like it might be relevant. But if you include it as part of the agent's reward, and the agent also picks the action, then you get actions optimized to be info-rich (as discussed in "maximizing B + info" <a href="https://medium.com/ai-control/the-informed-oversight-problem-1b51b4f66b35#.sbod7hmj1">here</a>).</p></main><hr><footer></footer></body></html>

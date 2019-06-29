@@ -1,0 +1,28 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Gödel II and Löb's theorem</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="../MathJax-2.7.5/MathJax.js"></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">Gödel II and Löb's theorem</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/5hs.json.html">5hs.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/5hs">https://arbital.com/p/5hs</a></p><p class="creator">by
+ <a class="page-link" href="../page/JaimeSevillaMolina.html">Jaime Sevilla Molina</a> Jul 21 2016 
+updated
+ Jul 25 2016</p></div><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>Gödel II and Löb's theorem</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="math.html">Mathematics</a></li><li><a href="lobs_theorem.html">Löb's theorem</a></li><li>…</li></ul></nav></nav></header><hr><main><p>[summary: [ Gödel's second incompleteness theorem] and [ Löb's theorem] are equivalent to each other. ]</p>
+<p>The abstract form of [ Gödel's second incompleteness theorem] states that if $~$P$~$ is a provability predicate in a <a href="consistency.html">consistent</a>, [-axiomatizable] theory $~$T$~$ then $~$T\not\vdash \neg P(\ulcorner S\urcorner)$~$ for a disprovable $~$S$~$.</p>
+<p>On the other hand, <a href="lobs_theorem.html">Löb&#39;s theorem</a> says that in the same conditions and for every sentence $~$X$~$, if $~$T\vdash P(\ulcorner X\urcorner)\rightarrow X$~$, then $~$T\vdash X$~$.</p>
+<p>It is easy to see how GII follows from Löb's. Just take $~$X$~$ to be $~$\bot$~$, and since $~$T\vdash \neg \bot$~$ (by definition of $~$\bot$~$), Löb's theorem tells that if $~$T\vdash \neg P(\ulcorner \bot\urcorner)$~$ then $~$T\vdash \bot$~$. Since we assumed $~$T$~$ to be consistent, then the consequent is false, so we conclude that $~$T\neg\vdash \neg P(\ulcorner \bot\urcorner)$~$.</p>
+<p>The rest of this article exposes how to deduce Löb's theorem from GII.</p>
+<p>Suppose that $~$T\vdash P(\ulcorner X\urcorner)\rightarrow X$~$.</p>
+<p>Then $~$T\vdash \neg X \rightarrow \neg P(\ulcorner X\urcorner)$~$.</p>
+<p>Which means that $~$T + \neg X\vdash \neg P(\ulcorner X\urcorner)$~$.</p>
+<p>From Gödel's second incompleteness theorem, that means that $~$T+\neg X$~$ is inconsistent, since it proves $~$\neg P(\ulcorner X\urcorner)$~$ for a disprovable $~$X$~$.</p>
+<p>Since $~$T$~$ was consistent before we introduced $~$\neg X$~$ as an axiom, then that means that $~$X$~$ is actually a consequence of $~$T$~$. By completeness, that means that we should be able to prove $~$X$~$ from $~$T$~$'s axioms, so $~$T\vdash X$~$ and the proof is done.</p></main><hr><footer><p class="likes"><h2>Likes</h2><span class="page-comma-list"><a class="page-link" href="../page/PatrickLaVictoir.html">Patrick LaVictoire</a></span></p></footer></body></html>

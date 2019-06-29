@@ -1,0 +1,21 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>&quot;Act-based is a more general...&quot;</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="../MathJax-2.7.5/MathJax.js"></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">&quot;Act-based is a more general...&quot;</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/1hf.json.html">1hf.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/1hf">https://arbital.com/p/1hf</a></p><p class="creator">by
+ <a class="page-link" href="../page/PaulChristiano.html">Paul Christiano</a> Dec 30 2015</p></div><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>&quot;Act-based is a more general...&quot;</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="ai_alignment.html">AI alignment</a></li><li><a href="AGI_typology.html">Strategic AGI typology</a></li><li><a href="task_agi.html">Task-directed AGI</a></li><li><a href="1gj.html">&quot;If the distinguishing chara...&quot;</a></li><li>…</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="ai_alignment.html">AI alignment</a></li><li><a href="AGI_typology.html">Strategic AGI typology</a></li><li><a href="task_agi.html">Task-directed AGI</a></li><li>…</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="ai_alignment.html">AI alignment</a></li><li><a href="task_agi.html">Task-directed AGI</a></li><li><a href="1gj.html">&quot;If the distinguishing chara...&quot;</a></li><li>…</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="ai_alignment.html">AI alignment</a></li><li><a href="task_agi.html">Task-directed AGI</a></li><li>…</li></ul></nav></nav></header><hr><main><p>Act-based is a more general designation, that includes e.g. imitation learning (and value learning where the agent learns short-term instrumental preferences of the user rather than long-term preferences).</p>
+<p>So you see the difference as whether the programmers have to actually supply the short-term objective, or whether the AI learns the short-term objective they would have defined / which they would accept/prefer?</p>
+<p>The distinction seems to buy you relatively little safety at a great cost (basically taking the system from "maybe it's good enough?" to "obviously operating at an incredible disadvantage"). You seem to think that it buys you much more safety than I do.</p>
+<p>It seems like the main extra risk is from the AI making bad predictions about what the humans would do. Mostly this seems like it will lead to harmless failures if the humans behave responsibly, and it requires only very weak models of human behavior to avoid most of the really bad failures. The main new catastrophic risk I see is the agent thinking it is in a simulation. Are there other similar problems for the act-based approach?</p>
+<p>(If we use approval-direction instead of imitation then we may introduce additional concerns depending on how we set it up. But those seem orthogonal to the actual involvement of the human.)</p></main><hr><footer></footer></body></html>

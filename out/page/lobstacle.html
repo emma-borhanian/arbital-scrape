@@ -1,0 +1,29 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Löbstacle</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="../MathJax-2.7.5/MathJax.js"></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">Löbstacle</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/lobstacle.json.html">lobstacle.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/lobstacle">https://arbital.com/p/lobstacle</a></p><p class="creator">by
+ <a class="page-link" href="../page/JaimeSevillaMolina.html">Jaime Sevilla Molina</a> Sep 17 2016 
+updated
+ Sep 19 2016</p></div><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>Löbstacle</li></ul></nav></nav></header><hr><main><p>Imagine you have an artificial intelligence $~$D1$~$ who uses a logical [ knowledge base] and a certain system of [ logic] to guarantee that its actions always provably have the best outcome possible.</p>
+<p>In other words, $~$D1$~$ has a bunch of [ axioms] and some [ deduction rules], and it can relate the logical terms to the real world. When it takes an action, it first checks that if it formalizes the action as a logical formula then the action [ entails] a good outcome according to the inference rules it is using and the axioms in his knowledge base.</p>
+<p>Sidestepping complexity issues%%note: Deducing logical consequences in reasonable logical systems is not cheap!%%, such a setup is really desirable, as opposed to a black box artificial intelligences, because it allows us to better understand its reasoning process and design formal constraints that the AI has to satisfy.</p>
+<p>However, we also want the AI to become smarter and able to come up with better conclusions. For that it may require to add new axioms to its knowledge base, so that it can prove more things. Let's call the reasoner which results of adding those axioms $~$D2$~$.</p>
+<p>On the other hand, it has to be careful that it does not add any axiom in [inconsistency contradiction] with the old axioms, because then the new [ knowledge base] would entail every logical statement!</p>
+<p>Therefore, before enacting the modification, $~$D1$~$ has to prove that $~$D2$~$ is [-consistent]. </p>
+<p>But since $~$D2$~$ is stronger than $~$D1$~$ (everything $~$D1$~$ proves is also proved by $~$D2$~$, since every axiom in $~$D1$~$ is also in $~$D2$~$) then the consistency of $~$D2$~$ implies the consistency of $~$D1$~$, and if $~$D1$~$ extends minimal arithmetic then it can prove that.
+%%note: This is most certainly true, but it is formalizable? Turns out it is as long as $~$D1$~$ includes <a href="peano_arithmetic.html">Peano Arithmetic</a>. A brief and hand wavy argument that shows this is acknowledging that $~$\square_{D1}A\rightarrow \square_{D2}A$~$ [todo: complete argument]%%</p>
+<p>Therefore, $~$D1$~$ cannot show that $~$D2$~$ is consistent, because otherwise $~$D1$~$ would prove that he himself is consistent, and if $~$D1$~$ was actually consistent then that is not allowed by [godel_second_incompleteness_theorem]%%note: Or, <a href="5hs.html">equivalently</a>, by <a href="lobs_theorem.html">Löb&#39;s theorem</a>, which is where the catchy name Löbstacle comes from%%.</p>
+<p>This means that our idealized AI will only build successors which are strictly weaker than himself, which is clearly undesirable. Extended discussions of the Löbstacle can be found <a href="http://intelligence.org/files/TilingAgentsDraft.pdf">here</a> and <a href="http://intelligence.org/files/ProblemsSelfReference.pdf">here</a>.</p></main><hr><footer><p class="all-creators"><h2>All Creators</h2><span class="page-comma-list"><a class="page-link" href="../page/JaimeSevillaMolina.html">Jaime Sevilla Molina</a>,
+ <a class="page-link" href="../page/JohnSteidley.html">John Steidley</a></span></p></footer></body></html>

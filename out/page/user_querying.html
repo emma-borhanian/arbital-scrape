@@ -1,0 +1,30 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Querying the AGI user</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="../MathJax-2.7.5/MathJax.js"></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">Querying the AGI user</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/user_querying.json.html">user_querying.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/user_querying">https://arbital.com/p/user_querying</a></p><p class="creator">by
+ <a class="page-link" href="../page/EliezerYudkowsky.html">Eliezer Yudkowsky</a> Mar 20 2016 
+updated
+ Mar 20 2016</p></div><p class="clickbait">Postulating that an advanced agent will check something with its user, probably comes with some standard issues and gotchas (e.g., prioritizing what to query, not manipulating the user, etc etc).</p><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>Querying the AGI user</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="ai_alignment.html">AI alignment</a></li><li><a href="AGI_typology.html">Strategic AGI typology</a></li><li><a href="task_agi.html">Task-directed AGI</a></li><li>…</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="ai_alignment.html">AI alignment</a></li><li><a href="task_agi.html">Task-directed AGI</a></li><li>…</li></ul></nav></nav></header><hr><main><p>[summary:  There's a laundry list of things that might go wrong when we suppose that an advanced AI is checking something Potentially Bad with the user/operator/programmer to see if the user labels the thing as Considered Bad, and relying on this step of the workflow to exclude things that are Actually Bad.  E.g., the user might not be able to detect Actually Bad things reliably, the space of Potentially Bad things might be so broad that the Actually Bad things are 1,000 items down the list of things that are Potentially Bad, the AI might just learn to do things that won't be Considered Bad and thereby seek out special cases of bad things that the user can't detect as bad, etcetera.]</p>
+<p>If we're supposing that an <a href="advanced_agent.html">advanced agent</a> is checking something Potentially Bad with its user to find out if the thing is Considered Bad by that user, we need to worry about the following generic issues:</p>
+<ul>
+<li>Can the AI tell which things are Potentially Bad in a way that includes all things that are Actually Bad?</li>
+<li>Can the <em>user</em> reliably tell which Potentially Bad things are Actually Bad?</li>
+<li>Does the AI, emergently or deliberately, seek out Potentially Bad things that the user will <em>not</em> label as Considered Bad, thereby potentially optimizing for Actually Bad things that the user mislabels as Not Bad?  (E.g., if the agent learns to avoid new tries similar to those already labeled bad, we're excluding the Considered Bad space, but what's left may still contain Actually Bad things via <a href="nearest_unblocked.html">Nearest unblocked strategy</a> or a similar phenomenon.)</li>
+<li>Is the criterion for Potentially Bad so broad, and Actually Bad things hard enough to <em>reliably</em> prioritize <em>within</em> that space, that 10% of the time an Actually Bad thing will not be in the top 1,000 Potentially Bad things the user can afford the time to check?</li>
+<li>Can the AI successfully communicate to the user the details of what set off the flag for Potential Badness, or even communicate to the user exactly what was flagged as Potentially Bad, if this is an important part of the user making the decision?</li>
+<li>Do the AI's communication goals risk [optimizing_user optimizing the user]?</li>
+<li>Are the details of Potential Badness or even the subject of Potential Badness so inscrutable as to be impenetrable?  (E.g., AlphaGo trying to explain to a human why a Go move is potentially bad, or for that matter, a Go professional trying to explain to an amateur why a Go move is potentially bad - we might just be left with blind trust, at which point we might as well just tell the AI not to do Potentially Bad things rather than asking it to pointlessly check with the user.)</li>
+<li>Does the AI, emergently or instrumentally, optimize for the user not labeling things as Potentially Bad, thereby potentially leading to user deception?</li>
+</ul></main><hr><footer><p class="tagged"><h2>Tagged</h2><span class="page-comma-list"><a class="page-link" href="../page/stub_meta_tag.html">Stub</a></span></p><p class="likes"><h2>Likes</h2><span class="page-comma-list"><a class="page-link" href="../page/RolandPihlakas.html">Roland Pihlakas</a></span></p><p class="reverse-related"><h2>Reverse Related</h2><ul class="page-list"><li><a class="page-link" href="../page/stub_meta_tag.html">Stub</a> <q>This page only gives a very brief overview of the topic. If you're able to, please help expand or improve it!</q> - <a class="page-link" href="../page/EliezerYudkowsky.html">Eliezer Yudkowsky</a></li></ul></p></footer></body></html>

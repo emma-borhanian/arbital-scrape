@@ -1,0 +1,95 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Asymptotic Notation</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="../MathJax-2.7.5/MathJax.js"></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">Asymptotic Notation</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/78l.json.html">78l.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/78l">https://arbital.com/p/78l</a></p><p class="creator">by
+ <a class="page-link" href="../page/MorganRedding.html">Morgan Redding</a> Jan 5 2017 
+updated
+ Jan 10 2017</p></div><p class="clickbait">Asymptotic notation seeks to capture the behavior of functions as its input(s) become extreme.  It is most widely used in Computer Science and Numerical Approximation.</p><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>Asymptotic Notation</li></ul></nav></nav></header><hr><main><p>Asymptotic Notation (Bachmann–Landau notation) is a notation for comparing the behavior of functions at extreme values – both very large, and very small.  This is a convenient way to compare the performance of algorithms on large inputs, as well as the accuracy of approximations.  This page will focus on the behavior at very large values, which is useful for analyzing the behavior of algorithms (both time and space requirements), rather than very minute values.</p>
+<p>This notation is intended for functions that are always non-negative or, at least, tend towards a non-negative value.</p>
+<h2 id="asymptoticbehavior">Asymptotic Behavior</h2>
+<p>The asymptotic behavior of a function is its behavior as its input grows large.</p>
+<p><img src="http://i.imgur.com/Hpaud68.png" alt="" />\</p>
+<p>For example, as x grows large, the three functions above all start to take on the same asymptotic behavior.  Asymptotic notation gives a way to express the relationship between two functions' asymptotic behaviors.</p>
+<h2 id="littleoh">Little-Oh</h2>
+<p>Suppose we have two functions f(x) and g(x), such that</p>
+<p>$$~$\lim_{x \rightarrow \infty} \frac{f(x)}{g(x)} = 0$~$$</p>
+<p>Then we say that $~$f(x) = o(g(x))$~$ (spoken as "f is little oh of g"), which, colloquially, means that $~$g(x)$~$ grows much faster than $~$f(x)$~$ in the long run (i.e. for large values of $~$x$~$).</p>
+<p>For example, consider $~$f(x) = x$~$ and $~$g(x) = x^2$~$.  Because $~$\lim_{x \rightarrow \infty} \frac{x}{x^2} = 0$~$, we know $~$x = o(x^2)$~$.  Therefore $~$x^2$~$ will not only eventually overtake $~$x$~$, and will become arbitrarily large relative to $~$x$~$.  In other words, we can make $~$\frac{g(x)}{f(x)}$~$ (or $~$g(x) - f(x)$~$) become as large as we want by finding a sufficiently large $~$x$~$ value.</p>
+<h3 id="anoteonnotation">A Note on Notation</h3>
+<p>While the standard notation uses an equal sign (i.e. $~$f(x) = o(g(x))$~$), a more precise notation might be $~$f(x) \in o(g(x))$~$, where $~$o(g(x))$~$ is the set of functions that are asymptotically dominated by $~$g(x)$~$.  Nonetheless, using an equal sign is customary, and is the notation that will be used on this page.</p>
+<h2 id="examples">Examples</h2>
+<p>This section contains examples of how one may determine the asymptotic relationship of two functions using L'Hôpital's Rule.</p>
+<h3 id="example1">Example 1</h3>
+<p>Consider $~$f(x) = 200x + 10000$~$ and $~$g(x) = x^2$~$.  Prove that $~$f(x) = o(g(x))$~$.</p>
+<p><img src="http://i.imgur.com/TZF5hQn.png" alt="" /></p>
+<p>From the graph, we can guess that $~$f(x) = o(g(x))$~$, because (it appears) that for large values of $~$x$~$, $~$g(x) &gt; f(x)$~$.  To prove this, it suffices to prove that:</p>
+<p>$$~$\lim_{x \rightarrow \infty} \frac{f(x)}{g(x)} = \lim{x \rightarrow \infty} \frac{200x + 10000}{x^2} = 0$~$$</p>
+<p>Using L'Hôpital's Rule, we have:</p>
+<p>$$~$\lim_{x \rightarrow \infty} \frac{200x + 10000}{x^2} = \lim_{x \rightarrow \infty} \frac{200}{2x}$~$$</p>
+<p>Which is zero; therefore our original guess was correct, and $~$f(x) = o(g(x))$~$.</p>
+<h3 id="example2">Example 2</h3>
+<p>Let $~$f(x) = 20x^2 - 10x + 5$~$ and $~$g(x) = 2x^2 - x + 10$~$.</p>
+<p><img src="http://i.imgur.com/NdAoJFR.png" alt="" /></p>
+<p>From the graph, we can guess that $~$g(x) = o(f(x))$~$.  To verify this, we will again evaluate the limit with L'Hôpital's Rule:</p>
+<p>$$~$\lim_{x \rightarrow \infty} \frac{g(x)}{f(x)} = \lim_{x \rightarrow \infty} \frac{2x^2 - x + 10}{20x^2 - 10x + 5} = \lim_{x \rightarrow \infty} \frac{4x - 1}{40x - 10}$~$$</p>
+<p>Unlike the previous example, applying L'Hôpital's Rule doesn't seem to have reduced the fraction to an easily evaluable limit.  Fortunately, we are welcome to apply L'Hôpital's Rule as many times as we like, without changing the value of the limit:</p>
+<p>$$~$= \lim_{x \rightarrow \infty} \frac{4}{40} = \frac{1}{10}$~$$</p>
+<p>This is <em>not</em> zero, and so our guess was wrong: $~$f(x)$~$ is <em>not</em> dominated by $~$g(x)$~$.  If we apply the same test but with $~$f(x)$~$ on top and $~$g(x)$~$ on the bottom to also verify that $~$g(x) \neq o(f(x))$~$.</p>
+<h2 id="propertiesoflittleoh">Properties of Little-Oh</h2>
+<p>An equivalent definition for $~$f(x) = o(g(x))$~$ is:</p>
+<p>$$~$\forall_{c&gt;0} \exists_{n&gt;0} \text{ such that } \forall_{x&gt;n} c \cdot f(x) \leq g(x)$~$$</p>
+<p>In other words $~$g(x)$~$ will eventually overtake $~$f(x)$~$, no matter how much you scale $~$f(x)$~$ by.  From our first example, we showed that $~$200 x + 10000 = o(x^2)$~$.  This means that, no matter what $~$c$~$ you pick, $~$c(200x + 10000)$~$ will eventually be overtaken by $~$x^2$~$ – it's just a matter of finding a big enough $~$n$~$.</p>
+<p>Little-oh has the following properties:</p>
+<ol>
+<li>$~$f(x) = o(f(x))$~$ is always false</li>
+<li>$~$f(x) = o(g(x))\ \ \implies\ \ g(x) \neq o(f(x))$~$</li>
+<li>$~$f(x) = o(g(x)) \text{ and } g(x) = o(h(x))\ \ \implies\ \ f(x)= o(h(x))$~$</li>
+<li>$~$f(x) = o(g(x))\ \ \implies\ \ c + f(x) = o(g(x))$~$</li>
+<li>$~$f(x) = o(g(x))\ \ \implies\ \ c \cdot f(x) = o(g(x))$~$</li>
+</ol>
+<p>The first three properties are essentially the same properties required of a strict ordering, which means that this notation gives us a way to order functions by how quickly they grow (see the "Common Functions" section).  Indeed, little-oh is often thought of as a "less than" sign that compares functions via their asymptotic behavior.</p>
+<p>The 4th and 5th properties show that asymptotic notation is independent of constant factors or shifts.  This is useful in computer science, where such constants may vary by hardware, programming language, and other variables that are often hard to talk about precisely; asymptotic notation gives computer scientists a way to analyze algorithms independent of the hardware that is running it.</p>
+<h2 id="commonfunctions">Common Functions</h2>
+<p>Functions that are frequently seen while analyzing algorithms are of particular use and interest.  Because little-Oh notation suggests a strict ordering, the following functions are listed from smallest to largest, asymptotically.</p>
+<ol>
+<li>$~$f(x) = 1$~$</li>
+<li>$~$f(x) = log(log(x))$~$</li>
+<li>$~$f(x) = log(x)$~$</li>
+<li>$~$f(x) = x$~$</li>
+<li>$~$f(x) = x \cdot log(x)$~$</li>
+<li>$~$f(x) = x^{1+\epsilon}$~$, $~$0 &lt; \epsilon &lt; 1$~$</li>
+<li>$~$f(x) = x^2$~$</li>
+<li>$~$f(x) = x^3$~$</li>
+<li>$~$f(x) = x^4$~$</li>
+<li>…</li>
+<li>$~$f(x) = e^{cx}$~$</li>
+<li>$~$f(x) = x!$~$</li>
+</ol>
+<h2 id="thetaomegaandbigoh">Theta, Omega, and Big-Oh</h2>
+<h3 id="thetaandlittleomega">Theta and Little-Omega</h3>
+<p>Given that there exists notation for representing the relationship between two functions if $~$\lim_{x \rightarrow \infty} \frac{f(x)}{g(x)} = 0$~$, it seems natural to extend this notation to the other two cases: namely when the limit equals infinity, and when the limit equals a (positive) constant.</p>
+<p>When $~$0 &lt; \lim_{x \rightarrow \infty} \frac{f(x)}{g(x)} &lt; \infty$~$, we say $~$f(x) = \Theta(g(x))$~$ (pronounced "f is theta of g").</p>
+<p>When $~$\lim_{x \rightarrow \infty} \frac{f(x)}{g(x)} = \infty$~$, we say $~$f(x) = \omega(g(x))$~$ (pronounced "f is little omega of g").</p>
+<p>Little-omega is a natural complement to little-oh: if $~$f(x) = o(g(x))$~$, then $~$g(x) = \omega(f(x))$~$.</p>
+<p>For any function $~$g(x)$~$, little-oh, little-omega, and Theta are disjoint sets.  That is, $~$f(x)$~$ is either $~$o(g(x))$~$, $~$\Theta(g(x))$~$, or $~$\omega(g(x))$~$, but cannot be more than one.</p>
+<h3 id="bigohandbigomega">Big-Oh and  Big-Omega</h3>
+<p>Though little-oh and little-omega offer a strict ordering, they are less used than their bigger siblings: big-oh and big-omega.</p>
+<p>$~$f(x) = O(g(x))$~$ if $~$f(x) = o(g(x))$~$ or $~$f(x) = \Theta(g(x))$~$, and, similarly, $~$f(x) = \Omega(g(x))$~$ if $~$f(x) = \omega(g(x))$~$ or $~$f(x) = \Theta(g(x))$~$.</p>
+<h2 id="useincomputerscience">Use in Computer Science</h2>
+<p>In Computer Science, algorithms have runtimes, which are functions that take the size of their input and return (approximately) how long the algorithm will need to run. Big-Oh, in particular, sees widespread use, and it is standard practice that an algorithm's runtime be given using asymptotic notation.</p>
+<p>For example, the algorithm mergesort (an algorithm that sorts a list of numbers) requires $~$\Theta(n\ lg(n))$~$ time.  This suggests that running the algorithm on a list with 1024 elements will take roughly 2.2 times longer than on a list with 512 elements.</p>
+<p>In contrast, insertionsort (an algorithm that also sorts lists of numbers) runs in $~$\Theta(n^2)$~$ time.  This suggests that bubble sort will run roughly 4 times longer on a list with 1024 elements than on a list with 512.</p>
+<p>Here, we can use the simplified runtimes ($~$n\ lg(n)$~$ and $~$n^2$~$) to still make useful comparisons between the algorithms.  In particular, as the size of the list gets large, we can expect the mergesort to eventually outperform insertionsort, because $~$n lg(n) = o(n^2)$~$.</p>
+<p>Unfortunately, an algorithm's runtime often depends on more than just the size of the input, but on the particular flavor as well.  For instance, some sorting algorithms behave very poorly on lists that are completely reserved (e.g. $~$[6,5,4,3,2,1]$~$) but very well on lists that are nearly sorted to begin with (e.g. $~$[1,2,3,4,6,5]$~$).  Typically the worst-case (i.e. slowest) performance is used to determine the asymptotic behavior of the function.  For instance, though bubble sort (another sorting algorithm) <em>can</em> run in $~$n$~$ time, in the worst-case scenario it requires $~$n^2$~$ time, though classifying it as an $~$O(n^2)$~$ algorithm.</p></main><hr><footer><p class="tagged"><h2>Tagged</h2><span class="page-comma-list"><a class="page-link" href="../page/work_in_progress_meta_tag.html">Work in progress</a></span></p><p class="reverse-related"><h2>Reverse Related</h2><ul class="page-list"><li><a class="page-link" href="../page/work_in_progress_meta_tag.html">Work in progress</a> <q>This page is being actively worked on by an editor. Check with them before making major changes.</q> - <a class="page-link" href="../page/EliezerYudkowsky.html">Eliezer Yudkowsky</a></li></ul></p></footer></body></html>

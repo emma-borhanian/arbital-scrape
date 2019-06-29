@@ -1,0 +1,138 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Vector arithmetic</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="../MathJax-2.7.5/MathJax.js"></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">Vector arithmetic</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/vector_arithmetic.json.html">vector_arithmetic.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/vector_arithmetic">https://arbital.com/p/vector_arithmetic</a></p><p class="creator">by
+ <a class="page-link" href="../page/AdeleLopez.html">Adele Lopez</a> Nov 26 2016 
+updated
+ Dec 13 2016</p></div><p class="clickbait">Vectors: what they are, and how to add and scale them.</p><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>Vector arithmetic</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="geometric_algebra.html">Geometric algebra</a></li><li>…</li></ul></nav></nav></header><hr><main><p>A vector is like an arrow, and has a direction and a magnitude. Vectors can be manipulated algebraically, and follow rules similar to the rules in <a href="elementary_algebra.html">elementary algebra</a>, which allows us to do vector arithmetic. Vectors are used in [geometry geometry] to describe the relative positions of different points, and in [physics physics] to represent quantities such as [velocity velocities], [force forces], and [momentum momentum]. They are studied in mathematics in <a href="linear_algebra.html">linear algebra</a> as belonging to a <a href="vector_space.html">vector space</a>, and this mathematical framework based around them has extraordinary applicability to virtually every scientific field.</p>
+<p>Vectors have their origin in geometry, but it was realized that they can be given names and manipulated by following certain rules, like we do with numbers in algebra. In fact, many of the same rules from algebra still make sense in the context of vectors. This makes calculations much easier, and it was found that the vector rules applied in situations far beyond the original geometric situations they were designed for. </p>
+<p>To study vectors, we can draw geometric figures which have the advantage of being visual and intuitive, and show how vectors relate to the physical world. However, as the applications of vectors increase in complexity, it becomes easier for us (and computers) to work with vectors algebraically. The algebra also allows us to be more precise. So we will learn how to use both together.</p>
+<h1 id="points">Points</h1>
+<p>We'll start with some points:</p>
+<p><img src="http://imgur.com/tWZ6Gze.png" alt="three points" /></p>
+<p>Each point has a position.</p>
+<p>We can name the points:</p>
+<p><img src="http://imgur.com/2SpMtAr.png" alt="three points, labelled a, b and c" /></p>
+<p>We'll usually use lowercase letters like $~$a$~$ or $~$b$~$ for points.</p>
+<h1 id="vectors">Vectors</h1>
+<p>A <strong>vector</strong> has a direction and a magnitude. We'll start by thinking of the magnitude as the length of the vector, but in different contexts, other interpretations make more sense. In any case, the <strong>magnitude</strong> is either a positive <a href="real_number.html">number</a>, or zero. %%note: Sometimes you might see negative or <a href="complex_number.html">complex</a> magnitudes being used, but we can think of these numbers as including directional information.%%</p>
+<p><img src="http://imgur.com/ccSOun3.png" alt="the vector v" /></p>
+<p>We also give vectors names – usually a letter in boldface (like $~$\textbf{v}$~$), or with a little bar over it (like $~$\bar{v}$~$). We enclose a vector in bars to denote its magnitude: $~$|\textbf{v}|$~$, which reminds us that it is like the [absolute_value absolute value] of a vector. </p>
+<p>Vectors do not have a position which means these: </p>
+<p><img src="http://imgur.com/wYe2za0.png" alt="four copies of the same vector in different positions" /></p>
+<p>are all the <em>same</em> vector, since they all point in the same direction and have the same magnitude. </p>
+<p>If we start at a point, we can add a vector to it to go to another point. </p>
+<p><img src="http://imgur.com/yyNb4AV.png" alt="the point b + the vector v = the point c" /></p>
+<p>We write this as $~$b + \textbf{v} = c$~$. This just says: "If you start at $~$b$~$, and move along the vector $~$\textbf{v}$~$, you will end up at $~$c$~$."</p>
+<p>We can rearrange this algebraically to get $~$\textbf{v} = c - b$~$. You can think of this as saying that $~$\textbf{v}$~$ is the difference between the points $~$c$~$ and $~$b$~$. We can use this to describe vectors we haven't named yet. </p>
+<p><img src="http://imgur.com/iK20r4W.png" alt="the vector v = c-b, and the vector b-a" /></p>
+<h1 id="vectoraddition">Vector addition</h1>
+<p>Two vectors can also be added together, which will give us a new vector. </p>
+<p><img src="http://imgur.com/vPEqkaN.png" alt="vector addition: u + v = w" /></p>
+<p>$$~$\textbf{u} + \textbf{v} = \textbf{w}$~$$</p>
+<p>If we write these vectors as the differences between two points, we can see that the algebra gives us the same result!</p>
+<p><img src="http://imgur.com/zUqPVOr.png" alt="vector addition: (b-a) + (c-b) = c-a" /></p>
+<p>$$~$(b-a) + (c-b) = c -b + b -a = c-a$~$$</p>
+<p>The math for vectors was designed so that things which are true algebraically are also true geometrically, and vice versa. </p>
+<p>If we are adding three or more vectors, it doesn't matter the order we do the sums in. </p>
+<p><img src="http://imgur.com/rUvEAmM.png" alt="associative property of vector addition" /></p>
+<p>$$~$(\textbf{u}+\textbf{v})+\textbf{w}=\textbf{u}+(\textbf{v}+\textbf{w})$~$$<br />
+This is called the associative property of vector addition. </p>
+<p>It also doesn't matter what order we order the vectors themselves in: 
+$$~$\textbf{u} + \textbf{v} = \textbf{v} + \textbf{u}$~$$
+This is called the commutative property. Try drawing a picture of this relation yourself so you can see why it is true geometrically. </p>
+<h1 id="scalingvectors">Scaling vectors</h1>
+<p>What happens when we add the same vector to itself? </p>
+<p><img src="http://imgur.com/rsSeBej.png" alt="v + v = 2v" /></p>
+<p>We get a vector in the same direction, but with twice the magnitude! Algebraically, we can depict this as $~$\textbf{v} + \textbf{v} = 2\textbf{v}$~$. </p>
+<p>In general, we can scale a vector by any amount we want. The number we scale it by is called a scalar. </p>
+<p><img src="http://imgur.com/qcUfsnQ.png" alt="v scaled by various amounts" /></p>
+<p>We can write this as $~$n\textbf{v}$~$, with $~$n$~$ being the scalar. This is called <strong>scalar multiplication</strong>. It doesn't matter which side we put the scalar on, so we say it has the commutative property: $$~$n\textbf{v}=\textbf{v}n$~$$</p>
+<p>Scaling something by $~$1$~$ doesn't change it, so we have the simple, but important fact that: $$~$1\textbf{v}=\textbf{v}$~$$ </p>
+<h2 id="compatibilityofscalarmultiplication">Compatibility of scalar multiplication</h2>
+<p>%%todo:
+The scalar compatibility rule should be given more significance, including a picture illustrating it.
+%%
+One handy fact is that if we scale a vector, and then scale it again, the resulting vector will be scaled by the product of the two scalars. In algebra: $$~$n(m\textbf{v}) = (nm)\textbf{v}$~$$ 
+In other words, scalar multiplication is compatible with itself. Since these are the same, there's no need to keep the parenthesis, we can just write $~$nm\textbf{v}$~$ and the meaning will be clear.</p>
+<h2 id="reverse">Reverse</h2>
+<p>One thing that comes in handy a lot is reversing a vector. To see what this should be algebraically, we'll write the vector as the difference of points: $~$\textbf{v} = b -a$~$. Remember, this means $~$\textbf{v}$~$ is the vector that will take you from $~$a$~$ to $~$b$~$. </p>
+<p><img src="http://imgur.com/0FXxYtg.png" alt="the vector b-a and its reverse, a-b" /></p>
+<p>The <strong>reverse vector</strong> will be the vector that will take you from $~$b$~$ to $~$a$~$, so $~$a - b$~$, which is $~$-(b -a)= -\textbf{v}$~$. </p>
+<p>This means that reversing a vector is the same as scaling it by $~$-1$~$. This can be combined with the fact that scalar multiplication is compatible with itself to scale a vector by any negative number: $~$n(-1\mathbf {v}) =-n\mathbf v$~$. </p>
+<h2 id="thezerovector">The zero vector</h2>
+<p>If we scale any vector by $~$0$~$, we get a special vector called the <strong>zero vector</strong>. $~$0\textbf{v} = \textbf{0}$~$. We write the zero vector in bold still to remind ourselves it's still a vector. </p>
+<p><img src="http://imgur.com/PBXrFsV.png" alt="the zero vector" /></p>
+<p>As you can see, this vector is special because it has no direction, just a magnitude which is zero. And even though it looks like a point, it is different because it doesn't even have a position!</p>
+<p>If we add the zero vector to any point, we just get the same point: $~$a + \textbf{0} = a$~$. If we add the zero vector to any vector, we get the same vector: $~$\textbf{v} + \textbf{0} = \textbf{v}$~$. If we add a vector to its reverse, we get the zero vector: $~$\textbf{v} - \textbf{v} = 0$~$. It's the additive identity for vector addition, just like zero is the additive identity for ordinary addition. This similarity is the reason we call it the zero vector. </p>
+<h2 id="magnitude">Magnitude</h2>
+<p>What happens to the magnitude of a vector when we scale it? For vectors scaled by positive numbers, it makes intuitive sense to just multiply the magnitude by the same number. For example, as we saw earlier, the magnitude of $~$2\mathbf{v}$~$ is $~$2|\mathbf{v}|$~$:</p>
+<p><img src="http://imgur.com/rsSeBej.png" alt="2v is twice as long as v" /></p>
+<p>But what about when we scale by a negative number? Let's look at a vector scaled by $~$-1$~$ again:</p>
+<p><img src="http://imgur.com/P42NTV8.png" alt="v and -v" /></p>
+<p>You can see that in this case, the vectors still have the same length, so we expect that their magnitudes should be the same as well. $~$|\mathbf{v}|=|-\mathbf{v}|$~$In general, it makes sense for us to calculate the magnitude of a scaled vector by multiplying it by the [absolute_value absolute value] of the scalar:
+$$~$|n\textbf{v}|=|n||\textbf{v}|$~$$
+The absolute value is like a magnitude for scalars!</p>
+<p>This fact also gives us a way to ignore the magnitude, and just focus on the direction of a vector. We can scale a vector by the inverse of its magnitude to get a vector with magnitude one with the same direction: $~$\frac{1}{|\mathbf v|}\mathbf v$~$. We write this vector as $~$\mathbf{\hat v}$~$. We can verify that it has magnitude one in the following way: $$~$|\mathbf{\hat v}| = \left|\frac{\mathbf{v}}{|\mathbf{v}|}\right| = \left|\frac{1}{|\mathbf{v}|}\right||\mathbf{v}| = \frac{|\mathbf{v}|}{|\mathbf{v}|}=1$~$$</p>
+<p>We call this kind of vector a <strong>unit vector</strong>, and the process of scaling a vector to get its unit vector is called <strong>normalization</strong>.</p>
+<p><img src="http://imgur.com/bSsLrvL.png" alt="normalization of vectors u, v and w" /></p>
+<p>But what about the zero vector? It doesn't have a direction at all, so there just isn't a unit vector that has the same direction! </p>
+<p><img src="http://imgur.com/MQDb7zg.png" alt="we can't normalize the zero vector because it has no direction" /></p>
+<p>When we scale a vector by zero, we lose the information about its direction, and so we can't undo it. This is the reason <em>why</em> we have a rule that we can't [division_by_zero divide by zero]. </p>
+<h1 id="distribution">Distribution</h1>
+<p>How does scalar multiplication interact with vector addition? If we take $~$2v+3v$~$, then the sum is $~$(2+3)v=5v$~$. </p>
+<p><img src="http://imgur.com/jsTQomm.png" alt="2v+3v=(2+3)v=5v" /></p>
+<p>This means that multiplication of vectors by scalars is distributive over scalar summation:
+$$~$n\textbf{v} + m\textbf{v} = (n+m)\textbf{v}$~$$</p>
+<p>What happens to the sum of two vectors if we scale them by the same scalar? Here's an illustration for $~$\textbf{u} +\textbf{v} = \textbf{w}$~$, which are then scaled by $~$2$~$.</p>
+<p><img src="http://imgur.com/aopvVtp.png" alt="if u + v = w, then 2u + 2v = 2w" /></p>
+<p>We can see that $~$2\textbf{u} + 2\textbf{v} = 2\text{w}$~$, the sum is scaled by the same amount as well! The same thing is true for any scalar – multiplication by scalars is also distributive over vector addition. For any scalar $~$n$~$, and any vectors $~$\textbf{u}$~$ and $~$\textbf{v}$~$:
+ $$~$n\textbf{u} + n\textbf{v} = n(\textbf{u} + \textbf{v})$~$$</p>
+<h1 id="threedimensionsandbeyond">Three dimensions and beyond</h1>
+<p>All of the same algebraic laws work in three dimensions too. As a visual example:</p>
+<p><img src="http://imgur.com/2AIkstb.png" alt="x - y - z = d" /></p>
+<p>$$~$\textbf{x} - \textbf{y} - \textbf{z} = \textbf{d}$~$$ </p>
+<p>This is really helpful when doing calculations because it is a lot harder to draw things in three dimensions, but the algebra stays at about the same level of difficulty. It's even more helpful when doing work that requires four, or even more dimensions, where it is almost impossible to draw them!</p>
+<h1 id="vectorspace">Vector space</h1>
+<p>Vectors live inside of a space, called a <strong>vector space</strong>. %%note: Vector spaces also include the set of allowed scalars, which in most applications is just the <a href="real_number.html">real numbers</a>.%% Within a space, any vectors that live inside that space can be added to get another vector, or be scaled to get another vector!  For example, the arrows on this page all belong to the vector space of geometric vectors in two (or three) dimensions. Note that if we take vectors from <em>different</em>  vector spaces, there usually isn't a meaningful way to add the vectors together.</p>
+<p>The algebraic rules we've used for vectors apply for all the vectors in any vector space – in fact, we could say that having a system with all of the rules here is what <em>makes</em> something a vector space. Likewise, any set of things that follow these rules can be called a vector. </p>
+<p>Not all vector spaces have a geometric meaning. To fit different contexts, we can add more operations and properties into the math, so that our math matches the rules of the specific context. We'll continue studying vectors from a geometric context, and add more mathematical tools to fit that context, such as the [geometric_product geometric product]. However, we will first work on understanding vectors in general more deeply.</p>
+<h1 id="summary">Summary</h1>
+<p>Here's a list of the rules we've covered, so you can see them all at once. Each rule is true for <em>any</em> vectors $~$\mathbf{u}$~$, $~$\mathbf{v}$~$, and $~$\mathbf{w}$~$, and for <em>any</em> scalars $~$n$~$ and $~$m$~$.</p>
+<h3 id="rulesforvectoraddition">Rules for vector addition</h3>
+<p>Associativity of vector addition:  $$~$(\mathbf{u}+\mathbf{v})+\mathbf{w} = \mathbf{u}+(\mathbf{v}+\mathbf{w})$~$$ 
+Commutativity of vector addition: $$~$\mathbf{u}+\mathbf{v} = \mathbf{v} + \mathbf{u}$~$$</p>
+<h3 id="specialscalarsthatalwaysgiveusspecialvectors">Special scalars that always give us special vectors</h3>
+<p>Multiplicative identity: $$~$1\mathbf{v} =\mathbf{v}$~$$
+Reverse vector: $$~$-1\mathbf{v}=-\mathbf{v}$~$$ 
+Zero vector: $$~$0\mathbf{v} = \mathbf{0}$~$$
+Unit vector (only when $~$|\mathbf{v}|\neq 0$~$):
+$$~$\frac{1}{|\mathbf v|}\mathbf v = \mathbf{\hat v}$~$$</p>
+<h3 id="rulesforscalarmultiplication">Rules for scalar multiplication</h3>
+<p>Commutativity of scalar multiplication: $$~$n\mathbf{v}=\mathbf{v}n$~$$
+Magnitude after scalar multiplication: $$~$|n\mathbf{v}| = |n||\mathbf{v}|$~$$
+Compatibility of scalar multiplication: $$~$n(m\mathbf{v}) = (nm)\mathbf{v}$~$$</p>
+<h3 id="rulesforhowvectoradditionandscalarmultiplicationinteract">Rules for how vector addition and scalar multiplication interact</h3>
+<p>Distributivity over vector sum: $$~$n\mathbf{v}+m\mathbf{v} = (n+m)\mathbf{v}$~$$
+Distributivity over scalar sum: $$~$n\mathbf{u} + n\mathbf{v} = n(\mathbf{u}+\mathbf{v})$~$$</p>
+<hr />
+<p>Next, let's see how <a href="combining_vectors.html">combining vectors</a> works! </p></main><hr><section class="comments"><h2>Comments</h2><div class="comment"><p><a class="page-link" href="../page/KevinClancy.html">Kevin Clancy</a></p><p><blockquote class="comment-context">So to reverse a vector, just scale it by $~$-1$~$\. This can be combined with<mark> the product rule</mark> for scalars to scale a vector by any negative number\!</blockquote>
+<p>I see that there is a description of double scaling above. I assume that this is what "the product rule" refers to, but it is never explicitly labeled as such. Maybe giving the paragraph above Reverse a bold heading titled "The Product Rule" would help with this.</p></p></div><div class="comment"><p><a class="page-link" href="../page/ChrisHolden.html">Chris Holden</a></p><p><blockquote class="comment-context">This fact also gives us a way to ignore the magnitude, and just focus on the direction of a vector\. We can scale a vector by the inverse of its magnitude to get a vector with magnitude 1 with the same direction, called<mark> $~${\\bf \\hat v}$~$\.</mark> $$~$|\\mathbf{\\hat v}| \= \\left|\\frac{\\mathbf{v}}{|\\mathbf{v}|}\\right| \= \\left|\\frac{1}{|\\mathbf{v}|}\\right||\\mathbf{v}| \= \\frac{|\\mathbf{v}|}{|\\mathbf{v}|}\=1$~$$</blockquote>
+<p>Maybe insert an equation style definition of the unit vector here, before showing that it has magnitude 1.</p>
+<p>$~$\hat{\mathbf v} = \frac{1}{| \mathbf  v |}\mathbf  v = \frac{\mathbf  v}{| \mathbf  v |}$~$.</p></p></div></section><footer><p class="tagged"><h2>Tagged</h2><span class="page-comma-list"><a class="page-link" href="../page/math1.html">Math 1</a></span></p><p class="likes"><h2>Likes</h2><span class="page-comma-list"><a class="page-link" href="../page/8xl.html">8xl</a>,
+ <a class="page-link" href="../page/AlexDewey.html">Alex Dewey</a>,
+ <a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a>,
+ <a class="page-link" href="../page/KevinClancy.html">Kevin Clancy</a>,
+ <a class="page-link" href="../page/PatrickStevens.html">Patrick Stevens</a></span></p><p class="reverse-related"><h2>Reverse Related</h2><ul class="page-list"><li><a class="page-link" href="../page/math1.html">Math 1</a> <q>Is math sometimes fun for you, and are you not anxious if you see a math puzzle you don't know how to solve?</q> - <a class="page-link" href="../page/EliezerYudkowsky.html">Eliezer Yudkowsky</a></li></ul></p></footer></body></html>

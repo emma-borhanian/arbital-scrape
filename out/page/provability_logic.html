@@ -1,0 +1,74 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Provability logic</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="../MathJax-2.7.5/MathJax.js"></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">Provability logic</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/provability_logic.json.html">provability_logic.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/provability_logic">https://arbital.com/p/provability_logic</a></p><p class="creator">by
+ <a class="page-link" href="../page/JaimeSevillaMolina.html">Jaime Sevilla Molina</a> Jul 25 2016 
+updated
+ Jul 26 2016</p></div><p class="clickbait">Learn how to reason about provability!</p><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>Provability logic</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="math.html">Mathematics</a></li><li><a href="modal_logic.html">Modal logic</a></li><li>…</li></ul></nav></nav></header><hr><main><p>The Gödel -Löb system of provability logic, or $~$GL$~$ for short, is a <a href="normal_system_of_provability.html">Normal system of provability logic</a> which captures important notions about <a href="provability_predicate.html">provability predicates</a>. It can be regarded as a formalism which allows to decide whether certain sentences in which a provability predicate appears are in fact theorems of <a href="peano_arithmetic.html">Peano Arithmetic</a>.</p>
+<p>$~$GL$~$ has two rules of inference:</p>
+<ul>
+<li><strong>Modus ponens</strong> allows to infer $~$B$~$ from $~$A\to B$~$ and $~$A$~$.</li>
+<li><strong>Necessitation</strong> says that if $~$GL\vdash A$~$ then $~$GL\vdash \square A$~$.</li>
+</ul>
+<p>The axioms of $~$GL$~$ are as follows:</p>
+<ul>
+<li>$~$GL\vdash \square (A\to B)\to(\square A \to \square B)$~$ (<strong>Distibutive axioms</strong>)</li>
+<li>$~$GL\vdash \square (\square A \to A)\to \square A$~$ (<strong>Gödel-Löb axioms</strong>)</li>
+<li>Propositional tautologies are axioms of $~$GL$~$.</li>
+</ul>
+<p><strong>Exercise</strong>: Show using the rules of $~$GL$~$ that $~$\square \bot \leftrightarrow \square \diamond p$~$. %%note:$~$\diamond p$~$ is short for $~$\neg \square \neg p$~$.%%</p>
+<p>%%hidden(Show solution):
+Those problems are best solved by working backwards.</p>
+<p>We want to show that $~$GL\vdash \square \bot \leftrightarrow \square \diamond p$~$.</p>
+<p>What can lead us to that? Well, we know that because of [ normality], this can be deduced from $~$GL\vdash \square (\bot \leftrightarrow \diamond p)$~$.</p>
+<p>Similarly, that can be derived from necessitation of $~$GL\vdash \bot \leftrightarrow \diamond p$~$.</p>
+<p>The propositional calculus shows that $~$GL\vdash \bot \to \diamond p$~$ is a tautology, so we can prove by following the steps backward that $~$GL\vdash \square \bot \to \square \diamond p$~$.</p>
+<p>Now we have to prove that $~$GL\vdash \square \diamond p\to \square \bot$~$ and we are done.</p>
+<p>For that we are going to go forward from the tautology $~$GL\vdash \bot \to \neg p$~$. </p>
+<p>By normality, $~$GL\vdash \square \bot \to \square \neg p$~$.</p>
+<p>Contraposing, $~$Gl\vdash \neg \square \neg p\to\neg\square\bot$~$. By necessitation and normality, $~$Gl\vdash \square \neg \square \neg p\to\square \neg\square\bot$~$.</p>
+<p>But $~$\square\neg\square\bot$~$ is equivalent to $~$\square[\square \bot \to \bot]$~$, and it is an axiom that $~$GL\vdash \square[\square \bot \to \bot] \to\square \bot$~$, so by modus ponens, $~$Gl\vdash \square \neg \square \neg p\to\square \bot$~$, and since $~$\diamond p = \neg \square \neg p$~$ we are done.
+%%</p>
+<p>It is fairly easy to see that GL is consistent. If we interpret $~$\square$~$ as the verum operator which is always true, we realize that every theorem of $~$GL$~$ is assigned a value of true according to this interpretation and the usual rules of propositional calculus %%note:[ proof] %%. However, there are well formed modal sentences such as $~$\neg \square \bot$~$ such that the assigned value is false, and thus they cannot be theorems of $~$GL$~$.</p>
+<h2 id="semantics">Semantics</h2>
+<p>However simple the deduction procedures of $~$GL$~$ are, they are bothersome to use in order to find proofs. Thankfully, an alternative interpretation in terms of <a href="kripke_model.html">Kripke models</a> has been developed that allows to decide far more conveniently whether a modal sentence is a theorem of $~$GL$~$.</p>
+<p>$~$GL$~$ is adequate for finite, transitive and irreflexive Kripke models. That is, a sentence $~$A$~$ is a theorem of $~$GL$~$ if and only if $~$A$~$ is valid in every finite, transitive and irreflexive model%%note: [ proof]%%. Check out the page on Kripke models if you do not know how to construct Kripke models or decide if a sentence is valid in it.</p>
+<p>An important notion in this kind of models is that of <em>rank</em>. The rank $~$\rho$~$ of a world $~$w$~$ from which no world is visible is $~$\rho(w)=0$~$. The rank of any other world is defined as the maximum among the ranks of its successors, plus one. In other words, the rank of a world is the length of the greatest "chain of worlds" in the model such that $~$w$~$ can view the first slate of the chain. </p>
+<p>Since models are irreflexive and finite, the rank is a well-defined notion: no infinite chain of worlds is ever possible.</p>
+<p><strong>Exercise</strong>: Show that the Gödel-Löb axioms are valid in every finite, transitive and irreflexive Kripke model.</p>
+<p>%%hidden(Show solution):
+Suppose there is a finite, transitive and irreflexive Kripke model in which an sentence of the form $~$\square[\square A\to A]\to \square A$~$ is not valid.</p>
+<p>Let $~$w$~$ be the lowest rank world in the model such that $~$w\not\models \square[\square A\to A]\to \square A$~$. Then we have that $~$w\models \square[\square A\to A]$~$ but $~$w\not \models \square A$~$.</p>
+<p>Therefore, there exists $~$x$~$ such that $~$w R x$~$, also $~$x\models \neg A$~$ and $~$x\models \square A\to A$~$. But then $~$x\models \neg\square A$~$.</p>
+<p>Since $~$x$~$ has lower rank than $~$w$~$, we also have that $~$x\models \square[\square A\to A]\to \square A$~$. Combining those two last facts we get that $~$x\not\models \square[\square A\to A]$~$, so there is $~$y$~$ such that $~$xRy$~$ and $~$y\not\models \square A\to A$~$.</p>
+<p>But by transitivity $~$wRy$~$, contradicting that $~$w\models \square[\square A\to A]$~$. So the supposition was false, and the proof is done.
+%%</p>
+<p>The Kripke model formulation specially simplifies reasoning in cases in which [constant_sentences no sentence letters appear]. A polynomial time algorithm can be written for deciding theoremhood this case.</p>
+<p>Furthermore, $~$GL$~$ is [-decidable]. However, it is [ $~$PSPACE$~$-complete] %%note:[ proof]%%.</p>
+<h2 id="arithmeticaladequacy">Arithmetical adequacy</h2>
+<p>You can translate sentences of modal logic to sentences of arithmetic using <em>realizations</em>.</p>
+<p>A realization $~$*$~$ is a function such that 
+$~$A\to B*=A*\to B*$~$, 
+$~$(\square A)* =\square_{PA}(A*)$~$, 
+and $~$p* = S_p$~$ for every sentence letter $~$p$~$, where each $~$S_p$~$ is an arbitrary well formed closed sentence of arithmetic.</p>
+<p>[ Solovay's adequacy theorem for GL] states that a modal sentence $~$A$~$ is a theorem of $~$GL$~$ iff $~$PA$~$ proves $~$A*$~$ for every realization $~$*$~$.</p>
+<p>Thus we can use $~$GL$~$ to reason about arithmetic and viceversa.</p>
+<p>Notice that $~$GL$~$ is decidable while [ arithmetic is not]. This is explained by the fact that $~$GL$~$ only deals with a specific subset of logical sentences, in which quantification plays a restricted role. In fact, quantified provability logic is undecidable.</p>
+<p>Another remark is that while knowing that $~$GL\not\vdash A$~$ implies that there is a realization such that $~$PA\not\vdash A*$~$, we do not know whether a specific realization of A is a theorem or not. A related result, the [ uniform completeness theorem for $~$GL$~$], proves that there exists a specific realization $~$\#$~$ such that $~$PA\not \vdash A^{\#}$~$ if $~$GL\not\vdash A$~$, which works for every $~$A$~$.</p>
+<h2 id="fixedpoints">Fixed points</h2>
+<p>One of the most important results in $~$GL$~$ is the existence of fixed points of sentences of the form $~$p\leftrightarrow \phi(p)$~$. Concretely, the [ fixed point theorem] says that for every sentence $~$\phi(p)$~$ modalized in $~$p$~$ %%note:that is, every $~$p$~$ occurs within the scope of a $~$\square$~$%% there exists $~$H$~$ in which $~$p$~$ does not appear such that $~$GL\vdash \square [p\leftrightarrow \phi(p)] \leftrightarrow \square (p\leftrightarrow h)$~$. Furthermore, there are constructive proofs which allow to build such an $~$H$~$.</p>
+<p>In arithmetic, there are plenty of interesting <a href="diagonal_lemma.html">self referential sentences</a> such as the [godel_first_incompleteness_theorem Gödel sentence] for which the fixed point theorem is applicable and gives us insights about their meaning.</p>
+<p>For example, the modalization of the Gödel sentence is something of the form $~$p\leftrightarrow \neg\square p$~$. The procedure for finding fixed points tells us that $~$GL\vdash \square (p\leftrightarrow \neg\square p)\to \square(p\leftrightarrow \neg\square\bot$~$. Thus by arithmetical adequacy, and since [ everything $~$PA$~$ proves is true]  we can conclude that the Gödel sentence is equivalent to the <a href="consistency.html">consistency of arithmetic</a>.</p></main><hr><footer><p class="all-creators"><h2>All Creators</h2><span class="page-comma-list"><a class="page-link" href="../page/DylanHendrickson.html">Dylan Hendrickson</a>,
+ <a class="page-link" href="../page/JaimeSevillaMolina.html">Jaime Sevilla Molina</a></span></p><p class="likes"><h2>Likes</h2><span class="page-comma-list"><a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a></span></p><p class="children"><h2>Children</h2><ul class="page-tree"><li><a class="page-link" href="../page/fixed_point_theorem_provability_logic.html">Fixed point theorem of provability logic</a> <q>Deal with those pesky self-referential sentences!</q> - <a class="page-link" href="../page/JaimeSevillaMolina.html">Jaime Sevilla Molina</a></li><li><a class="page-link" href="../page/arithmetical_adequacy_GL.html">Solovay's theorems of arithmetical adequacy for GL</a> <q>Using GL to reason about PA, and viceversa</q> - <a class="page-link" href="../page/JaimeSevillaMolina.html">Jaime Sevilla Molina</a></li></ul></p></footer></body></html>

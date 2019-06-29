@@ -1,0 +1,21 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>&quot;&gt; That is to say, the “right” behavior is s...&quot;</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="../MathJax-2.7.5/MathJax.js"></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">&quot;&gt; That is to say, the “right” behavior is s...&quot;</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/89r.json.html">89r.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/89r">https://arbital.com/p/89r</a></p><p class="creator">by
+ <a class="page-link" href="../page/RyanCarey2.html">Ryan Carey</a> Apr 25 2017</p></div><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>&quot;&gt; That is to say, the “right” behavior is s...&quot;</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="paul_ai_control.html">Paul Christiano's AI control blog</a></li><li><a href="act_based_agents.html">Act based agents </a></li><li>…</li></ul></nav></nav></header><hr><main><blockquote>
+  <p>That is to say, the “right” behavior is surrounded by a massive crater of “good enough” behaviors, and in the long-term they all converge to the same place. We just need to land in the crater.</p>
+</blockquote>
+<p>This does seem true if you're talking about acts in a human distribution. i.e. if you've smeared actions out over a space s.t. a uniform probability density over that space is roughly the distribution of human actions. Then, actions near the "good enough" behaviors might also be good. </p>
+<p>If you're optimizing, and not sampling from a known distribution over human actions (i.e. quantilizing or similar), then it looks like you'll still get problems with unforeseen maxima, edge instantiation and the like, problems that could easily end up with catastrophic outcomes.</p></main><hr><footer></footer></body></html>

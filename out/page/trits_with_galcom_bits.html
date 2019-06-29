@@ -1,0 +1,44 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Encoding trits with GalCom bits</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="../MathJax-2.7.5/MathJax.js"></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">Encoding trits with GalCom bits</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/trits_with_galcom_bits.json.html">trits_with_galcom_bits.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/trits_with_galcom_bits">https://arbital.com/p/trits_with_galcom_bits</a></p><p class="creator">by
+ <a class="page-link" href="../page/NateSoares.html">Nate Soares</a> Jun 2 2016</p></div><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>Encoding trits with GalCom bits</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="math.html">Mathematics</a></li><li><a href="bit.html">Bit</a></li><li><a href="data_bit.html">Bit (of data)</a></li><li><a href="bits_in_a_trit.html">How many bits to a trit?</a></li><li>…</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="math.html">Mathematics</a></li><li><a href="information_theory.html">Information theory</a></li><li><a href="bits_in_a_trit.html">How many bits to a trit?</a></li><li>…</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="math.html">Mathematics</a></li><li><a href="information_theory.html">Information theory</a></li><li><a href="data_bit.html">Bit (of data)</a></li><li><a href="bits_in_a_trit.html">How many bits to a trit?</a></li><li>…</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="math.html">Mathematics</a></li><li><a href="information_theory.html">Information theory</a></li><li><a href="galcom.html">GalCom</a></li><li>…</li></ul></nav></nav></header><hr><main><p>There are [3nd $~$\log_2(3) \approx 1.585$~$] <a href="data_bit.html">bits</a> to a <a href="trit.html">Trit</a>. Why is it that particular value? Consider the <a href="galcom.html">GalCom</a> thought experiment, in which you make money by sending information about the stock market across the celestial reaches. Let's say that Company X is about to publish a big earnings report, and that you want to send a message to your stock trader in the Vega star system that says one of three things: "Performance was in the top 1/3 of what I expected," "Performance was in the middle 1/3 of what I expected," or "Performance was in the bottom 1/3 of what I expected." You obviously don't want to send whole sentences; it suffices to transmit a single <a href="trit.html">Trit</a> of information.</p>
+<p>That is, if you had control of a communication channel that could hold one of three signals (say, a wire that could be positively charged, negatively charged, or uncharged) which was connected to your computer on Vega, then you could program the computer to recognize a positive charge as "top 1/3 performance", a neutral charge as "middle 1/3 performance", and a negative charge as "bottom 1/3 performance." You could then program it to buy, hold, or sell respectively, and make your money.</p>
+<p>Unfortunately, you don't control a wire connected to your computer on Vega. The computer on Vega is in a different star system, and the only way to communicate with it is through GalCom, the galactic communications network. And GalCom doesn't sell trits (which let you transmit one of three messages) it sells <a href="bit.html">bits</a> (which let you transmit one of two messages).</p>
+<p>So, how many bits on GalCom will it cost you to send your trit?</p>
+<p>(You're invited to pause and find some method for encoding a trit using bits.)</p>
+<p><br>
+<br>
+<br>
+<br>
+<br></p>
+<p>You can easily transmit a trit via two bits. If you reserve two bits on GalCom, you get to control two of the pulses of light on the sender, by choosing wether they are present or absent. This affects whether the receiver writes down 0 or 1, and those two binary digits will be sent to your machine on Vega. Thus, if you purchase two bits on GalCom, you can send one of four messages to your machine on Vega: 00, 01, 10, or 11. This is more than enough to encode a trit: You can program the machine such that 00 causes it to sell, 01 causes it to hold, and 10 causes it to buy. Then you have one code left over, namely 11, that you'll never send.</p>
+<p><img src="http://i.imgur.com/fKPRo2s.png" alt="One trit encoded, inefficiently, using 2 bits" /></p>
+<p><em>To encode a bit using trits, you could purchase two bits and then make use of only 3 of the 4 available codes.</em></p>
+<p>However, this is inefficient: You purchased one code (11) that you are never using. Is there any way to repurpose this code to make some of your money back?</p>
+<p>(You are invited to pause and find some method of encoding a trit using two bits such that, sometimes, you're able to sell one bit back to GalCom and recover some of your losses.)</p>
+<p><br>
+<br>
+<br>
+<br>
+<br></p>
+<p>Here's one thing you could do: Program your machine on Vega such that it recognizes both 10 and 11 as "top 1/3 performance."</p>
+<p><img src="http://i.imgur.com/AF49bHM.png" alt="Encoding a trit using two bits, such that 1/3 of the time you can sell one bit back to GalCom." /></p>
+<p>Then, by the time you've transmitted a 1, the machine on Vega already knows to start purchasing stock: It doesn't need the next bit. This means that it doesn't matter (to you) whether you send 10 or 11; these are two different ways of representing the same message. Thus, if Company X has performance in the top 1/3 of your expectations, you can sell one bit back to GalCom: Send 10 if the next bit they were going to send was a 0, and 11 if the next bit they were going to send was a 1. You've just shaved one bit off of the next message that was going to come through GalCom!</p>
+<p>(The above exposition implies that you need to know the first bit of the next message, and that your computer on Vega needs to be set up to forward the second bit to where it needs to go. In practice, this sort of thing would be standard operating procedure on GalCom, which could use [ prefix free codes] to avoid the need for seeing/forwarding bits of following messages.)</p>
+<p>If you encode your trit this way, then you reserve 2 bits in advance, and 1/3 of the time you get to sell one back. Thus, if you send lots and lots of trits using this encoding, you only pay $~$2 - \frac{1}{3} \approx 1.67$~$ galcoins per trit on average (assuming, [assume_independent_equally_likely_messages as we should], that each message occurs with equal frequency).</p>
+<p>Can we do better? Yes. (TODO)</p></main><hr><footer><p class="tagged"><h2>Tagged</h2><span class="page-comma-list"><a class="page-link" href="../page/start_meta_tag.html">Start</a>,
+ <a class="page-link" href="../page/work_in_progress_meta_tag.html">Work in progress</a></span></p><p class="likes"><h2>Likes</h2><span class="page-comma-list"><a class="page-link" href="../page/EricRogstad.html">Eric Rogstad</a>,
+ <a class="page-link" href="../page/JaimeSevillaMolina.html">Jaime Sevilla Molina</a></span></p><p class="reverse-related"><h2>Reverse Related</h2><ul class="page-list"><li><a class="page-link" href="../page/start_meta_tag.html">Start</a> <q>This page gives a basic overview of the topic, but may be missing important information or have stylistic issues. If you're able to, please help expand or improve it!</q> - <a class="page-link" href="../page/EliezerYudkowsky.html">Eliezer Yudkowsky</a></li><li><a class="page-link" href="../page/work_in_progress_meta_tag.html">Work in progress</a> <q>This page is being actively worked on by an editor. Check with them before making major changes.</q> - <a class="page-link" href="../page/EliezerYudkowsky.html">Eliezer Yudkowsky</a></li></ul></p></footer></body></html>

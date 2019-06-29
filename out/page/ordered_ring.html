@@ -1,0 +1,56 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Ordered ring</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="../MathJax-2.7.5/MathJax.js"></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">Ordered ring</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/ordered_ring.json.html">ordered_ring.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/ordered_ring">https://arbital.com/p/ordered_ring</a></p><p class="creator">by
+ <a class="page-link" href="../page/DylanHendrickson.html">Dylan Hendrickson</a> Jul 6 2016 
+updated
+ Jul 7 2016</p></div><p class="clickbait">A ring with a total ordering compatible with its ring structure.</p><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>Ordered ring</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="math.html">Mathematics</a></li><li><a href="abstract_algebra.html">Abstract algebra</a></li><li><a href="algebraic_structure.html">Algebraic structure</a></li><li><a href="algebraic_ring.html">Ring</a></li><li>…</li></ul></nav></nav></header><hr><main><p>[summary: An <strong>ordered ring</strong> is a <a href="algebraic_ring.html">Ring</a> that is <a href="totally_ordered_set.html">totally ordered</a>, where the ordering agrees with the ring operations. In particular, adding something to two elements doesn't change which of them is bigger, and the product of two [-positive] elements is positive.]</p>
+<p>An <strong>ordered ring</strong> is a <a href="algebraic_ring.html">Ring</a> $~$R=(X,\oplus,\otimes)$~$ with a <a href="totally_ordered_set.html">total order</a> $~$\leq$~$ compatible with the ring structure. Specifically, it must satisfy these axioms for any $~$a,b,c \in X$~$:</p>
+<ul>
+<li>If $~$a \leq b$~$, then $~$a \oplus c \leq b \oplus c$~$.</li>
+<li>If $~$0 \leq a$~$ and $~$0 \leq b$~$, then $~$0 \leq a \otimes b$~$</li>
+</ul>
+<p>An element $~$a$~$ of the ring is called "[-positive]" if $~$0&lt;a$~$ and "[-negative]" if $~$a&lt;0$~$. The second axiom, then, says that the product of nonnegative elements is nonnegative. </p>
+<p>An ordered ring that is also a <a href="algebraic_field.html">field</a> is an <a href="ordered_field.html">Ordered field</a>.</p>
+<h1 id="basicproperties">Basic Properties</h1>
+<ul>
+<li>For any element $~$a$~$, $~$a \leq 0$~$ if and only if $~$0 \leq -a$~$.</li>
+</ul>
+<p>%%hidden(Show proof):
+First suppose $~$a \leq 0$~$. Using the first axiom to add $~$-a$~$ to both sides, $~$a+(-a) = 0 \leq -a$~$. For the other direction, suppose $~$0 \leq -a$~$. Then $~$a \leq -a+a = 0$~$.
+%%</p>
+<ul>
+<li>The product of nonpositive elements is nonnegative.</li>
+</ul>
+<p>%%hidden(Show proof):
+Suppose $~$a$~$ and $~$b$~$ are nonpositive elements of $~$R$~$, that is $~$a,b \leq 0$~$. From the first axiom, $~$a+(-a) = 0 \leq -a$~$, and similarly $~$0 \leq -b$~$. By the second axiom $~$0 \leq -a \otimes -b$~$. But $~$-a \otimes -b = a \otimes b$~$, so $~$0 \leq a \otimes b$~$.
+%%</p>
+<ul>
+<li>The [-square] of any element is nonnegative.</li>
+</ul>
+<p>%%hidden(Show proof):
+Let $~$a$~$ be such an element. Since the ordering is total, either $~$0 \leq a$~$ or $~$a \leq 0$~$. In the first case, the second axiom gives $~$0 \leq a^2$~$. In the second case, the previous property gives $~$0 \leq a^2$~$, since $~$a$~$ is nonpositive. Either way we have $~$0 \leq a^2$~$.
+%%</p>
+<ul>
+<li>The additive <a href="identity_element.html">identity</a> $~$1 \geq 0$~$. (Unless the ring is trivial, $~$1&gt;0$~$.)</li>
+</ul>
+<p>%%hidden(Show proof):
+Clearly $~$1 = 1 \otimes 1$~$. So $~$1$~$ is a square, which means it's nonnegative.
+%%</p>
+<h1 id="examples">Examples</h1>
+<p>The <a href="real_number.html">real numbers</a> are an ordered ring (in fact, an <a href="ordered_field.html">Ordered field</a>), as is any [-subring] of $~$\mathbb R$~$, such as [4zq $~$\mathbb Q$~$].</p>
+<p>The <a href="complex_number.html">complex numbers</a> are not an ordered ring, because there is no way to define the order between $~$0$~$ and $~$i$~$. Suppose that $~$0 \le i$~$, then, we have $~$0 \le i \times i = -1$~$, which is false. Suppose that $~$i \le 0$~$, then $~$0 = i + (-i) \le 0 + (-i)$~$, but then we have $~$0 \le (-i) \times (-i) = -1$~$, which is again false. Alternatively, $~$i^2=-1$~$ is a square, so it must be nonnegative; that is, $~$0 \leq -1$~$, which is a contradiction.</p></main><hr><footer><p class="tagged"><h2>Tagged</h2><span class="page-comma-list"><a class="page-link" href="../page/start_meta_tag.html">Start</a></span></p><p class="all-creators"><h2>All Creators</h2><span class="page-comma-list"><a class="page-link" href="../page/DylanHendrickson.html">Dylan Hendrickson</a>,
+ <a class="page-link" href="../page/JoeZeng.html">Joe Zeng</a></span></p><p class="likes"><h2>Likes</h2><span class="page-comma-list"><a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a>,
+ <a class="page-link" href="../page/KevinClancy.html">Kevin Clancy</a></span></p><p class="reverse-related"><h2>Reverse Related</h2><ul class="page-list"><li><a class="page-link" href="../page/start_meta_tag.html">Start</a> <q>This page gives a basic overview of the topic, but may be missing important information or have stylistic issues. If you're able to, please help expand or improve it!</q> - <a class="page-link" href="../page/EliezerYudkowsky.html">Eliezer Yudkowsky</a></li></ul></p></footer></body></html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Arbital &quot;requires&quot; relationship</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="../MathJax-2.7.5/MathJax.js"></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">Arbital &quot;requires&quot; relationship</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/Arbital_requires.json.html">Arbital_requires.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/Arbital_requires">https://arbital.com/p/Arbital_requires</a></p><p class="creator">by
+ <a class="page-link" href="../page/AlexeiAndreev.html">Alexei Andreev</a> May 11 2016</p></div><p class="clickbait">A page can require a requisite if the reader needs to have it before they are able to understand the page.</p><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>Arbital &quot;requires&quot; relationship</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="Arbital.html">Arbital</a></li><li><a href="arbital_contributing.html">Contributing to Arbital</a></li><li><a href="arbital_features.html">Arbital features</a></li><li>…</li></ul></nav></nav></header><hr><main><p>When a page has been written with some assumptions about what the user knows, these assumptions are declared explicitly as requirements. This way the reader is aware that they might not understand the page fully, because they might be missing some <a href="arbital_requisite.html">requisites</a>. (Of course, they are still welcome to read ahead if they choose to.) For example, a page teaching "Multiplication" will have "Addition" as a requirement. The requirement is itself a <a href="arbital_page.html">page</a>, in this case about addition.</p>
+<h3 id="whentoaddarequirement">When to add a requirement</h3>
+<p>Add a requirement when you are pretty sure the reader will not understand the page without this prior knowledge. For example:</p>
+<ul>
+<li>If you read a technical double blind study results, and they don't make a lot of sense to you until you look up all the relevant statistic terms, then you should add "Statistics" as a requirement.</li>
+<li>If you find an interesting baking recipe, but it's very sparse on instructions, then it's probably assuming you have significant experience with baking and can come up with your own instructions. You should add "Advanced baking" as a requirement.</li>
+</ul>
+<p>If you are writing a new page, you can add requirements as a way to simplify your task as a writer. You can assume that the readers will come in with the prior knowledge, and you indicate that assumption by adding the necessary requirements. For example:</p>
+<ul>
+<li>While writing advanced tips on playing poker you can assume that the reader already knows the rules of poker and basic strategy by specifying "Poker rules" and "Basic poker strategy" as requirements.</li>
+<li>Writing a page about directives in AngularJS will be easier if you assume that the reader already knows "JavaScript" and "AngularJS basics".</li>
+</ul>
+<p>It's okay for a page to require itself. This often happens when it's written as a reference, i.e. it assumes that the user already knows the topic, but needs to look up some particular part that they forgot.</p>
+<h3 id="whennottoaddarequirement">When not to add a requirement</h3>
+<ul>
+<li>Don't add a requirement just because the page is talking about that topic. Use <a href="Arbital_tag.html">tags</a> for that. For example, readers can enjoy Moneyball without knowing anything about Oakland Athletics or even baseball, for that matter.</li>
+</ul>
+<h3 id="whatsthedifferencebetweenarequirementandaparent">What's the difference between a requirement and a parent?</h3>
+<p><a href="Arbital_parent_child.html">Parent</a> relationship is more direct. It implies that the pages can't really be separated; the child is a critical component of the parent. E.g. a chapter is a child of the book, a research paper is a child of the journal(s) it's published in, page about Addition is a child of Arithmetic. The child page is always within the same general topic as the parent page.</p>
+<p>On the other hand, requirement relationships can span many different topics. Many pages outside of math have some math as a requirement. Usually, it's also possible to rewrite the page in such a way as to not need the requirement or to need another set of requirements, i.e. requirements are modular.</p>
+<p>Sometimes it can be unclear if the pages should have a requirement relationship. If you run into a case you can't clearly resolve, please post it here, so we can discuss it, learn from it, and refine these definitions.</p></main><hr><footer><p class="tagged"><h2>Tagged</h2><span class="page-comma-list"><a class="page-link" href="../page/out_of_date_meta_tag.html">Out of date</a></span></p><p class="likes"><h2>Likes</h2><span class="page-comma-list"><a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a></span></p><p class="reverse-related"><h2>Reverse Related</h2><ul class="page-list"><li><a class="page-link" href="../page/out_of_date_meta_tag.html">Out of date</a> <q>Meta tag used when the page has a lot of information that's obsolete</q> - <a class="page-link" href="../page/AlexeiAndreev.html">Alexei Andreev</a></li></ul></p></footer></body></html>

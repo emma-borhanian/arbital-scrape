@@ -1,0 +1,28 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Normal subgroup</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="../MathJax-2.7.5/MathJax.js"></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">Normal subgroup</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/normal_subgroup.json.html">normal_subgroup.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/normal_subgroup">https://arbital.com/p/normal_subgroup</a></p><p class="creator">by
+ <a class="page-link" href="../page/PatrickStevens.html">Patrick Stevens</a> Jun 17 2016 
+updated
+ Jun 18 2016</p></div><p class="clickbait">Normal subgroups are subgroups which are in some sense &quot;the same from all points of view&quot;.</p><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>Normal subgroup</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="math.html">Mathematics</a></li><li><a href="abstract_algebra.html">Abstract algebra</a></li><li><a href="algebraic_structure.html">Algebraic structure</a></li><li><a href="group_mathematics.html">Group</a></li><li>…</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="math.html">Mathematics</a></li><li><a href="group_theory.html">Group theory</a></li><li><a href="group_mathematics.html">Group</a></li><li>…</li></ul></nav></nav></header><hr><main><p>A <em>normal subgroup</em> $~$N$~$ of group $~$G$~$ is one which is closed under <a href="group_conjugate.html">conjugation</a>: for all $~$h \in G$~$, it is the case that $~$\{ h n h^{-1} : n \in N \} = N$~$.
+In shorter form, $~$hNh^{-1} = N$~$.</p>
+<p>Since <a href="group_conjugate.html">conjugacy is equivalent to &quot;changing the worldview&quot;</a>, a normal subgroup is one which "looks the same from the point of view of every element of $~$G$~$".</p>
+<p>A subgroup of $~$G$~$ is normal if and only if it is the <a href="kernel_of_group_homomorphism.html">kernel</a> of some <a href="group_homomorphism.html">Group homomorphism</a> from $~$G$~$ to some group $~$H$~$. (<a href="subgroup_normal_iff_kernel_of_homomorphism.html">Proof.</a>)</p>
+<p>%%%knows-requisite(<a href="category_theory_equaliser.html">Equaliser (category theory)</a>):
+From a category-theoretic point of view, the kernel of $~$f$~$ is an equaliser of an arrow $~$f$~$ with the zero arrow; it is therefore universal such that composition with $~$f$~$ yields zero.
+%%%</p>
+<p>[todo: why are they interesting]</p></main><hr><footer><p class="tagged"><h2>Tagged</h2><span class="page-comma-list"><a class="page-link" href="../page/definition_meta_tag.html">Definition</a>,
+ <a class="page-link" href="../page/stub_meta_tag.html">Stub</a></span></p><p class="likes"><h2>Likes</h2><span class="page-comma-list"><a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a></span></p><p class="reverse-related"><h2>Reverse Related</h2><ul class="page-list"><li><a class="page-link" href="../page/definition_meta_tag.html">Definition</a> <q>Meta tag used to mark pages that strictly define a particular term or phrase.</q> - <a class="page-link" href="../page/EliezerYudkowsky.html">Eliezer Yudkowsky</a></li><li><a class="page-link" href="../page/stub_meta_tag.html">Stub</a> <q>This page only gives a very brief overview of the topic. If you're able to, please help expand or improve it!</q> - <a class="page-link" href="../page/EliezerYudkowsky.html">Eliezer Yudkowsky</a></li></ul></p><p class="children"><h2>Children</h2><ul class="page-tree"><li><a class="page-link" href="../page/quotient_by_subgroup_is_well_defined_iff_normal.html">Quotient by subgroup is well defined if and only if subgroup is normal</a> <q>Let $G$ be a Group and $N$ a Normal subgroup of $G$.
+Then we may define the *quotient group* $G/N$ t…</q> - <a class="page-link" href="../page/PatrickStevens.html">Patrick Stevens</a></li><li><a class="page-link" href="../page/subgroup_normal_iff_union_of_conjugacy_classes.html">Subgroup is normal if and only if it is a union of conjugacy classes</a> <q>A useful way to think about normal subgroups, which meshes with their &quot;closed under conjugation&quot; interpretation.</q> - <a class="page-link" href="../page/PatrickStevens.html">Patrick Stevens</a></li><li><a class="page-link" href="../page/subgroup_normal_iff_kernel_of_homomorphism.html">Subgroup is normal if and only if it is the kernel of a homomorphism</a> <q>The &quot;correct way&quot; to think about normal subgroups is as kernels of homomorphisms.</q> - <a class="page-link" href="../page/PatrickStevens.html">Patrick Stevens</a></li></ul></p></footer></body></html>

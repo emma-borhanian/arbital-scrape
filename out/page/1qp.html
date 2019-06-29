@@ -1,0 +1,48 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Learning representations</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="../MathJax-2.7.5/MathJax.js"></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">Learning representations</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/1qp.json.html">1qp.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/1qp">https://arbital.com/p/1qp</a></p><p class="creator">by
+ <a class="page-link" href="../page/OliviaSchaefer.html">Olivia Schaefer</a> Jan 24 2016</p></div><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>Learning representations</li></ul></nav></nav></header><hr><main><p>Many AI systems form internal representations of their current environment or of particular data. Practical&nbsp;<a href="https://medium.com/ai-control/act-based-agents-8ec926c79e9c#.r3vw4m4oe">act-based agents</a>&nbsp;will also need to form such representations, but would do so in a different way. This looks like a good challenge problem for act-based approaches, and I suspect it will be useful for evaluating the feasibility of the approach.</p>
+<p>I’ll discuss approval-directed agents in this post for concreteness but the discussion is generally applicable.</p>
+<h2 id="theproblem">The problem</h2>
+<h4 id=""> </h4>
+<p>Consider a neural network learning to&nbsp;<a href="http://arxiv.org/pdf/1411.4555v2.pdf">caption images</a>. A typical approach to this problem involves building an internal representation of a scene and then using that representation to predict how well a sentence describes the scene (which itself involves updating the representation as we see words from a proposed description). The representation can be trained by gradient descent, adjusting encoding and decoding at the same time in order to optimize performance on the end-to-end task. It may also be pretrained e.g. by first finding a representation that works for a simpler task, but this is&nbsp;<a href="http://papers.nips.cc/paper/5346-sequence-to-sequence-learning-with-neural-networks.pdf">not always needed</a>.</p>
+<p>Ideally an approval-directed agent would use approval “all the way down,” including for building these internal representations. This is especially important when the representations are used for persistent state, but it would be nice to use approval-direction even in the labeling setting (and it is useful as a simple test case even if we cared only about learning representations of persistent state).</p>
+<p>This requires getting human feedback on this intermediate representation, and optimizing that feedback rather than the ultimate performance of the algorithm.</p>
+<p>This presents two big problems:</p>
+<ul>
+<li>Getting feedback is very expensive. We would need technical progress to even try to use data-hungry machine learning methods this approach. (See discussion&nbsp;<a href="https://medium.com/ai-control/efficient-feedback-a347748b1557#.t1yiv3hpq">here</a>.)</li>
+<li>The human has to understand the learned representation and the rationale for the representation.</li>
+</ul>
+<h2 id="whycare">Why care?</h2>
+<h4 id="-1"> </h4>
+<p>We might be tempted to treat persistent state as a special case, using next-step approval to guide actions but allowing the state to be optimized on the basis of future approval. I think that it is better to try and learn state in an approval-directed way.</p>
+<p>Our AI systems will need to perform other tasks involving similarly complex planning and design. For example, building a factory involves producing preliminary designs which are then analyzed in more detail, modified, and finally tested and implemented. If we cannot handle state, then it seems likely that we will have difficulty handling many of these other tasks.</p>
+<p>Learning representations is an especially useful instance of the more general problem, because it is one that is very easy to study today.</p>
+<p>On top of that, treating state as a special case can in principle&nbsp;<a href="https://medium.com/ai-control/optimization-and-goals-ca524f745852#.tu9pfsmb0">lead to problems</a>, and I would prefer try to flesh out a theoretically robust solution. Failing that I would prefer to thoroughly understand the obstructions that make a theoretically robust solution impossible.</p>
+<h2 id="comparisontoexistingtechniques">Comparison to existing techniques</h2>
+<h4 id="-2"> </h4>
+<ul>
+<li>Approval-directed representation-learning generalizes handcrafted representations. Using handcrafted features is not fashionable at the moment, but it’s certainly not completely impractical. It’s easy to imagine that there are productive intermediate approaches that involve collaborations between human feature engineers and automated searches. Is training on end-to-end performance essential to getting good performance? Maybe, but it’s not clear.</li>
+<li>Many approaches to unsupervised learning fit within the approval-directed framework to varying extents, by designing representation scoring functions that proxy for operator approval better than end-to-end backpropagation (at least in the initial stages of training).</li>
+</ul>
+<p>These comparisons suggest that the approval-directed approach isn’t totally outlandish. Both of them attack the “human understands something about the representation” problem head on, but dodge the training data problem by using simple proxies for human approval. In some sense it would be nice to train more interesting criteria based on human feedback, but these simple proxies also seem compatible with the act-based approach.</p>
+<p>Much modern supervised learning uses or is at least compatible with unsupervised pre-training, so in some sense the question is just: can we make the final end-to-end fine-tuning of a representation unnecessary or nearly superfluous? Normally pre-training mostly just points us in the right direction, but can we improve it far enough that it is doing much of the work? In practice the main reason people will care about this question is a lack of labelled data for the end-to-end fine-tuning (or maybe pure scientific interest), which are fine motivations.</p>
+<p>In other domains, especially RNNs (whose internal state is not just about “representation” but can be intimately tied up with the encoding of a policy), the situation is trickier. There end-to-end training seems especially essential, and significant progress would be needed to even start living without it.</p>
+<h2 id="upshot">Upshot</h2>
+<h4 id="-3"> </h4>
+<p>I think that maintaining state is useful to have in mind as a challenging case for act-based agents, and in the long run if this approach is to succeed it will probably have to deal with the problem head-on.</p>
+<p>Trying to reproduce results based on RNNs without using end-to-end training seems like a potentially interesting challenge problem (though it looks very hard and is definitely not at the top of my list).</p>
+<p>Improving unsupervised feature learning, and exploring the intermediate space between handcrafted features and unsupervised learning, seems like an interesting domain. But it doesn’t seem like an especially promising place for a researcher interested in AI control to focus, given that these problem are likely to receive lots of attention for other reasons.</p></main><hr><footer></footer></body></html>

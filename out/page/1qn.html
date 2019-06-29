@@ -1,0 +1,44 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Reward engineering</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="../MathJax-2.7.5/MathJax.js"></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">Reward engineering</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/1qn.json.html">1qn.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/1qn">https://arbital.com/p/1qn</a></p><p class="creator">by
+ <a class="page-link" href="../page/OliviaSchaefer.html">Olivia Schaefer</a> Jan 24 2016</p></div><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>Reward engineering</li></ul></nav></nav></header><hr><main><p>This post gestures at a handful of research questions with a loose thematic connection.</p>
+<h2 id="theidea">The idea</h2>
+<h5 id=""> </h5>
+<p>Consider the following frameworks:</p>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Temporal_difference_learning">Temporal difference learning</a>: learn to predict the future by predicting tomorrow’s prediction.</li>
+<li><a href="http://arxiv.org/abs/1406.2661">Generative adversarial models</a>: learn to sample from a distribution by fooling a distinguisher.</li>
+<li><a href="http://cognet.mit.edu/system/cogfiles/journalpdfs/neco.1992.4.6.863.pdf">Predictability minimization</a>: learn to represent data efficiently by making each part of the representation unpredictable given the others.</li>
+</ul>
+<p>These algorithms replace a hard-to-optimize objective with a nicer proxy. These proxies are themselves defined by machine learning systems rather than being specified explicitly. I think this is a really nice paradigm, and my guess is that it will become more important if large-scale supervised and reinforcement learning continues to be a dominant methodology.</p>
+<p>Following Daniel Dewey, I’ll call this flavor of research “<a href="http://www.danieldewey.net/reward-engineering-principle.pdf">reward engineering</a>.” In terms of tools and techniques I don’t know if this is a really a distinct category of research; but I do think that it might be a useful heuristic about where to look for problems relevant to AI control.</p>
+<h2 id="relevancetoaicontrol">Relevance to AI control</h2>
+<h5 id="-1"> </h5>
+<p>Though reward engineering seems very broadly useful in AI, I expect it to be especially important for AI control:</p>
+<ul>
+<li>A key goal of AI control is using AI systems to optimize objectives which are defined implicitly or based on expensive human feedback. We will probably need to use complex proxies for this feedback if we want to apply reinforcement learning.</li>
+<li>Reward engineering seems relatively robust to changes in AI techniques. Uncertainty about future techniques if often a major obstacle to doing meaningful work on AI control in advance (even if only a little bit in advance).</li>
+</ul>
+<h2 id="applications">Applications</h2>
+<h5 id="-2"> </h5>
+<p>I see a few especially interesting opportunities for reward engineering for AI control:</p>
+<ul>
+<li><a href="https://medium.com/ai-control/efficient-feedback-a347748b1557#.wp2zmi2oj">Making efficient use of human feedback</a>. Here we have direct access to the objective we really care about, and it is just too expensive to frequently evaluate. (<em>Simple proposal</em>: train a learner to predict human judgments, then use those predicted judgments in place of real feedback.)</li>
+<li><a href="https://medium.com/ai-control/mimicry-maximization-and-meeting-halfway-c149dd23fc17#.cz2phxdp7">Combining the benefits of imitation and approval-direction</a>. I suspect it is possible to avoid perverse instantiation concerns while also providing a flexible training signal. (<em>Simple proposal</em>: use the adversarial generative models framework, and have the operator accomplish the desired task in a way optimized to fool the distinguisher.)</li>
+<li><a href="https://medium.com/ai-control/synthesizing-training-data-f92a637dc1b4#.ggps9emnc">Increasing robustness</a>. If our ML systems are sufficiently sophisticated to foresee possible problems, then we might be able to leverage those predictions to avoid the problems altogether. (<em>Simple proposal</em>: train a generative model to produce data from the test distribution, with an extra reward for samples that “trip up” the current model.)</li>
+</ul>
+<p>In each case I’ve made a preliminary simple proposal, but I think it is quite possible that a clever trick could make the problem look radically more tractable. A search for clever tricks is likely to come up empty, but hits could be very valuable (and would be good candidates for things to experiment with).</p>
+<p>Beyond these semi-specific applications, I have a more general intuition that thinking about this aspect of the AI control problem may turn up interesting further directions</p></main><hr><footer></footer></body></html>

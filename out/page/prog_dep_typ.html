@@ -1,0 +1,108 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Programming in  Dependent Type Theory</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="../MathJax-2.7.5/MathJax.js"></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">Programming in  Dependent Type Theory</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/prog_dep_typ.json.html">prog_dep_typ.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/prog_dep_typ">https://arbital.com/p/prog_dep_typ</a></p><p class="creator">by
+ <a class="page-link" href="../page/JackGallagher.html">Jack Gallagher</a> May 26 2016 
+updated
+ May 26 2016</p></div><p class="clickbait">Working with simple types in Lean</p><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>Programming in  Dependent Type Theory</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="math.html">Mathematics</a></li><li><a href="type_theory.html">Type theory</a></li><li>…</li></ul></nav></nav></header><hr><main><p>All code in this article was written in the Lean theorem prover, which means you can copy any of it and paste it <a href="https://leanprover.github.io/tutorial/?live">here</a> to try it out.</p>
+<h2 id="arithmeticandinteraction">Arithmetic and Interaction</h2>
+<p>While Lean is nominally an interactive theorem prover, much of the power of type theory comes from the fact that you can treat it like a programming language.</p>
+<p>There are a few different commands for interacting with Lean.
+The one I make the most use of is the <code>check</code> command, which prints out the type of the expression following it.
+So, for example, <code>check 3</code> outputs <code>num</code>, and <code>check (3 : nat)</code> outputs <code>nat</code>.</p>
+<p>We can also make definitions</p>
+<pre><code>definition five : num := 3 + 2
+</code></pre>
+<p>This declares a new constant <code>five</code> of type <code>num</code> to which we give the value <code>3 + 2</code>.
+We can define functions with similar syntax</p>
+<pre><code>definition num.const₀ : num → num → num := λ x y, x -- this is a comment
+-- Lean can infer types whenever they're unique
+definition num.const₁                    := λ (x y : num), x
+-- we can also name the arguments in the definition rather than the function body
+definition num.const₂ (x y : num)        := x
+</code></pre>
+<p>The definition of polymorphic functions becomes the first point where we get a hint about what makes programming in dependent type theory different from, say, Haskell.
+In dependent type theory, the term and type languages are unified, so in order to write a polymorphic function we must take the type as an argument.</p>
+<pre><code>definition poly_id (A : Type) := λ (a : A), a
+-- or, equivalently
+definition poly_id₁ := λ A (a : A), a
+-- applied to arguments
+check poly_id num 1 -- num
+check poly_id (num → num → num) num.const -- num → num → num
+</code></pre>
+<p>Exercise: write a polymorphic version of <code>num.const₀</code>.</p>
+<p>%%hidden(Show solution):
+    definition poly_const (A B : Type) (a : A) (b : B) := a
+%%</p>
+<p>Having to explicitly indicate types everywhere is a pain.
+In order to get around that, most proof assistants provide support for implicit arguments, which let you leave out arguments that only have one valid value.
+In Lean, the syntax for implicits looks like this:</p>
+<pre><code>definition id {A : Type} := λ (a : A), a
+</code></pre>
+<h2 id="inductivetypes">Inductive types</h2>
+<p>Of course, none of this would be that useful if we couldn't define <em>new</em> types.
+There are lots of ways to craft new types in dependent type theory, but among the most fundamental is the creation of inductive types.</p>
+<p>To define a new inductive type, you give a list of constructor tags, each associated with a type representing the arguments it takes.
+The simplest ones are just enumerations. For example, the days of the week:</p>
+<pre><code>inductive weekday : Type :=
+| mon : weekday
+| tue : weekday
+| wed : weekday
+| thu : weekday
+| fri : weekday
+| sat : weekday
+| sun : weekday
+</code></pre>
+<p>This creates a new type <code>weekday</code>, and seven new constants (<code>weekday.mon</code>, <code>weekday.tue</code>, <code>weekday.wed</code>…) of type <code>weekday</code>.
+If you're familiar with Haskell, you'll correctly notice that this looks an awful lot like GADT declarations.</p>
+<p>Just like in Haskell, we can parametrize our types over other types, making new types like <code>either</code>:</p>
+<pre><code>inductive either (A B : Type) : Type :=
+| inl {} : A → either A B``
+| inr {} : B → either A B
+</code></pre>
+<p>From this declaration, we get a new constant <code>either : Type → Type → Type</code>.
+This represents the union of the types <code>A</code> and <code>B</code>, the type of values that belong either to <code>A</code> or <code>B</code>.</p>
+<p>We can also define recursive types, such as natural numbers</p>
+<pre><code>inductive nat : Type :=
+| zero : nat
+| succ : nat → nat
+</code></pre>
+<p>The easiest way to define functions over <code>nat</code>s is recursively.
+For example, we can define addition as</p>
+<pre><code>definition add (n : nat) : nat -&gt; nat
+| nat.zero := n
+| (nat.succ m) := nat.succ (add m) -- n is constant at every recursive call
+</code></pre>
+<p>Bringing both of these together we can define the type of linked lists</p>
+<pre><code>inductive list (A : Type) : Type := 
+| nil {} : list A
+| cons : A → list A → list A
+</code></pre>
+<p>We can also define functions over lists by pattern matching</p>
+<pre><code>definition map {A B : Type} (f : A → B) : list A → list B
+| list.nil := list.nil
+| (list.cons x xs) := list.cons (f x) (map xs) -- f is constant at every recursive call
+</code></pre>
+<p>Exercise: write <code>foldr</code> and <code>foldl</code> by pattern matching</p>
+<p>%%hidden(Show solution):
+    definition foldr {A B : Type} (r : A → B → B) (vnil : B) : list A → B
+    | list.nil := vnil
+    | (list.cons x xs) := r x (foldr xs)</p>
+<pre><code>definition foldl {A B : Type} (r : B → A → B) : B → list A → B :=
+| b list.nil := b
+| b (list.cons x xs) := foldl (r b x) xs
+</code></pre>
+<p>%%</p></main><hr><footer><p class="tagged"><h2>Tagged</h2><span class="page-comma-list"><a class="page-link" href="../page/type_theory.html">Type theory</a>,
+ <a class="page-link" href="../page/work_in_progress_meta_tag.html">Work in progress</a></span></p><p class="likes"><h2>Likes</h2><span class="page-comma-list"><a class="page-link" href="../page/EricRogstad.html">Eric Rogstad</a></span></p><p class="reverse-related"><h2>Reverse Related</h2><ul class="page-list"><li><a class="page-link" href="../page/type_theory.html">Type theory</a> <q>Modern foundations for formal mathematics.</q> - <a class="page-link" href="../page/JackGallagher.html">Jack Gallagher</a></li><li><a class="page-link" href="../page/work_in_progress_meta_tag.html">Work in progress</a> <q>This page is being actively worked on by an editor. Check with them before making major changes.</q> - <a class="page-link" href="../page/EliezerYudkowsky.html">Eliezer Yudkowsky</a></li></ul></p></footer></body></html>

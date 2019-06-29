@@ -1,0 +1,42 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Löb's theorem and computer programs</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="../MathJax-2.7.5/MathJax.js"></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">Löb's theorem and computer programs</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/5hr.json.html">5hr.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/5hr">https://arbital.com/p/5hr</a></p><p class="creator">by
+ <a class="page-link" href="../page/JaimeSevillaMolina.html">Jaime Sevilla Molina</a> Jul 21 2016 
+updated
+ Jul 29 2016</p></div><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>Löb's theorem and computer programs</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="math.html">Mathematics</a></li><li><a href="lobs_theorem.html">Löb's theorem</a></li><li>…</li></ul></nav></nav></header><hr><main><p>The close relationship between [ logic and computability] allows us to frame Löb's theorem in terms of a computer program which is systematically looking for proofs of mathematical statements, <code>ProofSeeker(X)</code>.</p>
+<p>ProofSeeker can be something like this:</p>
+<pre><code>ProofSeeker(X):
+    n=1
+    while(True):
+        if Prv(X,n): return True
+        else n = n+1
+</code></pre>
+<p>Where <code>Prv(X,n)</code> is true if $~$n$~$ [ encodes] a proof of $~$X$~$%%note:See <a href="standard_provability_predicate.html">Standard provability predicate</a> for more info on how to talk about provablity%%.</p>
+<p>Now we form a special sentence called a <em>reflection principle</em>, of the form $~$L(X)$~$= "<em>If <code>ProofSeeker(X)</code> halts, then X is true</em>". (This requires a <a href="quine.html">quine</a> to construct.)</p>
+<p>Reflection principles are intuitively true, since ProofSeeker clearly halts iff it finds a proof of $~$X$~$, and if there is a proof of $~$X$~$, then $~$X$~$ must be true if we have chosen an appropriate <a href="logical_system.html">Logical system</a> to search for proofs. For example, let's say that <code>ProofSeeker</code> is looking for proofs within <a href="peano_arithmetic.html">Peano Arithmetic</a>.</p>
+<p>The question now becomes, what happens when we call <code>ProofSeeker</code> on $~$L(X)$~$? Is $~$PA$~$ capable of proving that the reflection principle for any given $~$X$~$ is true, and therefore <code>ProofSeeker</code> will eventually halt? Or will it run forever?</p>
+<p>Several possibilities appear:</p>
+<ol>
+<li>If $~$PA\vdash X$~$, then certainly $~$PA\vdash L(X)$~$, since if the consequent of $~$L(X)$~$ is provable, then the whole sentence is provable.</li>
+<li>If $~$PA\vdash \neg X$~$, then we cannot assert that $~$PA\vdash L(X)$~$, for that would imply asserting that $~$PA\vdash$~$"There is no proof of X". This is tantamount to $~$PA$~$ asserting the <a href="consistency.html">Consistency</a> of $~$PA$~$, which is forbidden by [ Gödel's second incompleteness theorem].</li>
+<li>If $~$X$~$ is undecidable in $~$PA$~$, then if it were the case that $~$PA\vdash L(X)$~$ it would be inconsistent that $~$PA\vdash \neg X$~$ for the same reason as when $~$X$~$ is disprovable, and thus $~$PA\vdash X$~$, contradicting that it was undecidable.</li>
+</ol>
+<p><strong>Löb's theorem</strong> is the assertion that $~$PA$~$ proves the reflection principle for $~$X$~$ only if $~$PA$~$ proves $~$X$~$.</p>
+<p>Or conversely, Löb's theorem states that if $~$PA\not\vdash X$~$ then $~$PA\not\vdash \square_{PA} X \rightarrow X$~$.</p>
+<p>It can be [ proved] in $~$PA$~$ and stronger systems. It has a very strong link with Gödel's second incompleteness theorem, and in fact [ they both are equivalent].</p></main><hr><footer><p class="all-creators"><h2>All Creators</h2><span class="page-comma-list"><a class="page-link" href="../page/EricRogstad.html">Eric Rogstad</a>,
+ <a class="page-link" href="../page/JaimeSevillaMolina.html">Jaime Sevilla Molina</a>,
+ <a class="page-link" href="../page/MalcolmMcCrimmon.html">Malcolm McCrimmon</a>,
+ <a class="page-link" href="../page/PatrickLaVictoir.html">Patrick LaVictoire</a></span></p></footer></body></html>

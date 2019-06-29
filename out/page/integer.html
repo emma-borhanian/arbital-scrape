@@ -1,0 +1,40 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Integer</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="../MathJax-2.7.5/MathJax.js"></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">Integer</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/integer.json.html">integer.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/integer">https://arbital.com/p/integer</a></p><p class="creator">by
+ <a class="page-link" href="../page/MichaelCohen.html">Michael Cohen</a> Jun 13 2016 
+updated
+ Jul 7 2016</p></div><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>Integer</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="math.html">Mathematics</a></li><li>…</li></ul></nav></nav></header><hr><main><p>An <strong>integer</strong> is a <a href="number.html">Number</a> that can be represented as either a <a href="natural_number.html">Natural number</a> or its [-additive_inverse]. -4, 0, and 1,003 are examples integers. 499.99 is not an integer. Integers are real numbers; they are <a href="rational_number.html">rational numbers</a>; and they are not [-fraction fractions] or [-decimal decimals].</p>
+<h2 id="amathierdefinition">A Mathier Definition</h2>
+<p>Instead of describing the properties of an integer we'll describe the membership rules for the <a href="set_mathematics.html">Set</a> $~$\mathbb{Z}$~$. After we're done, anything that's been allowed into $~$\mathbb{Z}$~$ counts as an integer.</p>
+<p>Start by putting $~$0$~$ and $~$1$~$ into $~$\mathbb{Z}$~$. Now, pick an element of $~$\mathbb{Z}$~$, pick another element of $~$\mathbb{Z}$~$, and add them together (you can pick the same element twice). Is that number in $~$\mathbb{Z}$~$ yet? No?! Well let's put it in there fast. We can do the same thing as before except instead of adding, we subtract, and if the difference isn't in $~$\mathbb{Z}$~$ yet, we put it in there. Anything that could be let into $~$\mathbb{Z}$~$ with these procedures is an integer.</p>
+<p>This is not an efficient algorithm for building out $~$\mathbb{Z}$~$, but it does show the primary motivation for having integers in the first place. Natural numbers (positive integers) are closed under addition, meaning that if you add any two elements in the set, the sum will be in the set, but natural numbers are not closed under subtraction. Integers are what you get when you expand natural numbers to make a set that is closed under subtraction as well.</p>
+<h2 id="formalconstruction">Formal construction</h2>
+<p>Given access to the set $~$\mathbb{N}$~$ of <a href="natural_number.html">natural numbers</a>, we may construct $~$\mathbb{Z}$~$ as follows.
+Take the collection of all pairs $~$(a, b)$~$ of natural numbers, and take the [-quotient] by the <a href="equivalence_relation.html">Equivalence relation</a> $~$\sim$~$ such that $~$(a,b) \sim (c,d)$~$ if and only if $~$a+d = b+c$~$.
+(The intuition is that the pair $~$(a,b)$~$ stands for the integer $~$a-b$~$, and we take the quotient so that any given integer has just one representative.)</p>
+<p>Writing $~$[a,b]$~$ for the equivalence class of the pair $~$(a,b)$~$, we define the <a href="ordered_ring.html">Ordered ring</a> structure as:</p>
+<ul>
+<li>$~$[a,b] + [c,d] = [a+c,b+d]$~$</li>
+<li>$~$[a, b] \times [c, d] = [ac+bd, bc+ad]$~$</li>
+<li>$~$[a,b] \leq [c,d]$~$ if and only if $~$a+d \leq b+c$~$.</li>
+</ul>
+<p>This does define the structure of a totally ordered ring ([ proof]).</p></main><hr><footer><p class="tagged"><h2>Tagged</h2><span class="page-comma-list"><a class="page-link" href="../page/needs_clickbait_meta_tag.html">Needs clickbait</a></span></p><p class="all-creators"><h2>All Creators</h2><span class="page-comma-list"><a class="page-link" href="../page/DylanHendrickson.html">Dylan Hendrickson</a>,
+ <a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a>,
+ <a class="page-link" href="../page/JoeZeng.html">Joe Zeng</a>,
+ <a class="page-link" href="../page/MichaelCohen.html">Michael Cohen</a>,
+ <a class="page-link" href="../page/NateSoares.html">Nate Soares</a>,
+ <a class="page-link" href="../page/PatrickStevens.html">Patrick Stevens</a></span></p><p class="likes"><h2>Likes</h2><span class="page-comma-list"><a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a>,
+ <a class="page-link" href="../page/EricRogstad.html">Eric Rogstad</a></span></p><p class="reverse-related"><h2>Reverse Related</h2><ul class="page-list"><li><a class="page-link" href="../page/needs_clickbait_meta_tag.html">Needs clickbait</a> <q>This page does not have clickbait (a short teaser for the page displayed on various lists). Feel free to add it!</q> - <a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a></li></ul></p><p class="children"><h2>Children</h2><ul class="page-tree"><li><a class="page-link" href="../page/integers_intro_math0.html">Integers: Intro (Math 0)</a> <q>The integers are the whole numbers extended into the negatives.</q> - <a class="page-link" href="../page/JoeZeng.html">Joe Zeng</a></li></ul></p></footer></body></html>

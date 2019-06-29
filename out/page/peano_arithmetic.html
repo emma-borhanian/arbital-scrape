@@ -1,0 +1,23 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Peano Arithmetic</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="../MathJax-2.7.5/MathJax.js"></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">Peano Arithmetic</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/peano_arithmetic.json.html">peano_arithmetic.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/peano_arithmetic">https://arbital.com/p/peano_arithmetic</a></p><p class="creator">by
+ <a class="page-link" href="../page/PatrickLaVictoir.html">Patrick LaVictoire</a> May 6 2016 
+updated
+ May 6 2016</p></div><p class="clickbait">A system for proving theorems about arithmetic, which is strong enough to include self-reference.</p><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>Peano Arithmetic</li></ul></nav></nav></header><hr><main><p>Peano Arithmetic is a particular set of axioms and rules which allow you to prove theorems about the natural numbers.</p>
+<p>These rules were formulated by the Italian mathematician <a href="https://en.wikipedia.org/wiki/Giuseppe_Peano">Giuseppe Peano</a> in 1889. They can be expressed as follows:</p>
+<p>Let our language consist of the symbols $~$\left\{(,),\wedge,\vee,\neg,\to,\leftrightarrow,\in,\forall,\exists,=,+,\cdot,O,S,N \right\}$~$ and an infinite set of variable symbols, which we will denote as $~$x, y, z, \dots$~$ (since three symbols is usually enough to denote infinitely many symbols). </p>
+<p>We would like to interpret these symbols as representing our intuitive notions of logical and arithmetical operators, interpreting $~$O$~$ as the number 0, $~$S$~$ as the successor operation (thus $~$SO$~$ represents 1, $~$SSO$~$ represents 2, etc), and $~$N$~$ as the set of natural numbers.</p>
+<p>We would furthermore like to create some formal rules such that we can derive certain true statements of arithmetic, like $~$SO+SO=SSO$~$ or $~$\forall x \in N\; Sx \cdot Sx = x\cdot x + SSO \cdot x + SO$~$, but not derive false statements like $~$\exists x\in N \; SSO\cdot x = SSSO$~$.</p></main><hr><footer></footer></body></html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Frequency diagrams: A first look at Bayes</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="../MathJax-2.7.5/MathJax.js"></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">Frequency diagrams: A first look at Bayes</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/bayes_frequency_diagram_diseasitis.json.html">bayes_frequency_diagram_diseasitis.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/bayes_frequency_diagram_diseasitis">https://arbital.com/p/bayes_frequency_diagram_diseasitis</a></p><p class="creator">by
+ <a class="page-link" href="../page/NateSoares.html">Nate Soares</a> Jul 6 2016 
+updated
+ Oct 26 2016</p></div><p class="clickbait">The most straightforward visualization of Bayes' rule.</p><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>Frequency diagrams: A first look at Bayes</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="math.html">Mathematics</a></li><li><a href="probability_theory.html">Probability theory</a></li><li><a href="bayes_reasoning.html">Bayesian reasoning</a></li><li><a href="bayes_rule.html">Bayes' rule</a></li><li><a href="bayes_frequency_diagram.html">Frequency diagram</a></li><li>…</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="rationality.html">Rationality</a></li><li><a href="probability_theory.html">Probability theory</a></li><li><a href="bayes_reasoning.html">Bayesian reasoning</a></li><li><a href="bayes_rule.html">Bayes' rule</a></li><li><a href="bayes_frequency_diagram.html">Frequency diagram</a></li><li>…</li></ul></nav></nav></header><hr><main><p>Bayesian reasoning is about how to revise our beliefs in the light of evidence.</p>
+<p>We'll start by considering one scenario in which the strength of the evidence has clear numbers attached.</p>
+<p>(Don't worry if you don't know how to solve the following problem.  We'll see shortly how to solve it.)</p>
+<p>Suppose you are a nurse screening a set of students for a sickness called Diseasitis.%note: Literally "inflammation of the disease".%</p>
+<ul>
+<li>You know, from past population studies, that around 20% of the students will have Diseasitis at this time of year.</li>
+</ul>
+<p>You are testing for Diseasitis using a color-changing tongue depressor, which usually turns black if the student has Diseasitis.</p>
+<ul>
+<li>Among patients with Diseasitis, 90% turn the tongue depressor black.</li>
+<li>However, the tongue depressor is not perfect, and also turns black 30% of the time for healthy students.</li>
+</ul>
+<p>One of your students comes into the office, takes the test, and turns the tongue depressor black.  What is the probability that they have Diseasitis?</p>
+<p>(<em>If</em> you think you see how to do it, you can try to solve this problem before continuing.  To quickly see if you got your answer right, you can expand the "Answer" button below; the derivation will be given shortly.)</p>
+<p>%hidden(Answer): The probability a student with a blackened tongue depressor has Diseasitis is 3/7, roughly 43%. %</p>
+<p>This problem can be solved a hard way or a clever easy way.  We'll walk through the hard way first.</p>
+<p>First, we imagine a population of 100 students, of whom 20 have Diseasitis and 80 don't.%%note:Multiple studies show that thinking about concrete numbers such as "20 out of 100 students" or "200 out of 1000 students" is more likely to produce correct spontaneous reasoning on these problems than thinking about percentages like "20% of students." E.g. "<a href="https://faculty.washington.edu/jmiyamot/p548/eddydm%20prob%20reas%20i%20clin%20medicine.pdf">Probabilistic reasoning in clinical medicine</a>" by David M. Eddy (1982).%%</p>
+<p><img src="https://i.imgur.com/gvcoqQN.png" alt="prior frequency" /></p>
+<p>90% of sick students turn their tongue depressor black, and 30% of healthy students turn the tongue depressor black.  So we see black tongue depressors on 90% * 20 = 18 sick students, and 30% * 80 = 24 healthy students.</p>
+<p><img src="https://i.imgur.com/0XDbrYi.png" alt="posterior frequency" /></p>
+<p>What's the probability that a student with a black tongue depressor has Diseasitis? From the diagram, there are 18 sick students with black tongue depressors.  18 + 24 = 42 students in total turned their tongue depressors black.  Imagine reaching into a bag of all the students with black tongue depressors, and pulling out one of those students at random; what's the chance a student like that is sick?</p>
+<p><img src="http://i.imgur.com/W6avfHO.png?1" alt="conditional probability" /></p>
+<p>The final answer is that a patient with a black tongue depressor has an 18/42 = 3/7 = 43% probability of being sick.</p>
+<p>Many medical students have at first found this answer counter-intuitive:  The test correctly detects Diseasitis 90% of the time! If the test comes back positive, why is it still less than 50% likely that the patient has Diseasitis? Well, the test also incorrectly "detects" Diseasitis 30% of the time in a healthy patient, and we start out with lots more healthy patients than sick patients.</p>
+<p>The test does provide <em>some</em> evidence in favor of of the patient being sick.  The probability of a patient being sick goes from 20% before the test, to 43% after we see the tongue depressor turn black.  But this isn't conclusive, and we need to perform further tests, maybe more expensive ones.</p>
+<p><em>If</em> you feel like you understand this problem setup, consider trying to answer the following question before proceeding: What's the probability that a student who does <em>not</em> turn the tongue depressor black - a student with a negative test result - has Diseasitis?  Again, we start out with 20% sick and 80% healthy students, 70% of healthy students will get a negative test result, and only 10% of sick students will get a negative test result.</p>
+<p>%%hidden(Answer):Imagine 20 sick students and 80 healthy students.  10% * 20 = 2 sick students have negative test results.  70% * 80 = 56 healthy students have negative test results.  Among the 2+56=58 total students with negative test results, 2 students are sick students with negative test results.  So 2/58 = 1/29 = 3.4% of students with negative test results have Diseasitis.%%</p>
+<p>%if-before(<a href="bayes_waterfall_diseasitis.html">Waterfall diagrams and relative odds</a>): Now let's turn to a faster, easier way to solve the same problem.%
+%!if-before(<a href="bayes_waterfall_diseasitis.html">Waterfall diagrams and relative odds</a>): For a more clever way to perform the same calculation, see <a href="bayes_waterfall_diseasitis.html">Waterfall diagrams and relative odds</a>.%</p></main><hr><section class="comments"><h2>Comments</h2><div class="comment"><p><a class="page-link" href="../page/AdamZerner.html">Adam Zerner</a></p><p><blockquote class="comment-context">Suppose you are a nurse screening a set of students for a sickness called <mark>Diseasitis</mark>\.1</blockquote>
+<p>I think I'd find it easier to understand if we were talking about something more concrete, like strep throat.</p></p></div><div class="comment"><p><a class="page-link" href="../page/rajeevajha.html">rajeeva jha</a></p><p><blockquote class="comment-context">One of your students comes into the office, takes the test, and turns the tongue depressor black\.  <mark>What is the probability that they have Diseasitis?</mark></blockquote>
+<p>Question of interest.</p></p></div><div class="comment"><p><a class="page-link" href="../page/rajeevajha.html">rajeeva jha</a></p><p><blockquote class="comment-context">The final answer is that a patient with a black tongue depressor has an 18/42 = 3/7 = 43% probability of being sick\.</blockquote>
+<p>Answer of interest.</p></p></div><div class="comment"><p><a class="page-link" href="../page/yassinechaouche.html">yassine chaouche</a></p><p><blockquote class="comment-context">
+<mark>Among patients with Diseasitis, 90% turn the tongue depressor black\.
+However, the tongue depressor is not perfect, and also turns black 30% of the time for healthy students\.</mark>
+</blockquote>
+<p>Another interesting question to ask is what is the <strong>single</strong> probablity of the tongue depressor to give accurate results ? </p>
+<p>If we know that the tongue depressor has a 5% error on all students, sicks and non sicks, we can predict that the probability of being sick is (another rule here ? or another fashion of using the rule if applicable)</p></p></div><div class="comment"><p><a class="page-link" href="../page/yassinechaouche.html">yassine chaouche</a></p><p><blockquote class="comment-context">What's the probability that a student with a black tongue depressor has Diseasitis? From the diagram, there are 18 sick students with black tongue depressors\.  18 \+ 24 = 42 students in total turned their tongue depressors black\.  Imagine reaching into a bag of all the students with black tongue depressors, and pulling out one of those students at random; what's the chance a student like that is sick?</blockquote>
+<p>Is this the same question as : what is the probablity that the test gives correct results ?
+We can also ask 3 other questions : </p>
+<ul>
+<li>What is the probability of a student with a black tongue depressor do not have Diseasitis ?</li>
+<li>What is the probability of a student witiout a black tongue depressor have Diseasitis ?</li>
+<li>What is the probability of a student witiout a black tongue depressor do not have Diseasitis ?</li>
+</ul></p></div><div class="comment"><p><a class="page-link" href="../page/PeterTapley.html">Peter Tapley</a></p><p><blockquote class="comment-context">One of your students comes into the office, takes the test, and turns the tongue depressor black\.  <mark>What is the probability that they have Diseasitis?</mark></blockquote>
+<p>Perhaps this can be emphasized by use of bold characters?</p></p></div><div class="comment"><p><a class="page-link" href="../page/SantiagoRomeroBrufau.html">Santiago Romero Brufau</a></p><p><p>One of the reasons the results seem counterintuitive is that the "a priori" probability of someone who comes to the clinic is generally much higher than the prevalence of the disease in the general population. About 20% of the <strong>general population</strong> has diseasitis. Of the population that comes to the clinic (generally because they have symptoms or has been in close contact with someone with diseasitis) that percentage is likely much higher.</p></p></div><div class="comment"><p><a class="page-link" href="../page/TravisRivera.html">Travis Rivera</a></p><p><p>I'm pretty sure that the question being answered is "How to find the probability of having a disease if you tested positive for it." I'm observing people interpreting this to mean "What is the accuracy of the test?" which is not the same thing. </p>
+<p>Maybe add a bit to distinguish the two questions?</p></p></div><div class="comment"><p><a class="page-link" href="../page/VitoLomele.html">Vito Lomele</a></p><p><blockquote class="comment-context">One of your students comes into the office, takes the test, and turns the tongue depressor black\.  What is the probability that <mark>they</mark> have Diseasitis?</blockquote>
+<p>for the sake of clarity please use "he/she" instead of "they" … because "they" might refer to "students"</p></p></div></section><footer><p class="tagged"><h2>Tagged</h2><span class="page-comma-list"><a class="page-link" href="../page/b_class_meta_tag.html">B-Class</a></span></p><p class="all-creators"><h2>All Creators</h2><span class="page-comma-list"><a class="page-link" href="../page/Akanksharawat.html">Akanksha rawat</a>,
+ <a class="page-link" href="../page/DavidSalamon.html">David Salamon</a>,
+ <a class="page-link" href="../page/EliezerYudkowsky.html">Eliezer Yudkowsky</a>,
+ <a class="page-link" href="../page/EricRogstad.html">Eric Rogstad</a>,
+ <a class="page-link" href="../page/JohnMahony.html">John Mahony</a>,
+ <a class="page-link" href="../page/NateSoares.html">Nate Soares</a>,
+ <a class="page-link" href="../page/SachinKrishnan.html">Sachin Krishnan</a></span></p><p class="likes"><h2>Likes</h2><span class="page-comma-list"><a class="page-link" href="../page/AdamZerner.html">Adam Zerner</a>,
+ <a class="page-link" href="../page/AltoClef.html">Alto Clef</a>,
+ <a class="page-link" href="../page/CameronSmith.html">Cameron Smith</a>,
+ <a class="page-link" href="../page/EdwinEvans.html">Edwin Evans</a>,
+ <a class="page-link" href="../page/GiuseppeCazzetta.html">Giuseppe Cazzetta</a>,
+ <a class="page-link" href="../page/GlennField.html">Glenn Field</a>,
+ <a class="page-link" href="../page/GregvandeKrol.html">Greg van de Krol</a>,
+ <a class="page-link" href="../page/HassanShamim.html">Hassan Shamim</a>,
+ <a class="page-link" href="../page/IkeK.html">Ike K</a>,
+ <a class="page-link" href="../page/JohnMcConnell.html">John McConnell</a>,
+ <a class="page-link" href="../page/MarioPinto.html">Mario Pinto</a>,
+ <a class="page-link" href="../page/NadeemMohsin.html">Nadeem Mohsin</a>,
+ <a class="page-link" href="../page/NajuMancheril.html">Naju Mancheril</a>,
+ <a class="page-link" href="../page/NateSoares.html">Nate Soares</a>,
+ <a class="page-link" href="../page/PaulCichonski.html">Paul Cichonski</a>,
+ <a class="page-link" href="../page/PierreBourgault.html">Pierre Bourgault</a>,
+ <a class="page-link" href="../page/PiotrOrszulak.html">Piotr Orszulak</a>,
+ <a class="page-link" href="../page/RahmadDawood.html">Rahmad Dawood</a>,
+ <a class="page-link" href="../page/RobinsonRodrguez.html">Robinson Rodríguez</a>,
+ <a class="page-link" href="../page/ShantanuDutta.html">Shantanu Dutta</a>,
+ <a class="page-link" href="../page/SzymonWilczyski.html">Szymon Wilczyński</a>,
+ <a class="page-link" href="../page/VictorNeves.html">Victor Neves</a>,
+ <a class="page-link" href="../page/ViraatAryabumi.html">Viraat Aryabumi</a>,
+ <a class="page-link" href="../page/8kt.html">梁 石川</a></span></p><p class="reverse-related"><h2>Reverse Related</h2><ul class="page-list"><li><a class="page-link" href="../page/b_class_meta_tag.html">B-Class</a> <q>This page is mostly complete and without major problems, but has not had detailed feedback from the target audience and reviewers.</q> - <a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a></li></ul></p></footer></body></html>

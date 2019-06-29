@@ -1,0 +1,101 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Square visualization of probabilities on two events</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="../MathJax-2.7.5/MathJax.js"></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">Square visualization of probabilities on two events</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/496.json.html">496.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/496">https://arbital.com/p/496</a></p><p class="creator">by
+ <a class="page-link" href="../page/TsviBT.html">Tsvi BT</a> Jun 15 2016 
+updated
+ Jun 19 2016</p></div><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>Square visualization of probabilities on two events</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="math.html">Mathematics</a></li><li><a href="probability_theory.html">Probability theory</a></li><li>…</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="rationality.html">Rationality</a></li><li><a href="probability_theory.html">Probability theory</a></li><li>…</li></ul></nav></nav></header><hr><main><p>$$~$
+\newcommand{\true}{\text{True}}
+\newcommand{\false}{\text{False}}
+\newcommand{\bP}{\mathbb{P}}
+$~$$</p>
+<p>[summary: 
+$$~$
+\newcommand{\true}{\text{True}}
+\newcommand{\false}{\text{False}}
+\newcommand{\bP}{\mathbb{P}}
+$~$$</p>
+<p>We can represent a [joint_probability_distribution_on_event probability distribution] $~$\bP(A,B)$~$ over  two [event_probability events] $~$A$~$ and $~$B$~$ as a square:</p>
+<p><img src="http://i.imgur.com/A4ikuJh.png" width="220" height="220"></p>
+<p>We could also represent $~$\bP$~$ by [factoring_probability factoring], so using $~$\bP(A,B) = \bP(A)\; \bP(B \mid A)$~$ we'd make this picture:</p>
+<p><img src="http://i.imgur.com/6ZHSR0l.png" width="403" height="249">
+]</p>
+<p>Say we have two [event_probability events], $~$A$~$ and $~$B$~$, and a [joint_probability_distribution_on_event probability distribution] $~$\bP$~$ over whether or not they happen. We can represent $~$\bP$~$ as a square:</p>
+<p><img src="http://i.imgur.com/A4ikuJh.png" width="280" height="280"></p>
+<p>So for example, the <a href="joint_probability.html">probability</a> $~$\bP(A,B)$~$ of both $~$A$~$ and $~$B$~$ occurring is the ratio of [the area of the dark red region] to [the area of the entire square]:</p>
+<p><img src="http://i.imgur.com/QaVKTX4.png" width="234" height="169"></p>
+<p>Visualizing probabilities in a square is neat because we can draw simple pictures that highlight interesting facts about our probability distribution.</p>
+<p>Below are some pictures illustrating:</p>
+<ul>
+<li><p><a href="two_independent_events.html">independent events</a> (What happens if the columns and the rows in our square <em>both</em> line up?)</p></li>
+<li><p>[marginal_probability marginal probabilities] (If we're looking at a square of probabilities, where's the probability $~$\bP(A)$~$ of $~$A$~$ or the probability $~$\bP(\neg B)$~$?)</p></li>
+<li><p><a href="conditional_probability.html">conditional probabilities</a> (Can we find in the square the probability $~$\bP(B \mid A)$~$ of $~$B$~$ if we condition on seeing $~$A$~$? What about the conditional probability $~$\bP(A \mid B)$~$?)</p></li>
+<li><p>[factoring_probability factoring a distribution] (Can we always write $~$\bP$~$ as a square? Why do the columns line up but not the rows?)</p></li>
+<li><p>the process of computing <a href="joint_probability.html">joint probabilities</a> from [factoring_probability factored probabilities]</p></li>
+</ul>
+<h1 id="independentevents">Independent events</h1>
+<p>Here's a picture of the joint distribution of <a href="two_independent_events.html">two independent events</a> $~$A$~$ and $~$B$~$:</p>
+<p><img src="http://i.imgur.com/0off1db.png" width="390" height="338"></p>
+<p>Now the rows for $~$\bP(B)$~$ and  $~$\bP(\neg B)$~$ line up across the two columns. This is because $~$\bP(B \mid A) = \bP(B) = \bP(B \mid \neg A)$~$. When $~$A$~$ and $~$B$~$ are independent, updating on $~$A$~$ or $~$\neg A$~$ doesn't change the probability of $~$B$~$.</p>
+<p>For more on this visualization of independent events, see the aptly named <a href="4cl.html">Two independent events: Square visualization</a>.</p>
+<h1 id="marginalprobabilities">Marginal probabilities</h1>
+<p>We can see the [marginal_probability marginal probabilities] of $~$A$~$ and $~$B$~$ by looking at some of the blocks in our square. For example, to find the probability $~$\bP(\neg A)$~$ that $~$A$~$ doesn't occur, we just need to add up all the blocks where $~$\neg A$~$ happens: $~$\bP(\neg A) = \bP(\neg A, B) + \bP(\neg A, \neg B)$~$. </p>
+<p>Here's the probability $~$\bP(A)$~$ of $~$A$~$, and the probability $~$\bP(\neg A)$~$ of $~$\neg A$~$:</p>
+<p><img src="http://i.imgur.com/0STax7m.png" width="425" height="192"></p>
+<p>Here's the probability $~$\bP(\neg B)$~$ of $~$\neg B$~$:</p>
+<p><img src="http://i.imgur.com/uNGdze2.png" width="234" height="169"></p>
+<p>In these pictures we're dividing by the area of the whole square. Since the probability of anything at all happening is 1, we could just leave it out, but it'll be helpful for comparison while we think about conditionals next.</p>
+<h1 id="conditionalprobabilities">Conditional probabilities</h1>
+<p>We can start with some probability $~$\bP(B)$~$, and then <em>assume</em> that $~$A$~$ is true to get a <a href="conditional_probability.html">conditional probability</a> $~$\bP(B \mid A)$~$ of $~$B$~$. Conditioning on $~$A$~$ being true is like restricting our whole attention to just the possible worlds where $~$A$~$ happens:</p>
+<p><img src="http://i.imgur.com/ubybRoH.png" width="279" height="297"></p>
+<p>Then the conditional probability of $~$B$~$ given $~$A$~$ is the proportion of these $~$A$~$ worlds where $~$B$~$ also happens:</p>
+<p><img src="http://i.imgur.com/bFCHiZ8.png" width="415" height="260"></p>
+<p>If instead we condition on $~$\neg A$~$, we get:</p>
+<p><img src="http://i.imgur.com/LHkGLVl.png" width="435" height="165"></p>
+<p>So our square visualization gives a nice way to see, at a glance, the conditional probabilities of $~$B$~$ given $~$A$~$ or given $~$\neg A$~$:</p>
+<p><img src="http://i.imgur.com/6ZHSR0l.png" width="504" height="312"></p>
+<p>We don't get such nice pictures for $~$\bP(A \mid B)$~$: </p>
+<p><img src="http://i.imgur.com/G6Sja4f.png" width="410" height="185"></p>
+<p>More on this next.</p>
+<h1 id="factoringadistribution">Factoring a distribution</h1>
+<p>Recall the square showing our joint distribution $~$\bP$~$:</p>
+<p><img src="http://i.imgur.com/A4ikuJh.png" width="280" height="280"></p>
+<p>Notice that in the above square, the reddish blocks for $~$\bP(A,B)$~$ and $~$\bP(A,\neg B)$~$ are the same width and form a column; and likewise the blueish blocks for $~$\bP(\neg A,B)$~$ and $~$\bP(\neg A,\neg B)$~$. This is because we chose to [factoring_probability factor] our probability distribution starting with $~$A$~$:</p>
+<p>$$~$\bP(A,B) = \bP(A) \bP( B \mid A)\ .$~$$</p>
+<p>Let's use the [event_variable_equivalence equivalence] between [event_probability events] and [binary_variable binary random variables], so if we say $~$\bP( B= \true \mid A= \false)$~$ we mean $~$\bP(B&nbsp;\mid \neg A)$~$. For any choice of truth values $~$t_A \in \{\true, \false\}$~$ and $~$t_B \in \{\true, \false\}$~$, we have </p>
+<p>$$~$\bP(A = t_A,B= t_B) = \bP(A= t_A)\; \bP( B= t_B \mid A= t_A)\ .$~$$</p>
+<p>The first factor $~$\bP(A = t_A)$~$ tells us how wide to make the red column $~$(\bP(A = \true))$~$ relative to the blue column $~$(\bP(A = \false))$~$. Then the second factor $~$\bP( B= t_B \mid A= t_A)$~$ tells us the proportions of dark $~$(B = \true)$~$ and light $~$(B = \false)$~$ within the column for $~$A = t_A$~$. </p>
+<p><img src="http://i.imgur.com/6ZHSR0l.png" width="504" height="312"></p>
+<p>We could just as well have factored by $~$B$~$ first: </p>
+<p>$$~$\bP(A = t_A,B= t_B) = \bP(B= t_B)\; \bP( A= t_A \mid B= t_b)\ .$~$$</p>
+<p>Then we'd draw a picture like this:</p>
+<p><img src="http://i.imgur.com/O0RNzxw.png" width="390" height="390"></p>
+<p>By the way, earlier when we factored by $~$A$~$ first, we got simple pictures of the probabilities $~$\bP(B \mid A)$~$ for $~$B$~$ conditioned on $~$A$~$.  Now that we're factoring by $~$B$~$ first, we have simple pictures for the conditional probability $~$\bP(A \mid B)$~$:</p>
+<p><img src="http://i.imgur.com/4oCyg8q.png" width="415" height="155"></p>
+<p>and for the conditional probability $~$\bP(A \mid \neg B)$~$:</p>
+<p><img src="http://i.imgur.com/pK7o56J.png" width="440" height="157"></p>
+<h1 id="computingjointprobabilitiesfromfactoredprobabilities">Computing joint probabilities from factored probabilities </h1>
+<p>Let's say we know the factored probabilities for $~$A$~$ and $~$B$~$, factoring by $~$A$~$. That is, we know $~$\bP(A = \true)$~$, and we also know $~$\bP(B = \true \mid A = \true)$~$ and $~$\bP(B = \true \mid A = \false)$~$. How can we recover the joint probability $~$\bP(A =&nbsp;t_A, B = t_B)$~$ that $~$A =&nbsp;t_A$~$ is the case and also $~$B = t_B$~$ is the case?</p>
+<p>Since </p>
+<p>$$~$\bP(B = \false \mid A = \true) = \frac{\bP(A = \true, B = \false)}{\bP(A = \true)}\ ,$~$$ </p>
+<p>we can multiply the prior $~$\bP(A)$~$ by the conditional $~$\bP(\neg B \mid A)$~$ to get the joint $~$\bP(A, \neg B)$~$:</p>
+<p>$$~$\bP(A = \true)\; \bP(B = \false \mid A = \true) = \bP(A = \true, B = \false)\ .$~$$ </p>
+<p>If we do this at the same time for all the possible truth values $~$t_A$~$ and $~$t_B$~$, we get back the full joint distribution:</p>
+<p><img src="http://i.imgur.com/7OnspSN.png" width="647" height="488"></p>
+<p>[todo: information theory. a couple things, then point to another page. eg show example when two things have lots of mutual info.]</p></main><hr><section class="comments"><h2>Comments</h2><div class="comment"><p><a class="page-link" href="../page/EricRogstad.html">Eric Rogstad</a></p><p><blockquote class="comment-context">Say we have two events, $~$A$~$ and $~$B$~$, and a probability distribution $~$\\bP$~$ over whether or not they happen\. <mark>We can represent $~$\\bP$~$ as a square:</mark></blockquote>
+<p>Does this actually work for any proportions of A and B? Is there a simple proof?</p></p></div></section><footer><p class="all-creators"><h2>All Creators</h2><span class="page-comma-list"><a class="page-link" href="../page/EricRogstad.html">Eric Rogstad</a>,
+ <a class="page-link" href="../page/TsviBT.html">Tsvi BT</a></span></p><p class="likes"><h2>Likes</h2><span class="page-comma-list"><a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a>,
+ <a class="page-link" href="../page/JaimeSevillaMolina.html">Jaime Sevilla Molina</a>,
+ <a class="page-link" href="../page/MarkChimes.html">Mark Chimes</a></span></p><p class="children"><h2>Children</h2><ul class="page-tree"><li><a class="page-link" href="../page/4fh.html">Square visualization of probabilities on two events: (example) Diseasitis</a> <q>But it *seems* like the patient with the black tongue depressor has diseasitis...</q> - <a class="page-link" href="../page/TsviBT.html">Tsvi BT</a></li></ul></p></footer></body></html>

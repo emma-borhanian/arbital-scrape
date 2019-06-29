@@ -1,0 +1,50 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Example: Dragon Pox</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="../MathJax-2.7.5/MathJax.js"></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">Example: Dragon Pox</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/495.json.html">495.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/495">https://arbital.com/p/495</a></p><p class="creator">by
+ <a class="page-link" href="../page/TsviBT.html">Tsvi BT</a> Jun 18 2016 
+updated
+ Jun 18 2016</p></div><p class="clickbait">Kai might have Dragon Pox. Oy.</p><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>Example: Dragon Pox</li></ul></nav></nav></header><hr><main><p>$$~$
+\newcommand{\bP}{\mathbb{P}}
+$~$$</p>
+<p>[summary: $$~$
+\newcommand{\bP}{\mathbb{P}}
+$~$$</p>
+<p>Kai has Dragon Pox with probability $~$\bP(D) = 0.4$~$. Patients with Dragon Pox sneeze sparks with probability $~$\bP(S \mid D) = 0.7$~$, while it is uncommon for healthy patients to sneeze sparks: $~$\bP(S \mid \neg D) = 0.2$~$. </p>
+<p>We can treat Kai with the cure $~$(C)$~$ for Dragon Pox, or not $~$(\neg C)$~$. Then Kai lives $~$(L)$~$ or not $~$(\neg L)$~$, with probabilities depending on whether or not ve has Dragon Pox: </p>
+<p>$$~$
+\begin{align}
+\bP(L \mid \;\;D,\;\;C) &amp;= 0.4\\
+\bP(L \mid \;\;D,\neg C) &amp;= 0.1\\
+\bP(L \mid \neg D,\;\;C) &amp;= 0.7\\
+\bP(L \mid \neg D,\neg C) &amp;= 0.9
+\end{align}
+$~$$
+]</p>
+<p>We are Healers in a hospital for magical maladies. Our patient, Kai, might be suffering from a bad case of Dragon Pox (denoted by the event $~$D$~$). Based on past experience, we assign a <a href="prior_probability.html">Prior probability</a> of $~$\bP(D) = 0.4$~$ to our patient having the terminal illness.</p>
+<p>It is well known that Dragon Pox causes sparks ($~$S$~$) to fly out of the patient's nostrils when they sneeze [Gunhilda of Gorsemoor, 1581]. Patients with Dragon Pox sneeze sparks with probability $~$\bP(S \mid D) = 0.7$~$, while it is uncommon for healthy patients to sneeze sparks: $~$\bP(S \mid \neg D) = 0.2$~$. </p>
+<p>If we're lucky, sneezes will happen, and we'll be able to observe whether or not sparks come out of Kai's nose. Then we must decide whether to treat ver with the cure $~$(C)$~$ for Dragon Pox, or with nothing $~$(\neg C)$~$. </p>
+<p>In lots of previous cases, we've made diagnoses and treatments, and then later found out whether the patient in fact had Dragon Pox, and whether or not the patient lives $~$(L)$~$. So we have some beliefs about what will happen to Kai, depending on $~$D$~$ and $~$C$~$: </p>
+<p>$$~$
+\begin{align}
+\bP(L \mid \;\;D,\;\;C) &amp;= 0.4\\
+\bP(L \mid \;\;D,\neg C) &amp;= 0.1\\
+\bP(L \mid \neg D,\;\;C) &amp;= 0.7\\
+\bP(L \mid \neg D,\neg C) &amp;= 0.9
+\end{align}
+$~$$</p>
+<p>So for example, if Kai has Dragon Pox, then ve has a much better chance of living if we give ver the cure than if we do not: $~$\bP(L \mid D,C) &gt; \bP(L \mid D,\neg C)$~$. On the other hand, if $~$\neg D$~$, then Kai has a better chance of living if we don't treat ver with the cure, which is dangerous by itself:  $~$\bP(L \mid \neg D,C) &lt; \bP(L \mid \neg D,\neg C)$~$</p>
+<p>Here's a picture of the whole situation: </p>
+<p><img src="http://i.imgur.com/TmFy2mB.png" width="648" height="523"></p></main><hr><footer></footer></body></html>

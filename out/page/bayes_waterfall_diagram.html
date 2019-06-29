@@ -1,0 +1,51 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Waterfall diagram</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="../MathJax-2.7.5/MathJax.js"></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">Waterfall diagram</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/bayes_waterfall_diagram.json.html">bayes_waterfall_diagram.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/bayes_waterfall_diagram">https://arbital.com/p/bayes_waterfall_diagram</a></p><p class="creator">by
+ <a class="page-link" href="../page/EliezerYudkowsky.html">Eliezer Yudkowsky</a> Feb 7 2016 
+updated
+ Sep 29 2016</p></div><p class="clickbait">Visualizing Bayes' rule as the mixing of probability streams.</p><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>Waterfall diagram</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="math.html">Mathematics</a></li><li><a href="probability_theory.html">Probability theory</a></li><li><a href="bayes_reasoning.html">Bayesian reasoning</a></li><li><a href="bayes_rule.html">Bayes' rule</a></li><li>…</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="rationality.html">Rationality</a></li><li><a href="probability_theory.html">Probability theory</a></li><li><a href="bayes_reasoning.html">Bayesian reasoning</a></li><li><a href="bayes_rule.html">Bayes' rule</a></li><li>…</li></ul></nav></nav></header><hr><main><p>[summary:  Waterfall diagrams, like <a href="bayes_frequency_diagram.html">frequency diagrams</a>, provide a way of visualizing <a href="bayes_rule.html">Bayes&#39; Rule</a>.  For example, if 20% of the patients in the screening patient are sick (red) and 80% are healthy (blue); and 90% of the sick patients get positive test results; and 30% of the healthy patients get positive test results, we could visualize the probability flows using the following diagram:</p>
+<p><img src="https://i.imgur.com/CXsoZhA.png?0" alt="Waterfall diagram" />]</p>
+<p>Waterfall diagrams, like <a href="bayes_frequency_diagram.html">frequency diagrams</a>, provide a way of visualizing <a href="bayes_rule.html">Bayes&#39; Rule</a>. Recall that Bayes' rule (in the <a href="bayes_rule_odds.html">odds form</a>) says that the posterior odds between any two hypotheses is equal to the prior odds times the relative likelihoods.</p>
+<p>For example, in the <a href="diseasitis.html">Diseasitis</a> problem, a patient is 20% likely to be sick (and 80% likely to be healthy) a priori, and they take a test that is 3x more likely to come back positive if they are sick. The odds of a patient being sick <em>given</em> a positive test are thus $~$(1 : 4) \times (3 : 1) = (3 : 4).$~$</p>
+<p>Using waterfall diagrams, we can visualize the prior odds as two separate streams of water at the top of a waterfall, and the relative likelihoods as the proportion of water from each stream that makes it to the shared pool at the bottom. The posterior odds can then be visualized as the proportion of water in the shared pool that came from each different prior stream.</p>
+<p><img src="https://i.imgur.com/CXsoZhA.png?0" alt="Waterfall diagram" /></p>
+<p>See <a href="bayes_waterfall_diseasitis.html">Waterfall diagrams and relative odds</a> for a walkthrough of the diagram.</p>
+<p>Waterfall diagrams make it clear that, when calculating the posterior odds, what matters is the <em>relative proportion</em> between how much each gallon of red water vs each gallon of blue water makes it into the shared pool. If 45% of red water and 15% of blue water made it to the bottom, that would give the same <em>relative proportion</em> of red and blue water in the shared pool at the bottom as 90% and 30%.</p>
+<p><img src="https://i.imgur.com/6FOndjc.png?0" alt="Same relative proportions" /></p>
+<p>Thus, it is only the relative likelihoods (and not the absolute likelihoods) that matter when calculating posterior odds.</p>
+<p>Similarly, changing the water flows at the top of the waterfall from (20 gallons/sec red water : 80 gallons/sec blue water) to (40 gallons/sec red water : 160 gallons/sec blue water) would double the total water at bottom, but not change the relative proportions of blue and red water.  So only the <em>relative</em> prior odds matter to the <em>relative</em> posterior odds.</p></main><hr><section class="comments"><h2>Comments</h2><div class="comment"><p><a class="page-link" href="../page/ChrisCooper.html">Chris Cooper</a></p><p><p>This page is screwed. </p>
+<p>A panel within the first diagram reads:</p>
+<pre><code> Posterior Odds   
+      3:4
+</code></pre>
+<p>Impossible to see where this comes from. Revise to read:</p>
+<pre><code> Posterior Odds   
+      20% x 90% :  80% x 30%
+ =     0.18 : 0.24
+ =        3:4
+</code></pre></p></div><div class="comment"><p><a class="page-link" href="../page/ChrisCooper.html">Chris Cooper</a></p><p><p>The banner reading "Your proposal has been submitted" lingers into subsequent editing processes, causing confusion.</p></p></div></section><footer><p class="tagged"><h2>Tagged</h2><span class="page-comma-list"><a class="page-link" href="../page/b_class_meta_tag.html">B-Class</a></span></p><p class="all-creators"><h2>All Creators</h2><span class="page-comma-list"><a class="page-link" href="../page/EliezerYudkowsky.html">Eliezer Yudkowsky</a>,
+ <a class="page-link" href="../page/EricRogstad.html">Eric Rogstad</a>,
+ <a class="page-link" href="../page/NateSoares.html">Nate Soares</a>,
+ <a class="page-link" href="../page/SalilKalghatgi.html">Salil Kalghatgi</a></span></p><p class="likes"><h2>Likes</h2><span class="page-comma-list"><a class="page-link" href="../page/AkeemBacchus.html">Akeem Bacchus</a>,
+ <a class="page-link" href="../page/AlisaKuznetsova.html">Alisa Kuznetsova</a>,
+ <a class="page-link" href="../page/EszterArat.html">Eszter Arató</a>,
+ <a class="page-link" href="../page/IanPitchford.html">Ian Pitchford</a>,
+ <a class="page-link" href="../page/IvoNascimento.html">Ivo Nascimento</a>,
+ <a class="page-link" href="../page/JaimeSevillaMolina.html">Jaime Sevilla Molina</a>,
+ <a class="page-link" href="../page/JeanneLai.html">Jeanne Lai</a>,
+ <a class="page-link" href="../page/JudeRyan.html">Jude Ryan</a>,
+ <a class="page-link" href="../page/MarianAndrecki.html">Marian Andrecki</a>,
+ <a class="page-link" href="../page/NateSoares.html">Nate Soares</a></span></p><p class="reverse-related"><h2>Reverse Related</h2><ul class="page-list"><li><a class="page-link" href="../page/b_class_meta_tag.html">B-Class</a> <q>This page is mostly complete and without major problems, but has not had detailed feedback from the target audience and reviewers.</q> - <a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a></li></ul></p><p class="children"><h2>Children</h2><ul class="page-tree"><li><a class="page-link" href="../page/bayes_waterfall_diseasitis.html">Waterfall diagrams and relative odds</a> <q>A way to visualize Bayes' rule that yields an easier way to solve some problems</q> - <a class="page-link" href="../page/EliezerYudkowsky.html">Eliezer Yudkowsky</a></li></ul></p></footer></body></html>

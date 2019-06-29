@@ -1,0 +1,33 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Logistic function</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="../MathJax-2.7.5/MathJax.js"></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">Logistic function</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/logistic_function.json.html">logistic_function.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/logistic_function">https://arbital.com/p/logistic_function</a></p><p class="creator">by
+ <a class="page-link" href="../page/JoeZeng.html">Joe Zeng</a> Jul 7 2016</p></div><p class="clickbait">A monotonic function from the real numbers to the open unit interval.</p><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>Logistic function</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="math.html">Mathematics</a></li><li>…</li></ul></nav></nav></header><hr><main><p>[summary: The logistic function is a [-sigmoid] function that maps the <a href="real_number.html">real numbers</a> to the unit interval $~$(0, 1)$~$ using the formula $~$\displaystyle f(x) = \frac{1}{1 + e^{-x}}$~$ or variants of this formula.]</p>
+<p>The logistic function is a [-sigmoid] function that maps the <a href="real_number.html">real numbers</a> to the unit interval $~$(0, 1)$~$ using the formula $~$\displaystyle f(x) = \frac{1}{1 + e^{-x}}$~$.</p>
+<p>More generally, there exists a [family_of_functions family] of logistic functions that can be written as $~$\displaystyle f(x) = \frac{M}{1 + \alpha^{c(x_0 - x)}}$~$, where:</p>
+<ul>
+<li><p>$~$M$~$ is the upper bound of the function (in which case the function maps to the interval $~$(0, M)$~$ instead). When $~$M = 1$~$, the logistic function is usually being used to calculate some <a href="probability.html">Probability</a> or <a href="proportion.html">Proportion</a> of a total.</p></li>
+<li><p>$~$x_0$~$ is the inflection point of the curve, or the value of $~$x$~$ where the function's growth stops speeding up and starts slowing down.</p></li>
+<li><p>$~$\alpha$~$ is a variable controlling the steepness of the curve.</p></li>
+<li><p>$~$c$~$ is a scaling factor for the distance.</p></li>
+</ul>
+<h2 id="applications">Applications</h2>
+<ul>
+<li><p>The logistic function is used to model growth rates of populations in an ecosystem with a limited carrying capacity.</p></li>
+<li><p>The inverse logistic function (with $~$\alpha = 2$~$) is used to convert a probability to log-odds form for use in <a href="bayes_rule.html">Bayes&#39; rule</a>.</p></li>
+<li><p>The logistic function (with $~$\alpha = 10$~$ and $~$c = 1/400$~$) is used to calculate the expected probability of a player winning given a specific difference in rating in the Elo rating system.</p></li>
+</ul></main><hr><footer><p class="tagged"><h2>Tagged</h2><span class="page-comma-list"><a class="page-link" href="../page/needs_parent_meta_tag.html">Needs parent</a>,
+ <a class="page-link" href="../page/start_meta_tag.html">Start</a></span></p><p class="likes"><h2>Likes</h2><span class="page-comma-list"><a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a>,
+ <a class="page-link" href="../page/TravisRivera.html">Travis Rivera</a></span></p><p class="reverse-related"><h2>Reverse Related</h2><ul class="page-list"><li><a class="page-link" href="../page/needs_parent_meta_tag.html">Needs parent</a> <q>This page is not attached to an appropriate parent page. If you know where it should go, please help categorize it!</q> - <a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a></li><li><a class="page-link" href="../page/start_meta_tag.html">Start</a> <q>This page gives a basic overview of the topic, but may be missing important information or have stylistic issues. If you're able to, please help expand or improve it!</q> - <a class="page-link" href="../page/EliezerYudkowsky.html">Eliezer Yudkowsky</a></li></ul></p></footer></body></html>

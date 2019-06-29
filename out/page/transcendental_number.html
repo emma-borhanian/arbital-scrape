@@ -1,0 +1,46 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Transcendental number</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="../MathJax-2.7.5/MathJax.js"></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">Transcendental number</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/transcendental_number.json.html">transcendental_number.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/transcendental_number">https://arbital.com/p/transcendental_number</a></p><p class="creator">by
+ <a class="page-link" href="../page/PatrickStevens.html">Patrick Stevens</a> Aug 17 2016 
+updated
+ Aug 20 2016</p></div><p class="clickbait">A transcendental number is one which is not the root of any integer-coefficient polynomial.</p><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>Transcendental number</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="math.html">Mathematics</a></li><li><a href="mathematical_object.html">Mathematical object</a></li><li><a href="number.html">Number</a></li><li>…</li></ul></nav></nav></header><hr><main><p>[summary(Technical): A <a href="real_number.html">real</a> or <a href="complex_number.html">complex</a> number $~$z$~$ is said to be <em>transcendental</em> if there is no (nonzero) <a href="integer.html">Integer</a>-coefficient [-polynomial] which has $~$z$~$ as a [root_of_polynomial root].]</p>
+<p>[summary: A <em>transcendental</em> number $~$z$~$ is one such that there is no (nonzero) [-polynomial] function which outputs $~$0$~$ when given $~$z$~$ as input. $~$\frac{1}{2}$~$, $~$\sqrt{6}$~$, $~$i$~$ and $~$e^{i \pi/2}$~$ are not transcendental; $~$\pi$~$ and $~$e$~$ are both transcendental.]</p>
+<p>A <a href="real_number.html">real</a> or <a href="complex_number.html">complex</a> number is said to be <em>transcendental</em> if it is not the root of any (nonzero) <a href="integer.html">Integer</a>-coefficient [-polynomial].
+("Transcendental" means "not [algebraic_number algebraic]".)</p>
+<h1 id="examplesandnonexamples">Examples and non-examples</h1>
+<p>Many of the most interesting numbers are <em>not</em> transcendental.</p>
+<ul>
+<li>Every integer is <em>not</em> transcendental (i.e. is algebraic): the integer $~$n$~$ is the root of the integer-coefficient polynomial $~$x-n$~$.</li>
+<li>Every <a href="rational_number.html">rational</a> is algebraic: the rational $~$\frac{p}{q}$~$ is the root of the integer-coefficient polynomial $~$qx - p$~$.</li>
+<li>$~$\sqrt{2}$~$ is algebraic: it is a root of $~$x^2-2$~$.</li>
+<li>$~$i$~$ is algebraic: it is a root of $~$x^2+1$~$.</li>
+<li>$~$e^{i \pi/2}$~$ (or $~$\frac{\sqrt{2}}{2} + \frac{\sqrt{2}}{2}i$~$) is algebraic: it is a root of $~$x^4+1$~$.</li>
+</ul>
+<p>However, $~$\pi$~$ and $~$e$~$ are both transcendental. (Both of these are difficult to prove.)</p>
+<h1 id="proofthatthereisatranscendentalnumber">Proof that there is a transcendental number</h1>
+<p>There is a very sneaky proof that there is some transcendental real number, though this proof doesn't give us an example.
+In fact, the proof will tell us that "[almost_every almost all]" real numbers are transcendental.
+(The same proof can be used to demonstrate the existence of <a href="irrational_number.html">irrational numbers</a>.)</p>
+<p>It is a fairly easy fact that the <em>non</em>-transcendental numbers (that is, the algebraic numbers) form a [-countable] subset of the real numbers.
+Indeed, the [fundamental_theorem_of_algebra Fundamental Theorem of Algebra] states that every polynomial of degree $~$n$~$ has exactly $~$n$~$ complex roots (if we count them with [multiplicity multiplicity], so that $~$x^2+2x+1$~$ has the "two" roots $~$x=-1$~$ and $~$x=-1$~$).
+There are only countably many integer-coefficient polynomials [todo: spell out why], and each has only finitely many complex roots (and therefore only finitely many—possibly $~$0$~$—<em>real</em> roots), so there can only be countably many numbers which are roots of <em>any</em> integer-coefficient polynomial.</p>
+<p>But there are uncountably many reals ([reals_are_uncountable proof]), so there must be some real (indeed, uncountably many!) which is not algebraic.
+That is, there are uncountably many transcendental numbers.</p>
+<h1 id="explicitconstructionofatranscendentalnumber">Explicit construction of a transcendental number</h1>
+<p>[todo: Liouville's constant]</p></main><hr><footer><p class="all-creators"><h2>All Creators</h2><span class="page-comma-list"><a class="page-link" href="../page/ChrisBarnett.html">Chris Barnett</a>,
+ <a class="page-link" href="../page/JoeZeng.html">Joe Zeng</a>,
+ <a class="page-link" href="../page/PatrickStevens.html">Patrick Stevens</a></span></p><p class="likes"><h2>Likes</h2><span class="page-comma-list"><a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a>,
+ <a class="page-link" href="../page/PatrickStaples.html">Patrick Staples</a></span></p></footer></body></html>

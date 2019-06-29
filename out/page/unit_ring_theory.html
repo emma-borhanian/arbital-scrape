@@ -1,0 +1,31 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Unit (ring theory)</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="../MathJax-2.7.5/MathJax.js"></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">Unit (ring theory)</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/unit_ring_theory.json.html">unit_ring_theory.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/unit_ring_theory">https://arbital.com/p/unit_ring_theory</a></p><p class="creator">by
+ <a class="page-link" href="../page/PatrickStevens.html">Patrick Stevens</a> Jul 28 2016</p></div><p class="clickbait">A unit in a ring is just an element with a multiplicative inverse.</p><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>Unit (ring theory)</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="math.html">Mathematics</a></li><li><a href="abstract_algebra.html">Abstract algebra</a></li><li><a href="algebraic_structure.html">Algebraic structure</a></li><li><a href="algebraic_ring.html">Ring</a></li><li>…</li></ul></nav></nav></header><hr><main><p>[summary: A unit of a <a href="algebraic_ring.html">ring</a> is an element with a multiplicative inverse.]</p>
+<p>An element $~$x$~$ of a non-trivial <a href="algebraic_ring.html">ring</a>%%note:That is, a ring in which $~$0 \not = 1$~$; equivalently, a ring with more than one element.%% is known as a <strong>unit</strong> if it has a multiplicative inverse: that is, if there is $~$y$~$ such that $~$xy = 1$~$.
+(We specified that the ring be non-trivial. 
+If the ring is trivial then $~$0=1$~$ and so the requirement is the same as $~$xy = 0$~$; this means $~$0$~$ is actually invertible in this ring, since its inverse is $~$0$~$: we have $~$0 \times 0 = 0 = 1$~$.)</p>
+<p>$~$0$~$ is never a unit, because $~$0 \times y = 0$~$ is never equal to $~$1$~$ for any $~$y$~$ (since we specified that the ring be non-trivial).</p>
+<p>If every nonzero element of a ring is a unit, then we say the ring is a <a href="algebraic_field.html">field</a>.</p>
+<p>Note that if $~$x$~$ is a unit, then it has a <em>unique</em> inverse; the proof is an exercise.
+%%hidden(Proof):
+If $~$xy = xz = 1$~$, then $~$zxy = z$~$ (by multiplying both sides of $~$xy=1$~$ by $~$z$~$) and so $~$y = z$~$ (by using $~$zx = 1$~$).
+%%</p>
+<h1 id="examples">Examples</h1>
+<ul>
+<li>In [48l $~$\mathbb{Z}$~$], $~$1$~$ and $~$-1$~$ are both units, since $~$1 \times 1 = 1$~$ and $~$-1 \times -1 = 1$~$. However, $~$2$~$ is not a unit, since there is no integer $~$x$~$ such that $~$2x=1$~$. In fact, the <em>only</em> units are $~$\pm 1$~$.</li>
+<li>[4zq $~$\mathbb{Q}$~$] is a <a href="algebraic_field.html">field</a>, so every rational except $~$0$~$ is a unit.</li>
+</ul></main><hr><footer></footer></body></html>

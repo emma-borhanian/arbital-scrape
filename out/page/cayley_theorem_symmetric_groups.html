@@ -1,0 +1,35 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Cayley's Theorem on symmetric groups</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="../MathJax-2.7.5/MathJax.js"></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">Cayley's Theorem on symmetric groups</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/cayley_theorem_symmetric_groups.json.html">cayley_theorem_symmetric_groups.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/cayley_theorem_symmetric_groups">https://arbital.com/p/cayley_theorem_symmetric_groups</a></p><p class="creator">by
+ <a class="page-link" href="../page/PatrickStevens.html">Patrick Stevens</a> Jun 14 2016 
+updated
+ Jun 15 2016</p></div><p class="clickbait">The &quot;fundamental theorem of symmetry&quot;, forging the connection between symmetry and group theory.</p><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>Cayley's Theorem on symmetric groups</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="math.html">Mathematics</a></li><li><a href="abstract_algebra.html">Abstract algebra</a></li><li><a href="algebraic_structure.html">Algebraic structure</a></li><li><a href="group_mathematics.html">Group</a></li><li><a href="symmetric_group.html">Symmetric group</a></li><li>…</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="math.html">Mathematics</a></li><li><a href="group_theory.html">Group theory</a></li><li><a href="group_mathematics.html">Group</a></li><li><a href="symmetric_group.html">Symmetric group</a></li><li>…</li></ul></nav></nav></header><hr><main><p>Cayley's Theorem states that every group $~$G$~$ appears as a certain subgroup of the <a href="symmetric_group.html">Symmetric group</a> $~$\mathrm{Sym}(G)$~$ on the <a href="underlying_set.html">Underlying set</a> of $~$G$~$.</p>
+<h1 id="formalstatement">Formal statement</h1>
+<p>Let $~$G$~$ be a group.
+Then $~$G$~$ is <a href="group_isomorphism.html">isomorphic</a> to a subgroup of $~$\mathrm{Sym}(G)$~$.</p>
+<h1 id="proof">Proof</h1>
+<p>Consider the left regular <a href="group_action.html">action</a> of $~$G$~$ on $~$G$~$: that is, the function $~$G \times G \to G$~$ given by $~$(g, h) \mapsto gh$~$.
+This <a href="group_action_induces_homomorphism.html">induces a homomorphism</a> $~$\Phi: G \to \mathrm{Sym}(G)$~$ given by <a href="currying.html">Currying</a>: $~$g \mapsto (h \mapsto gh)$~$.</p>
+<p>Now the following are equivalent:</p>
+<ul>
+<li>$~$g \in \mathrm{ker}(\Phi)$~$ the <a href="kernel_of_group_homomorphism.html">kernel</a> of $~$\Phi$~$</li>
+<li>$~$(h \mapsto gh)$~$ is the identity map</li>
+<li>$~$gh = h$~$ for all $~$h$~$</li>
+<li>$~$g$~$ is the identity of $~$G$~$</li>
+</ul>
+<p>Therefore the kernel of the homomorphism is trivial, so it is injective.
+It is therefore bijective onto its <a href="function_image.html">image</a>, and hence an isomorphism onto its image.</p>
+<p>Since <a href="image_of_group_under_homomorphism_is_subgroup.html">the image of a group under a homomorphism is a subgroup of the codomain of the homomorphism</a>, we have shown that $~$G$~$ is isomorphic to a subgroup of $~$\mathrm{Sym}(G)$~$.</p></main><hr><section class="comments"><h2>Comments</h2><div class="comment"><p><a class="page-link" href="../page/PatrickStevens.html">Patrick Stevens</a></p><p><p>I feel like symmetric<em>group should be a requisite for this page. However, this page is linked in the body of symmetric</em>group, so it seems a bit circular to link it as a requisite. I think this situation probably comes up for most child pages; what's good practice in such cases?</p></p></div></section><footer></footer></body></html>

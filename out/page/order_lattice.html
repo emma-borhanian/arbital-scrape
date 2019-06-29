@@ -1,0 +1,185 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Lattice (Order Theory)</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="../MathJax-2.7.5/MathJax.js"></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">Lattice (Order Theory)</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/order_lattice.json.html">order_lattice.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/order_lattice">https://arbital.com/p/order_lattice</a></p><p class="creator">by
+ <a class="page-link" href="../page/KevinClancy.html">Kevin Clancy</a> Jun 11 2016 
+updated
+ Dec 6 2016</p></div><p class="clickbait">A poset that is closed under binary joins and meets.</p><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>Lattice (Order Theory)</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="math.html">Mathematics</a></li><li><a href="order_theory.html">Order theory</a></li><li>…</li></ul></nav></nav></header><hr><main><p>[summary:
+A <strong>lattice</strong> is a <a href="poset.html">Partially ordered set</a> that is closed under binary <a href="math_join.html">joins and meets</a>. It follows from this definition that lattices are closed under all <em>finite</em> joins and meets, and that for all lattices $~$L$~$ and elements $~$p, q \in L$~$, the following algebraic properties are satisfied:</p>
+<ul>
+<li><a href="associative_operation.html">Associativity</a> of joins and meets: $~$(p \vee q) \vee r = p \vee (q \vee r)$~$, and $~$(p \wedge q) \wedge r = p \wedge (q \wedge r)$~$</li>
+<li><a href="commutative_operation.html">Commutativity</a> of joins and meets: $~$p \vee q = q \vee p$~$ and $~$p \wedge q = q \wedge p$~$</li>
+<li>Idempotency of joins and and meets: $~$p \vee p = p$~$ and $~$p \wedge p = p$~$</li>
+<li>Absorption: $~$p \vee (p \wedge q) = p$~$ and $~$p \wedge (p \vee q) = p$~$ 
+]</li>
+</ul>
+<p>A <strong>lattice</strong> is a <a href="poset.html">Partially ordered set</a> that is closed under binary <a href="math_join.html">joins and meets</a>. </p>
+<p>Let $~$L$~$ be a lattice. Then for all $~$p,q,r \in L$~$ the following properties are necessarily satisfied.</p>
+<ul>
+<li><a href="associative_operation.html">Associativity</a> of joins and meets: $~$(p \vee q) \vee r = p \vee (q \vee r)$~$, and $~$(p \wedge q) \wedge r = p \wedge (q \wedge r)$~$</li>
+<li><a href="commutative_operation.html">Commutativity</a> of joins and meets: $~$p \vee q = q \vee p$~$ and $~$p \wedge q = q \wedge p$~$</li>
+<li>Idempotency of joins and and meets: $~$p \vee p = p$~$ and $~$p \wedge p = p$~$</li>
+<li>Absorption: $~$p \vee (p \wedge q) = p$~$ and $~$p \wedge (p \vee q) = p$~$ </li>
+</ul>
+<p>%%hidden(Proofs):</p>
+<p>Lemma 1: Let $~$P$~$ be a poset, $~$S \subseteq P$~$, and $~$p \in P$~$. If both $~$\bigvee S$~$ and $~$(\bigvee S) \vee p$~$ exist then $~$\bigvee (S \cup \{p\})$~$ exists as well, and $~$(\bigvee S) \vee p = \bigvee (S \cup \{p\})$~$.</p>
+<p>Proof: See the <em>Join fu</em> exercise in <a href="poset_join_exercises.html">Join and meet: Exercises</a>.</p>
+<h2 id="associativity">Associativity</h2>
+<p>Let $~$L$~$ be a lattice and $~$p,q,r,s \in L$~$ such that $~$s = p \vee (q \vee r)$~$. We apply the above lemma, along with commutativity and closure of lattices under binary joins, to get 
+$$~$p \vee (q \vee r) = (q \vee r) \vee p = (\bigvee \{q, r\}) \vee p = \bigvee (\{q, r\} \cup \{p\}) =$~$$
+$$~$\bigvee \{ q, r, p \} = \bigvee (\{p, q\} \cup \{r\}) = (\bigvee \{p, q\}) \vee r = (p \vee q) \vee r.$~$$</p>
+<p>By duality, we also have the associativity of binary meets.</p>
+<h2 id="commutativity">Commutativity</h2>
+<p>Let $~$L$~$ be a lattice and $~$p,q \in L$~$. Then $~$p \vee q = \bigvee \{ p, q \} = q \vee p$~$. Binary joins are therefore commutative. By duality, binary meets are also commutative.</p>
+<h2 id="idempotency">Idempotency</h2>
+<p>Let $~$L$~$ be a lattice and $~$p \in L$~$. Then $~$p \vee p = \bigvee \{ p \} = p$~$. The property that for all $~$p \in L$~$, $~$p \vee p = p$~$ is called <em>idempotency</em>. By duality, we also have the idempotency of meets: for all $~$p \in L$~$, $~$p \wedge p = p$~$.</p>
+<h2 id="absorption">Absorption</h2>
+<p>Since $~$p \wedge q$~$ is the greatest <em>lower bound</em> of $~$\{p,q\}$~$, $~$p \wedge q \leq p$~$. Because $~$p \leq p$~$ and $~$(p \wedge q) \leq p$~$, $~$p$~$ is an upper bound of $~$\{p, p \wedge q\}$~$, and so $~$p \vee (p \wedge q) \leq p$~$. On the other hand, $~$p \vee (p \wedge q)$~$ is the least <em>upper bound</em> of $~$\{p, p \wedge q\}$~$, and so $~$p \leq p \vee (p \wedge q)$~$. By anti-symmetry,  $~$p = p \vee (p \wedge q)$~$.</p>
+<p>%%</p>
+<h2 id="closureunderfinitejoinsandmeets">Closure under finite joins and meets</h2>
+<p>Let $~$L$~$ be a lattice and $~$S = \{ s_1, …, s_n \}$~$ be some finite subset of $~$L$~$. Then an inductive argument shows that $~$\bigvee S$~$ exists. </p>
+<p>%%hidden(Proof):
+Here again, we will need Lemma 1, stated in the proofs of the four lattice properties.</p>
+<p>Our proof proceeds by induction on the cardinality of $~$S$~$.</p>
+<p>The base case is $~$\bigvee \{ s_1 \} = s_1 \in L$~$. For the inductive step, we suppose that $~$\bigvee \{s_1, …, s_i \}$~$ exists. Then, applying lemma 1, we have $~$\bigvee \{s_1, …, s_{i+1} \} = \bigvee \{s_1, …, s_i \} \vee s_{i+1}$~$. Applying our inductive hypothesis and closure under binary joins, we have $~$\bigvee \{s_1, …, s_i \} \vee s_{i+1}$~$ exists. Lattices are therefore closed under all <em>finite</em> joins, not just binary ones. Dually, lattices are closed under all finite meets.
+%%</p>
+<h2 id="basicpositiveexamples">Basic positive examples</h2>
+<p>Here are two Hasse diagrams of posets which are lattices.</p>
+<p><img src="http://i.imgur.com/OlQnU07.png" alt="A diamond shaped lattice" /></p>
+<pre>%%%comment:
+
+dot source:
+
+digraph G {
+  node [width = 0.1, height = 0.1]
+  edge [arrowhead = &quot;none&quot;]
+  a [label = &quot;&quot;]
+  b [label = &quot;&quot;]
+  c [label = &quot;&quot;]
+  d [label = &quot;&quot;]
+
+  rankdir = BT;
+  a -&gt; b
+  a -&gt; c
+  b -&gt; d
+  c -&gt; d
+}
+%%%</pre>
+<p><img src="http://i.imgur.com/L0x074n.png" alt="A cube shaped lattice" /></p>
+<pre>%%%comment:
+
+dot source:
+
+digraph G {
+  node [width = 0.1, height = 0.1]
+  edge [arrowhead = &quot;none&quot;]
+  a [label = &quot;&quot;]
+  b [label = &quot;&quot;]
+  c [label = &quot;&quot;]
+  d [label = &quot;&quot;]
+  e [label = &quot;&quot;]
+  f [label = &quot;&quot;]
+  g [label = &quot;&quot;]
+  h [label = &quot;&quot;]
+
+  rankdir = BT;
+  a -&gt; b
+  a -&gt; c
+  a -&gt; d
+  b -&gt; e
+  b -&gt; f
+  c -&gt; e
+  c -&gt; g
+  d -&gt; f
+  d -&gt; g
+  e -&gt; h
+  f -&gt; h
+  g -&gt; h
+}
+
+%%%</pre>
+<h2 id="basicnegativeexamples">Basic negative examples</h2>
+<p>Here are two Hasse diagrams of posets which are <em>not</em> lattices.</p>
+<p><img src="http://i.imgur.com/DAeuYz0.png" alt="A simple non-lattice" /></p>
+<pre>%%%comment:
+
+digraph G {
+  node [width = 0.1, height = 0.1]
+  edge [arrowhead = &quot;none&quot;]
+  a [label = &quot;&quot;]
+  b [label = &quot;&quot;]
+  c [label = &quot;&quot;]
+  d [label = &quot;&quot;]
+  e [label = &quot;&quot;]
+  f [label = &quot;&quot;]
+  g [label = &quot;&quot;]
+  h [label = &quot;&quot;]
+
+  rankdir = BT;
+  a -&gt; b
+  a -&gt; c
+  a -&gt; d
+  b -&gt; e
+  b -&gt; f
+  c -&gt; e
+  c -&gt; g
+  d -&gt; f
+  d -&gt; g
+  e -&gt; h
+  f -&gt; h
+  g -&gt; h
+}
+
+%%%</pre>
+<p>In the above diagram, the two bottom elements have no common lower bounds. Therefore they have no meet, and so the depicted poset is not a lattice. However, it should be easy to verify that this poset is closed under binary joins.</p>
+<p><img src="http://i.imgur.com/5Vqk87u.png" alt="Another simple non-lattice" /></p>
+<pre>%%%comment:
+
+dot source:
+
+digraph G {
+  node [width = 0.1, height = 0.1]
+  edge [arrowhead = &quot;none&quot;]
+  a [label = &quot;&quot;]
+  b [label = &quot;&quot;]
+  c [label = &quot;&quot;]
+  d [label = &quot;&quot;]
+
+  rankdir = BT;
+  a -&gt; b
+  c -&gt; d
+}
+
+%%%</pre>
+<p>The Hasse diagram of this poset has two connected components. No element from the left component will have a meet or a join with any element from the right component. The depicted poset is therefore <em>not</em> a lattice. </p>
+<h2 id="theconnectinglemma">The connecting lemma</h2>
+<p>The connecting lemma states that for any lattice $~$L$~$ and $~$p,q \in L$~$, $~$p \vee q = p \Leftrightarrow q \leq p$~$ and dually, $~$p \wedge q = p \Leftrightarrow q \geq p$~$. This simple but important lemma is so named because it establishes a connection between the lattice's join operator and its underlying poset order.</p>
+<p>%%hidden(Proof):</p>
+<p>We prove $~$p \vee q = p \Leftrightarrow q \leq p$~$; the other part follows from duality. If $~$p \vee q = p$~$, then $~$p$~$ is an upper bound of both $~$p$~$ and $~$q$~$, and so $~$q \leq p$~$. Going the other direction, suppose $~$q \leq p$~$. Since $~$p$~$ is and upper bound of itself by reflexivity, it then follows that $~$p$~$ is an upper bound of $~$\{p, q\}$~$. There cannot be a lesser upper bound of $~$\{p, q\}$~$ because it would not be an upper bound of $~$p$~$. Hence, $~$p \vee q = p$~$.</p>
+<p>%%</p>
+<h2 id="latticesasalgebraicstructures">Lattices as algebraic structures</h2>
+<p>It's also possible to formulate lattices as <a href="algebraic_structure.html">algebraic structures</a> $~$\langle L, \vee, \wedge \rangle$~$ satisfying the associativity, commutativity, idempotency, and absorption laws described above. A poset $~$\langle L, \leq \rangle$~$ can then be defined such that for $~$p, q \in L$~$, $~$p \leq q$~$ whenever $~$p \vee q = q$~$. It can be shown that this poset is closed under binary meets and joins, and that these meets and joins are equal to the corresponding meets and joins of the algebraic lattice.</p>
+<h2 id="additionalmaterial">Additional material</h2>
+<p>For more examples of lattices, see <a href="poset_lattice_examples.html">Lattice: Examples</a>.
+For some exercises involving the concepts introduced on this page, see <a href="poset_lattice_exercise.html">Lattice: Exercises</a>.</p></main><hr><footer><p class="all-creators"><h2>All Creators</h2><span class="page-comma-list"><a class="page-link" href="../page/AlexeiAndreev.html">Alexei Andreev</a>,
+ <a class="page-link" href="../page/EricRogstad.html">Eric Rogstad</a>,
+ <a class="page-link" href="../page/KevinClancy.html">Kevin Clancy</a></span></p><p class="likes"><h2>Likes</h2><span class="page-comma-list"><a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a>,
+ <a class="page-link" href="../page/EricRogstad.html">Eric Rogstad</a></span></p><p class="children"><h2>Children</h2><ul class="page-tree"><li><a class="page-link" href="../page/poset_lattice_examples.html">Lattice: Examples</a> <q>Here are some additional examples of lattices. $\newcommand{\nsubg}{\mathcal N \mbox{-} Sub~G}$
+
+A f…</q> - <a class="page-link" href="../page/KevinClancy.html">Kevin Clancy</a></li><li><a class="page-link" href="../page/poset_lattice_exercise.html">Lattice: Exercises</a> <q>Try these exercises to test your knowledge of lattices.
+
+## Distributivity
+
+Does the lattice meet op…</q> - <a class="page-link" href="../page/KevinClancy.html">Kevin Clancy</a></li></ul></p></footer></body></html>

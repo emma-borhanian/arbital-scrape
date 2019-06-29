@@ -1,0 +1,24 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Currying</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="../MathJax-2.7.5/MathJax.js"></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">Currying</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/currying.json.html">currying.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/currying">https://arbital.com/p/currying</a></p><p class="creator">by
+ <a class="page-link" href="../page/MYass.html">M Yass</a> Jul 3 2016 
+updated
+ Jul 18 2016</p></div><p class="clickbait">Transforms a function of many arguments into a function into a function of a single argument</p><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>Currying</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="math.html">Mathematics</a></li><li><a href="function.html">Function</a></li><li>…</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="math.html">Mathematics</a></li><li>…</li></ul></nav></nav></header><hr><main><p>Currying converts a <a href="function.html">Function</a> of N [input inputs] into a function of a single input, which returns a function that takes a second input, which returns a function that takes a third input, and so on, until N functions have been evaluated and N inputs have been taken, at which point the original function is evaluated on the given inputs and the result is returned.</p>
+<p>For example:</p>
+<p>Consider a function of four parameters, $~$F:(X,Y,Z,N)→R$~$.</p>
+<p>The curried version of the function, $~$curry(F)$~$ would have the type signature $~$X→(Y→(Z→(N→R)))$~$, and $~$curry(F)(4)(3)(2)(1)$~$ would equal $~$F(4,3,2,1)$~$.</p>
+<p>Currying is named after the logician Haskell Curry. If you can't remember this derivation and need a mnemonic, you might like to imagine a function being cooked in a curry so thoroughly that it breaks up into small, bite-sized pieces, just as functional currying breaks a function up into smaller functions. (It might also help to note that there is a programming language also named after Haskell Curry (Haskell), that features currying prominently. All functions in Haskell are pre-curried by convention. This often makes <a href="https://wiki.haskell.org/Partial_application">partially applying</a> functions effortless.)</p></main><hr><footer><p class="all-creators"><h2>All Creators</h2><span class="page-comma-list"><a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a>,
+ <a class="page-link" href="../page/MYass.html">M Yass</a></span></p><p class="likes"><h2>Likes</h2><span class="page-comma-list"><a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a></span></p></footer></body></html>

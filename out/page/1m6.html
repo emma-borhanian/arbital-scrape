@@ -1,0 +1,69 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Arbital Markdown questionnaire</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="../MathJax-2.7.5/MathJax.js"></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">Arbital Markdown questionnaire</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/1m6.json.html">1m6.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/1m6">https://arbital.com/p/1m6</a></p><p class="creator">by
+ <a class="page-link" href="../page/AlexeiAndreev.html">Alexei Andreev</a> Jan 16 2016 
+updated
+ Jul 5 2016</p></div><p class="clickbait">How to ask questions in Markdown.</p><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>Arbital Markdown questionnaire</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="Arbital.html">Arbital</a></li><li><a href="arbital_contributing.html">Contributing to Arbital</a></li><li><a href="arbital_features.html">Arbital features</a></li><li><a href="arbital_markdown.html">Arbital Markdown</a></li><li>…</li></ul></nav></nav></header><hr><main><p>[summary: Arbital's questionnaire feature allows the author to create multiple choice questions that result in improving user's experience by modifying their known and wanted requisites.]</p>
+<p>This feature is highly experimental, hard to use, and quite likely to break at any time. Please use with caution.</p>
+<p>Each question has an alias associated with it. This alias only has meaning inside this page. (There is no overlap with page object aliases from other pages.) If you change the question significantly, please change the alias too. This will reset users' answers.</p>
+<p>NOTE: Order of parameters is mandatory: knows, wants, -knows, -wants.</p>
+<p>[multiple-choice(q1): What is the furthest page you've read?
+a: I haven't read anything, but I want to!
+wants: [1m9]
+b: I've only read <a href="1m7.html">Questionnaire helper 1</a>.
+knows: <a href="1m7.html">Questionnaire helper 1</a>
+wants: <a href="1m9.html">Questionnaire helper 3</a>
+c: I read <a href="1m8.html">Questionnaire helper 2</a>.
+knows: <a href="1m7.html">Questionnaire helper 1</a>,<a href="1m8.html">Questionnaire helper 2</a>
+wants: <a href="1m9.html">Questionnaire helper 3</a>
+d: I read all the way through <a href="1m9.html">Questionnaire helper 3</a>.
+knows: <a href="1m7.html">Questionnaire helper 1</a>,<a href="1m8.html">Questionnaire helper 2</a>,<a href="1m9.html">Questionnaire helper 3</a>
+e: I don't want to read anything.
+]</p>
+<p>[multiple-choice(q2): Reset everything?
+a: No.
+b: RESET!
+-knows: [1m7],<a href="1m8.html">Questionnaire helper 2</a>,<a href="1m9.html">Questionnaire helper 3</a>
+-wants: <a href="1m7.html">Questionnaire helper 1</a>,<a href="1m8.html">Questionnaire helper 2</a>,<a href="1m9.html">Questionnaire helper 3</a>
+]</p>
+<p>Arbital also supports checkboxes. (Default value is set by appending <code>!</code> to the answer option.)</p>
+<p>[checkbox(checkboxAlias): Checkboxes are amazing!
+y!:
+path: [1lz],<a href="bayes_rule_odds.html">Bayes&#39; rule: Odds form</a>
+n:
+]</p>
+<h3 id="paragraphconditionals">Paragraph conditionals</h3>
+<p>Nesting is supported by decreasing the number of <code>%</code>s for the nested conditionals.</p>
+<p>%%%knows-requisite(<a href="1m7.html">Questionnaire helper 1</a>):
+%%!knows-requisite(<a href="1m8.html">Questionnaire helper 2</a>):
+Looks like you've only read <a href="1m7.html">Questionnaire helper 1</a>, not bad.
+%%
+%%knows-requisite(<a href="1m8.html">Questionnaire helper 2</a>):
+%!knows-requisite(<a href="1m9.html">Questionnaire helper 3</a>):Looks like you've read up to <a href="1m8.html">Questionnaire helper 2</a>, very good!%<br />
+%knows-requisite(<a href="1m9.html">Questionnaire helper 3</a>): Wow, you've read everything!%
+%%
+%%%</p>
+<p>%%!wants-requisite(<a href="1m9.html">Questionnaire helper 3</a>): Looks like you don't want to read anything. That's OK!%%</p>
+<p>%%wants-requisite(<a href="1m9.html">Questionnaire helper 3</a>): <a href="https://arbital.com/learn/1m9">Let&#39;s get started</a>!%%</p>
+<h3 id="spanconditionals">Span conditionals</h3>
+<p>These don't support nesting.</p>
+<p>Example: Something you %knows-requisite(<a href="1m7.html">Questionnaire helper 1</a>): probably remember from <a href="1m7.html">Questionnaire helper 1</a>:% %!knows-requisite(<a href="1m7.html">Questionnaire helper 1</a>): might not know:% I like turtles!</p>
+<h3 id="pathconditionals">Path conditionals</h3>
+<p>You can check if a page will come before or after the current page in the path:</p>
+<p>%!if-before(<a href="1m7.html">Questionnaire helper 1</a>): <a href="1m7.html">Questionnaire helper 1</a> will NOT come later in the path%</p>
+<p>%if-after(<a href="1m7.html">Questionnaire helper 1</a>): <a href="1m7.html">Questionnaire helper 1</a> came earlier in the path%</p></main><hr><section class="comments"><h2>Comments</h2><div class="comment"><p><a class="page-link" href="../page/EricRogstad.html">Eric Rogstad</a></p><p><blockquote class="comment-context">Each question has an alias associated with it\. This alias only has meaning inside this page\. \(<mark>There is no overlap with page object aliases from other pages</mark>\.\) If you change the question significantly, please change the alias too\. This will reset the user's answer\.</blockquote>
+<p>Does this mean that it's enforced internally that the same alias can not be a page alias and a question alias, or just that the two kinds of aliases are not related to each other?</p></p></div></section><footer><p class="all-creators"><h2>All Creators</h2><span class="page-comma-list"><a class="page-link" href="../page/AlexeiAndreev.html">Alexei Andreev</a>,
+ <a class="page-link" href="../page/EricRogstad.html">Eric Rogstad</a></span></p><p class="children"><h2>Children</h2><ul class="page-tree"><li><a class="page-link" href="../page/1m7.html">Questionnaire helper 1</a> <q>Just a helper page to demonstrate Arbital's questionnaire features.</q> - <a class="page-link" href="../page/AlexeiAndreev.html">Alexei Andreev</a></li><li><a class="page-link" href="../page/1m8.html">Questionnaire helper 2</a> <q>Just a helper page to demonstrate Arbital's questionnaire features.</q> - <a class="page-link" href="../page/AlexeiAndreev.html">Alexei Andreev</a></li><li><a class="page-link" href="../page/1m9.html">Questionnaire helper 3</a> <q>Just a helper page to demonstrate Arbital's questionnaire features.</q> - <a class="page-link" href="../page/AlexeiAndreev.html">Alexei Andreev</a></li></ul></p></footer></body></html>

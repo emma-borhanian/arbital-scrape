@@ -1,0 +1,75 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Preemptive Learning</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="../MathJax-2.7.5/MathJax.js"></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">Preemptive Learning</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/Preemptive_Learning.json.html">Preemptive_Learning.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/Preemptive_Learning">https://arbital.com/p/Preemptive_Learning</a></p><p class="creator">by
+ <a class="page-link" href="../page/AlexAppel.html">Alex Appel</a> May 7 2017 
+updated
+ May 17 2017</p></div><p class="clickbait">One of the basic theorems of logical inductors, used to derive many other theorems that rely on &quot;buy low, sell high&quot; strategies.</p><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>Preemptive Learning</li></ul></nav></nav></header><hr><main><p>If $~$\overline{A}\in\mathcal{BCS}(\overline{\mathbb{P}})$~$, then $~$\displaystyle\liminf_{n\to\infty}\mathbb{P}_{n}(A_{n})=\liminf_{n\to\infty}\sup_{m\ge n}\mathbb{P}_{m}(A_{n})$~$ and $~$\displaystyle\limsup_{n\to\infty}\mathbb{P}_{n}(A_{n})=\limsup_{n\to\infty}\inf_{m\ge n}\mathbb{P}_{m}(A_{n})$~$</p>
+<p>%%hidden(BCS(P)??):
+It's the set of all sequences of $~$\mathbb{R}$~$-combinations (bundles of cash and shares), that are $~$\overline{\mathbb{P}}$~$-generable (There's a sequence of $~$\mathcal{EF}$~$-combinations that can be written down in poly-time that will turn into the $~$\mathbb{R}$~$-combinations given market data), and bounded (there's some $~$b$~$ such that the L1 norm, the sum of the absolute value of the coefficients, is $~$\le b$~$ for all elements of the sequence.)</p>
+<p>These sound like weird conditions to impose, but $~$\mathbb{R}$~$-combinations can be used to encode constraints between sentences like "3 of these 7 sentences are true" and "A xor B" by having the $~$\mathbb{R}$~$-combination for that group of sentences have a value of 3, and 1, respectively.</p>
+<p>The $~$\overline{\mathbb{P}}$~$-generable condition is important to impose so the trader is actually able to <em>write down</em> the combination in the first place to buy and sell it.</p>
+<p>The "boundedness" part is mainly useful to scale down an unruly sequence so the magnitude of each combination is 1 or less, to make it feasible to analyze.</p>
+<p>Because of these essential properties, $~$\mathcal{BCS}(\overline{\mathbb{P}})$~$ could be thought of as the set of $~$\mathbb{R}$~$-combination-sequences it's actually possible to prove stuff about and that the logical inductor can feasibly analyze. It will be showing up in most future theorems, as our set of "sufficiently nice" bundles of cash and shares.
+%%</p>
+<h2 id="basicintuition">Basic Intuition</h2>
+<p>Imagine a giant grid, with the index of the $~$\mathbb{R}$~$-combinations on the $~$x$~$-axis, and the day on the $~$y$~$-axis. Imagine it as a landscape where the elevation at a spot is the value of the combination on a particular day. </p>
+<p>We'll be walking along the diagonal, in this particular case. Imagine there's a series of signs along that diagonal, that list the greatest and least elevation/value you'd ever reach if you just walked north forever. (this corresponds to $~$\sup_{m\ge n}\mathbb{P}_{m}(A_{n})$~$ and $~$\inf$~$, respectively) What this theorem says is that if you walk along the diagonal, the asymptotic lower bound on the elevation/value is the same as the asymptotic lower bound of the "greatest elevation to the north/greatest future value" advertised on the series of signs. Similarly, the asymptotic upper bound on the elevation/value is the same as the asyptotic upper bound of the "lowest elevation to the north/lowest future value"</p>
+<p>Put another way, the "asymptotic lower bound of greatest future value" and "asymptotic upper bound of lowest future value" eventually get projected back into bounds on the value of the combinations along the diagonal. This links the far-distant values of combinations back to their "immediate" values along the diagonal, if we wait long enough.</p>
+<h2 id="proofformulation">Proof Formulation</h2>
+<p>Well, since we've already proved the <a href="e_ROI_Lemma.html">ε-ROI Lemma</a>, we can assume that preemptive-learning property is false, and then show that it lets us fulfill the four $~$\varepsilon$~$-ROI lemma prerequisites that'll result in a contradiction with the assumption that we have a logical inductor.</p>
+<p>As a recap, they are as follows:</p>
+<ul>
+<li>$~$\varepsilon$~$-ROI on all "employees"</li>
+<li>The sequence of "employees" is efficiently emulatable so they can be combined into a "trading firm"</li>
+<li>There is a $~$\overline{\mathbb{P}}$~$-generable sequence $~$\overline\alpha$~$ that describes the magnitude of the sequence of "employees"</li>
+<li>$~$\displaystyle\lim_{k\to\infty}\alpha_{k}\neq 0$~$.</li>
+</ul>
+<p>What would happen if the preemptive learning property, $~$\displaystyle\liminf_{n\to\infty}\mathbb{P}_{n}(A_{n})=\liminf_{n\to\infty}\sup_{m\ge n}\mathbb{P}_{m}(A_{n})$~$ was false?</p>
+<p>Well, straightaway, $~$\sup_{m\ge n}\mathbb{P}_{m}(A_{n})\ge\mathbb{P}_{n}(A_{n})$~$. So if it's going to fail at all, it must be because $~$\displaystyle\liminf_{n\to\infty}\mathbb{P}_{n}(A_{n})&lt;\liminf_{n\to\infty}\sup_{m\ge n}\mathbb{P}_{m}(A_{n})$~$.</p>
+<p>This means that there's a gap, so there's some $~$b$~$ and some $~$\varepsilon&gt;0$~$ where $~$\displaystyle\liminf_{n\to\infty}\mathbb{P}_{n}(A_{n})&lt;b-\varepsilon&lt;b+\varepsilon&lt;\liminf_{n\to\infty}\sup_{m\ge n}\mathbb{P}_{m}(A_{n})$~$.</p>
+<p>This suggests the buy low, sell high strategy for the employees. Buy an $~$\mathbb{R}$~$-combination when its starting price along the diagonal is $~$b-\varepsilon$~$ or less, and resell it when its price inevitably goes above $~$b+\varepsilon$~$, and pick up a little bit of guaranteed cash for $~$\varepsilon$~$-ROI.</p>
+<p>There's problems with this, of course. You can't have a sharp cutoff-function for buying and selling, you have to use the continuous indicator functions. Also, the price will only "inevitably" go above $~$b+\varepsilon$~$ in the limit. Let's analyze it a bit more, until a path reveals itself.</p>
+<p>So, for infinitely many $~$n$~$, $~$\mathbb{P}_{n}(A_{n})&lt;b-\varepsilon$~$ by the definition of lim inf.</p>
+<p>And there's <em>some</em> far-distant day $~$s_{e}$~$ where $~$\forall n&gt;s_{e}:\sup_{m\ge n}\mathbb{P}_{n}(A_{n})&gt;b+\varepsilon$~$.</p>
+<p>%%hidden(Wait, what?):
+Lets say it was false, then. Then $~$\forall s_{e}\exists n&gt;s_{e}:\sup_{m\ge n}\mathbb{P}_{n}(A_{n})\le b+\varepsilon$~$. Or, put another way, there would be infinitely many $~$n$~$ where the greatest future value is $~$b+\varepsilon$~$ or less. Oh wait, by the definition of lim inf, lim inf(greatest future value) would be $~$b+\varepsilon$~$ or less. But it's greater than $~$b+\varepsilon$~$, and thus, a contradiction.
+%%</p>
+<p>Notice, the previous statement means that, along the diagonal, you'll eventually get to the point where the highest future value on all combinations further along the diagonal is over $~$b+\varepsilon$~$. <strong>It does not mean that all combinations in the entire sequence will eventually go over $~$b+\varepsilon$~$.</strong></p>
+<p>If we imagine our trading firm going along the diagonal and leaving one "employee" behind for each combination, which'll continue north forever, checking the value of the same combination… That means that our "trading firm" could just leave employees that'll do nothing, until day/combination $~$s_{e}$~$, and then it'd start getting serious and outputting employees that buy low (if their combination is underpriced on the diagonal), wait for it to inevitably become overpriced, and sell their entire combination back then, because after day/combination $~$s_{e}$~$, <em>every</em> combination is going to go above $~$b+\varepsilon$~$ value, <em>eventually</em>. </p>
+<p>Also, instead of buying and selling precisely at $~$b-\varepsilon$~$ and $~$b+\varepsilon$~$, we could have our indicator functions start buying and selling a bit closer to the middle, with those bounds just denoting when to go all-in (all-in corresponds to buying/selling 1 $~$\mathbb{R}$~$-combination/whatever's left). Then since the value on a combination is guaranteed to go above $~$b+\varepsilon$~$ eventually, each employee past day $~$s_{e}$~$ is going to end up unloading everything it bought on its first day (note: not the actual first day), and get $~$\varepsilon$~$ guaranteed cash. </p>
+<p>Also, since the $~$\mathbb{R}$~$-combinations are bounded, that means its possible to scale them all down so they have a magnitude of 1 or less and preserve the theorem. That takes care of the first condition, the $~$\varepsilon$~$-ROI one, since $~$\varepsilon$~$ guaranteed cash on a trade magnitude of 1 or less is an $~$\varepsilon$~$ fraction of the total trade magnitude.</p>
+<p>The second condition about being able to emulate the employees also looks fairly simple if we can define a "percent of original purchase left" feature, since a "sell the easily-definable thing if the price goes too low" trigger is pretty easy to implement.</p>
+<p>The third condition about being able to emulate the magnitude of the employees using market data can be fulfilled without too much trouble, too. Since all the employees will end up selling back everything they bought by the argument for point 1, the magnitude is twice as big as the magnitude of the original trade. Just sum up whatever expressible features were used to make the original trade and bam, you've got an expressible feature that'll produce the magnitude of the employee when exposed to market data. (the expressible features of the first trade can be written down in $~$poly(k)$~$ time, remember)</p>
+<p>The fourth condition is trivially taken care of by that "infinitely often" clause about how often the value of the combinations dips below $~$b-\varepsilon$~$ on the diagonal.</p>
+<p>%%hidden(Full Proof):
+Alright, first, we'll define our series of traders. If the trader's index is $~$<s_{e}$~$, it'll just output 0 forever. Otherwise, there are three phases. For $~$n<k$~$, the k'th employee outputs the 0 trade. For $~$n=k$~$, we want to buy an $~$\mathbb{R}$~$-combination if it's underpriced, and for $~$n>k$~$, we want to sell the remaining amount of the combination back if it's overpriced. Let's define the initial trade, the trade made by the k'th trader on the k'th day.
+$$~$T_{k}^{k}:=Ind_{\varepsilon/2}(A_{k}^{\dagger * k}&lt;b-\varepsilon/2)\cdot (A_{k}^{\dagger}-A_{k}^{\dagger * k})$~$$
+This is basically just saying "start buying the $~$\mathbb{R}$~$-combination $~$A_{k}$~$ at $~$b-\varepsilon/2$~$, and go all the way up to buying one of the combination at $~$b-\varepsilon$~$". And also the $~$\mathbb{R}$~$-combination is going to have a price of 1 or less because we scaled it down, and we could do that because it was in $~$\mathcal{BCS}(\overline{\mathbb{P}})$~$, so we could divide it by the upper bound.</p>
+<p>Now, for the later parts. We'll need a "fraction of original purchase to sell off" expressible feature.
+$$~$F_{n}:=Ind_{\varepsilon/2}(A_{k}^{\dagger * n}&gt;b+\varepsilon/2)\left(1-\sum_{k&lt;i&lt;n}F_{i}\right)$~$$
+The first part of it is the indicator to start buying at $~$b+\varepsilon/2$~$ and go all-in at $~$b+\varepsilon$~$, and the second part is the percent of original purchase left over (1-all the previous sellings)</p>
+<p>Finally, for $~$n&gt;k$~$, we'll need to use that expressible feature to determine how much to sell off. So the trade would be
+$$~$T_{n}^{k}:=-F_{n}\cdot T_{k}^{k}$~$$
+Just use the "fraction to sell off" feature to scale down the original purchase, and sell it off.</p>
+<p>Ok, so we need to establish $~$\varepsilon$~$-ROI, that what we just defined is an efficiently emulatable sequence of traders, that the magnitudes of the traders is $~$\overline{\mathbb{P}}$~$-generable, and the sequence of trader magnitudes doesn't go to zero.</p>
+<p>Let's start with the second. The k'th "employee" makes no trades before day k. </p>
+<p>The algorithm for the k'th employee can be written down in poly(k) time, because the $~$\mathcal{EF}$~$-combination $~$A_{k}^{dagger}$~$ is computable in $~$poly(k)$~$ time, by the definition of $~$\mathcal{BCS}(\overline{\mathbb{P}})$~$ (remember, being $~$\overline{\mathbb{P}}$~$-generable was one of the conditions, and that implies that it takes $~$poly(k)$~$ time to write down $~$A_{k}^{\dagger}$~$). And the recursive definition for "fraction of purchase left" is the same for each trader. And the test to see whether the trader's index is $~$&lt;s_{e}$~$ also takes fairly little time.</p>
+<p>And each individual employee has to be able to write down its trade in poly(n) time. By caching past trades, it would only take $~$poly(n)$~$ time to compute the "fraction of original purchase left" feature is, and the $~$\mathbb{R}$~$-combination is just the same every time and doesn't change.</p>
+<p>Thus, since the k'th employee makes no trades before day $~$k$~$, the k'th employee can be written down in $~$poly(k)$~$ time, and they all run in $~$poly(n)$~$ time, it's an efficiently emulatable sequence of traders.</p>
+<p>Next up: Showing that all the original purchase will be sold off <em>eventually</em>.</p>
+<p>By induction on $~$F_{n}$~$, we can find that $~$\sum_{k<i\le n}F_{i}\le 1$~$ and $~$F_{n}\ge 0$~$. Remember, by our original assumption, there's <em>some</em> day $~$m$~$ where $~$\mathbb{P}_{m}(A_{k})>b+\varepsilon$~$. On that day, the indicator function will be 1, so</p>
+<p>(will return later)
+%%</p></main><hr><footer></footer></body></html>

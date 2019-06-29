@@ -1,0 +1,48 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Indirect decision theory</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="../MathJax-2.7.5/MathJax.js"></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">Indirect decision theory</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/Indirect_decision_theory.json.html">Indirect_decision_theory.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/Indirect_decision_theory">https://arbital.com/p/Indirect_decision_theory</a></p><p class="creator">by
+ <a class="page-link" href="../page/PaulChristiano.html">Paul Christiano</a> Feb 4 2016 
+updated
+ Feb 27 2016</p></div><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>Indirect decision theory</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="paul_ai_control.html">Paul Christiano's AI control blog</a></li><li>…</li></ul></nav></nav></header><hr><main><p>In which I argue that understanding decision theory can be delegated to AI.</p>
+<h3 id="indirectnormativity">Indirect normativity.</h3>
+<p>My preferences can probably described by a utility function U&nbsp;: [Possible worlds] → $~$\mathbb{R}$~$. But U is likely to lack a simple specification, and even if it has one, I certainly don’t know it. So if I wanted to describe my preferences, I might define the utility of a world&nbsp;<em>w</em>&nbsp;as:</p>
+<p>U(&gt; w) = “How good I would judge the world&nbsp;&gt; w&nbsp;to be, after an idealized process of reflection.”</p>
+<p>Intuitively, if there were a powerful AI around, I’d like it perform an action&nbsp;<em>a</em> such that $~$\mathbb{E}$~$[U(_w_)|do(_a_)] is as large as possible.</p>
+<h3 id="indirectdecisiontheory">Indirect decision theory</h3>
+<p>But what does $~$\mathbb{E}$~$[U(_w_)|do(_a_)] mean anyway? We haven’t given a prescription for interpreting “|do(<em>a</em>),” and we haven’t specified a distribution over possible worlds.</p>
+<p>Really, I’d like to leave these questions up to an AI. That is, whatever work&nbsp;<em>I</em> would do in order to answer these questions, an AI should be able to do just as well or better. And it should behave sensibly in the interim, just like I would.</p>
+<p>To this end, consider the definition of a map U'&nbsp;: [Possible actions] → $~$\mathbb{R}$~$:</p>
+<p>U'(&gt; a) = “How good I would judge the action&nbsp;&gt; a&nbsp;to be, after an idealized process of reflection.”</p>
+<p>Now we’d just like to build an “agent” that takes the action&nbsp;<em>a</em>&nbsp;maximizing $~$\mathbb{E}$~$[U'(_a_)]. Rather than defining our decision theory or our beliefs right now, we will instead come up with some answer during the “idealized process of reflection.” And as long as an AI is uncertain about what we’d come up with, it will behave sensibly in light of its uncertainty.</p>
+<p>This feels like a bit of a cheat. But I think the feeling is an illusion. More precisely:</p>
+<p><strong>A successful AI will need to be able to reason about quantities like</strong>$~$\mathbb{E}$~$<strong>[U(_w_)|do(_a_)], and we can’t dodge this algorithmic problem with a sleight of hand. But a sleight of hand might dodge the philosophical hazard of committing ourselves to a particular definition of</strong>$~$\mathbb{E}$~$<strong>[U(_w_)|do(_a_)].</strong></p>
+<p>U' doesn’t seem any harder to define than U. Indeed it may be easier—possible worlds are complex and massive objects, and to evaluate them we might have to think long and hard and become very different people than we are today. But actions are close to home.</p>
+<p>And U' seems every bit as actionable as U: if a program can calculate $~$\mathbb{E}$~$[U(_w_)|do(_a_)] (whatever we mean by that), it can probably just as well calculate $~$\mathbb{E}$~$[U'(_a_)].</p>
+<p>It may be that this approach isn’t tenable. But I think that is necessarily a question about the internal structure of an AI.</p>
+<h1 id="possibleproblems">Possible problems</h1>
+<h3 id="isidealizedreflectionuptoit">Is “idealized reflection” up to it?</h3>
+<p>In order to evaluate how good an action is, we will often want to understand its consequences. This puts an additional requirement “idealized process of reflection:” it needs to be powerful enough to understand the consequences of each possible action.</p>
+<p>I don’t think this is a big deal:</p>
+<ol>
+<li>In order for U' to guide an AI’s decisions, U' just needs to be as wise as the AI itself. It doesn’t matter if we would like an action because of some hard-to-anticipate consequences, unless the AI can anticipate that we’ll like it.</li>
+<li>The bar for an “idealized process of reflection” into whose hands we would entrust the entire future seems much&nbsp;<em>higher</em>&nbsp;than the bar for a process of reflection that can determine the consequences of actions today.</li>
+</ol>
+<h3 id="afinalwrinkle">A final wrinkle</h3>
+<p>Computing $~$\mathbb{E}$~$[U’(_a_)] doesn’t seem any more or less complicated than computing $~$\mathbb{E}$~$[U(_w_)|do(_a_)].</p>
+<p><strong>But,</strong>&nbsp;it seems unlikely that superintelligent AI systems will simply compute $~$\mathbb{E}$~$[U(_w_)|do(_a_)] for each possible action&nbsp;<em>a</em>&nbsp;and then do the best one. For example, they may have to think about how to think; more broadly, it seems hard to predict what a successful AI system of the future will look like.</p>
+<p>It may well be that the internal structure of AI systems favors rational agents over other designs. For example, “maximize $~$\mathbb{E}$~$[U(_w_)]” might be a really useful invariant to organize a system around, and if so it’s not clear whether maximizing $~$\mathbb{E}$~$[U’(_a_)] is a satisfactory alternative. (I discuss this issue inconclusively&nbsp;<a href="approval_directed_agents.html">here</a>.) It’s plausible that an understanding of decision theory will help us see how the global goal-directed behavior of a system emerges from a combination of heuristics and goal-directed components; but for now we don’t have a very clear picture.</p>
+<h1 id="conclusion">Conclusion</h1>
+<p>I think this final wrinkle gives us our best reason to study decision theory today. But I think the case is weaker and more subtle than is often assumed, and I am certainly not yet convinced that we can’t delegate decision theory to an AI.</p></main><hr><footer><p class="tagged"><h2>Tagged</h2><span class="page-comma-list"><a class="page-link" href="../page/decision_theory.html">Decision theory</a></span></p><p class="likes"><h2>Likes</h2><span class="page-comma-list"><a class="page-link" href="../page/TsviBT.html">Tsvi BT</a></span></p><p class="reverse-related"><h2>Reverse Related</h2><ul class="page-list"><li><a class="page-link" href="../page/decision_theory.html">Decision theory</a> <q>The mathematical study of ideal decisionmaking</q> - <a class="page-link" href="../page/EliezerYudkowsky.html">Eliezer Yudkowsky</a></li></ul></p></footer></body></html>

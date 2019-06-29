@@ -1,0 +1,27 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>The image of a group under a homomorphism is a subgroup of the codomain</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="../MathJax-2.7.5/MathJax.js"></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">The image of a group under a homomorphism is a subgroup of the codomain</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/image_of_group_under_homomorphism_is_subgroup.json.html">image_of_group_under_homomorphism_is_subgroup.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/image_of_group_under_homomorphism_is_subgroup">https://arbital.com/p/image_of_group_under_homomorphism_is_subgroup</a></p><p class="creator">by
+ <a class="page-link" href="../page/PatrickStevens.html">Patrick Stevens</a> Jun 14 2016</p></div><p class="clickbait">Group homomorphisms take groups to groups, but it is additionally guaranteed that the elements they hit form a group.</p><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>The image of a group under a homomorphism is a subgroup of the codomain</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="math.html">Mathematics</a></li><li><a href="abstract_algebra.html">Abstract algebra</a></li><li><a href="algebraic_structure.html">Algebraic structure</a></li><li><a href="group_mathematics.html">Group</a></li><li><a href="group_homomorphism.html">Group homomorphism</a></li><li>…</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="math.html">Mathematics</a></li><li><a href="group_theory.html">Group theory</a></li><li><a href="group_mathematics.html">Group</a></li><li><a href="group_homomorphism.html">Group homomorphism</a></li><li>…</li></ul></nav></nav></header><hr><main><p>Let $~$f: G \to H$~$ be a <a href="group_homomorphism.html">Group homomorphism</a>, and write $~$f(G)$~$ for the set $~$\{ f(g) : g \in G \}$~$.
+Then $~$f(G)$~$ is a group under the operation inherited from $~$H$~$.</p>
+<h1 id="proof">Proof</h1>
+<p>To prove this, we must verify the group axioms.
+Let $~$f: G \to H$~$ be a group homomorphism, and let $~$e_G, e_H$~$ be the identities of $~$G$~$ and of $~$H$~$ respectively.
+Write $~$f(G)$~$ for the image of $~$G$~$.</p>
+<p>Then $~$f(G)$~$ is closed under the operation of $~$H$~$: since $~$f(g) f(h) = f(gh)$~$, so the result of $~$H$~$-multiplying two elements of $~$f(G)$~$ is also in $~$f(G)$~$.</p>
+<p>$~$e_H$~$ is the identity for $~$f(G)$~$: it is $~$f(e_G)$~$, so it does lie in the image, while it acts as the identity because $~$f(e_G) f(g) = f(e_G g) = f(g)$~$, and likewise for multiplication on the right.</p>
+<p>Inverses exist, by "the inverse of the image is the image of the inverse".</p>
+<p>The operation remains associative: this is inherited from $~$H$~$.</p>
+<p>Therefore, $~$f(G)$~$ is a group, and indeed is a subgroup of $~$H$~$.</p></main><hr><footer></footer></body></html>

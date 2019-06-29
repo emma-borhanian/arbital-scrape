@@ -1,0 +1,21 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>&quot;&quot;Similarly, if you start with a 10 kilobyte tex...&quot;</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="../MathJax-2.7.5/MathJax.js"></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">&quot;&quot;Similarly, if you start with a 10 kilobyte tex...&quot;</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/5cr.json.html">5cr.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/5cr">https://arbital.com/p/5cr</a></p><p class="creator">by
+ <a class="page-link" href="../page/KayaFallenstein.html">Kaya Fallenstein</a> Jul 14 2016</p></div><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>&quot;&quot;Similarly, if you start with a 10 kilobyte tex...&quot;</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="math.html">Mathematics</a></li><li><a href="information_theory.html">Information theory</a></li><li><a href="Kolmogorov_complexity.html">Algorithmic complexity</a></li><li><a href="most_complexity_incompressible.html">Most complex things are not very compressible</a></li><li>…</li></ul></nav></nav></header><hr><main><p>"Similarly, if you start with a 10 kilobyte text file, and 7zip compresses it down to 2 kilobytes, no amount of time spent trying to <strong>further</strong> compress the file using other compression programs will <strong>ever</strong> get that file down to 1 byte." (Emphasis added.)</p>
+<p>This claim seems too strong. Do you mean that an arbitrary compression algorithm is unlikely to compress the file to one byte? </p>
+<p>Taking what's written at face value, if I assume that every compression I apply monotonically decreases the size of the file, then I need only find a large enough sequence of compressions and compose them to compress my file to one byte. This is of course silly, since the composition is just a huge highly specialized compression program optimized for this instance, but I can spend enough time to make it happen.</p></main><hr><section class="comments"><h2>Comments</h2><div class="comment"><p><a class="page-link" href="../page/EliezerYudkowsky.html">Eliezer Yudkowsky</a></p><p><p>No individual compressor can monotonically decrease file sizes.</p>
+<p>And we count the string of .rar.7z.zip.rar… in your filename into the total size of your file.</p></p></div><div class="comment"><p><a class="page-link" href="../page/KayaFallenstein.html">Kaya Fallenstein</a></p><p><p>I only assumed the sequence was monotonic.</p>
+<p>The second comment is fair. I think when I first read this, I ignored the bit about 7zip and understood the sentence as claiming "no Turing machine takes an input smaller than one byte and prints out a 10kb file".</p></p></div></section><footer></footer></body></html>

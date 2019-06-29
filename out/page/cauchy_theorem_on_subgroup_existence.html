@@ -1,0 +1,46 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Cauchy's theorem on subgroup existence</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="../MathJax-2.7.5/MathJax.js"></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">Cauchy's theorem on subgroup existence</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/cauchy_theorem_on_subgroup_existence.json.html">cauchy_theorem_on_subgroup_existence.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/cauchy_theorem_on_subgroup_existence">https://arbital.com/p/cauchy_theorem_on_subgroup_existence</a></p><p class="creator">by
+ <a class="page-link" href="../page/PatrickStevens.html">Patrick Stevens</a> Jun 18 2016 
+updated
+ Jun 30 2016</p></div><p class="clickbait">Cauchy's theorem is a useful condition for the existence of cyclic subgroups of finite groups.</p><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>Cauchy's theorem on subgroup existence</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="math.html">Mathematics</a></li><li><a href="abstract_algebra.html">Abstract algebra</a></li><li><a href="algebraic_structure.html">Algebraic structure</a></li><li><a href="group_mathematics.html">Group</a></li><li>…</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="math.html">Mathematics</a></li><li><a href="group_theory.html">Group theory</a></li><li><a href="group_mathematics.html">Group</a></li><li>…</li></ul></nav></nav></header><hr><main><p>Cauchy's theorem states that if $~$G$~$ is a finite <a href="group_mathematics.html">Group</a> and $~$p$~$ is a <a href="prime_number.html">prime</a> dividing $~$|G|$~$ the <a href="group_order.html">order</a> of $~$G$~$, then $~$G$~$ has a subgroup of order $~$p$~$. Such a subgroup is necessarily <a href="cyclic_group.html">cyclic</a> (<a href="prime_order_group_is_cyclic.html">proof</a>).</p>
+<h1 id="proof">Proof</h1>
+<p>The proof involves basically a single magic idea: from thin air, we pluck the definition of the following set.</p>
+<p>Let $$~$X = \{ (x_1, x_2, \dots, x_p) : x_1 x_2 \dots x_p = e \}$~$$ the collection of $~$p$~$-[-tuple]s of elements of the group such that the group operation applied to the tuple yields the identity.
+Observe that $~$X$~$ is not empty, because it contains the tuple $~$(e, e, \dots, e)$~$.</p>
+<p>Now, the cyclic group $~$C_p$~$ of order $~$p$~$ <a href="group_action.html">acts</a> on $~$X$~$ as follows: $$~$(h, (x_1, \dots, x_p)) \mapsto (x_2, x_3, \dots, x_p, x_1)$~$$ where $~$h$~$ is the generator of $~$C_p$~$.
+So a general element $~$h^i$~$ acts on $~$X$~$ by sending $~$(x_1, \dots, x_p)$~$ to $~$(x_{i+1}, x_{i+2} , \dots, x_p, x_1, \dots, x_i)$~$.</p>
+<p>This is indeed a group action (exercise).</p>
+<p>%%hidden(Show solution):</p>
+<ul>
+<li>It certainly outputs elements of $~$X$~$, because if $~$x_1 x_2 \dots x_p = e$~$, then $$~$x_{i+1} x_{i+2} \dots x_p x_1 \dots x_i = (x_1 \dots x_i)^{-1} (x_1 \dots x_p) (x_1 \dots x_i) = (x_1 \dots x_i)^{-1} e (x_1 \dots x_i) = e$~$$</li>
+<li>The identity acts trivially on the set: since rotating a tuple round by $~$0$~$ places is the same as not permuting it at all.</li>
+<li>$~$(h^i h^j)(x_1, x_2, \dots, x_p) = h^i(h^j(x_1, x_2, \dots, x_p))$~$ because the left-hand side has performed $~$h^{i+j}$~$ which rotates by $~$i+j$~$ places, while the right-hand side has rotated by first $~$j$~$ and then $~$i$~$ places and hence $~$i+j$~$ in total.
+%%</li>
+</ul>
+<p>Now, fix $~$\bar{x} = (x_1, \dots, x_p) \in X$~$.</p>
+<p>By the <a href="orbit_stabiliser_theorem.html">Orbit-Stabiliser theorem</a>, the <a href="group_orbit.html">orbit</a> $~$\mathrm{Orb}_{C_p}(\bar{x})$~$ of $~$\bar{x}$~$ divides $~$|C_p| = p$~$, so (since $~$p$~$ is prime) it is either $~$1$~$ or $~$p$~$ for every $~$\bar{x} \in X$~$.</p>
+<p>Now, what is the size of the set $~$X$~$?
+%%hidden(Show solution):
+It is $~$|G|^{p-1}$~$.</p>
+<p>Indeed, a single $~$p$~$-tuple in $~$X$~$ is specified precisely by its first $~$p$~$ elements; then the final element is constrained to be $~$x_p = (x_1 \dots x_{p-1})^{-1}$~$.
+%%</p>
+<p>Also, the orbits of $~$C_p$~$ acting on $~$X$~$ partition $~$X$~$ (<a href="group_orbits_partition.html">proof</a>).
+Since $~$p$~$ divides $~$|G|$~$, we must have $~$p$~$ dividing $~$|G|^{p-1} = |X|$~$.
+Therefore since $~$|\mathrm{Orb}_{C_p}((e, e, \dots, e))| = 1$~$, there must be at least $~$p-1$~$ other orbits of size $~$1$~$, because each orbit has size $~$p$~$ or $~$1$~$: if we had fewer than $~$p-1$~$ other orbits of size $~$1$~$, then there would be at least $~$1$~$ but strictly fewer than $~$p$~$ orbits of size $~$1$~$, and all the remaining orbits would have to be of size $~$p$~$, contradicting that $~$p \mid |X|$~$.
+[todo: picture of class equation]</p>
+<p>Hence there is indeed another orbit of size $~$1$~$; say it is the singleton $~$\{ \bar{x} \}$~$ where $~$\bar{x} = (x_1, \dots, x_p)$~$.</p>
+<p>Now $~$C_p$~$ acts by cycling $~$\bar{x}$~$ round, and we know that doing so does not change $~$\bar{x}$~$, so it must be the case that all the $~$x_i$~$ are equal; hence $~$(x, x, \dots, x) \in X$~$ and so $~$x^p = e$~$ by definition of $~$X$~$.</p></main><hr><footer><p class="tagged"><h2>Tagged</h2><span class="page-comma-list"><a class="page-link" href="../page/proof_meta_tag.html">Proof</a></span></p><p class="reverse-related"><h2>Reverse Related</h2><ul class="page-list"><li><a class="page-link" href="../page/proof_meta_tag.html">Proof</a> <q>This page is just a proof, rather than a motivated explanation.</q> - <a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a></li></ul></p><p class="children"><h2>Children</h2><ul class="page-tree"><li><a class="page-link" href="../page/cauchy_theorem_on_subgroup_existence_intuitive.html">Cauchy's theorem on subgroup existence: intuitive version</a> <q>Cauchy's Theorem states that if $G$ is a finite [-group], and $p$ is a prime dividing the order of $…</q> - <a class="page-link" href="../page/PatrickStevens.html">Patrick Stevens</a></li></ul></p></footer></body></html>

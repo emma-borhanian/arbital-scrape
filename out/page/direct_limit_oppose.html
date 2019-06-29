@@ -1,0 +1,68 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Directing, vs. limiting, vs. opposing</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="../MathJax-2.7.5/MathJax.js"></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">Directing, vs. limiting, vs. opposing</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/direct_limit_oppose.json.html">direct_limit_oppose.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/direct_limit_oppose">https://arbital.com/p/direct_limit_oppose</a></p><p class="creator">by
+ <a class="page-link" href="../page/EliezerYudkowsky.html">Eliezer Yudkowsky</a> Jan 16 2017 
+updated
+ May 23 2017</p></div><p class="clickbait">Getting the AI to compute the right action in a domain; versus getting the AI to not compute at all in an unsafe domain; versus trying to prevent the AI from acting successfully.  (Prefer 1 &amp; 2.)</p><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>Directing, vs. limiting, vs. opposing</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="ai_alignment.html">AI alignment</a></li><li><a href="advanced_safety.html">Advanced safety</a></li><li><a href="AI_safety_mindset.html">AI safety mindset</a></li><li>…</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="ai_alignment.html">AI alignment</a></li><li><a href="alignment_principle.html">Principles in AI alignment</a></li><li><a href="nonadversarial.html">Non-adversarial principle</a></li><li>…</li></ul></nav></nav></header><hr><main><p>[summary:  With respect to the <a href="ai_alignment.html">theory</a> of constructing <a href="sufficiently_advanced_ai.html">sufficiently advanced AIs</a> in ways that yield <a href="beneficial.html">good outcomes</a>:</p>
+<ul>
+<li><strong>Direction</strong> is when it's okay for the AI to compute plans, because the AI will end up choosing rightly;</li>
+<li><strong>Limitation</strong> is shaping an insufficiently-aligned AI so that it doesn't run a computation, if we expect that computation to produce bad results;</li>
+<li><strong>Opposition</strong>  is when we try to prevent the AI from successfully doing something we don't like, <em>assuming</em> the AI would act wrongly given the power to do so.</li>
+</ul>
+<p>For example:</p>
+<ul>
+<li>A successfully <strong>directed</strong> AI, given full Internet access, will do <a href="beneficial.html">beneficial</a> things given that Internet access;</li>
+<li>A <strong>limited AI</strong>, suddenly given an Internet feed, will not do <em>anything</em> with that Internet access, because its programmers haven't [whitelisting whitelisted] this new domain as okay to think about;</li>
+<li><strong>Opposition</strong> is <a href="https://en.wikipedia.org/wiki/Air_gap_(networking)">airgapping</a> the AI from the Internet and then putting the AI's processors inside a <a href="https://en.wikipedia.org/wiki/Faraday_cage">Faraday cage</a>, in the hope that even if the AI <em>wants</em> to get to the Internet, the AI won't be able to, say, <a href="https://www.usenix.org/system/files/conference/usenixsecurity15/sec15-paper-guri-update.pdf">produce GSM cellphone signals by modulating its memory accesses</a>.]</li>
+</ul>
+<p>'Directing' versus 'limiting' versus 'opposing' is a proposed conceptual distinction between 3 ways of getting <a href="beneficial.html">good</a> outcomes and avoiding <a href="detrimental.html">bad</a> outcomes, when running a <a href="sufficiently_advanced_ai.html">sufficiently advanced Artificial Intelligence</a>:</p>
+<ul>
+<li><strong>Direction</strong> means the AGI wants to do the right thing in a domain;</li>
+<li><strong>Limitation</strong> is the AGI not thinking or acting in places where it's not aligned;</li>
+<li><strong>Opposition</strong>  is when we try to prevent the AGI from successfully doing the wrong thing, <em>assuming</em> that it would act wrongly given the power to do so.</li>
+</ul>
+<p>For example:</p>
+<ul>
+<li>A successfully <strong>directed</strong> AI, given full Internet access, will do <a href="beneficial.html">beneficial</a> things rather than <a href="detrimental.html">detrimental</a> things using Internet access, because it wants to do good and understands sufficiently well which actions have good or bad outcomes;</li>
+<li>A <strong>limited AI</strong>, suddenly given an Internet feed, will not do <em>anything</em> with that Internet access, because its programmers haven't [whitelisting whitelisted] this new domain for being okay to think about;</li>
+<li><strong>Opposition</strong> is <a href="https://en.wikipedia.org/wiki/Air_gap_(networking)">airgapping</a> the AI from the Internet and then putting the AI's processors inside a <a href="https://en.wikipedia.org/wiki/Faraday_cage">Faraday cage</a>, in the hope that even if the AI <em>wants</em> to get to the Internet, the AI won't be able to <a href="https://www.usenix.org/system/files/conference/usenixsecurity15/sec15-paper-guri-update.pdf">produce GSM cellphone signals by modulating its memory accesses</a>.</li>
+</ul>
+<p>A fourth category not reducible to the other three might be <strong>stabilizing,</strong> e.g. numerical stability of floating-point algorithms, not having memory leaks in the code, etcetera.  These are issues that a sufficiently advanced AI would fix in itself automatically, but an <a href="KANSI.html">insufficiently advanced</a> AI might not, which causes problems either if early errors introduce changes that are reflectively stable later, or if we are intending to run the AI in insufficiently-advanced mode.</p>
+<h1 id="notrunningadversarialsearches">Not running adversarial searches</h1>
+<p>Under the [agents_as_searches] view, we can see an agent as embodying computations that search out actions within a domain.  The <a href="nonadversarial.html">non-adversarial principle</a> then says that we should not be running a search which is looking for ways to hurt us.</p>
+<p>We can achieve this desideratum in one of two ways:</p>
+<ul>
+<li>The AI is sufficiently nice / <a href="value_alignment_problem.html">value-aligned</a> that it's okay for the AI to think about this domain / run searches here; whatever the AI is searching for, we don't mind if that search succeeds.</li>
+<li>The AI is <em>not</em> aligned in this domain and therefore should not be <em>running searches</em> here--we didn't finish the alignment here, and therefore, we shouldn't be running this computation.</li>
+</ul>
+<p>If both of these measures fail, then as a [strictly fallback second line of defense], we could try to make a bad search return a null result (the AI doesn't find any way to do the harmful thing).</p>
+<p>For example:  The <a href="nonadversarial.html">non-adversarial principle</a> implies that if you build a <a href="shutdown_problem.html">shutdown button</a> for the AI that suspends the AI to disk when pressed, you must <em>also</em> ensure:</p>
+<ul>
+<li>That the AI <em>wants</em> there to be a shutdown button;</li>
+<li>That the AI <em>wants</em> the state of this shutdown switch to reflect the dynamic decisions of the human operators;</li>
+<li>That the AI does not <em>want</em> to influence the operators to press the switch or not press it;</li>
+<li>That the AI does <em>not</em> want to cause anything besides an orderly suspend-to-disk to happen after this switch is pressed.</li>
+</ul>
+<p><em>Or:</em></p>
+<ul>
+<li>That the AI doesn't <em>want</em> to think about the shutdown button at all (e.g. because it's not inside a [whitelisting whitelisted cognitive domain]).</li>
+</ul>
+<p>The first set of measures would be 'direction'--if those measures work, it's okay for the AI to think here because we think those thoughts are pointed in the right direction.  The second approach would be <a href="direct_limit_oppose.html">limitation</a>--we don't think the AI's computations are aligned inside this domain yet, so until then, we shouldn't be running computations there.</p>
+<p>As a <a href="niceness_defense.html">final, strictly fallback</a> line of defense, you could put a big red lever in the computing center that shut off all the electricity even if the AI was failing to suspend to disk.  (But you're not relying on this working; it's just there as a maybe-it-might-work measure that might buy you a little more probable safety even if the primary lines of defense failed.)</p>
+<h1 id="relationtoothernonadversarialideas">Relation to other non-adversarial ideas</h1>
+<p>The direction/limitation/opposition distinction can help state other ideas from the <a href="AI_safety_mindset.html">AI safety mindset</a>.  For example:</p>
+<p>The principle <a href="niceness_defense.html">niceness is the first line of defense</a> can be rephrased as follows:  When designing an AGI, we should imagine that all 'oppositional' measures are absent or failed, and think only about 'direction' and 'limitation'.  Any oppositional measures are then added on top of that, just in case.</p>
+<p>Similarly, the <a href="omni_test.html">Omnipotence test for AI safety</a> says that when thinking through our primary design for alignment, we should think as if the AGI just <em>will</em> get Internet access on some random Tuesday.  This says that we should design an AGI that is limited by [whitelisting not wanting to act in newly opened domains without some programmer action], rather than relying on the AI to be <em>unable</em> to reach the Internet until we've finished aligning it.</p></main><hr><footer></footer></body></html>

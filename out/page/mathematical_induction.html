@@ -1,0 +1,80 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Mathematical induction</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="../MathJax-2.7.5/MathJax.js"></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">Mathematical induction</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/mathematical_induction.json.html">mathematical_induction.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/mathematical_induction">https://arbital.com/p/mathematical_induction</a></p><p class="creator">by
+ <a class="page-link" href="../page/DouglasWeathers.html">Douglas Weathers</a> Jul 17 2016 
+updated
+ Aug 9 2016</p></div><p class="clickbait">Proving a statement about all positive integers by knocking them down like dominoes.</p><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>Mathematical induction</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="math.html">Mathematics</a></li><li><a href="proof_technique.html">Proof technique</a></li><li>…</li></ul></nav></nav></header><hr><main><p>The <strong>principle of mathematical induction</strong> is a proof technique in which a statement, $~$P(n)$~$, is proven about a set of <a href="natural_number.html">natural numbers</a> $~$n$~$. It may be best understood as treating the statements like dominoes: a statement $~$P(n)$~$ is true if the $~$n$~$-th domino is knocked down. We must knock down a first domino, or prove that a <strong>base case</strong> $~$P(m)$~$ is true. Next we must make sure the dominoes are close enough together to fall, or that the <strong>inductive step</strong> holds; in other words, we prove that if $~$k \geq m$~$ and $~$P(k)$~$ is true, $~$P(k+1)$~$ is true. Then since $~$P(m)$~$ is true, $~$P(m+1)$~$ is true; and since $~$P(m+1)$~$ is true, $~$P(m+2)$~$ is true, and so on.</p>
+<h1 id="anexample">An example</h1>
+<p>We'll do an example to build our intuition before giving the proper definition of the principle. We'll provide yet another proof that
+$$~$ 1 + 2 + \cdots + n = \frac{n(n+1)}{2}$~$$
+for all integers $~$n \ge 1$~$. First, let's check the base case, where $~$n=1$~$:
+$$~$ 1 = \frac{1(1+1)}{2} = \frac{2}{2} = 1.$~$$
+This is (fairly obviously) true, so we can move forward with the inductive step. The inductive step includes an assumption, namely that the statement is true for some integer $~$k$~$ that is larger than the base integer. For our example, if $~$k\ge1$~$, we assume that
+$$~$1 + 2 + \cdots + k = \frac{k(k+1)}{2}$~$$
+and try to prove that
+$$~$ 1 + 2 + \cdots + k + (k+1) = \frac{(k+1)([k+1]+1)}{2}.$~$$
+Take our assumption and add $~$k+1$~$ to both sides:
+$$~$1+2+\cdots + k + (k+1) = \frac{k(k+1)}{2} + k + 1.$~$$
+Now the left-hand sides of what we know and what we want are the same. Hopefully the right-hand side will shake out to be the same. Get common denominators so that the right-hand side of the above equation is
+$$~$\frac{k(k+1)}{2} + \frac{2(k+1)}{2} = \frac{(k+2)(k+1)}{2} = \frac{(k+1)([k+1]+1)}{2}.$~$$
+Therefore,
+$$~$ 1 + 2 + \cdots + k + (k+1) = \frac{(k+1)([k+1]+1)}{2}$~$$
+as desired.</p>
+<p>Let $~$P(n)$~$ be the statement for $~$n \ge 1$~$ that the sum of all integers between 1 and $~$n$~$ is $~$n(n+1)/2$~$. At the beginning we showed that the base case, $~$P(1)$~$, is true. Next we showed the inductive step, that if $~$k \ge 1$~$ and $~$P(k)$~$ is true, then $~$P(k+1)$~$ is true. This means that since $~$P(1)$~$ is true, $~$P(2)$~$ is true; and since $~$P(2)$~$ is true, $~$P(3)$~$ is true; etc., so that $~$P(n)$~$ is true for all integers $~$n \ge 1$~$.</p>
+<h1 id="definitionforthenaturalnumbers">Definition for the natural numbers</h1>
+<p>We are ready to properly define mathematical induction.</p>
+<h2 id="weakmathematicalinduction">Weak mathematical induction</h2>
+<p>Let $~$P(n)$~$ be a statement about the natural numbers. Then $~$P$~$ is true for all $~$n \ge m$~$ if</p>
+<ol>
+<li>$~$P(m)$~$ is true, and</li>
+<li>For all $~$k \ge m$~$, $~$P(k+1)$~$ is true if $~$P(k)$~$ is.</li>
+</ol>
+<h2 id="strongmathematicalinduction">Strong mathematical induction</h2>
+<p>Let $~$P(n)$~$ be a statement about the natural numbers. Then $~$P$~$ is true for all $~$n \ge m$~$ if</p>
+<ol>
+<li>$~$P(m)$~$ is true, and</li>
+<li>For all $~$k \ge m$~$, $~$P(k)$~$ is true so long as $~$P(\ell)$~$ is true for all $~$m \le \ell &lt; k$~$.</li>
+</ol>
+<p>A note: <strong>strong mathematical induction</strong> is a variant on mathematical induction by requiring a stronger inductive step, namely that the statement is true for <em>all</em> smaller indices, not just the immediate predecessor.</p>
+<h1 id="inductiononawellorderedset">Induction on a well-ordered set</h1>
+<p>Well done if your immediate response to the above material was, "Well, am I only restricted to this technique on the natural numbers?" No. As long as your index set is <a href="well_ordered_set.html">well-ordered</a>, then strong mathematical induction will work.</p>
+<p>However, if your ordered set is not well-ordered, you can prove properties 1 and 2 above, and still not have it hold for all elements beyond the base case. For instance, consider the set of nonnegative real numbers, and let $~$P(x)$~$ be the claim $~$x\leq 1$~$. Then $~$P(0)$~$ is true, and for all real numbers $~$x\ge 0$~$, $~$P(x)$~$ is true whenever $~$P(y)$~$ is true for all $~$0 \le y &lt; x$~$. But of course $~$P(2)$~$ is false.</p></main><hr><section class="comments"><h2>Comments</h2><div class="comment"><p><a class="page-link" href="../page/EricRogstad.html">Eric Rogstad</a></p><p><blockquote class="comment-context">The principle of mathematical induction is a proof technique in which a statement, $~$P(n)$~$, is proven about a set of natural numbers $~$n$~$\. <mark>It may be best understood as treating the statements like dominoes</mark>: a statement $~$P(n)$~$ is true if the $~$n$~$\-th domino is knocked down\. We must knock down a first domino, or prove that a base case $~$P(m)$~$ is true\. Next we must make sure the dominoes are close enough together to fall, or that the inductive step holds; in other words, we prove that if $~$k \\geq m$~$ and $~$P(k)$~$ is true, $~$P(k+1)$~$ is true\. Then since $~$P(m)$~$ is true, $~$P(m+1)$~$ is true; and since $~$P(m+1)$~$ is true, $~$P(m+2)$~$ is true, and so on\.</blockquote>
+<p>I really like this domino analogy.</p>
+<p>Also, I'd expect to see the word "all" somewhere in this first paragraph -- I think it's worth emphasizing the point that if we have the base case and the inductive step then the statement will be true for <em>all</em> of the numbers after the base case, just like all of the dominoes after the first one would fall down. I think the current final sentence of the intro paragraph doesn't make this clear enough.</p></p></div><div class="comment"><p><a class="page-link" href="../page/EricRogstad.html">Eric Rogstad</a></p><p><blockquote class="comment-context">We'll do an example to build our intuition before giving the proper definition of the principle\. We'll provide yet another proof that
+$$~$ 1 + 2 + \\cdots + n \= \\frac{n(n+1)}{2}$~$$
+for all integers $~$n \\ge 1$~$\. First, let's check the base case, where $~$n\=1$~$:
+$$~$ 1 \= \\frac{1(1+1)}{2} \= \\frac{2}{2} \= 1.$~$$
+This is \(fairly obviously\) true, so we can move forward with the inductive step\. The inductive step includes an assumption, namely that the statement is true for some integer $~$k$~$ that is larger than the base integer\. For our example, if $~$k\\ge1$~$, we assume that
+$$~$1 + 2 + \\cdots + k \= \\frac{k(k+1)}{2}$~$$
+<mark>and try to prove that</mark>
+$$~$ 1 + 2 + \\cdots + k + (k+1) \= \\frac{(k+1)(\[k+1\]+1)}{2}.$~$$
+Take our assumption and add $~$k+1$~$ to both sides:
+$$~$1+2+\\cdots + k + (k+1) \= \\frac{k(k+1)}{2} + k + 1.$~$$
+Now the left\-hand sides of what we know and what we want are the same\. Hopefully the right\-hand side will shake out to be the same\. Get common denominators so that the right\-hand side of the above equation is
+$$~$\\frac{k(k+1)}{2} + \\frac{2(k+1)}{2} \= \\frac{(k+2)(k+1)}{2} \= \\frac{(k+1)(\[k+1\]+1)}{2}.$~$$
+Therefore,
+$$~$ 1 + 2 + \\cdots + k + (k+1) \= \\frac{(k+1)(\[k+1\]+1)}{2}$~$$
+as desired\.</blockquote>
+<p>I think it would be worthwhile to explicitly call out that what's happening here is that we're replacing $~$n$~$ in the original equation with $~$k+1$~$.</p></p></div></section><footer><p class="tagged"><h2>Tagged</h2><span class="page-comma-list"><a class="page-link" href="../page/b_class_meta_tag.html">B-Class</a></span></p><p class="all-creators"><h2>All Creators</h2><span class="page-comma-list"><a class="page-link" href="../page/DouglasWeathers.html">Douglas Weathers</a>,
+ <a class="page-link" href="../page/DylanHendrickson.html">Dylan Hendrickson</a>,
+ <a class="page-link" href="../page/KevinClancy.html">Kevin Clancy</a>,
+ <a class="page-link" href="../page/PatrickLaVictoir.html">Patrick LaVictoire</a></span></p><p class="likes"><h2>Likes</h2><span class="page-comma-list"><a class="page-link" href="../page/EdwinEvans.html">Edwin Evans</a>,
+ <a class="page-link" href="../page/EliezerYudkowsky.html">Eliezer Yudkowsky</a>,
+ <a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a>,
+ <a class="page-link" href="../page/EricRogstad.html">Eric Rogstad</a>,
+ <a class="page-link" href="../page/KevinClancy.html">Kevin Clancy</a>,
+ <a class="page-link" href="../page/MalcolmMcCrimmon.html">Malcolm McCrimmon</a>,
+ <a class="page-link" href="../page/VladArber.html">Vlad Arber</a></span></p><p class="reverse-related"><h2>Reverse Related</h2><ul class="page-list"><li><a class="page-link" href="../page/b_class_meta_tag.html">B-Class</a> <q>This page is mostly complete and without major problems, but has not had detailed feedback from the target audience and reviewers.</q> - <a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a></li></ul></p></footer></body></html>

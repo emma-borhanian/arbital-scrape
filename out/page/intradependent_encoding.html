@@ -1,0 +1,26 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Intradependent encoding</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="../MathJax-2.7.5/MathJax.js"></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">Intradependent encoding</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/intradependent_encoding.json.html">intradependent_encoding.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/intradependent_encoding">https://arbital.com/p/intradependent_encoding</a></p><p class="creator">by
+ <a class="page-link" href="../page/NateSoares.html">Nate Soares</a> May 29 2016 
+updated
+ May 29 2016</p></div><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>Intradependent encoding</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="math.html">Mathematics</a></li><li><a href="information_theory.html">Information theory</a></li><li>…</li></ul></nav></nav></header><hr><main><p>[summary: An encoding $~$E(m)$~$ of a message $~$m$~$ is intradependent if the fact that $~$E(m)$~$ encodes $~$m$~$ can be deduced without looking at the whole encoding. For example, if you know you're going to see an 8-letter English word, and you see "aardv", you know that the message is "aardvark", even without looking at the last three letters.</p>
+<p>Formally, intradependence is defined in terms of the mutual information shared by symbols in the encoding. Given an encoding is intradependent, it's possible (in principle) to develop a more efficient encoding that is less intradependent.]</p>
+<p>We call an [encoding] $~$E(m)$~$ of a message $~$m$~$ "intradependent" if the fact that $~$E(m)$~$ encodes $~$m$~$ can be deduced without looking at the whole encoding. For example, imagine that you know you're going to see an 8-letter English word, and you see the letters "aardv". You can then deduce that the message is  "aardvark" without looking at the last three letters, because that's the only valid message that starts with "aardv".</p>
+<p>(Seeing "aard" is not enough, because <a href="https://en.wikipedia.org/wiki/Aardwolf">aardwolfs</a> exist.)</p>
+<p>In an intradependent encoding, some parts of the encoding carry information about the other parts. For example, once you've seen "aard", there are $~$26^4 = 456976$~$ possible combinations of the next four letters, but "aard" cuts the space down to just two possibilities &mdash; "vark" and "wolf". This means that the first four letters carry $~$\log_2(26^4) - 1 \approx 17.8$~$ bits of information about the last four. (The fifth letter carries one final bit of information, in the choice between "v" and "w". The last three letters carry no new information.)</p>
+<p>Formally, the intradependence of an encoding is defined to be the sum of <a href="mutual_information.html">mutual information</a> between each symbol in the encoding and all the previous symbols. Given an intradependent encoding, it is possible in principle to design a more efficient encoding; see [+intradependent_compression].</p></main><hr><footer><p class="tagged"><h2>Tagged</h2><span class="page-comma-list"><a class="page-link" href="../page/nonstandard_terminology_meta_tag.html">Non-standard terminology</a>,
+ <a class="page-link" href="../page/start_meta_tag.html">Start</a></span></p><p class="likes"><h2>Likes</h2><span class="page-comma-list"><a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a>,
+ <a class="page-link" href="../page/EricRogstad.html">Eric Rogstad</a></span></p><p class="reverse-related"><h2>Reverse Related</h2><ul class="page-list"><li><a class="page-link" href="../page/nonstandard_terminology_meta_tag.html">Non-standard terminology</a> <q>A tag for terminology that is Arbital-specific, Arbital-originated, or just not very common outside …</q> - <a class="page-link" href="../page/NateSoares.html">Nate Soares</a></li><li><a class="page-link" href="../page/start_meta_tag.html">Start</a> <q>This page gives a basic overview of the topic, but may be missing important information or have stylistic issues. If you're able to, please help expand or improve it!</q> - <a class="page-link" href="../page/EliezerYudkowsky.html">Eliezer Yudkowsky</a></li></ul></p></footer></body></html>

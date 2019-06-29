@@ -1,0 +1,30 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Reliable prediction</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="../MathJax-2.7.5/MathJax.js"></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">Reliable prediction</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/reliable_prediction.json.html">reliable_prediction.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/reliable_prediction">https://arbital.com/p/reliable_prediction</a></p><p class="creator">by
+ <a class="page-link" href="../page/JessicaTaylor.html">Jessica Taylor</a> Mar 24 2016 
+updated
+ Mar 24 2016</p></div><p class="clickbait">How can we train predictors that reliably predict observable phenomena such as human behavior?</p><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>Reliable prediction</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="ai_alignment.html">AI alignment</a></li><li>…</li></ul></nav></nav></header><hr><main><p>Most statistical learning theory settings (such as <a href="https://en.wikipedia.org/wiki/Probably_approximately_correct_learning">PAC learning</a> and <a href="https://en.wikipedia.org/wiki/Online_machine_learning">online learning</a>) do not provide good enough bounds in realistic high-stakes settings, where the test data does not always look at the training data and a single mistaken prediction can cause catastrophe.  It is important to design predictors that can either reliably predict verifiable facts (such as human behavior over a short time scale) or indicate when their predictions might be unreliable.</p>
+<h1 id="motivation">Motivation</h1>
+<p>Imagine that we have a powerful (but not especially reliable) prediction system for predicting human answers to binary questions.  We would like to use it to predict human answers whenever we expect these predictions to be reliable, and avoid outputting predictions wherever we expect the predictions to be unreliable (so we can gather training data instead).</p>
+<h1 id="activelearning">Active learning</h1>
+<p>In  <a href="https://en.wikipedia.org/wiki/Active_learning_(machine_learning)">active learning</a>, the learner decides which questions to query the human about.  For example, it may query the human about the most ambiguous questions, which provide the most information about how the human answers questions.  Unfortunately, this may result in asking the human "weird" questions rather than actually informative ones (this problem is documented in <a href="http://burrsettles.com/pub/settles.activelearning.pdf">this literature survey</a>).  There are some strategies for reducing this problem, such as only asking questions sampled from some realistic generative model for questions.</p>
+<h1 id="kwikknowswhatitknowslearning">KWIK ("knows what it knows") learning</h1>
+<p>In <a href="http://www.research.rutgers.edu/~lihong/pub/Li08Knows.pdf">KWIK learning</a> (a variant of <a href="http://www.cs.cornell.edu/~sridharan/selective_colt2010.pdf">online selective sampling</a>, which is itself a hybrid of <a href="https://en.wikipedia.org/wiki/Active_learning_(machine_learning)">active learning</a> and <a href="https://en.wikipedia.org/wiki/Online_machine_learning">online learning</a>), a learner sees an arbitrary sequence of questions.  The learner has some class of hypotheses for predicting the answers to questions, one of which is good (<a href="efficiency.html">efficient</a> relative to the learner).  For each question, the learner may either output a prediction or ⊥ .  If the learner outputs a prediction, the prediction must be within ε of a good prediction.  If the learner outputs ⊥ , then it receives the answer to the question.</p>
+<p>This is easy to imagine in the case where there are 100 experts, one of which outputs predictions that are <a href="efficiency.html">efficient</a> relative to the other experts.  Upon receiving a question, the learner asks each expert for its prediction of the answer to the question (as a probability).  If all predictions by experts who have done well so far are within ε of each other, then the learner outputs one of these predictions.  Otherwise, the learner outputs ⊥, sees the human's answer to the question, and rewards/penalizes the experts according to their predictions.  Eventually, all experts either output good predictions or get penalized for outputting enough bad predictions over time.</p>
+<p>Unfortunately, it is hard to show KWIK-learnability for hypothesis classes more complicated than a small finite set of experts or a class of linear predictors.</p>
+<h1 id="furtherreading">Further reading</h1>
+<p><a href="active_learning_powerful_predictors.html">Active learning for opaque, powerful predictors</a></p></main><hr><footer><p class="likes"><h2>Likes</h2><span class="page-comma-list"><a class="page-link" href="../page/BenyaFallenstein.html">Benya Fallenstein</a>,
+ <a class="page-link" href="../page/RyanCarey2.html">Ryan Carey</a></span></p></footer></body></html>

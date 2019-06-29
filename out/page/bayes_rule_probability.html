@@ -1,0 +1,101 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Bayes' rule: Probability form</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="../MathJax-2.7.5/MathJax.js"></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">Bayes' rule: Probability form</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/bayes_rule_probability.json.html">bayes_rule_probability.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/bayes_rule_probability">https://arbital.com/p/bayes_rule_probability</a></p><p class="creator">by
+ <a class="page-link" href="../page/NateSoares.html">Nate Soares</a> Jul 6 2016 
+updated
+ Aug 13 2017</p></div><p class="clickbait">The original formulation of Bayes' rule.</p><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>Bayes' rule: Probability form</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="math.html">Mathematics</a></li><li><a href="probability_theory.html">Probability theory</a></li><li><a href="bayes_reasoning.html">Bayesian reasoning</a></li><li><a href="bayes_rule.html">Bayes' rule</a></li><li>…</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="rationality.html">Rationality</a></li><li><a href="probability_theory.html">Probability theory</a></li><li><a href="bayes_reasoning.html">Bayesian reasoning</a></li><li><a href="bayes_rule.html">Bayes' rule</a></li><li>…</li></ul></nav></nav></header><hr><main><p>[summary:  The formulation of <a href="bayes_rule.html">Bayes&#39; rule</a> you are most likely to see in textbooks says:</p>
+<p>$$~$\mathbb P(H_i\mid e) = \dfrac{\mathbb P(e\mid H_i) \cdot \mathbb P(H_i)}{\sum_k \mathbb P(e\mid H_k) \cdot \mathbb P(H_k)}$~$$</p>
+<p>This follows from the definition of <a href="conditional_probability.html">Conditional probability</a> which states that $~$\mathbb P(X \mid Y) = \frac{\mathbb P(X \wedge Y)}{\mathbb P (Y)}$~$, and the [law_marginal_probability law of marginal probability] which says that $~$\mathbb P(Y) = \sum_k \mathbb P(Y \wedge X_k)$~$.</p>
+<p>We can think of the corresponding advice as saying, "Think of how much each hypothesis in $~$H$~$ contributed to our expectation of seeing the evidence $~$e$~$, including both the <a href="bayesian_likelihood.html">likelihood</a> of seeing $~$e$~$ if $~$H_k$~$ is true, and the <a href="prior_probability.html">prior</a> probability of $~$H_k$~$.  The <a href="posterior_probability.html">posterior</a> of $~$H_i$~$ after seeing $~$e,$~$ is the amount $~$H_i$~$ contributed to our expectation of seeing $~$e,$~$ within the total expectation of seeing $~$e$~$ contributed by every hypothesis in $~$H.$~$]</p>
+<p>The formulation of <a href="bayes_rule.html">Bayes&#39; rule</a> you are most likely to see in textbooks runs as follows:</p>
+<p>$$~$\mathbb P(H_i\mid e) = \dfrac{\mathbb P(e\mid H_i) \cdot \mathbb P(H_i)}{\sum_k \mathbb P(e\mid H_k) \cdot \mathbb P(H_k)}$~$$</p>
+<p>Where:</p>
+<ul>
+<li>$~$H_i$~$ is the hypothesis we're interested in.</li>
+<li>$~$e$~$ is the piece of evidence we observed.</li>
+<li>$~$\sum_k (\text {expression containing } k)$~$ [summation_notation means] "Add up, for every $~$k$~$, the sum of all the (expressions containing $~$k$~$)."</li>
+<li>$~$\mathbf H$~$ is a set of <a href="exclusive_exhaustive.html">mutually exclusive and exhaustive</a> hypotheses that include $~$H_i$~$ as one of the possibilities, and the expression $~$H_k$~$ inside the sum ranges over all the possible hypotheses in $~$\mathbf H$~$.</li>
+</ul>
+<p>As a quick example, let's say there's a bathtub full of potentially biased coins.</p>
+<ul>
+<li>Coin type 1 is fair, 50% heads / 50% tails.  40% of the coins in the bathtub are type 1.</li>
+<li>Coin type 2 produces 70% heads.  35% of the coins are type 2.</li>
+<li>Coin type 3 produces 20% heads.  25% of the coins are type 3.</li>
+</ul>
+<p>We want to know the <a href="posterior_probability.html">posterior</a> probability that a randomly drawn coin is of type 2, after flipping the coin once and seeing it produce heads once.</p>
+<p>Let $~$H_1, H_2, H_3$~$ stand for the hypotheses that the coin is of types 1, 2, and 3 respectively.  Then using <a href="conditional_probability.html">conditional probability notation</a>, we want to know the probability $~$\mathbb P(H_2 \mid heads).$~$</p>
+<p>The probability form of Bayes' theorem says:</p>
+<p>$$~$\mathbb P(H_2 \mid heads) = \frac{\mathbb P(heads \mid H_2) \cdot \mathbb P(H_2)}{\sum_k \mathbb P(heads \mid H_k) \cdot \mathbb P(H_k)}$~$$</p>
+<p>Expanding the sum:</p>
+<p>$$~$\mathbb P(H_2 \mid heads) = \frac{\mathbb P(heads \mid H_2) \cdot \mathbb P(H_2)}{[\mathbb P(heads \mid H_1) \cdot \mathbb P(H_1)] + [\mathbb P(heads \mid H_2) \cdot \mathbb P(H_2)] + [\mathbb P(heads \mid H_3) \cdot \mathbb P(H_3)]}$~$$</p>
+<p>Computing the actual quantities:</p>
+<p>$$~$\mathbb P(H_2 \mid heads) = \frac{0.70 \cdot 0.35 }{[0.50 \cdot 0.40] + [0.70 \cdot 0.35] + [0.20 \cdot 0.25]} = \frac{0.245}{0.20 + 0.245 + 0.05} = 0.\overline{49}$~$$</p>
+<p>This calculation was big and messy.  Which is fine, because the probability form of Bayes' theorem is okay for directly grinding through the numbers, but not so good for doing things in your head.</p>
+<h1 id="meaning">Meaning</h1>
+<p>We can think of the advice of Bayes' theorem as saying:</p>
+<p>"Think of how much each hypothesis in $~$H$~$ contributed to our expectation of seeing the evidence $~$e$~$, including both the <a href="bayesian_likelihood.html">likelihood</a> of seeing $~$e$~$ if $~$H_k$~$ is true, and the <a href="prior_probability.html">prior</a> probability of $~$H_k$~$.  The <a href="posterior_probability.html">posterior</a> of $~$H_i$~$ after seeing $~$e,$~$ is the amount $~$H_i$~$ contributed to our expectation of seeing $~$e,$~$ within the total expectation of seeing $~$e$~$ contributed by every hypothesis in $~$H.$~$"</p>
+<p>Or to say it at somewhat greater length:</p>
+<p>Imagine each hypothesis $~$H_1,H_2,H_3\ldots$~$ as an expert who has to distribute the probability of their predictions among all possible pieces of evidence.  We can imagine this more concretely by visualizing "probability" as a lump of clay.</p>
+<p>The total amount of clay is one kilogram (probability $~$1$~$).  Each expert $~$H_k$~$ has been allocated a fraction $~$\mathbb P(H_k)$~$ of that kilogram.  For example, if $~$\mathbb P(H_4)=\frac{1}{5}$~$ then expert 4 has been allocated 200 grams of clay.</p>
+<p>We're playing a game with the experts to determine which one is the best predictor.</p>
+<p>Each time we're about to make an observation $~$E,$~$ each expert has to divide up all their clay among the possible outcomes $~$e_1, e_2, \ldots.$~$</p>
+<p>After we observe that $~$E = e_j,$~$ we take away all the clay that wasn't put onto $~$e_j.$~$  And then our new belief in all the experts is the relative amount of clay that each expert has left.</p>
+<p>So to know how much we now believe in expert $~$H_4$~$ after observing $~$e_3,$~$ say, we need to know two things:  First, the amount of clay that $~$H_4$~$ put onto $~$e_3,$~$ and second, the total amount of clay that all experts (including $~$H_4$~$) put onto $~$e_3.$~$</p>
+<p>In turn, to know <em>that,</em> we need to know how much clay $~$H_4$~$ started with, and what fraction of its clay $~$H_4$~$ put onto $~$e_3.$~$  And similarly, to compute the total clay on $~$e_3,$~$ we need to know how much clay each expert $~$H_k$~$ started with, and what fraction of their clay $~$H_k$~$ put onto $~$e_3.$~$</p>
+<p>So Bayes' theorem here would say:</p>
+<p>$$~$\mathbb P(H_4 \mid e_3) = \frac{\mathbb P(e_3 \mid H_4) \cdot \mathbb P(H_4)}{\sum_k \mathbb P(e_3 \mid H_k) \cdot \mathbb P(H_k)}$~$$</p>
+<p>What are the incentives of this game of clay?</p>
+<p>On each round, the experts who gain the most are the experts who put the most clay on the observed $~$e_j,$~$ so if you know for certain that $~$e_3$~$ is about to be observed, your incentive is to put all your clay on $~$e_3.$~$</p>
+<p>But putting <em>literally all</em> your clay on $~$e_3$~$ is risky; if $~$e_5$~$ is observed instead, you lose all your clay and are out of the game. Once an expert's amount of clay goes all the way to zero, there's no way for them to recover over any number of future rounds. That hypothesis is done, dead, and removed from the game.  ("Falsification," some people call that.)  If you're not certain that $~$e_5$~$ is literally impossible, you'd be wiser to put at least a <em>little</em> clay on $~$e_5$~$ instead.  That is to say: if your mind puts some probability on $~$e_5,$~$ you'd better put some clay there too!</p>
+<p>([bayes_score As it happens], if at the end of the game we score each expert by the logarithm of the amount of clay they have left, then each expert is incentivized to place clay exactly proportionally to their honest probability on each successive round.)</p>
+<p>It's an important part of the game that we make the experts put down their clay in advance.  If we let the experts put down their clay afterwards, they might be tempted to cheat by putting down all their clay on whichever $~$e_j$~$ had actually been observed.  But since we make the experts put down their clay in advance, they have to <em>divide up</em> their clay among the possible outcomes: to give more clay to $~$e_3,$~$ that clay has to be taken away from some other outcome, like $~$e_5.$~$  To put a very high probability on $~$e_3$~$ and gain a lot of relative credibility if $~$e_3$~$ is observed, an expert has to stick their neck out and risk losing a lot of credibility if some other outcome like $~$e_5$~$ happens instead.  <em>If</em> we force the experts to make advance predictions, that is!</p>
+<p>We can also derive from this game that the question "does evidence $~$e_3$~$ support hypothesis $~$H_4$~$?" depends on how well $~$H_4$~$ predicted $~$e_3$~$ <em>compared to the competition.</em> It's not enough for $~$H_4$~$ to predict $~$e_3$~$ well if every other hypothesis also predicted $~$e_3$~$ well--your amazing new theory of physics gets no points for predicting that the sky is blue.  $~$H_k$~$ only goes up in probability when it predicts $~$e_j$~$ better than the alternatives.  And that means we have to ask what the alternative hypotheses predicted, even if we think those hypotheses are false.</p>
+<p>If you get in a car accident, and don't want to relinquish the hypothesis that you're a great driver, then you can find all sorts of reasons ("the road was slippery! my car freaked out!") why $~$\mathbb P(e \mid GoodDriver)$~$ is not too low. But $~$\mathbb P(e \mid BadDriver)$~$ is also part of the update equation, and the "bad driver" hypothesis <em>better</em> predicts the evidence. Thus, your first impulse, when deciding how to update your beliefs in the face of a car accident, should not be "But my preferred hypothesis allows for this evidence!" It should instead be "Points to the 'bad driver' hypothesis for predicting this evidence better than the alternatives!"  (And remember, you're allowed to [update<em>beliefs</em>incrementally increase $~$\mathbb P(BadDriver)$~$ a little bit], while still thinking that it's less than 50% probable.)</p>
+<h1 id="proof">Proof</h1>
+<p>The proof of Bayes' theorem follows from the definition of <a href="conditional_probability.html">Conditional probability</a>:</p>
+<p>$$~$\mathbb P(X \mid Y) = \frac{\mathbb P(X \wedge Y)}{\mathbb P (Y)}$~$$</p>
+<p>And from the [law_marginal_probability law of marginal probability]:</p>
+<p>$$~$\mathbb P(Y) = \sum_k \mathbb P(Y \wedge X_k)$~$$</p>
+<p>Therefore:</p>
+<p>$$~$
+\mathbb P(H_i \mid e) = \frac{\mathbb P(H_i \wedge e)}{\mathbb P (e)}  \tag{defn. conditional prob.}
+$~$$</p>
+<p>$$~$
+\mathbb P(H_i \mid e) = \frac{\mathbb P(e \wedge H_i)}{\sum_k \mathbb P (e \wedge H_k)} \tag {law of marginal prob.}
+$~$$</p>
+<p>$$~$
+\mathbb P(H_i \mid e) = \frac{\mathbb P(e \mid H_i) \cdot \mathbb P(H_i)}{\sum_k \mathbb P (e \mid H_k) \cdot \mathbb P(H_k)} \tag {defn. conditional prob.}
+$~$$</p>
+<p>QED.</p></main><hr><section class="comments"><h2>Comments</h2><div class="comment"><p><a class="page-link" href="../page/AdamKing.html">Adam King</a></p><p><p>This experts-with-clay analogy I found EXTREMELY helpful. I appreciate different explanations work for different people, but I really do think this could have come a LOT earlier in the essay. </p></p></div><div class="comment"><p><a class="page-link" href="../page/DewiMorgan.html">Dewi Morgan</a></p><p><blockquote class="comment-context">If you get in a car accident, and don't want to relinquish the hypothesis that you're a great driver, then you can find all sorts of reasons \("the road was slippery\! my car freaked out\!"\) why $~$\\mathbb P(e \\mid GoodDriver)$~$ is not too low\. But $~$\\mathbb P(e \\mid BadDriver)$~$ is also part of the update equation, and the "bad driver" hypothesis better predicts the evidence\. Thus, your first impulse, when deciding how to update your beliefs in the face of a car accident, should not be "But my preferred hypothesis allows for this evidence\!" It should instead be "Points to the 'bad driver' hypothesis for predicting this evidence better than the alternatives\!"  \(And remember, <mark>you're allowed to increase $~$\\mathbb P(BadDriver)$~$ a little bit,</mark> while still thinking that it's less than 50% probable\.\)</blockquote>
+<blockquote>
+  <p>"you're allowed to increase P(BadDriver) a little bit,"</p>
+</blockquote>
+<p>No, you're really not.</p>
+<p>You're only allowed to <em>replace</em> P(BadDriver) with P(BadDriver|HadOneAccident).</p>
+<p>If you have a second accident, you replace that in turn with P(BadDriver|HadOneAccident^HadASecondAccident), which if you are rational you might reexamine and update to P(BadDriver|HadTwoAccidents^HadQuiteALotOfNearMissesIfWeAreBeingHonest)</p>
+<p>But my point is, when applying each new piece of evidence, you have to remember the conditions that caused you to get your current probability, or you end up with naive Bayes and after seeing a few new bookcases you believe in aliens.</p></p></div></section><footer><p class="tagged"><h2>Tagged</h2><span class="page-comma-list"><a class="page-link" href="../page/b_class_meta_tag.html">B-Class</a></span></p><p class="all-creators"><h2>All Creators</h2><span class="page-comma-list"><a class="page-link" href="../page/AdomHartell.html">Adom Hartell</a>,
+ <a class="page-link" href="../page/EliezerYudkowsky.html">Eliezer Yudkowsky</a>,
+ <a class="page-link" href="../page/EricRogstad.html">Eric Rogstad</a>,
+ <a class="page-link" href="../page/NadeemMohsin.html">Nadeem Mohsin</a>,
+ <a class="page-link" href="../page/NateSoares.html">Nate Soares</a></span></p><p class="likes"><h2>Likes</h2><span class="page-comma-list"><a class="page-link" href="../page/AdamKing.html">Adam King</a>,
+ <a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a>,
+ <a class="page-link" href="../page/GlennField.html">Glenn Field</a>,
+ <a class="page-link" href="../page/JuanCLavariega.html">Juan C Lavariega</a>,
+ <a class="page-link" href="../page/KatherineSavoie2.html">Katherine Savoie</a>,
+ <a class="page-link" href="../page/NateSoares.html">Nate Soares</a>,
+ <a class="page-link" href="../page/PierreThierry.html">Pierre Thierry</a></span></p><p class="reverse-related"><h2>Reverse Related</h2><ul class="page-list"><li><a class="page-link" href="../page/b_class_meta_tag.html">B-Class</a> <q>This page is mostly complete and without major problems, but has not had detailed feedback from the target audience and reviewers.</q> - <a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a></li></ul></p><p class="children"><h2>Children</h2><ul class="page-tree"><li><a class="page-link" href="../page/bayes_odds_to_probability.html">Odds form to probability form</a> <q>The odds form of Bayes' rule works for any two hypotheses $H_i$ and $H_j,$ and looks like this:
+
+$$\…</q> - <a class="page-link" href="../page/NateSoares.html">Nate Soares</a></li><li><a class="page-link" href="../page/bayes_rule_probability_proof.html">Proof of Bayes' rule: Probability form</a> <q>Let $\mathbf H$ be a [random\_variable variable] in $\mathbb P$ for the true hypothesis, and let $H_…</q> - <a class="page-link" href="../page/NateSoares.html">Nate Soares</a></li></ul></p></footer></body></html>

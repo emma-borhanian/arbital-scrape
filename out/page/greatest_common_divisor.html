@@ -1,0 +1,34 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Greatest common divisor</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="../MathJax-2.7.5/MathJax.js"></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">Greatest common divisor</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/greatest_common_divisor.json.html">greatest_common_divisor.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/greatest_common_divisor">https://arbital.com/p/greatest_common_divisor</a></p><p class="creator">by
+ <a class="page-link" href="../page/PatrickStevens.html">Patrick Stevens</a> Jul 28 2016 
+updated
+ Aug 4 2016</p></div><p class="clickbait">The greatest common divisor of two natural numbers is… the largest number which is a divisor of both. The clue is in the name, really.</p><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>Greatest common divisor</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="math.html">Mathematics</a></li><li>…</li></ul></nav></nav></header><hr><main><p>[summary: The greatest common divisor of two <a href="natural_number.html">natural numbers</a> is the largest number which divides both of them.]</p>
+<p>There are two ways to define the <strong>greatest common divisor</strong> (also known as <strong>greatest common factor</strong>, or <strong>highest common factor</strong>), both equivalent.</p>
+<p>The first definition is as the name suggests: the GCD of $~$a$~$ and $~$b$~$ is the largest number which divides both $~$a$~$ and $~$b$~$.</p>
+<p>The second definition is the more "mathematical", because it generalises to arbitrary <a href="algebraic_ring.html">rings</a> rather than just <a href="ordered_ring.html">ordered rings</a>.
+The GCD of $~$a$~$ and $~$b$~$ is the number $~$c$~$ such that $~$c \mid a$~$, $~$c \mid b$~$, and whenever $~$d \mid a$~$ and $~$d \mid b$~$, we have $~$d \mid c$~$.
+(That is, it is the maximal element of the <a href="poset.html">Partially ordered set</a> that consists of the divisors of $~$a$~$ and $~$b$~$, ordered by division.)</p>
+<h1 id="examples">Examples</h1>
+<p>[todo: show the two different definitions in action and how they prepare]</p>
+<h1 id="equivalenceofthedefinitions">Equivalence of the definitions</h1>
+<p>[todo: prove this]</p>
+<h1 id="relationtoprimefactorisations">Relation to prime factorisations</h1>
+<p>[todo: algorithm given access to prime factorisations; explain why this is unhelpful]</p>
+<h1 id="calculatingthegcdefficiently">Calculating the GCD efficiently</h1>
+<p>[todo: link to Euclidean algorithm]</p></main><hr><footer><p class="tagged"><h2>Tagged</h2><span class="page-comma-list"><a class="page-link" href="../page/needs_parent_meta_tag.html">Needs parent</a>,
+ <a class="page-link" href="../page/stub_meta_tag.html">Stub</a></span></p><p class="all-creators"><h2>All Creators</h2><span class="page-comma-list"><a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a>,
+ <a class="page-link" href="../page/PatrickStevens.html">Patrick Stevens</a></span></p><p class="reverse-related"><h2>Reverse Related</h2><ul class="page-list"><li><a class="page-link" href="../page/needs_parent_meta_tag.html">Needs parent</a> <q>This page is not attached to an appropriate parent page. If you know where it should go, please help categorize it!</q> - <a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a></li><li><a class="page-link" href="../page/stub_meta_tag.html">Stub</a> <q>This page only gives a very brief overview of the topic. If you're able to, please help expand or improve it!</q> - <a class="page-link" href="../page/EliezerYudkowsky.html">Eliezer Yudkowsky</a></li></ul></p><p class="children"><h2>Children</h2><ul class="page-tree"><li><a class="page-link" href="../page/bezout_theorem.html">Bézout's theorem</a> <q>Bézout's theorem is an important link between highest common factors and the integer solutions of a certain equation.</q> - <a class="page-link" href="../page/PatrickStevens.html">Patrick Stevens</a></li></ul></p></footer></body></html>

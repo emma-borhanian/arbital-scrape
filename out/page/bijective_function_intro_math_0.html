@@ -1,0 +1,40 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Bijective Function: Intro (Math 0)</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="../MathJax-2.7.5/MathJax.js"></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">Bijective Function: Intro (Math 0)</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/bijective_function_intro_math_0.json.html">bijective_function_intro_math_0.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/bijective_function_intro_math_0">https://arbital.com/p/bijective_function_intro_math_0</a></p><p class="creator">by
+ <a class="page-link" href="../page/MarkChimes.html">Mark Chimes</a> Jul 12 2016</p></div><p class="clickbait">Two boxes are bijective if they contain the same number of items.</p><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>Bijective Function: Intro (Math 0)</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="math.html">Mathematics</a></li><li><a href="function.html">Function</a></li><li><a href="bijective_function.html">Bijective function</a></li><li>…</li></ul></nav></nav></header><hr><main><h2 id="comparingamounts">Comparing Amounts</h2>
+<p>Consider the Count von Count. He cares only about counting things. He doesn't care what they are, just how many there are. He decides that he wants to collect items into plastic crates, and he considers two crates equal if both contain the same number of items. </p>
+<p><img src="http://i.imgur.com/sG7Qfyv.jpg" alt="Equivalent Crates" /></p>
+<p>Now Elmo comes to visit, and he wants to impress the Count, but Elmo is not great at counting. Without counting them explicitly, how can Elmo tell if two crates contain the same number of items?</p>
+<p>Well, he can take one item out of each crate and put the pair to one side.</p>
+<p><img src="https://i.imgur.com/myTqIrRl.jpg" alt="Pairing one pair of items" /></p>
+<p>He continues pairing items up in this way and when one crate runs out he checks if there are any left over in the other crate. If there aren't any left over, then he knows there were the same number of items in both crates. </p>
+<p><img src="https://i.imgur.com/S87JO2nl.jpg" alt="Pairing all items in one crate with items in the other" /></p>
+<p>Since the Count von Count only cares about counting things, the two crates are basically equivalent, and might as well be the same crate to him. Whenever two objects are the same from a certain perspective, we say that they are <strong>isomorphic</strong>.</p>
+<p>In this example, the way in which the crates were the same is that each item in one crate could be paired with an item in the other.</p>
+<p><img src="https://i.imgur.com/S87JO2nl.jpg" alt="Pairing all items in one box with items in the other" /></p>
+<p><img src="https://i.imgur.com/53YbraFl.jpg" alt="Bijection between crates" /></p>
+<p>This wouldn't have been possible if the crates had different numbers of items in them.</p>
+<p><img src="https://i.imgur.com/F5rLwAsl.jpg" alt="Different numbers of items" /></p>
+<p><img src="https://i.imgur.com/KCI9UOvl.jpg" alt="No way to pair items" /></p>
+<p>Whenever you can match each item in one collection with exactly one item in another collection, we say that the collections are <strong><a href="bijective_function.html">bijective</a></strong> and the way you paired them is a <strong><a href="bijective_function.html">bijection</a></strong>. A bijection is a specific kind of isomorphism.</p>
+<p><img src="https://i.imgur.com/53YbraFl.jpg" alt="Bijection between crates" /></p>
+<p>Note that there might be many different bijections between two bijective things.</p>
+<p><img src="http://i.imgur.com/Q6Si1ZX.png" alt="Another bijection between crates" /></p>
+<p>In fact, all that counting involves is pairing up the things you want to count, either with your fingers, or with the concepts of 'numbers' in your head. If there are as many objects in one crate as there are numbers from one to seven, and there are as many objects in another crate as numbers from one to seven, then both crates contain the same number of objects.</p></main><hr><section class="comments"><h2>Comments</h2><div class="comment"><p><a class="page-link" href="../page/NateSoares.html">Nate Soares</a></p><p><p>I suggest adding more negative examples. (It's hard to learn a concept from only positive examples.)</p></p></div><div class="comment"><p><a class="page-link" href="../page/MarkChimes.html">Mark Chimes</a></p><p><p>Thanks <a href="NateSoares.html">Nate Soares</a>!</p>
+<p>Yeah the page is still under development and I'm planning to add more negative examples as I go along. It was just copy-pasted from the <a href="Isomorphism_intro_math_0.html">Isomorphism: Intro (Math 0)</a> page to have <em>something</em> here to start.</p>
+<p>Do you feel the isomorphism page should have more negative examples for bijections? Or that it's long enough already?</p></p></div></section><footer><p class="tagged"><h2>Tagged</h2><span class="page-comma-list"><a class="page-link" href="../page/Isomorphism_intro_math_0.html">Isomorphism: Intro (Math 0)</a>,
+ <a class="page-link" href="../page/math0.html">Math 0</a>,
+ <a class="page-link" href="../page/work_in_progress_meta_tag.html">Work in progress</a></span></p><p class="likes"><h2>Likes</h2><span class="page-comma-list"><a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a></span></p><p class="reverse-related"><h2>Reverse Related</h2><ul class="page-list"><li><a class="page-link" href="../page/math0.html">Math 0</a> <q>Are you not actively bad at math, nor traumatized about math?</q> - <a class="page-link" href="../page/EliezerYudkowsky.html">Eliezer Yudkowsky</a></li><li><a class="page-link" href="../page/work_in_progress_meta_tag.html">Work in progress</a> <q>This page is being actively worked on by an editor. Check with them before making major changes.</q> - <a class="page-link" href="../page/EliezerYudkowsky.html">Eliezer Yudkowsky</a></li></ul></p></footer></body></html>

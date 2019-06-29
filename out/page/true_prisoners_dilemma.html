@@ -1,0 +1,72 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>True Prisoner's Dilemma</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="../MathJax-2.7.5/MathJax.js"></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">True Prisoner's Dilemma</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/true_prisoners_dilemma.json.html">true_prisoners_dilemma.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/true_prisoners_dilemma">https://arbital.com/p/true_prisoners_dilemma</a></p><p class="creator">by
+ <a class="page-link" href="../page/EliezerYudkowsky.html">Eliezer Yudkowsky</a> Aug 1 2016 
+updated
+ Oct 16 2016</p></div><p class="clickbait">A scenario that would reproduce the ideal payoff matrix of the Prisoner's Dilemma about human beings who care about their public reputation and each other.</p><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>True Prisoner's Dilemma</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="decision_theory.html">Decision theory</a></li><li><a href="logical_dt.html">Logical decision theories</a></li><li><a href="newcomblike.html">Newcomblike decision problems</a></li><li><a href="prisoners_dilemma.html">Prisoner's Dilemma</a></li><li>…</li></ul></nav></nav></header><hr><main><p>[summary:  Many people object to the original <a href="prisoners_dilemma.html">Prisoner&#39;s Dilemma</a> on the grounds that real human beings care about their future reputations, care about other people, feel an explicit desire to act honorably, and so on.  A "True Prisoner's Dilemma" is meant to reproduce the ideal payoff matrix of the Prisoner's Dilemma in a way that answers some or all of these objections.  Examples include:</p>
+<ul>
+<li>Two executives of a charity, each of whom knows something damaging about the other charity, both of whom think their own causes are more important or valuable, talking to a potential donor with limited money to split between them.</li>
+<li>Two people on a one-time dinner date, each of whom can potentially do something to make life happier for the other at a smaller but significant cost to themselves, neither of whom wants to incur the overhead of talking about it explicitly.</li>
+<li>Humans negotiating with a <a href="paperclip_maximizer.html">Paperclip maximizer</a>.]</li>
+</ul>
+<p>A "True Prisoner's Dilemma" is a scenario intended to reproduce the ideal payoff matrix of the <a href="prisoners_dilemma.html">Prisoner&#39;s Dilemma</a> for realistic human beings that care about, e.g., their public reputation, and the welfare of other human beings.  (For example, in the traditional presentation of the Prisoner's Dilemma as a question of whether a prisoner under arrest should testify against their fellow prisoner, somebody might reply, "I care about my confederate" or "I wouldn't want to get a reputation among my fellow criminals for turning traitor.")</p>
+<h1 id="examples">Examples</h1>
+<h2 id="thetwocharities">The two charities</h2>
+<p>Two charities are in private talks with a potential donor, Mr. BadRich, who is considering donating roughly \$10M to each of them.</p>
+<p>Mr. BadRich made his money selling collateralized debt obligations, that he knew were going to implode, to pension funds.  Mr. BadRich will spend all of the money <em>not</em> given to charity on speedboats.  There is no moral level on which we prefer Mr. BadRich to end up with more money at the end of this dilemma.  We don't feel strongly that we are obliged to share with Mr. BadRich every possible piece of info that might lead to him donating less. </p>
+<p>The values and/or beliefs of the chief executives of both charities, are such as to make each executive honestly consider that money given to them is much more valuable than money given to the other charity.  For example, the two charities could be the Against Malaria Foundation and Effective Animal Altruists:</p>
+<ul>
+<li>Effective Animal Altruists considers animal's lives as valuable in the first order, and believes that it is saving thousands of times as many lives, or preventing thousands of times as much real suffering, per dollar, as the AMF.</li>
+<li>The Against Malaria Foundation thinks that those animal's lives are not commensurate with human lives, and that it is much more important to prevent children from dying of malaria than to prevent <em>any number</em> of dead chickens.</li>
+</ul>
+<p>Sometime this week, Mr. BadRich is <em>separately</em> interviewing the chief executives of the EAA and AMF.  It seems quite likely that nobody else will ever hear what is said in these confidential discussions.</p>
+<p>Both the CEO of the EAA, and the CEO of the AMF, know some damaging facts about the other organization--say, a piece of mismanagement by an employee who was since fired, or a lawsuit that was settled out of court.  If one CEO describes what they know about the organization, Mr. BadRich will donate less to the other organization, and <em>some</em> of the money freed up will go to theirs.  If both CEOs describe what they know of the other organization, Mr. BadRich will donate less to both.</p>
+<p>Mr. BadRich behaves randomly to some extent, and wasn't going to donate exactly equal amounts to both organizations in any case, so the CEOs can't figure out for sure what happened just by looking at the outcomes.</p>
+<p>At the point where this dilemma occurs, both CEOs know it has happened or will happen with the other CEO; but neither CEO has previously made any promise to the other not to discuss this <em>true</em> information that they know about the other organization with the other organization's potential donors.</p>
+<p>The expected outcomes:</p>
+<ul>
+<li>If both CEOs stay silent, Mr. BadRich will donate 3d6 million dollars to both (roll 3 six-sided dice, add up the results, that is how many millions Mr. BadRich donates to that charity).</li>
+<li>If one CEO stays silent and the other testifies, Mr. BadRich will donate \$3-5M to the testified-against organization, and \$14-18M to the other.</li>
+<li>If both CEOs testify, Mr. BadRich will donate 2d6+1 million dollars to both organizations.</li>
+</ul>
+<h2 id="thedisagreeingdoctors">The disagreeing doctors</h2>
+<p>You are one of two doctors dealing with a malaria epidemic in your village.  At least, you think it's a malaria epidemic.  The other doctor thinks it's an outbreak of bird flu.  In your opinion, the other doctor is a stubborn fool and you do not think that <a href="https://en.wikipedia.org/wiki/Aumann%27s_agreement_theorem">Aumann's Agreement Theorem</a> calls for you to update on their opinion.  The other doctor has no idea what Aumann's Agreement Theorem is, doesn't want to hear about it, and thinks that all this talk of probability theory is silly math stuff; which, from your viewpoint, tends to confirm your own decision there.</p>
+<p>Each of you is in contact with one of two medical suppliers, both of whom, for insurance reasons, can only sell to one doctor but not the other.  As it so happens, the supplier who can sell to you charges \$200 per unit of malaria medication and \$100 per unit of bird-flu medication.  The other supplier charges \$100 per unit of malaria medication and \$200 per unit of bird-flu medication.  (This being totally realistic for a US-style medical system.)</p>
+<p>Each of you has \$50,000 to spend on medicine with your supplier.  You have no way to verify what order was actually made, except the other's word.  (The supplier only communicates via email, and it would be easy to fake an email showing a false invoice.)</p>
+<p>Once the medicine <em>actually arrives,</em> it will rapidly become clear who was right about the real cause of the epidemic.  Both of you fully expect that, if you Defect and then the other doctor proves to be wrong, they will embrace you and thank you for doing the right thing despite their own blindness.</p>
+<p>Do you order malaria medication from your supplier, or bird-flu medication?</p>
+<h2 id="humansandpaperclipmaximizer">Humans and paperclip maximizer</h2>
+<p>(Not quite as pseudo-realistic, but included for historical reasons as it was the <a href="http://lesswrong.com/lw/tn/the_true_prisoners_dilemma/">first scenario advertised</a> as a "True Prisoner's Dilemma".)</p>
+<p>The human species is bargaining with a <a href="paperclip_maximizer.html">Paperclip maximizer</a>.  Five billion human beings, not the whole human species, but a significant part of it, are progressing through a fatal disease that can only be cured by Substance S.</p>
+<p>Substance S can also be used to make paperclips.</p>
+<p>You and the paperclip maximizer must cooperate in order to produce Substance S, but you can both steal some of the Substance S from the production line at the cost of reducing the total amount produced.</p>
+<p>The payoff matrix is as follows:</p>
+<ul>
+<li>If humans and the paperclip maximizer both Cooperate, an expected 3 billion human lives will be saved, and an expected 30 paperclips will be produced (with some random variation).</li>
+<li>If humans and the paperclip maximizer both Defect, 2 billion human lives will be saved and 20 expected paperclips produced.</li>
+<li>If humans Defect and the paperclip maximizer Cooperates, 4 billion human lives will be saved and 10 paperclips produced.</li>
+<li>If the paperclip maximizer Defects and the humans Cooperate, 1 billion human lives will be saved and 40 paperclips produced.</li>
+</ul>
+<p>The paperclip maximizer has no sense of honor or reputation built into its utility function, which is only over the number of paperclips in the universe.  It has no subjective experiences and will not feel betrayed if you betray it; it will simply end up with fewer paperclips.  In fact, shortly after this, the Paperclip maximizer will disassemble itself to make paperclips and leave its remaining work to automatic machinery; it will never even find out how many paperclips were actually produced from Substance S.</p>
+<p>This version of the dilemma was intended to make sure that the reader really, truly <em>preferred</em> their payoff from Defect, Cooperate to their payoff from Cooperate, Cooperate, even taking into account any ideals they had about the Prisoner's Dilemma.  But the setup retains the question of what a 'rational' agent does in this situation; the fact that the paperclip maximizer is also rational; and that both agents prefer the Cooperate, Cooperate outcome to the Defect, Defect outcome.</p>
+<h2 id="dinnerdateandunspokenchoices">Dinner date and unspoken choices.</h2>
+<p>Two people, each of whom is a member of an appropriate gender for the other, are on a one-time dinner date.  One of them is visiting from out-of-town, and is unlikely to return to that particular city.</p>
+<ul>
+<li>Each of them faces some minor choice over the course of the evening about whether to do something that everyone in their culture would agree is their own individual option to do, but also regard as healthy to be nice about for the sake of the other person, even if it's not exactly what that person would individually want if they were strictly selfish.</li>
+<li>"Defection" saves them 1 hedon and costs the other 2 hedons, even after taking account that they care to <em>some</em> degree about the other but are not perfectly altruistic towards them.</li>
+<li>Both would mildly prefer the world in which they both "cooperate" to the world in which they both "defect".</li>
+<li>Neither wants to risk the overhead costs of starting a long conversation about it with the other.</li>
+</ul></main><hr><footer></footer></body></html>

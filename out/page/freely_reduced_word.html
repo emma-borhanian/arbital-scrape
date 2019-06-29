@@ -1,0 +1,87 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Freely reduced word</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="../MathJax-2.7.5/MathJax.js"></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">Freely reduced word</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/freely_reduced_word.json.html">freely_reduced_word.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/freely_reduced_word">https://arbital.com/p/freely_reduced_word</a></p><p class="creator">by
+ <a class="page-link" href="../page/PatrickStevens.html">Patrick Stevens</a> Jul 22 2016 
+updated
+ Jul 25 2016</p></div><p class="clickbait">&quot;Freely reduced&quot; captures the idea of &quot;no cancellation&quot; in a free group.</p><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>Freely reduced word</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="math.html">Mathematics</a></li><li>…</li></ul></nav></nav></header><hr><main><p>[todo: make Free Group a parent of this]</p>
+<p>[todo: make the summary a bit better]
+[summary: A "word" over a set $~$X$~$ is a finite ordered list of elements from $~$X$~$ and $~$X^{-1}$~$ (where $~$X^{-1}$~$ is the set of formal inverses of the elements of $~$X$~$), as if we were treating the elements of $~$X$~$ and $~$X^{-1}$~$ as letters of an alphabet. A "freely reduced" word over $~$X$~$ is one which doesn't contain any consecutive cancelling letters such as $~$x x^{-1}$~$.]</p>
+<p>Given a <a href="set_mathematics.html">set</a> $~$X$~$, we can make a new set $~$X^{-1}$~$ consisting of "formal inverses" of elements of $~$X$~$.
+That is, we create a set of new symbols, one for each element of $~$X$~$, which we denote $~$x^{-1}$~$; so $$~$X^{-1} = \{ x^{-1} \mid x \in X \}$~$$</p>
+<p>By this stage, we have not given any kind of meaning to these new symbols.
+Though we have named them suggestively as $~$x^{-1}$~$ and called them "inverses", they are at this point just objects.</p>
+<p>Now, we apply meaning to them, giving them the flavour of group inverses, by taking the <a href="set_union.html">union</a> $~$X \cup X^{-1}$~$ and making finite "words" out of this combined "alphabet".</p>
+<p>A finite word over $~$X \cup X^{-1}$~$ consists of a list of symbols from $~$X \cup X^{-1}$~$.
+For example, if $~$X = \{ 1, 2 \}$~$ %%note:Though in general $~$X$~$ need not be a set of numbers.%%, then some words are:</p>
+<ul>
+<li>The empty word, which we commonly denote $~$\varepsilon$~$</li>
+<li>$~$(1)$~$</li>
+<li>$~$(2)$~$</li>
+<li>$~$(2^{-1})$~$</li>
+<li>$~$(1, 2^{-1}, 2, 1, 1, 1, 2^{-1}, 1^{-1}, 1^{-1})$~$</li>
+</ul>
+<p>For brevity, we usually write a word by just concatenating the "letters" from which it is made:</p>
+<ul>
+<li>The empty word, which we commonly denote $~$\varepsilon$~$</li>
+<li>$~$1$~$</li>
+<li>$~$2$~$</li>
+<li>$~$2^{-1}$~$</li>
+<li>$~$1 2^{-1} 2 1 1 1 2^{-1} 1^{-1} 1^{-1}$~$</li>
+</ul>
+<p>For even more brevity, we can group together successive instances of the same letter.
+This means we could also write the last word as $~$1 2^{-1} 2 1^3 2^{-1} 1^{-2}$~$.</p>
+<p>Now we come to the definition of a <strong>freely reduced</strong> word: it is a word which has no subsequence $~$r r^{-1}$~$ or $~$r^{-1} r$~$ for any $~$r \in X$~$.</p>
+<h1 id="example">Example</h1>
+<p>If $~$X = \{ a, b, c \}$~$, then we might write $~$X^{-1}$~$ as $~$\{ a^{-1}, b^{-1}, c^{-1} \}$~$ (or, indeed, as $~$\{ x, y, z \}$~$, because there's no meaning inherent in the $~$a^{-1}$~$ symbol so we might as well write it as $~$x$~$).</p>
+<p>Then $~$X \cup X^{-1} = \{ a,b,c, a^{-1}, b^{-1}, c^{-1} \}$~$, and some examples of words over $~$X \cup X^{-1}$~$ are:</p>
+<ul>
+<li>The empty word, which we commonly denote $~$\varepsilon$~$</li>
+<li>$~$a$~$</li>
+<li>$~$aaaa$~$</li>
+<li>$~$b$~$</li>
+<li>$~$b^{-1}$~$</li>
+<li>$~$ab$~$</li>
+<li>$~$ab^{-1}cbb^{-1}c^{-1}$~$</li>
+<li>$~$aa^{-1}aa^{-1}$~$</li>
+</ul>
+<p>Of these, all except the last two are freely reduced.
+However, $~$ab^{-1}cbb^{-1}c^{-1}$~$ contains the substring $~$bb^{-1}$~$, so it is not freely reduced; and $~$aa^{-1}aa^{-1}$~$ is not freely reduced (there are several ways to see this: it contains $~$aa^{-1}$~$ twice and $~$a^{-1} a$~$ once).</p>
+<p>%%hidden(Alternative, more opaque, treatment which might help with one aspect):
+This chunk is designed to get you familiar with the idea that the symbols $~$a^{-1}$~$, $~$b^{-1}$~$ and so on in $~$X^{-1}$~$ don't have any inherent meaning.</p>
+<p>If we had (rather perversely) gone with $~$\{ x, y, z \}$~$ as the corresponding "inverses" to $~$\{ a, b, c \}$~$ (in that order), rather than $~$\{ a^{-1}, b^{-1}, c^{-1} \}$~$ as our "inverses" %%note:Which you should never do. It just makes things harder to read.%%, then the above words would look like:</p>
+<ul>
+<li>The empty word, which we commonly denote $~$\varepsilon$~$</li>
+<li>$~$a$~$</li>
+<li>$~$aaaa$~$, which we might also write as $~$a^4$~$</li>
+<li>$~$b$~$</li>
+<li>$~$y$~$</li>
+<li>$~$ab$~$</li>
+<li>$~$aycbyz$~$</li>
+<li>$~$axax$~$</li>
+</ul>
+<p>For the same reasons, all but the last two would be freely reduced.
+However, $~$aycbyz$~$ contains the substring $~$by$~$ so it is not freely reduced; and $~$axax$~$ is not freely reduced (there are several ways to see this: it contains $~$ax$~$ twice and $~$xa$~$ once).
+%%</p>
+<h1 id="whyareweinterestedinthis">Why are we interested in this?</h1>
+<p>We can use the freely reduced words to construct the <a href="free_group.html">Free group</a> on a given set $~$X$~$; this group has as its elements the freely reduced words over $~$X \cup X^{-1}$~$, and as its group operation "concatenation followed by free reduction" (that is, removal of pairs $~$r r^{-1}$~$ and $~$r^{-1} r$~$). %%note:We make this construction properly rigorous, and check that it is indeed a group, on the <a href="free_group.html">Free group</a> page.%%
+The notion of "freely reduced" basically tells us that $~$r r^{-1}$~$ is the identity for every letter $~$r \in X$~$, as is $~$r^{-1} r$~$; this cancellation of inverses is a property we very much want out of a group.</p>
+<p>The free group is (in a certain well-defined sense from <a href="category_theory.html">Category theory</a>%%note:See [free_group_functor_is_left_adjoint_to_forgetful] for the rather advanced reason why.%%) the purest way of making a group containing the elements $~$X$~$, but to make it, we need to throw in inverses for every element of $~$X$~$, and then make sure the inverses play nicely with the original elements (which we do by free reduction).
+That is why we need "freely-reducedness".</p></main><hr><section class="comments"><h2>Comments</h2><div class="comment"><p><a class="page-link" href="../page/EricRogstad.html">Eric Rogstad</a></p><p><blockquote class="comment-context">We can use the freely reduced words to construct the free group on a given set $~$X$~$; <mark>this group has as its elements the words</mark> over $~$X \\cup X^{-1}$~$, and as its group operation "concatenation followed by free reduction" \(that is, removal of pairs $~$r r^{-1}$~$ and $~$r^{-1} r$~$\)\.
+The notion of "freely reduced" basically tells us that $~$r r^{-1}$~$ is the identity for every letter $~$r \\in X$~$, as is $~$r^{-1} r$~$; this cancellation of inverses is a property we very much want out of a group\.</blockquote>
+<p>Are all the words in the free group, or just the freely-reduced words?</p>
+<p>If the latter, does saying that the group operation involves free reduction imply that only freely-reduced words will end up in the free group? Because, by default I would assume that "the group has as its element the words over $~$X \cup X^{-1}$~$" means that all the words (including non-freely-reduced ones) are in the free group.</p></p></div></section><footer><p class="tagged"><h2>Tagged</h2><span class="page-comma-list"><a class="page-link" href="../page/needs_parent_meta_tag.html">Needs parent</a></span></p><p class="all-creators"><h2>All Creators</h2><span class="page-comma-list"><a class="page-link" href="../page/EricRogstad.html">Eric Rogstad</a>,
+ <a class="page-link" href="../page/PatrickStevens.html">Patrick Stevens</a></span></p><p class="likes"><h2>Likes</h2><span class="page-comma-list"><a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a>,
+ <a class="page-link" href="../page/EricRogstad.html">Eric Rogstad</a></span></p><p class="reverse-related"><h2>Reverse Related</h2><ul class="page-list"><li><a class="page-link" href="../page/needs_parent_meta_tag.html">Needs parent</a> <q>This page is not attached to an appropriate parent page. If you know where it should go, please help categorize it!</q> - <a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a></li></ul></p></footer></body></html>

@@ -1,0 +1,164 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Universal property of the product</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="../MathJax-2.7.5/MathJax.js"></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">Universal property of the product</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/product_universal_property.json.html">product_universal_property.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/product_universal_property">https://arbital.com/p/product_universal_property</a></p><p class="creator">by
+ <a class="page-link" href="../page/PatrickStevens.html">Patrick Stevens</a> Aug 25 2016 
+updated
+ Oct 7 2016</p></div><p class="clickbait">The product can be defined in a very general way, applicable to the natural numbers, to sets, to algebraic structures, and so on.</p><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>Universal property of the product</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="math.html">Mathematics</a></li><li><a href="category_theory.html">Category theory</a></li><li><a href="product_category_theory.html">Product (Category Theory)</a></li><li>…</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="math.html">Mathematics</a></li><li><a href="category_theory.html">Category theory</a></li><li><a href="universal_property.html">Universal property</a></li><li>…</li></ul></nav></nav></header><hr><main><p>[summary: We can define the general notion of "product" to coincide with the product of natural numbers and with the <a href="set_product.html">Set product</a>, by means of a <a href="universal_property.html">Universal property</a> that the product has.
+Specifically, the product of objects $~$A$~$ and $~$B$~$ is an object denoted $~$A \times B$~$ together with maps $~$\pi_A : A \times B \to A$~$ and $~$\pi_B: A \times B \to B$~$, such that for every object $~$X$~$ and every pair of maps $~$f_A: X \to A$~$ and $~$f_B: X \to B$~$, there is a unique map $~$\gamma: X \to A \times B$~$ such that $~$\pi_A \circ \gamma = f_A$~$ and $~$\pi_B \circ \gamma = f_B$~$.]</p>
+<p>[summary(Technical): The <em>product</em> of objects $~$A$~$ and $~$B$~$ is a certain tuple $~$(P, \pi_A, \pi_B)$~$, where $~$\pi_A$~$ is an arrow $~$P \to A$~$ and $~$\pi_B$~$ is an arrow $~$P \to B$~$. We require the product to satisfy the following <a href="universal_property.html">Universal property</a>: for every object $~$X$~$ and every pair of arrows $~$f: X \to A, g: X \to B$~$, there must be a unique factorisation $~$\gamma: X \to P$~$ satisfying $~$\pi_A \gamma = f$~$ and $~$\pi_B \gamma = g$~$.]</p>
+<p>Just as we can define the <a href="empty_set.html">Empty set</a> by means of a <a href="universal_property.html">Universal property</a> (<a href="empty_set_universal_property.html">like this</a>, in fact), so we can define the general notion of a "product" by referring not to what is in the product, but instead to how the product interacts with other objects.</p>
+<h1 id="motivation">Motivation</h1>
+<p>The motivating example here is the <a href="set_product.html">product of two sets</a>.</p>
+<p>Remember, the product of two sets $~$A$~$ and $~$B$~$ consists of all ordered pairs, the first element from $~$A$~$ and the second element from $~$B$~$.
+Category theory likes to think about <em>maps involving an object</em> rather than <em>elements of an object</em>, though, so we'd like a way of thinking about the product using only maps.</p>
+<p>What maps can we find? Well, there's an easy way to produce an element of $~$A$~$ given an element of $~$A \times B$~$: namely, "take the first coordinate".
+Concretely, if we are given $~$(a,b) \in A \times B$~$, we output $~$a$~$.
+And similarly, we can take the second coordinate to get an element of $~$B$~$.</p>
+<p>So we have two maps, one which we will denote $~$\pi_A: A \times B \to A$~$, and one denoted $~$\pi_B : A \times B \to B$~$.
+%%note: We use the Greek letter $~$\pi$~$ to stand for the word "[projection_map projection]", because the operation "take a coordinate" is often called "projection".%%</p>
+<p>Now, this is certainly not enough to characterise the product.
+For one thing, there is a map from the <a href="empty_set.html">Empty set</a> to every other set (<a href="empty_set_universal_property.html">proof</a>), so if all we knew about the product was that it had a map to $~$A$~$ and a map to $~$B$~$, then we might deduce that the empty set was a perfectly good product of $~$A$~$ and $~$B$~$.
+That's definitely not something we want our definition of "product" to mean: that the empty set is the product of every pair of sets!
+So we're going to have to find something else to add to our putative definition.</p>
+<p>What else do we know about the product?
+To try for a universal property, we're going to want to talk about <em>all</em> the maps involving the product.
+It turns out that the correct fact to note is that a map $~$f$~$ from any set $~$X$~$ to $~$A \times B$~$ may be defined exactly by the first coordinate and the second coordinate of the result.
+Concretely, if we know $~$\pi_A(f(x))$~$ and $~$\pi_B(f(x))$~$, then we know $~$f(x)$~$: it's just $~$\langle \pi_A(f(x)), \pi_B(f(x)) \rangle$~$. %%note: I've used $~$\langle \text{angled brackets}\rangle$~$ to indicate the ordered pair here, just because otherwise there are confusingly many round brackets.%%</p>
+<p>Another way of stating the universal property of the product is that maps $~$h : A \to B \times C$~$ are naturally in bijection with pairs of maps $~$f : A \to B$~$, $~$g : A \to C$~$. That is, a <a href="gen_elt.html">generalized element</a> (of shape $~$A$~$) of $~$B \times C$~$ is a pair consisting of a generalized element (of the same shape) of $~$B$~$ and a generalized element of $~$C$~$; this is the same as the usual description of the product in sets, but now since we use generalized elements instead of elements it makes sense in any category. Under this correspondence, $~$h$~$ being the identity on $~$B \times C$~$ corresponds to $~$f$~$ being the projection $~$B \times C \to B$~$ and $~$g$~$ being the projection $~$B \times C \to C$~$. On the other hand, if $~$h$~$ corresponds to $~$f$~$ and $~$g$~$ via this bijection, we have $~$h = \langle f, g\rangle$~$. Naturality of the isomorphism turns out to imply that $~$\pi_{B} \langle f, g \rangle = f$~$ and $~$\pi_C \langle f, g \rangle = g$~$, as well as $~$\langle \pi_{B}, \pi_{C} \rangle = \text{id}$~$.</p>
+<p>[todo: I think this is pretty good motivation, but it's at the cost of introducing the other version of the universal property. There's a general yoga of going between a universal property as in "representing or corepresenting a functor" and a universal property as in "being an initial or terminal object in some category", but I don't know where is a good place to discuss that.]</p>
+<h1 id="theuniversalproperty">The universal property</h1>
+<p>From the above, we can extract the following universal property, which really <em>does</em> define the product (up to <a href="isomorphism.html">Isomorphism</a>):</p>
+<blockquote>
+  <p>Given objects $~$A$~$ and $~$B$~$, we define the <em>product</em> to be the following collection of three objects, if it exists: $$~$A \times B \\ \pi_A: A \times B \to A \\ \pi_B : A \times B \to B$~$$ with the requirement that for every object $~$X$~$ and every pair of maps $~$f_A: X \to A, f_B: X \to B$~$, there is a <em>unique</em> map $~$f: X \to A \times B$~$ such that $~$\pi_A \circ f = f_A$~$ and $~$\pi_B \circ f = f_B$~$.</p>
+</blockquote>
+<p>If you're anything like me, you're probably a bit lost at this point.
+Trust me that once you've set up the right structures in your mind, the property is quite simple.
+At the moment it probably feels more like I've given you a sentence in Swahili, and I've just told you it doesn't mean anything difficult.</p>
+<p>Category theory contains lots of things like this, where it takes a lot of words to write them out and some time to get your head around them properly. %%note: In this particular instance, one unavoidable annoyance is that the object $~$X$~$ isn't really playing any interesting role other than "<a href="function_domain.html">domain</a> of an arbitrary function", but we have to include the words "for every object $~$X$~$" because otherwise the definitions of $~$f_A$~$ and $~$f_B$~$ don't make sense. %%
+One learns category theory by gradually getting used to examples and pictures; in particular, the idea of the <strong>commutative diagram</strong> is an extremely powerful tool for improving understanding.</p>
+<p>The following "commutative diagram" (really just a picture showing the objects involved and how they interact) defines the product.</p>
+<p><img src="http://i.imgur.com/AcdaqkI.png" alt="Product universal property" /></p>
+<p>The dashed arrow indicates "the presence of all the other arrows forces this arrow to exist uniquely"; and the diagram is said to <strong>commute</strong>, which means that if we follow any chain of arrows round the diagram, we'll get the same answer.
+Here, "the diagram commutes" %%note: That is, "the diagram is a <em>commutative</em> diagram".%% is exactly expressing $~$\pi_A \circ f = f_A$~$ (following one of the triangles round) and $~$\pi_B \circ f = f_B$~$ (following the other triangle).
+And the dashed-ness of the line is exactly expressing the words "there is a <em>unique</em> map $~$f: X \to A \times B$~$".</p>
+<p>We'll see several examples now, some related to each other and some not.
+Hopefully in working through these, you will pick up what the property means; and maybe you will start to get a feel for some underlying intuitions.</p>
+<h1 id="examplefinitesets">Example: finite sets</h1>
+<p>(This discussion works just as well in the category of <em>all</em> sets, not just the finite ones, but finite sets are much easier to understand than general sets.)</p>
+<p>The motivation above took some properties of the set-product, and turned them into a new general definition.
+So we should hope that when we take the new general definition and bring it back into the world of sets, we recover the original set-product we started with.
+That is indeed the case.</p>
+<p>Let $~$A$~$ and $~$B$~$ be finite sets; we want to see what $~$A \otimes B$~$ %%note: Because $~$\times$~$ already has a meaning in set theory, we'll use $~$\otimes$~$ to distinguish this new concept. Of course, the aim of this section is to show that $~$\otimes$~$ is actually the same as our usual $~$\times$~$. %% is (using the universal-property definition), if it exists.</p>
+<p>Well, it would be the finite set $~$A \otimes B$~$ (whatever that might be), together with two maps $~$\pi_A: A \otimes B \to A$~$ and $~$\pi_B: A \otimes B \to B$~$, such that:</p>
+<blockquote>
+  <p>For every finite set $~$X$~$ and every pair of maps $~$f_A: X \to A, f_B: X \to B$~$, there is a <em>unique</em> map $~$f: X \to A \otimes B$~$ such that $~$\pi_A \circ f = f_A$~$ and $~$\pi_B \circ f = f_B$~$.</p>
+</blockquote>
+<p>Let's try and identify what set this universal property describes %%note: If such a set exists. (Spoiler: it does.)%%.
+The property is very general, talking about the entire "universe" of finite sets, so to get a grasp of it, it should help to specialise to some simple sets $~$X$~$.</p>
+<p>You might like to work out for yourself why letting $~$X = \emptyset$~$ doesn't tell us anything about $~$A \otimes B$~$.</p>
+<p>But a much more enlightening choice of $~$X$~$ arises if we take $~$X = \{ 1 \}$~$.
+In that case, a map from $~$X$~$ to $~$A$~$ is just identifying a specific element of $~$A$~$, so for example we may refer to $~$f_A: X \to A$~$ as a "choice of element of $~$A$~$".
+Indeed, if $~$g: \{1\} \to A$~$, then we have an element $~$g(1)$~$ in $~$A$~$, because there's no choice about which element of the <a href="function_domain.html">domain</a> we use: there's only the element $~$1$~$, so the only possible output of $~$g$~$ is the element $~$g(1)$~$ of $~$A$~$.</p>
+<p>Specialising to this instance of $~$X$~$, then, the universal property requires that:</p>
+<blockquote>
+  <p>For every pair of choices of element, $~$f_A: \{ 1 \} \to A$~$ and $~$f_B : \{ 1 \} \to B$~$, there is a <em>unique</em> choice of element $~$f: \{1\} \to A \otimes B$~$ such that $~$\pi_A \circ f = f_A$~$ and $~$\pi_B \circ f = f_B$~$.</p>
+</blockquote>
+<p>(What does it mean to compose a function with a choice of element? Well, $~$\pi_A \circ f$~$ is a function from $~$\{1\}$~$ to $~$A$~$, so it's also just a choice of element of $~$A$~$; it's basically just $~$\pi_A$~$ applied to the choice-of-element embodied by $~$f$~$.)</p>
+<p>More familiarly stated:</p>
+<blockquote>
+  <p>For every pair of elements $~$a \in A$~$ and $~$b \in B$~$, there is a <em>unique</em> element $~$x \in A \otimes B$~$ such that $~$\pi_A(x) = a$~$ and $~$\pi_B(x) = b$~$.</p>
+</blockquote>
+<p>That's just saying "$~$A \otimes B$~$ consists of objects which $~$\pi_A$~$ and $~$\pi_B$~$ allow us to interpret as ordered pairs"!
+Specifically, it's saying that for every ordered pair of objects in $~$A \times B$~$, we can find a unique element of $~$A \otimes B$~$ which gets interpreted by $~$\pi_A$~$ and $~$\pi_B$~$ as having the same components as that ordered pair.</p>
+<h1 id="examplenaturalnumbers">Example: natural numbers</h1>
+<p>To give you an idea of where we're aiming for, in this section, we're going to use the fact that a <a href="poset.html">Partially ordered set</a> may be viewed as a <a href="category_mathematics.html">category</a>, by letting there be a single arrow $~$a \to b$~$ if and only if $~$a \leq b$~$ in the poset.
+That is, instead of maps $~$f: A \to B$~$, we have "facts that $~$A \leq B$~$ in the poset" which we interpret as "arrows from $~$A$~$ to $~$B$~$"; there is only ever at most one fact that $~$A \leq B$~$, so there is only ever at most one arrow from $~$A$~$ to $~$B$~$.</p>
+<p>We'll examine what the category-theoretic product means in this category, and hopefully this should help indicate how versatile the "universal property" idea is.</p>
+<h2 id="specificposetlessthan">Specific poset: "less than"</h2>
+<p>Let us work in a specific poset: $~$\mathbb{N}$~$ the <a href="natural_number.html">natural numbers</a>, ordered by the usual "less than".
+For example, $~$1$~$ is less than or equal to every number except $~$0$~$, so there is an arrow from $~$1$~$ to every number except $~$0$~$.
+There is an arrow from $~$2$~$ to every number bigger than or equal to $~$2$~$, and so on.
+There is an arrow from $~$0$~$ to every number.</p>
+<p>The universal property of the category-theoretic product %%note: I'll emphasise "category-theoretic" in this section, because it will turn out that in this context, "product" <em>doesn't</em> mean "usual product of natural numbers".%% here is:</p>
+<blockquote>
+  <p>Given natural numbers $~$m$~$ and $~$n$~$, we define the <em>category-theoretic product</em> $~$\otimes$~$ %%note: Because $~$\times$~$ already has a meaning in the naturals, we'll use $~$\otimes$~$ to distinguish this new concept.%% to be the following collection of three objects, if it exists: </p>
+  <ul>
+  <li>$~$m \otimes n$~$</li>
+  <li>The fact that $~$m \otimes n$~$ is less than or equal to $~$m$~$ %%note: In the sets case, this was the map $~$\pi_A$~$; but here, we're in a poset category, so instead of "a function from $~$A$~$ to $~$B$~$", we have "the fact that $~$A \leq B$~$".%% </li>
+  <li>The fact that $~$m \otimes n$~$ is less than or equal to $~$n$~$ %%note: This is corresponding to what was the map $~$\pi_B$~$.%%.</li>
+  </ul>
+  <p>We also have the requirement that for every natural number $~$x$~$ and every instance of the fact that $~$x \leq m, x \leq n$~$ %%note: Such an instance corresponds to the pair of maps $~$f_A: X \to A$~$ and $~$f_B: X \to B$~$.%%, there is a <em>unique</em> instance of the fact that $~$x \leq m \otimes n$~$. %%note: This corresponds to the map $~$f: X \to A \times B$~$. In fact we can omit "unique", because in a poset, there is never more than one arrow between any two given objects; in this context, there is only one way to express $~$x \leq m \otimes n$~$.%%</p>
+</blockquote>
+<p>You might want to spend a little time convincing yourself that the requirement in the posets case is the same as the requirement in the general category-theoretic case.
+Indeed, we can omit the "compositions" part entirely.
+For example, half of the compositions part reads "$~$\pi_A \circ f = f_A$~$"; when translated into poset language, that is "the instance of the fact that $~$m \otimes n \leq m$~$, together with the instance of the fact that $~$x \leq m \otimes n$~$, yields the instance of the fact that $~$x \leq m$~$".
+But this is immediate anyway because posets already let us deduce that $~$A \leq C$~$ from $~$A \leq B$~$ and $~$B \leq C$~$.</p>
+<p>To summarise, then, we define $~$m \otimes n$~$, if it exists, to be the natural number which is less than or equal to $~$m$~$ and to $~$n$~$, such that for every natural $~$x$~$ with $~$x \leq m, x \leq n$~$, we have $~$x \leq m \otimes n$~$.</p>
+<p>If you think about this for a few minutes, you might work out that this is just referring to the minimum of $~$m$~$ and $~$n$~$.
+So we have defined the minimum of two natural numbers in a category-theoretic "universal properties" way: it's the category-theoretic product in this particular poset. </p>
+<p>Notice, by the way, that in this case, the category-theoretic product (i.e. the minimum) does always exist.
+Remember, the universal property comes with a caveat: it defines the product to be a certain triple of $~$(A \times B, \pi_A, \pi_B)$~$, <em>if those three things exist</em>.
+It's by no means a given that the triple always <em>does</em> exist; but in this particular instance, with the natural numbers under the "less than" relation, it so happens that it does always exist.
+For every pair $~$m, n$~$ of naturals, there <em>is</em> a triple $~$(m \otimes n, \pi_m, \pi_n)$~$ satisfying the universal property: namely, letting $~$m \otimes n$~$ be the minimum of $~$m$~$ and $~$n$~$, and letting $~$\pi_m$~$ and $~$\pi_n$~$ be "instances of the facts that $~$m \otimes n \leq m$~$ and $~$m \otimes n \leq n$~$" respectively.</p>
+<h2 id="specificexampledivisibility">Specific example: divisibility</h2>
+<p>Let's now use the poset which is given by the <em>nonzero</em> naturals $~$\mathbb{N}^{\geq 1}$~$ but using the order relation of divisibility: $~$a \mid b$~$ if and only if $~$a$~$ divides $~$b$~$.
+For example, $~$1$~$ divides every nonzero natural so there is an arrow $~$1 \to n$~$ for every $~$n$~$;
+there are arrows $~$2 \to n$~$ for every <em>even</em> positive natural $~$n$~$, and so on.</p>
+<p>We'll give the product definition again:</p>
+<blockquote>
+  <p>Given natural numbers $~$m$~$ and $~$n$~$, we define the <em>category-theoretic product</em> $~$\otimes$~$ to be the following collection of three objects, if it exists: </p>
+  <ul>
+  <li>$~$m \otimes n$~$</li>
+  <li>The fact that $~$m \otimes n$~$ divides $~$m$~$ %%note: In the sets case, this was the map $~$\pi_A$~$; but here, we're in a poset category, so instead of "a function from $~$A$~$ to $~$B$~$", we have "the fact that $~$A \mid B$~$".%% </li>
+  <li>The fact that $~$m \otimes n$~$ divides $~$n$~$.</li>
+  </ul>
+  <p>We also have the requirement that for every natural number $~$x$~$ such that $~$x \mid m, x \mid n$~$, it is the case that $~$x \mid m \otimes n$~$.</p>
+</blockquote>
+<p>Again, a few minutes of pondering might lead you to discover that this is referring to the <a href="greatest_common_divisor.html">Greatest common divisor</a>, and again it so happens that it always exists.</p>
+<h2 id="moralthingstonoticeabouttheaboveexamples">Moral things to notice about the above examples</h2>
+<p>Working in a poset, the nature of the category-theoretic product as some kind of "optimiser" is a bit clearer.
+It is the "optimal" object such that certain conditions hold.</p>
+<ul>
+<li>In the first example, it is optimal in the sense that it is the <em>biggest</em> natural $~$a$~$ such that $~$a \leq m$~$ and $~$a\leq n$~$.</li>
+<li>In the second example, it is optimal in the sense that it is the natural $~$a$~$ with the <em>most factors</em> such that $~$a \mid m$~$ and $~$a \mid n$~$.</li>
+</ul>
+<p>In fact this is true in general posets: the category-theoretic product of $~$X$~$ and $~$Y$~$ in a poset is the [-greatest_lower_bound] of $~$X$~$ and $~$Y$~$ in the poset.</p>
+<h1 id="thepropertycharacterisestheproductuptoisomorphism">The property characterises the product up to isomorphism</h1>
+<p>This is what makes our new definition really make sense: this theorem tells us that our construction really does pick out a specific object.
+The proof appears <a href="product_is_unique_up_to_isomorphism.html">on a different page</a>; it follows a similar pattern to the "maps" way of proving that <a href="only_empty_set_satisfies_up_of_emptyset.html">the empty set is uniquely characterised by its universal property</a>.</p>
+<p>If we can show that some easy-to-specify property (such as the universal property of the product) characterises things uniquely or up to isomorphism, we can be pretty hopeful that the property is worth thinking more about.
+While the product's universal property is wordy, it has a simple diagram which defines it; the property itself is not very complicated, and the main difficulty is in understanding the background.</p>
+<h1 id="whyistheproductinteresting">Why is the product interesting?</h1>
+<p>Why should we care about having this object defined by the universal property?
+Well, if we stop defining things by their internal properties (for instance, if we stop defining the product of sets $~$A$~$ and $~$B$~$ as the collection of ordered pairs) and use a universal property instead, we get a definition which doesn't care about internal properties.
+It's immediately applicable to other situations. 
+If we make sure that, in proving things about the product, we only use the universal property (or things that can be derived from the universal property), we'll instantly get theorems that are true not just for set-products but also for more general situations.
+Category theory, and its beginnings in the idea of the universal property, is in some ways the art of finding where in mathematics we're just doing the same things in a slightly different way, and seeing if we can show why they're <em>actually</em> the same rather than merely looking similar.</p>
+<p>Ultimately, this viewpoint shows us that the following ideas are "basically the same" (and it doesn't matter if you don't know what some of these mean):</p>
+<ul>
+<li>Product of natural numbers %%note: The easiest way to obtain this is by interpreting a [natural_number_as_category natural number as a category itself]. The product of natural numbers $~$m$~$ and $~$n$~$, in the colloquial sense of "product", is then given by the [-product_category] of the two categories representing $~$m$~$ and $~$n$~$.%%</li>
+<li><a href="set_product.html">Product of sets</a> %%note: We showed in this very page that the set product is captured by the category-theoretic product.%%</li>
+<li>Product of [topological_space topological spaces]</li>
+<li>Direct product of <a href="group_mathematics.html">groups</a></li>
+<li>Direct sum of <a href="abelian_group.html">abelian groups</a></li>
+<li>Greatest lower bounds in <a href="poset.html">posets</a> %%note: We showed two examples of this above, looking at the minimum and greatest common divisor of two naturals.%%</li>
+<li>[segre_embedding Segre embedding] of two [projective_variety projective varieties], in [algebraic_geometry]. This is an example where the existence of the product is decidedly non-trivial.</li>
+</ul>
+<p>I personally took algebraic geometry and didn't understand a word of it, including about the Segre embedding. The lecturer didn't tell me at the time that the Segre embedding is a product, so I just went on thinking it was incomprehensible.
+But now I know that the Segre embedding is "just" a product. 
+That immediately tells me that in some deep moral sense it's "not too difficult": even though algebraic geometry is fiendishly hard, the Segre embedding is not at its heart one of the really difficult bits, and if I chose to learn it properly, I wouldn't need to do too much mental gymnastics to understand it.</p></main><hr><footer><p class="tagged"><h2>Tagged</h2><span class="page-comma-list"><a class="page-link" href="../page/b_class_meta_tag.html">B-Class</a></span></p><p class="all-creators"><h2>All Creators</h2><span class="page-comma-list"><a class="page-link" href="../page/LukeSciarappa.html">Luke Sciarappa</a>,
+ <a class="page-link" href="../page/PatrickStevens.html">Patrick Stevens</a></span></p><p class="likes"><h2>Likes</h2><span class="page-comma-list"><a class="page-link" href="../page/AndrewMcKnight.html">Andrew McKnight</a>,
+ <a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a></span></p><p class="reverse-related"><h2>Reverse Related</h2><ul class="page-list"><li><a class="page-link" href="../page/b_class_meta_tag.html">B-Class</a> <q>This page is mostly complete and without major problems, but has not had detailed feedback from the target audience and reviewers.</q> - <a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a></li></ul></p><p class="children"><h2>Children</h2><ul class="page-tree"><li><a class="page-link" href="../page/product_is_unique_up_to_isomorphism.html">Product is unique up to isomorphism</a> <q>If something satisfies the universal property of the product, then it is uniquely specified by that property, up to isomorphism.</q> - <a class="page-link" href="../page/PatrickStevens.html">Patrick Stevens</a></li></ul></p></footer></body></html>

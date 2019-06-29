@@ -1,0 +1,44 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Cardinality</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="../MathJax-2.7.5/MathJax.js"></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">Cardinality</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/cardinality.json.html">cardinality.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/cardinality">https://arbital.com/p/cardinality</a></p><p class="creator">by
+ <a class="page-link" href="../page/JoeZeng.html">Joe Zeng</a> Jun 28 2016 
+updated
+ Oct 5 2016</p></div><p class="clickbait">The &quot;size&quot; of a set, or the &quot;number of elements&quot; that it has.</p><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>Cardinality</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="math.html">Mathematics</a></li><li><a href="set_mathematics.html">Set</a></li><li>…</li></ul></nav></nav></header><hr><main><p>[summary(brief): The <strong>cardinality</strong> of a <a href="set_mathematics.html">Set</a> is a formalization of the "number of <a href="element_mathematics.html">elements</a>" in the set.]</p>
+<p>[summary: If $~$A$~$ is a finite set then the cardinality of $~$A$~$, denoted $~$|A|$~$, is the number of elements $~$A$~$ contains. When $~$|A| = n$~$, we say that $~$A$~$ is a set of cardinality $~$n$~$. There exists a <a href="bijective_function.html">bijection</a> from any finite set of cardinality $~$n$~$ to the set $~$\{0, …, (n-1)\}$~$ containing the first $~$n$~$ natural numbers.</p>
+<p>Two infinite sets have the same cardinality if there exists a bijection between them. Any set in bijective correspondence with [45h $~$\mathbb N$~$] is called <strong>countably infinite</strong>, while any infinite set that is not in bijective correspondence with $~$\mathbb N$~$ is call <strong><a href="uncountable.html">uncountably infinite</a></strong>. All countably infinite sets have the same cardinality, whereas there are multiple distinct uncountably infinite cardinalities.]</p>
+<p>[summary(technical): The cardinality (or size) $~$|X|$~$ of a set $~$X$~$ is the number of elements in $~$X.$~$ For example, letting $~$X = \{a, b, c, d\}, |X|=4.$~$</p>
+<p>[todo: technical summary of infinite cardinality]]</p>
+<p>The <strong>cardinality</strong> of a <a href="set_mathematics.html">Set</a> is a formalization of the "number of elements" in the set.</p>
+<p>Set cardinality is an <a href="equivalence_relation.html">Equivalence relation</a>. Two sets have the same cardinality if (and only if) there exists a <a href="bijective_function.html">bijection</a> between them.</p>
+<h2 id="definitionofequivalenceclasses">Definition of equivalence classes</h2>
+<h3 id="finitesets">Finite sets</h3>
+<p>A set $~$S$~$ has a cardinality of a <a href="natural_number.html">Natural number</a> $~$n$~$ if there exists a bijection between $~$S$~$ and the set of natural numbers from $~$1$~$ to $~$n$~$. For example, the set $~$\{9, 15, 12, 20\}$~$ has a bijection with $~$\{1, 2, 3, 4\}$~$, which is simply mapping the $~$m$~$th element in the first set to $~$m$~$; therefore it has a cardinality of $~$4$~$.</p>
+<p>We can see that this equivalence class is [ well-defined] — if there exist two sets $~$S$~$ and $~$T$~$, and there exist bijective functions $~$f : S \to \{1, 2, 3, \ldots, n\}$~$ and $~$g : \{1, 2, 3, \ldots, n\} \to T$~$, then $~$g \circ f$~$ is a bijection between $~$S$~$ and $~$T$~$, and so the two sets also have the same cardinality as each other, which is $~$n$~$.</p>
+<p>The cardinality of a finite set is always a natural number, never a fraction or decimal.</p>
+<h3 id="infinitesets">Infinite sets</h3>
+<p>Assuming the <a href="axiom_of_choice.html">axiom of choice</a>, the cardinalities of infinite sets are represented by the [aleph_numbers]. A set has a cardinality of $~$\aleph_0$~$ if there exists a bijection between that set and the set of <em>all</em> natural numbers. This particular class of sets is also called the class of [-countably_infinite_sets].</p>
+<p>Larger infinities (which are <a href="uncountable.html">uncountable</a>) are represented by higher Aleph numbers, which are $~$\aleph_1, \aleph_2, \aleph_3,$~$ and so on through the [ordinal ordinals].</p>
+<p><strong>In the absence of the Axiom of Choice</strong></p>
+<p>Without the axiom of choice, not every set may be <a href="well_ordered_set.html">well-ordered</a>, so not every set bijects with an [-ordinal], and so not every set bijects with an aleph.
+Instead, we may use the rather cunning [Scott_trick].</p>
+<p>%%todo: Examples and exercises (possibly as lenses) %%</p>
+<p>%%todo: Split off a more accessible cardinality page that explains the difference between finite, countably infinite, and uncountably infinite cardinalities without mentioning alephs, ordinals, or the axiom of choice.%%</p></main><hr><footer><p class="tagged"><h2>Tagged</h2><span class="page-comma-list"><a class="page-link" href="../page/split_by_mastery_meta_tag.html">Needs splitting by mastery</a></span></p><p class="all-creators"><h2>All Creators</h2><span class="page-comma-list"><a class="page-link" href="../page/DylanHendrickson.html">Dylan Hendrickson</a>,
+ <a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a>,
+ <a class="page-link" href="../page/EricRogstad.html">Eric Rogstad</a>,
+ <a class="page-link" href="../page/JoeZeng.html">Joe Zeng</a>,
+ <a class="page-link" href="../page/PatrickStevens.html">Patrick Stevens</a></span></p><p class="likes"><h2>Likes</h2><span class="page-comma-list"><a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a>,
+ <a class="page-link" href="../page/EricRogstad.html">Eric Rogstad</a>,
+ <a class="page-link" href="../page/TravisRivera.html">Travis Rivera</a></span></p><p class="reverse-related"><h2>Reverse Related</h2><ul class="page-list"><li><a class="page-link" href="../page/split_by_mastery_meta_tag.html">Needs splitting by mastery</a> <q>This page seems to serve multiple different mastery levels, and may benefit from being split into separate lenses.</q> - <a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a></li></ul></p></footer></body></html>

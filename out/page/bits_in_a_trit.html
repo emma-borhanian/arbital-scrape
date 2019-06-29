@@ -1,0 +1,33 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>How many bits to a trit?</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="../MathJax-2.7.5/MathJax.js"></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">How many bits to a trit?</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/bits_in_a_trit.json.html">bits_in_a_trit.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/bits_in_a_trit">https://arbital.com/p/bits_in_a_trit</a></p><p class="creator">by
+ <a class="page-link" href="../page/NateSoares.html">Nate Soares</a> May 28 2016 
+updated
+ Jun 3 2016</p></div><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>How many bits to a trit?</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="math.html">Mathematics</a></li><li><a href="bit.html">Bit</a></li><li><a href="data_bit.html">Bit (of data)</a></li><li>…</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="math.html">Mathematics</a></li><li><a href="information_theory.html">Information theory</a></li><li><a href="data_bit.html">Bit (of data)</a></li><li>…</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="math.html">Mathematics</a></li><li><a href="information_theory.html">Information theory</a></li><li>…</li></ul></nav></nav></header><hr><main><p>[summary: $~$\log_2(3) \approx 1.585.$~$ This can be interpreted a few different ways:</p>
+<ol>
+<li>If you multiply the number of messages you might want to send by 3, then the cost of encoding the message will go up by 1.58 bits on average.</li>
+<li>If you pack $~$n$~$ of independent and equally likely <a href="n_message.html">3-messages</a> together into one giant $~$3^n$~$ message, then the cost (in bits) per individual 3-message drops as $~$n$~$ grows, ultimately converging to $~$\log_2(3)$~$ bits per 3-message as $~$n$~$ gets very large.</li>
+<li>The infinite expansion of $~$\log_2(3) = 1.58496250072\ldots$~$ tells us not just how many bits it takes to send one 3-message $~$(\approx \lceil 1.585 \rceil = 2)$~$ but also how long it takes to send any number of 3-messages put together. For example, it costs 2 bits to send one 3-message; 16 bits to send 10; 159 bits to send 1000; 1585 to send 10,000; 15850 to send 100,000; 158497 to send 1,000,000; and so on.
+]</li>
+</ol>
+<p>There are [3nd $~$\log_2(3) \approx 1.585$~$] <a href="data_bit.html">bits</a> to a <a href="trit.html">Trit</a>. This can be interpreted a few different ways:</p>
+<ol>
+<li>If you multiply the number of messages you might want to send by 3, then the cost of encoding the message will go up by 1.58 bits on average. See [+marginal_message_cost] for more on this interpretation.</li>
+<li>If you pack $~$n$~$ of independent and equally likely <a href="n_message.html">3-messages</a> together into one giant $~$3^n$~$ message, then the cost (in bits) per individual 3-message drops as $~$n$~$ grows, ultimately converging to $~$\log_2(3)$~$ bits per 3-message as $~$n$~$ gets very large. For more on this, see [+average_message_cost] and the <a href="trits_with_galcom_bits.html">GalCom example of encoding trits using bits</a>.</li>
+<li>The infinite expansion of $~$\log_2(3) = 1.58496250072\ldots$~$ tells us not just how many bits it takes to send one 3-message $~$(\approx \lceil 1.585 \rceil = 2)$~$ but also how long it takes to send any number of 3-messages put together. For example, it costs 2 bits to send one 3-message; 16 bits to send 10; 159 bits to send 1000; 1585 to send 10,000; 15850 to send 100,000; 158497 to send 1,000,000; and so on. For more on this interpretation, see the [log_series_of_ceilings "series of ceilings"] interpretation of logarithms.</li>
+</ol></main><hr><footer><p class="tagged"><h2>Tagged</h2><span class="page-comma-list"><a class="page-link" href="../page/needs_lenses_meta_tag.html">Needs lenses</a>,
+ <a class="page-link" href="../page/work_in_progress_meta_tag.html">Work in progress</a></span></p><p class="all-creators"><h2>All Creators</h2><span class="page-comma-list"><a class="page-link" href="../page/EricRogstad.html">Eric Rogstad</a>,
+ <a class="page-link" href="../page/NateSoares.html">Nate Soares</a></span></p><p class="likes"><h2>Likes</h2><span class="page-comma-list"><a class="page-link" href="../page/EricRogstad.html">Eric Rogstad</a></span></p><p class="reverse-related"><h2>Reverse Related</h2><ul class="page-list"><li><a class="page-link" href="../page/needs_lenses_meta_tag.html">Needs lenses</a> <q>This page has only a technical introduction. If you're able to, please help by adding an intuitive explanation!</q> - <a class="page-link" href="../page/NateSoares.html">Nate Soares</a></li><li><a class="page-link" href="../page/work_in_progress_meta_tag.html">Work in progress</a> <q>This page is being actively worked on by an editor. Check with them before making major changes.</q> - <a class="page-link" href="../page/EliezerYudkowsky.html">Eliezer Yudkowsky</a></li></ul></p><p class="children"><h2>Children</h2><ul class="page-tree"><li><a class="page-link" href="../page/trits_with_galcom_bits.html">Encoding trits with GalCom bits</a> <q>There are $\log_2(3) \approx 1.585$ bits to a Trit. Why is it that particular value? Consider the Ga…</q> - <a class="page-link" href="../page/NateSoares.html">Nate Soares</a></li></ul></p></footer></body></html>

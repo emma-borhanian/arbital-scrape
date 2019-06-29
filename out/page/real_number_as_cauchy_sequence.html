@@ -1,0 +1,45 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Real number (as Cauchy sequence)</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="../MathJax-2.7.5/MathJax.js"></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">Real number (as Cauchy sequence)</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/real_number_as_cauchy_sequence.json.html">real_number_as_cauchy_sequence.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/real_number_as_cauchy_sequence">https://arbital.com/p/real_number_as_cauchy_sequence</a></p><p class="creator">by
+ <a class="page-link" href="../page/PatrickStevens.html">Patrick Stevens</a> Jul 2 2016 
+updated
+ Jul 5 2016</p></div><p class="clickbait">There are several ways to construct real numbers; this is the most natural way to use them in computations.</p><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>Real number (as Cauchy sequence)</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="math.html">Mathematics</a></li><li><a href="real_number.html">Real number</a></li><li>…</li></ul></nav></nav></header><hr><main><p>[summary: If we want to construct the real numbers in terms of simpler objects (such as the rationals), one way to do it is to take our putative real number and consider sequences of rational numbers which in some sense "get closer and closer" to the real number.]</p>
+<p>[summary(Technical): The real numbers can be constructed as a field consisting of all Cauchy sequences of rationals, quotiented by the equivalence relation given by "two sequences are equivalent if and only if they eventually get arbitrarily close to each other".]</p>
+<p>Consider the set of all <a href="cauchy_sequence.html">Cauchy sequences</a> of <a href="rational_number.html">rational numbers</a>: concretely, the set $$~$X = \{ (a_n)_{n=1}^{\infty} : a_n \in \mathbb{Q}, (\forall \epsilon \in \mathbb{Q}^{&gt;0}) (\exists N \in \mathbb{N})(\forall n, m \in \mathbb{N}^{&gt;N})(|a_n - a_m| &lt; \epsilon) \}$~$$</p>
+<p>Define an <a href="equivalence_relation.html">Equivalence relation</a> on this set, by $~$(a_n) \sim (b_n)$~$ if and only if, for every rational $~$\epsilon &gt; 0$~$, there is a <a href="natural_number.html">Natural number</a> $~$N$~$ such that for all $~$n \in \mathbb{N}$~$ bigger than $~$N$~$, we have $~$|a_n - b_n| &lt; \epsilon$~$.
+This is an equivalence relation (exercise).
+%%hidden(Show solution):</p>
+<ul>
+<li>It is symmetric, because $~$|a_n - b_n| = |b_n - a_n|$~$.</li>
+<li>It is reflexive, because $~$|a_n - a_n| = 0$~$ for every $~$n$~$, and this is $~$&lt; \epsilon$~$.</li>
+<li>It is transitive, because if $~$|a_n - b_n| &lt; \frac{\epsilon}{2}$~$ for sufficiently large $~$n$~$, and $~$|b_n - c_n| &lt; \frac{\epsilon}{2}$~$ for sufficiently large $~$n$~$, then $~$|a_n - b_n| + |b_n - c_n| &lt; \frac{\epsilon}{2} + \frac{\epsilon}{2} = \epsilon$~$ for sufficiently large $~$n$~$; so by the [-triangle_inequality], $~$|a_n - c_n| &lt; \epsilon$~$ for sufficiently large $~$n$~$.
+%%</li>
+</ul>
+<p>Write $~$[a_n]$~$ for the equivalence class of $~$(a_n)_{n=1}^{\infty}$~$. (This is a slight abuse of notation, omitting the brackets that indicate that $~$a_n$~$ is actually a sequence rather than a rational number.)</p>
+<p>The set of <em>real numbers</em> is the set of equivalence classes of $~$X$~$ under this equivalence relation, endowed with the following <a href="totally_ordered_set.html">totally ordered</a> <a href="algebraic_field.html">field</a> structure:</p>
+<ul>
+<li>$~$[a_n] + [b_n] := [a_n + b_n]$~$</li>
+<li>$~$[a_n] \times [b_n] := [a_n \times b_n]$~$</li>
+<li>$~$[a_n] \leq [b_n]$~$ if and only if $~$[a_n] = [b_n]$~$ or there is some $~$N$~$ such that for all $~$n &gt; N$~$, $~$a_n \leq b_n$~$.</li>
+</ul>
+<p>This field structure is well-defined (<a href="reals_as_classes_of_cauchy_sequences_form_a_field.html">proof</a>).</p>
+<h1 id="examples">Examples</h1>
+<ul>
+<li>Any rational number $~$r$~$ may be viewed as a real number, being the class $~$[r]$~$ (formally, the equivalence class of the sequence $~$(r, r, \dots)$~$).</li>
+<li>The real number $~$\pi$~$ is indeed a real number under this definition; it is represented by, for instance, $~$(3, 3.1, 3.14, 3.141, \dots)$~$. It is also represented as $~$(100, 3, 3.1, 3.14, \dots)$~$, along with many other possibilities.</li>
+</ul></main><hr><section class="comments"><h2>Comments</h2><div class="comment"><p><a class="page-link" href="../page/KevinClancy.html">Kevin Clancy</a></p><p><p>The title mentions Cauchy sequences, but the body does not. Doesn't this definition consider classes of non-converging sequences as real numbers?</p></p></div></section><footer><p class="all-creators"><h2>All Creators</h2><span class="page-comma-list"><a class="page-link" href="../page/JoeZeng.html">Joe Zeng</a>,
+ <a class="page-link" href="../page/PatrickStevens.html">Patrick Stevens</a></span></p><p class="likes"><h2>Likes</h2><span class="page-comma-list"><a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a>,
+ <a class="page-link" href="../page/JoeZeng.html">Joe Zeng</a></span></p><p class="children"><h2>Children</h2><ul class="page-tree"><li><a class="page-link" href="../page/reals_as_classes_of_cauchy_sequences_form_a_field.html">The reals (constructed as classes of Cauchy sequences of rationals) form a field</a> <q>The reals are an archetypal example of a field, but if we are to construct them from simpler objects, we need to show that our construction does indeed have the right properties.</q> - <a class="page-link" href="../page/PatrickStevens.html">Patrick Stevens</a></li></ul></p></footer></body></html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Difficulty of AI alignment</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="../MathJax-2.7.5/MathJax.js"></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">Difficulty of AI alignment</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/alignment_difficulty.json.html">alignment_difficulty.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/alignment_difficulty">https://arbital.com/p/alignment_difficulty</a></p><p class="creator">by
+ <a class="page-link" href="../page/EliezerYudkowsky.html">Eliezer Yudkowsky</a> May 25 2017 
+updated
+ May 25 2017</p></div><p class="clickbait">How hard is it exactly to point an Artificial General Intelligence in an intuitively okay direction?</p><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>Difficulty of AI alignment</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="ai_alignment.html">AI alignment</a></li><li>…</li></ul></nav></nav></header><hr><main><p>This page attempts to list basic propositions in computer science which, if they are true, would be ultimately responsible for rendering difficult the task of getting good outcomes from a <a href="sufficiently_advanced_ai.html">sufficiently advanced Artificial Intelligence</a>.</p>
+<p>[auto-summary-to-here]</p>
+<h1 id="difficulty">"Difficulty."</h1>
+<p>By saying that these propositions would, if true, seem to imply "difficulties", we don't mean to imply that these problems are unsolvable.  We could distinguish possible levels of "difficulty" as follows:</p>
+<ul>
+<li>The problem is straightforwardly solvable, but must in fact be solved.</li>
+<li>The problem is straightforwardly solvable if foreseen in advance, but does not <em>force</em> a general solution in its early manifestations--if the later problems have not been explicitly foreseen, early solutions may fail to generalize.  Projects which are not exhibiting sufficient foresight may fail to future-proof for the problem, even though it is in some sense easy.</li>
+<li>The problem seems solvable by applying added effort, but the need for this effort will contribute <em>substantial additional time or resource requirements</em> to the aligned version of the AGI project; implying that unsafe clones or similar projects would have an additional time advantage.  E.g., computer operating systems can be made more secure, but it adds rather more than 5% to development time and requires people willing to take on a lot of little inconveniences instead of doing things the most convenient way.  If there are enough manifested difficulties like this, and the sum of their severity is great enough, then…</li>
+<li>If there is strongly believed to be a great and unavoidable resource requirement even for safety-careless AGI projects, then we have a worrisome situation in which coordination among the leading five AGI projects is required to avoid races to the bottom on safety, and arms-race scenarios where the leading projects don't trust each other are extremely bad.</li>
+<li>If the probability seems great enough that "A safety-careless AGI project can be executed using few enough resources, relative to every group in the world that might have those resources and a desire to develop AGI, that there would be dozens or hundreds of such projects" then a sufficiently great <a href="aligning_adds_time.html">added development for AI alignment</a> <em>forces</em> [closed_is_cooperative closed AI development scenarios].  (Because open development would give projects that skipped all the safety an insuperable time advantage, and there would be enough such projects that getting all of them to behave is impossible.  (Especially in any world where, like at present, there are billionaires with great command of computational resources who don't seem to understand <a href="orthogonality.html">Orthogonality</a>.))</li>
+<li>The problem seems like it should in principle have a straightforward solution, but it seems like there's a worrisome probability of screwing up along the way, meaning…</li>
+<li>It requires substantial additional work and time to solve this problem reliably and know that we have solved it (see above), or</li>
+<li>Feasible amounts of effort still leave a worrying residue of probability that the attempted solution contains a land mine.</li>
+<li>The problem seems unsolvable using realistic amounts of effort, it which case aligned-AGI designs are constrained to avoid confronting it and we must find workarounds.</li>
+<li>The problem seems like it ought to be solvable somehow, but we are not sure exactly how to solve it.  This could imply that…</li>
+<li>Novel research and perhaps genius is required to avoid this type of failure, even with the best of good intentions;</li>
+<li>This might be a kind of conceptual problem that takes a long serial time to develop, and we should get started on it sooner;</li>
+<li>We should start considering alternative design pathways that would work around or avoid the difficulty, in case the problem is not solved.</li>
+</ul></main><hr><footer><p class="tagged"><h2>Tagged</h2><span class="page-comma-list"><a class="page-link" href="../page/work_in_progress_meta_tag.html">Work in progress</a></span></p><p class="reverse-related"><h2>Reverse Related</h2><ul class="page-list"><li><a class="page-link" href="../page/work_in_progress_meta_tag.html">Work in progress</a> <q>This page is being actively worked on by an editor. Check with them before making major changes.</q> - <a class="page-link" href="../page/EliezerYudkowsky.html">Eliezer Yudkowsky</a></li></ul></p></footer></body></html>

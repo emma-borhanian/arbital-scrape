@@ -1,0 +1,40 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Proof that there are infinitely many primes</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="../MathJax-2.7.5/MathJax.js"></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">Proof that there are infinitely many primes</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/infinitely_many_primes.json.html">infinitely_many_primes.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/infinitely_many_primes">https://arbital.com/p/infinitely_many_primes</a></p><p class="creator">by
+ <a class="page-link" href="../page/JoeZeng.html">Joe Zeng</a> Jul 5 2016 
+updated
+ Aug 15 2016</p></div><p class="clickbait">Suppose there were finitely many primes. Then consider the product of all the primes plus 1...</p><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>Proof that there are infinitely many primes</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="math.html">Mathematics</a></li><li><a href="natural_number.html">Natural number</a></li><li><a href="prime_number.html">Prime number</a></li><li>…</li></ul></nav></nav></header><hr><main><p>The proof that there are infinitely many <a href="prime_number.html">prime numbers</a> is a <a href="proof_by_contradiction.html">Proof by contradiction</a>.</p>
+<p>First, we note that there is indeed a prime: namely $~$2$~$.
+We will also state a lemma: that every number greater than $~$1$~$ has a prime which divides it.
+(This is the easier half of the <a href="fundamental_theorem_of_arithmetic.html">Fundamental Theorem of Arithmetic</a>, and the slightly stronger statement that "every number may be written as a product of primes" is proved there.)</p>
+<p>Now we can proceed to the meat of the proof.
+Suppose that there were finitely many prime numbers $~$p_1, p_2, \ldots, p_n$~$.
+Since we know $~$2$~$ is prime, we know $~$2$~$ appears in that list.</p>
+<p>Then consider the number $~$P = p_1p_2\ldots p_n + 1$~$ — that is, the product of all primes plus 1.
+Since $~$2$~$ appeared in the list, we know $~$P \geq 2+1 = 3$~$, and in particular $~$P &gt; 1$~$.</p>
+<p>The number $~$P$~$ can't be divided by any of the primes in our list, because it's 1 more than a multiple of them.
+But there is a prime which divides $~$P$~$, because $~$P&gt;1$~$; we stated this as a lemma.
+This is immediately a contradiction: $~$P$~$ cannot be divided by any prime, even though all integers greater than $~$1$~$ can be divided by a prime.</p>
+<h1 id="example">Example</h1>
+<p>There is a common misconception that $~$p_1 p_2 \dots p_n+1$~$ must be prime if $~$p_1, \dots, p_n$~$ are all primes.
+This isn't actually the case: if we let $~$p_1, \dots, p_6$~$ be the first six primes $~$2,3,5,7,11,13$~$, then you can check by hand that $~$p_1 \dots p_6 + 1 = 30031$~$; but $~$30031 = 59 \times 509$~$.
+(These are all somewhat ad-hoc; there is no particular reason I knew that taking the first six primes would give me a composite number at the end.)
+However, we <em>have</em> discovered a new prime this way (in fact, two new primes!): namely $~$59$~$ and $~$509$~$.</p>
+<p>In general, this is a terrible way to discover new primes.
+The proof tells us that there must be some new prime dividing $~$30031$~$, without telling us anything about what those primes are, or even if there is more than one of them (that is, it doesn't tell us whether $~$30031$~$ is prime or composite).
+Without knowing in advance that $~$30031$~$ is equal to $~$59 \times 509$~$, it is in general very difficult to <em>discover</em> those two prime factors.
+In fact, it's an open problem whether or not prime factorisation is "easy" in the specific technical sense of there being a polynomial-time algorithm to do it, though most people believe that prime factorisation is "hard" in this sense.</p></main><hr><section class="comments"><h2>Comments</h2><div class="comment"><p><a class="page-link" href="../page/EdwinEvans.html">Edwin Evans</a></p><p><p>How does this prove that P isn't divisible by any non-prime number? This could be clearer.</p></p></div></section><footer><p class="tagged"><h2>Tagged</h2><span class="page-comma-list"><a class="page-link" href="../page/proof_meta_tag.html">Proof</a></span></p><p class="all-creators"><h2>All Creators</h2><span class="page-comma-list"><a class="page-link" href="../page/JoeZeng.html">Joe Zeng</a>,
+ <a class="page-link" href="../page/PatrickStevens.html">Patrick Stevens</a></span></p><p class="likes"><h2>Likes</h2><span class="page-comma-list"><a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a></span></p><p class="reverse-related"><h2>Reverse Related</h2><ul class="page-list"><li><a class="page-link" href="../page/proof_meta_tag.html">Proof</a> <q>This page is just a proof, rather than a motivated explanation.</q> - <a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a></li></ul></p></footer></body></html>

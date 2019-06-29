@@ -1,0 +1,88 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Derivative</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="../MathJax-2.7.5/MathJax.js"></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">Derivative</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/derivative_calculus.json.html">derivative_calculus.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/derivative_calculus">https://arbital.com/p/derivative_calculus</a></p><p class="creator">by
+ <a class="page-link" href="../page/MichaelCohen.html">Michael Cohen</a> Jun 13 2016 
+updated
+ Oct 24 2016</p></div><p class="clickbait">How things change</p><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>Derivative</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="math.html">Mathematics</a></li><li>…</li></ul></nav></nav></header><hr><main><p>The derivative of $~$y$~$ with respect to $~$x$~$ describes the [-rate] at which $~$y$~$ changes, given a change in $~$x$~$. In particular, we consider how tiny changes in one variable affect another variable. To take the derivative of a <a href="function.html">Function</a>, we can draw a line that is [-tangent] to a graph of the function. The slope of the tangent line is the value of the derivative at that point. The derivative of a function $~$f(x)$~$ is itself a function: it returns, for any $~$x$~$, the slope of the line that is tangent to $~$f(x)$~$ at the point $~$(x, f(x))$~$.</p>
+<p>[toc:]</p>
+<h2 id="examples">Examples</h2>
+<ul>
+<li><p>The time-derivative of your car's mileage is your car's speed (because your car's speed is how quickly your car's mileage changes <em>over time</em>)</p></li>
+<li><p>The time-derivative of your car's speed is your acceleration (because acceleration means how quickly your <em>speed</em> is changing over time)</p></li>
+<li><p>The time-derivative of human population size is the birth rate minus the death rate (because if we take the birth rate minus the death rate, that tells how quickly the population is changing over time)</p></li>
+<li><p>The time-derivative of wealth is income minus spending (because if we take income minus spending, that tells us how your wealth is changing over time)</p></li>
+<li><p>The time-derivative of blood pumped through your heart is the flow rate through the aortic valve (rates in general describe how something changes over time)</p></li>
+<li><p>The time-derivative of charge on a capacitor is the current flowing to it (currents in general are time-derivatives of how much total stuff has flowed)</p></li>
+<li><p>The time-derivative of how good of a life you'll have lived is how happy you are right now (according to <a href="https://foundational-research.org/hedonistic-vs-preference-utilitarianism/">hedonic utilitarians</a>)</p></li>
+</ul>
+<p>Okay, let's take another stab at this. Time-derivatives, or derivatives "with respect to time," describe how things change over time. We can take derivatives with respect to other things too.</p>
+<ul>
+<li><p>The derivative of your car's mileage with respect to how much fuel you've burned is your miles per gallon (because your mpg describes how your mileage changes per unit of fuel you burn)</p></li>
+<li><p>The derivative of the temperature of a pot of water with respect to how much heat you blast it with is called the heat capacity of water</p></li>
+<li><p>The derivative of <a href="https://en.wikipedia.org/wiki/Potential_energy">potential energy</a> with respect to altitude is gravitational force (a higher up object has some stored energy that it would release if it fell; a lower down object has less "potential energy." The change in potential energy as you change the altitude is why there's a force in the first place.)</p></li>
+</ul>
+<p>There were two goals with all those examples, one explicit, and one covert. The explicit one was to give you a sense for what derivatives are. The covert one was to quietly suggest that you will never understand the the way the world works unless you understand derivatives. But hey, look at you! You kind of understand derivatives already! Let's get to the math now, shall we?</p>
+<h2 id="settingupthemath">Setting Up The Math</h2>
+<p>You just got your new car.</p>
+<p><img src="http://o.aolcdn.com/commerce/autodata/images/USC30TSC021B021001.jpg" alt="" />
+It's a <a href="http://waitbutwhy.com/2015/06/how-tesla-will-change-your-life.html">Tesla</a> because you care about the environment almost as much as you care about looking awesome. Your mileage is sitting at 0. The world is your oyster. At time $~$t = 0$~$, you put your foot on the accelerator. For the next few seconds, your mileage will be $~$4.7 t^2$~$, where your mileage is in meters, and $~$t$~$ is in seconds since you pressed your foot on the accelerator. Now the first question is this: if that equation tells us how many meters we've traveled after how many seconds, how fast are we going at any given point in time?</p>
+<p>The astute reader will have noticed that this was the first example of a time-derivative that we gave: the time-derivative of your car's mileage is your car's speed. Let's think about this <em>sans</em> math for a second. If we know where we are at any time, we should be able to figure out how fast we're going. There isn't any extra information we need. The only question is how. Well, we take the derivative of the mileage with respect to time to get our speed. In other words:</p>
+<p>$$~$\frac{\mathrm{d}}{\mathrm{d} t} mileage = speed$~$$</p>
+<p>That means the derivative with respect to $~$t$~$, where $~$t$~$ is the time in seconds. But we know what the mileage is, <em>in terms of $~$t$~$</em>. Our mileage is just $~$4.7 t^2$~$. So we can write:</p>
+<p>$$~$\frac{\mathrm{d}}{\mathrm{d} t} 4.7 t^2 = speed$~$$</p>
+<h2 id="solvingthemath">Solving The Math</h2>
+<p>Sorry to leave you hanging for a sec, but we're going to start with something a little simpler.</p>
+<p><img src="http://i66.tinypic.com/1p87pl.png" alt="" />
+$$~$distance\ traveled = 2t$~$$</p>
+<p>If this is the graph of how far someone has traveled after how many seconds, we can see that every second they go 2 more meters. In other words, they are traveling 2 meters per second, which you might notice is the slope of this line. In general, the derivative of a function is like the slope of the function when you graph it out. </p>
+<p>This works fine if our function is something like $~$distance\ traveled = 2t$~$. What if our function isn't a line though. What if it's $~$distance\ traveled = t^2$~$?</p>
+<p><img src="http://i64.tinypic.com/htu0pv.png" alt="" /></p>
+<p>Things that aren't lines don't have slopes. So if this is a graph of our distance traveled over time, it's not as easy to see how fast we were going. But let's say we want to see how fast we were going at $~$t=1$~$. If we zoom in enough on that curve, it will start to flatten out into a straight line until we can't tell the difference. The slope of <em>that</em> line is what gives us our speed. The process of taking a curve like this one, and getting the "slope" at any given point is called "taking the derivative."</p>
+<p>Let's take the derivative of $~$d = t^2$~$, where $~$d$~$ is the distance and $~$t$~$ is the time. (We'll take the derivative with respect to $~$t$~$). Prepare yourself, now take a look at the graph down there.</p>
+<p><img src="http://i67.tinypic.com/mcxloj.png" alt="" /></p>
+<p>We know how to find the slope of a line if we're given two points, so we're going to do that, and then slowly move the points together until they're on top of each other. The coordinates of the points are shown above, and we can calculate the slope pretty easily by doing $~$\frac{\Delta d}{\Delta t}$~$. This gives us a slope of 2.</p>
+<p>Now let's say that our first point is at $~$(t,t^2)$~$, that our second point is $~$h$~$ units to the right, so it's coordinates are $~$((t+h),(t+h)^2)$~$. Now we have:
+$$~$∆d=(t+h)^2-t^2$~$$
+$$~$∆t=(t+h) - t$~$$
+Algebradabra:
+$$~$∆d=2ht + h^2$~$$
+$$~$∆t=h$~$$
+$$~$\frac{\Delta d}{\Delta t}=\frac{2ht + h^2}{h}=2t+h$~$$</p>
+<p>Now as we make $~$h$~$ really small, the points get closer and closer together, and the slope of the line becomes $~$2t$~$. So when $~$t$~$ is $~$1$~$, the slope is $~$2$~$. And when $~$t$~$ is $~$5$~$, the slope is $~$10$~$.</p>
+<p>We say the derivative of $~$t^2$~$ is $~$2t$~$. With similar logic, you can show that the derivative of $~$4.7t^2$~$ is $~$9.4t$~$. And <em>that</em> means that if you put your foot on the accelerator of your new Tesla at time $~$t=0$~$, your speed after $~$t$~$ seconds will be $~$9.4t$~$. After 1 second, you'll be traveling 9.4 meters per second. After 3 seconds, you'll be going 28.2 meters per second (or 64 mph).</p>
+<h2 id="concluding">Concluding</h2>
+<p>That's what derivatives are. The Tesla case was just one example of actually finding the derivative of something. Obviously, if our distance traveled had been some totally different function of time, the derivative would have been different. We found that the derivative of $~$t^2$~$ is $~$2t$~$. Below is a list of other derivatives. You can imagine that if the function on the left was our distance traveled after a time $~$t$~$, the function on the right would be our speed at a time $~$t$~$. (All of the $~$c$~$'s and $~$n$~$'s are constants.)
+$$~$\frac{\mathrm{d} }{\mathrm{d} t}c=0$~$$
+$$~$\frac{\mathrm{d} }{\mathrm{d} t}ct=c$~$$
+$$~$\frac{\mathrm{d} }{\mathrm{d} t}ct^2=2ct$~$$
+$$~$\frac{\mathrm{d} }{\mathrm{d} t}ct^2=3ct^2$~$$
+$$~$\frac{\mathrm{d} }{\mathrm{d} t}ct^n=nct^{n-1}$~$$
+$$~$\frac{\mathrm{d} }{\mathrm{d} t}e^t=e^t$~$$
+$$~$\frac{\mathrm{d} }{\mathrm{d} t}sin(t)=cos(t)$~$$
+$$~$\frac{\mathrm{d} }{\mathrm{d} t}cos(t)=-sin(t)$~$$</p>
+<p>If you're up for it, try to use the method we showed for solving derivatives to verify some of these. Good luck!</p>
+<h2 id="seealso">See also</h2>
+<p>If you enjoyed this explanation, consider exploring some of <a href="Arbital.html">Arbital&#39;s</a> other <a href="featured_math.html">featured content</a>!</p>
+<p>Arbital is made by people like you, if you think you can explain a mathematical concept then consider <a href="arbital_contributing.html">Contributing to Arbital</a>!</p></main><hr><section class="comments"><h2>Comments</h2><div class="comment"><p><a class="page-link" href="../page/JaimeSevillaMolina.html">Jaime Sevilla Molina</a></p><p><blockquote class="comment-context">
+<mark>It's a Tesla because you care about the environment almost as much as you care about looking awesome almost as much as you're just obsessed with Elon Musk</mark>\. Your mileage is sitting at 0\. The world is your oyster\. At time $~$t \= 0$~$, you put your foot on the accelerator\. For the next few seconds, your mileage will be $~$4.7 t^2$~$, where your mileage is in meters, and $~$t$~$ is in seconds since you pressed your foot on the accelerator\. Now the first question is this: if that equation tells us how many meters we've traveled after how many seconds, how fast are we going at any given point in time?</blockquote>
+<p>I love the effect, but I would drop one of the 'as much's for increased lyricism.</p></p></div><div class="comment"><p><a class="page-link" href="../page/SzymonSlawinski.html">Szymon Slawinski</a></p><p><p>This is the explanation of derivative I was looking for. I would like to read that good explanation about limit and calculus.</p></p></div></section><footer><p class="tagged"><h2>Tagged</h2><span class="page-comma-list"><a class="page-link" href="../page/b_class_meta_tag.html">B-Class</a>,
+ <a class="page-link" href="../page/math1.html">Math 1</a></span></p><p class="all-creators"><h2>All Creators</h2><span class="page-comma-list"><a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a>,
+ <a class="page-link" href="../page/MichaelCohen.html">Michael Cohen</a></span></p><p class="likes"><h2>Likes</h2><span class="page-comma-list"><a class="page-link" href="../page/AlexeiAndreev.html">Alexei Andreev</a>,
+ <a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a>,
+ <a class="page-link" href="../page/EricRogstad.html">Eric Rogstad</a>,
+ <a class="page-link" href="../page/StephanieZolayvar.html">Stephanie Zolayvar</a>,
+ <a class="page-link" href="../page/SzymonSlawinski.html">Szymon Slawinski</a>,
+ <a class="page-link" href="../page/ravil.html">ravi l</a></span></p><p class="reverse-related"><h2>Reverse Related</h2><ul class="page-list"><li><a class="page-link" href="../page/b_class_meta_tag.html">B-Class</a> <q>This page is mostly complete and without major problems, but has not had detailed feedback from the target audience and reviewers.</q> - <a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a></li><li><a class="page-link" href="../page/math1.html">Math 1</a> <q>Is math sometimes fun for you, and are you not anxious if you see a math puzzle you don't know how to solve?</q> - <a class="page-link" href="../page/EliezerYudkowsky.html">Eliezer Yudkowsky</a></li></ul></p></footer></body></html>

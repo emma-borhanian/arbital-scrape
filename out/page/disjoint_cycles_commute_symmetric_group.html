@@ -1,0 +1,29 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Disjoint cycles commute in symmetric groups</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="../MathJax-2.7.5/MathJax.js"></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">Disjoint cycles commute in symmetric groups</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/disjoint_cycles_commute_symmetric_group.json.html">disjoint_cycles_commute_symmetric_group.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/disjoint_cycles_commute_symmetric_group">https://arbital.com/p/disjoint_cycles_commute_symmetric_group</a></p><p class="creator">by
+ <a class="page-link" href="../page/PatrickStevens.html">Patrick Stevens</a> Jun 14 2016 
+updated
+ Jun 14 2016</p></div><p class="clickbait">In cycle notation, if two cycles are disjoint, then they commute.</p><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>Disjoint cycles commute in symmetric groups</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="math.html">Mathematics</a></li><li><a href="abstract_algebra.html">Abstract algebra</a></li><li><a href="algebraic_structure.html">Algebraic structure</a></li><li><a href="group_mathematics.html">Group</a></li><li><a href="symmetric_group.html">Symmetric group</a></li><li>…</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="math.html">Mathematics</a></li><li><a href="group_theory.html">Group theory</a></li><li><a href="group_mathematics.html">Group</a></li><li><a href="symmetric_group.html">Symmetric group</a></li><li>…</li></ul></nav></nav></header><hr><main><p>[summary: In a symmetric group, if we are applying a collection of permutations which are each disjoint cycles, we get the same result no matter the order in which we perform the cycles.]</p>
+<p>Consider two <a href="cycle_notation_symmetric_group.html">cycles</a> $~$(a_1 a_2 \dots a_k)$~$ and $~$(b_1 b_2 \dots b_m)$~$ in the <a href="symmetric_group.html">Symmetric group</a> $~$S_n$~$, where all the $~$a_i, b_j$~$ are distinct.</p>
+<p>Then it is the case that the following two elements of $~$S_n$~$ are equal:</p>
+<ul>
+<li>$~$\sigma$~$, which is obtained by first performing the permutation notated by $~$(a_1 a_2 \dots a_k)$~$ and then by performing the permutation notated by $~$(b_1 b_2 \dots b_m)$~$</li>
+<li>$~$\tau$~$, which is obtained by first performing the permutation notated by $~$(b_1 b_2 \dots b_m)$~$ and then by performing the permutation notated by $~$(a_1 a_2 \dots a_k)$~$</li>
+</ul>
+<p>Indeed, $~$\sigma(a_i) = (b_1 b_2 \dots b_m)[(a_1 a_2 \dots a_k)(a_i)] = (b_1 b_2 \dots b_m)(a_{i+1}) = a_{i+1}$~$ (taking $~$a_{k+1}$~$ to be $~$a_1$~$), while $~$\tau(a_i) = (a_1 a_2 \dots a_k)[(b_1 b_2 \dots b_m)(a_i)] = (a_1 a_2 \dots a_k)(a_i) = a_{i+1}$~$, so they agree on elements of $~$(a_1 a_2 \dots a_k)$~$.
+Similarly they agree on elements of $~$(b_1 b_2 \dots b_m)$~$; and they both do not move anything which is not an $~$a_i$~$ or a $~$b_j$~$.
+Hence they are the same permutation: they act in the same way on all elements of $~$\{1,2,\dots, n\}$~$.</p>
+<p>This reasoning generalises to more than two disjoint cycles, to show that disjoint cycles commute.</p></main><hr><footer></footer></body></html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Extensionality Axiom</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="../MathJax-2.7.5/MathJax.js"></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">Extensionality Axiom</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/extensionality_axiom.json.html">extensionality_axiom.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/extensionality_axiom">https://arbital.com/p/extensionality_axiom</a></p><p class="creator">by
+ <a class="page-link" href="../page/IliaZaichuk.html">Ilia Zaichuk</a> Aug 29 2016 
+updated
+ Aug 29 2016</p></div><p class="clickbait">If two sets have exactly the same members, then they are equal</p><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>Extensionality Axiom</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="math.html">Mathematics</a></li><li><a href="set_mathematics.html">Set</a></li><li>…</li></ul></nav></nav></header><hr><main><p>The axiom of extensionality is one of the fundamental axioms of set theory. Basically, it postulates the condition, by which two sets can be equal. This condition can be described as follows: <em>if any two sets have exactly the same members, then these sets are equal</em>. A formal notation of the extensionality axiom can be written as:</p>
+<p>$$~$ \forall A \forall B : ( \forall x : (x \in A \iff x \in B) \Rightarrow A=B)$~$$</p>
+<h2 id="examples">Examples</h2>
+<ul>
+<li>$~$\{1,2\} = \{2,1\}$~$, because whatever object we choose, it either belongs to both of these sets ($~$1$~$ or $~$2$~$), or to neither of them (e.g. $~$5$~$, $~$73$~$)</li>
+</ul>
+<pre>%%comment:
+
+- If $A = \{x \mid x = 2n \text{ for some integer } n \}$ and $B = \{x \mid x \text{ is even } \}$, then $A=B$. The proof goes as follows: $\forall x : (x \in A \Leftrightarrow (x = 2n \text{ for some integer } n ) \Leftrightarrow (x/2 = n \text{ for some integer } n) \Leftrightarrow (x/2 \text{ is an integer}) \Leftrightarrow (x \text{ is even}) \Leftrightarrow x \in B)$ 
+
+that, if simplified, gives $\forall x : (x \in A \iff x \in B)$, which, by extensionality, implies $A=B$
+
+%%</pre>
+<p>[fixme: Fix the formatting in the currently commeneted example. Every new statement needs to be in a new line, lined up.]</p>
+<p>[todo: Add more examples.]</p>
+<h2 id="axiomsconverse">Axiom's converse</h2>
+<p>Note, that the axiom itself only works in one way - it implies that two sets are equal <strong>if</strong> they have the same elements, but does not provide the converse, i.e. any two equal sets have the same elements. Proving the converse requires giving a precise definition of equality, which in different cases can be done differently. %note: Sometimes the extensionality axiom itself can be used to define equality, in which case the converse is simply stated by the axiom.% However, generally, the converse fact can always be considered true, as the equality of two sets means that they are the same one thing, obviously consisting of a fixed selection of objects. [comment: The substitution property of equality?]</p></main><hr><footer><p class="tagged"><h2>Tagged</h2><span class="page-comma-list"><a class="page-link" href="../page/set_mathematics.html">Set</a>,
+ <a class="page-link" href="../page/start_meta_tag.html">Start</a></span></p><p class="likes"><h2>Likes</h2><span class="page-comma-list"><a class="page-link" href="../page/EricRogstad.html">Eric Rogstad</a></span></p><p class="reverse-related"><h2>Reverse Related</h2><ul class="page-list"><li><a class="page-link" href="../page/set_mathematics.html">Set</a> <q>An unordered collection of distinct objects.</q> - <a class="page-link" href="../page/NateSoares.html">Nate Soares</a></li><li><a class="page-link" href="../page/start_meta_tag.html">Start</a> <q>This page gives a basic overview of the topic, but may be missing important information or have stylistic issues. If you're able to, please help expand or improve it!</q> - <a class="page-link" href="../page/EliezerYudkowsky.html">Eliezer Yudkowsky</a></li></ul></p></footer></body></html>

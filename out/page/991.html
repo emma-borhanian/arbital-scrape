@@ -1,0 +1,30 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>&quot;I wrote this out for myself in attempt to fully...&quot;</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="../MathJax-2.7.5/MathJax.js"></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">&quot;I wrote this out for myself in attempt to fully...&quot;</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/991.json.html">991.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/991">https://arbital.com/p/991</a></p><p class="creator">by
+ <a class="page-link" href="../page/ViktorRiabtsev.html">Viktor Riabtsev</a> Oct 10 2018 
+updated
+ Oct 11 2018</p></div><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>&quot;I wrote this out for myself in attempt to fully...&quot;</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="math.html">Mathematics</a></li><li><a href="probability_theory.html">Probability theory</a></li><li><a href="bayes_reasoning.html">Bayesian reasoning</a></li><li><a href="bayes_update.html">Bayesian update</a></li><li><a href="bayes_science_virtues.html">Bayesian view of scientific virtues</a></li><li>…</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="rationality.html">Rationality</a></li><li><a href="probability_theory.html">Probability theory</a></li><li><a href="bayes_reasoning.html">Bayesian reasoning</a></li><li><a href="bayes_update.html">Bayesian update</a></li><li><a href="bayes_science_virtues.html">Bayesian view of scientific virtues</a></li><li>…</li></ul></nav></nav></header><hr><main><blockquote class="comment-context">"Well, I believe it somewhere in the range of four and a half times as much as I did previously," says Aristotle\.  "But that part where you're plugging in numbers like 9\.8 and calculations like the square of the time strike me as kinda complicated\.  Like, if I'm allowed to plug in numbers that precise, and do things like square them, there must be hundreds of different theories I could make which would be that complicated\.  By the quantitative form of Occam's Razor, we need to penalize the prior probability of your theory for its algorithmic complexity\.  One observation with a likelihood ratio of 4\.5 : 1 isn't enough to support all that complexity\. <mark> I'm not going to believe something that complicated because I see a stopwatch showing '3' just that one time\!  I need to see more objects dropped from various different heights and verify that the times are what you say they should be\.  If I say the prior complexity of your theory is, say, 20 bits, then 9 more observations like this would do it\.</mark>  Of course, I expect you've already made more observations than that in private, but it only becomes part of the public knowledge of humankind after someone replicates it\."</blockquote>
+<p>I wrote this out for myself in attempt to fully grasp this and maybe someone else might find it useful:</p>
+<p>You have two theories, A and B. A is more complex then B, but has sharper/more precise predictions for it's observables.
+i.e. given a test, where it's either +-ve or -ve (true or false), then we necessitate that P(+ | A) &gt; P(+ | B). </p>
+<p>Say that P(+ | A) : P(+ | B) = 10 : 1, a favorable likelihood ratio. </p>
+<p>Then each successful +-ve test gives 10 : 1 odds for theory A over theory B.
+You can penalize A initially for algorithmic complexity and estimate/assign it 1 : 10^5 odds for it; i.e. you think it is borderline absurd.</p>
+<p>But if you get 5 consecutive +-ve tests, then your posterior odds become 1 : 1; meaning your initial odds estimate was grossly wrong. 
+In fact, given 5 more consecutive +-ve tests, it is theory B which should at this point be considered absurd.</p>
+<p>Of course in real problems, the favorable likelihood ratio could be as low as 1.1 : 1, and your prior odds are not as ridiculous; maybe 1 : 100 against. 
+Then you'd need about 50 updates before you get posterior odds of about 1 : 1. You then seriously question the validity of your prior odds.
+After another 50 updates, you're essentially fully convinced that the new theory contestant is much better then the original theory.</p></main><hr><footer></footer></body></html>

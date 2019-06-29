@@ -1,0 +1,45 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Odds</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="../MathJax-2.7.5/MathJax.js"></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">Odds</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/odds.json.html">odds.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/odds">https://arbital.com/p/odds</a></p><p class="creator">by
+ <a class="page-link" href="../page/EliezerYudkowsky.html">Eliezer Yudkowsky</a> Jan 26 2016 
+updated
+ Oct 24 2016</p></div><p class="clickbait">Odds express a relative probability.</p><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>Odds</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="math.html">Mathematics</a></li><li><a href="probability_theory.html">Probability theory</a></li><li>…</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="rationality.html">Rationality</a></li><li><a href="probability_theory.html">Probability theory</a></li><li>…</li></ul></nav></nav></header><hr><main><p>[summary:  Odds are a tool for expressing <em>relative</em> chances.  If the odds of a tree in a forest being sick versus healthy are 2 : 3, this says that there are 2 sick trees for every 3 healthy trees.  (The <em>probability</em> of a tree being sick, in this case, is 2/5 or 40%.)</p>
+<p><img src="https://i.imgur.com/GVZnz2c.png?0" alt="" />]</p>
+<p>[summary(Technical): Odds express relative chances.  If the odds for X versus Y are 2 : 3, this expresses that we think that X is 2/3 = 0.666… times as likely as Y.  Clearly, odds of 6 : 9 express the same idea; odds are invariant up to multiplication by a positive factor.  When an odds ratio <a href="exclusive_exhaustive.html">exhausts all the possibilities</a>, then we can convert its components to probabilities by <a href="normalize_probabilities.html">normalizing</a> them so that they sum to 1.  In the example above, the probabilities would be $~$2:3 = \frac{2}{3+2}:\frac{3}{3+2} = 0.4:0.6.$~$</p>
+<p><img src="https://i.imgur.com/GVZnz2c.png?0" alt="" />]</p>
+<p>Odds are a tool for expressing relative <a href="probability.html">chances</a>.  If the odds of a tree in a forest being sick versus healthy are 2 : 3, this says that there are 2 sick trees for every 3 healthy trees.  (The probability of a tree being sick, in this case, is 2/5 or 40%.)</p>
+<p><img src="https://i.imgur.com/GVZnz2c.png?0" alt="" /></p>
+<p>Odds are expressed in the form "X to Y", e.g. "7 to 9 for X versus Y", more compactly written as $~$7:9$~$.</p>
+<p>The representation of chances as odds is often used in gambling and [-statistics].</p></main><hr><section class="comments"><h2>Comments</h2><div class="comment"><p><a class="page-link" href="../page/EmileKroeger.html">Emile Kroeger</a></p><p><p>One aspect I find a bit confusing in this explanation: the difference between the notations "3 / 2" and "3 : 2". In my mind, both correspond to "one and a half". But then suddenly I run into 3:2:6 and get pretty confused.</p>
+<p>However, after investigating a bit, the usage of the colon ( : ) for division is common in France (I studied most of my Maths in France), but not in English-speaking countries, where / and ÷ are used instead (we would write "3 : 2 = 1,5"). So when you people use ":" you're not talking about division at all, but only ratios, so it makes sense.</p>
+<p>I'm not sure this warrants special extra explanations unless other people get confused by the same thing (Apparently Germans use the colon for division too).</p></p></div><div class="comment"><p><a class="page-link" href="../page/MatthewFallshaw.html">Matthew Fallshaw</a></p><p><p>Confusion of rotten/healthy in #Notation section. Section should be:</p>
+<h1 id="notation">Notation</h1>
+<p>Suppose that in some forest, 40% of the trees are rotten and 60% of the trees are healthy.  There are then 2 rotten trees for every 3 healthy trees, so we say that the relative <em>ratio</em> of rotten trees to healthy trees is 2 : 3 (note that the ":" doesn't signify "division" as it would in French or German).  If we selected a tree at random from this forest, the <em>probability</em> of getting a rotten tree would be 2/5, but the <em>odds</em> would be 2 : 3 for rotten vs. healthy trees.</p></p></div></section><footer><p class="tagged"><h2>Tagged</h2><span class="page-comma-list"><a class="page-link" href="../page/concept_meta_tag.html">Concept</a></span></p><p class="all-creators"><h2>All Creators</h2><span class="page-comma-list"><a class="page-link" href="../page/AlexeiAndreev.html">Alexei Andreev</a>,
+ <a class="page-link" href="../page/EliezerYudkowsky.html">Eliezer Yudkowsky</a>,
+ <a class="page-link" href="../page/EmileKroeger.html">Emile Kroeger</a>,
+ <a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a>,
+ <a class="page-link" href="../page/EricRogstad.html">Eric Rogstad</a>,
+ <a class="page-link" href="../page/GregorGerasev.html">Gregor Gerasev</a>,
+ <a class="page-link" href="../page/NateSoares.html">Nate Soares</a>,
+ <a class="page-link" href="../page/StephanieZolayvar.html">Stephanie Zolayvar</a></span></p><p class="likes"><h2>Likes</h2><span class="page-comma-list"><a class="page-link" href="../page/AlexeiAndreev.html">Alexei Andreev</a>,
+ <a class="page-link" href="../page/AlisaKuznetsova.html">Alisa Kuznetsova</a>,
+ <a class="page-link" href="../page/AnuragKashyap.html">Anurag Kashyap</a>,
+ <a class="page-link" href="../page/DanielRiley.html">Daniel Riley</a>,
+ <a class="page-link" href="../page/EneaBullari.html">Enea Bullari</a>,
+ <a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a>,
+ <a class="page-link" href="../page/JaimeSevillaMolina.html">Jaime Sevilla Molina</a>,
+ <a class="page-link" href="../page/JulesTanneur.html">Jules Tanneur</a>,
+ <a class="page-link" href="../page/TimHumenny.html">Tim Humenny</a></span></p><p class="reverse-related"><h2>Reverse Related</h2><ul class="page-list"><li><a class="page-link" href="../page/concept_meta_tag.html">Concept</a> <q>Add this meta tag to pages which are concepts.</q> - <a class="page-link" href="../page/AlexeiAndreev.html">Alexei Andreev</a></li></ul></p><p class="children"><h2>Children</h2><ul class="page-tree"><li><a class="page-link" href="../page/odds_intro.html">Odds: Introduction</a> <q>What's the difference between probabilities and odds? Why is a 20% probability of success equivalent to 1 : 4 odds favoring success?</q> - <a class="page-link" href="../page/NateSoares.html">Nate Soares</a></li><li><a class="page-link" href="../page/odds_refresher.html">Odds: Refresher</a> <q>A quick review of the notations and mathematical behaviors for odds (e.g. odds of 1 : 2 for drawing a red ball vs. green ball from a barrel).</q> - <a class="page-link" href="../page/NateSoares.html">Nate Soares</a></li><li><a class="page-link" href="../page/odds_technical.html">Odds: Technical explanation</a> <q>Formal definitions, alternate representations, and uses of odds and odds ratios (like a 1 : 2 chance of drawing a red ball vs. green ball from a barrel).</q> - <a class="page-link" href="../page/AlexeiAndreev.html">Alexei Andreev</a></li></ul></p></footer></body></html>

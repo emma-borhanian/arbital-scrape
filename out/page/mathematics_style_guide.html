@@ -1,0 +1,29 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Math style guidelines</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="../MathJax-2.7.5/MathJax.js"></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">Math style guidelines</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/mathematics_style_guide.json.html">mathematics_style_guide.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/mathematics_style_guide">https://arbital.com/p/mathematics_style_guide</a></p><p class="creator">by
+ <a class="page-link" href="../page/DylanHendrickson.html">Dylan Hendrickson</a> Jul 8 2016 
+updated
+ Dec 6 2016</p></div><p class="clickbait">Stylistic conventions specific to pages about math.</p><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>Math style guidelines</li></ul></nav><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="Arbital.html">Arbital</a></li><li><a href="arbital_contributing.html">Contributing to Arbital</a></li><li><a href="arbital_style_guide.html">Style guidelines</a></li><li>…</li></ul></nav></nav></header><hr><main><p>This is a list of style guidelines for math explanations in particular. We want to keep our notation and terminology consistent across pages and authors.</p>
+<p>For style guidelines that apply to all of Arbital, see <a href="arbital_style_guide.html">Style guidelines</a>.</p>
+<h1 id="notation">Notation</h1>
+<ul>
+<li>A word that is being defined should be bolded; for example, "A <strong>binary relation</strong> is a set of pairs."</li>
+<li>When using <a href="set_builder_notation.html">Set builder notation</a> use "\mid" for the vertical line. For example, $~$\{f(x) \mid x \in S\}$~$ should be written \${f(x) \mid x \in S}\$, and <strong>not</strong>  \${f(x) | x \in S}\$ or  \${f(x) : x \in S}\$. </li>
+<li>The <a href="natural_number.html">natural numbers</a>, by default, include $~$0$~$. The set $~$\{0,1,2,\dots\}$~$ should be denoted $~$\mathbb N$~$, and $~$\{1,2,\dots\}$~$ should be $~$\mathbb N^+$~$. To refer to $~$\mathbb N^+$~$ in text, use "positive <a href="integer.html">integers</a>."</li>
+</ul></main><hr><footer><p class="all-creators"><h2>All Creators</h2><span class="page-comma-list"><a class="page-link" href="../page/DylanHendrickson.html">Dylan Hendrickson</a>,
+ <a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a>,
+ <a class="page-link" href="../page/EricRogstad.html">Eric Rogstad</a>,
+ <a class="page-link" href="../page/KevinClancy.html">Kevin Clancy</a></span></p><p class="likes"><h2>Likes</h2><span class="page-comma-list"><a class="page-link" href="../page/EricBruylant.html">Eric Bruylant</a></span></p></footer></body></html>

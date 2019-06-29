@@ -1,0 +1,36 @@
+* {
+  --second-line-indent: 2em;
+  --list-indent: 40px;
+}
+
+pre { white-space: pre-wrap }
+
+.breadcrumb ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  margin-left: var(--second-line-indent);
+  text-indent: calc(-1*var(--second-line-indent));
+}
+.breadcrumb li:not(:first-of-type)::before {
+  content: " → ";
+  margin: 0 0.2em;
+}
+.breadcrumb li { display: inline }
+
+.page-tree {
+  list-style: none;
+  padding-left: var(--list-indent);
+}
+.page-tree .page-tree { border-left: solid grey 1px }
+
+.page-list {
+  list-style: none;
+  padding-left: calc(var(--list-indent) + var(--second-line-indent));
+  text-indent: calc(-1*var(--second-line-indent));
+}
+
+.page-comma-list {
+  display: inline-block;
+  padding-left: var(--list-indent);
+}
