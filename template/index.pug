@@ -4,3 +4,17 @@ append body
   hr
   footer
     h2: a(href='debug.html') Debug
+    h2: Content Source
+    p
+      | All content sourced from
+      | 
+      - let arbitalUrl = 'https://arbital.com'
+      a(href=arbitalUrl)= arbitalUrl
+    h2 Scraper Source
+    p
+      | See
+      | 
+      - let sourceUrl = 'https://github.com/emma-borhanian/arbital-scrape/'
+      a(href=sourceUrl)= sourceUrl
+      | 
+      | for scraper source.
