@@ -12,7 +12,6 @@ let flatMap = require('array.prototype.flatmap')
 
 let config = require('./config.js')
 let lib = require('./src/lib.js')
-let template = require('./src/template.js')
 let renderPageText = require('./src/render-page-text.js')
 let renderPageLinks = require('./src/render-page-links.js')
 
@@ -41,9 +40,15 @@ let argv = require('yargs')
          .option('cache-only', {
            desc: 'make no http requests',
            boolean: true,
-           default: true }))
+           default: true })
+         .option('remote-mathjax', {
+           desc: 'use remote mathjax rather than vendored',
+           boolean: true,
+           default: false }))
   .help()
   .argv
+
+let template = require('./src/template.js')(argv)
 
 if (!argv['cache-only']) throw "Please don't hit arbital's servers without good reason. They're slow enough as it is."
 
@@ -399,7 +404,7 @@ Page = class extends PageRef {
     return file
   }
 
-  if (!await fs.pathExists(`${argv.directory}/MathJax-${sanitizeFilename(config.mathjaxVersion)}`)) {
+  if (!argv['remote-mathjax'] && !await fs.pathExists(`${argv.directory}/MathJax-${sanitizeFilename(config.mathjaxVersion)}`)) {
     let mathjaxZipFile = await fetchUrlAsCachedFile(
       `tmp/mathjax-${sanitizeFilename(config.mathjaxVersion)}.zip`,
       `https://github.com/mathjax/MathJax/archive/${config.mathjaxVersion}.zip`)

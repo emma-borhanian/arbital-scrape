@@ -14,4 +14,8 @@ script(type='text/x-mathjax-config').
     extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
     TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
   });
-script(type='text/javascript', src=`${root}MathJax-${config.mathjaxVersion}/MathJax.js`)
+if argv['remote-mathjax']
+  script(type='text/javascript', src=`https://cdnjs.cloudflare.com/ajax/libs/mathjax/${config.mathjaxVersion}/MathJax.js?config=TeX-AMS_SVG` async)
+else
+  script(type='text/javascript', src=`${root}MathJax-${config.mathjaxVersion}/MathJax.js` async)
+    
