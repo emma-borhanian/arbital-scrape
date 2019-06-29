@@ -1,5 +1,6 @@
 # Arbital Scrape
-Scrapes arbital.com into browsable plain HTML for personal use.
+Scrapes https://arbital.com into browsable plain HTML for personal use:
+https://emma-borhanian.github.io/arbital-scrape/
 
 ```bash
 npm install && ./arbital-scrape.js
