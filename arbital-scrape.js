@@ -50,7 +50,7 @@ let argv = require('yargs')
 
 let template = require('./src/template.js')(argv)
 
-if (!argv['cache-only']) throw "Please don't hit arbital's servers without good reason. They're slow enough as it is."
+if (!argv['cache-only'] && argv['recursive']) throw "Please don't hit arbital's servers without good reason. They're slow enough as it is."
 
 let CacheOnlyError = class extends Error {constructor(){super('--cache-only enabled');this.name = 'CacheOnlyError'}}
 
