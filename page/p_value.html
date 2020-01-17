@@ -1,0 +1,36 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>P-value</title><link rel="stylesheet" type="text/css" href="../common.css"><link rel="stylesheet" type="text/css" href="../page-style.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  SVG: {EqnChunk: 50, EqnChunkFactor: 1.5, EqChunkDelay: 10, useFontCache: false, linebreaks: {automatic: true}},
+  tex2jax: {
+    inlineMath: [['$~$', '$~$']],
+    displayMath: [['$$~$', '$~$$']],
+    processEscapes: true,
+    preview: 'none',
+  },
+  showProcessingMessages: false,
+  messageStyle: 'none',
+  // http://docs.mathjax.org/en/latest/config-files.html#the-tex-ams-svg-configuration-file
+  jax: ["input/TeX","output/SVG", "output/PreviewHTML"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
+  TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"] }
+});</script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_SVG" async></script><script type="text/javascript" src="../arbital-demo-bundle.js"></script><script type="text/javascript">window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
+</script></head><body><header><h1 class="title">P-value</h1><div class="page-info"><p class="metadata-link"><a href="../metadata/p_value.json.html">p_value.json</a></p><p class="arbital-url"><a href="https://arbital.com/p/p_value">https://arbital.com/p/p_value</a></p><p class="creator">by
+ <a class="page-link" href="../page/StephenFox.html">Stephen Fox</a> Jan 2 2020 
+updated
+ Jan 2 2020</p></div><p class="clickbait">The probability of observing the sample data we have _actually_ observed; the sauce behind significance testing.</p><nav class="breadcrumbs"><nav class="breadcrumb" aria-label="Breadcrumb"><ul><li><a href="../index.html">Index</a></li><li>P-value</li></ul></nav></nav></header><hr><main><blockquote>
+  <p>[A] <strong>p-value</strong> is the probability of our observing the sample data we have observed when, in fact, the two population averages are identical.</p>
+  <ul>
+  <li>Anthony Davies, Understanding Statistics (2017)</li>
+  </ul>
+</blockquote>
+<h2 id="anintuitiveexplanation">An Intuitive Explanation</h2>
+<p>Imagine you are comparing two observations (a la some difference of means test): the mean and standard deviation of <a href="https://en.wikipedia.org/wiki/Employment-to-population_ratio">employment rate</a> in California and New York, USA.</p>
+<p>You can think of the <strong>p-value</strong> as the probability that the apparent difference in employment rate between California and New York is <em>due to random chance</em>. </p>
+<p>Think about this:</p>
+<ul>
+<li>The higher that probability, the more likely any disparity can be (effectively) written off.</li>
+<li>The lower that probability, the more significant the difference is and more you should consider investigating further.</li>
+</ul>
+<p>Closely related to this idea is [statistically_significant statistical significance], where a p-value of 0.05 is typical and 0.01 is used in more stringent trial.</p>
+<p>[todo: Mathematical explanation]</p>
+<p>[todo: link into a statistics learning path]</p>
+<p>[todo: equation from mean-value test]</p></main><hr><footer></footer></body></html>
