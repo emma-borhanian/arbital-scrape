@@ -7,6 +7,16 @@ append head
   script(type='text/javascript').
     window.addEventListener('DOMContentLoaded', e=>window.loadAllDemos())
 
+mixin comment(commentId)
+  - let comment = pageIndex[commentId]
+  div.comment
+    if comment
+      p: +pageLink(comment.pageCreatorId)
+    p!= comment && comment.renderText ? comment.renderText(pageIndex) : `${commentId} (missing)`
+    each subCommentId in comment.commentIds
+      +comment(subCommentId)
+
+
 block body
   header
     h1.title= title
@@ -39,11 +49,7 @@ block body
     section.comments
       h2 Comments
       each commentId in commentIds
-        - let comment = pageIndex[commentId] 
-        div.comment
-          if comment
-            p: +pageLink(comment.pageCreatorId)
-          p!= comment && comment.renderText ? comment.renderText(pageIndex) : `${commentId} (missing)`
+        +comment(commentId)
   footer
     if tagIds.length > 0
       p.tagged
