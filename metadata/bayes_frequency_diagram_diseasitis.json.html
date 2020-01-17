@@ -5,9 +5,9 @@
   likeableId: '<a href="3039.json.html">3039</a>',
   likeableType: 'page',
   myLikeValue: '0',
-  likeCount: '24',
+  likeCount: '26',
   dislikeCount: '0',
-  likeScore: '24',
+  likeScore: '26',
   individualLikes: [
     '<a href="EdwinEvans.json.html">EdwinEvans</a>',
     '<a href="NateSoares.json.html">NateSoares</a>',
@@ -32,7 +32,9 @@
     '<a href="ShantanuDutta.json.html">ShantanuDutta</a>',
     '<a href="ViraatAryabumi.json.html">ViraatAryabumi</a>',
     '<a href="PierreBourgault.json.html">PierreBourgault</a>',
-    '<a href="GregvandeKrol.json.html">GregvandeKrol</a>'
+    '<a href="GregvandeKrol.json.html">GregvandeKrol</a>',
+    '<a href="9t0.json.html">9t0</a>',
+    '<a href="9tg.json.html">9tg</a>'
   ],
   pageId: '<a href="bayes_frequency_diagram_diseasitis.json.html">bayes_frequency_diagram_diseasitis</a>',
   edit: '23',
@@ -72,7 +74,7 @@
   anchorOffset: '0',
   mergedInto: '',
   isDeleted: 'false',
-  viewCount: '45404',
+  viewCount: '52582',
   text: 'Bayesian reasoning is about how to revise our beliefs in the light of evidence.\n\nWe&#39;ll start by considering one scenario in which the strength of the evidence has clear numbers attached.\n\n(Don&#39;t worry if you don&#39;t know how to solve the following problem.  We&#39;ll see shortly how to solve it.)\n\nSuppose you are a nurse screening a set of students for a sickness called Diseasitis.%note: Literally &quot;inflammation of the disease&quot;.%\n\n- You know, from past population studies, that around 20% of the students will have Diseasitis at this time of year.\n\nYou are testing for Diseasitis using a color-changing tongue depressor, which usually turns black if the student has Diseasitis.\n\n- Among patients with Diseasitis, 90% turn the tongue depressor black.\n- However, the tongue depressor is not perfect, and also turns black 30% of the time for healthy students.\n\nOne of your students comes into the office, takes the test, and turns the tongue depressor black.  What is the probability that they have Diseasitis?\n\n(*If* you think you see how to do it, you can try to solve this problem before continuing.  To quickly see if you got your answer right, you can expand the &quot;Answer&quot; button below; the derivation will be given shortly.)\n\n%hidden(Answer): The probability a student with a blackened tongue depressor has Diseasitis is 3/7, roughly 43%. %\n\nThis problem can be solved a hard way or a clever easy way.  We&#39;ll walk through the hard way first.\n\nFirst, we imagine a population of 100 students, of whom 20 have Diseasitis and 80 don&#39;t.%%note:Multiple studies show that thinking about concrete numbers such as &quot;20 out of 100 students&quot; or &quot;200 out of 1000 students&quot; is more likely to produce correct spontaneous reasoning on these problems than thinking about percentages like &quot;20% of students.&quot; E.g. &quot;[Probabilistic reasoning in clinical medicine](https://faculty.washington.edu/jmiyamot/p548/eddydm%20prob%20reas%20i%20clin%20medicine.pdf)&quot; by David M. Eddy (1982).%%\n\n![prior frequency](https://i.imgur.com/gvcoqQN.png)\n\n90% of sick students turn their tongue depressor black, and 30% of healthy students turn the tongue depressor black.  So we see black tongue depressors on 90% * 20 = 18 sick students, and 30% * 80 = 24 healthy students.\n\n![posterior frequency](https://i.imgur.com/0XDbrYi.png)\n\nWhat&#39;s the probability that a student with a black tongue depressor has Diseasitis? From the diagram, there are 18 sick students with black tongue depressors.  18 + 24 = 42 students in total turned their tongue depressors black.  Imagine reaching into a bag of all the students with black tongue depressors, and pulling out one of those students at random; what&#39;s the chance a student like that is sick?\n\n![conditional probability](http://i.imgur.com/W6avfHO.png?1)\n\nThe final answer is that a patient with a black tongue depressor has an 18/42 = 3/7 = 43% probability of being sick.\n\nMany medical students have at first found this answer counter-intuitive:  The test correctly detects Diseasitis 90% of the time! If the test comes back positive, why is it still less than 50% likely that the patient has Diseasitis? Well, the test also incorrectly &quot;detects&quot; Diseasitis 30% of the time in a healthy patient, and we start out with lots more healthy patients than sick patients.\n\nThe test does provide *some* evidence in favor of of the patient being sick.  The probability of a patient being sick goes from 20% before the test, to 43% after we see the tongue depressor turn black.  But this isn&#39;t conclusive, and we need to perform further tests, maybe more expensive ones.\n\n*If* you feel like you understand this problem setup, consider trying to answer the following question before proceeding: What&#39;s the probability that a student who does *not* turn the tongue depressor black - a student with a negative test result - has Diseasitis?  Again, we start out with 20% sick and 80% healthy students, 70% of healthy students will get a negative test result, and only 10% of sick students will get a negative test result.\n\n%%hidden(Answer):Imagine 20 sick students and 80 healthy students.  10% * 20 = 2 sick students have negative test results.  70% * 80 = 56 healthy students have negative test results.  Among the 2+56=58 total students with negative test results, 2 students are sick students with negative test results.  So 2/58 = 1/29 = 3.4% of students with negative test results have Diseasitis.%%\n\n%if-before([1x1]): Now let&#39;s turn to a faster, easier way to solve the same problem.%\n%!if-before([1x1]): For a more clever way to perform the same calculation, see [1x1].%',
   metaText: '',
   isTextLoaded: 'true',
@@ -109,7 +111,7 @@
   nextPageId: '',
   prevPageId: '',
   usedAsMastery: 'false',
-  proposalEditNum: '26',
+  proposalEditNum: '27',
   permissions: {
     edit: {
       has: 'false',
@@ -142,7 +144,8 @@
     '<a href="JohnMahony.json.html">JohnMahony</a>',
     '<a href="EricRogstad.json.html">EricRogstad</a>',
     '<a href="Akanksharawat.json.html">Akanksharawat</a>',
-    '<a href="SachinKrishnan.json.html">SachinKrishnan</a>'
+    '<a href="SachinKrishnan.json.html">SachinKrishnan</a>',
+    '<a href="9tr.json.html">9tr</a>'
   ],
   childIds: [],
   parentIds: [
@@ -234,6 +237,24 @@
   newCommentCount: '0',
   linkedMarkCount: '0',
   changeLogs: [
+    {
+      likeableId: '<a href="0.json.html">0</a>',
+      likeableType: 'changeLog',
+      myLikeValue: '0',
+      likeCount: '0',
+      dislikeCount: '0',
+      likeScore: '0',
+      individualLikes: [],
+      id: '23224',
+      pageId: '<a href="bayes_frequency_diagram_diseasitis.json.html">bayes_frequency_diagram_diseasitis</a>',
+      userId: '<a href="9tr.json.html">9tr</a>',
+      edit: '27',
+      type: 'newEditProposal',
+      createdAt: '2019-10-27 13:36:45',
+      auxPageId: '',
+      oldSettingsValue: '',
+      newSettingsValue: 'Addresses Vito Lomele&#39;s  Nov 11, 2018 concern about ambiguity.'
+    },
     {
       likeableId: '<a href="0.json.html">0</a>',
       likeableType: 'changeLog',
@@ -804,9 +825,9 @@
       likeableId: '<a href="3705.json.html">3705</a>',
       likeableType: 'contentRequest',
       myLikeValue: '0',
-      likeCount: '12',
+      likeCount: '13',
       dislikeCount: '0',
-      likeScore: '12',
+      likeScore: '13',
       individualLikes: [],
       id: '153',
       pageId: '<a href="bayes_frequency_diagram_diseasitis.json.html">bayes_frequency_diagram_diseasitis</a>',
@@ -830,9 +851,9 @@
       likeableId: '<a href="3547.json.html">3547</a>',
       likeableType: 'contentRequest',
       myLikeValue: '0',
-      likeCount: '20',
+      likeCount: '24',
       dislikeCount: '0',
-      likeScore: '20',
+      likeScore: '24',
       individualLikes: [],
       id: '96',
       pageId: '<a href="bayes_frequency_diagram_diseasitis.json.html">bayes_frequency_diagram_diseasitis</a>',

@@ -49,7 +49,7 @@
   anchorOffset: '0',
   mergedInto: '',
   isDeleted: 'false',
-  viewCount: '81',
+  viewCount: '95',
   text: 'A monoid $M$ is a pair $(X, \\diamond)$ where $X$ is a [set_theory_set set] and $\\diamond$ is an [associative_function associative] binary [3h7 operator] with an identity. $\\diamond$ is often interpreted as concatenation; data structures that support concatenation and have an &quot;empty element&quot; (such as lists, strings, and the natural numbers under addition) are examples of monoids.\n\n Monoids are [3gx algebraic structures]. We write $x \\diamond y$ for the application of $\\diamond$ to $x, y \\in X$, which must be defined. $x \\diamond y$ is commonly abbreviated $xy$ when $\\diamond$ can be inferred from context. The monoid axioms (which govern the behavior of $\\diamond$) are as follows.\n\n1. (Closure) For all $x, y$ in $X$, $xy$ is also in $X$.\n1. (Associativity) For all $x, y, z$ in $X$, $x(yz) = (xy)z$.\n2. (Identity) There is an $e$ in $X$ such that, for all $x$ in $X$, $xe = ex = x.$\n\nThe axiom of closure says that $x \\diamond y \\in X$, i.e. that combining two elements of $X$ using $\\diamond$ yields another element of $X$. In other words, $X$ is [3gy closed] under $\\diamond$.\n\nThe axiom of associativity says that $\\diamond$ is an [3h4 associative] operation, which justifies omitting parenthesis when describing the application of $\\diamond$ to many elements in sequence..\n\nThe axiom of identity says that there is some element $e$ in $X$ that $\\diamond$ treats as &quot;empty&quot;: If you apply $\\diamond$ to $e$ and $x$, then $\\diamond$ simply returns $x$. The identity is unique: Given two elements $e$ and $z$ that satisfy the axiom of identity, we have $ze = e = ez = z.$ Thus, we can speak of &quot;the identity&quot; $e$ of $M$. $e$ is often written $1$ or $1_M$.\n\n%%%knows-requisite([4c7]):\nEquivalently, a monoid is a category with exactly one object.\n%%%\n\nMonoids are [algebraic_semigroup semigroups] equipped with an identity. [3gd Groups] are monoids with inverses. For more on how monoids relate to other [algerbraic_structure algebraic structures], refer to the [algebraic_structure_tree tree of algebraic structures].\n\n# Notation\n\nGiven a monoid $M = (X, \\diamond)$, we say &quot;$X$ forms a monoid under $\\diamond$.&quot; For example, the set of finite bitstrings forms a monoid under concatenation: The set of finite bitstrings is closed under concatenation; concatenation is an associative operation; and the empty bitstring is a finite bitstring that acts like an identity under concatenation. \n\n$X$ is called the [3gz underlying set] of $M$, and $\\diamond$ is called the _monoid operation_. $x \\diamond y$ is usually abbreviated $xy$. $M$ is generally allowed to substitute for $X$ when discussing the monoid. For example, we say that the elements $x, y \\in X$ are &quot;in $M$,&quot; and sometimes write &quot;$x, y \\in M$&quot; or talk about the &quot;elements of $M$.&quot;\n\n# Examples\n\nBitstrings form a monoid under concatenation, with the empty string as the identity.\n\nThe set of finite lists of elements drawn from $Y$ (for any set $Y$) form a monoid under concatenation, with the empty list as the identity.\n\nThe natural numbers [45h $\\mathbb N$] form a monid under addition, with $0$ as the identity.\n\nMonoids have found some use in functional programming languages such as [https://en.wikipedia.org/wiki/Haskell_(programming_language) Haskell] and [https://en.wikipedia.org/wiki/Scala_(programming_language) Scala], where they are used to generalize over data types in which values can be &quot;combined&quot; (by some operation $\\diamond$) and which include an &quot;empty&quot; value (the identity).\n',
   metaText: '',
   isTextLoaded: 'true',
@@ -75,7 +75,7 @@
   nextPageId: '',
   prevPageId: '',
   usedAsMastery: 'false',
-  proposalEditNum: '0',
+  proposalEditNum: '8',
   permissions: {
     edit: {
       has: 'false',
@@ -101,7 +101,8 @@
   summaries: {},
   creatorIds: [
     '<a href="NateSoares.json.html">NateSoares</a>',
-    '<a href="PatrickStevens.json.html">PatrickStevens</a>'
+    '<a href="PatrickStevens.json.html">PatrickStevens</a>',
+    '<a href="9v3.json.html">9v3</a>'
   ],
   childIds: [],
   parentIds: [
@@ -132,6 +133,24 @@
   newCommentCount: '0',
   linkedMarkCount: '0',
   changeLogs: [
+    {
+      likeableId: '<a href="0.json.html">0</a>',
+      likeableType: 'changeLog',
+      myLikeValue: '0',
+      likeCount: '0',
+      dislikeCount: '0',
+      likeScore: '0',
+      individualLikes: [],
+      id: '23229',
+      pageId: '<a href="algebraic_monoid.json.html">algebraic_monoid</a>',
+      userId: '<a href="9v3.json.html">9v3</a>',
+      edit: '8',
+      type: 'newEditProposal',
+      createdAt: '2019-11-12 19:30:41',
+      auxPageId: '',
+      oldSettingsValue: '',
+      newSettingsValue: 'Typo: monid &gt; monoid'
+    },
     {
       likeableId: '<a href="0.json.html">0</a>',
       likeableType: 'changeLog',

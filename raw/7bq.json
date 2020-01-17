@@ -15,7 +15,7 @@
     "ignoreMathjax": false,
     "showAdvancedEditorMode": false,
     "isSlackMember": false,
-    "analyticsId": "aid:QY2K05rMdbdoGugftjbJUa4MOIJSpYRkVCiivxr7taI",
+    "analyticsId": "aid:6WgsQ4nsvR4mJaUEHLNXZN0K+J8/Qr8mgQNVW3JVv3I",
     "hasReceivedMaintenanceUpdates": false,
     "hasReceivedNotifications": false,
     "newNotificationCount": 0,
@@ -73,7 +73,7 @@
       "anchorOffset": 0,
       "mergedInto": "",
       "isDeleted": false,
-      "viewCount": 83,
+      "viewCount": 101,
       "text": "",
       "metaText": "",
       "isTextLoaded": false,
@@ -187,7 +187,7 @@
       "anchorOffset": 0,
       "mergedInto": "",
       "isDeleted": false,
-      "viewCount": 2321,
+      "viewCount": 2592,
       "text": "",
       "metaText": "",
       "isTextLoaded": false,
@@ -301,7 +301,7 @@
       "anchorOffset": 0,
       "mergedInto": "",
       "isDeleted": false,
-      "viewCount": 313,
+      "viewCount": 412,
       "text": "",
       "metaText": "",
       "isTextLoaded": false,
@@ -415,7 +415,7 @@
       "anchorOffset": 0,
       "mergedInto": "",
       "isDeleted": false,
-      "viewCount": 100,
+      "viewCount": 175,
       "text": "",
       "metaText": "",
       "isTextLoaded": false,
@@ -529,7 +529,7 @@
       "anchorOffset": 0,
       "mergedInto": "",
       "isDeleted": false,
-      "viewCount": 46,
+      "viewCount": 77,
       "text": "",
       "metaText": "",
       "isTextLoaded": false,
@@ -643,7 +643,7 @@
       "anchorOffset": 0,
       "mergedInto": "",
       "isDeleted": false,
-      "viewCount": 95,
+      "viewCount": 159,
       "text": "",
       "metaText": "",
       "isTextLoaded": false,
@@ -757,7 +757,7 @@
       "anchorOffset": 0,
       "mergedInto": "",
       "isDeleted": false,
-      "viewCount": 291,
+      "viewCount": 329,
       "text": "",
       "metaText": "",
       "isTextLoaded": false,
@@ -871,7 +871,7 @@
       "anchorOffset": 0,
       "mergedInto": "",
       "isDeleted": false,
-      "viewCount": 3164,
+      "viewCount": 3321,
       "text": "",
       "metaText": "",
       "isTextLoaded": false,
@@ -985,7 +985,7 @@
       "anchorOffset": 0,
       "mergedInto": "",
       "isDeleted": false,
-      "viewCount": 692,
+      "viewCount": 851,
       "text": " ",
       "metaText": "",
       "isTextLoaded": true,
@@ -1657,13 +1657,43 @@
           "value": 86,
           "userId": "9lh",
           "createdAt": "2019-05-18 22:58:21"
+        },
+        {
+          "value": 99,
+          "userId": "9px",
+          "createdAt": "2019-07-24 18:29:57"
+        },
+        {
+          "value": 95,
+          "userId": "9rp",
+          "createdAt": "2019-09-01 18:46:27"
+        },
+        {
+          "value": 66,
+          "userId": "9rw",
+          "createdAt": "2019-09-04 14:05:22"
+        },
+        {
+          "value": 99,
+          "userId": "9s3",
+          "createdAt": "2019-09-14 02:46:08"
+        },
+        {
+          "value": 93,
+          "userId": "9s7",
+          "createdAt": "2019-09-17 06:56:44"
+        },
+        {
+          "value": 60,
+          "userId": "9w5",
+          "createdAt": "2019-12-24 00:16:19"
         }
       ],
       "voteSummary": null,
       "muVoteSummary": 0,
-      "voteScaling": 27,
+      "voteScaling": 28,
       "currentUserVote": -2,
-      "voteCount": 132,
+      "voteCount": 138,
       "lockedVoteType": "",
       "maxEditEver": 0,
       "redLinkCount": 0,
@@ -1791,7 +1821,7 @@
       "id": "5",
       "firstName": "Eric",
       "lastName": "Rogstad",
-      "lastWebsiteVisit": "2019-02-06 17:46:54",
+      "lastWebsiteVisit": "2019-08-23 01:44:10",
       "isSubscribed": false,
       "domainMembershipMap": {}
     },
@@ -1887,7 +1917,7 @@
       "id": "2lr",
       "firstName": "Matt",
       "lastName": "Freeman",
-      "lastWebsiteVisit": "2017-12-11 17:29:40",
+      "lastWebsiteVisit": "2019-06-07 17:08:33",
       "isSubscribed": false,
       "domainMembershipMap": {}
     },
@@ -2823,7 +2853,7 @@
       "id": "9kp",
       "firstName": "Wilf",
       "lastName": "A",
-      "lastWebsiteVisit": "2019-06-04 21:47:25",
+      "lastWebsiteVisit": "2019-11-30 13:19:18",
       "isSubscribed": false,
       "domainMembershipMap": {}
     },
@@ -2832,6 +2862,54 @@
       "firstName": "Paul",
       "lastName": "Torrington",
       "lastWebsiteVisit": "2019-05-18 23:01:07",
+      "isSubscribed": false,
+      "domainMembershipMap": {}
+    },
+    "9px": {
+      "id": "9px",
+      "firstName": "Wilf",
+      "lastName": "Ashworth",
+      "lastWebsiteVisit": "2019-08-06 18:42:23",
+      "isSubscribed": false,
+      "domainMembershipMap": {}
+    },
+    "9rp": {
+      "id": "9rp",
+      "firstName": "Ben",
+      "lastName": "Greenberg",
+      "lastWebsiteVisit": "2019-09-01 18:48:30",
+      "isSubscribed": false,
+      "domainMembershipMap": {}
+    },
+    "9rw": {
+      "id": "9rw",
+      "firstName": "Dhandapani",
+      "lastName": "Devarajan",
+      "lastWebsiteVisit": "2019-09-04 14:05:21",
+      "isSubscribed": false,
+      "domainMembershipMap": {}
+    },
+    "9s3": {
+      "id": "9s3",
+      "firstName": "Hovannes",
+      "lastName": "Jagaspanyan",
+      "lastWebsiteVisit": "2019-09-14 02:33:54",
+      "isSubscribed": false,
+      "domainMembershipMap": {}
+    },
+    "9s7": {
+      "id": "9s7",
+      "firstName": "Minh",
+      "lastName": "Vu",
+      "lastWebsiteVisit": "2019-09-17 15:42:14",
+      "isSubscribed": false,
+      "domainMembershipMap": {}
+    },
+    "9w5": {
+      "id": "9w5",
+      "firstName": "Andre",
+      "lastName": "Vacha",
+      "lastWebsiteVisit": "2019-12-24 00:48:24",
       "isSubscribed": false,
       "domainMembershipMap": {}
     }

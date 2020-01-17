@@ -53,7 +53,7 @@
   anchorOffset: '0',
   mergedInto: '',
   isDeleted: 'false',
-  viewCount: '384',
+  viewCount: '479',
   text: '[summary:\nA group is an abstraction of a collection of symmetries of an object. The collection of symmetries of a triangle (rotating by $120^\\circ$ or $240^\\circ$ degrees and flipping), rearrangements of a collection of objects (permutations), or rotations of a sphere, are all examples of groups.\n\nA group abstracts from these examples by forgetting what the symmetries are symmetries *of*, and only considers how symmetries behave.\n\n- Any two symmetries can be composed. For the symmetries of flipping and rotating a triangle, the whole action of rotating, and then flipping a triangle at once is a symmetry. So there is an **[3h7 operation]** on a group which represents composition of symmetries.\n- There is always a do-nothing symmetry. When composed with another symmetry, the do-nothing symmetry doesn&#39;t change that symmetry. So the operation has an **[-54p identity]**.\n- Any symmetry can be reversed. That is, for any symmetry, there is another symmetry which when composed with the first, gives the do-nothing symmetry. Flipping a triangle, and then flipping it again, is the same as doing nothing. So the operation has an **[-inverse_mathematics inverse]** operation.\n- Like any collection of functions, when composing a bunch of functions, it doesn&#39;t matter what order the individual compositions are computed in, as long as the *overall* composition ends up in the right order. When composing $f$, $g$, and $h$, we can compute $g \\circ f$, and then compute $h \\circ (g \\circ f)$, or we can compute $h \\circ g$ and then compute $(h \\circ g) \\circ f$, and we will get the same result. So the operation is **[-3h4 associative]**.\n\nNote that it is not necessarily the case that the operation is [-3jb commutative]. Flipping and then rotating a triangle will give different symmetry than rotating and then flipping. If it is commutative, then the group is called [-3h2 abelian].\n]\n\n[summary(technical): A group $G$ is a pair $(X, \\bullet)$ where $X$ is a [3jz set] and $\\bullet$ is a [3h7 operation] obeying the following laws:\n\n 1. **[3gy Closure]:** The operation is a function. For all $x, y$ in* $X$, $x \\bullet y$ is defined and in $X$. We abbreviate $x \\bullet y$ as $xy$.\n 2. **[3h4 Associativity]:** $x(yz) = (xy)z$ for all $x, y, z \\in X$.\n 3. **[54p Identity]:** There is an element $e$ such that $xe=ex=x$ for all $x \\in X$.\n 4. **[-inverse_element Inverses]:** For each $x$ in $X$, there is an element $x^{-1} \\in X$ such that $xx^{-1}=x^{-1}x=e$.\n\nThe operation need not be [-3jb commutative], but if it is then the group is called [-3h2 abelian].\n]\n\nA group is an abstraction of a collection of symmetries of an object. The collection of symmetries of a triangle (rotating by $120^\\circ$ or $240^\\circ$ degrees and flipping), rearrangements of a collection of objects (permutations), or rotations of a sphere, are all examples of groups. A group abstracts from these examples by forgetting what the symmetries are symmetries of, and only considers how symmetries behave. \n\nA group $G$ is a pair $(X, \\bullet)$ where:\n\n - $X$ is a [3jz set], called the &quot;underlying set.&quot; By abuse of notation, $X$ is usually denoted by the same symbol as the group $G$, which we will do for the rest of the article.\n - $\\bullet : G \\times G \\to G$ is a binary [3h7 operation]. That is, a function that takes two elements of a set and returns a third. We will abbreviate $x \\bullet y$ by $xy$ when not ambiguous.  This operation is subject to the following axioms: \n- **[3gy Closure]:** $\\bullet$ is a function. For all $x, y$ in $X$, $x \\bullet y$ is defined and in $X$. We abbreviate $x \\bullet y$ as $xy$.\n- **[-54p Identity]:** There is an element $e$ such that $xe=ex=x$ for all $x \\in X$.\n- **[-inverse_element Inverses]:** For each $x$ in $X$, there is an element $x^{-1} \\in X$ such that $xx^{-1}=x^{-1}x=e$.\n- **[3h4 Associativity]:** $x(yz) = (xy)z$ for all $x, y, z \\in X$.\n\n1) The set X is the collection of abstract symmetries that this group represents. &quot;Abstract,&quot; because these elements aren&#39;t necessarily symmetries *of* something, but almost all examples will be.\n\n2) The operation $\\bullet$ is the abstract composition operation.\n\n3) The axiom of closure is redundant, since $\\bullet$ is defined as a function $G \\times G \\to G$, but it is useful to emphasize this, as sometimes one can forget to check that a given subsets of symmetries of an object is closed under composition.\n\n4) The axiom of identity says that there is an element $e$ in $G$ that is a do-nothing symmetry: If you apply $\\bullet$ to $e$ and $x$, then $\\bullet$ simply returns $x$. The identity is unique: Given two elements $e$ and $z$ that satisfy axiom 2, we have $ze = ez = z.$ Thus, we can speak of &quot;the identity&quot; $e$ of $G$. This justifies the use of $e$ in the axiom of inversion: axioms 1 through 3 ensure that $e$ exists and is unique, so we can reference it in axiom 4.\n\n$e$ is often written $1$ or $1_G$, because $\\bullet$ is often treated as an analog of multiplication on the set $X$, and $1$ is the multiplicative [54p identity]. (Sometimes, e.g. in the case of [3gq rings], $\\bullet$ is treated as an analog of addition, in which case the identity is often written $0$ or $0_G$.)\n\n5) The axiom of inverses says that for every element $x$ in $X$, there is some other element $y$ that $\\bullet$ treats like the opposite of $x$, in the sense that $xy = e$ and vice versa. The inverse of $x$ is usually  written $x^{-1}$, or sometimes $(-x)$ in cases where $\\bullet$ is analogous to addition.\n\n6) The axiom of associativity says that \\bullet behaves like composition of functions. When composing a bunch of functions, it doesn&#39;t matter what order the individual compositions are computed in. When composing $f$, $g$, and $h$, we can compute $g \\circ f$, and then compute $h \\circ (g \\circ f)$, or we can compute $h \\circ g$ and then compute $(h \\circ g) \\circ f$, and we will get the same result.\n\n%%%knows-requisite([3h3]):\nEquivalently, a group is a [3h3 monoid] which satisfies &quot;every element has an inverse&quot;.\n%%%\n\n%%%knows-requisite([4c7]):\nEquivalently, a group is a category with exactly one object, which satisfies &quot;every arrow has an inverse&quot;; the arrows are viewed as elements of the group. This justifies the intuition that groups are collections of symmetries. The object of this category can be thought of an abstract object that the isomorphisms are symmetries of. A functor from this category into the category of sets associates this object with a set, and each of the morphisms a permutation of that set.\n%%%\n\n# Examples\n\nThe most familiar example of a group is perhaps $(\\mathbb{Z}, +)$, the integers under addition. To see that it satisfies the group axioms, note that:\n\n1. (a) $\\mathbb{Z}$ is a set, and (b) $+$ is a function of type $\\mathbb Z \\times \\mathbb Z \\to \\mathbb Z$\n2. $(x+y)+z=x+(y+z)$\n3. $0+x = x = x + 0$\n4. Every element $x$ has an inverse $-x$, because $x + (-x) = 0$.\n\nFor more examples, see the [3t1 examples page].\n\n# Notation\n\nGiven a group $G = (X, \\bullet)$, we say &quot;$X$ forms a group under $\\bullet$.&quot; $X$ is called the [3gz underlying set] of $G$, and $\\bullet$ is called the _group operation_.\n\n$x \\bullet y$ is usually abbreviated $xy$.\n\n$G$ is generally allowed to substitute for $X$ when discussing the group. For example, we say that the elements $x, y \\in X$ are &quot;in $G$,&quot; and sometimes write &quot;$x, y \\in G$&quot; or talk about the &quot;elements of $G$.&quot;\n\nThe [3gg order of a group], written $|G|$, is the size $|X|$ of its underlying set: If $X$ has nine elements, then $|G|=9$ and we say that $G$ has order nine.\n\n# Resources\n\nGroups are a ubiquitous and useful algebraic structure. Whenever it makes sense to talk about symmetries of a mathematical object, or physical system, groups pop up. For a discussion of group theory and its various applications, refer to the [3g8 group theory] page.\n\nA group is a [3h3 monoid] with inverses, and an associative [algebraic_loop loop]. For more on how groups relate to other [3gx algebraic structures], refer to the [5dz tree of algebraic structures].',
   metaText: '',
   isTextLoaded: 'true',
@@ -79,7 +79,7 @@
   nextPageId: '',
   prevPageId: '',
   usedAsMastery: 'true',
-  proposalEditNum: '0',
+  proposalEditNum: '51',
   permissions: {
     edit: {
       has: 'false',
@@ -113,7 +113,8 @@
     '<a href="MarkChimes.json.html">MarkChimes</a>',
     '<a href="JoeZeng.json.html">JoeZeng</a>',
     '<a href="DanielSatanove.json.html">DanielSatanove</a>',
-    '<a href="71p.json.html">71p</a>'
+    '<a href="71p.json.html">71p</a>',
+    '<a href="9v3.json.html">9v3</a>'
   ],
   childIds: [
     '<a href="group_order.json.html">group_order</a>',
@@ -200,6 +201,24 @@
   newCommentCount: '0',
   linkedMarkCount: '0',
   changeLogs: [
+    {
+      likeableId: '<a href="0.json.html">0</a>',
+      likeableType: 'changeLog',
+      myLikeValue: '0',
+      likeCount: '0',
+      dislikeCount: '0',
+      likeScore: '0',
+      individualLikes: [],
+      id: '23228',
+      pageId: '<a href="group_mathematics.json.html">group_mathematics</a>',
+      userId: '<a href="9v3.json.html">9v3</a>',
+      edit: '51',
+      type: 'newEditProposal',
+      createdAt: '2019-11-12 19:25:55',
+      auxPageId: '',
+      oldSettingsValue: '',
+      newSettingsValue: ''
+    },
     {
       likeableId: '<a href="3910.json.html">3910</a>',
       likeableType: 'changeLog',

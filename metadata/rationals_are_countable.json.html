@@ -49,7 +49,7 @@
   anchorOffset: '0',
   mergedInto: '',
   isDeleted: 'false',
-  viewCount: '21',
+  viewCount: '27',
   text: 'The set $\\mathbb{Q}$ of [4zq rational numbers] is countable: that is, there is a [499 bijection] between $\\mathbb{Q}$ and the set $\\mathbb{N}$ of [45h natural numbers].\n\n# Proof\n\nBy the [cantor_schroeder_bernstein_theorem Schröder-Bernstein theorem], it is enough to find an [4b7 injection] $\\mathbb{N} \\to \\mathbb{Q}$ and an injection $\\mathbb{Q} \\to \\mathbb{N}$.\n\nThe former is easy, because $\\mathbb{N}$ is a subset of $\\mathbb{Q}$ so the identity injection $n \\mapsto \\frac{n}{1}$ works.\n\nFor the latter, we may define a function $\\mathbb{Q} \\to \\mathbb{N}$ as follows.\nTake any rational in its lowest terms, as $\\frac{p}{q}$, say. %%note:That is, the [greatest_common_divisor GCD] of the numerator $p$ and denominator $q$ is $1$.%%\nAt most one of $p$ and $q$ is negative (if both are negative, we may just cancel $-1$ from the top and bottom of the fraction); by multiplying by $\\frac{-1}{-1}$ if necessary, assume without loss of generality that $q$ is positive.\nIf $p = 0$ then take $q = 1$.\n\nDefine $s$ to be $1$ if $p$ is positive, and $2$ if $p$ is negative.\n\nThen produce the natural number $2^p 3^q 5^s$.\n\nThe function $f: \\frac{p}{q} \\mapsto 2^p 3^q 5^s$ is injective, because [fundamental_theorem_of_arithmetic prime factorisations are unique] so if $f\\left(\\frac{p}{q}\\right) = f \\left(\\frac{a}{b} \\right)$ (with both fractions in their lowest terms, and $q$ positive) then $|p| = |a|, q=b$ and the sign of $p$ is equal to the sign of $a$.\nHence the two fractions were the same after all.',
   metaText: '',
   isTextLoaded: 'true',
