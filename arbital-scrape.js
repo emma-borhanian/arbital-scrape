@@ -285,6 +285,7 @@ Page = class extends PageRef {
 
   if (argv.recursive) {
     let rawDir = `${argv.directory}/raw`
+    await fs.mkdirp(rawDir)
     let cachedPageFiles = await util.promisify(fs.readdir)(rawDir)
     cachedPageFiles.forEach(f=>{ if (f.endsWith('.json')) toDownload.push(new PageRef(f.replace(/\.json$/, ''))) })
   }
