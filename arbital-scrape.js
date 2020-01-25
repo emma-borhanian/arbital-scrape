@@ -177,18 +177,16 @@ Page = class extends PageRef {
     this.pageJson = this.partialPageJson
   }
 
-  async _filename(subdir, name) { return `${argv.directory}/${subdir}/${sanitizeFilename(name)}` }
-
-  async _writeFile(subdir, name, json) {
-    let file = await this._filename(subdir, name)
+  async _writeFile(name, json) {
+    let file = `${argv.directory}/${name}`
     this.log('writing', path.relative('.', file))
     await fs.mkdirp(path.dirname(file))
     await fs.writeFile(file, json)
     return file
   }
 
-  async _writeJson(subdir, name, json) {
-    let file = await this._filename(subdir, name)
+  async _writeJson(name, json) {
+    let file = `${argv.directory}/${name}`
     this.log('writing', path.relative('.', file))
     await fs.mkdirp(path.dirname(file))
     await fs.writeJson(file, json, {spaces: 2})
@@ -221,7 +219,7 @@ Page = class extends PageRef {
 
   _renderPage(pageIndex) { return template.page({...this, textHtml: this.renderText(pageIndex), breadcrumbs:this._makeBreadcrumbs(pageIndex), pageIndex:pageIndex}) }
 
-  async saveRaw() { if (!this.cached) await this._writeJson('raw', `${this.pageId}.json`, this.rawPageJson) }
+  async saveRaw() { if (!this.cached) await this._writeJson(`raw/${sanitizeFilename(this.pageId)}.json`, this.rawPageJson) }
 
   _renderMetadataHtml(pageIndex) {
     let jsonWalkReplace =(o,f,k='')=>{
@@ -244,8 +242,8 @@ Page = class extends PageRef {
   }
 
   async saveHtml(pageIndex) {
-    await this._writeFile('page', `${this.aliasOrId}.html`, this._renderPage(pageIndex))
-    await this._writeFile('metadata', `${this.aliasOrId}.json.html`, this._renderMetadataHtml(pageIndex))
+    await this._writeFile(`page/${sanitizeFilename(this.aliasOrId)}.html`, this._renderPage(pageIndex))
+    await this._writeFile(`metadata/${sanitizeFilename(this.aliasOrId)}.json.html`, this._renderMetadataHtml(pageIndex))
   }
 
   findPageRefs() {
