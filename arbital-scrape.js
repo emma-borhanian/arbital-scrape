@@ -60,19 +60,19 @@ const PageStatus_page      = 3
 
 let Page
 let PageRef = class {
-  constructor(aliasOrIdOrPartialPageJson, status=PageStatus_pageRef) {
+  constructor(aliasOrIdOrPartialPageJson, aliasToId, status=PageStatus_pageRef) {
     this.cached = false
     if (typeof(aliasOrIdOrPartialPageJson) == "string") {
-      this._copyProperties(PageStatus_aliasOrId, { aliasOrId: aliasOrIdOrPartialPageJson })
+      this._copyProperties(PageStatus_aliasOrId, { aliasOrId: aliasOrIdOrPartialPageJson}, aliasToId)
     } else {
-      this._copyProperties(status, aliasOrIdOrPartialPageJson)
+      this._copyProperties(status, aliasOrIdOrPartialPageJson, aliasToId)
     }
   }
 
-  _copyProperties(status, p) {
+  _copyProperties(status, p, aliasToId,) {
     this.status = status
     this.partialPageJson = p
-    this.pageId = p.pageId
+    this.pageId = p.pageId || aliasToId[p.aliasOrId]
     this.alias = p.alias
     this.aliasOrId = this.alias || this.pageId || p.aliasOrId
     this.keys = Array.from(new Set([this.aliasOrId, this.pageId, this.alias]))
@@ -132,8 +132,8 @@ let PageRef = class {
       timeout: argv.timeout })
   }
 
-  async requestCachedPage(aliasToId) {
-    let id = this.pageId || aliasToId[this.aliasOrId] || this.aliasOrId
+  async requestCachedPage() {
+    let id = this.pageId || this.aliasOrId
     let file = `${argv.directory}/raw/${sanitizeFilename(id)}.json`
     if (await fs.pathExists(file)) {
       let r = new Page(id, await fs.readJson(file))
@@ -171,8 +171,8 @@ let findPageInRawPageJson = (aliasOrId, rawPageJson)=> rawPageJson.pages[aliasOr
 let isArbitalPageIdField = k=>k !='analyticsId' && (['individualLikes'].includes(k) || k.endsWith('Ids') || k.endsWith('Id'))
 
 Page = class extends PageRef {
-  constructor(aliasOrId, rawPageJson) {
-    super(findPageInRawPageJson(aliasOrId, rawPageJson), PageStatus_page)
+  constructor(aliasOrId, rawPageJson, aliasToId) {
+    super(findPageInRawPageJson(aliasOrId, rawPageJson), aliasToId=aliasToId, status=PageStatus_page)
     this.rawPageJson = rawPageJson
     this.pageJson = this.partialPageJson
   }
@@ -246,7 +246,7 @@ Page = class extends PageRef {
     await this._writeFile(`metadata/${sanitizeFilename(this.aliasOrId)}.json.html`, this._renderMetadataHtml(pageIndex))
   }
 
-  findPageRefs() {
+  findPageRefs(aliasToId) {
     let walkJson = (json, func, key='')=>{
       if (json instanceof Array) {
         json.forEach(v=>walkJson(v, func, key))
@@ -258,8 +258,8 @@ Page = class extends PageRef {
     }
 
     return this._pageRefs = this._pageRefs || (()=>{
-      let pageRefs = Object.values(this.rawPageJson.pages).map(p=>new PageRef(p))
-      walkJson(this.rawPageJson, (k,v)=> { if (isArbitalPageIdField(k) && v) pageRefs.push(new PageRef(v)) })
+      let pageRefs = Object.values(this.rawPageJson.pages).map(p=>new PageRef(p, aliasToId=aliasToId))
+      walkJson(this.rawPageJson, (k,v)=> { if (isArbitalPageIdField(k) && v) pageRefs.push(new PageRef(v, aliasToId=aliasToId)) })
       return pageRefs
     })()
   }
@@ -277,7 +277,7 @@ Page = class extends PageRef {
   let aliasToId = lastScrapeMetadata.aliasToId || {}
   let lastFetchFailures = lastScrapeMetadata.fetchFailures || {}
 
-  let toDownload = Array.from(argv.page.map(p=>new PageRef(p)))
+  let toDownload = Array.from(argv.page.map(p=>new PageRef(p, aliasToId=aliasToId)))
   let pageIndex = {}
   let fetchFailures = {}
 
@@ -285,7 +285,7 @@ Page = class extends PageRef {
     let rawDir = `${argv.directory}/raw`
     await fs.mkdirp(rawDir)
     let cachedPageFiles = await util.promisify(fs.readdir)(rawDir)
-    cachedPageFiles.forEach(f=>{ if (f.endsWith('.json')) toDownload.push(new PageRef(f.replace(/\.json$/, ''))) })
+    cachedPageFiles.forEach(f=>{ if (f.endsWith('.json')) toDownload.push(new PageRef(f.replace(/\.json$/, ''), aliasToId=aliasToId)) })
   }
 
   let addToIndex =p=>{
@@ -305,7 +305,7 @@ Page = class extends PageRef {
     if (pageRef.keys.some(k=>fetchFailures[k])) continue
 
     let page
-    try { page = await pageRef.requestCachedPage(aliasToId) } catch (e) {
+    try { page = await pageRef.requestCachedPage() } catch (e) {
       if (e instanceof StatusCodeError || e instanceof RequestError || e instanceof CacheOnlyError) {
         let lastError = lastFetchFailures[pageRef.aliasOrId]
         if (e instanceof CacheOnlyError && lastError && lastError.name != 'CacheOnlyError') e = lastError
@@ -318,7 +318,7 @@ Page = class extends PageRef {
     await page.saveRaw()
 
     addToIndex(page)
-    let subPageRefs = page.findPageRefs()
+    let subPageRefs = page.findPageRefs(aliasToId)
     subPageRefs.forEach(addToIndex)
     if (argv.recursive) toDownload.push(...subPageRefs)
   }
