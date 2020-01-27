@@ -11,7 +11,7 @@ jobs:
           command: npm install
       - run:
           name: Build
-          command: node arbital-scrape.js --cache-only --remote-mathjax
+          command: ./arbital-scrape.js --recursive --request-history --cache-only --remote-mathjax
       - persist_to_workspace:
           root: out
           paths: ./*
