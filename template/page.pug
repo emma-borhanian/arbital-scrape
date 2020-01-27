@@ -1,4 +1,4 @@
-extends layout.pug
+extends page-layout.pug
 
 append head
   link(rel='stylesheet', type='text/css', href='../page-style.css')
@@ -9,33 +9,40 @@ append head
 
 mixin comment(commentId)
   - let comment = pageIndex[commentId]
-  div.comment
-    if comment
-      p: +pageLink(comment.pageCreatorId)
-    p!= comment && comment.renderText ? comment.renderText(pageIndex) : `${commentId} (missing)`
-    each subCommentId in comment.commentIds
-      +comment(subCommentId)
+  if !requestedEdit || comment.pageCreatedAt >= editCreatedAt
+    div.comment
+      if comment
+        p: +pageLink(comment.pageCreatorId)
+      p!= comment && comment.renderText ? comment.renderText(pageIndex) : `${commentId} (missing)`
+      each subCommentId in comment.commentIds
+        +comment(subCommentId)
 
-
-block body
+append body
   header
-    h1.title= title
+    h1.title
+      = title
     div.page-info
-      p.metadata-link: a(href=`../metadata/${aliasOrId}.json.html`)= `${aliasOrId}.json`
+      p.metadata-link: a(href=`../${fileLink(metadataFile)}`)= path.basename(metadataFile)
       p.arbital-url: a(href=arbitalUrl)= arbitalUrl
       if pageCreatorId
         p.creator
-          | by
+          | created by
           | 
           +pageLink(pageCreatorId)
           if pageCreatedAt
             | 
-            = dateFormat(pageCreatedAt, 'mmm d yyyy')
-          if editCreatedAt && editCreatedAt > pageCreatedAt
+            +date(pageCreatedAt)
+      if editCreatorId
+        p.editor
+          if edit
+            = `edit #${edit} by`
+          else
+            | last edited by
+          | 
+          +pageLink(editCreatorId)
+          if editCreatedAt
             | 
-            | updated
-            | 
-            = dateFormat(editCreatedAt, 'mmm d yyyy')
+            +date(editCreatedAt)
     if clickbait
       p.clickbait= clickbait
     nav.breadcrumbs
@@ -67,21 +74,23 @@ block body
       p.related
         h2 Related
         +pageList(relatedIds)
-    if reverse.relatedIds.size > 0
-      p.reverse-related
-        h2 Reverse Related
-        +pageList(reverse.relatedIds)
+    unless requestedEdit
+      if reverse.relatedIds.size > 0
+        p.reverse-related
+          h2 Reverse Related
+          +pageList(reverse.relatedIds)
     if childIds.length > 0
       p.children
         h2 Children
         +pageTree(childIds)
-    if reverse.pageCreatorId.size > 0 || reverse.editorIds.size > 0
-      hr
-    if reverse.pageCreatorId.size > 0
-      p.created
-        h2 Created
-        +pageListByType(reverse.pageCreatorId, /*hLevel=*/3, /*idPrefix=*/'created', /*skipCreator=*/true)
-    if reverse.editorIds.size > 0
-      p.edited
-        h2 Edited
-        +pageListByType(reverse.editorIds, /*hLevel=*/3, /*idPrefix=*/'edited')
+    unless requestedEdit
+      if reverse.pageCreatorId.size > 0 || reverse.editorIds.size > 0
+        hr
+      if reverse.pageCreatorId.size > 0
+        p.created
+          h2 Created
+          +pageListByType(reverse.pageCreatorId, /*hLevel=*/3, /*idPrefix=*/'created', /*skipCreator=*/true)
+      if reverse.editorIds.size > 0
+        p.edited
+          h2 Edited
+          +pageListByType(reverse.editorIds, /*hLevel=*/3, /*idPrefix=*/'edited')

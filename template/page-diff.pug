@@ -1,0 +1,10 @@
+extends page-layout.pug
+
+append body
+  header
+    h1.title
+      | Diff:
+      | 
+      = title
+    div: +diffAddedRemoved(diff)
+    main: | !{diff.html}

@@ -53,7 +53,7 @@ module.exports = (unmatchedText, pageIndex, missingLinks, textOnly=false)=>{
     }
     result += unmatchedText.substring(0, index)
     if (textOnly) result += linkText || linkUrl
-    else result += `<a href="${escapeHtml(linkUrl)}">${escapeHtml(linkText || linkUrl)}</a>`
+    else result += `<a href="../page/${escapeHtml(linkUrl)}">${escapeHtml(linkText || linkUrl)}</a>`
     unmatchedText = unmatchedText.substring(index + fullMatch.length)
   }
   return result + unmatchedText

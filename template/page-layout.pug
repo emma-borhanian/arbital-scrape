@@ -1,0 +1,59 @@
+extends layout.pug
+
+append head
+  link(rel='stylesheet', type='text/css', href='../page-style.css')
+
+append body
+  aside.history-sidebar
+    table
+      tr: th(colspan='3'): | History
+      each changeLog in currentEditPage.changeLogs
+        tr
+          td
+            if changeLog.type == 'newEdit'
+              - let changeLogPage = parseInt(changeLog.edit) == currentEdit ? currentEditPage : currentEditPage.editPageRefs[changeLog.edit - 1]
+              if !changeLogPage
+                = `#${changeLog.edit} (missing)`
+              else if changeLogPage.downloaded
+                if requestedEdit == changeLogPage.edit && pugTemplate == 'page.pug'
+                  if changeLogPage.requestedEdit
+                    = `#${changeLogPage.edit}`
+                  else
+                    | current
+                else
+                  a(href=`../${fileLink(changeLogPage.pageFile)}`)
+                    if changeLogPage.requestedEdit
+                      = `#${changeLogPage.edit}`
+                    else
+                      | current
+                | 
+                if requestedEdit == changeLogPage.edit && pugTemplate == 'diff.pug'
+                  +diffAddedRemoved(changeLogPage.diff)
+                else
+                  a(href=`../${fileLink(changeLogPage.diffFile)}`): +diffAddedRemoved(changeLogPage.diff)
+              else if changeLogPage.requestError
+                = `#${changeLog.edit} (${changeLogPage.requestError.message})`
+              else
+                = changeLogPage.constructor.name
+                = `#${changeLog.edit} (not downloaded)`
+              if changeLog.newSettingsValue
+                | 
+                = changeLog.newSettingsValue
+            else
+              = changeCase.sentenceCase(changeLog.type)
+              if changeLog.auxPageId
+                | 
+                +pageLink(changeLog.auxPageId)
+              if changeLog.oldSettingsValue
+                | 
+                | from '
+                = changeLog.oldSettingsValue
+                | '
+              if changeLog.newSettingsValue || changeLog.oldSettingsValue
+                | 
+                | to '
+                = changeLog.newSettingsValue
+                | '
+          td: +pageLink(changeLog.userId)
+          td: +date(changeLog.createdAt)
+

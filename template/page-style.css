@@ -5,6 +5,7 @@ body > section,
 body > hr {
   width: 1000px;
   margin: 0 auto;
+  margin-right: 200px;
   word-break: break-word;
 }
 
@@ -16,4 +17,29 @@ main img { display: block; margin: auto }
 .comment {
   border: solid black 1px;
   padding: 5px;
+}
+
+.history-sidebar {
+  max-width: 500px;
+  float: left;
+  display: block;
+}
+
+.history-sidebar table {
+  border-collapse: collapse;
+}
+
+.history-sidebar tr {
+  border: solid black 1px;
+}
+
+.history-sidebar td:first-of-type {
+  max-width: 200px;
+}
+
+.diff-added {
+  color: green;
+}
+.diff-removed {
+  color: red;
 }

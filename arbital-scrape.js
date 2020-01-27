@@ -1,4 +1,4 @@
-#!/usr/bin/env node --max-old-space-size=8192
+#!/usr/bin/env node --max-old-space-size=16000
 let fs = require('fs-extra')
 let request = require('request-promise-native')
 let {StatusCodeError,RequestError} = require('request-promise-native/errors')
@@ -9,11 +9,17 @@ let path = require('path')
 let Zip = require('adm-zip')
 let escapeHtml = require('escape-html')
 let flatMap = require('array.prototype.flatmap')
+let DiffMatchPatch = require('diff-match-patch')
 
 let config = require('./config.js')
 let lib = require('./src/lib.js')
 let renderPageText = require('./src/render-page-text.js')
 let renderPageLinks = require('./src/render-page-links.js')
+
+String.prototype.rsplit = function(sep, maxsplit) {
+  var split = this.split(sep);
+  return maxsplit ? [ split.slice(0, -maxsplit).join(sep) ].concat(split.slice(-maxsplit)) : split;
+}
 
 let argv = require('yargs')
   .command('$0 [directory]', 'scrape arbital.com restartable', yargs=>
@@ -29,6 +35,10 @@ let argv = require('yargs')
            array: true,
            string: true,
            default: ['arbital_front_page'] })
+         .option('request-history', {
+           desc: 'request page history from arbital',
+           boolean: true,
+           default: false })
          .option('recursive', {
            desc: 'download recursively',
            boolean: true,
@@ -60,26 +70,30 @@ const PageStatus_page      = 3
 
 let Page
 let PageRef = class {
-  constructor(aliasOrIdOrPartialPageJson, aliasToId, status=PageStatus_pageRef) {
+  constructor(aliasOrIdOrPartialPageJson, aliasToId, requestedEdit=null, status=PageStatus_pageRef) {
     this.cached = false
     if (typeof(aliasOrIdOrPartialPageJson) == "string") {
-      this._copyProperties(PageStatus_aliasOrId, { aliasOrId: aliasOrIdOrPartialPageJson}, aliasToId)
+      this._copyProperties(PageStatus_aliasOrId, { aliasOrId: aliasOrIdOrPartialPageJson}, aliasToId, requestedEdit)
     } else {
-      this._copyProperties(status, aliasOrIdOrPartialPageJson, aliasToId)
+      this._copyProperties(status, aliasOrIdOrPartialPageJson, aliasToId, requestedEdit)
     }
+    this.downloaded = false
   }
 
-  _copyProperties(status, p, aliasToId,) {
+  _copyProperties(status, p, aliasToId, requestedEdit) {
     this.status = status
     this.partialPageJson = p
     this.pageId = p.pageId || aliasToId[p.aliasOrId]
     this.alias = p.alias
     this.aliasOrId = this.alias || this.pageId || p.aliasOrId
-    this.keys = Array.from(new Set([this.aliasOrId, this.pageId, this.alias]))
+    this.requestedEdit = requestedEdit
+    this.edit = 'edit' in p ? parseInt(p.edit) : requestedEdit
+    this.currentEdit = 'currentEdit' in p ? parseInt(p.currentEdit) : undefined
+    this.keys = Array.from(new Set([this.aliasOrId, this.pageId, this.alias].filter(k=>typeof(k)!='undefined')))
     this.type = p.type || config.defaultTypeString
-    this.title = p.title
-    this.text = p.text
-    this.clickbait = p.clickbait
+    this.title = p.title || ''
+    this.text = p.text || ''
+    this.clickbait = p.clickbait || ''
     this.name = this.title
       || (this.clickbait && this.clickbait.substring(config.textToNameMaxLength))
       || (this.text && this.text.substring(config.textToNameMaxLength))
@@ -91,6 +105,7 @@ let PageRef = class {
     this.childIds = p.childIds || []
     this.parentIds = p.parentIds || []
     this.pageCreatorId = p.pageCreatorId
+    this.editCreatorId = p.editCreatorId
     this.creatorIds = p.creatorIds || []
     this.editorIds = this.creatorIds.filter(i=>i!=this.pageCreatorId)
     this.tagIds = p.tagIds || []
@@ -100,15 +115,35 @@ let PageRef = class {
     this.anchorContext = p.anchorContext
     this.anchorText = p.anchorText
     this.anchorOffset = p.anchorOffset
+    this.changeLogs = p.changeLogs || []
 
     this.missingLinks = []
     this.latexStrings = []
+    this.requestError = null
+
+    this.editPageRefs = []
+    if (this.requestedEdit == null) {
+      for (let i = 1; i< this.currentEdit; i++) {
+        this.editPageRefs.push(new PageRef({ pageId: this.pageId, aliasOrId: this.aliasOrId, alias: this.alias }, aliasToId, i))
+      }
+    }
 
     this.reverse = {
       pageCreatorId: new Set(),
       editorIds: new Set(),
       relatedIds: new Set(),
     }
+
+    this.rawFile = this.requestedEdit == null
+        ? `${argv.directory}/raw/${sanitizeFilename(this.pageId || this.aliasOrId)}.json`
+        : `${argv.directory}/raw-history/${sanitizeFilename(`${this.pageId || this.aliasOrId}-${this.edit}`)}.json`
+    this.metadataFile = this.requestedEdit == null
+        ? `${argv.directory}/metadata/${sanitizeFilename(this.aliasOrId)}.json.html`
+        : `${argv.directory}/metadata-history/${sanitizeFilename(`${this.aliasOrId}-${this.edit}`)}.json.html`
+    this.pageFile = this.requestedEdit == null
+        ? `${argv.directory}/page/${sanitizeFilename(this.aliasOrId)}.html`
+        : `${argv.directory}/page-history/${sanitizeFilename(`${this.aliasOrId}-${this.edit}`)}.html`
+    this.diffFile = `${argv.directory}/page-diff/${sanitizeFilename(`${this.aliasOrId}-${this.edit || '1'}`)}.html`
   }
 
   propagateReverse(pageIndex) {
@@ -121,8 +156,12 @@ let PageRef = class {
 
   async _requestRawPage() {
     if (argv['cache-only']) throw new CacheOnlyError()
-    let url = `${argv.url}/json/primaryPage/`
-    let body = { pageAlias: this.aliasOrId }
+    let url = this.requestedEdit == null
+        ? `${argv.url}/json/primaryPage/`
+        : `${argv.url}/json/edit/`
+    let body = this.requestedEdit == null
+        ? { pageAlias: this.aliasOrId }
+        : { pageAlias: this.aliasOrId, specificEdit: this.requestedEdit }
     this.log('fetching', 'POST', url, body)
     return await request({
       method: 'POST',
@@ -132,16 +171,22 @@ let PageRef = class {
       timeout: argv.timeout })
   }
 
-  async requestCachedPage() {
-    let id = this.pageId || this.aliasOrId
-    let file = `${argv.directory}/raw/${sanitizeFilename(id)}.json`
-    if (await fs.pathExists(file)) {
-      let r = new Page(id, await fs.readJson(file))
-      this.log('found cached', file)
+  async _loadCachedPage() {
+    if (this.status == PageStatus_page) return this
+    if (await fs.pathExists(this.rawFile)) {
+      let r = new Page(this.aliasOrId, await fs.readJson(this.rawFile), this.requestedEdit)
+      r.log('found cached', path.relative('.', this.rawFile))
       r.cached = true
       return r
     }
-    return new Page(id, await this._requestRawPage())
+    return null
+  }
+
+  async loadOrRequestCachedPage() {
+    let page = await this._loadCachedPage()
+    if (page != null) return page
+    let rawPage = await this._requestRawPage()
+    return new Page(this.aliasOrId, rawPage, this.requestedEdit)
   }
 
   renderSummary(pageIndex) {
@@ -167,26 +212,29 @@ let PageRef = class {
   pickBest(...others) { return lib.maxBy([this].concat(others).filter(p=>p), p=>p.status) }
 }
 
-let findPageInRawPageJson = (aliasOrId, rawPageJson)=> rawPageJson.pages[aliasOrId] || Object.values(rawPageJson.pages).find(p=>p.alias==aliasOrId)
+let findPageInRawPageJson = (aliasOrId, rawPageJson)=>
+  rawPageJson.pages[aliasOrId]
+    || Object.values(rawPageJson.pages).find(p=>p.alias==aliasOrId)
+    || {aliasOrId: aliasOrId}
+// TODO: left out 'id' because it leads to downloading tens of thousands of empty change log objects.
 let isArbitalPageIdField = k=>k !='analyticsId' && (['individualLikes'].includes(k) || k.endsWith('Ids') || k.endsWith('Id'))
 
 Page = class extends PageRef {
-  constructor(aliasOrId, rawPageJson, aliasToId) {
-    super(findPageInRawPageJson(aliasOrId, rawPageJson), aliasToId=aliasToId, status=PageStatus_page)
+  constructor(aliasOrId, rawPageJson, requestedEdit=null) {
+    super(findPageInRawPageJson(aliasOrId, rawPageJson), /* aliasToId= */{}, requestedEdit, PageStatus_page)
     this.rawPageJson = rawPageJson
     this.pageJson = this.partialPageJson
+    this.downloaded = true
   }
 
-  async _writeFile(name, json) {
-    let file = `${argv.directory}/${name}`
+  async _writeFile(file, json) {
     this.log('writing', path.relative('.', file))
     await fs.mkdirp(path.dirname(file))
     await fs.writeFile(file, json)
     return file
   }
 
-  async _writeJson(name, json) {
-    let file = `${argv.directory}/${name}`
+  async _writeJson(file, json) {
     this.log('writing', path.relative('.', file))
     await fs.mkdirp(path.dirname(file))
     await fs.writeJson(file, json, {spaces: 2})
@@ -217,9 +265,34 @@ Page = class extends PageRef {
     return this.textHtml
   }
 
-  _renderPage(pageIndex) { return template.page({...this, textHtml: this.renderText(pageIndex), breadcrumbs:this._makeBreadcrumbs(pageIndex), pageIndex:pageIndex}) }
+  get diff() {
+    if (this._diff) return this._diff
+    let prevPage = null
+    for (let i = this.edit - 1; i >= 1 && (!prevPage || !prevPage.downloaded); i--) {
+      prevPage = this.requestedEdit ? this.currentEditPage.editPageRefs[i-1] : this.editPageRefs[i-1]
+    }
+    let diffText = p=>`${p.title}\n\n${p.clickbait}\n\n${p.text}`
+    let diffMatchPatch = new DiffMatchPatch()
+    diffMatchPatch.Diff_EditCost = 4
+    let diffs = diffMatchPatch.diff_main(prevPage ? diffText(prevPage) : '', diffText(this))
+    diffMatchPatch.diff_cleanupSemantic(diffs)
+    let added = 0
+    let removed = 0
+    for (let [dir, s] of diffs) {
+      if (dir < 0) removed += s.length
+      if (dir > 0) added += s.length
+    }
+    return this._diff = {
+      added: added,
+      removed: removed,
+      html: diffMatchPatch.diff_prettyHtml(diffs).replace(/&para;/g, '')
+    }
+  }
 
-  async saveRaw() { if (!this.cached) await this._writeJson(`raw/${sanitizeFilename(this.pageId)}.json`, this.rawPageJson) }
+  _renderDiff(pageIndex) { return template.pageDiff({...this, diff:this.diff, pageIndex:pageIndex}) }
+  _renderPage(pageIndex) { return template.page({...this, textHtml: this.renderText(pageIndex), breadcrumbs:this._makeBreadcrumbs(pageIndex), diff:this.diff, pageIndex:pageIndex}) }
+
+  async saveRaw() { if (!this.cached) await this._writeJson(this.rawFile, this.rawPageJson) }
 
   _renderMetadataHtml(pageIndex) {
     let jsonWalkReplace =(o,f,k='')=>{
@@ -242,8 +315,9 @@ Page = class extends PageRef {
   }
 
   async saveHtml(pageIndex) {
-    await this._writeFile(`page/${sanitizeFilename(this.aliasOrId)}.html`, this._renderPage(pageIndex))
-    await this._writeFile(`metadata/${sanitizeFilename(this.aliasOrId)}.json.html`, this._renderMetadataHtml(pageIndex))
+    await this._writeFile(this.pageFile, this._renderPage(pageIndex))
+    await this._writeFile(this.metadataFile, this._renderMetadataHtml(pageIndex))
+    await this._writeFile(this.diffFile, this._renderDiff(pageIndex))
   }
 
   findPageRefs(aliasToId) {
@@ -258,8 +332,15 @@ Page = class extends PageRef {
     }
 
     return this._pageRefs = this._pageRefs || (()=>{
-      let pageRefs = Object.values(this.rawPageJson.pages).map(p=>new PageRef(p, aliasToId=aliasToId))
-      walkJson(this.rawPageJson, (k,v)=> { if (isArbitalPageIdField(k) && v) pageRefs.push(new PageRef(v, aliasToId=aliasToId)) })
+      let pageRefs = []
+
+      if (argv['request-history']) {
+        pageRefs.push(...this.editPageRefs)
+      }
+
+      pageRefs.push(...Object.values(this.rawPageJson.pages).map(p=>new PageRef(p, aliasToId)))
+      walkJson(this.rawPageJson, (k,v)=> { if (isArbitalPageIdField(k) && v) pageRefs.push(new PageRef(v, aliasToId)) })
+
       return pageRefs
     })()
   }
@@ -275,20 +356,28 @@ Page = class extends PageRef {
     lastScrapeMetadata = await fs.readJson(scrapeMetadataFile)
   }
   let aliasToId = lastScrapeMetadata.aliasToId || {}
-  let lastFetchFailures = lastScrapeMetadata.fetchFailures || {}
+  let fetchFailures = lastScrapeMetadata.fetchFailures || {}
 
-  let toDownload = Array.from(argv.page.map(p=>new PageRef(p, aliasToId=aliasToId)))
+  let toDownload = Array.from(argv.page.map(p=>new PageRef(p, aliasToId)))
   let pageIndex = {}
-  let fetchFailures = {}
 
   if (argv.recursive) {
+    let rawHistoryDir = `${argv.directory}/raw-history`
+    await fs.mkdirp(rawHistoryDir)
+    let cachedPageFiles = await util.promisify(fs.readdir)(rawHistoryDir)
+    cachedPageFiles.forEach(f=>{ if (f.endsWith('.json')) {
+      let [pageId, requestedEdit] = f.replace(/\.json$/, '').rsplit('-')
+      toDownload.push(new PageRef(pageId, aliasToId, requestedEdit))
+    }})
+
     let rawDir = `${argv.directory}/raw`
     await fs.mkdirp(rawDir)
-    let cachedPageFiles = await util.promisify(fs.readdir)(rawDir)
-    cachedPageFiles.forEach(f=>{ if (f.endsWith('.json')) toDownload.push(new PageRef(f.replace(/\.json$/, ''), aliasToId=aliasToId)) })
+    cachedPageFiles = await util.promisify(fs.readdir)(rawDir)
+    cachedPageFiles.forEach(f=>{ if (f.endsWith('.json')) toDownload.push(new PageRef(f.replace(/\.json$/, ''), aliasToId)) })
   }
 
   let addToIndex =p=>{
+    if (p.requestedEdit != null) return
     p = pageIndex[p.aliasOrId.toLowerCase()] = pageIndex[p.aliasOrId] = pageIndex[p.aliasOrId] ? pageIndex[p.aliasOrId].pickBest(p) : p
     if (p.alias && p.pageId) aliasToId[p.alias] = p.pageId
     if (p.pageId) { pageIndex[p.pageId] = p; pageIndex[p.pageId.toLowerCase()] = p }
@@ -297,50 +386,70 @@ Page = class extends PageRef {
   }
   toDownload.forEach(addToIndex)
 
+  let visited = {}
   while (toDownload.length > 0) {
     let pageRef = toDownload.pop()
-    pageRef = pageRef.pickBest(...pageRef.keys.map(k=>pageIndex[k]))
+    if (pageRef.requestedEdit == null) pageRef = pageRef.pickBest(...pageRef.keys.map(k=>pageIndex[k]))
 
-    if (pageRef.status == PageStatus_page) continue
-    if (pageRef.keys.some(k=>fetchFailures[k])) continue
+    if (pageRef.keys.some(k=>visited[k] && visited[k].has(pageRef.requestedEdit))) continue
+    let addToVisited = p=> p.keys.forEach(k=>{ visited[k] = visited[k] || new Set(); visited[k].add(p.requestedEdit) })
 
     let page
-    try { page = await pageRef.requestCachedPage() } catch (e) {
-      if (e instanceof StatusCodeError || e instanceof RequestError || e instanceof CacheOnlyError) {
-        let lastError = lastFetchFailures[pageRef.aliasOrId]
-        if (e instanceof CacheOnlyError && lastError && lastError.name != 'CacheOnlyError') e = lastError
-        pageRef.log(colors.red('failed'), e.message)
-        fetchFailures[pageRef.aliasOrId] = e
-        continue
-      } else throw e
+    if (pageRef.status == PageStatus_page) {
+      page = pageRef
+    } else {
+      try { page = await pageRef.loadOrRequestCachedPage() } catch (e) {
+        addToVisited(pageRef)
+        if (e instanceof StatusCodeError || e instanceof RequestError || e instanceof CacheOnlyError) {
+          let lastError = fetchFailures[pageRef.aliasOrId] && fetchFailures[pageRef.aliasOrId][pageRef.requestedEdit || 'current']
+          if (e instanceof CacheOnlyError && lastError && lastError.name != 'CacheOnlyError') e = lastError
+          pageRef.requestError = e
+          pageRef.log(colors.red('failed'), e.message)
+          fetchFailures[pageRef.aliasOrId] = fetchFailures[pageRef.aliasOrId] || {}
+          fetchFailures[pageRef.aliasOrId][pageRef.requestedEdit || 'current'] = e
+          continue
+        } else throw e
+        if (fetchFailures[pageRef.aliasOrId]) {
+          delete fetchFailures[pageRef.aliasOrId][pageRef.requestedEdit || 'current']
+          if (Object.keys(fetchFailures[pageRef.aliasOrId]).length == 0) {
+            delete fetchFailures[pageRef.aliasOrId]
+          }
+        }
+      }
+
+      await page.saveRaw()
     }
 
-    await page.saveRaw()
-
-    addToIndex(page)
+    if (page.requestedEdit) pageIndex[page.aliasOrId].editPageRefs[page.requestedEdit - 1] = page
+    else addToIndex(page)
     let subPageRefs = page.findPageRefs(aliasToId)
     subPageRefs.forEach(addToIndex)
     if (argv.recursive) toDownload.push(...subPageRefs)
+    addToVisited(page)
   }
 
-  let newFetchFailures = {...lastFetchFailures, ...fetchFailures}
-  for (let aliasOrId of Object.keys(newFetchFailures)) {
-    if (pageIndex[aliasOrId] && pageIndex[aliasOrId].status == PageStatus_page)
-      delete newFetchFailures[aliasOrId]
-  }
-  let scrapeMetadata = {aliasToId:aliasToId, fetchFailures:newFetchFailures}
+  let scrapeMetadata = {aliasToId:aliasToId, fetchFailures:fetchFailures}
   console.log('writing', scrapeMetadataFile)
   await fs.writeJson(scrapeMetadataFile, scrapeMetadata)
 
   let allPages = lib.sortBy(Array.from(new Set(Object.values(pageIndex))), p=>p.name)
 
   allPages.forEach(p=>p.propagateReverse(pageIndex))
+  allPages.forEach(p=>{
+    p.currentEditPage = p
+    p.editPageRefs.forEach(e=>e.currentEditPage = p)
+  })
 
   let savedHtml = new Set()
   for (let page of allPages) {
     if (page.status == PageStatus_page && !savedHtml.has(page.pageId)) {
       savedHtml.add(page.pageId)
       await page.saveHtml(pageIndex)
+      for (let oldPage of page.editPageRefs) {
+        if (oldPage.status == PageStatus_page) {
+          await oldPage.saveHtml(pageIndex)
+        }
+      }
     }
   }
 
@@ -420,8 +529,11 @@ Page = class extends PageRef {
     console.log('')
     console.log('Fetch failures:')
     for (let aliasOrId of Object.keys(fetchFailures)) {
-      let error = fetchFailures[aliasOrId]
-      pageIndex[aliasOrId].log(colors.red('failed'), error.message)
+      for (let editNumber of Object.keys(fetchFailures[aliasOrId])) {
+        let error = fetchFailures[aliasOrId][editNumber]
+        let page = editNumber == 'current' ? pageIndex[aliasOrId] : pageIndex[aliasOrId].editPageRefs[parseInt(editNumber) - 1]
+        page.log(colors.red('failed'), editNumber, error.message)
+      }
     }
   }
 })()

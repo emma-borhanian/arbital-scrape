@@ -19,12 +19,15 @@ block body
         thead
           tr
             th page
+            th version
             th error
         tbody
-          each error, aliasOrId in fetchFailures
-            tr
-              td: +pageLink(aliasOrId)
-              td= error.message
+          each errorByVersion, aliasOrId in fetchFailures
+            each error, version in errorByVersion
+              tr
+                td: +pageLink(aliasOrId)
+                td= version
+                td= error.message
     section
       h2 Missing Links
       table

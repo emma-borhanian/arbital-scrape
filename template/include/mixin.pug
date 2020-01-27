@@ -5,7 +5,7 @@ mixin _breadcrumb(includeIndex, ...links)
         li: a(href=`${root}index.html`) Index
       - for (let i=0; i < links.length; i+=2)
         if i+1 < links.length
-          li: a(href=links[i])= links[i+1]
+          li: a(href=`${root}page/${links[i]}`)= links[i+1]
         else
           li= links[i]
 
@@ -83,3 +83,17 @@ mixin pageCommaList(pages)
         | ,
         | 
         +pageLink(pages[i])
+
+mixin diffAddedRemoved(diff)
+  if diff.added > 0
+    span.diff-added= `+${diff.added}`
+  if diff.added > 0 && diff.removed > 0
+    | 
+  if diff.removed > 0
+    span.diff-removed= `-${diff.removed}`
+  if diff.added == 0 && diff.removed == 0
+    | +0
+
+mixin date(time)
+  span(title=dateFormat(time, 'mmm dd yyyy HH:MM:ss'))
+    = dateFormat(time, 'mmm dd yyyy')

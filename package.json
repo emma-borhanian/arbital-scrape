@@ -5,7 +5,7 @@
   "description": "Scrapes arbital.com into browsable plain HTML for personal use",
   "license": "(MIT OR Unlicense)",
   "scripts": {
-    "test": "./node_modules/.bin/eslint **/*.js && rm -rf tmp/arbital.com && ./arbital-scrape.js --recursive=false --cache-only=false tmp/arbital.com && ./arbital-scrape.js --cache-only --recursive=false tmp/arbital.com"
+    "test": "./node_modules/.bin/eslint **/*.js && rm -rf tmp/arbital.com && ./arbital-scrape.js --recursive=false --cache-only=false --request-history=true tmp/arbital.com && ./arbital-scrape.js --cache-only --recursive=false --request-history=true tmp/arbital.com"
   },
   "bin": {
     "arbital-scrape": "./arbital-scrape.js"
@@ -19,8 +19,10 @@
     "@types/showdown": "^1.9.3",
     "adm-zip": "^0.4.13",
     "array.prototype.flatmap": "^1.2.3",
+    "change-case": "^4.1.1",
     "colors": "^1.4.0",
     "dateformat": "^3.0.3",
+    "diff-match-patch": "^1.0.4",
     "escape-html": "^1.0.3",
     "fs-extra": "^8.1.0",
     "pug": "^2.0.4",
