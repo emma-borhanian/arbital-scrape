@@ -2,8 +2,7 @@ version: 2
     
 jobs:
   build:
-    docker:
-      - image: node:12.5.0
+    machine: true
     steps:
       - checkout
       - run:
@@ -11,7 +10,7 @@ jobs:
           command: npm install
       - run:
           name: Build
-          command: node --max-old-space-size=16000 arbital-scrape.js --recursive --request-history --cache-only --remote-mathjax
+          command: node --max-old-space-size=8000 arbital-scrape.js --recursive --request-history --cache-only --remote-mathjax
       - persist_to_workspace:
           root: out
           paths: ./*
